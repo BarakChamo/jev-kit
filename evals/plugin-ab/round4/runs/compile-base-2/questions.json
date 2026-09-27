@@ -1,0 +1,96 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "postId": "p_9f2c1a",
+    "createdAt": "2026-09-25T14:03:00Z",
+    "author": { "id": "u_88213", "accountAgeDays": 412, "priorStrikes": 0 },
+    "surface": "comment",
+    "community": "r/example",
+    "text": "Great deal on these, DM me and I'll send you the link to buy cheap!!",
+    "mediaUrls": [],
+    "replyToText": null,
+    "policyVersion": "2026-09"
+  },
+  "questions": {
+    "hate_speech": {
+      "type": "noul",
+      "instructions": "Assess whether the post text (and any media) attacks, demeans, or incites hatred against people based on a protected trait such as race, ethnicity, national origin, religion, disability, gender, gender identity, sexual orientation, age, or immigration status. Consider slurs, dehumanizing comparisons, and coded language. replyToText may change meaning (e.g. reclaimed language, quotation, counter-speech).",
+      "criteria": {
+        "true": "The post attacks, demeans, or incites hatred/violence against people because of a protected trait, per Policy §2 (Hateful Conduct).",
+        "false": "The post does not target people based on a protected trait, or does so only to condemn, report, or discuss hate (e.g. news, education, reclaimed use)."
+      }
+    },
+    "harassment": {
+      "type": "noul",
+      "instructions": "Assess whether the post is directed at a specific individual with intent to degrade, intimidate, or incite others to attack them, including insults tied to physical appearance, unwanted repeated contact, or encouraging pile-ons.",
+      "criteria": {
+        "true": "The post targets a specific person or small group with abusive, degrading, or intimidating content per Policy §3 (Harassment & Bullying).",
+        "false": "The post is not targeted abuse of an identifiable person or group."
+      }
+    },
+    "violent_threats": {
+      "type": "noul",
+      "instructions": "Assess whether the post threatens, incites, or glorifies violence against a person, group, or place, including veiled or conditional threats.",
+      "criteria": {
+        "true": "The post threatens, calls for, or glorifies violence per Policy §4 (Violence & Threats).",
+        "false": "The post contains no threat or glorification of violence."
+      }
+    },
+    "csae": {
+      "type": "noul",
+      "instructions": "Assess whether the post sexualizes a minor, solicits sexual content involving a minor, or otherwise depicts/promotes child sexual abuse or exploitation, including cases where minor status is only implied by context.",
+      "criteria": {
+        "true": "The post contains or solicits child sexual abuse/exploitation material, or sexualizes a minor, per Policy §5 (Child Safety) — zero-tolerance.",
+        "false": "The post contains no such content."
+      }
+    },
+    "sexual_content": {
+      "type": "noul",
+      "instructions": "Assess whether the post contains explicit pornographic content or non-consensual intimate imagery involving adults.",
+      "criteria": {
+        "true": "The post contains explicit sexual content or non-consensual intimate imagery restricted under Policy §6 (Adult Sexual Content).",
+        "false": "The post does not contain restricted sexual content."
+      }
+    },
+    "self_harm": {
+      "type": "noul",
+      "instructions": "Assess whether the post promotes, provides instructions for, or encourages suicide or self-harm, as opposed to recovery, awareness, or help-seeking content.",
+      "criteria": {
+        "true": "The post promotes, glorifies, or instructs self-harm/suicide per Policy §7 (Self-Harm & Suicide).",
+        "false": "The post does not promote self-harm, or is recovery/awareness/support content."
+      }
+    },
+    "spam_scam": {
+      "type": "noul",
+      "instructions": "Assess whether the post is unsolicited commercial content, a scam, or a deceptive scheme intended to defraud or manipulate engagement (e.g. phishing, fake giveaways, coordinated inauthentic promotion).",
+      "criteria": {
+        "true": "The post is spam, a scam, or a deceptive/fraudulent solicitation per Policy §8 (Spam & Platform Manipulation).",
+        "false": "The post is genuine, on-topic content."
+      }
+    },
+    "regulated_illegal": {
+      "type": "noul",
+      "instructions": "Assess whether the post facilitates the sale or use of items/services the policy restricts or bans (e.g. illegal drugs, weapons, counterfeit goods) or otherwise depicts serious illegal activity.",
+      "criteria": {
+        "true": "The post facilitates or promotes illegal/regulated goods or activity per Policy §9 (Regulated Goods & Illegal Activity).",
+        "false": "The post does not involve regulated or illegal goods/activity."
+      }
+    },
+    "severity": {
+      "type": "score",
+      "instructions": "Considering the post as a whole, rate the overall severity of any policy violation found across all categories above, factoring in reach, intent, and real-world harm potential.",
+      "criteria": ["none", "low", "moderate", "high", "severe"]
+    },
+    "recommended_action": {
+      "type": "choice",
+      "instructions": "Given the full context of the post, choose the single most appropriate moderation action per policy.",
+      "criteria": {
+        "allow": "No policy violation, or the violation is de minimis/contextual (e.g. counter-speech, clearly marked satire).",
+        "reduce_reach": "Borderline content that should be limited in distribution but not removed.",
+        "remove": "Content that clearly violates policy and should be taken down.",
+        "remove_and_ban": "Severe or repeated violation warranting removal and account suspension.",
+        "escalate_human_review": "Ambiguous, high-stakes, or edge-case content requiring human judgment (e.g. possible CSAE, self-harm in progress, legal risk)."
+      }
+    }
+  }
+}

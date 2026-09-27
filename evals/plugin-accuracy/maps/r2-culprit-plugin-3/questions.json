@@ -1,0 +1,52 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job": {
+      "id": "gha-8841203-3",
+      "name": "test",
+      "provider": "github-actions",
+      "exit_code": 1
+    },
+    "lines": [
+      { "i": 0, "text": "Restoring cache..." },
+      { "i": 1, "text": "Cache restored successfully" },
+      { "i": 2, "text": "> myapp@1.0.0 test" },
+      { "i": 3, "text": "> jest --ci" },
+      { "i": 4, "text": "PASS src/utils/math.test.ts" },
+      { "i": 5, "text": "FAIL src/utils/parse.test.ts" },
+      { "i": 6, "text": "  ● parseConfig > throws on missing field" },
+      { "i": 7, "text": "    Expected: \"field 'name' is required\"" },
+      { "i": 8, "text": "    Received: undefined" },
+      { "i": 9, "text": "TypeError: Cannot read properties of undefined (reading 'name') at parseConfig (src/utils/parse.ts:42:18)" },
+      { "i": 10, "text": "Test Suites: 1 failed, 1 passed, 2 total" },
+      { "i": 11, "text": "Tests:       1 failed, 5 passed, 6 total" },
+      { "i": 12, "text": "npm ERR! Test failed.  See above for more details." },
+      { "i": 13, "text": "Process completed with exit code 1." }
+    ]
+  },
+  "questions": {
+    "diagnosable": {
+      "type": "choice",
+      "instructions": "Considering all lines in state.lines together as one CI job log for the job in state.job, is the specific reason state.job failed identifiable from a single line in this excerpt?",
+      "criteria": {
+        "single_line": "one specific line in state.lines states the concrete error, assertion failure, or exception that caused the failure",
+        "multi_line": "the cause is only clear by combining several lines (e.g. a multi-frame stack trace or a diff), no single line states it alone",
+        "not_in_excerpt": "these lines do not contain the actual cause (e.g. truncated log, infra flake, timeout with no error text)"
+      }
+    },
+    "culprit_0":  { "type": "noul", "instructions": "Does line 0 in state.lines (\"Restoring cache...\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 0 is the specific statement of the failure cause", "false": "line 0 is not the cause" } },
+    "culprit_1":  { "type": "noul", "instructions": "Does line 1 in state.lines (\"Cache restored successfully\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 1 is the specific statement of the failure cause", "false": "line 1 is not the cause" } },
+    "culprit_2":  { "type": "noul", "instructions": "Does line 2 in state.lines (\"> myapp@1.0.0 test\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 2 is the specific statement of the failure cause", "false": "line 2 is not the cause" } },
+    "culprit_3":  { "type": "noul", "instructions": "Does line 3 in state.lines (\"> jest --ci\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 3 is the specific statement of the failure cause", "false": "line 3 is not the cause" } },
+    "culprit_4":  { "type": "noul", "instructions": "Does line 4 in state.lines (\"PASS src/utils/math.test.ts\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 4 is the specific statement of the failure cause", "false": "line 4 is not the cause" } },
+    "culprit_5":  { "type": "noul", "instructions": "Does line 5 in state.lines (\"FAIL src/utils/parse.test.ts\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 5 is the specific statement of the failure cause", "false": "line 5 is not the cause" } },
+    "culprit_6":  { "type": "noul", "instructions": "Does line 6 in state.lines (\"  ● parseConfig > throws on missing field\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 6 is the specific statement of the failure cause", "false": "line 6 is not the cause" } },
+    "culprit_7":  { "type": "noul", "instructions": "Does line 7 in state.lines (\"    Expected: \\\"field 'name' is required\\\"\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 7 is the specific statement of the failure cause", "false": "line 7 is not the cause" } },
+    "culprit_8":  { "type": "noul", "instructions": "Does line 8 in state.lines (\"    Received: undefined\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 8 is the specific statement of the failure cause", "false": "line 8 is not the cause" } },
+    "culprit_9":  { "type": "noul", "instructions": "Does line 9 in state.lines (\"TypeError: Cannot read properties of undefined (reading 'name') at parseConfig (src/utils/parse.ts:42:18)\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 9 is the specific statement of the failure cause", "false": "line 9 is not the cause" } },
+    "culprit_10": { "type": "noul", "instructions": "Does line 10 in state.lines (\"Test Suites: 1 failed, 1 passed, 2 total\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 10 is the specific statement of the failure cause", "false": "line 10 is not the cause" } },
+    "culprit_11": { "type": "noul", "instructions": "Does line 11 in state.lines (\"Tests:       1 failed, 5 passed, 6 total\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 11 is the specific statement of the failure cause", "false": "line 11 is not the cause" } },
+    "culprit_12": { "type": "noul", "instructions": "Does line 12 in state.lines (\"npm ERR! Test failed.  See above for more details.\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 12 is the specific statement of the failure cause", "false": "line 12 is not the cause" } },
+    "culprit_13": { "type": "noul", "instructions": "Does line 13 in state.lines (\"Process completed with exit code 1.\") directly state the specific reason state.job failed, as opposed to setup output, a passing step, a stack-trace frame that only shows call path, or noise emitted after the real cause?", "criteria": { "true": "line 13 is the specific statement of the failure cause", "false": "line 13 is not the cause" } }
+  }
+}

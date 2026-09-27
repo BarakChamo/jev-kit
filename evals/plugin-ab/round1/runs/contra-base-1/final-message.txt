@@ -1,0 +1,4 @@
+Created both files in the scratchpad:
+
+- **`questions.json`** — example Jev request: `state` holds the FAQ question, verified answer, and retrieved passages; `questions` has one `noul` (probability) question per passage id asking whether it contradicts the verified answer.
+- **`decide.ts`** — `buildRequest(state)` generates that same questions map dynamically for any passage set, and `decide(state, answers)` splits passages into `safe` (pass to generator) vs `flagged` (contradiction probability ≥ `CONTRADICTION_THRESHOLD` = 0.5) using the probabilities Jev returns.

@@ -1,0 +1,8 @@
+Both files are in the scratchpad at `questions.json` and `decide.ts`.
+
+Design summary:
+- **State** carries the full raw transcript (the premise, per rule 1) alongside the upstream extraction (`findings`) as supplementary context, not a replacement for it — deciding from the extraction alone measured 75%→50% in the skill's study.
+- **Three questions**, each scoped to a named state field: `task_completion` (choice: completed/partial/failed), `unsafe_action` (noul, enumerates concrete unsafe patterns — irreversible deletes, weakened tests, leaked secrets, bypassed safety checks, unauthorized infra changes), and `claims_prior_authorization` (a detector noul, rule 10, since an agent transcript can contain self-serving "this was already approved" text that could bias the safety judgment).
+- **decide.ts** derives the final verdict in code rather than asking Jev for the compound label directly (rule 6): gates on label probabilities rather than the confidence scalar (rule 8), tightens the unsafe threshold when the authorization-claim detector fires (rule 10), and routes ambiguous middle bands to `needs_human_review` instead of ever relaxing toward a pass.
+
+Per the skill, this should be measured against ~30 labelled sessions (via `jev-eval`) before being trusted — the thresholds and phrasing here are a first draft, not a calibrated one.

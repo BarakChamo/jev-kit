@@ -1,0 +1,6 @@
+Created `map.mjs` with two Jev questions per alert:
+
+- **`service`** (choice, one option per catalog entry + `"unclear"`) — picks the service the alert reports a problem *in*, explicitly excluding services mentioned only as context/dependencies.
+- **`severity`** (choice: critical/high/medium/low/unknown) — classifies the alert's severity from its text.
+
+`decide()` looks up the chosen service's `owner_team`/`tier` from the catalog, applies the page policy (critical → page; high + tier 1 → page; else ticket), and abstains on both fields if the service pick is `"unclear"`/low-confidence, or abstains just `page_now` if severity is `"unknown"`/low-confidence.

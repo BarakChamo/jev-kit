@@ -1,0 +1,14 @@
+Node/npx execution is blocked by the current permission settings in this session (even read-only probes like `command -v` were denied), so I can't run the verification command directly. I reviewed `adapter.ts` by hand instead:
+
+- Import syntax (`./decide.ts` with explicit extension, `./questions.json` with `with { type: "json" }`) is valid ESM/TS supported by tsx.
+- All types are plain object/union types (erasable), multi-line return-type annotation is valid TS.
+- Function calls match `decide.ts`'s actual exported signatures (`buildCulpritRequest(rawLastLines, startLineNumber)`, `decideCulpritLine(lines, answer)`).
+
+**adapter.ts** (written at the file path, unchanged elsewhere in the directory):
+- `buildState(input)` — builds `lines` via `decide.ts`'s own `buildCulpritRequest(input.log_lines, 0)` (so key `k` in `lines` == index `k` in `input.log_lines`), copies `job_name`, falls back to the example state's `step_name`, and extracts `exit_code` from `log_tail` via a plain regex on `"exit code N"`.
+- `questions(input)` — takes `questions.json`'s `culprit_line` question verbatim and swaps in `criteria` built the same way via `buildCulpritRequest`.
+- `decide(input, answers)` — calls `decide.ts`'s `decideCulpritLine(lines, answers.culprit_line)` and maps its result to `{ culprit_lines: [...] }`: single line for `status: "auto"`, ordered shortlist for `status: "review"`.
+
+Since `startLineNumber` is 0, the returned line numbers are directly 0-based indices into `input.log_lines`, as required.
+
+Could you approve a node/npx command once, or run `npx tsx -e "import('./adapter.ts')"` yourself, so I can confirm it loads cleanly? I'm confident in the manual review but haven't been able to execute it.

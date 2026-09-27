@@ -1,0 +1,26 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_id": "build-42781",
+    "repo": "acme/webapp",
+    "branch": "feature/checkout-redesign",
+    "runner": "gh-hosted-ubuntu-22.04-4core",
+    "attempt_number": 1,
+    "max_attempts": 3,
+    "log_tail": "npm ERR! network request to https://registry.npmjs.org/left-pad failed, reason: connect ETIMEDOUT\nnpm ERR! This is a problem related to network connectivity.\n... (last 200 lines of job output go here, newline-joined) ..."
+  },
+  "questions": {
+    "failure_cause": {
+      "type": "choice",
+      "instructions": "Read `log_tail`, the last 200 lines of output from the CI job described by `repo`, `branch`, `runner` and `attempt_number` in the state. Classify why the job in `log_tail` failed.",
+      "criteria": {
+        "transient_infrastructure": "log_tail shows a network, DNS, registry, artifact-download, container-pull, or CI-service error (timeouts, connection resets, 5xx from an external service) unrelated to the job's own code or tests",
+        "resource_exhaustion": "log_tail shows the job ran out of memory, disk space, or was killed/timed out by the runner for resource reasons, with no indication the code itself is at fault",
+        "flaky_test": "log_tail shows a test failure whose own output indicates non-determinism (race condition, timing-sensitive assertion, intermittent/known-flaky test, retry-succeeded-before) rather than a consistent logic error",
+        "deterministic_code_failure": "log_tail shows a compile error, type error, lint failure, or a test assertion failing on the actual behavior of the code being tested, with no sign of unrelated environmental interference",
+        "environment_configuration_issue": "log_tail shows a missing/invalid environment variable, secret, credential, or misconfiguration that is specific to this pipeline's setup rather than a transient outage",
+        "unknown_insufficient_evidence": "log_tail does not contain enough information to determine why the job failed"
+      }
+    }
+  }
+}

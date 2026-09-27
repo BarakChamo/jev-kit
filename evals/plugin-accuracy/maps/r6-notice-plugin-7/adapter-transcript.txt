@@ -1,0 +1,9 @@
+I've written `adapter.ts`. Running the verification command (`npx tsx` / `node`) is being blocked pending your approval in this sandboxed session — each attempt returns "requires approval" rather than executing. Could you approve one of the pending Bash calls, or should I just rely on manual review?
+
+Here's what I verified by inspection instead:
+
+- **`buildState`**: copies `contract_text` verbatim, renames `email_text` → `cancellation_email_text`, `received_date` → `cancellation_received_date`, matching `questions.json`'s example state shape exactly (`email_from`/`current_term_end_date` aren't part of that state shape, so they're dropped).
+- **`questions`**: returns `questions.json`'s `questions` map verbatim (it's static, not built per-case, so no per-case builder logic exists to reuse).
+- **`decide`**: imports `decide` and `JevAnswers` from `decide.ts` (both confirmed exported), passes answers through — no missing convenience fields needed since the API's `noul`/`choice`/`score` answer shapes already carry every field `decide.ts` reads (`noul`, `choice`, `score`+`legend`). Verdict mapping: `notice_sufficient`→`avoided`, `notice_insufficient`→`not_avoided`, `no_autorenewal_clause`→`not_applicable`, `needs_human_review`→`abstain`.
+
+Syntax was manually checked (imports, inline `type` import syntax supported by tsx/TS5, discriminated union, JSON read via `fs.readFileSync` + `JSON.parse` to sidestep any `resolveJsonModule` config issues).

@@ -1,0 +1,9 @@
+I'll skip execution since node commands need approval I can't get here — I've manually reviewed the syntax and it's valid ES module JS. The file is complete.
+
+## Summary
+
+Built `map.mjs` with four Jev `choice` questions (name/email/phone/order-id), each a 2–3 way classification against a `policy` paragraph explaining what's excepted (company contact addresses, staff first names, recipient's own data). This avoids compound noul questions and cross-value comparisons — Jev classifies each identifier's *kind* rather than being asked to match strings itself, per the jev-questions rules (prefer `choice`, avoid comparisons, name the field, write the convention into state once).
+
+`decide()` takes the max `other_person` probability across the four checks and gates at 0.6 (→ `"yes"`) and 0.2 (→ `"no"`), abstaining in between — flagging any single confident signal of exposure rather than averaging it away, and sending ambiguous cases to a person.
+
+Given the scale (millions/month) and that this hasn't been run against labelled cases, I'd strongly recommend running it through `jev-eval` on ~30 labelled examples before trusting it in production — the skill notes question wording moves accuracy by 30-40 points, so the thresholds and phrasing here should be validated, not assumed.

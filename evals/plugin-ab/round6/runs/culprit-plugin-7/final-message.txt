@@ -1,0 +1,7 @@
+Both files are in the scratchpad: `questions.json` and `decide.ts`.
+
+Design summary:
+- **questions.json** — example state + one `noul` question per candidate log line ("does this line itself show the failure"), scoped to a specific line index per line, not "does this log show the failure."
+- **decide.ts** — `candidateLines()` pre-filters the 200-line window to lines matching common failure vocabulary (falls back to the full window if nothing matches) so cost stays bounded and Jev isn't asked to rank obvious noise. `buildRequest()` generates one scoped question per candidate. `decide()` ranks by probability, always returns a top-3 shortlist, and only sets `autoPoint` when the top answer clears both a probability floor and a separation gap from the runner-up.
+
+The thresholds (`AUTO_POINT_MIN_PROB`, `AUTO_POINT_MIN_GAP`) are placeholders — given causal pointing is Jev's weakest measured mode, don't ship this pointing at a single line without running jev-eval on ~30 labelled real failures first to see what fraction can safely auto-point versus needs the shortlist.

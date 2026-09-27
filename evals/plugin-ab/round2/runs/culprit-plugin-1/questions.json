@@ -1,0 +1,59 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_name": "backend-tests",
+    "command": "pytest -q",
+    "exit_code": 1,
+    "lines": [
+      { "index": 142, "text": "collecting ... " },
+      { "index": 156, "text": "tests/test_billing.py::test_refund_idempotent FAILED" },
+      { "index": 157, "text": "    def test_refund_idempotent():" },
+      { "index": 158, "text": ">       assert refund.status == \"completed\"" },
+      { "index": 159, "text": "E       AssertionError: assert 'pending' == 'completed'" },
+      { "index": 160, "text": "tests/test_billing.py:47: AssertionError" },
+      { "index": 198, "text": "=========== 1 failed, 214 passed in 12.31s ===========" }
+    ]
+  },
+  "questions": {
+    "line_156": {
+      "type": "noul",
+      "instructions": "In `lines`, the entry with index 156 has text \"tests/test_billing.py::test_refund_idempotent FAILED\". Is THIS line the single line that most directly names the root cause of the CI failure in `command`, as opposed to being a test-runner status announcement, surrounding context, or a downstream symptom of a cause stated elsewhere in `lines`?",
+      "criteria": {
+        "true": "this exact line is where the root cause is stated",
+        "false": "this line is a symptom, a status announcement, or context, and the cause is stated elsewhere"
+      }
+    },
+    "line_159": {
+      "type": "noul",
+      "instructions": "In `lines`, the entry with index 159 has text \"E       AssertionError: assert 'pending' == 'completed'\". Is THIS line the single line that most directly names the root cause of the CI failure in `command`, as opposed to being a test-runner status announcement, surrounding context, or a downstream symptom of a cause stated elsewhere in `lines`?",
+      "criteria": {
+        "true": "this exact line is where the root cause is stated",
+        "false": "this line is a symptom, a status announcement, or context, and the cause is stated elsewhere"
+      }
+    },
+    "line_160": {
+      "type": "noul",
+      "instructions": "In `lines`, the entry with index 160 has text \"tests/test_billing.py:47: AssertionError\". Is THIS line the single line that most directly names the root cause of the CI failure in `command`, as opposed to being a test-runner status announcement, surrounding context, or a downstream symptom of a cause stated elsewhere in `lines`?",
+      "criteria": {
+        "true": "this exact line is where the root cause is stated",
+        "false": "this line is a symptom, a status announcement, or context, and the cause is stated elsewhere"
+      }
+    },
+    "line_198": {
+      "type": "noul",
+      "instructions": "In `lines`, the entry with index 198 has text \"=========== 1 failed, 214 passed in 12.31s ===========\". Is THIS line the single line that most directly names the root cause of the CI failure in `command`, as opposed to being a test-runner status announcement, surrounding context, or a downstream symptom of a cause stated elsewhere in `lines`?",
+      "criteria": {
+        "true": "this exact line is where the root cause is stated",
+        "false": "this line is a symptom, a status announcement, or context, and the cause is stated elsewhere"
+      }
+    },
+    "no_clear_culprit": {
+      "type": "noul",
+      "instructions": "Looking only at the text of every entry in `lines`, is it true that no single entry clearly names the root cause of the CI failure in `command` -- for example because the log was truncated before the cause appeared, the failure is a flaky/infra error with no line pointing at a specific cause, or two or more unrelated causes are present?",
+      "criteria": {
+        "true": "no single line in `lines` can be picked out as the root cause",
+        "false": "at least one line in `lines` clearly names the root cause"
+      }
+    }
+  }
+}

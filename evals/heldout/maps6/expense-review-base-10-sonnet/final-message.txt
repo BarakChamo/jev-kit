@@ -1,0 +1,8 @@
+The file is syntactically straightforward and reads correctly (I wasn't able to get shell approval to run `node --check`, but this is plain ES module syntax with no exotic constructs).
+
+Design summary:
+- **buildState**: computes `amount_usd` deterministically from `fx_to_usd`, passes it through with `policy_text` and `expense` — no currency math is left to the model.
+- **questions**: two Jev questions — `non_reimbursable` (noul) catches categorical exclusions like alcohol/entertainment regardless of amount, and `decision` (choice: approve/needs_approval/reject/unclear) has Jev apply the limit/high-cost-city/receipt-threshold logic from `policy_text` against the precomputed `amount_usd`.
+- **decide**: reject if `non_reimbursable` probability ≥0.6 (overrides everything, matching "never reimbursable" rules); abstain if fx rate was missing, confidence <0.55, or Jev answered "unclear"; otherwise pass through Jev's approve/needs_approval/reject choice.
+
+File is at `map.mjs` in the run directory.

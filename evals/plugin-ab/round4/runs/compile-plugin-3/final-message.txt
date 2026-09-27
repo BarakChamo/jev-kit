@@ -1,0 +1,10 @@
+Key design point, not just a code shape: there are **two separate paths on two separate schedules**.
+
+- **Compile (offline, monthly)** — when the policy team edits the doc, an LLM drafts a `questions.json`, several drafts get scored against a labelled case set (jev-eval), and the winner is pinned into the repo via a reviewed PR. This is where `compileQuestionsFromPolicy` lives in `decide.ts` — stubbed, since it needs a real LLM call and a real eval harness.
+- **Decide (online, millions/day)** — loads the *pinned* `questions.json`, fills `state` for one post, calls Jev once, and runs fixed threshold logic in code. No LLM, no policy text, on this path — per the skill's rule, questions are never recompiled at runtime.
+
+`questions.json` has one narrow `noul` per violation category (independent flags, not mutually exclusive so not a `choice`), a `choice` for quoting/satire context (a real policy exception), and a `noul` detector for prompt-injection/evasion attempts in the post text itself.
+
+`decide.ts`'s gate logic: CSAM-adjacent content routes to a specialized queue at a very low threshold and is never auto-removed by the model alone; other categories gate on remove/escalate thresholds; a detected evasion attempt forces at least an escalate even if everything else reads clean; quoting/satire context downgrades an auto-remove to human escalation rather than auto-allowing; repeat offenders (a state fact, not a judgment) push an escalate straight to remove.
+
+I did not call the Jev API or write/run an actual policy-compile LLM call, per your instructions — `questions.json` is a representative example of what that compile step would pin.

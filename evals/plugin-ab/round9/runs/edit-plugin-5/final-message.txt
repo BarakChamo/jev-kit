@@ -1,0 +1,13 @@
+Done. Changes:
+
+**`questions.json`**
+- Added `cancellation.from` (sender address) and an "authorised contacts" clause to `contract.text` — the new question needs both facts explicitly in the state (per rule: put the premise in the state, not just in prose elsewhere).
+- Added `sender_is_authorized_contact` (noul): compares `state.cancellation.from` against the authorised contact addresses in `state.contract.text`.
+
+**`decide.ts`**
+- Added `sender_is_authorized_contact: NoulAnswer` to `JevAnswers`.
+- Added it as a fourth gate (same pattern as `notice_method_compliant`): if `false` → contributes to `INSUFFICIENT_NOTICE`; if `uncertain` → contributes to `NEEDS_HUMAN_REVIEW`.
+
+No API calls were made.
+
+One pre-existing issue I noticed while reviewing the other questions (not something I changed, flagging per review requirement): **`notice_timely`** asks Jev to holistically judge whether a date is "on or before the deadline" — but a deadline check is exactly the quantity-comparison case that's unreliable to ask directly (measured 41.7% vs 100% when done in code). The file already has the machinery to fix this: `required_notice_window` gives a bucketed notice period. A cleaner version would also get the term-end date as a bucket/value and compute `deadline = term_end - window` in code, then compare to `cancellation.receivedAt` in code, rather than asking `notice_timely` as a single holistic noul. I left this alone since it's out of scope for this task and any change to it should be measured against labelled cases first (via `jev-eval`) before shipping.

@@ -1,0 +1,6 @@
+Created two files in the working directory:
+
+- **`questions.json`** — the Jev request body: an example CI job state (repo/branch/runner/attempt info + a network-timeout-flavored log tail) plus three questions answered in one pass: `is_transient` (noul), `failure_category` (choice among infra_flake/resource_exhaustion/flaky_test/code_defect/dependency_error/unknown), and `retry_value` (score: not_worth_retrying → high_value).
+- **`decide.ts`** — pure logic over the answers: never retries past `max_attempts`, never retries a confidently-classified `code_defect`, retries immediately on a strong transience signal (≥0.85), otherwise retries only if transience is above threshold (≥0.6) *and* the score says at least `moderate_value`.
+
+I didn't call the API, per your instructions — just built the request shape and the decision function that would consume its response.

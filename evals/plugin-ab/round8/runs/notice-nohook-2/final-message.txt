@@ -1,0 +1,15 @@
+Wrote two files in the working directory:
+
+**`questions.json`** — the Jev request (example state + questions map):
+- `has_auto_renewal_clause`, `is_valid_cancellation_notice`, `notice_method_compliant` — three `noul` judgments (premise checks, kept as single present-tense facts, not folded into the comparison).
+- `required_notice_days` and `lead_time_days` — two `choice` questions with **matching day-range buckets** ("30_or_fewer" … "more_than_120"). Per the notice/deadline pattern, Jev extracts the required notice period and separately computes how many days before the (contract-determined) renewal date the notice arrived — but never answers "was it on time" directly, since that comparison is unreliable for Jev to do itself.
+
+**`decide.ts`** — all comparison and gating logic runs in code:
+- Compares bucket bounds (`leadMin >= reqMax` → sufficient, `leadMax < reqMin` → insufficient, overlapping → escalate) instead of trusting a direct yes/no.
+- Low-confidence `noul`/`choice` answers always escalate to `NEEDS_HUMAN_REVIEW`, never relax toward "sufficient."
+- `on_or_after_renewal_date` and `cannot_determine` are handled as explicit hard cases rather than falling through to bucket math.
+- Method-noncompliance can only downgrade an otherwise-sufficient result to human review, never upgrade one.
+
+Five outcomes: `SUFFICIENT_NOTICE`, `INSUFFICIENT_NOTICE`, `NO_AUTO_RENEWAL_CLAUSE`, `NOT_A_VALID_NOTICE`, `NEEDS_HUMAN_REVIEW`.
+
+Not run against the API per your instruction — before trusting this, run it through `jev-eval` on ~30 labelled contract/email pairs, since the bucket boundaries and confidence gates here are starting guesses, not measured thresholds.

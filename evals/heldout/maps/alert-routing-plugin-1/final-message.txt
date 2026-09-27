@@ -1,0 +1,7 @@
+Wrote `map.mjs` in the run directory. Design:
+
+- **`affected_service`** (`choice`, one option per catalog service + `unclear`): picks the service whose *own* metric breached, explicitly instructed to ignore services named only as dependency/context — this is the "pick one of many with a rubric" pattern rather than a `noul` per service, since the failure mode here is contextual mentions outscoring the real target.
+- **`severity`** (`choice`, `critical`/`high`/`other`): reads the alert's stated severity as a 3-way class label, matching exactly what the policy branches on (anything not critical/high collapses to "other" → ticket).
+- **`decide()`** does all the policy logic in code (tier lookup, the critical/high+tier1 rule) — pure table lookup over reliably-read flags, per the "derive what's a function of a class" rule. It gates on the `probabilities[chosen]` value (not the `confidence` scalar) at 0.6, and abstains `team`/`page_now` independently when the service pick is `unclear`/low-confidence or the severity read is low-confidence.
+
+Not tested against the live API per your instructions (no calls made). Want me to also produce a small labelled eval suite to sanity-check the thresholds and the "unclear" service rubric before this goes live?

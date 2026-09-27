@@ -1,0 +1,7 @@
+Wrote `map.mjs`. Design notes:
+
+- **State**: recipient's own contact info + `draft_reply`, plus a one-time hand-written policy paragraph (rule 3) defining exceptions (recipient's own data, company contact channels, staff first names).
+- **Questions**: split by data category (rule 6) — `other_name`, `other_email`, `other_phone`, `other_order_id` — each a scoped, present-tense `noul` (rules 2, 5) that references the relevant `recipient.*` field so exclusion of the customer's own data is explicit rather than left implicit.
+- **decide()**: asymmetric gate (rule 13) — flags `"yes"` if any category's probability ≥ 0.6 (favor catching exposure), only returns `"no"` if every category is ≤ 0.2 (high confidence of no exposure), otherwise `"abstain"` for a human to review. This avoids letting uncertainty relax toward "safe to send."
+
+This hasn't been run against labelled cases — recommend building a small eval suite (`jev-eval` skill) before trusting it at scale, especially to check the "company contact vs. personal" and "staff first name" boundary cases.

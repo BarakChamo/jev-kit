@@ -1,0 +1,63 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_id": "C-10432",
+    "contract_text": "This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months. Upon expiration of the initial term, this Agreement automatically renews for successive twelve (12) month terms unless either party gives written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be sent to the address on file or to legal@vendor.example.com...",
+    "cancellation_email_text": "Subject: Cancelling our subscription\n\nHi team,\n\nWe've decided not to continue with the service. Please treat this email as our formal notice that we will not be renewing the contract and would like it to terminate at the end of the current term.\n\nThanks,\nJordan",
+    "cancellation_received_date": "2026-08-15"
+  },
+  "questions": {
+    "auto_renewal_clause": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the agreement automatically renews or extends for another term unless the customer cancels or gives notice of non-renewal?",
+      "criteria": {
+        "true": "the contract states the term auto-renews or evergreens unless notice of non-renewal/cancellation is given",
+        "false": "the contract has no auto-renewal clause, or renewal requires the customer's affirmative opt-in instead"
+      }
+    },
+    "required_notice_band": {
+      "type": "choice",
+      "instructions": "How many days of advance notice does `contract_text` require the customer to give, before the end of the current term, to cancel and prevent automatic renewal?",
+      "criteria": {
+        "none": "the contract allows cancellation with no minimum advance notice",
+        "1_15": "the contract requires 1-15 days advance notice",
+        "16_30": "the contract requires 16-30 days advance notice",
+        "31_60": "the contract requires 31-60 days advance notice",
+        "61_90": "the contract requires 61-90 days advance notice",
+        "91_120": "the contract requires 91-120 days advance notice",
+        "over_120": "the contract requires more than 120 days advance notice",
+        "unspecified": "the contract has an auto-renewal clause but does not state a specific number of days of required notice"
+      }
+    },
+    "actual_lead_band": {
+      "type": "choice",
+      "instructions": "`contract_text` describes when the current term ends and auto-renewal would take effect. `cancellation_received_date` is the date the customer's notice was received. How many days before that term-end date was the notice received?",
+      "criteria": {
+        "0_or_less": "the notice was received on or after the term-end/renewal date",
+        "1_15": "the notice was received 1-15 days before the term-end date",
+        "16_30": "the notice was received 16-30 days before the term-end date",
+        "31_60": "the notice was received 31-60 days before the term-end date",
+        "61_90": "the notice was received 61-90 days before the term-end date",
+        "91_120": "the notice was received 91-120 days before the term-end date",
+        "over_120": "the notice was received more than 120 days before the term-end date",
+        "not_ascertainable": "contract_text does not state a determinable term-end or renewal date to measure from"
+      }
+    },
+    "clear_cancellation_intent": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly and unambiguously state that the customer wants to cancel the contract or not renew it?",
+      "criteria": {
+        "true": "the email plainly states an intent to cancel or not renew",
+        "false": "the email is vague, conditional, or does not clearly request cancellation/non-renewal"
+      }
+    },
+    "method_compliant": {
+      "type": "noul",
+      "instructions": "`contract_text` may require cancellation notice to be given in a specific manner (for example, in writing, to a named address, or by a particular method). Based on `contract_text` and `cancellation_email_text`, does the notice comply with any such manner requirement the contract states?",
+      "criteria": {
+        "true": "the contract states no specific manner requirement, or the email satisfies the manner requirement it does state",
+        "false": "the contract requires a manner of notice (e.g. a specific address or method) that the email does not satisfy"
+      }
+    }
+  }
+}

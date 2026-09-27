@@ -1,0 +1,51 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement has an initial term of 12 months from the Effective Date and will automatically renew for successive 12-month terms unless either party provides written notice of non-renewal at least 60 days before the end of the then-current term. ... [full contract text] ...",
+    "cancellation_email_text": "Hi team, we'd like to cancel our subscription and not renew for another year. Please confirm. Thanks, Jordan",
+    "cancellation_received_date": "2026-09-25"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the contract automatically renews for a further term unless one party gives notice?",
+      "criteria": {
+        "true": "the contract states it renews automatically absent notice of cancellation or non-renewal",
+        "false": "the contract has no automatic renewal clause, or renewal requires an affirmative opt-in"
+      }
+    },
+    "is_cancellation_notice": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` unambiguously communicate the sender's intent to cancel the contract or not renew it, as opposed to e.g. a billing question, complaint, or request for information?",
+      "criteria": {
+        "true": "the email clearly states an intent to cancel or not renew",
+        "false": "the email does not clearly state that intent"
+      }
+    },
+    "required_notice_band": {
+      "type": "choice",
+      "instructions": "Per the automatic-renewal clause in `contract_text`, how much advance notice (counted back from the renewal or expiration date of the then-current term) must a party give to prevent the contract from automatically renewing?",
+      "criteria": {
+        "less_than_30_days": "the required notice period is under 30 days",
+        "30_to_59_days": "the required notice period is at least 30 and under 60 days",
+        "60_to_89_days": "the required notice period is at least 60 and under 90 days",
+        "90_to_179_days": "the required notice period is at least 90 and under 180 days",
+        "180_days_or_more": "the required notice period is 180 days or more",
+        "not_specified_or_ambiguous": "contract_text does not state a determinate notice period for non-renewal"
+      }
+    },
+    "notice_lead_time_band": {
+      "type": "choice",
+      "instructions": "`cancellation_email_text` was received on the date `cancellation_received_date` given in the state. Counting back from the renewal or expiration date of the then-current term stated in `contract_text`, how many days before that renewal date does `cancellation_received_date` fall?",
+      "criteria": {
+        "on_or_after_renewal_date": "cancellation_received_date is on or after the renewal/expiration date",
+        "less_than_30_days_before": "cancellation_received_date is under 30 days before the renewal date",
+        "30_to_59_days_before": "cancellation_received_date is at least 30 and under 60 days before the renewal date",
+        "60_to_89_days_before": "cancellation_received_date is at least 60 and under 90 days before the renewal date",
+        "90_to_179_days_before": "cancellation_received_date is at least 90 and under 180 days before the renewal date",
+        "180_days_or_more_before": "cancellation_received_date is 180 or more days before the renewal date",
+        "renewal_date_not_determinable": "contract_text does not give enough information to identify the current term's renewal/expiration date"
+      }
+    }
+  }
+}

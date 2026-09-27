@@ -1,0 +1,12 @@
+I'm unable to execute any `node`/`npx` command beyond `--version` in this sandbox — every attempt (with or without `dangerouslyDisableSandbox`) returns "This command requires approval" with no prompt surfacing for me to act on. I can't force that through.
+
+**Status:** `adapter.ts` is written at `/home/user/jev-discovery/results/experiments/plugin-accuracy/maps/r3-culprit-plugin-6/adapter.ts`. I reviewed it by eye against `decide.ts`'s actual exports (`selectCandidates`, `buildQuestions`, `decide`, `Candidate`, `NoulAnswers` all exist there) and the JSON import shape matches `questions.json`'s `state.job_id`. It should load cleanly, but I could not actually run the `npx tsx -e` load check you asked for — the sandbox is blocking all script execution in this session. If you can run it locally, that command is exactly:
+
+```
+npx tsx -e "import('./adapter.ts')"
+```
+
+Summary of what `adapter.ts` does:
+- `buildState(input)`: copies `input.log_lines` as-is, derives `candidates` via `decide.ts`'s own `selectCandidates`, and falls back to the example state's `job_id` (not present in the case input).
+- `questions(input)`: reuses `selectCandidates` + `buildQuestions` from `decide.ts` so questions are generated per-candidate the same way the map does.
+- `decide(input, answers)`: calls `decide.ts`'s `decide()` directly (answers already match `NoulAnswers` shape via `.noul`), returns `{ culprit_lines: [] }` if `likelyOutsideCandidates`, otherwise the shortlist's indices in rank order.

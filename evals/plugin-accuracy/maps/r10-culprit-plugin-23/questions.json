@@ -1,0 +1,47 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_name": "test:integration",
+    "log_lines": [
+      "1: Run npm run test:integration",
+      "2: > myapp@1.4.2 test:integration",
+      "3: > jest --runInBand --ci",
+      "4: PASS src/routes/health.test.ts",
+      "5: PASS src/routes/users.test.ts",
+      "6: FAIL src/routes/orders.test.ts",
+      "7:   ● orders API › creates an order › persists the row",
+      "8:     TypeError: Cannot read properties of undefined (reading 'id')",
+      "9:       at OrdersService.create (src/services/orders.ts:42:18)",
+      "10:       at Object.<anonymous> (src/routes/orders.test.ts:31:22)",
+      "11: Test Suites: 1 failed, 4 passed, 5 total",
+      "12: Tests:       1 failed, 23 passed, 24 total",
+      "13: ##[error] Process completed with exit code 1",
+      "14: Cleaning up orphan processes",
+      "15: Job completed with result: FAILED"
+    ]
+  },
+  "questions": {
+    "culprit_line": {
+      "type": "choice",
+      "instructions": "log_lines holds the last lines of a failed CI job, prefixed with their line number. Pick the ONE line that itself states the specific reason the job failed (the error message, thrown exception, assertion failure, or the first line of a stack trace that names the failing code). Do not pick generic wrapper or summary lines: exit-code banners like '##[error] Process completed with exit code 1', 'Job completed with result: FAILED', suite/test count summaries ('Tests: ... failed, ... passed'), cleanup or teardown lines, or step banners like 'Run <command>'. If several stack frames are shown, pick the innermost application-code frame, not framework or test-runner frames. If no single line in log_lines states a specific cause (e.g. the job hung, timed out, or was killed with no error printed), choose none_identifiable.",
+      "criteria": {
+        "1": "Run npm run test:integration",
+        "2": "> myapp@1.4.2 test:integration",
+        "3": "> jest --runInBand --ci",
+        "4": "PASS src/routes/health.test.ts",
+        "5": "PASS src/routes/users.test.ts",
+        "6": "FAIL src/routes/orders.test.ts",
+        "7": "orders API › creates an order › persists the row",
+        "8": "TypeError: Cannot read properties of undefined (reading 'id')",
+        "9": "at OrdersService.create (src/services/orders.ts:42:18)",
+        "10": "at Object.<anonymous> (src/routes/orders.test.ts:31:22)",
+        "11": "Test Suites: 1 failed, 4 passed, 5 total",
+        "12": "Tests: 1 failed, 23 passed, 24 total",
+        "13": "##[error] Process completed with exit code 1",
+        "14": "Cleaning up orphan processes",
+        "15": "Job completed with result: FAILED",
+        "none_identifiable": "no single line in log_lines states a specific cause"
+      }
+    }
+  }
+}

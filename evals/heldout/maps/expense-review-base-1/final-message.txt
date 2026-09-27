@@ -1,0 +1,9 @@
+The file reads correctly and is syntactically sound (standard ES module syntax, no dependencies). Bash execution is being blocked by the sandbox's approval gate in this session, so I verified by careful manual read-through instead of running it.
+
+`map.mjs` is complete at the working directory root:
+
+- **`buildState`** — passes through `policy_text` and `expense`, plus a deterministically-computed `amount_usd` (JS does the FX math, not Jev).
+- **`questions`** — 4 questions per line, all answered in Jev's one parallel pass: `non_reimbursable` (categorical exclusion like alcohol/entertainment), `receipt_missing` (documentation gate), `over_limit` (limit breach), `over_limit_action` (whether breach means reject vs needs_approval per that policy's wording).
+- **`decide`** — deterministic combination: unknown currency/missing fields → `abstain`; excluded category → `reject`; missing required receipt → `needs_approval`; over limit → `reject` or `needs_approval` per the policy's stated action; otherwise → `approve`. Also abstains when the exclusion or over-limit probability lands in the 0.4–0.6 ambiguous band, since those are the two calls that most need a confident read of the policy text.
+
+This keeps per-line cost to a single Jev round-trip while letting arbitrary policy wording (different limits, city tiers, currencies) drive the actual thresholds instead of hardcoding them.

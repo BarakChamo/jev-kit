@@ -1,0 +1,4391 @@
+[
+  {
+    "map": "r7-notice-plugin-10",
+    "n": 30,
+    "right": 13,
+    "wrong": 2,
+    "abstain": 15,
+    "errors": 0,
+    "accuracy_all": 0.43333333333333335,
+    "accuracy_decided": 0.8666666666666667,
+    "coverage": 0.5,
+    "rows": [
+      {
+        "id": "notice-001",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "1_7_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0,
+              "over_180_days": 0,
+              "31_45_days": 0,
+              "0_days": 0,
+              "46_60_days": 1,
+              "8_14_days": 0,
+              "undeterminable": 0,
+              "15_30_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.49,
+            "probabilities": {
+              "61_90_days": 0.55,
+              "91_180_days": 0.43,
+              "15_30_days": 0,
+              "over_180_days": 0,
+              "31_45_days": 0.01,
+              "0_days": 0,
+              "1_7_days": 0,
+              "8_14_days": 0,
+              "46_60_days": 0.01,
+              "undeterminable": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-002",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "0_days": 0,
+              "8_14_days": 0,
+              "undeterminable": 0,
+              "61_90_days": 0,
+              "91_180_days": 0,
+              "46_60_days": 1,
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 0.97,
+            "probabilities": {
+              "0_days": 0,
+              "8_14_days": 0,
+              "undeterminable": 0,
+              "61_90_days": 0,
+              "91_180_days": 0,
+              "46_60_days": 0.02,
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0.97,
+              "31_45_days": 0.01
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-003",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 1,
+            "probabilities": {
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 1,
+              "0_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 0,
+              "8_14_days": 0,
+              "91_180_days": 0,
+              "31_45_days": 0,
+              "61_90_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.93,
+            "probabilities": {
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0,
+              "0_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 0.04,
+              "8_14_days": 0,
+              "91_180_days": 0.01,
+              "31_45_days": 0.01,
+              "61_90_days": 0.94
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-004",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 1,
+            "probabilities": {
+              "0_days": 0,
+              "15_30_days": 1,
+              "46_60_days": 0,
+              "undeterminable": 0,
+              "31_45_days": 0,
+              "91_180_days": 0,
+              "1_7_days": 0,
+              "8_14_days": 0,
+              "61_90_days": 0,
+              "over_180_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "8_14_days",
+            "confidence": 0.99,
+            "probabilities": {
+              "0_days": 0,
+              "15_30_days": 0,
+              "46_60_days": 0,
+              "undeterminable": 0,
+              "31_45_days": 0,
+              "91_180_days": 0,
+              "1_7_days": 0,
+              "8_14_days": 1,
+              "61_90_days": 0,
+              "over_180_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-005",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_30_days": 0,
+              "91_180_days": 0,
+              "46_60_days": 0,
+              "undeterminable": 0,
+              "1_7_days": 0,
+              "61_90_days": 1,
+              "0_days": 0,
+              "over_180_days": 0,
+              "8_14_days": 0,
+              "31_45_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "91_180_days",
+            "confidence": 0.98,
+            "probabilities": {
+              "15_30_days": 0,
+              "46_60_days": 0.01,
+              "91_180_days": 0.98,
+              "undeterminable": 0,
+              "1_7_days": 0,
+              "0_days": 0,
+              "61_90_days": 0.01,
+              "over_180_days": 0,
+              "8_14_days": 0,
+              "31_45_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-006",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 1,
+            "probabilities": {
+              "0_days": 0,
+              "over_180_days": 0,
+              "91_180_days": 0,
+              "15_30_days": 0,
+              "1_7_days": 0,
+              "61_90_days": 1,
+              "undeterminable": 0,
+              "46_60_days": 0,
+              "31_45_days": 0,
+              "8_14_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "31_45_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "0_days": 0,
+              "over_180_days": 0,
+              "91_180_days": 0,
+              "15_30_days": 0,
+              "1_7_days": 0,
+              "61_90_days": 0.01,
+              "undeterminable": 0,
+              "46_60_days": 0.03,
+              "31_45_days": 0.96,
+              "8_14_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-007",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "91_180_days",
+            "confidence": 1,
+            "probabilities": {
+              "91_180_days": 1,
+              "31_45_days": 0,
+              "61_90_days": 0,
+              "0_days": 0,
+              "46_60_days": 0,
+              "15_30_days": 0,
+              "8_14_days": 0,
+              "undeterminable": 0,
+              "over_180_days": 0,
+              "1_7_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "over_180_days",
+            "confidence": 0.77,
+            "probabilities": {
+              "91_180_days": 0.2,
+              "31_45_days": 0,
+              "61_90_days": 0,
+              "0_days": 0,
+              "46_60_days": 0,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "over_180_days": 0.8,
+              "1_7_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-008",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "91_180_days",
+            "confidence": 1,
+            "probabilities": {
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "0_days": 0,
+              "8_14_days": 0,
+              "over_180_days": 0,
+              "undeterminable": 0,
+              "61_90_days": 0,
+              "91_180_days": 1,
+              "15_30_days": 0,
+              "46_60_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "8_14_days": 0,
+              "0_days": 0,
+              "undeterminable": 0,
+              "91_180_days": 0,
+              "61_90_days": 0.03,
+              "over_180_days": 0,
+              "15_30_days": 0,
+              "46_60_days": 0.97
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-009",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "0_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0,
+              "over_180_days": 0,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0,
+              "46_60_days": 1,
+              "undeterminable": 0,
+              "1_7_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.58,
+            "probabilities": {
+              "0_days": 0,
+              "61_90_days": 0.62,
+              "91_180_days": 0.01,
+              "over_180_days": 0,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0.29,
+              "46_60_days": 0.08,
+              "undeterminable": 0,
+              "1_7_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-010",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "46_60_days": 1,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "91_180_days": 0,
+              "0_days": 0,
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "over_180_days": 0,
+              "undeterminable": 0,
+              "61_90_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 0.87,
+            "probabilities": {
+              "15_30_days": 0.07,
+              "8_14_days": 0,
+              "46_60_days": 0.89,
+              "91_180_days": 0,
+              "0_days": 0,
+              "31_45_days": 0.04,
+              "1_7_days": 0,
+              "over_180_days": 0,
+              "undeterminable": 0,
+              "61_90_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-011",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_30_days": 1,
+              "8_14_days": 0,
+              "46_60_days": 0,
+              "91_180_days": 0,
+              "0_days": 0,
+              "1_7_days": 0,
+              "31_45_days": 0,
+              "over_180_days": 0,
+              "undeterminable": 0,
+              "61_90_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "31_45_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_30_days": 0,
+              "8_14_days": 0,
+              "46_60_days": 0,
+              "91_180_days": 0,
+              "0_days": 0,
+              "1_7_days": 0,
+              "31_45_days": 1,
+              "over_180_days": 0,
+              "undeterminable": 0,
+              "61_90_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-012",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 1,
+            "probabilities": {
+              "31_45_days": 0,
+              "0_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0,
+              "over_180_days": 0,
+              "15_30_days": 1,
+              "8_14_days": 0,
+              "1_7_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 0.97,
+            "probabilities": {
+              "undeterminable": 0,
+              "0_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0,
+              "8_14_days": 0,
+              "15_30_days": 0.98,
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "31_45_days": 0,
+              "46_60_days": 0.02
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-013",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 1,
+            "probabilities": {
+              "8_14_days": 0,
+              "91_180_days": 0,
+              "0_days": 0,
+              "31_45_days": 0,
+              "61_90_days": 1,
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "over_180_days": 0,
+              "46_60_days": 0,
+              "1_7_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.71,
+            "probabilities": {
+              "8_14_days": 0,
+              "91_180_days": 0.24,
+              "0_days": 0,
+              "31_45_days": 0.01,
+              "61_90_days": 0.73,
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "over_180_days": 0,
+              "46_60_days": 0.02,
+              "1_7_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-014",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 1,
+            "probabilities": {
+              "46_60_days": 0,
+              "31_45_days": 0,
+              "8_14_days": 0,
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "61_90_days": 1,
+              "0_days": 0,
+              "undeterminable": 0,
+              "91_180_days": 0,
+              "15_30_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.69,
+            "probabilities": {
+              "46_60_days": 0.22,
+              "31_45_days": 0.02,
+              "8_14_days": 0,
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "61_90_days": 0.72,
+              "0_days": 0,
+              "undeterminable": 0,
+              "91_180_days": 0.03,
+              "15_30_days": 0.01
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-015",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "31_45_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "91_180_days": 0,
+              "31_45_days": 1,
+              "8_14_days": 0,
+              "61_90_days": 0,
+              "46_60_days": 0,
+              "0_days": 0,
+              "1_7_days": 0,
+              "over_180_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 0.92,
+            "probabilities": {
+              "15_30_days": 0.01,
+              "undeterminable": 0,
+              "91_180_days": 0,
+              "31_45_days": 0.06,
+              "8_14_days": 0,
+              "0_days": 0,
+              "46_60_days": 0.93,
+              "61_90_days": 0,
+              "1_7_days": 0,
+              "over_180_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-016",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "31_45_days",
+            "confidence": 1,
+            "probabilities": {
+              "undeterminable": 0,
+              "31_45_days": 1,
+              "0_days": 0,
+              "over_180_days": 0,
+              "61_90_days": 0,
+              "91_180_days": 0,
+              "46_60_days": 0,
+              "8_14_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "31_45_days",
+            "confidence": 0.98,
+            "probabilities": {
+              "undeterminable": 0,
+              "31_45_days": 0.99,
+              "0_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0,
+              "over_180_days": 0,
+              "46_60_days": 0.01,
+              "8_14_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-017",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "31_45_days": 0,
+              "61_90_days": 0,
+              "8_14_days": 0,
+              "0_days": 0,
+              "1_7_days": 0,
+              "91_180_days": 0,
+              "over_180_days": 0,
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 1
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 0.97,
+            "probabilities": {
+              "31_45_days": 0,
+              "61_90_days": 0.02,
+              "8_14_days": 0,
+              "0_days": 0,
+              "1_7_days": 0,
+              "91_180_days": 0,
+              "over_180_days": 0,
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 0.98
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-018",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "8_14_days": 0,
+              "91_180_days": 0.04,
+              "0_days": 0,
+              "31_45_days": 0,
+              "61_90_days": 0.96,
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "46_60_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.74,
+            "probabilities": {
+              "8_14_days": 0,
+              "91_180_days": 0.21,
+              "0_days": 0,
+              "31_45_days": 0.01,
+              "61_90_days": 0.77,
+              "15_30_days": 0,
+              "undeterminable": 0,
+              "over_180_days": 0,
+              "1_7_days": 0,
+              "46_60_days": 0.01
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-019",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.97,
+            "probabilities": {
+              "undeterminable": 0,
+              "31_45_days": 0,
+              "0_days": 0,
+              "over_180_days": 0,
+              "61_90_days": 0.97,
+              "91_180_days": 0.03,
+              "46_60_days": 0,
+              "8_14_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.8,
+            "probabilities": {
+              "undeterminable": 0,
+              "31_45_days": 0.03,
+              "0_days": 0,
+              "over_180_days": 0,
+              "61_90_days": 0.82,
+              "91_180_days": 0.01,
+              "46_60_days": 0.14,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "1_7_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-020",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 0.99,
+            "probabilities": {
+              "over_180_days": 0,
+              "0_days": 0,
+              "91_180_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "undeterminable": 0,
+              "8_14_days": 0,
+              "61_90_days": 0.01,
+              "46_60_days": 0.99
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.73,
+            "probabilities": {
+              "over_180_days": 0,
+              "0_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0.01,
+              "91_180_days": 0,
+              "8_14_days": 0,
+              "undeterminable": 0,
+              "1_7_days": 0,
+              "61_90_days": 0.76,
+              "46_60_days": 0.23
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-021",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "1_7_days": 0,
+              "over_180_days": 0,
+              "undeterminable": 0,
+              "0_days": 0,
+              "31_45_days": 0,
+              "46_60_days": 1,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.75,
+            "probabilities": {
+              "1_7_days": 0,
+              "over_180_days": 0,
+              "undeterminable": 0.01,
+              "0_days": 0,
+              "31_45_days": 0.01,
+              "46_60_days": 0.04,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "91_180_days": 0.16,
+              "61_90_days": 0.78
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-022",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "undeterminable": 0,
+              "0_days": 0,
+              "8_14_days": 0,
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "61_90_days": 0,
+              "91_180_days": 0,
+              "over_180_days": 0,
+              "15_30_days": 0,
+              "46_60_days": 1
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "46_60_days": 0.01,
+              "0_days": 0,
+              "8_14_days": 0,
+              "31_45_days": 0.02,
+              "1_7_days": 0,
+              "61_90_days": 0,
+              "91_180_days": 0,
+              "15_30_days": 0.97,
+              "over_180_days": 0,
+              "undeterminable": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-023",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_30_days": 0,
+              "31_45_days": 0,
+              "91_180_days": 0,
+              "undeterminable": 0,
+              "8_14_days": 0,
+              "0_days": 0,
+              "46_60_days": 0,
+              "61_90_days": 1,
+              "1_7_days": 0,
+              "over_180_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "91_180_days",
+            "confidence": 0.8,
+            "probabilities": {
+              "15_30_days": 0,
+              "31_45_days": 0.02,
+              "91_180_days": 0.83,
+              "undeterminable": 0,
+              "8_14_days": 0,
+              "61_90_days": 0.08,
+              "46_60_days": 0.07,
+              "0_days": 0,
+              "1_7_days": 0,
+              "over_180_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-024",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 1,
+            "probabilities": {
+              "over_180_days": 0,
+              "15_30_days": 0,
+              "1_7_days": 0,
+              "0_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 0,
+              "91_180_days": 0,
+              "8_14_days": 0,
+              "31_45_days": 0,
+              "61_90_days": 1
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.85,
+            "probabilities": {
+              "over_180_days": 0,
+              "31_45_days": 0.03,
+              "1_7_days": 0,
+              "0_days": 0,
+              "undeterminable": 0,
+              "91_180_days": 0.02,
+              "46_60_days": 0.08,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "61_90_days": 0.87
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-025",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "undeterminable",
+            "confidence": 0.68,
+            "probabilities": {
+              "undeterminable": 0.71,
+              "31_45_days": 0,
+              "0_days": 0.25,
+              "over_180_days": 0,
+              "61_90_days": 0,
+              "91_180_days": 0,
+              "46_60_days": 0,
+              "8_14_days": 0.03,
+              "1_7_days": 0,
+              "15_30_days": 0.01
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "8_14_days",
+            "confidence": 0.99,
+            "probabilities": {
+              "undeterminable": 0,
+              "31_45_days": 0,
+              "0_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0,
+              "over_180_days": 0,
+              "46_60_days": 0,
+              "8_14_days": 1,
+              "1_7_days": 0,
+              "15_30_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-026",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "undeterminable",
+            "confidence": 0.68,
+            "probabilities": {
+              "46_60_days": 0,
+              "0_days": 0.27,
+              "8_14_days": 0,
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "61_90_days": 0.01,
+              "91_180_days": 0,
+              "15_30_days": 0,
+              "over_180_days": 0,
+              "undeterminable": 0.72
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "61_90_days",
+            "confidence": 0.88,
+            "probabilities": {
+              "46_60_days": 0,
+              "0_days": 0,
+              "8_14_days": 0,
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "61_90_days": 0.9,
+              "91_180_days": 0.1,
+              "over_180_days": 0,
+              "15_30_days": 0,
+              "undeterminable": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-027",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "0_days": 0,
+              "undeterminable": 0,
+              "1_7_days": 0,
+              "46_60_days": 1,
+              "over_180_days": 0,
+              "91_180_days": 0,
+              "61_90_days": 0,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "91_180_days",
+            "confidence": 0.97,
+            "probabilities": {
+              "0_days": 0,
+              "undeterminable": 0,
+              "1_7_days": 0,
+              "46_60_days": 0,
+              "over_180_days": 0,
+              "91_180_days": 0.98,
+              "61_90_days": 0.02,
+              "8_14_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-028",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 1,
+            "probabilities": {
+              "61_90_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 0,
+              "over_180_days": 0,
+              "15_30_days": 1,
+              "31_45_days": 0,
+              "1_7_days": 0,
+              "91_180_days": 0,
+              "8_14_days": 0,
+              "0_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 0.98,
+            "probabilities": {
+              "61_90_days": 0.01,
+              "undeterminable": 0,
+              "46_60_days": 0.98,
+              "over_180_days": 0,
+              "15_30_days": 0,
+              "31_45_days": 0.01,
+              "8_14_days": 0,
+              "91_180_days": 0,
+              "1_7_days": 0,
+              "0_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-029",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "wrong",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "46_60_days",
+            "confidence": 1,
+            "probabilities": {
+              "0_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0,
+              "91_180_days": 0,
+              "over_180_days": 0,
+              "61_90_days": 0,
+              "8_14_days": 0,
+              "31_45_days": 0,
+              "undeterminable": 0,
+              "46_60_days": 1
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "91_180_days",
+            "confidence": 0.89,
+            "probabilities": {
+              "0_days": 0,
+              "1_7_days": 0,
+              "15_30_days": 0,
+              "91_180_days": 0.91,
+              "61_90_days": 0.08,
+              "8_14_days": 0,
+              "over_180_days": 0,
+              "31_45_days": 0.01,
+              "undeterminable": 0,
+              "46_60_days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-030",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "wrong",
+        "answers": {
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "has_auto_renewal_clause": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "required_notice_days": {
+            "type": "choice",
+            "choice": "15_30_days",
+            "confidence": 1,
+            "probabilities": {
+              "undeterminable": 0,
+              "0_days": 0,
+              "15_30_days": 1,
+              "46_60_days": 0,
+              "1_7_days": 0,
+              "8_14_days": 0,
+              "91_180_days": 0,
+              "over_180_days": 0,
+              "31_45_days": 0,
+              "61_90_days": 0
+            }
+          },
+          "days_until_renewal": {
+            "type": "choice",
+            "choice": "31_45_days",
+            "confidence": 0.98,
+            "probabilities": {
+              "undeterminable": 0,
+              "15_30_days": 0,
+              "0_days": 0,
+              "46_60_days": 0.02,
+              "1_7_days": 0,
+              "8_14_days": 0,
+              "91_180_days": 0,
+              "over_180_days": 0,
+              "31_45_days": 0.98,
+              "61_90_days": 0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "map": "r7-notice-plugin-11",
+    "n": 30,
+    "right": 29,
+    "wrong": 1,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy_all": 0.9666666666666667,
+    "accuracy_decided": 0.9666666666666667,
+    "coverage": 1,
+    "rows": [
+      {
+        "id": "notice-001",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "60_89": 1,
+              "no_minimum_specified": 0,
+              "15_29": 0,
+              "90_179": 0,
+              "180_plus": 0,
+              "30_59": 0,
+              "under_15": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-002",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "no_minimum_specified": 0,
+              "30_59": 0,
+              "under_15": 0,
+              "60_89": 1,
+              "180_plus": 0,
+              "90_179": 0,
+              "15_29": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-003",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 1,
+            "probabilities": {
+              "15_29": 0,
+              "180_plus": 0,
+              "no_minimum_specified": 0,
+              "60_89": 0,
+              "30_59": 1,
+              "90_179": 0,
+              "under_15": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-004",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 0.98,
+            "probabilities": {
+              "30_59": 0.99,
+              "90_179": 0,
+              "no_minimum_specified": 0,
+              "15_29": 0.01,
+              "under_15": 0,
+              "60_89": 0,
+              "180_plus": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-005",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "60_89": 0,
+              "under_15": 0,
+              "no_minimum_specified": 0,
+              "90_179": 1,
+              "15_29": 0,
+              "30_59": 0,
+              "180_plus": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-006",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "180_plus": 0,
+              "90_179": 1,
+              "under_15": 0,
+              "no_minimum_specified": 0,
+              "30_59": 0,
+              "15_29": 0,
+              "60_89": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-007",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "90_179": 1,
+              "180_plus": 0,
+              "no_minimum_specified": 0,
+              "15_29": 0,
+              "60_89": 0,
+              "under_15": 0,
+              "30_59": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-008",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "180_plus": 0,
+              "60_89": 0,
+              "30_59": 0,
+              "90_179": 1,
+              "15_29": 0,
+              "no_minimum_specified": 0,
+              "under_15": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-009",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "under_15": 0,
+              "90_179": 0,
+              "60_89": 1,
+              "15_29": 0,
+              "180_plus": 0,
+              "30_59": 0,
+              "no_minimum_specified": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-010",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "180_plus": 0,
+              "15_29": 0,
+              "30_59": 0,
+              "90_179": 0,
+              "60_89": 1,
+              "under_15": 0,
+              "no_minimum_specified": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-011",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 1,
+            "probabilities": {
+              "no_minimum_specified": 0,
+              "30_59": 1,
+              "15_29": 0,
+              "60_89": 0,
+              "under_15": 0,
+              "180_plus": 0,
+              "90_179": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-012",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 0.99,
+            "probabilities": {
+              "180_plus": 0,
+              "under_15": 0,
+              "no_minimum_specified": 0,
+              "60_89": 0,
+              "15_29": 0.01,
+              "30_59": 0.99,
+              "90_179": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-013",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "60_89": 0,
+              "90_179": 1,
+              "no_minimum_specified": 0,
+              "180_plus": 0,
+              "15_29": 0,
+              "30_59": 0,
+              "under_15": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-014",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "60_89": 0,
+              "under_15": 0,
+              "15_29": 0,
+              "90_179": 1,
+              "180_plus": 0,
+              "no_minimum_specified": 0,
+              "30_59": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-015",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 1,
+            "probabilities": {
+              "90_179": 0,
+              "15_29": 0,
+              "60_89": 0,
+              "30_59": 1,
+              "under_15": 0,
+              "no_minimum_specified": 0,
+              "180_plus": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-016",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "wrong",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 1,
+            "probabilities": {
+              "30_59": 1,
+              "90_179": 0,
+              "no_minimum_specified": 0,
+              "15_29": 0,
+              "under_15": 0,
+              "60_89": 0,
+              "180_plus": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-017",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "15_29": 0,
+              "under_15": 0,
+              "60_89": 1,
+              "180_plus": 0,
+              "90_179": 0,
+              "30_59": 0,
+              "no_minimum_specified": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-018",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 0.98,
+            "probabilities": {
+              "no_minimum_specified": 0,
+              "30_59": 0,
+              "15_29": 0,
+              "60_89": 0.02,
+              "under_15": 0,
+              "180_plus": 0,
+              "90_179": 0.98
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-019",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 0.97,
+            "probabilities": {
+              "15_29": 0,
+              "90_179": 0.97,
+              "60_89": 0.03,
+              "30_59": 0,
+              "under_15": 0,
+              "no_minimum_specified": 0,
+              "180_plus": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-020",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 0.99,
+            "probabilities": {
+              "15_29": 0,
+              "60_89": 0.99,
+              "180_plus": 0,
+              "90_179": 0,
+              "no_minimum_specified": 0,
+              "30_59": 0.01,
+              "under_15": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-021",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "90_179": 0,
+              "no_minimum_specified": 0,
+              "under_15": 0,
+              "15_29": 0,
+              "30_59": 0,
+              "60_89": 1,
+              "180_plus": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-022",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "90_179": 0,
+              "60_89": 1,
+              "no_minimum_specified": 0,
+              "180_plus": 0,
+              "15_29": 0,
+              "under_15": 0,
+              "30_59": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-023",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "under_15": 0,
+              "60_89": 0,
+              "30_59": 0,
+              "15_29": 0,
+              "180_plus": 0,
+              "90_179": 1,
+              "no_minimum_specified": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-024",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "90_179",
+            "confidence": 1,
+            "probabilities": {
+              "15_29": 0,
+              "no_minimum_specified": 0,
+              "30_59": 0,
+              "90_179": 1,
+              "under_15": 0,
+              "60_89": 0,
+              "180_plus": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-025",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "no_minimum_specified",
+            "confidence": 0.99,
+            "probabilities": {
+              "no_minimum_specified": 0.99,
+              "60_89": 0,
+              "180_plus": 0,
+              "90_179": 0,
+              "under_15": 0.01,
+              "15_29": 0,
+              "30_59": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.9
+          }
+        }
+      },
+      {
+        "id": "notice-026",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "no_minimum_specified",
+            "confidence": 0.99,
+            "probabilities": {
+              "180_plus": 0,
+              "no_minimum_specified": 1,
+              "under_15": 0,
+              "90_179": 0,
+              "30_59": 0,
+              "15_29": 0,
+              "60_89": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.9
+          }
+        }
+      },
+      {
+        "id": "notice-027",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "180_plus": 0,
+              "under_15": 0,
+              "no_minimum_specified": 0,
+              "90_179": 0,
+              "15_29": 0,
+              "30_59": 0,
+              "60_89": 1
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        }
+      },
+      {
+        "id": "notice-028",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 1,
+            "probabilities": {
+              "15_29": 0,
+              "60_89": 0,
+              "under_15": 0,
+              "90_179": 0,
+              "180_plus": 0,
+              "30_59": 1,
+              "no_minimum_specified": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        }
+      },
+      {
+        "id": "notice-029",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "60_89",
+            "confidence": 1,
+            "probabilities": {
+              "under_15": 0,
+              "60_89": 1,
+              "30_59": 0,
+              "15_29": 0,
+              "180_plus": 0,
+              "90_179": 0,
+              "no_minimum_specified": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.85
+          }
+        }
+      },
+      {
+        "id": "notice-030",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_exists": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "required_notice_band": {
+            "type": "choice",
+            "choice": "30_59",
+            "confidence": 1,
+            "probabilities": {
+              "30_59": 1,
+              "180_plus": 0,
+              "no_minimum_specified": 0,
+              "60_89": 0,
+              "15_29": 0,
+              "under_15": 0,
+              "90_179": 0
+            }
+          },
+          "is_cancellation_notice": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "notice_method_valid": {
+            "type": "noul",
+            "noul": 0.85
+          }
+        }
+      }
+    ]
+  },
+  {
+    "map": "r7-notice-plugin-12",
+    "n": 30,
+    "right": 30,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy_all": 1,
+    "accuracy_decided": 1,
+    "coverage": 1,
+    "rows": [
+      {
+        "id": "notice-001",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "60_days": 1,
+              "not_specified": 0,
+              "180_days": 0,
+              "120_days": 0,
+              "45_days": 0,
+              "30_days": 0,
+              "90_days": 0,
+              "15_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "calendar_days": 0.96,
+              "business_days": 0,
+              "not_specified": 0.04
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-002",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "45_days": 0,
+              "60_days": 1,
+              "180_days": 0,
+              "not_specified": 0,
+              "30_days": 0,
+              "120_days": 0,
+              "90_days": 0,
+              "15_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "calendar_days": 0.96,
+              "business_days": 0,
+              "not_specified": 0.04
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-003",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30_days",
+            "confidence": 1,
+            "probabilities": {
+              "60_days": 0,
+              "45_days": 0,
+              "not_specified": 0,
+              "180_days": 0,
+              "120_days": 0,
+              "30_days": 1,
+              "15_days": 0,
+              "90_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.02,
+              "calendar_days": 0.98
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-004",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30_days",
+            "confidence": 1,
+            "probabilities": {
+              "not_specified": 0,
+              "45_days": 0,
+              "15_days": 0,
+              "90_days": 0,
+              "60_days": 0,
+              "30_days": 1,
+              "120_days": 0,
+              "180_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.03,
+              "calendar_days": 0.97
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-005",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "30_days": 0,
+              "not_specified": 0,
+              "180_days": 0,
+              "90_days": 1,
+              "45_days": 0,
+              "60_days": 0,
+              "15_days": 0,
+              "120_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.03,
+              "calendar_days": 0.97
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-006",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "45_days": 0,
+              "120_days": 0,
+              "15_days": 0,
+              "not_specified": 0,
+              "90_days": 1,
+              "30_days": 0,
+              "60_days": 0,
+              "180_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.04,
+              "calendar_days": 0.96
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-007",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "120_days",
+            "confidence": 1,
+            "probabilities": {
+              "30_days": 0,
+              "180_days": 0,
+              "90_days": 0,
+              "120_days": 1,
+              "45_days": 0,
+              "15_days": 0,
+              "not_specified": 0,
+              "60_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.03,
+              "calendar_days": 0.97
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.9
+          }
+        }
+      },
+      {
+        "id": "notice-008",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "120_days",
+            "confidence": 1,
+            "probabilities": {
+              "30_days": 0,
+              "45_days": 0,
+              "120_days": 1,
+              "not_specified": 0,
+              "90_days": 0,
+              "15_days": 0,
+              "60_days": 0,
+              "180_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "calendar_days": 0.96,
+              "business_days": 0,
+              "not_specified": 0.04
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-009",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "180_days": 0,
+              "30_days": 0,
+              "45_days": 0,
+              "15_days": 0,
+              "90_days": 0,
+              "60_days": 1,
+              "not_specified": 0,
+              "120_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "calendar_days": 0.97,
+              "business_days": 0,
+              "not_specified": 0.03
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-010",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "120_days": 0,
+              "45_days": 0,
+              "30_days": 0,
+              "60_days": 1,
+              "90_days": 0,
+              "15_days": 0,
+              "not_specified": 0,
+              "180_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "calendar_days": 0.97,
+              "business_days": 0,
+              "not_specified": 0.03
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-011",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30_days",
+            "confidence": 1,
+            "probabilities": {
+              "30_days": 1,
+              "120_days": 0,
+              "45_days": 0,
+              "15_days": 0,
+              "180_days": 0,
+              "not_specified": 0,
+              "60_days": 0,
+              "90_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.97,
+            "probabilities": {
+              "not_specified": 0.02,
+              "calendar_days": 0.98,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-012",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_days": 0,
+              "120_days": 0,
+              "30_days": 1,
+              "90_days": 0,
+              "180_days": 0,
+              "60_days": 0,
+              "45_days": 0,
+              "not_specified": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "business_days": 0,
+              "calendar_days": 0.97,
+              "not_specified": 0.03
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-013",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "180_days": 0,
+              "15_days": 0,
+              "60_days": 0,
+              "90_days": 1,
+              "30_days": 0,
+              "120_days": 0,
+              "45_days": 0,
+              "not_specified": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "business_days": 0,
+              "calendar_days": 0.96,
+              "not_specified": 0.04
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-014",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_days": 0,
+              "not_specified": 0,
+              "30_days": 0,
+              "90_days": 1,
+              "180_days": 0,
+              "45_days": 0,
+              "120_days": 0,
+              "60_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.93,
+            "probabilities": {
+              "calendar_days": 0.96,
+              "not_specified": 0.04,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-015",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "45_days",
+            "confidence": 1,
+            "probabilities": {
+              "30_days": 0,
+              "not_specified": 0,
+              "180_days": 0,
+              "90_days": 0,
+              "45_days": 1,
+              "60_days": 0,
+              "15_days": 0,
+              "120_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.04,
+              "calendar_days": 0.96
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-016",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "45_days",
+            "confidence": 1,
+            "probabilities": {
+              "120_days": 0,
+              "45_days": 1,
+              "90_days": 0,
+              "15_days": 0,
+              "180_days": 0,
+              "30_days": 0,
+              "not_specified": 0,
+              "60_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "calendar_days": 0.97,
+              "not_specified": 0.03,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-017",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "90_days": 0,
+              "15_days": 0,
+              "120_days": 0,
+              "not_specified": 0,
+              "180_days": 0,
+              "60_days": 1,
+              "45_days": 0,
+              "30_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "business_days": 0,
+              "calendar_days": 0.96,
+              "not_specified": 0.04
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-018",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "30_days": 0,
+              "not_specified": 0,
+              "180_days": 0,
+              "90_days": 1,
+              "45_days": 0,
+              "60_days": 0,
+              "15_days": 0,
+              "120_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.79,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.14,
+              "calendar_days": 0.86
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-019",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_days": 0,
+              "not_specified": 0,
+              "120_days": 0,
+              "60_days": 0,
+              "90_days": 1,
+              "180_days": 0,
+              "30_days": 0,
+              "45_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.85,
+            "probabilities": {
+              "calendar_days": 0.9,
+              "not_specified": 0.1,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-020",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "180_days": 0,
+              "90_days": 0,
+              "120_days": 0,
+              "60_days": 1,
+              "45_days": 0,
+              "not_specified": 0,
+              "15_days": 0,
+              "30_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.87,
+            "probabilities": {
+              "calendar_days": 0.91,
+              "not_specified": 0.09,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-021",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "120_days": 0,
+              "45_days": 0,
+              "180_days": 0,
+              "30_days": 0,
+              "90_days": 0,
+              "60_days": 1,
+              "15_days": 0,
+              "not_specified": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "calendar_days": 0.96,
+              "not_specified": 0.04,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-022",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "60_days": 1,
+              "not_specified": 0,
+              "180_days": 0,
+              "15_days": 0,
+              "90_days": 0,
+              "30_days": 0,
+              "45_days": 0,
+              "120_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.93,
+            "probabilities": {
+              "calendar_days": 0.96,
+              "not_specified": 0.04,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-023",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "120_days": 0,
+              "60_days": 0,
+              "90_days": 1,
+              "15_days": 0,
+              "180_days": 0,
+              "30_days": 0,
+              "not_specified": 0,
+              "45_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "calendar_days": 0.96,
+              "not_specified": 0.04,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-024",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90_days",
+            "confidence": 1,
+            "probabilities": {
+              "45_days": 0,
+              "30_days": 0,
+              "120_days": 0,
+              "not_specified": 0,
+              "15_days": 0,
+              "60_days": 0,
+              "180_days": 0,
+              "90_days": 1
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.94,
+            "probabilities": {
+              "business_days": 0,
+              "calendar_days": 0.96,
+              "not_specified": 0.04
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.9
+          }
+        }
+      },
+      {
+        "id": "notice-025",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "not_specified",
+            "confidence": 1,
+            "probabilities": {
+              "120_days": 0,
+              "45_days": 0,
+              "180_days": 0,
+              "90_days": 0,
+              "30_days": 0,
+              "60_days": 0,
+              "15_days": 0,
+              "not_specified": 1
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "not_specified",
+            "confidence": 0.87,
+            "probabilities": {
+              "calendar_days": 0.09,
+              "not_specified": 0.91,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-026",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "not_specified",
+            "confidence": 1,
+            "probabilities": {
+              "180_days": 0,
+              "45_days": 0,
+              "120_days": 0,
+              "30_days": 0,
+              "15_days": 0,
+              "90_days": 0,
+              "60_days": 0,
+              "not_specified": 1
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "not_specified",
+            "confidence": 0.83,
+            "probabilities": {
+              "calendar_days": 0.11,
+              "business_days": 0,
+              "not_specified": 0.89
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        }
+      },
+      {
+        "id": "notice-027",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "180_days": 0,
+              "120_days": 0,
+              "45_days": 0,
+              "30_days": 0,
+              "15_days": 0,
+              "90_days": 0,
+              "60_days": 1,
+              "not_specified": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "calendar_days": 0.98,
+              "business_days": 0,
+              "not_specified": 0.02
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.91
+          }
+        }
+      },
+      {
+        "id": "notice-028",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30_days",
+            "confidence": 1,
+            "probabilities": {
+              "60_days": 0,
+              "90_days": 0,
+              "not_specified": 0,
+              "120_days": 0,
+              "15_days": 0,
+              "180_days": 0,
+              "30_days": 1,
+              "45_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "business_days": 0,
+              "not_specified": 0.03,
+              "calendar_days": 0.97
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.92
+          }
+        }
+      },
+      {
+        "id": "notice-029",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60_days",
+            "confidence": 1,
+            "probabilities": {
+              "15_days": 0,
+              "45_days": 0,
+              "30_days": 0,
+              "90_days": 0,
+              "60_days": 1,
+              "120_days": 0,
+              "not_specified": 0,
+              "180_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.95,
+            "probabilities": {
+              "calendar_days": 0.97,
+              "not_specified": 0.03,
+              "business_days": 0
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        }
+      },
+      {
+        "id": "notice-030",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "auto_renewal_present": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30_days",
+            "confidence": 1,
+            "probabilities": {
+              "90_days": 0,
+              "120_days": 0,
+              "30_days": 1,
+              "not_specified": 0,
+              "15_days": 0,
+              "60_days": 0,
+              "180_days": 0,
+              "45_days": 0
+            }
+          },
+          "notice_period_unit": {
+            "type": "choice",
+            "choice": "calendar_days",
+            "confidence": 0.96,
+            "probabilities": {
+              "business_days": 0,
+              "calendar_days": 0.98,
+              "not_specified": 0.02
+            }
+          },
+          "email_channel_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_content_sufficient": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        }
+      }
+    ]
+  }
+]

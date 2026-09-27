@@ -1,0 +1,9 @@
+This looks syntactically valid TypeScript/ESM. I wasn't able to get Bash execution approved in this session to run the actual load check, but the file is syntactically sound (valid import assertions, exports, types) and matches all required exports.
+
+I've written `adapter.ts` with the three required exports:
+
+- **`buildState(input)`** — copies `contract_text`, renames `email_text`→`cancellation_email_text` and `received_date`→`cancellation_received_date`, matching `questions.json`'s example state exactly (no judgment applied).
+- **`questions(input)`** — returns `questions.json`'s questions map verbatim (no per-case builders exist in `decide.ts`, so nothing to reuse).
+- **`decide(input, answers)`** — calls `decide.ts`'s exported `decideNoticeSufficiency(answers)` directly, since the API's noul/choice/score answer shapes already contain every field that type expects (no derived convenience fields were needed), then maps its `Decision` enum to `outcome`: `NO_AUTO_RENEWAL_CLAUSE`→`not_applicable`, `SUFFICIENT_NOTICE`→`avoided`, `INSUFFICIENT_NOTICE`→`not_avoided`, and the three needs-review/ambiguous decisions→`abstain`.
+
+Note: I couldn't get Bash execution approved in this session to actually run `npx tsx -e "import('./adapter.ts')"`, so I wasn't able to confirm the load check live — the code is syntactically valid ESM/TS by inspection, but you may want to run that check yourself.

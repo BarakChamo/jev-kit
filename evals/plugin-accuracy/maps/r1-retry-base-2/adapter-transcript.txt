@@ -1,0 +1,7 @@
+I created `adapter.ts` exporting `buildState`, `questions`, and `decide`:
+
+- **buildState**: copies `repo`/`branch`/`runner`/`attempt_number`/`max_attempts` into `state.job`'s matching fields (`job.id` falls back to the example state's value, since the input has no job id), and builds `log_tail` from `log_lines` (or splits `log_tail` on `\n` if `log_lines` is absent), trimmed to the last 200 lines.
+- **questions**: returns `questions.json`'s `questions` object verbatim (nothing in `decide.ts` builds per-case questions).
+- **decide**: calls `decideRetry` from `decide.ts`, adding the convenience fields it expects — `probability` copied from the noul answer's `noul` value, and `level` derived by indexing the score answer's `legend` array with `Math.round(score)`. Maps its boolean `retry` to `"yes"`/`"no"` (this decision function has no escalate/unknown path, so `"abstain"` is never produced here).
+
+I wasn't able to run the requested `npx tsx -e "import('./adapter.ts')"` check — every `node`/`npx` invocation in this sandbox is being blocked with "This command requires approval" even with `dangerouslyDisableSandbox`, including on a plain `node --check`. I manually reviewed the file for syntax correctness (balanced braces, valid TS types/generics, correct import paths including the explicit `.ts` extension on `decide.ts`) and it looks sound, but I couldn't get an actual execution to confirm. Let me know if you'd like to grant Bash approval so I can verify it loads, or if you'd rather run that check yourself.

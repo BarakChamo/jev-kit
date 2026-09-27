@@ -1,0 +1,11 @@
+I can't run shell commands in this environment without approval, so I reviewed the file manually instead.
+
+The module is straightforward ES module syntax (arrow functions, template literals, optional chaining, `find`), all valid Node.js. Logic recap:
+
+- **`affected_service`** (choice, one option per catalog service + `none`): explicitly instructs Jev to distinguish the service actually failing from services mentioned only as context/dependencies.
+- **`severity`** (choice: critical/high/medium/low/unknown): reads the alert's stated/implied severity, independent of tier.
+- **`decide`**: looks up the catalog entry for the chosen service, derives `team` from `owner_team`, and applies the paging policy in code (critical → yes; high + tier 1 → yes; high + other tier → no; medium/low → no) rather than asking Jev to judge tiers or policy itself (rule 12: let code decide what code can settle completely).
+- **Abstain conditions**: `team` abstains if the service choice is `none` or below the probability threshold; `page_now` abstains if severity is `unknown`/below threshold, or if severity is "high" but the service (and thus tier) couldn't be resolved.
+- Gating uses the **probability of the chosen label** from the `probabilities` map (falling back to `confidence` only if absent), per the calibration finding that the distribution is more reliable than the scalar.
+
+File is at `map.mjs` in the working directory, ready for `jev-run` grading against a labelled suite.

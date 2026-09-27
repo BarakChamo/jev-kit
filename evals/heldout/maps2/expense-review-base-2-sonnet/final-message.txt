@@ -1,0 +1,7 @@
+Created `map.mjs` with a two-question design:
+
+- `buildState` pre-converts the expense amount to USD in code (accurate arithmetic, no LLM math) and passes it alongside the raw policy text and expense.
+- `questions` asks: (1) `policy_covers` — a noul check that the policy text actually addresses this category/situation clearly, and (2) `decision` — a choice among approve/needs_approval/reject, with criteria instructing Jev to derive rules only from the given `policy_text` (never-reimbursable categories → reject, limit exceeded but policy calls for approval → needs_approval, missing required receipt → needs_approval, fully compliant → approve).
+- `decide` abstains if the currency has no FX rate, if the policy doesn't clearly cover the case (`policy_covers.noul < 0.5`), or if the decision confidence is below 0.6 — otherwise it passes through Jev's choice.
+
+This keeps it to one parallel API call per line while routing genuinely ambiguous or policy-silent cases to a human instead of guessing.

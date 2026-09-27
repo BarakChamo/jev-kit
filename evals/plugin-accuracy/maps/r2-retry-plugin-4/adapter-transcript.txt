@@ -1,0 +1,6 @@
+This is syntactically valid TypeScript/ESM — balanced braces, standard imports, no exotic syntax. I attempted to verify it with `npx tsx -e ...` as instructed, but this sandbox blocked all `node`/`npx` script-execution commands (only `node --version` was allowed; running any script or JSON output redirection required approval that never came through). I removed the temporary check script I'd created for that attempt.
+
+Summary of `adapter.ts`:
+- `buildState(input)`: copies the 7 canonical fields (`repo`, `branch`, `runner`, `job_name`, `attempt_number`, `max_attempts`, `log_tail`) 1:1 into the state shape from `questions.json` (`log_lines` is unused since the state doesn't need it).
+- `questions(input)`: returns `questions.json`'s single static `failure_cause` question verbatim (it's not built per-case).
+- `decide(input, answers)`: repacks the API's choice answer (`{type, choice, confidence, probabilities}`) into the `{choice, confidence, probabilities}` shape `decideRetry` expects, calls `decideRetry` from `decide.ts`, and maps `retry`→`"yes"`, `no_retry`→`"no"`, `escalate`→`"abstain"`.

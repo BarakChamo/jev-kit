@@ -1,0 +1,17 @@
+Built the notice-sufficiency decision on Jev, with two files in the working directory:
+
+**`questions.json`** — one Jev request with example state (contract text, cancellation email, received date, current term-end date) and four questions:
+- `has_auto_renewal` (noul) — does the contract even have an auto-renewal mechanism
+- `notice_days_required` (choice, bucketed into 15/30/45/60/90/120/180 days) — the contract's required advance notice, per the skill's rule that quantity comparisons should be bucketed in Jev and compared in code, not asked as a comparison
+- `notice_method_restricted` (noul) — whether the contract requires a delivery channel plain email wouldn't satisfy
+- `email_states_cancellation` (noul) — whether the email actually is unambiguous cancellation notice, not a complaint/question
+
+Each question names the exact field it reads (`contract_text`, `cancellation_email_text`) rather than saying "this document."
+
+**`decide.ts`** — does the arithmetic and gating in code:
+- Computes days between `cancellation_received_date` and `current_term_end_date` itself (never asks Jev to hold two dates against each other)
+- Maps the notice bucket to a day count and compares
+- Gates on each answer's probability (not the `confidence` scalar) — anything unsure routes to `NEEDS_REVIEW` rather than defaulting to an answer
+- Short-circuits to `NOT_APPLICABLE` when there's no auto-renewal clause, and to `NEEDS_REVIEW` when the email doesn't clearly state cancellation intent or the contract restricts the notice channel
+
+One assumption worth flagging: `current_term_end_date` is taken as a known input rather than computed from contract text — date arithmetic from a signing date + term length is pure code logic, not something to hand to Jev, so I left it as a field the ingestion pipeline is expected to supply. As the skill notes, this should be measured against ~30 labelled cases (jev-eval) before trusting it in production, especially the `notice_days_required` bucketing and the `NEEDS_REVIEW` thresholds.

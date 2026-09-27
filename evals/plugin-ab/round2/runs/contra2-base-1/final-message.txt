@@ -1,0 +1,6 @@
+Built two files:
+
+- **`questions.json`** — example Jev request body: a `state` with 3 sample retrieved passages (each carrying the matched FAQ question and its CMS canonical answer), plus a `questions` map with one `"noul"` question per passage asking whether it contradicts/is superseded by the canonical answer (returns a probability).
+- **`decide.ts`** — `buildRequest(passages)` generates that same request generically for any passage list; `decide(passages, answers)` thresholds each returned probability into `stale` (≥0.6, drop before the generator), `review` (0.4–0.6, flag for a human), or `ok`; `filterForGeneration` strips confidently-stale passages out of the set handed to the generator.
+
+Threshold values (0.4/0.6) are a starting point — worth tuning once you see real probability distributions.

@@ -1,0 +1,1566 @@
+{
+  "name": "alert-routing",
+  "description": "Route an alert to the team that owns the affected service (from the catalog), and decide whether to page now: page iff severity is critical, or severity is high and the service is tier 1. Other services mentioned as context are not the affected service.",
+  "cases": [
+    {
+      "id": "routing-001",
+      "input": {
+        "alert": "[CRITICAL] checkout-api: error rate 38% over 5m (threshold 5%)",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-002",
+      "input": {
+        "alert": "Severity high - recommendations queue depth 18,000 and rising. Upstream email-sender looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "discovery",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-003",
+      "input": {
+        "alert": "medium: image-resizer certificate expires in 12 days",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "media",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-004",
+      "input": {
+        "alert": "[LOW] payments-gateway: deprecated config key in use",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-005",
+      "input": {
+        "alert": "Severity high - auth-service queue depth 18,000 and rising. Upstream image-resizer looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "identity",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-006",
+      "input": {
+        "alert": "medium: inventory-sync certificate expires in 12 days",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "supply",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-007",
+      "input": {
+        "alert": "[LOW] search-indexer: deprecated config key in use",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "discovery",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-008",
+      "input": {
+        "alert": "SEV1 email-sender is down: 0 of 6 pods ready. Upstream inventory-sync looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "messaging",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-009",
+      "input": {
+        "alert": "medium: checkout-api certificate expires in 12 days",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-010",
+      "input": {
+        "alert": "[LOW] recommendations: deprecated config key in use",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "discovery",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-011",
+      "input": {
+        "alert": "SEV1 image-resizer is down: 0 of 6 pods ready. Upstream checkout-api looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "media",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-012",
+      "input": {
+        "alert": "high: payments-gateway error budget burn rate 14x",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-013",
+      "input": {
+        "alert": "[LOW] auth-service: deprecated config key in use",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "identity",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-014",
+      "input": {
+        "alert": "SEV1 inventory-sync is down: 0 of 6 pods ready. Upstream payments-gateway looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "supply",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-015",
+      "input": {
+        "alert": "high: search-indexer error budget burn rate 14x",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "discovery",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-016",
+      "input": {
+        "alert": "[MEDIUM] email-sender: disk usage 81% on 2 nodes",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "messaging",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-017",
+      "input": {
+        "alert": "SEV1 checkout-api is down: 0 of 6 pods ready. Upstream search-indexer looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-018",
+      "input": {
+        "alert": "high: recommendations error budget burn rate 14x",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "discovery",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-019",
+      "input": {
+        "alert": "[MEDIUM] image-resizer: disk usage 81% on 2 nodes",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "media",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-020",
+      "input": {
+        "alert": "low: payments-gateway one canary check flapped twice in an hour. Upstream recommendations looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-021",
+      "input": {
+        "alert": "high: auth-service error budget burn rate 14x",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "identity",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-022",
+      "input": {
+        "alert": "[MEDIUM] inventory-sync: disk usage 81% on 2 nodes",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "supply",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-023",
+      "input": {
+        "alert": "low: search-indexer one canary check flapped twice in an hour. Upstream auth-service looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "discovery",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-024",
+      "input": {
+        "alert": "critical: email-sender returning 503 to all requests since 02:14 UTC",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "messaging",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-025",
+      "input": {
+        "alert": "[MEDIUM] checkout-api: disk usage 81% on 2 nodes",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-026",
+      "input": {
+        "alert": "low: recommendations one canary check flapped twice in an hour. Upstream email-sender looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "discovery",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-027",
+      "input": {
+        "alert": "critical: image-resizer returning 503 to all requests since 02:14 UTC",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "media",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-028",
+      "input": {
+        "alert": "[HIGH] payments-gateway: p99 latency 4.2s (threshold 1.5s) for 10m",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "payments",
+        "page_now": "yes"
+      }
+    },
+    {
+      "id": "routing-029",
+      "input": {
+        "alert": "low: auth-service one canary check flapped twice in an hour. Upstream image-resizer looks healthy.",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "identity",
+        "page_now": "no"
+      }
+    },
+    {
+      "id": "routing-030",
+      "input": {
+        "alert": "critical: inventory-sync returning 503 to all requests since 02:14 UTC",
+        "catalog": [
+          {
+            "service": "checkout-api",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "payments-gateway",
+            "owner_team": "payments",
+            "tier": 1
+          },
+          {
+            "service": "search-indexer",
+            "owner_team": "discovery",
+            "tier": 2
+          },
+          {
+            "service": "recommendations",
+            "owner_team": "discovery",
+            "tier": 3
+          },
+          {
+            "service": "auth-service",
+            "owner_team": "identity",
+            "tier": 1
+          },
+          {
+            "service": "email-sender",
+            "owner_team": "messaging",
+            "tier": 2
+          },
+          {
+            "service": "image-resizer",
+            "owner_team": "media",
+            "tier": 3
+          },
+          {
+            "service": "inventory-sync",
+            "owner_team": "supply",
+            "tier": 2
+          }
+        ]
+      },
+      "gold": {
+        "team": "supply",
+        "page_now": "yes"
+      }
+    }
+  ]
+}

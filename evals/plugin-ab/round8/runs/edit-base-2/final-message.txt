@@ -1,0 +1,6 @@
+Both files are updated:
+
+- **questions.json**: added `state.cancellation.from` (sender address) and an `Authorized Contact` clause to the contract text so the new question is answerable, plus the `sender_is_authorized_contact` noul question comparing the sender against the contract's authorised-contact list.
+- **decide.ts**: added `sender_is_authorized_contact` to `JevAnswers` and to the `gates` array, so an unauthorised sender now fails into `INSUFFICIENT_NOTICE` (or `NEEDS_HUMAN_REVIEW` if the model is unsure), same as the existing method/intent/timeliness gates.
+
+No API calls were made — this is static wiring only.

@@ -1,0 +1,12 @@
+The code reads cleanly and the logic traces correctly through all the cases I worked out by hand (standard/high-cost meal, over-limit, missing-receipt, alcohol category, disguised alcohol, unknown category). Bash execution is being blocked by the sandbox in this session, so I verified by careful manual trace instead of running it — the syntax is straightforward ES module JS with no risk of subtle parse errors.
+
+`map.mjs` is written at the project root. Summary of the design:
+
+- **buildState**: passes through `policy_text` and `expense` verbatim, plus the list of USD figures code extracts from the policy text (a helpful precomputed fact, not a derived decision).
+- **questions**: only asks Jev to *read* text — never to do arithmetic:
+  - `over_limit_rule` / `alcohol_entertainment_rule` — what consequence policy_text attaches to each violation (rejected vs. needs_approval), read per case rather than assumed, since policy_text is supplied per case.
+  - `is_alcohol_or_entertainment` — catches alcohol/entertainment spend hidden inside another category's description (skipped when the category field already says so).
+  - `city_tier` — standard vs. high-cost city, per the policy's own list.
+  - `limit_standard` / `limit_high_cost` / `limit_transport` — Jev picks which literal dollar figure already extracted from the text answers each scoped question, instead of inventing or bucketing a number.
+  - `receipt_threshold` — same pattern, only asked when no receipt is attached (skipped otherwise since it can't matter).
+- **decide**: all arithmetic (FX conversion, amount vs. limit, amount vs. threshold) happens in code; gates on each choice's own calibrated probability (not the raw confidence scalar); low confidence always escalates toward `needs_approval`/`abstain`, never relaxes to `approve`; unknown categories or unconvertible currencies `abstain`.

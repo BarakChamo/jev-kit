@@ -1,0 +1,18 @@
+Done. Summary of changes:
+
+**`questions.json`**
+- Added `state.cancellation.fromAddress` — the premise the new question needs (the sender's actual email address), since it wasn't previously captured.
+- Added `sender_is_authorized_contact` (type `noul`): compares `state.cancellation.fromAddress` against authorized-contact addresses found in `state.contract.text`.
+
+**`decide.ts`**
+- Added `sender_is_authorized_contact: NoulAnswer` to `JevAnswers`.
+- Added it as a fourth gate alongside `notice_timely`, `cancellation_intent_clear`, `notice_method_compliant` — so an unauthorized sender now makes the verdict `INSUFFICIENT_NOTICE` (or `NEEDS_HUMAN_REVIEW` if uncertain), consistent with how the other gates behave. No other logic changed.
+
+I did not call the Jev API.
+
+**Flagging two pre-existing questions** (per the skill's review rule — I didn't change these, just noting them since I touched this file):
+
+1. `notice_method_compliant` is worded almost exactly like a case the skill's own evidence calls out as unreliable: a single question asking Jev to both find the contract's delivery requirement *and* judge whether the email satisfies it sat at 0.50–0.79 confidence even in clear-cut cases. Splitting into "what method does the contract require?" and comparing in code was decisive there.
+2. `notice_timely` asks Jev to do date arithmetic directly from `receivedAt` and the contract text — the skill's evidence shows this direct phrasing is right only 64–75% of the time, versus reading the effective date/term/notice-period as separate buckets and computing the deadline in code (30/30 in the cited suite).
+
+Both are pre-existing and out of scope for this minimal change, but worth an eval pass if this map is scoring worse than expected.

@@ -1,0 +1,1 @@
+This needs your approval to run — it's just the exact validation command from the task (`npx tsx -e "import('./adapter.ts')"`), not destructive. Should I proceed?

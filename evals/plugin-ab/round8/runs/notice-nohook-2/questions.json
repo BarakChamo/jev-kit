@@ -1,0 +1,61 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "MASTER SERVICES AGREEMENT ... Section 8 (Term and Renewal): This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months (the \"Initial Term\"). Upon expiration of the Initial Term, this Agreement will automatically renew for successive twelve (12) month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice of non-renewal must be sent to the addresses designated for legal notices in Section 14. Effective Date: 2025-03-01. ... [full contract text continues]",
+    "cancellation_email_text": "Subject: Cancelling our subscription\n\nHi team,\n\nPlease treat this email as our formal notice that we will not be renewing our contract for the upcoming term. We'd like the account closed effective at the end of the current term.\n\nThanks,\nJordan (Acme Corp)",
+    "received_date": "2026-01-15"
+  },
+  "questions": {
+    "has_auto_renewal_clause": {
+      "type": "noul",
+      "instructions": "Does the contract in `contract_text` contain a clause that automatically renews the agreement for a further term unless the customer gives advance notice?",
+      "criteria": {
+        "true": "the contract auto-renews unless timely notice of non-renewal is given",
+        "false": "the contract has no auto-renewal clause (e.g. it simply expires, or requires opt-in to renew)"
+      }
+    },
+    "is_valid_cancellation_notice": {
+      "type": "noul",
+      "instructions": "Does the email in `cancellation_email_text` clearly communicate the customer's intent to cancel the contract or not renew it, as opposed to e.g. a complaint, a support request, or a question that does not itself constitute notice?",
+      "criteria": {
+        "true": "the email clearly states an intent to cancel or not renew",
+        "false": "the email does not clearly state an intent to cancel or not renew"
+      }
+    },
+    "notice_method_compliant": {
+      "type": "noul",
+      "instructions": "Does sending the email in `cancellation_email_text` satisfy any method or format requirements that `contract_text` places on a valid notice of non-renewal (for example: notice must be in writing, sent to a specific address, role or contact, or contain specific content)? If `contract_text` states no such method requirements, treat the method as compliant.",
+      "criteria": {
+        "true": "the email satisfies any stated method/format requirements, or none are stated",
+        "false": "contract_text imposes a method requirement (e.g. notice to a designated legal-notices address, or by certified mail) that this email does not satisfy"
+      }
+    },
+    "required_notice_days": {
+      "type": "choice",
+      "instructions": "How much advance notice does `contract_text` require the customer to give, before the applicable renewal/expiration date, in order to cancel and avoid automatic renewal?",
+      "criteria": {
+        "30_or_fewer": "30 days or fewer",
+        "31_to_45": "31 to 45 days",
+        "46_to_60": "46 to 60 days",
+        "61_to_90": "61 to 90 days",
+        "91_to_120": "91 to 120 days",
+        "more_than_120": "more than 120 days",
+        "not_specified": "contract_text has an auto-renewal clause but does not specify a numeric notice period"
+      }
+    },
+    "lead_time_days": {
+      "type": "choice",
+      "instructions": "Determine the renewal/expiration date that is currently applicable under `contract_text` (the end of the then-current term). Using `received_date` as the date the notice in `cancellation_email_text` was received, how many days before that renewal/expiration date was the notice received?",
+      "criteria": {
+        "30_or_fewer": "received 30 days or fewer before the applicable renewal/expiration date",
+        "31_to_45": "received 31 to 45 days before the applicable renewal/expiration date",
+        "46_to_60": "received 46 to 60 days before the applicable renewal/expiration date",
+        "61_to_90": "received 61 to 90 days before the applicable renewal/expiration date",
+        "91_to_120": "received 91 to 120 days before the applicable renewal/expiration date",
+        "more_than_120": "received more than 120 days before the applicable renewal/expiration date",
+        "on_or_after_renewal_date": "received_date is on or after the applicable renewal/expiration date",
+        "cannot_determine": "contract_text does not give enough information to determine the applicable renewal/expiration date"
+      }
+    }
+  }
+}

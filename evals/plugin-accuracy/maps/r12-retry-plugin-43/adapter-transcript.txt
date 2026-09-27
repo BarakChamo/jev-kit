@@ -1,0 +1,8 @@
+This looks syntactically correct on manual review — balanced braces/parens, valid ES module + TS syntax, and `import { decideRetry } from "./decide.ts"` matches decide.ts's actual named export. I attempted to verify with `npx tsx -e "import('./adapter.ts')"` as instructed, but this sandbox blocks all Node/npx execution (even trivial ones like `node -e "console.log('hi')"`) behind an approval step that isn't resolving here — plain shell commands (`ls`, `echo`) work fine, only interpreter execution is gated. I couldn't get live execution confirmation as a result.
+
+Summary of `adapter.ts`:
+- `buildState(input)` copies `repo`/`branch`/`runner`/`log_tail` and renames `attempt_number`→`attempt`, leaving `job_id`/`workflow` empty since the canonical input has no equivalent fields.
+- `questions(input)` returns `questions.json`'s static `questions` map (no per-case construction needed here).
+- `decide(input, answers)` strips the API's `type` tags off the `choice`/`noul` answers, calls `decide.ts`'s `decideRetry`, and maps its result to `{retry: "yes"|"no"|"abstain"}` (`retry: true` → yes, `escalate: true` → abstain, otherwise no).
+
+If you have a way to run Node in this environment, it'd be worth a quick `npx tsx -e "import('./adapter.ts')"` yourself to be certain.

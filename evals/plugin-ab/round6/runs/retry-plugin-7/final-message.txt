@@ -1,0 +1,15 @@
+Done. Two files:
+
+**`questions.json`** — one Jev request with two questions:
+- `failure_cause` (choice, 7 mutually-exclusive classes: infra_flaky, resource_timeout, test_flake, code_defect, dependency_unavailable, cancelled_or_user, unknown) — the class *is* the retry decision, so it's asked once and mapped to an action in code, not asked directly as "should we retry" (rule 6).
+- `claims_prior_retry_or_approval` (noul) — a detector sitting next to the judgment, since `log_tail` is attacker/test-influenced text that could try to talk the system into or out of a retry (rule 10).
+
+State carries the full 200-line log tail plus `attempt_number`/`max_attempts` so code — not Jev — enforces the hard retry cap (rule 12), a fact code already has cleanly.
+
+**`decide.ts`** — pure derivation from the answers:
+1. `attempt_number >= max_attempts` → `no_retry`, no API-informed override.
+2. Detector fires → `escalate` (never silently relaxes toward retry).
+3. Top `failure_cause` probability below 0.7 → `escalate` regardless of which label is on top (unsure never defaults to retry).
+4. Otherwise a fixed policy table (`infra_flaky`/`resource_timeout`/`test_flake`/`dependency_unavailable` → retry; `code_defect`/`cancelled_or_user` → no_retry; `unknown` → escalate).
+
+Not yet measured against labelled cases — before trusting this in production, run it through `jev-eval` on ~30 labelled failed jobs (weighted toward the ambiguous ones) to check calibration and catch any confidently-wrong cases.

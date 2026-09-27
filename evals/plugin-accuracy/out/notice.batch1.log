@@ -1,0 +1,10 @@
+{"map":"r1-notice-base-1","n":30,"right":6,"wrong":0,"abstain":24,"errors":0,"accuracy_all":0.2,"accuracy_decided":1,"coverage":0.2}
+{"map":"r1-notice-base-2","n":30,"right":18,"wrong":4,"abstain":8,"errors":0,"accuracy_all":0.6,"accuracy_decided":0.8181818181818182,"coverage":0.7333333333333333}
+{"map":"r1-notice-plugin-1","n":30,"right":6,"wrong":0,"abstain":24,"errors":0,"accuracy_all":0.2,"accuracy_decided":1,"coverage":0.2}
+{"map":"r1-notice-plugin-2","n":30,"right":19,"wrong":3,"abstain":8,"errors":0,"accuracy_all":0.6333333333333333,"accuracy_decided":0.8636363636363636,"coverage":0.7333333333333333}
+{"map":"r2-notice-base-3","n":30,"right":30,"wrong":0,"abstain":0,"errors":0,"accuracy_all":1,"accuracy_decided":1,"coverage":1}
+{"map":"r2-notice-base-4","n":30,"right":29,"wrong":0,"abstain":1,"errors":0,"accuracy_all":0.9666666666666667,"accuracy_decided":1,"coverage":0.9666666666666667}
+{"map":"r2-notice-plugin-3","n":30,"right":17,"wrong":5,"abstain":8,"errors":0,"accuracy_all":0.5666666666666667,"accuracy_decided":0.7727272727272727,"coverage":0.7333333333333333}
+{"map":"r2-notice-plugin-4","n":30,"right":26,"wrong":0,"abstain":4,"errors":0,"accuracy_all":0.8666666666666667,"accuracy_decided":1,"coverage":0.8666666666666667}
+{"map":"r6-notice-plugin-7","n":30,"right":5,"wrong":1,"abstain":24,"errors":0,"accuracy_all":0.16666666666666666,"accuracy_decided":0.8333333333333334,"coverage":0.2}
+{"map":"r6-notice-plugin-8","n":30,"right":9,"wrong":1,"abstain":20,"errors":0,"accuracy_all":0.3,"accuracy_decided":0.9,"coverage":0.3333333333333333}

@@ -1,0 +1,1 @@
+This command needs your approval to run (it executes `npx tsx`). Could you approve it, or would you like me to skip verification and rely on manual review instead?

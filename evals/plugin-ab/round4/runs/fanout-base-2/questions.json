@@ -1,0 +1,211 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_id": "vc-2026-014822",
+    "vendor_name": "Acme Cloud Services, Inc.",
+    "contract_type": "master_services_agreement",
+    "effective_date": "2026-01-15",
+    "document_text": "<< full extracted contract text, 30-80 pages, goes here >>"
+  },
+  "questions": {
+    "governing_law": {
+      "type": "choice",
+      "instructions": "Identify the governing law / choice of law jurisdiction stated in the contract (usually in a 'Governing Law' clause).",
+      "criteria": {
+        "delaware": "Contract is governed by Delaware law",
+        "new_york": "Contract is governed by New York law",
+        "california": "Contract is governed by California law",
+        "other_us_state": "Contract is governed by a US state other than the above",
+        "england_and_wales": "Contract is governed by the law of England and Wales",
+        "ireland": "Contract is governed by Irish law",
+        "singapore": "Contract is governed by Singapore law",
+        "other_international": "Contract is governed by a non-US jurisdiction other than the above",
+        "not_specified": "No governing law clause is present"
+      }
+    },
+    "indemnity_scope": {
+      "type": "choice",
+      "instructions": "Characterize the scope of the indemnification clause(s).",
+      "criteria": {
+        "none": "No indemnification obligations are present",
+        "ip_infringement_only": "Indemnity is limited to IP infringement claims",
+        "mutual_general": "Both parties indemnify each other for general third-party claims",
+        "one_sided_vendor_favorable": "Only customer indemnifies vendor, or vendor's obligations are narrowly carved out",
+        "one_sided_customer_favorable": "Only vendor indemnifies customer, or customer's obligations are narrowly carved out",
+        "broad_unlimited": "Indemnity obligations are broad, covering most claims, without a liability cap carve-out"
+      }
+    },
+    "dispute_resolution_method": {
+      "type": "choice",
+      "instructions": "Identify how disputes arising under the contract must be resolved.",
+      "criteria": {
+        "litigation_courts": "Disputes are resolved through court litigation",
+        "binding_arbitration": "Disputes must go to binding arbitration",
+        "non_binding_arbitration": "Disputes must go to non-binding arbitration",
+        "mediation_then_arbitration": "Contract requires mediation as a precondition to arbitration",
+        "not_specified": "No dispute resolution mechanism is specified"
+      }
+    },
+    "ip_ownership": {
+      "type": "choice",
+      "instructions": "Determine who owns intellectual property in deliverables or work product created under the contract.",
+      "criteria": {
+        "customer_owns_deliverables": "Customer owns all IP in deliverables",
+        "vendor_owns_deliverables": "Vendor retains ownership and grants customer a license",
+        "joint_ownership": "IP is jointly owned by both parties",
+        "work_for_hire": "Deliverables are explicitly designated work-for-hire",
+        "license_only_no_transfer": "No ownership transfers; only usage rights are licensed"
+      }
+    },
+    "renewal_notice_period_band": {
+      "type": "score",
+      "instructions": "How much advance written notice must a party give to prevent auto-renewal or non-renewal of the contract?",
+      "criteria": ["not_specified_or_none", "under_30_days", "30_to_60_days", "60_to_90_days", "over_90_days"]
+    },
+    "liability_cap_amount_band": {
+      "type": "score",
+      "instructions": "What is the aggregate liability cap amount, expressed as a multiple of fees paid/payable under the contract (e.g. 12 months of fees)?",
+      "criteria": ["not_specified", "under_1x_fees", "1x_to_2x_fees", "2x_to_3x_fees", "over_3x_fees_or_uncapped"]
+    },
+    "termination_notice_period_band": {
+      "type": "score",
+      "instructions": "For termination for convenience, how much advance written notice is required?",
+      "criteria": ["not_specified", "under_30_days", "30_to_60_days", "60_to_90_days", "over_90_days"]
+    },
+    "cure_period_band": {
+      "type": "score",
+      "instructions": "For termination for cause / material breach, how long does the breaching party have to cure before termination is effective?",
+      "criteria": ["not_specified", "under_10_days", "10_to_30_days", "30_to_60_days", "over_60_days"]
+    },
+    "payment_terms_band": {
+      "type": "score",
+      "instructions": "What are the invoice payment terms (days from invoice to payment due)?",
+      "criteria": ["due_on_receipt", "net_15", "net_30", "net_45_to_60", "net_90_plus"]
+    },
+    "confidentiality_term_band": {
+      "type": "score",
+      "instructions": "How long do confidentiality obligations survive after termination or expiration of the contract?",
+      "criteria": ["not_specified_or_none", "under_2_years", "2_to_5_years", "5_to_10_years", "perpetual"]
+    },
+    "auto_renewal": {
+      "type": "noul",
+      "instructions": "Does the contract automatically renew for an additional term unless a party affirmatively opts out?",
+      "criteria": {
+        "true": "Contract contains an evergreen / auto-renewal clause",
+        "false": "Contract has a fixed term with no auto-renewal, or renewal requires affirmative action by both parties"
+      }
+    },
+    "liability_cap_present": {
+      "type": "noul",
+      "instructions": "Does the contract contain a clause limiting a party's aggregate liability to a stated amount?",
+      "criteria": {
+        "true": "An explicit liability cap or limitation-of-liability amount is stated",
+        "false": "No liability cap is stated, or liability is expressly uncapped"
+      }
+    },
+    "liability_cap_mutual": {
+      "type": "noul",
+      "instructions": "If a liability cap exists, does it apply equally to both parties (mutual) rather than only to one party?",
+      "criteria": {
+        "true": "The liability cap applies mutually to both parties",
+        "false": "The liability cap is one-sided, or there is no liability cap"
+      }
+    },
+    "indemnity_mutual": {
+      "type": "noul",
+      "instructions": "Are the indemnification obligations mutual, i.e. do both parties indemnify each other on substantially similar terms?",
+      "criteria": {
+        "true": "Both parties owe each other indemnification obligations",
+        "false": "Indemnification runs in one direction only, or there is none"
+      }
+    },
+    "data_processing_terms_present": {
+      "type": "noul",
+      "instructions": "Does the contract include data processing terms (e.g. a DPA, or data protection/privacy obligations covering personal data handling)?",
+      "criteria": {
+        "true": "Data processing / data protection terms are present, whether inline or as an attached DPA",
+        "false": "No data processing terms are present"
+      }
+    },
+    "data_breach_notification_present": {
+      "type": "noul",
+      "instructions": "Does the contract require the vendor to notify the customer of a security or data breach, and if so within a defined timeframe?",
+      "criteria": {
+        "true": "A breach notification obligation is stated",
+        "false": "No breach notification obligation is stated"
+      }
+    },
+    "termination_for_convenience": {
+      "type": "noul",
+      "instructions": "May either party terminate the contract for convenience (without cause), subject only to a notice period?",
+      "criteria": {
+        "true": "At least one party may terminate for convenience",
+        "false": "Contract may only be terminated for cause/breach, or is non-terminable before term end"
+      }
+    },
+    "late_payment_penalty_present": {
+      "type": "noul",
+      "instructions": "Does the contract impose a late fee, interest charge, or other penalty for overdue payments?",
+      "criteria": {
+        "true": "A late payment penalty or interest charge is specified",
+        "false": "No late payment penalty is specified"
+      }
+    },
+    "assignment_restriction": {
+      "type": "noul",
+      "instructions": "Does the contract restrict either party's ability to assign the agreement without the other party's consent?",
+      "criteria": {
+        "true": "Assignment requires prior consent or is otherwise restricted",
+        "false": "Assignment is unrestricted or the contract is silent on assignment"
+      }
+    },
+    "exclusivity_clause": {
+      "type": "noul",
+      "instructions": "Does the contract grant exclusivity (e.g. sole-source, exclusive territory, or exclusive supplier/customer rights) to either party?",
+      "criteria": {
+        "true": "An exclusivity obligation or right is present",
+        "false": "No exclusivity obligation or right is present"
+      }
+    },
+    "most_favored_nation_clause": {
+      "type": "noul",
+      "instructions": "Does the contract include a most-favored-nation / most-favored-customer pricing clause?",
+      "criteria": {
+        "true": "An MFN-style pricing clause is present",
+        "false": "No MFN-style pricing clause is present"
+      }
+    },
+    "non_compete_clause": {
+      "type": "noul",
+      "instructions": "Does the contract include a non-compete restriction on either party?",
+      "criteria": {
+        "true": "A non-compete clause is present",
+        "false": "No non-compete clause is present"
+      }
+    },
+    "warranty_disclaimer_present": {
+      "type": "noul",
+      "instructions": "Does the contract disclaim implied warranties (e.g. 'AS IS', merchantability, fitness for a particular purpose)?",
+      "criteria": {
+        "true": "Implied warranties are disclaimed",
+        "false": "No warranty disclaimer is present, or warranties are affirmatively made without disclaimer"
+      }
+    },
+    "force_majeure_clause": {
+      "type": "noul",
+      "instructions": "Does the contract include a force majeure clause excusing performance for events outside a party's control?",
+      "criteria": {
+        "true": "A force majeure clause is present",
+        "false": "No force majeure clause is present"
+      }
+    },
+    "audit_rights_present": {
+      "type": "noul",
+      "instructions": "Does the contract grant either party the right to audit the other's records, security controls, or compliance (e.g. SOC 2, invoicing)?",
+      "criteria": {
+        "true": "An audit right is granted to at least one party",
+        "false": "No audit right is present"
+      }
+    }
+  }
+}

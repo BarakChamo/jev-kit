@@ -1,0 +1,65 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement shall commence on January 1, 2025 and continue for an initial term of twelve (12) months. Thereafter, this Agreement shall automatically renew for successive twelve (12) month terms unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be sent to the address listed in Section 12 or by email to legal@vendor.example.",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current contract term ends. Please treat this email as our formal notice that we will not be renewing. Thanks, Jordan (Acme Corp)",
+    "date_received": "2025-11-01"
+  },
+  "questions": {
+    "has_autorenewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause that causes the contract to automatically renew for another term unless one party gives notice of non-renewal?",
+      "criteria": {
+        "true": "contract_text states the contract auto-renews absent notice",
+        "false": "contract_text has no auto-renewal clause, or renewal requires an affirmative opt-in instead"
+      }
+    },
+    "notice_days_required": {
+      "type": "choice",
+      "instructions": "How many days of advance notice does the auto-renewal clause in `contract_text` require before the end of the current term, in order to prevent renewal? Pick the closest standard value the clause actually states. Use `other` only if the clause states a specific number of days that is not one of the standard values. Use `not_specified` if there is no auto-renewal clause, or the clause does not state a numeric notice period.",
+      "criteria": {
+        "15": "contract_text requires 15 days notice",
+        "30": "contract_text requires 30 days notice",
+        "45": "contract_text requires 45 days notice",
+        "60": "contract_text requires 60 days notice",
+        "90": "contract_text requires 90 days notice",
+        "120": "contract_text requires 120 days notice",
+        "180": "contract_text requires 180 days notice",
+        "other": "contract_text states a specific day count not listed above",
+        "not_specified": "no auto-renewal clause, or no numeric notice period is stated"
+      }
+    },
+    "days_until_next_renewal": {
+      "type": "choice",
+      "instructions": "Reading `contract_text`, how many days after `date_received` does the current term end / the contract next auto-renew? Compute from the term start date and length (or explicit renewal date) stated in contract_text and count forward from date_received.",
+      "criteria": {
+        "less_than_15": "0-14 days after date_received",
+        "15_to_29": "15-29 days after date_received",
+        "30_to_44": "30-44 days after date_received",
+        "45_to_59": "45-59 days after date_received",
+        "60_to_89": "60-89 days after date_received",
+        "90_to_119": "90-119 days after date_received",
+        "120_to_179": "120-179 days after date_received",
+        "180_or_more": "180 or more days after date_received",
+        "already_past": "the renewal date fell before date_received",
+        "cannot_determine": "contract_text does not give enough information to compute a renewal date"
+      }
+    },
+    "notice_method_satisfied": {
+      "type": "noul",
+      "instructions": "`cancellation_email_text` was sent as an email. Does it satisfy any notice-method requirement (e.g. written notice, a specific address, certified mail) that the auto-renewal clause in `contract_text` places on non-renewal notice? If contract_text states no method requirement, answer true.",
+      "criteria": {
+        "true": "cancellation_email_text meets the method contract_text requires, or contract_text requires no particular method",
+        "false": "contract_text requires a method (e.g. certified mail, a specific address) that cancellation_email_text does not meet"
+      }
+    },
+    "cancellation_intent_clear": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly state that the sender does not want the contract to renew and wants to cancel, as opposed to e.g. a question, complaint, or ambiguous statement?",
+      "criteria": {
+        "true": "cancellation_email_text unambiguously communicates intent not to renew / to cancel",
+        "false": "cancellation_email_text is ambiguous, conditional, or does not clearly express that intent"
+      }
+    }
+  }
+}

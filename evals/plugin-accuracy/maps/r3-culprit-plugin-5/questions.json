@@ -1,0 +1,44 @@
+{
+  "_comment": "Illustrative example. In practice `state.log_lines` holds the last 200 lines of a failing CI job, and the `questions` map is built in code (see decide.ts) with one `cause_<i>` entry per candidate line chosen by a regex pre-filter — not one entry per all 200 lines.",
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_name": "web:test",
+    "log_lines": [
+      "Running 412 tests in 8 files",
+      "  ✓ auth.spec.ts (23 tests) 1.2s",
+      "  ✗ checkout.spec.ts (1 failed)",
+      "AssertionError: expected 200 to equal 500",
+      "    at Object.<anonymous> (checkout.spec.ts:41:22)",
+      "  ✓ cart.spec.ts (12 tests) 0.4s",
+      "Retrying flaky test 'checkout > applies discount'... (1/2)",
+      "Tests: 1 failed, 411 passed (412)",
+      "Error: Process completed with exit code 1."
+    ]
+  },
+  "questions": {
+    "cause_3": {
+      "type": "noul",
+      "instructions": "In state.log_lines, does line index 3 (\"AssertionError: expected 200 to equal 500\") name the specific error, exception, or assertion that caused the CI job to fail, as opposed to being a symptom, a retry, a summary count, or unrelated output?",
+      "criteria": {
+        "true": "line 3 states the specific failing assertion/exception/command",
+        "false": "line 3 is context, a downstream symptom, a retry notice, a summary, or generic noise"
+      }
+    },
+    "cause_6": {
+      "type": "noul",
+      "instructions": "In state.log_lines, does line index 6 (\"Retrying flaky test 'checkout > applies discount'... (1/2)\") name the specific error, exception, or assertion that caused the CI job to fail, as opposed to being a symptom, a retry, a summary count, or unrelated output?",
+      "criteria": {
+        "true": "line 6 states the specific failing assertion/exception/command",
+        "false": "line 6 is context, a downstream symptom, a retry notice, a summary, or generic noise"
+      }
+    },
+    "cause_8": {
+      "type": "noul",
+      "instructions": "In state.log_lines, does line index 8 (\"Error: Process completed with exit code 1.\") name the specific error, exception, or assertion that caused the CI job to fail, as opposed to being a symptom, a retry, a summary count, or unrelated output?",
+      "criteria": {
+        "true": "line 8 states the specific failing assertion/exception/command",
+        "false": "line 8 is context, a downstream symptom, a retry notice, a summary, or generic noise"
+      }
+    }
+  }
+}

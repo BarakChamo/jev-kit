@@ -1,0 +1,12 @@
+I've written `adapter.ts` at `/home/user/jev-discovery/results/experiments/plugin-accuracy/maps/r12-retry-plugin-42/adapter.ts`:
+
+- **`buildState(input)`**: destructures `input.input` (repo, branch, runner, attempt_number, max_attempts, log_tail) and renames `attempt_number` → `attempt` to match `questions.json`'s example state shape. `job_name` and `log_lines` aren't part of the state schema, so they're dropped.
+- **`questions(input)`**: returns `questionsJson.questions` verbatim — neither `questions.json` nor `decide.ts` builds questions per-case, so no custom logic is needed.
+- **`decide(input, answers)`**: calls `decide.ts`'s `decideRetry(state, answers)`. The API's `noul` answer (`{type, noul}`) already matches `decide.ts`'s internal `NoulAnswer` (`{noul}`) with no extra field needed; same for `choice` (`{type, choice, confidence, probabilities}` already covers `ChoiceAnswer`). Maps `retry`→`"yes"`, `no_retry`→`"no"`, `escalate`→`"abstain"`.
+
+I reviewed the file closely for syntax correctness (JSON import, type-only import specifier, interfaces, generic `Record`), and it should load cleanly under `tsx`. However, I could not actually run `npx tsx -e "import('./adapter.ts')"` — every `node`/`npx` invocation in this sandbox is being blocked with "requires approval" and I have no way to get that approval granted from here. Could you either approve that Bash permission in your client, or run this yourself and let me know if anything fails:
+
+```
+cd /home/user/jev-discovery/results/experiments/plugin-accuracy/maps/r12-retry-plugin-42
+npx tsx -e "import('./adapter.ts').then(m => console.log(Object.keys(m)))"
+```

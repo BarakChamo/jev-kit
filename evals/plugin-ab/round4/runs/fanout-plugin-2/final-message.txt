@@ -1,0 +1,14 @@
+Built both files:
+
+**`questions.json`** — one request per contract, state = `{contract_id, vendor_name, customer_name, full_text}` (whole document, no chunking) plus 25 questions, all named-field ("`full_text`"), present-tense, no conditionals:
+- 17 `noul` presence/boolean checks (auto-renewal, liability cap present, indemnity present, DPA present, termination-for-convenience, audit rights, force majeure, non-compete, etc.)
+- 8 `choice` classifications for anything with a closed-ish label set (governing law, liability cap band, indemnity scope, payment terms band, notice-period bands, dispute mechanism, assignment restriction, DP regulatory reference), each with a `not_specified`/`no_cap`-style abstain option
+
+Bucketed amounts (liability cap, payment terms, notice periods) are asked directly as `choice` bands rather than raw numbers — there's no second quantity to compare against in this task, so no separate compare-in-code step was needed there.
+
+**`decide.ts`** — per contract:
+- Gates every `noul` on its probability (≥0.85 / ≤0.15), every `choice` on the top label's own probability (≥0.75), never on the `confidence` scalar
+- Anything short of the gate becomes `"needs_review"` with the top-2 candidates attached, for a human queue — never silently resolved
+- Conditional fields (renewal notice band, cap amount band, indemnity scope, etc.) were asked unconditionally in Jev and gated to `"n/a"` here in code when their presence-flag is false, keeping the questions themselves branch-free
+
+This is unmeasured — before pointing it at real volume, run `jev-eval` against ~30 labelled contracts (weighted toward edge cases like silent-on-liability-cap or multi-jurisdiction agreements) to check the gate thresholds and catch any confidently-wrong fields, per the jev-questions skill's guidance.

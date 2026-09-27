@@ -1,0 +1,6 @@
+Written to `map.mjs`. Design:
+
+- **Deterministic math in JS**: currency conversion to USD happens in `buildState`/`questions`, not via Jev — arithmetic shouldn't be left to a probabilistic model at this volume.
+- **Jev handles policy interpretation** via 5 questions answered in one pass: whether the policy is silent on this case, whether the category is an outright ban, whether the (already-converted) amount exceeds the applicable limit, what the policy says happens when over limit (needs_approval vs reject vs unspecified), and whether a required itemized receipt is missing.
+- **`decide` applies guardrails in priority order**: policy-silent or ambiguous coverage → `abstain`; banned category → `reject`; over limit → `needs_approval` unless the policy clearly says "reject" with high confidence; missing required receipt → `needs_approval`; otherwise `approve`.
+- Any noul answer landing in the 0.35–0.65 band is treated as too uncertain and routes to `abstain`, per the instruction to send unclear cases to a person.

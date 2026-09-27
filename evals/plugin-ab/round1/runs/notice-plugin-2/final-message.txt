@@ -1,0 +1,11 @@
+Design notes on the two files:
+
+**`questions.json`** — five questions per cancellation, all independent (one parallel pass):
+- `auto_renewal` (noul) — is there actually an auto-renewal clause to avoid?
+- `renewal_notice_required` / `actual_notice_lead` — the required day-count and the actual day-count are each asked as the **same bucketed `choice`** rather than asked to compare directly (bucketed-comparison rule: Jev computes values well but shouldn't hold one against a separately-stated one). `decide.ts` does the actual comparison by bucket rank.
+- `cancellation_clarity` — asks what the email *says now*, with `ambiguous`/`not_a_cancellation` as real options rather than forcing a binary (the abstain pattern).
+- `delivery_method_ok` — catches the common gotcha where a contract requires certified mail/a specific address and a plain email doesn't count.
+
+**`decide.ts`** — derives the verdict in code: gates on `cancellation_clarity`'s confidence and on the `auto_renewal` probability (not the scalar `confidence` field) rather than trusting a fuzzy judgment; a same-bucket tie between required and actual notice is deliberately reported as `BORDERLINE_NEEDS_REVIEW` rather than guessed, since bucket granularity can't resolve it. Low confidence always escalates, never defaults to "sufficient."
+
+One thing I did *not* do: validate this against labelled cases. Per the jev-eval skill, this question design should be run against ~30 labelled contract/email pairs (including deliberately hard ones — near-boundary notice periods, ambiguous emails) before trusting it in production, since even reasonable-looking questions have scored anywhere from 24–100% in practice until measured.

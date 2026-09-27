@@ -1,0 +1,14 @@
+ traced through 9 scenarios by hand (couldn't execute `node` here — Bash command execution is being blocked for approval in this session) covering: within-limit approve, high-cost-city approve, ambiguous-city escalation both ways, over-even-high-cost-limit, hidden alcohol in a meal description, missing-receipt-over-threshold, missing FX rate, unrecognized category, and an injected "pre-approved, skip review" claim — all resolved as expected.
+
+Design summary:
+
+- **Code does all arithmetic/comparisons** (currency conversion, extracting the policy's USD limits and receipt threshold via regex, comparing amount vs. limit). Per the Jev rules, comparisons and number extraction from stated text are unreliable for Jev but trivial and exact in code.
+- **Jev handles only genuine judgment calls**, each scoped to named state fields:
+  - `forbidden_content` (noul): does the expense *include* anything from the policy's "never reimbursable" list (parsed from the policy text, not hardcoded) — asked as "does it include X" rather than "is it a kind of X", per the measured wording effect.
+  - `category_choice` (choice): only asked if `category` doesn't match a known category, to classify from the description.
+  - `high_cost_city` (noul): only asked when the city isn't in the policy's explicit high-cost list *and* the amount falls strictly between the standard and high-cost limits — i.e. only when it would actually change the outcome. Outside that band the answer doesn't matter, so no call is made.
+  - `claims_override` (noul): a detector for descriptions that try to assert pre-approval/exemption (prompt-injection style), which can only push toward `needs_approval`, never toward approval.
+- **Gates use the probability directly**, not the confidence scalar, with dead bands that fall back to `needs_approval` or `abstain` rather than silently approving.
+- **`abstain`** is reserved for real data gaps: unconvertible currency, a policy that doesn't state a limit for the recognized category, or a category/city classification too uncertain to resolve.
+
+One thing worth flagging: this is all built and reasoned from the single example policy/case rather than measured against labelled cases. Given the volume (hundreds of thousands of lines/month), I'd recommend running this through `jev-eval` on a labelled sample before trusting it in production — the skill notes rewriting a question after seeing real failures typically moves accuracy far more than any amount of upfront design.

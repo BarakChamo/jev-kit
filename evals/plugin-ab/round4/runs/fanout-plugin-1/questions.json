@@ -1,0 +1,273 @@
+{
+  "model": "typesafe-ai/jev",
+
+  "_comment": "state.*_clause fields are produced upstream by a cheap heading-based section splitter (match on headings like 'Governing Law', 'Term and Termination', 'Limitation of Liability', etc.). An empty string means that heading was not found in this contract. full_text is kept only as a fallback for the splitter never being asked to feed a Jev question directly (rule 4: never point a question at unscoped full_text).",
+
+  "state": {
+    "contract_id": "C-2026-004821",
+    "vendor_name": "Acme Software Inc.",
+    "governing_law_clause": "This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles.",
+    "term_and_renewal_clause": "This Agreement shall commence on the Effective Date and continue for an initial term of twelve (12) months. Thereafter, this Agreement shall automatically renew for successive twelve (12) month periods unless either party provides written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Either party may terminate this Agreement for any reason upon ninety (90) days' prior written notice to the other party.",
+    "limitation_of_liability_clause": "EXCEPT FOR A PARTY'S INDEMNIFICATION OBLIGATIONS UNDER SECTION 9, IN NO EVENT SHALL EITHER PARTY'S AGGREGATE LIABILITY ARISING OUT OF THIS AGREEMENT EXCEED THE TOTAL FEES PAID OR PAYABLE BY CUSTOMER IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.",
+    "indemnification_clause": "Vendor shall defend, indemnify, and hold harmless Customer from and against any third-party claims, damages, and costs arising from Vendor's breach of this Agreement, negligence, or infringement of a third party's intellectual property rights.",
+    "data_protection_clause": "To the extent Vendor processes personal data on Customer's behalf, the parties shall enter into the Data Processing Addendum attached as Exhibit C, which incorporates the requirements of the EU General Data Protection Regulation (GDPR).",
+    "payment_clause": "Customer shall pay all undisputed invoiced amounts within forty-five (45) days of the invoice date. Amounts not paid when due shall accrue interest at 1.5% per month.",
+    "confidentiality_clause": "Each party's Confidential Information shall be protected from unauthorized disclosure for a period of five (5) years following termination of this Agreement.",
+    "dispute_resolution_clause": "Any dispute arising out of this Agreement shall be finally resolved by binding arbitration administered by the AAA, except that either party may seek injunctive relief in a court of competent jurisdiction.",
+    "insurance_clause": "",
+    "assignment_clause": "Neither party may assign this Agreement without the prior written consent of the other party, except that either party may assign this Agreement in connection with a merger, acquisition, or sale of substantially all of its assets without consent.",
+    "warranty_clause": "EXCEPT AS EXPRESSLY SET FORTH HEREIN, THE SERVICES ARE PROVIDED \"AS IS\" AND VENDOR DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.",
+    "force_majeure_clause": "Neither party shall be liable for delay or failure to perform caused by events beyond its reasonable control, including acts of God, natural disaster, or governmental action.",
+    "audit_clause": "",
+    "full_text": "<entire 30-80 page contract text, kept for provenance only>"
+  },
+
+  "questions": {
+    "governing_law": {
+      "type": "choice",
+      "instructions": "Which jurisdiction's law does `governing_law_clause` state governs this Agreement?",
+      "criteria": {
+        "delaware": "the clause names Delaware",
+        "new_york": "the clause names New York",
+        "california": "the clause names California",
+        "texas": "the clause names Texas",
+        "other_us_state": "the clause names a US state other than the above",
+        "england_and_wales": "the clause names England and Wales, or the United Kingdom",
+        "ireland": "the clause names Ireland",
+        "other_eu_jurisdiction": "the clause names an EU member state other than Ireland",
+        "singapore": "the clause names Singapore",
+        "other_non_us_jurisdiction": "the clause names a non-US jurisdiction not listed above",
+        "not_specified": "`governing_law_clause` is empty or names no jurisdiction"
+      }
+    },
+
+    "auto_renewal_present": {
+      "type": "noul",
+      "instructions": "Does `term_and_renewal_clause` state that this Agreement automatically renews for a further term unless a party acts to stop it?",
+      "criteria": {
+        "true": "the clause states the agreement automatically renews absent action by a party",
+        "false": "the clause states the agreement ends at the end of its term, requires an affirmative act to renew, or does not address renewal"
+      }
+    },
+    "renewal_notice_period_band": {
+      "type": "choice",
+      "instructions": "How many days of advance written notice does `term_and_renewal_clause` require a party to give in order to prevent automatic renewal?",
+      "criteria": {
+        "none_stated": "no such notice requirement is stated, or the agreement does not auto-renew",
+        "less_than_30_days": "the required notice is fewer than 30 days",
+        "30_to_60_days": "the required notice is 30 to 60 days",
+        "61_to_90_days": "the required notice is 61 to 90 days",
+        "more_than_90_days": "the required notice is more than 90 days"
+      }
+    },
+
+    "termination_for_convenience_present": {
+      "type": "noul",
+      "instructions": "Does `term_and_renewal_clause` give either party the right to terminate this Agreement for convenience, i.e. for any reason or no reason, before the end of the term?",
+      "criteria": {
+        "true": "at least one party may terminate without cause before the term ends",
+        "false": "termination before the term ends is only for cause (e.g. breach, insolvency), or is not addressed"
+      }
+    },
+    "termination_for_convenience_notice_band": {
+      "type": "choice",
+      "instructions": "Where `term_and_renewal_clause` allows termination for convenience, how many days of advance written notice does it require?",
+      "criteria": {
+        "not_applicable": "termination for convenience is not addressed, or requires no notice period",
+        "less_than_30_days": "the required notice is fewer than 30 days",
+        "30_to_60_days": "the required notice is 30 to 60 days",
+        "61_to_90_days": "the required notice is 61 to 90 days",
+        "more_than_90_days": "the required notice is more than 90 days"
+      }
+    },
+
+    "liability_cap_present": {
+      "type": "noul",
+      "instructions": "Does `limitation_of_liability_clause` state a maximum dollar or fee-based ceiling on a party's liability?",
+      "criteria": {
+        "true": "a maximum liability amount or formula is stated",
+        "false": "no maximum is stated, or liability is expressly described as unlimited"
+      }
+    },
+    "liability_cap_type": {
+      "type": "choice",
+      "instructions": "How does `limitation_of_liability_clause` express its liability cap, if any?",
+      "criteria": {
+        "fixed_dollar_amount": "the cap is a specific dollar figure",
+        "multiple_of_fees_paid": "the cap is expressed as a multiple or period of fees paid or payable (e.g. '12 months of fees')",
+        "unlimited_no_cap": "the clause states liability is unlimited or states no cap",
+        "not_addressed": "`limitation_of_liability_clause` is empty or states no cap in either form"
+      }
+    },
+    "liability_cap_fixed_amount_band": {
+      "type": "choice",
+      "instructions": "Where `liability_cap_type` is a fixed dollar amount, which band does the dollar figure stated in `limitation_of_liability_clause` fall in?",
+      "criteria": {
+        "not_a_fixed_amount": "the cap is not expressed as a fixed dollar figure",
+        "under_50k": "under $50,000",
+        "50k_to_250k": "$50,000 to $250,000",
+        "250k_to_1m": "$250,000 to $1,000,000",
+        "over_1m": "over $1,000,000"
+      }
+    },
+    "liability_cap_fee_multiple_band": {
+      "type": "choice",
+      "instructions": "Where `liability_cap_type` is a multiple of fees paid, what multiple of fees does `limitation_of_liability_clause` state?",
+      "criteria": {
+        "not_a_fee_multiple": "the cap is not expressed as a multiple of fees",
+        "less_than_1x": "less than one times fees (e.g. fees paid in the preceding 6 months)",
+        "1x_to_2x": "one to two times the reference fee amount (e.g. 12 months of fees)",
+        "2x_to_3x": "two to three times the reference fee amount",
+        "more_than_3x": "more than three times the reference fee amount"
+      }
+    },
+
+    "indemnity_present": {
+      "type": "noul",
+      "instructions": "Does `indemnification_clause` require a party to defend, indemnify, or hold the other harmless against third-party claims?",
+      "criteria": {
+        "true": "such an obligation is stated",
+        "false": "`indemnification_clause` is empty or states no such obligation"
+      }
+    },
+    "indemnity_scope": {
+      "type": "choice",
+      "instructions": "Whose obligations does `indemnification_clause` cover, and for what?",
+      "criteria": {
+        "ip_infringement_only": "only indemnifies against third-party IP infringement claims",
+        "general_third_party_claims": "indemnifies against a broader set of third-party claims (e.g. breach, negligence, IP), owed by one party only",
+        "mutual": "both parties owe indemnification obligations to each other",
+        "not_addressed": "`indemnification_clause` is empty or states no indemnification obligation"
+      }
+    },
+    "limitation_of_liability_excludes_indemnity": {
+      "type": "noul",
+      "instructions": "Does `limitation_of_liability_clause` state that the liability cap does not apply to a party's indemnification obligations?",
+      "criteria": {
+        "true": "indemnification obligations are expressly carved out of the cap",
+        "false": "no such carve-out is stated"
+      }
+    },
+
+    "data_processing_terms_present": {
+      "type": "noul",
+      "instructions": "Does `data_protection_clause` commit the parties to data processing or data protection terms (e.g. a DPA)?",
+      "criteria": {
+        "true": "such terms or a referenced DPA are stated",
+        "false": "`data_protection_clause` is empty or states no such terms"
+      }
+    },
+    "gdpr_referenced": {
+      "type": "noul",
+      "instructions": "Does `data_protection_clause` reference the GDPR or other EU/UK data protection law?",
+      "criteria": {
+        "true": "GDPR or EU/UK data protection law is named",
+        "false": "no such reference is present"
+      }
+    },
+
+    "confidentiality_present": {
+      "type": "noul",
+      "instructions": "Does `confidentiality_clause` obligate a party to protect the other's confidential information from disclosure?",
+      "criteria": {
+        "true": "such an obligation is stated",
+        "false": "`confidentiality_clause` is empty or states no such obligation"
+      }
+    },
+    "confidentiality_survival_band": {
+      "type": "choice",
+      "instructions": "How long does `confidentiality_clause` state the confidentiality obligation survives after termination of the Agreement?",
+      "criteria": {
+        "no_survival_stated": "no post-termination survival period is stated",
+        "up_to_2_years": "the stated survival period is 2 years or less",
+        "3_to_5_years": "the stated survival period is 3 to 5 years",
+        "indefinite_or_perpetual": "the obligation is stated to survive indefinitely or perpetually"
+      }
+    },
+
+    "payment_terms_band": {
+      "type": "score",
+      "instructions": "How many days after invoice does `payment_clause` give Customer to pay?",
+      "criteria": [
+        "due_on_receipt: payment is due immediately or on receipt of invoice",
+        "net_15: payment is due within 15 days",
+        "net_30: payment is due within 16 to 30 days",
+        "net_45: payment is due within 31 to 45 days",
+        "net_60: payment is due within 46 to 60 days",
+        "net_90_or_more: payment is due in more than 60 days"
+      ]
+    },
+    "late_payment_interest_present": {
+      "type": "noul",
+      "instructions": "Does `payment_clause` state that interest or a penalty accrues on amounts paid after their due date?",
+      "criteria": {
+        "true": "interest or a late-payment penalty is stated",
+        "false": "no such interest or penalty is stated"
+      }
+    },
+
+    "assignment_consent_required": {
+      "type": "noul",
+      "instructions": "Does `assignment_clause` require a party's prior written consent before the other party may assign this Agreement?",
+      "criteria": {
+        "true": "prior consent is required for at least ordinary assignments",
+        "false": "no consent is required, or `assignment_clause` is empty"
+      }
+    },
+    "change_of_control_termination_right": {
+      "type": "noul",
+      "instructions": "Does `assignment_clause` or `term_and_renewal_clause` give a party the right to terminate this Agreement upon the other party's change of control (merger, acquisition, or sale of substantially all assets)?",
+      "criteria": {
+        "true": "such a termination right is stated",
+        "false": "no such right is stated"
+      }
+    },
+
+    "insurance_requirement_present": {
+      "type": "noul",
+      "instructions": "Does `insurance_clause` require a party to carry and maintain insurance of a stated type or amount?",
+      "criteria": {
+        "true": "such a requirement is stated",
+        "false": "`insurance_clause` is empty or states no such requirement"
+      }
+    },
+
+    "warranty_disclaimer_present": {
+      "type": "noul",
+      "instructions": "Does `warranty_clause` disclaim implied warranties (e.g. state the services or products are provided \"as is\")?",
+      "criteria": {
+        "true": "implied warranties are disclaimed",
+        "false": "`warranty_clause` is empty or states no such disclaimer"
+      }
+    },
+
+    "force_majeure_present": {
+      "type": "noul",
+      "instructions": "Does `force_majeure_clause` excuse a party's delayed or failed performance caused by events beyond its reasonable control?",
+      "criteria": {
+        "true": "such an excuse is stated",
+        "false": "`force_majeure_clause` is empty or states no such excuse"
+      }
+    },
+
+    "dispute_resolution_method": {
+      "type": "choice",
+      "instructions": "How does `dispute_resolution_clause` state that disputes under this Agreement are resolved?",
+      "criteria": {
+        "litigation_courts": "disputes are to be resolved in court, with no arbitration or mediation requirement",
+        "binding_arbitration": "disputes are to be resolved by binding arbitration",
+        "non_binding_or_mediation_first": "disputes go to non-binding arbitration or mediation before either party may litigate or arbitrate bindingly",
+        "not_specified": "`dispute_resolution_clause` is empty or states no dispute resolution method"
+      }
+    },
+
+    "audit_rights_present": {
+      "type": "noul",
+      "instructions": "Does `audit_clause` give a party the right to audit or inspect the other party's records, systems, or compliance with this Agreement?",
+      "criteria": {
+        "true": "such an audit right is stated",
+        "false": "`audit_clause` is empty or states no such right"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+Done. Two files in the working directory:
+
+- **`questions.json`** — the Jev request body: an example `state` (contract text, cancellation email + date, current term end date) plus five questions:
+  - `has_auto_renewal` (noul) — does the contract even auto-renew
+  - `notice_timely` (noul) — was the email received before the contract's notice deadline (Jev does the date math from the clause + received date)
+  - `method_compliant` (noul) — does the email satisfy any required delivery method/recipient
+  - `intent_clear` (noul) — does the email unambiguously express cancellation intent (vs. a complaint/pause/question)
+  - `clause_ambiguity` (score) — how clearly the contract states the auto-renewal mechanics, as a review-flag signal
+
+- **`decide.ts`** — pure post-processing: thresholds each `noul` probability into true/false/uncertain, short-circuits to `not_applicable` if there's no auto-renewal clause, returns `insufficient_notice` if any of intent/method/timeliness fails, `uncertain` (+ human review flag) if any is borderline, otherwise `sufficient_notice`. Ambiguous contract language also forces `needsHumanReview`.
+
+No API calls were made, as requested.

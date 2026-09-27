@@ -1,0 +1,53 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contractText": "MASTER SERVICES AGREEMENT ... Section 9 (Term and Renewal): This Agreement begins on the Effective Date, February 1, 2025, and continues for an initial term of twelve (12) months (the \"Initial Term\"). Upon expiration of the Initial Term, this Agreement shall automatically renew for successive twelve (12) month periods (each, a \"Renewal Term\") unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice under this Section must be delivered by email to legal@vendor.com or by certified mail to the address in Section 14 (Notices). ...",
+    "cancellationEmailText": "Hi team, We've decided not to continue with the service and want to cancel our account before it renews. Please confirm this has been processed. Thanks, Dana",
+    "cancellationEmailFrom": "dana@customer.com",
+    "cancellationReceivedDate": "2025-10-15",
+    "currentTermEndDate": "2026-01-31"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Read contractText. Determine whether the contract contains a clause that automatically renews the agreement for another term unless the customer gives notice (an 'evergreen'/auto-renewal clause), as opposed to a contract that simply expires or requires affirmative renewal.",
+      "criteria": {
+        "true": "The contract auto-renews by default unless a party opts out with notice.",
+        "false": "The contract does not auto-renew (it expires, requires affirmative renewal by both parties, or has no such clause)."
+      }
+    },
+    "notice_timely": {
+      "type": "noul",
+      "instructions": "Using contractText, find the required notice period for avoiding auto-renewal (e.g. 'at least N days prior to the end of the then-current term') and the relevant term end date (use currentTermEndDate in state if given, otherwise infer from the contract's effective date and term length). Compute the latest date notice could be given to still be timely, and compare it to cancellationReceivedDate.",
+      "criteria": {
+        "true": "cancellationReceivedDate is on or before the deadline implied by the contract's notice-period requirement.",
+        "false": "cancellationReceivedDate is after that deadline (notice was late), or the contract requires notice and none of the given facts show it was timely."
+      }
+    },
+    "method_compliant": {
+      "type": "noul",
+      "instructions": "Check whether contractText specifies a required form/channel/recipient for a valid non-renewal notice (e.g. a specific email address, written letter, certified mail). Then check whether cancellationEmailText (and cancellationEmailFrom, if relevant) satisfies that requirement. If the contract does not specify any particular method, treat any clear written notice as compliant.",
+      "criteria": {
+        "true": "The cancellation email satisfies the contract's notice-delivery requirements (or the contract imposes no specific method).",
+        "false": "The contract requires a specific method/recipient for notice and the email does not satisfy it."
+      }
+    },
+    "intent_clear": {
+      "type": "noul",
+      "instructions": "Read cancellationEmailText. Determine whether it unambiguously communicates the customer's intent to cancel the contract / not renew for the next term, as opposed to a complaint, a request for information, a temporary pause, or an ambiguous statement.",
+      "criteria": {
+        "true": "The email clearly and unambiguously states the customer does not want the contract to renew / wants to cancel.",
+        "false": "The email is ambiguous, conditional, or does not clearly express non-renewal intent."
+      }
+    },
+    "clause_ambiguity": {
+      "type": "score",
+      "instructions": "Assess how clearly contractText specifies the auto-renewal mechanics needed to answer the questions above: the existence of auto-renewal, the length of the notice period, the term end date it runs from, and any required notice method.",
+      "criteria": [
+        "clear - all elements are stated unambiguously",
+        "somewhat ambiguous - at least one element is vague, conflicting, or must be inferred",
+        "highly ambiguous - key terms (e.g. notice period or renewal trigger) are missing or contradictory"
+      ]
+    }
+  }
+}

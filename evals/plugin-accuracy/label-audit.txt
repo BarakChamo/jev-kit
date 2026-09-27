@@ -1,0 +1,24 @@
+Independent labeller: zai/glm-5.3-flash, reasoning on, rubric + case only.
+  notice: agreement 100.0% on 30/30 cases, disputed []
+  retry: agreement 100.0% on 30/30 cases, disputed []
+  culprit: agreement 93.3% on 30/30 cases, disputed ['culprit-021', 'culprit-025']
+
+culprit maps: top-1 right under the original gold vs under the reviewer's acceptable set (gold ∪ acceptable)
+  r10-culprit-plugin-21    30/30  ->  30/30
+  r10-culprit-plugin-22    30/30  ->  30/30
+  r10-culprit-plugin-23    30/30  ->  30/30
+  r10-culprit-plugin-24    30/30  ->  30/30
+  r12-culprit-plugin-41    30/30  ->  30/30
+  r12-culprit-plugin-42    24/30  ->  29/30
+  r12-culprit-plugin-43    24/30  ->  29/30
+  r2-culprit-base-1        19/30  ->  20/30
+  r2-culprit-base-2        21/30  ->  22/30
+  r2-culprit-base-3        30/30  ->  30/30
+  r2-culprit-plugin-1       1/30  ->   1/30
+  r2-culprit-plugin-2      21/30  ->  26/30
+  r2-culprit-plugin-3      30/30  ->  30/30
+  r3-culprit-plugin-4      22/30  ->  22/30
+  r3-culprit-plugin-5      17/30  ->  20/30
+  r3-culprit-plugin-6      13/30  ->  14/30
+  r6-culprit-plugin-7       4/30  ->   6/30
+  r6-culprit-plugin-8       6/30  ->  11/30

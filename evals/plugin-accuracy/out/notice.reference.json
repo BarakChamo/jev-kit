@@ -1,0 +1,602 @@
+[
+  {
+    "id": "notice-001",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "January",
+      "day": "15",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-01-15",
+      "required_notice_days": 60,
+      "actual_lead_days": 95,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-002",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "March",
+      "day": "1",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-03-01",
+      "required_notice_days": 60,
+      "actual_lead_days": 20,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-003",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "February",
+      "day": "10",
+      "term": "12",
+      "notice": "30"
+    },
+    "facts": {
+      "term_end": "2026-02-10",
+      "required_notice_days": 30,
+      "actual_lead_days": 70,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-004",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "June",
+      "day": "1",
+      "term": "12",
+      "notice": "30"
+    },
+    "facts": {
+      "term_end": "2026-06-01",
+      "required_notice_days": 30,
+      "actual_lead_days": 10,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-005",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "April",
+      "day": "20",
+      "term": "12",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-04-20",
+      "required_notice_days": 90,
+      "actual_lead_days": 150,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-006",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "May",
+      "day": "5",
+      "term": "12",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-05-05",
+      "required_notice_days": 90,
+      "actual_lead_days": 40,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-007",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "July",
+      "day": "1",
+      "term": "12",
+      "notice": "120"
+    },
+    "facts": {
+      "term_end": "2026-07-01",
+      "required_notice_days": 120,
+      "actual_lead_days": 200,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-008",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "August",
+      "day": "12",
+      "term": "12",
+      "notice": "120"
+    },
+    "facts": {
+      "term_end": "2026-08-12",
+      "required_notice_days": 120,
+      "actual_lead_days": 60,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-009",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "January",
+      "day": "31",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-01-31",
+      "required_notice_days": 60,
+      "actual_lead_days": 64,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-010",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "February",
+      "day": "28",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-02-28",
+      "required_notice_days": 60,
+      "actual_lead_days": 56,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-011",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "September",
+      "day": "15",
+      "term": "12",
+      "notice": "30"
+    },
+    "facts": {
+      "term_end": "2026-09-15",
+      "required_notice_days": 30,
+      "actual_lead_days": 34,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-012",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "October",
+      "day": "1",
+      "term": "12",
+      "notice": "30"
+    },
+    "facts": {
+      "term_end": "2026-10-01",
+      "required_notice_days": 30,
+      "actual_lead_days": 26,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-013",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "March",
+      "day": "15",
+      "term": "12",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-03-15",
+      "required_notice_days": 90,
+      "actual_lead_days": 95,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-014",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "November",
+      "day": "20",
+      "term": "12",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-11-20",
+      "required_notice_days": 90,
+      "actual_lead_days": 85,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-015",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "June",
+      "day": "30",
+      "term": "12",
+      "notice": "45"
+    },
+    "facts": {
+      "term_end": "2026-06-30",
+      "required_notice_days": 45,
+      "actual_lead_days": 49,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-016",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "December",
+      "day": "1",
+      "term": "12",
+      "notice": "45"
+    },
+    "facts": {
+      "term_end": "2026-12-01",
+      "required_notice_days": 45,
+      "actual_lead_days": 41,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-017",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "April",
+      "day": "1",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-04-01",
+      "required_notice_days": 60,
+      "actual_lead_days": 57,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-018",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "January",
+      "day": "10",
+      "term": "12",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-01-10",
+      "required_notice_days": 90,
+      "actual_lead_days": 100,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-019",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "May",
+      "day": "18",
+      "term": "12",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-05-18",
+      "required_notice_days": 90,
+      "actual_lead_days": 75,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-020",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2025",
+      "month": "July",
+      "day": "22",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-07-22",
+      "required_notice_days": 60,
+      "actual_lead_days": 66,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-021",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2023",
+      "month": "February",
+      "day": "1",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-02-01",
+      "required_notice_days": 60,
+      "actual_lead_days": 80,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-022",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2023",
+      "month": "September",
+      "day": "1",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-09-01",
+      "required_notice_days": 60,
+      "actual_lead_days": 30,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-023",
+    "gold": "avoided",
+    "outcome": "avoided",
+    "read": {
+      "year": "2024",
+      "month": "March",
+      "day": "10",
+      "term": "24",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-03-10",
+      "required_notice_days": 90,
+      "actual_lead_days": 110,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-024",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2024",
+      "month": "June",
+      "day": "5",
+      "term": "24",
+      "notice": "90"
+    },
+    "facts": {
+      "term_end": "2026-06-05",
+      "required_notice_days": 90,
+      "actual_lead_days": 70,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-025",
+    "gold": "not_applicable",
+    "outcome": "not_applicable",
+    "read": {
+      "year": "2025",
+      "month": "February",
+      "day": "1",
+      "term": "12",
+      "notice": "none"
+    },
+    "facts": {
+      "term_end": "2026-02-01",
+      "required_notice_days": 60,
+      "actual_lead_days": 10,
+      "auto_renews": false,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-026",
+    "gold": "not_applicable",
+    "outcome": "not_applicable",
+    "read": {
+      "year": "2025",
+      "month": "August",
+      "day": "1",
+      "term": "12",
+      "notice": "none"
+    },
+    "facts": {
+      "term_end": "2026-08-01",
+      "required_notice_days": 60,
+      "actual_lead_days": 90,
+      "auto_renews": false,
+      "email_allowed": true,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-027",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "March",
+      "day": "20",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-03-20",
+      "required_notice_days": 60,
+      "actual_lead_days": 120,
+      "auto_renews": true,
+      "email_allowed": false,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-028",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "October",
+      "day": "10",
+      "term": "12",
+      "notice": "30"
+    },
+    "facts": {
+      "term_end": "2026-10-10",
+      "required_notice_days": 30,
+      "actual_lead_days": 50,
+      "auto_renews": true,
+      "email_allowed": false,
+      "intent_clear": true
+    }
+  },
+  {
+    "id": "notice-029",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "May",
+      "day": "25",
+      "term": "12",
+      "notice": "60"
+    },
+    "facts": {
+      "term_end": "2026-05-25",
+      "required_notice_days": 60,
+      "actual_lead_days": 100,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": false
+    }
+  },
+  {
+    "id": "notice-030",
+    "gold": "not_avoided",
+    "outcome": "not_avoided",
+    "read": {
+      "year": "2025",
+      "month": "September",
+      "day": "9",
+      "term": "12",
+      "notice": "30"
+    },
+    "facts": {
+      "term_end": "2026-09-09",
+      "required_notice_days": 30,
+      "actual_lead_days": 45,
+      "auto_renews": true,
+      "email_allowed": true,
+      "intent_clear": false
+    }
+  }
+]

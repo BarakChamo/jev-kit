@@ -1,0 +1,4 @@
+Done. Changes:
+
+- **`questions.json`**: added `state.cancellation.from` (the sender address) and a new `sender_authorised` question (type `noul`) that compares it against authorised contacts listed in the contract text.
+- **`decide.ts`**: added `sender_authorised: NoulAnswer` to `JevAnswers` and added it as a fourth gate alongside `notice_timely`, `cancellation_intent_clear`, and `notice_method_compliant` — so an unauthorised sender now yields `INSUFFICIENT_NOTICE` (or `NEEDS_HUMAN_REVIEW` if the model is unsure), same as the existing gates.

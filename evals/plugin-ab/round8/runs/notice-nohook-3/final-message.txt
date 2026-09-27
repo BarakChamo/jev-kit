@@ -1,0 +1,15 @@
+Built two files, no API calls made:
+
+**questions.json** — request body with an example state (contract text, cancellation email text, received date) and 4 questions:
+- `has_auto_renewal` (noul) — does the contract auto-renew at all
+- `is_cancellation_notice` (noul) — is the email actually a cancellation, scoped to `cancellation_email_text`
+- `required_notice_band` (choice) — the contract's required notice window, bucketed into day-ranges with a `not_specified_or_ambiguous` abstain option
+- `notice_lead_time_band` (choice) — how many days before the renewal date the notice arrived, bucketed identically, with a `renewal_date_not_determinable` abstain option
+
+**decide.ts** — the comparison and gating logic, following the skill's rules:
+- Compares the two bands by rank in code rather than asking Jev to judge "on time" directly (rule 5 — that direct framing measured 41.7% vs 100% for bucket-and-compare)
+- Gates on the `choice` probability distribution's confidence and the `noul` probability of true, never on the bare scalar alone, and low confidence always escalates to `needs_human_review` rather than defaulting to "sufficient" (never relax a gate on uncertainty)
+- Treats a same-band collision (both facts land in the same coarse bucket) as ambiguous rather than guessing a direction
+- Short-circuits on no-auto-renewal or not-actually-a-cancellation before running the notice comparison at all
+
+Note: the exact day boundaries in the contract (e.g. "30 days" vs "60 days") should be checked against real contracts before relying on this — the bands here (30/60/90/180) are a reasonable default but you may want to tune them, and it's worth measuring on ~30 labelled cases (jev-eval) before trusting the gate thresholds.

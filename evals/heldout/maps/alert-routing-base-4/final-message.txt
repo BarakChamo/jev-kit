@@ -1,0 +1,5 @@
+Created `map.mjs` with:
+
+- **`buildState`** — passes through the alert text and a trimmed catalog (service, owner_team, tier).
+- **`questions`** — two `choice` questions: `service` (pick the actually-affected service from the catalog, explicitly instructed to ignore services mentioned only as context) and `severity` (critical/high/medium/low, using explicit tags when present).
+- **`decide`** — looks up the chosen service in the catalog to get `owner_team`/`tier`; abstains entirely if the service isn't in the catalog or its confidence is low; abstains on `page_now` only if severity confidence is low; otherwise applies the policy: page now if `critical`, or if `high` and tier 1, else ticket.

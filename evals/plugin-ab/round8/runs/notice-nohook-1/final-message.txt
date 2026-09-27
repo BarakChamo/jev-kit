@@ -1,0 +1,18 @@
+Both files are in the working directory (not called, per your instruction):
+
+**`questions.json`** — 5 questions, one request per (contract, cancellation email) pair:
+- `auto_renewal_present` (noul) — is there even an auto-renewal clause to avoid
+- `notice_period_days` (choice, bucketed days) — required notice length
+- `days_until_renewal_at_receipt` (choice, same bucket boundaries) — time actually available at receipt
+- `cancellation_intent_clear` (noul) — does the email actually say "cancel/won't renew" vs. something else
+- `email_method_permitted` (noul) — does the contract allow email as a notice method
+
+Timing is asked as two independently-bucketed quantities rather than "was notice on time?" directly (that direct framing is the pattern the skill's evidence shows collapses accuracy — 41.7% vs 100%/92.9% for the bucketed-and-compare version).
+
+**`decide.ts`** — all comparison/thresholding lives in code:
+- Confident-false on auto-renewal → `NO_AUTO_RENEWAL`; confident-false on intent or method → `INSUFFICIENT_NOTICE` immediately (short-circuits, since either kills the notice regardless of timing).
+- Compares the two day-buckets by lower bound; same-bucket ties and any `unclear` bucket route to `NEEDS_REVIEW` instead of guessing.
+- Any noul probability or choice confidence landing in the unsure band (0.35–0.65 / below 0.65) also routes to `NEEDS_REVIEW`, never silently defaults to the favorable outcome.
+- `NEEDS_REVIEW` reasons carry the top-two choice labels with probabilities for a human reviewer.
+
+One caveat worth flagging: this hasn't been measured against labelled cases yet (the `jev-eval` skill is set up for that) — bucket boundaries and confidence thresholds are reasonable starting points, not tuned values.

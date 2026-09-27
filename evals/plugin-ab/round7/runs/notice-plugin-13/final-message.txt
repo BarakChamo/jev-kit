@@ -1,0 +1,12 @@
+Built the two files, following the skill's rules for comparisons (bucket-and-compare-in-code, never ask "was it on time?" directly):
+
+**questions.json** — state carries the full `contract_text`, full `email_text`, and `email_received_date` (never an extracted summary). Five questions:
+- `has_auto_renewal` (noul) — does the contract even have an evergreen clause
+- `required_notice_days` (choice, bucketed) — notice period the contract demands
+- `days_from_notice_to_term_end` (choice, bucketed) — days between receipt and the term-end/renewal date
+- `clear_cancellation_intent` (noul) — is the email actually a cancellation, not a complaint/inquiry
+- `requires_specific_delivery_method` (noul) — a detector for formal-delivery risk (email vs. certified mail etc.)
+
+**decide.ts** — compares the two bucketed quantities in code (conservative: sufficient only if the worst-case lead time still covers the required max; insufficient only if even the best case falls short; boundary overlaps and low-confidence/`unclear` answers escalate to `NEEDS_HUMAN_REVIEW`, never silently pass). Low confidence never relaxes toward "sufficient." The delivery-method noul just attaches a flag rather than auto-failing, since email-vs-required-channel isn't verifiable from this data alone.
+
+Not called the API — this is ready to run through jev-eval on ~30 labelled cancellation/contract pairs before trusting it in production.

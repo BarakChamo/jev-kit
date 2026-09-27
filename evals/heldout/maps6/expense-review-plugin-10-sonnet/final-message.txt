@@ -1,0 +1,10 @@
+`map.mjs` is done. Summary of the design:
+
+- **State** sent to Jev is minimal (`expense` only) — everything numeric or textual that the policy states explicitly (meal/hotel/ground-transport limits, high-cost city list, itemized-receipt threshold, FX rates) is read straight out of `policy_text`/`fx_to_usd` with regex/lookups in code, never asked of the model, per the "read stated numbers exactly, do arithmetic in code" and "never ask Jev to compare" rules.
+- **Two Jev questions only**, both present-tense, single-fact, and scoped to a named field:
+  - `alcohol_entertainment` (noul) — does the purchase *include* alcohol/entertainment, even embedded in a larger item (asks "includes", not "is a kind of", per rule 7).
+  - `injection_attempt` (noul) — a rule-15 detector veto for descriptions that try to talk the approver into bypassing policy or claim prior approval.
+- **Decision logic in code**: compute USD amount, look up the right limit by category/city tier, apply "over limit → needs_approval, never reject" (the policy's own rule 6) and "no receipt above threshold → needs_approval." Alcohol/entertainment reject is gated on high confidence (≥0.8); a mid-confidence band (0.3–0.8) escalates to `needs_approval` rather than guessing. A confident injection attempt (≥0.6) downgrades an otherwise-`approve` decision, but never relaxes a reject/needs_approval.
+- **`abstain`** is reserved for structural failures the parser can't ground a decision in: unknown currency, a policy shape whose limits/city list/receipt threshold can't be found, or an expense category the policy simply doesn't cover.
+
+I verified the branch logic by hand-tracing several cases (within-limit, over-limit, high-cost city, embedded alcohol, unknown currency, unknown category, injection override) since Node execution required an approval this session couldn't get — all traced to the expected decisions. Recommend running it through `jev-eval` on a labeled sample before trusting it in production, per the skill's own guidance.

@@ -1,0 +1,13 @@
+The new gate flows through the existing failed/uncertain/passed logic generically, so no other changes were needed.
+
+**Changes made:**
+- `questions.json`: added `state.cancellation.from` (the sender address premise) and a new `sender_is_authorized_contact` noul question that compares it against authorized contacts in `state.contract.text`.
+- `decide.ts`: added `sender_is_authorized_contact` to `JevAnswers` and to the `gates` array, so an unauthorized/unclear sender now drives `INSUFFICIENT_NOTICE`/`NEEDS_HUMAN_REVIEW` the same way the other gates do.
+
+**Audit of the full question map** (as required, covering questions I didn't touch):
+
+- `auto_renewal_clause`, `required_notice_window`, `notice_method_compliant`, `cancellation_intent_clear` — each names its field, states things in the present tense, and puts all meaning in instructions/criteria. No issues.
+- **`notice_timely` has a pre-existing defect worth flagging**: it asks Jev to directly judge "was the notice received early enough" by combining the contract's deadline language with `cancellation.receivedAt` — this is exactly the comparison anti-pattern the rules warn about (deadlines/"on time" framed as a single question instead of two bucketed facts compared in code), and it's compounded by the map *also* having `required_notice_window` as a bucketed choice that never gets used for the comparison in `decide.ts`. The fix would be to also bucket the actual notice date's position relative to the term end (or compute it from a structured term-end date) and compare the two buckets in code, dropping the direct question. I left this unchanged since it wasn't part of the requested edit, but you may want to run it through jev-eval — this is the kind of field that scores confidently wrong on borderline dates.
+- New `sender_is_authorized_contact` — matching a known email string against a list embedded in contract prose isn't a quantity comparison, so asking Jev (rather than deriving in code) is appropriate; the necessary premise (`cancellation.from`) is now in state.
+
+No API calls were made.

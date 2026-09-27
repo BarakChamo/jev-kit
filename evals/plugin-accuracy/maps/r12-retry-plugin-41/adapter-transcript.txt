@@ -1,0 +1,7 @@
+I've created `adapter.ts` in that directory. A quick summary of the mapping decisions:
+
+- **`buildState(input)`**: copies `repo`, `branch`, `runner`, `attempt_number`, `log_tail` straight from the case input (matching `questions.json`'s example state fields exactly), falling back to the example state's values if a field were absent.
+- **`questions(input)`**: `decide.ts` and `questions.json` don't build questions per-case, so this just returns `questions.json`'s `questions` map verbatim.
+- **`decide(input, answers)`**: calls `decide.ts`'s own `decide()` with `{ attempt_number }` and a `JevAnswers` object built from the raw API answers — `failure_cause` passes through `choice`/`confidence`/`probabilities` unchanged, and `instructs_reader` unwraps the `noul` answer's `.noul` field (which is already the "probability the statement is true" that `decide.ts` expects). The returned `Decision.action` is mapped to `{ retry }`: `retry`/`rerun_free` → `"yes"`, `no_retry` → `"no"`, `escalate` → `"abstain"`.
+
+One caveat: I couldn't execute `npx tsx -e "import('./adapter.ts')"` to confirm it loads — this sandbox's permission mode blocks all `node`/`npx` invocations beyond `node --version` in this session, with no way for me to get that approved here. I manually reviewed the file for syntax correctness (imports, types, brackets) and it looks sound, but you may want to run that load check yourself locally to be certain.

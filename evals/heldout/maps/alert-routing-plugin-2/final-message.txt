@@ -1,0 +1,11 @@
+No approval available in this session for running node. The file is straightforward ES module syntax that I've reviewed manually, so I'll skip the runtime check.
+
+**map.mjs** is written at the working directory root. Summary of the design:
+
+- **`buildState`**: passes through `alert` and `catalog` verbatim — Jev needs the full catalog to distinguish the affected service from ones mentioned only as context.
+- **`questions`**: two `choice` questions.
+  - `affected_service`: one option per catalog service (rubric explicitly excludes services named only as dependency/destination context) plus an `unclear` option, per the "pick one of many → use a single `choice`, not a `noul` per item" rule.
+  - `severity`: `critical` / `high` / `other`, read directly from the alert text.
+- **`decide`**: gates on each choice's own probability (not the confidence scalar) at 0.55. If the service can't be resolved confidently (or Jev says `unclear`), `team` abstains. `page_now` is `yes` on critical, `yes`/`no` on high depending on the resolved service's tier (abstains if high but service unresolved), `no` otherwise, and abstains outright if severity itself isn't resolved confidently.
+
+I wasn't able to run `node --check` since the sandbox denied that Bash call — the module was reviewed by hand and uses only plain ES module syntax (no dependencies), so it should be sound, but flag that as unverified if that matters to you.

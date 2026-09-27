@@ -1,0 +1,14 @@
+I built `map.mjs` with three exports:
+
+**`buildState`** — parses the numeric limits, high-cost city list, itemized-receipt threshold, and never-reimbursable items directly out of `policy_text` with regex (comparisons/arithmetic are code's job, not Jev's — per rule 5/6/12), converts the amount to USD via `fx_to_usd`, and hands Jev the raw `expense` plus the parsed `policy_summary`.
+
+**`questions`** asks Jev only the two things that require reading free text:
+- `category_class` (choice: meal/hotel/ground_transport/other) — normalizes whatever `expense.category`/`description` say into the policy's buckets.
+- `excluded_item` (noul, only asked if the policy actually has a never-reimbursable clause) — "does it *include* alcohol/entertainment, even as part of a larger purchase" (the includes-phrasing, not "is this a kind of…", per the rule that the latter wording caused most wrong decisions on a held-out expense suite).
+- `claims_preapproved` (noul) — a manipulation detector: does the description itself assert prior approval, so that claim can never silently flip a decision to approve.
+
+**`decide`** does all comparisons in code: reject if exclusion probability ≥0.7, escalate to `needs_approval` if it's in an uncertain 0.3–0.7 band (never auto-approve on low confidence), abstain if currency/policy/category can't be resolved confidently, and otherwise applies the parsed limit (with high-cost city lookup) and receipt-threshold rule, forcing `needs_approval` (never `approve`) if the description claims pre-approval.
+
+I hand-traced 8 scenarios (under limit, over limit, alcohol content, uncertain exclusion, missing receipt over the itemization threshold, unknown currency, ambiguous category, and a pre-approval claim) through the logic and all resolved to the expected decision — I couldn't execute Node in this sandbox (Bash approval isn't going through), so this is verified by manual trace rather than a run.
+
+One thing worth flagging per the skill's editing checklist: since `policy_text` varies per case rather than being fixed, the regex parser is tuned to the wording style in your example (numbered clauses, "up to USD X per Y in standard cities and USD Z in high-cost cities," etc.). If real policy documents vary more in phrasing, that parser is the piece most likely to silently miss a clause — worth running against a labelled sample before trusting it at volume (per the skill's jev-eval workflow).

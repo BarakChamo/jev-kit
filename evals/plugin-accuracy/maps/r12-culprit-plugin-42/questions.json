@@ -1,0 +1,42 @@
+{
+  "model": "typesafe-ai/jev",
+
+  "_comment": "Example state — decide.ts builds the real state/criteria per job from up to 200 raw log lines.",
+  "state": {
+    "job_id": "build-42891",
+    "lines": [
+      { "line_number": 1, "text": "Run npm ci" },
+      { "line_number": 2, "text": "added 812 packages in 14s" },
+      { "line_number": 3, "text": "Run npm test" },
+      { "line_number": 4, "text": "> jest --ci" },
+      { "line_number": 5, "text": "FAIL src/payments/charge.test.ts" },
+      { "line_number": 6, "text": "  ● charge() › throws on negative amount" },
+      { "line_number": 7, "text": "    TypeError: Cannot read properties of undefined (reading 'currency')" },
+      { "line_number": 8, "text": "        at charge (src/payments/charge.ts:41:18)" },
+      { "line_number": 9, "text": "        at Object.<anonymous> (src/payments/charge.test.ts:22:5)" },
+      { "line_number": 10, "text": "Tests: 1 failed, 47 passed, 48 total" },
+      { "line_number": 11, "text": "##[error] Process completed with exit code 1" }
+    ]
+  },
+
+  "questions": {
+    "culprit_line": {
+      "type": "choice",
+      "instructions": "The state's `lines` array holds the last 200 lines of a failed CI job's output, each with a line_number and text, in original order. Select the line_number of the single line that most directly states the SPECIFIC cause of the failure: the actual error message, exception, failed assertion, or the name of the specific check/test that failed. Do not pick generic wrapper or summary lines that only report that the job ended badly, such as '##[error] Process completed with exit code N', a shell exit-code line with no error text of its own, or a final pass/fail tally line. If a stack trace is present, pick the line that first names the specific error (e.g. the exception message), not the frames below it that just show the call stack. If no line in `lines` states a specific cause, choose 'unclear'.",
+      "criteria": {
+        "1": "Run npm ci",
+        "2": "added 812 packages in 14s",
+        "3": "Run npm test",
+        "4": "> jest --ci",
+        "5": "FAIL src/payments/charge.test.ts",
+        "6": "  ● charge() › throws on negative amount",
+        "7": "    TypeError: Cannot read properties of undefined (reading 'currency')",
+        "8": "        at charge (src/payments/charge.ts:41:18)",
+        "9": "        at Object.<anonymous> (src/payments/charge.test.ts:22:5)",
+        "10": "Tests: 1 failed, 47 passed, 48 total",
+        "11": "##[error] Process completed with exit code 1",
+        "unclear": "no line in `lines` states a specific cause of the failure; a human should read the full log"
+      }
+    }
+  }
+}

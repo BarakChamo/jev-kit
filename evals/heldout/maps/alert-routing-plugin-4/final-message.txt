@@ -1,0 +1,5 @@
+Written to `map.mjs`:
+
+- **`buildState`**: passes through the alert text and the full catalog (service/owner_team/tier), named fields.
+- **`questions`**: two `choice` questions — `affected_service` (one option per catalog service, per rule 11's "pick one with a choice" pattern, with a rubric that explicitly excludes services mentioned only as context/dependency) and `severity_bucket` (critical / high / other, since the policy only ever branches on those three buckets).
+- **`decide`**: looks up `owner_team`/`tier` from the catalog in code (deterministic, never asked), gates on the returned `probabilities` (not the `confidence` scalar, per rule 8) at 0.55 for service identification and 0.65 for severity, applies the page-vs-ticket policy in code (critical → page; high + tier 1 → page; high + other tier → ticket; other → ticket), and abstains when the affected service can't be resolved confidently or severity falls in the ambiguous zone between buckets.

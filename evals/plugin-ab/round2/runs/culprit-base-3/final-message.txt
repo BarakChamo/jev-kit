@@ -1,0 +1,8 @@
+Built both files (not calling the API, as requested):
+
+**`questions.json`** — example state = last-200-lines log (`state.lines`, shown truncated) plus three parallel questions:
+- `culprit` (`choice`): picks the single root-cause line, with instructions steering it away from downstream symptoms (`npm ERR!`, exit-code wrappers, summary counts) toward the actual thrown error/assertion.
+- `isInfra` (`noul`): flake/infra vs. real code failure — determines whether to page a developer or suggest a retry.
+- `confidence` (`score`): low/medium/high, an explicit "is the log even unambiguous" signal separate from the choice question's own confidence.
+
+**`decide.ts`** — `decide(state, answers)` gates on `culprit.confidence` and `confidence.level`, falling back to `manual-triage` when Jev isn't sure (important at "thousands of failures/day" scale — wrong pointers erode trust fast). Otherwise it resolves the chosen line number back to text via `state.lines`, and branches to `flag-flake` (suggest retry) or `point-developer` (link straight to `logUrl#L<n>`) based on `isInfra.probability`.

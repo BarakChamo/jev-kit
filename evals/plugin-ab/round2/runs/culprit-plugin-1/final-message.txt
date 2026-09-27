@@ -1,0 +1,10 @@
+**Approach:** one `noul` question per plausible culprit line + argmax in code (the "score candidates" pattern), not a single `choice` over 200 options — because this is "which of several candidates is correct," which the skill's evidence favors doing this way.
+
+- `questions.json` — example request: state has `job_name`/`command`/`exit_code` plus all log lines for context, and one `noul` per candidate line naming it by index and exact text (never "this line"), each asking a present-tense fact ("is THIS line where the cause is stated") rather than any conditional. Plus a `no_clear_culprit` abstain question.
+- `decide.ts` — `findCulprit()`:
+  1. Regex pre-filters the 200 lines to plausible candidates (`FAILED`, `Error`, `panic:`, `assert`, exit codes, etc.) plus the tail summary line.
+  2. If exactly one candidate survives, code decides directly — no Jev call needed.
+  3. Otherwise builds the per-candidate `noul` questions dynamically and calls Jev.
+  4. Gates on raw probability (not the confidence scalar): requires top ≥ 0.7, a ≥ 0.2 margin over the runner-up, and abstain probability ≤ 0.5 — any failure escalates to a human rather than guessing.
+
+This wasn't measured — before trusting it at CI scale, run it against ~30 labelled (log → correct culprit line) cases via `jev-eval`/`jev-audit`, especially the confidently-wrong queue, since that's what actually catches question defects.

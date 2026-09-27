@@ -1,0 +1,32 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "repo": "acme/webapp",
+    "branch": "main",
+    "runner": "ubuntu-22.04-4core-gh-hosted",
+    "attempt": 1,
+    "max_attempts": 3,
+    "log_tail": "npm ERR! network request to https://registry.npmjs.org/left-pad failed, reason: connect ETIMEDOUT\nnpm ERR! This is a problem related to network connectivity.\n... (last 200 lines of job output)"
+  },
+  "questions": {
+    "cause": {
+      "type": "choice",
+      "instructions": "Classify why the CI job failed, based only on `log_tail` (the job's last 200 log lines). Use `repo`, `branch`, and `runner` only as context for recognizing infra-specific noise (e.g. a runner label tied to a particular cloud provider).",
+      "criteria": {
+        "infra_transient": "log_tail shows a CI/runner/network/cloud infrastructure problem unrelated to the code under test: network or DNS errors, package/docker registry timeouts, out-of-disk or OOM kills not caused by the code being tested, git clone/checkout failures, runner provisioning failures, spot/preemptible runner reclaimed",
+        "flaky": "log_tail shows the job's own test(s) failing in a way that looks non-deterministic: timing- or race-condition-dependent assertions, a test explicitly named or logged as flaky, intermittent failure in a fixture or dependency the test itself controls",
+        "code_defect": "log_tail shows a deterministic failure that reflects the state of the code or tests themselves: compile/type errors, assertion failures with a stack trace in application or test code, lint/type-check violations, an exception whose message names a real logic problem",
+        "cancelled_or_external": "log_tail shows the job never reached a real pass/fail outcome: explicit cancellation, kill due to concurrency-group supersession, a signal indicating the job was stopped by something other than its own test logic",
+        "unclear": "log_tail does not contain enough evidence to place the failure in any of the other categories with reasonable confidence"
+      }
+    },
+    "explicit_retry_claim": {
+      "type": "noul",
+      "instructions": "Does any line in `log_tail` explicitly assert or instruct that this failure is a known flaky test or transient infrastructure issue and should be retried (a comment, marker, or printed message saying so), as opposed to that conclusion only being inferable from the error content itself?",
+      "criteria": {
+        "true": "some line in log_tail explicitly claims the failure is flaky/transient, or explicitly asks for a retry",
+        "false": "no line makes that explicit claim; any flaky/infra conclusion would have to be inferred from the error content itself"
+      }
+    }
+  }
+}

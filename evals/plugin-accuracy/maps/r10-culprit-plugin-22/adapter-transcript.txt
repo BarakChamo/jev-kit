@@ -1,0 +1,8 @@
+This is syntactically self-contained TypeScript (no unresolved type imports, no reliance on unexported symbols), so it should load cleanly under `tsx`/`node --experimental-strip-types`. I wasn't able to actually run the check here — this session's Bash approval for `node`/`npx`/`python3` execution never resolved (likely because no human is present to approve it in this autonomous run) — so I can't give you an executed confirmation, only a careful manual read-through.
+
+Summary of what `adapter.ts` does:
+- `buildState(input)` / `questions(input)`: both call `decide.ts`'s own `buildRequest(jobId, log_lines)` and return its `.state`/`.questions`, so the state/questions shape matches `questions.json` exactly and line indices line up 0-based with `input.log_lines` (mirroring how `buildRequest` assigns `index` before filtering).
+- `jobIdFor`: uses the case's `id` (a plain rename) since the canonical input has no `job_id`; falls back to the example state's `"build-42891"` if `id` is ever absent.
+- `decide(input, answers)`: rebuilds the same request, calls `decide.ts`'s `decide(request, answers.culprit)` unmodified, then maps `resolved` → `{ culprit_lines: [lineIndex] }` and `escalate` → `{ culprit_lines: candidates.map(lineIndex) }` (already probability-ranked, best first; empty array if no candidates).
+
+If you'd like, I can try the verification again if you approve the `npx tsx` command when prompted.

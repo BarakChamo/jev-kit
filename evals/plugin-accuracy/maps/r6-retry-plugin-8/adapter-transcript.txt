@@ -1,0 +1,1 @@
+This requires your approval to run (it may attempt to download `tsx` via npx). Could you approve the command, or let me know if you'd rather I verify syntax a different way (e.g. static review without executing)?

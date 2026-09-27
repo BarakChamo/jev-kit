@@ -1,0 +1,10 @@
+Created two files:
+
+**`questions.json`** — example request. State holds the FAQ question, the verified answer, and the retrieved passages; the question map has one scoped `noul` per passage (`contradicts_p1`, `contradicts_p2`, ...), each naming the exact passage index it reads and asking only whether that passage conflicts with `verified_answer` — no crowded single "check all passages" question, since width is free with independent requests.
+
+**`decide.ts`** — `buildQuestions(state)` generates that per-passage question map for any number of passages (not hardcoded to 3), and `screen(state, answers)` applies the gate:
+- probability ≥ 0.7 → `CONTRADICTS`, blocked
+- probability ≤ 0.3 → `CLEAR`, passed to generator
+- in between → `UNCERTAIN`, also withheld (low confidence never defaults to "pass")
+
+Next step before trusting this: run it against ~30 labelled (question, passage, contradicts?) cases via `jev-eval`'s confidently-wrong audit, and tune the two thresholds against real calibration rather than the placeholder 0.7/0.3.

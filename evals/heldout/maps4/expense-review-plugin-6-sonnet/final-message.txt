@@ -1,0 +1,12 @@
+plugin-6-sonnet/map.mjs`. Node execution in this sandbox requires an approval that isn't landing, so I hand-traced the logic against 10 cases (including the sample) instead of running it — all matched expected outcomes.
+
+**Design, following the Jev-questions rules:**
+
+- **One Jev question, deliberately narrow.** `policy_text` varies per case (limits, high-cost cities, receipt threshold, over-limit rule all differ by policy), so everything that's a stated fact — dollar limits, the high-cost city list, the receipt threshold, whether over-limit means `needs_approval` or `reject` — is parsed out of `policy_text` **in code** with regex, per the rule "read a stated number exactly, never bucket it" and "let code decide what code can settle completely." This also dodges the documented failure mode where a model reads "USD 75" as a band and mis-judges a $73 dinner.
+- The only genuine judgment call — whether a free-text `expense.description` includes a never-reimbursable item (e.g. "a bottle of wine" inside a meal receipt) — goes to Jev as a single `noul`, using the exact wording the skill found decisive ("does it *include* X, even as part of a larger purchase" — 12/12 correct — vs. "is this *a kind of* X" — 10/12 and never decisive).
+- The never-reimbursable item list itself is also extracted from `policy_text` (whatever the policy names, not hardcoded to "alcohol/entertainment"), so the question adapts to each policy.
+- Gating: `noul ≥ 0.7` → reject, `≤ 0.3` → continue normal flow, in between → `needs_approval` (escalate to a manager rather than silently approve on an unsure read).
+- `decide()` then does fx conversion, city-tier lookup, and limit/receipt-threshold comparisons purely in code.
+- **`abstain`** is reserved for cases the *pipeline* can't resolve, not ones a manager should review: unparseable category (no matching policy clause), an over-limit case where the policy doesn't state reject-vs-approval, or a currency missing from `fx_to_usd`. Ambiguous alcohol/entertainment content instead routes to `needs_approval`, since that's a normal manager decision the policy already anticipates.
+
+One caveat: I couldn't execute this against a live suite (no `jev-eval` run, no API calls per the task's "do not call the API"), and per the skill's own warning, these rules are hypotheses that should be measured on labelled cases before trusting at volume — worth running through `jev-eval` before shipping to hundreds of thousands of lines/month.

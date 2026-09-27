@@ -1,0 +1,12 @@
+`map.mjs` is written and self-checked by manually tracing the example case (a $62 Chicago lunch → approve, since it's under both the $75 standard meal limit and the $75 receipt threshold — matches). I wasn't able to run `node --check` here since Bash command approval isn't going through in this session, but I reviewed the file end-to-end after the edit.
+
+Design summary, following the jev-questions rules (this exact policy shape — USD 75/110 meal limits — is literally the worked example in rule 5 of that skill, warning against comparing amounts via bands):
+
+- **Deterministic in code**: currency conversion (`amount_usd = amount × fx_to_usd[currency]`), and all limit/threshold *comparisons*. Jev never compares numbers.
+- **Extracted, not banded**: `map.mjs` regexes every `USD <n>` figure out of `policy_text` and offers those exact values (plus `no_limit_stated`) as `choice` options, so Jev picks the literal stated number rather than an ambiguous bucket.
+- **Decomposed reads**: separate present-tense questions for "is this city high-cost," "is this category ever reimbursable," "does it have a stated limit," the standard/high-cost limit amounts, the receipt threshold, and whether the policy escalates (vs. rejects) for over-limit / missing-receipt cases — each named to the state field it reads.
+- **Gating**: `noul` answers need ≥0.75/≤0.25 to count as confident true/false; `choice` answers need the top option's own probability ≥0.6. Anything short of that escalates to `needs_approval` (the natural "ask a human" state in this domain) rather than guessing.
+- **`abstain`** is reserved for data problems the questions can't fix: missing/unknown currency rate, missing policy text, or a malformed/missing answer set — not for policy judgment calls, which route to `needs_approval` instead.
+- Only a confident "never reimbursable" (alcohol/entertainment-type) verdict, or a confident "policy rejects over-limit" reading, produces `reject`.
+
+Before trusting this at "hundreds of thousands of lines a month" scale, it should go through jev-eval on a labelled sample (~30+ cases spanning high-cost cities, missing receipts, alcohol/entertainment, boundary amounts) to tune the 0.75/0.25/0.6 thresholds and check the confidently-wrong queue.

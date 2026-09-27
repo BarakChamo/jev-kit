@@ -1,0 +1,8 @@
+**questions.json** — `culprit_line` (`choice`, one option per log line + a `"0"` abstain option) and `is_infra_flake` (`noul`, detects flaky/infra failures separately). State carries the last-N log lines with their indices, the failing command, and exit code — everything the judgment needs, nothing to look up.
+
+**decide.ts** — `decide()`:
+- If `is_infra_flake` ≥ 0.75, report an infra flake (suggest retry) and skip line-pointing entirely.
+- Otherwise rank `culprit_line`'s probability distribution and take the top 3 lines as a shortlist.
+- Only labels it `"confident"` (vs. `"shortlist"`) above a placeholder threshold that **needs calibration against ~30 labelled (job, true line) pairs via jev-eval** before you trust it — this is the mode the skill's own data says is weakest (65–67.5% accuracy), so the UI should always show the shortlist, with the top pick merely highlighted, not a bare single answer.
+
+Next step before shipping: run jev-eval against real failed-job logs to calibrate `CONFIDENT_TOP1` and check whether the shortlist actually contains the true culprit line often enough (top-3 recall) to be worth showing at all.

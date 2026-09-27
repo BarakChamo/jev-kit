@@ -1,0 +1,11 @@
+Built both files:
+
+**questions.json** — state (contract text, cancellation email text, received date) plus 5 questions:
+- `autorenewal_clause_present` (noul) — does the contract even auto-renew?
+- `clause_clarity` (score) — can the renewal date and notice period be pinned down at all?
+- `required_notice_days` / `actual_notice_days` (choice, same day-bucket ladder) — required and actual notice as bucketed quantities, so the comparison happens in code rather than being asked of Jev directly (per the skill's bucketed-comparison rule — comparing two separately-stated quantities is unreliable for Jev, but computing+bucketing one value from the contract text is fine).
+- `notice_method_satisfied` (noul) — did the email meet form requirements (written, right recipient/address), since timing alone isn't sufficient.
+
+**decide.ts** — gates each noul on probability (not the confidence scalar, per the skill), never relaxes on "unsure" (routes to `needs_human_review` instead), short-circuits when there's no auto-renewal clause, and only when both timing and method check out returns `notice_sufficient`. Bucket comparison is a simple ordinal index lookup.
+
+Not called the API, as requested. Before trusting this, it should go through `jev-eval` on ~30 labelled contract/email pairs (including edge cases: silent contracts, "greater of X or Y%" formulas, notices sent right at the deadline) to check the bucket boundaries and confidence thresholds actually hold up.

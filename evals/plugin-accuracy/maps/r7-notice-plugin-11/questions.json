@@ -1,0 +1,48 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement shall automatically renew for successive one (1) year terms unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be sent by email to legal@vendor.example or by certified mail to the address above.",
+    "email_text": "Hi team, we've decided not to continue with the service after our current term ends. Please treat this email as our formal notice of cancellation and do not renew our subscription. Thanks, Jamie",
+    "date_received": "2026-08-05",
+    "current_term_end_date": "2026-09-30"
+  },
+  "questions": {
+    "auto_renewal_exists": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the agreement automatically renews for another term unless the customer takes action to cancel or opt out before the end of the current term?",
+      "criteria": {
+        "true": "contract_text describes an automatic/evergreen renewal that happens unless the customer cancels or opts out in time",
+        "false": "contract_text has no automatic renewal, requires an affirmative renewal action from the customer, or simply expires"
+      }
+    },
+    "required_notice_band": {
+      "type": "choice",
+      "instructions": "Per `contract_text` only, what is the minimum amount of advance notice, measured backward from `current_term_end_date`, that the customer must give to prevent automatic renewal? If the clause states a formula (e.g. the greater of a fixed period or a percentage of the term), compute it and pick the band it falls in.",
+      "criteria": {
+        "no_minimum_specified": "contract_text requires notice before the renewal date but states no specific minimum lead time",
+        "under_15": "the required minimum is fewer than 15 days",
+        "15_29": "the required minimum is 15 to 29 days",
+        "30_59": "the required minimum is 30 to 59 days",
+        "60_89": "the required minimum is 60 to 89 days",
+        "90_179": "the required minimum is 90 to 179 days",
+        "180_plus": "the required minimum is 180 days or more"
+      }
+    },
+    "is_cancellation_notice": {
+      "type": "noul",
+      "instructions": "Does `email_text` clearly communicate the customer's intent to cancel the agreement or not renew it, as opposed to some other kind of message (a question, a complaint, a request for a discount, etc.)?",
+      "criteria": {
+        "true": "email_text unambiguously states an intent to cancel or not renew",
+        "false": "email_text does not clearly state that intent"
+      }
+    },
+    "notice_method_valid": {
+      "type": "noul",
+      "instructions": "If `contract_text` specifies a required method or form for giving cancellation notice (e.g. written notice, a specific address, certified mail), does sending `email_text` by email satisfy that requirement? If contract_text states no method or form requirement, answer true.",
+      "criteria": {
+        "true": "email satisfies any stated method/form requirement, or none is stated",
+        "false": "contract_text requires a different method (e.g. certified mail only) and email does not satisfy it"
+      }
+    }
+  }
+}

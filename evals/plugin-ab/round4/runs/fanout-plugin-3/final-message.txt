@@ -1,0 +1,11 @@
+Built both files at `/tmp/claude-0/-home-user-jev-discovery/c35f5c53-e272-5f13-8872-8508765d320f/scratchpad/ab4/runs/fanout-plugin-3/`:
+
+**`questions.json`** — one state (`contract_text` + party names) and 26 scoped questions covering the 25 DB fields. Design choices per the Jev rules:
+- `noul` for present/absent facts (auto-renewal clause, DPA, audit rights, force majeure, etc.), `choice` for categorical/banded facts (governing law, indemnity scope, payment terms band). No `score` — nothing here is a clean ordered scale.
+- Amounts are asked as **bucketed choices** (`liability_cap_fixed_amount_band`, `renewal_notice_period_band`, `payment_terms_band`), never raw numbers, so nothing needs comparing inside the model.
+- Liability cap is split into `present` / `basis` / two basis-specific bands, so code — not Jev — merges them into one authoritative amount band.
+- Every question names the field it reads (`` `contract_text` ``), never "this document."
+
+**`decide.ts`** — gates every answer on the probability of the label, not the `confidence` scalar (noul: ≥0.75/≤0.25 confident, else review; choice: per-field probability threshold, stricter for fields that drive triage like termination-for-convenience). It derives `liability_cap_amount_band` in code from `liability_cap_basis` rather than asking Jev to merge two bands, cross-checks pairs of answers that should agree (e.g. no auto-renewal but a renewal-notice band was still picked), and never lets low confidence relax a value — any unsure field or inconsistency flips `needs_human_review` for that contract.
+
+Not run against the API as requested. Before pointing this at 40k contracts/year, worth running the **jev-eval** skill against ~30 labelled contracts (weighted toward the ambiguous ones — nested/conflicting clauses, MSAs with order-form amendments) to check calibration and tune the per-field thresholds, since these are hypotheses until measured.

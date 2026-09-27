@@ -1,0 +1,5 @@
+Both files are consistent and valid — no API call was made.
+
+Changes made:
+- **`questions.json`**: added `state.cancellation.from` (sender address) and a sentence in `state.contract.text` naming the authorized contacts, so the new question has the facts it needs (per the "premise in state" rule). Added one `noul` question, `sender_is_authorized_contact`, scoped to the two exact fields it reads (`state.contract.text`, `state.cancellation.from`).
+- **`decide.ts`**: added `sender_is_authorized_contact` to `JevAnswers` and to the `gates` array, so an unauthorized/unmatched sender flips the verdict to `INSUFFICIENT_NOTICE` (or `NEEDS_HUMAN_REVIEW` if the model is unsure), same as the existing gates.

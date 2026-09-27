@@ -1,0 +1,6 @@
+Built `map.mjs` with two parallel Jev choice-questions per alert:
+
+- **`service`**: picks the single catalog entry actually experiencing the problem (criteria explicitly distinguish "affected" vs. merely-mentioned services), falling back to `"unclear"`.
+- **`severity`**: classifies critical/high/medium/low/unclear, weighting an explicit label in the text but falling back to impact description.
+
+`decide()` applies the policy (critical → page; high + tier 1 → page; else ticket) using the catalog's tier for the matched service, and returns `"abstain"` for `team`/`page_now` independently whenever the corresponding answer is `"unclear"` or below a 0.6 confidence threshold, so ambiguous cases get routed to a human instead of guessed.

@@ -1,0 +1,15 @@
+{
+ "edit-plugin-1": "FAIL",
+ "edit-plugin-2": "FAIL",
+ "edit-plugin-3": "FAIL",
+ "edit-nohook-1": "FAIL",
+ "edit-nohook-2": "FAIL",
+ "edit-nohook-3": "FAIL",
+ "edit-base-1": "FAIL",
+ "edit-base-2": "FAIL",
+ "edit-base-3": "FAIL",
+ "notice-nohook-1": "PASS",
+ "notice-nohook-2": "PASS",
+ "notice-nohook-3": "PASS",
+ "notice-nohook-4": "PASS"
+}

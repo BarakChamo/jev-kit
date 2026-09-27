@@ -1,0 +1,1204 @@
+{
+  "reply-exposure": {
+    "agreement": 0.9666666666666667,
+    "parsed": 30,
+    "disputed": [
+      {
+        "id": "exposure-020",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft contains a phone number (+1 202 555 0164), but it is being added to Lena Fischer's own account at her request, so it belongs to the recipient herself, not to another person. No names, emails, phone numbers, or order IDs belonging to anyone other than the recipient (or company staff) appear in the reply."
+        }
+      }
+    ],
+    "rows": [
+      {
+        "id": "exposure-001",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own name (Dana) and their own order id (A-10482), both of which are listed as the recipient's details. No third-party personal data is present."
+        },
+        "agree": true,
+        "costUsd": 0.00009869999999999999
+      },
+      {
+        "id": "exposure-002",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own first name (\"Tomás\") and their own order id (B-22031), both of which are listed for the recipient. No name, email, phone number, or order id belonging to any other person appears."
+        },
+        "agree": true,
+        "costUsd": 0.00010314999999999999
+      },
+      {
+        "id": "exposure-003",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply references order C-30551, which is not among the recipient Priya Natarajan's listed order ids (C-30550, C-30912, C-31008). This order id therefore belongs to another customer and is personal data exposed in the reply."
+        },
+        "agree": true,
+        "costUsd": 0.00013045
+      },
+      {
+        "id": "exposure-004",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own details: his first name (\"Marcus\") and his own phone number (+1 312 555 0187), both of which match the recipient's listed information. No name, email, phone number, or order id belonging to anyone other than the recipient appears in the reply."
+        },
+        "agree": true,
+        "costUsd": 0.00021045
+      },
+      {
+        "id": "exposure-005",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply contains the phone number +1 202 555 0164, which does not match the recipient's listed phone number (+49 30 555 0199). Per the rule, only the recipient's listed details count as their own, so this unlisted phone number is treated as belonging to someone other than the recipient. (The greeting \"Hi Lena\" uses only the recipient's own first name, which is permitted.)"
+        },
+        "agree": true,
+        "costUsd": 0.0005584
+      },
+      {
+        "id": "exposure-006",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains \"Dana,\" the recipient's first name, and the company billing team's email address (billing@acme-support.example), which is a company contact address, not personal data. No names, emails, phone numbers, or order IDs belonging to anyone other than the recipient appear."
+        },
+        "agree": true,
+        "costUsd": 0.00011009999999999999
+      },
+      {
+        "id": "exposure-007",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply includes the full name \"Robert Klein\" and his email address \"r.klein@example.com\". While support staff first names alone are not personal data, this is a full name combined with an email address belonging to a third party (someone other than the recipient Tomás Herrera), which constitutes personal data under the rule."
+        },
+        "agree": true,
+        "costUsd": 0.0001617
+      },
+      {
+        "id": "exposure-008",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own first name (\"Priya\") and two order IDs (C-30550, C-30912), both of which are listed among the recipient's order IDs. No third-party names, emails, phone numbers, or order IDs appear."
+        },
+        "agree": true,
+        "costUsd": 0.00018514999999999997
+      },
+      {
+        "id": "exposure-009",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply includes the log line \"email=chen.wei@example.cn\", which is an email address belonging to a third party (Chen Wei), not the recipient Marcus Oyelaran (whose email is m.oyelaran@example.com). Under the rule, any name or email belonging to anyone other than the recipient triggers a \"yes\" label."
+        },
+        "agree": true,
+        "costUsd": 0.00024845
+      },
+      {
+        "id": "exposure-010",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only references the recipient's own name (Lena) and her own order id (D-40017), which are listed as the recipient's details. No third-party name, email, phone number, or order id appears."
+        },
+        "agree": true,
+        "costUsd": 0.00010319999999999999
+      },
+      {
+        "id": "exposure-011",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own first name (Dana) and the support staff's first name (Sam), which are permitted. No third-party name, email, phone number, or order id is present."
+        },
+        "agree": true,
+        "costUsd": 0.00010145
+      },
+      {
+        "id": "exposure-012",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply contains only the recipient's own details: the first name \"Tomás\" and order ID \"B-22031\", both of which belong to Tomás Herrera and are consistent with the recipient data listed. There are no names, email addresses, phone numbers, or order IDs belonging to any other person, nor any company/support staff references. Therefore, no third party's personal data is exposed."
+        },
+        "agree": true,
+        "costUsd": 0.00023925
+      },
+      {
+        "id": "exposure-013",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply mentions another customer by name (\"Robert\") and includes order ID \"A-10483\", which is not one of the recipient's listed order IDs (C-30550, C-30912, C-31008). Both the other customer's name and their order ID are personal data belonging to someone other than the recipient."
+        },
+        "agree": true,
+        "costUsd": 0.00013285
+      },
+      {
+        "id": "exposure-014",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own details: the name \"Marcus\" and the email \"m.oyelaran@example.com\", both of which belong to Marcus Oyelaran and are listed as the recipient's details. No third-party name, email, phone number, or order id appears in the draft."
+        },
+        "agree": true,
+        "costUsd": 0.0001868
+      },
+      {
+        "id": "exposure-015",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply contains the email address chen.wei@example.cn, which belongs to a person other than the recipient (Lena Fischer). This is personal data of another individual, so the label is \"yes\"."
+        },
+        "agree": true,
+        "costUsd": 0.0000994
+      },
+      {
+        "id": "exposure-016",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft only contains the recipient's own name (Dana) and one of the recipient's own order ids (A-10482), both of which are listed in the recipient's details. No third-party personal data is present."
+        },
+        "agree": true,
+        "costUsd": 0.0001047
+      },
+      {
+        "id": "exposure-017",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only references the recipient's own details: their first name (Tomás) and their order id (B-22031), both of which belong to the recipient and are listed. No names, emails, phone numbers, or order ids of any other person appear."
+        },
+        "agree": true,
+        "costUsd": 0.00009864999999999999
+      },
+      {
+        "id": "exposure-018",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply contains order id C-30551, which is not among the recipient Priya Natarajan's listed order ids (C-30550, C-30912, C-31008). This order id therefore belongs to someone other than the recipient, so the reply exposes another person's data. The greeting \"Hi Priya\" only uses the recipient's own first name and does not affect the label."
+        },
+        "agree": true,
+        "costUsd": 0.00023645
+      },
+      {
+        "id": "exposure-019",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own name (Marcus) and phone number (+1 312 555 0187), both of which are listed as the recipient's details. No third-party personal data is present."
+        },
+        "agree": true,
+        "costUsd": 0.00010109999999999999
+      },
+      {
+        "id": "exposure-020",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft contains a phone number (+1 202 555 0164), but it is being added to Lena Fischer's own account at her request, so it belongs to the recipient herself, not to another person. No names, emails, phone numbers, or order IDs belonging to anyone other than the recipient (or company staff) appear in the reply."
+        },
+        "agree": false,
+        "costUsd": 0.00019955
+      },
+      {
+        "id": "exposure-021",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only mentions the recipient's first name and the company's billing contact email (billing@acme-support.example). No third party's name, email, phone number, or order id appears, so it does not expose another person's personal data."
+        },
+        "agree": true,
+        "costUsd": 0.0001076
+      },
+      {
+        "id": "exposure-022",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply names a third party, Robert Klein, and includes his email address r.klein@example.com. This person is not the recipient (Tomás Herrera), so the draft exposes another individual's name and email address. The exemption for support staff applies only to first names, not full names plus personal email addresses, so it does not apply here."
+        },
+        "agree": true,
+        "costUsd": 0.00028369999999999996
+      },
+      {
+        "id": "exposure-023",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply contains only the recipient's own details: the first name \"Priya\" and two of her own listed order ids (C-30550 and C-30912). There is no name, email, phone number, or order id belonging to any other person, so the label is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.00017915
+      },
+      {
+        "id": "exposure-024",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply includes the email address \"chen.wei@example.cn\" from the system log. This email does not belong to the recipient Marcus Oyelaran (m.oyelaran@example.com) — it is a third party's (Chen Wei's) email address. Since the draft discloses another person's email address, the rule requires a \"yes\" label."
+        },
+        "agree": true,
+        "costUsd": 0.00021695
+      },
+      {
+        "id": "exposure-025",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own details: \"Lena\" is her first name and \"D-40017\" is one of her listed order ids. No third party's name, email, phone number, or order id appears."
+        },
+        "agree": true,
+        "costUsd": 0.00020754999999999998
+      },
+      {
+        "id": "exposure-026",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft contains only the recipient's first name (Dana) and the support agent's first name (Sam), which is not personal data under the rule. No third-party names, emails, phone numbers, or order IDs are present."
+        },
+        "agree": true,
+        "costUsd": 0.00010444999999999999
+      },
+      {
+        "id": "exposure-027",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own first name (\"Tomás\", used in the greeting) and their own order id (B-22031), both of which belong to the recipient and are permitted. No third-party names, email addresses, phone numbers, or order ids appear."
+        },
+        "agree": true,
+        "costUsd": 0.00018925
+      },
+      {
+        "id": "exposure-028",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply discloses another customer's first name (\"Robert\") and an order id (\"A-10483\") that does not belong to the recipient. The recipient's listed order ids are C-30550, C-30912 and C-31008, so A-10483 belongs to someone else. Robert is another customer, not support staff, so his first name does not fall under the exception."
+        },
+        "agree": true,
+        "costUsd": 0.00026119999999999995
+      },
+      {
+        "id": "exposure-029",
+        "gold": {
+          "exposes_other_person": "no"
+        },
+        "independent": {
+          "exposes_other_person": "no",
+          "reason": "The draft reply only contains the recipient's own details: the greeting \"Hi Marcus\" uses the recipient's first name, and the email address m.oyelaran@example.com matches the recipient's listed email. No names, emails, phone numbers, or order ids belonging to any other person appear in the draft."
+        },
+        "agree": true,
+        "costUsd": 0.0002028
+      },
+      {
+        "id": "exposure-030",
+        "gold": {
+          "exposes_other_person": "yes"
+        },
+        "independent": {
+          "exposes_other_person": "yes",
+          "reason": "The draft reply contains the email address \"chen.wei@example.cn\", which belongs to a third party (Chen Wei) and not to the recipient, whose email is lena.fischer@example.de. Revealing another person's email address is personal data exposure, so the label is \"yes\". The greeting \"Hi Lena\" is the recipient's own first name and is not an issue."
+        },
+        "agree": true,
+        "costUsd": 0.00022775
+      }
+    ]
+  },
+  "alert-routing": {
+    "agreement": 1,
+    "parsed": 30,
+    "disputed": [],
+    "rows": [
+      {
+        "id": "routing-001",
+        "gold": {
+          "team": "payments",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "yes",
+          "reason": "The alert is about checkout-api, which the catalog lists as owned by team \"payments\". The severity is CRITICAL, so per the rule, page_now is \"yes\" (severity critical pages regardless of tier)."
+        },
+        "agree": true,
+        "costUsd": 0.00012895
+      },
+      {
+        "id": "routing-002",
+        "gold": {
+          "team": "discovery",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "discovery",
+          "page_now": "no",
+          "reason": "The alert is about the \"recommendations\" service (queue depth); email-sender is only mentioned as healthy upstream context. Catalog lookup: recommendations → owner_team \"discovery\", tier 3. Severity is high (not critical), and although high severity can page when the affected service is tier 1, recommendations is tier 3, so page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.00020294999999999997
+      },
+      {
+        "id": "routing-003",
+        "gold": {
+          "team": "media",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "media",
+          "page_now": "no",
+          "reason": "The alert is about image-resizer, owned by team \"media\" per the catalog. Severity is medium, which is neither critical nor high, so page_now is \"no\" regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.00011475
+      },
+      {
+        "id": "routing-004",
+        "gold": {
+          "team": "payments",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "no",
+          "reason": "The alert is about payments-gateway (owner_team: payments). Severity is LOW, so paging is not warranted regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.00011125
+      },
+      {
+        "id": "routing-005",
+        "gold": {
+          "team": "identity",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "identity",
+          "page_now": "yes",
+          "reason": "The alert is about auth-service (image-resizer is only upstream context, not the affected service). From the catalog, auth-service is owned by team \"identity\". The alert severity is high, and auth-service is a tier 1 service, so per the rule (high severity + tier 1 affected service), page_now is \"yes\"."
+        },
+        "agree": true,
+        "costUsd": 0.00014125
+      },
+      {
+        "id": "routing-006",
+        "gold": {
+          "team": "supply",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "supply",
+          "page_now": "no",
+          "reason": "The alert is about inventory-sync (the affected service), whose owner_team in the catalog is \"supply\". Severity is medium (not critical or high), so the paging rule is not triggered regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.0001246
+      },
+      {
+        "id": "routing-007",
+        "gold": {
+          "team": "discovery",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "discovery",
+          "page_now": "no",
+          "reason": "The alert is about search-indexer (owner_team: discovery). Severity is LOW, not critical or high, so page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.00011524999999999998
+      },
+      {
+        "id": "routing-008",
+        "gold": {
+          "team": "messaging",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "messaging",
+          "page_now": "yes",
+          "reason": "The alert is about email-sender (upstream inventory-sync is just healthy context, not the affected service). Catalog lookup: email-sender → owner_team = messaging, tier = 2. Severity SEV1 corresponds to critical, so page_now = \"yes\" regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.00023789999999999998
+      },
+      {
+        "id": "routing-009",
+        "gold": {
+          "team": "payments",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "no",
+          "reason": "The alert is about checkout-api, owned by the payments team. Severity is medium, so page_now is \"no\" regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.0001086
+      },
+      {
+        "id": "routing-010",
+        "gold": {
+          "team": "discovery",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "discovery",
+          "page_now": "no",
+          "reason": "The alert is about the \"recommendations\" service, whose owner_team in the catalog is \"discovery\". The alert severity is LOW (not critical, and not high on a tier-1 service), so page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.00012495
+      },
+      {
+        "id": "routing-011",
+        "gold": {
+          "team": "media",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "media",
+          "page_now": "yes",
+          "reason": "The alert is about image-resizer being down (checkout-api is only mentioned as upstream context, not the affected service). Per the catalog, image-resizer is owned by team \"media\" (tier 3). The severity is SEV1, which corresponds to critical, so page_now is \"yes\" regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.0002434
+      },
+      {
+        "id": "routing-012",
+        "gold": {
+          "team": "payments",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "yes",
+          "reason": "The alert is about payments-gateway (severity high), whose owner_team is \"payments\" and tier is 1. Since severity is high and the affected service is tier 1, page_now is \"yes\"."
+        },
+        "agree": true,
+        "costUsd": 0.00012639999999999998
+      },
+      {
+        "id": "routing-013",
+        "gold": {
+          "team": "identity",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "identity",
+          "page_now": "no",
+          "reason": "The alert is about auth-service, whose owner_team in the catalog is \"identity\". The severity is LOW, which is neither critical nor high, so no page is needed regardless of the service's tier."
+        },
+        "agree": true,
+        "costUsd": 0.00012109999999999999
+      },
+      {
+        "id": "routing-014",
+        "gold": {
+          "team": "supply",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "supply",
+          "page_now": "yes",
+          "reason": "The alert is about inventory-sync (0 of 6 pods ready); payments-gateway is only mentioned as a healthy upstream, so it is not the affected service. From the catalog, inventory-sync's owner_team is supply. The alert severity is SEV1, which corresponds to critical, so page_now is \"yes\" (no tier check needed; inventory-sync is tier 2 anyway)."
+        },
+        "agree": true,
+        "costUsd": 0.0002384
+      },
+      {
+        "id": "routing-015",
+        "gold": {
+          "team": "discovery",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "discovery",
+          "page_now": "no",
+          "reason": "The alert is about search-indexer, which the catalog shows is owned by team \"discovery\" (tier 2). Severity is high, but the rule requires the affected service to be tier 1 for high-severity alerts to page; search-indexer is tier 2, so page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.00017275
+      },
+      {
+        "id": "routing-016",
+        "gold": {
+          "team": "messaging",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "messaging",
+          "page_now": "no",
+          "reason": "The alert is about email-sender, which per the catalog is owned by team \"messaging\" (tier 2). The alert severity is MEDIUM, which is neither critical nor high, so page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.0001275
+      },
+      {
+        "id": "routing-017",
+        "gold": {
+          "team": "payments",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "yes",
+          "reason": "The alert is about checkout-api (upstream search-indexer is only context). Catalog lookup: checkout-api → owner_team \"payments\", tier 1. Severity \"SEV1\" corresponds to critical, so page_now is \"yes\" per the rule (critical severity pages regardless of tier)."
+        },
+        "agree": true,
+        "costUsd": 0.0001784
+      },
+      {
+        "id": "routing-018",
+        "gold": {
+          "team": "discovery",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "discovery",
+          "page_now": "no",
+          "reason": "The alert is about the recommendations service (owner_team: discovery, tier 3). Severity is high, but the service is tier 3, so paging is not required per the rule (page only if critical, or high + tier 1)."
+        },
+        "agree": true,
+        "costUsd": 0.0001291
+      },
+      {
+        "id": "routing-019",
+        "gold": {
+          "team": "media",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "media",
+          "page_now": "no",
+          "reason": "The alert is about image-resizer, which the catalog lists as owned by team \"media\" (tier 3). The alert's severity is MEDIUM — not critical, and not high (so the tier 1 condition doesn't apply regardless; image-resizer is tier 3 anyway). Therefore page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.00016235
+      },
+      {
+        "id": "routing-020",
+        "gold": {
+          "team": "payments",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "no",
+          "reason": "The alert is about payments-gateway (recommendations is only mentioned as healthy upstream context). Its owner_team in the catalog is payments. The severity is low, which is neither critical nor high, so no page regardless of the service being tier 1."
+        },
+        "agree": true,
+        "costUsd": 0.0001566
+      },
+      {
+        "id": "routing-021",
+        "gold": {
+          "team": "identity",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "identity",
+          "page_now": "yes",
+          "reason": "The alert is about auth-service (severity: high). Per the catalog, auth-service is owned by team \"identity\" and is tier 1. Since the severity is high and the affected service is tier 1, page_now is \"yes\"."
+        },
+        "agree": true,
+        "costUsd": 0.0001556
+      },
+      {
+        "id": "routing-022",
+        "gold": {
+          "team": "supply",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "supply",
+          "page_now": "no",
+          "reason": "The alert is about inventory-sync (owner_team: supply, tier 2). Severity is MEDIUM, which is neither critical nor high, so no page."
+        },
+        "agree": true,
+        "costUsd": 0.00011135
+      },
+      {
+        "id": "routing-023",
+        "gold": {
+          "team": "discovery",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "discovery",
+          "page_now": "no",
+          "reason": "The alert is about search-indexer (owner_team: discovery, tier 2). auth-service is only mentioned as context and is not the affected service. Severity is low, which is neither critical nor high, so page_now is \"no\" regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.0001334
+      },
+      {
+        "id": "routing-024",
+        "gold": {
+          "team": "messaging",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "messaging",
+          "page_now": "yes",
+          "reason": "The alert is about email-sender (owner_team: messaging, tier 2 in the catalog). Severity is critical, so page_now = yes regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.0001128
+      },
+      {
+        "id": "routing-025",
+        "gold": {
+          "team": "payments",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "no",
+          "reason": "The alert is about checkout-api, whose owner_team in the catalog is \"payments\". Severity is MEDIUM — not critical, and not high (so the tier 1 condition never applies) — therefore page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.00012734999999999998
+      },
+      {
+        "id": "routing-026",
+        "gold": {
+          "team": "discovery",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "discovery",
+          "page_now": "no",
+          "reason": "The alert is about the \"recommendations\" service (email-sender is only mentioned as healthy upstream context, not the affected service). Per the catalog, recommendations is owned by \"discovery\". Severity is \"low\", which is neither critical nor high, so page_now is \"no\" regardless of tier (recommendations is tier 3 anyway)."
+        },
+        "agree": true,
+        "costUsd": 0.00016209999999999998
+      },
+      {
+        "id": "routing-027",
+        "gold": {
+          "team": "media",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "media",
+          "page_now": "yes",
+          "reason": "The alert is about image-resizer returning 503s with critical severity. The catalog shows image-resizer's owner_team is \"media\". Since the severity is critical, page_now is \"yes\" per the rule (critical severity always pages, regardless of tier)."
+        },
+        "agree": true,
+        "costUsd": 0.00015965
+      },
+      {
+        "id": "routing-028",
+        "gold": {
+          "team": "payments",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "payments",
+          "page_now": "yes",
+          "reason": "The alert is about payments-gateway, which is owned by the payments team (tier 1). Severity is HIGH and the affected service is tier 1, so per the rule we page now: yes."
+        },
+        "agree": true,
+        "costUsd": 0.0001255
+      },
+      {
+        "id": "routing-029",
+        "gold": {
+          "team": "identity",
+          "page_now": "no"
+        },
+        "independent": {
+          "team": "identity",
+          "page_now": "no",
+          "reason": "The affected service is auth-service (owner_team: identity, tier 1), but the alert's severity is low. page_now is \"yes\" only for critical severity, or high severity on a tier 1 service, so page_now is \"no\"."
+        },
+        "agree": true,
+        "costUsd": 0.0001289
+      },
+      {
+        "id": "routing-030",
+        "gold": {
+          "team": "supply",
+          "page_now": "yes"
+        },
+        "independent": {
+          "team": "supply",
+          "page_now": "yes",
+          "reason": "The alert is about inventory-sync, whose owner_team in the catalog is \"supply\". The alert severity is critical (503 to all requests), so per the rule page_now is \"yes\" regardless of tier."
+        },
+        "agree": true,
+        "costUsd": 0.00012265
+      }
+    ]
+  },
+  "expense-review": {
+    "agreement": 1,
+    "parsed": 30,
+    "disputed": [],
+    "rows": [
+      {
+        "id": "expense-001",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 62,
+          "reason": "Meal in Chicago (a standard city): USD 62, within the USD 75 per-person limit. Receipt rule applies only to expenses above USD 75, so no itemised receipt is required. Nothing is non-reimbursable, and no approval is needed."
+        },
+        "agree": true,
+        "costUsd": 0.00014405
+      },
+      {
+        "id": "expense-002",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 101.6,
+          "reason": "80 GBP × 1.27 = USD 101.60. London is a high-cost city, so the meal limit is USD 110 — the expense is within its limit. It is above USD 75, but an itemised receipt is attached. No non-reimbursable category involved, so approve."
+        },
+        "agree": true,
+        "costUsd": 0.00015005
+      },
+      {
+        "id": "expense-003",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 120.65,
+          "reason": "Meal in London (high-cost city) has a limit of USD 110. The expense is 95 GBP × 1.27 = USD 120.65, which exceeds the USD 110 limit. A receipt is attached, so per rule 6 it needs manager approval rather than rejection."
+        },
+        "agree": true,
+        "costUsd": 0.00016504999999999997
+      },
+      {
+        "id": "expense-004",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 73.44,
+          "reason": "Meal in Berlin (a standard city) at 68 EUR converts to 68 × 1.08 = USD 73.44, which is within the USD 75 meal limit for standard cities. It is not alcohol/entertainment (rule 4 does not apply). It is not above USD 75, so no itemised receipt is required by rule 5 (and one is attached anyway). Since the expense is within its limit, rule 6's approval requirement is not triggered. Result: approve."
+        },
+        "agree": true,
+        "costUsd": 0.00022615
+      },
+      {
+        "id": "expense-005",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 77.76,
+          "reason": "Meal in Berlin (standard city). Converting EUR 72 × 1.08 = USD 77.76, which exceeds the USD 75 standard-city meal limit. A receipt is attached, so the itemised-receipt requirement is met, but per policy rule 6, an expense above its limit requires manager approval (not rejection)."
+        },
+        "agree": true,
+        "costUsd": 0.00018925
+      },
+      {
+        "id": "expense-006",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 97.15,
+          "reason": "Converted 14,500 JPY × 0.0067 = USD 97.15. Tokyo is a high-cost city, so the meal limit is USD 110 per person per day; USD 97.15 is within the limit. The expense exceeds USD 75, which requires an itemised receipt, and receipt_attached is true. It is not alcohol or entertainment, so it is not in the never-reimbursable category. Since it is within its limit and the receipt requirement is met, the expense is approved."
+        },
+        "agree": true,
+        "costUsd": 0.0002236
+      },
+      {
+        "id": "expense-007",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 119.93,
+          "reason": "17,900 JPY × 0.0067 = USD 119.93. Tokyo is a high-cost city, so the meal limit is USD 110. The expense is above its limit (but an itemised receipt is attached, so rule 5 is satisfied). Per rule 6, exceeding the limit requires manager approval and is not rejected."
+        },
+        "agree": true,
+        "costUsd": 0.00015975
+      },
+      {
+        "id": "expense-008",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 58,
+          "reason": "Meal expense of USD 58 in Austin (a standard city, limit USD 75 per person per day) is within the limit. Although it is below the USD 75 itemised-receipt threshold, a receipt is attached anyway. No alcohol/entertainment involved, so it is fully reimbursable without approval."
+        },
+        "agree": true,
+        "costUsd": 0.00014005
+      },
+      {
+        "id": "expense-009",
+        "gold": {
+          "decision": "reject"
+        },
+        "independent": {
+          "decision": "reject",
+          "usd_amount": 40,
+          "reason": "The expense is a \"bar tab after the offsite,\" which is alcohol/entertainment. Policy clause 4 states alcohol and entertainment are never reimbursable, so this expense is rejected regardless of amount or receipt."
+        },
+        "agree": true,
+        "costUsd": 0.00018539999999999998
+      },
+      {
+        "id": "expense-010",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 389,
+          "reason": "Hotel in New York (high-cost city) has a limit of USD 400 per night; the expense is USD 389, which is within the limit. Since the amount exceeds USD 75, an itemised receipt is required, and one is attached. No policy violation, so approve."
+        },
+        "agree": true,
+        "costUsd": 0.00014605
+      },
+      {
+        "id": "expense-011",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 455,
+          "reason": "Hotel in New York (a high-cost city) with a limit of USD 400 per night. The expense is USD 455, which exceeds the limit. Receipt is attached, and the policy says expenses above their limit are not rejected but require manager approval."
+        },
+        "agree": true,
+        "costUsd": 0.00013955
+      },
+      {
+        "id": "expense-012",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 226.8,
+          "reason": "Hotel in Madrid (standard city, limit USD 250/night). Expense: 210 EUR × 1.08 = USD 226.80, which is below the limit. Receipt is attached, and even if it were not, the amount exceeds USD 75 but stays under the category limit. Policy rule 6 says above-limit expenses only need approval, never rejection. All conditions met, so approve at USD 226.80."
+        },
+        "agree": true,
+        "costUsd": 0.0001624
+      },
+      {
+        "id": "expense-013",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 264.6,
+          "reason": "Hotel in Madrid (standard city) with limit USD 250/night. Amount is 245 EUR × 1.08 = USD 264.60, which exceeds the standard-city hotel limit of USD 250. An itemised receipt is attached, but rule 6 requires manager approval for any expense above its limit (not rejection)."
+        },
+        "agree": true,
+        "costUsd": 0.00016839999999999997
+      },
+      {
+        "id": "expense-014",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 380.8,
+          "reason": "Hotel in Zurich (a high-cost city), limit USD 400/night. 340 CHF × 1.12 = USD 380.80, which is within the limit. Amount exceeds USD 75, but an itemised receipt is attached, so no approval needed."
+        },
+        "agree": true,
+        "costUsd": 0.00014805
+      },
+      {
+        "id": "expense-015",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 416.64,
+          "reason": "Hotel in Zurich (a high-cost city) has a limit of USD 400/night. Amount is 372 CHF × 1.12 = USD 416.64, which exceeds the limit. Receipt is attached, so no missing-receipt issue; per rule 6, expenses above their limit need manager approval rather than rejection."
+        },
+        "agree": true,
+        "costUsd": 0.00016869999999999998
+      },
+      {
+        "id": "expense-016",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 228.6,
+          "reason": "Convert GBP 180 × 1.27 = USD 228.60. Leeds is a standard city, hotel limit USD 250/night; 228.60 is within limit. Expense is above USD 75 so an itemised receipt is required, and one is attached. Approved."
+        },
+        "agree": true,
+        "costUsd": 0.0001514
+      },
+      {
+        "id": "expense-017",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 260.35,
+          "reason": "Hotel in Leeds (a standard city) has a limit of USD 250 per night. The expense is 205 GBP × 1.27 = USD 260.35, which exceeds the USD 250 limit, so it requires manager approval (not rejected). A receipt is attached, so the receipt requirement is satisfied."
+        },
+        "agree": true,
+        "costUsd": 0.00016989999999999998
+      },
+      {
+        "id": "expense-018",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 219,
+          "reason": "Hotel in Portland (standard city) is $219, within the $250/night hotel limit, so it is not over-limit. However, any single expense above USD 75 requires an itemised receipt, and none was attached (\"receipt lost\"), so it needs manager approval rather than rejection."
+        },
+        "agree": true,
+        "costUsd": 0.00014735
+      },
+      {
+        "id": "expense-019",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 64,
+          "reason": "Ground transport expense of 64 USD (no conversion needed). It is below the USD 150 transport limit, so rule 6 does not apply. Rule 5 only requires an itemised receipt for expenses above USD 75; at 64 USD no receipt is required despite receipt_attached being false. Alcohol/entertainment exclusion does not apply. Therefore it is approvable as-is."
+        },
+        "agree": true,
+        "costUsd": 0.0001602
+      },
+      {
+        "id": "expense-020",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 129.6,
+          "reason": "Taxi in Paris converts to 120 EUR × 1.08 = USD 129.60, which is within the USD 150 ground transport limit (so rule 6's approval trigger doesn't apply). It is not alcohol/entertainment, so not \"never reimbursable\". Rule 5 requires a receipt for expenses above USD 75, and a receipt is attached, so no manager approval is needed."
+        },
+        "agree": true,
+        "costUsd": 0.00026975
+      },
+      {
+        "id": "expense-021",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 156.6,
+          "reason": "Expense of EUR 145 converts to USD 156.60 (145 × 1.08). Ground transport limit is USD 150 per trip, so the expense exceeds its limit and per rule 6 requires manager approval rather than rejection. Receipt requirement (rule 5, over USD 75) is satisfied since a receipt is attached."
+        },
+        "agree": true,
+        "costUsd": 0.00015769999999999998
+      },
+      {
+        "id": "expense-022",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 139.7,
+          "reason": "Train expense of GBP 110 converts to 110 × 1.27 = USD 139.70, which is under the USD 150 ground transport limit. Since it exceeds USD 75, an itemised receipt is required, and one is attached. Therefore it is approved."
+        },
+        "agree": true,
+        "costUsd": 0.00014639999999999998
+      },
+      {
+        "id": "expense-023",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 158.75,
+          "reason": "Transport expense of GBP 125 converts to 158.75 USD (125 × 1.27), which exceeds the USD 150 per-trip limit for ground transport. Per rule 6, expenses above their limit need manager approval and are not rejected. The required itemised receipt (rule 5, since it is above USD 75) is attached."
+        },
+        "agree": true,
+        "costUsd": 0.00015625
+      },
+      {
+        "id": "expense-024",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 90,
+          "reason": "Taxi expense of USD 90 is within the USD 150 ground transport limit for Seattle (a standard city), so it is not rejected. However, rule 5 requires an itemised receipt for any single expense above USD 75; no receipt is attached, so it needs manager approval."
+        },
+        "agree": true,
+        "costUsd": 0.00014225
+      },
+      {
+        "id": "expense-025",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 70,
+          "reason": "Meal of USD 70 in Seattle (a standard city, limit USD 75/person/day), so it is within its limit. It is not above USD 75, so no itemised receipt is required despite none being attached. Category is a meal, not alcohol/entertainment, so it is not never-reimbursable. Nothing triggers rejection or approval escalation."
+        },
+        "agree": true,
+        "costUsd": 0.00024615
+      },
+      {
+        "id": "expense-026",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 78,
+          "reason": "The expense is a meal for USD 78 (no conversion needed, USD rate = 1). Seattle is a standard city, so the meal limit is USD 75 per person per day. The amount (78) exceeds the limit (75), which per rule 6 requires manager approval rather than rejection. Additionally, rule 5 requires an itemised receipt for any single expense above USD 75; no receipt is attached, which also triggers manager approval. Both conditions point to needs_approval."
+        },
+        "agree": true,
+        "costUsd": 0.0001748
+      },
+      {
+        "id": "expense-027",
+        "gold": {
+          "decision": "reject"
+        },
+        "independent": {
+          "decision": "reject",
+          "usd_amount": 120,
+          "reason": "Category is entertainment (\"Show tickets for the team\"), which the policy states is never reimbursable (rule 4). This overrides any other limits or receipt considerations, so the expense is rejected regardless of the USD 120 amount, city, or attached receipt."
+        },
+        "agree": true,
+        "costUsd": 0.00013055
+      },
+      {
+        "id": "expense-028",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 106.4,
+          "reason": "Meal in Zurich (high-cost city). 95 CHF × 1.12 = 106.40 USD, which is within the USD 110 high-cost city meal limit. Receipt is attached, and the expense is above USD 75, but an itemised receipt satisfies that requirement. Since the expense is within its limit and has the required receipt, it is approved."
+        },
+        "agree": true,
+        "costUsd": 0.0001701
+      },
+      {
+        "id": "expense-029",
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "independent": {
+          "decision": "needs_approval",
+          "usd_amount": 117.6,
+          "reason": "Meal in Zurich (high-cost city): 105 CHF × 1.12 = USD 117.60, which exceeds the USD 110 high-cost city meal limit, so it needs manager approval. The required receipt is attached (amount > USD 75), so it is not rejected."
+        },
+        "agree": true,
+        "costUsd": 0.0001816
+      },
+      {
+        "id": "expense-030",
+        "gold": {
+          "decision": "approve"
+        },
+        "independent": {
+          "decision": "approve",
+          "usd_amount": 140.7,
+          "reason": "Taxi expense of 21,000 JPY converts to 21,000 × 0.0067 = USD 140.70. Ground transport limit is USD 150 per trip, so it is within its limit. Receipt is attached, satisfying rule 5 (any expense above USD 75 needs an itemised receipt). Not alcohol/entertainment, so not subject to the never-reimbursable rule. Approve."
+        },
+        "agree": true,
+        "costUsd": 0.00016849999999999998
+      }
+    ]
+  }
+}

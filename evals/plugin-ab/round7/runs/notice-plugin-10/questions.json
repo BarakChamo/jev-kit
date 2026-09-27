@@ -1,0 +1,67 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months. Upon expiration of the initial term, this Agreement automatically renews for successive twelve (12) month terms unless either party gives the other written notice of non-renewal at least sixty (60) days before the end of the then-current term. Notice may be delivered by email to the address on file or by certified mail.",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current contract year. Please treat this email as our formal notice that we will not be renewing. Let us know if you need anything else from us to process this.",
+    "cancellation_received_date": "2026-08-15",
+    "current_term_end_date_hint": null
+  },
+  "questions": {
+    "is_cancellation_notice": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` unambiguously communicate that the customer wants to cancel or not renew the contract (as opposed to a complaint, a question, or a request unrelated to renewal)?",
+      "criteria": {
+        "true": "the email clearly states an intent to cancel or not renew",
+        "false": "the email does not clearly state that intent"
+      }
+    },
+    "has_auto_renewal_clause": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause that automatically renews the contract for another term unless the customer gives advance notice?",
+      "criteria": {
+        "true": "contract_text has an automatic-renewal-unless-notice clause",
+        "false": "contract_text has no such clause (e.g. it expires outright, or renews only by mutual written agreement)"
+      }
+    },
+    "notice_method_valid": {
+      "type": "noul",
+      "instructions": "Does the delivery method used for the notice in `cancellation_email_text` (an email) satisfy the notice-delivery method(s) required by `contract_text`?",
+      "criteria": {
+        "true": "contract_text allows email notice, or does not restrict the method",
+        "false": "contract_text requires a different method (e.g. certified mail only) that email does not satisfy"
+      }
+    },
+    "required_notice_days": {
+      "type": "choice",
+      "instructions": "Per `contract_text`, how many days of advance notice must be given before the end of the then-current term to prevent automatic renewal?",
+      "criteria": {
+        "0_days": "no advance notice is required",
+        "1_7_days": "1 to 7 days",
+        "8_14_days": "8 to 14 days",
+        "15_30_days": "15 to 30 days",
+        "31_45_days": "31 to 45 days",
+        "46_60_days": "46 to 60 days",
+        "61_90_days": "61 to 90 days",
+        "91_180_days": "91 to 180 days",
+        "over_180_days": "more than 180 days",
+        "undeterminable": "contract_text does not state a determinable notice period"
+      }
+    },
+    "days_until_renewal": {
+      "type": "choice",
+      "instructions": "As of the date in `cancellation_received_date`, how many days remain until the end of the then-current term (the next automatic-renewal date) per `contract_text`?",
+      "criteria": {
+        "0_days": "the renewal date has already passed or is the same day",
+        "1_7_days": "1 to 7 days remain",
+        "8_14_days": "8 to 14 days remain",
+        "15_30_days": "15 to 30 days remain",
+        "31_45_days": "31 to 45 days remain",
+        "46_60_days": "46 to 60 days remain",
+        "61_90_days": "61 to 90 days remain",
+        "91_180_days": "91 to 180 days remain",
+        "over_180_days": "more than 180 days remain",
+        "undeterminable": "the current term end date cannot be determined from contract_text and cancellation_received_date"
+      }
+    }
+  }
+}

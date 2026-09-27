@@ -1,0 +1,21 @@
+## Summary
+
+`map.mjs` is written at the project root. Design:
+
+**State sent to Jev** — just `policy_text` and `expense` (named fields, nothing extraneous — rule 2).
+
+**Jev questions (3, all present-tense, single-fact — rules 5–7):**
+- `alcohol_entertainment` (noul): does the expense *include* alcohol/entertainment, even partially — not "is it that kind."
+- `category_bucket` (choice): maps the expense to `meal` / `hotel` / `ground_transport` / `other`, robust to free-text category/description wording.
+- `high_cost_city` (noul): fuzzy fallback for city-tier lookup (name variants/abbreviations), only consulted when an exact string match against the policy's parenthetical city list fails and the tier is close enough to matter.
+
+**Everything numeric is done in code, not asked of Jev (rule 9):** currency conversion via `fx_to_usd`, and regex extraction of the literal USD limits, the itemized-receipt threshold, and the high-cost city list straight out of `policy_text`. Jev never compares numbers or reads dollar figures itself.
+
+**Decision logic (`decide`):**
+1. Unknown currency → `abstain`.
+2. Alcohol/entertainment noul ≥0.65 → `reject`; 0.35–0.65 → `abstain` (ambiguous, matters absolutely); else continue.
+3. Amount over the itemized-receipt threshold with no receipt → `needs_approval` immediately (independent of category).
+4. Unrecognized/low-confidence category bucket → `abstain` (policy has no rule to apply).
+5. Amount within the lower of the two tier limits → `approve` regardless of tier; above the higher → `needs_approval` regardless of tier — tier is only resolved (exact match, else the fuzzy noul, else `abstain` if still ambiguous) when it would actually change the outcome.
+
+I wasn't able to execute Node in this sandbox to run it end-to-end (approval didn't go through), so I verified correctness by tracing the code by hand against the sample case plus five edge cases (over-limit, missing-receipt, alcohol, ambiguous-city-tier, unknown-category, unknown-currency) — all produced the expected decision or `abstain`.

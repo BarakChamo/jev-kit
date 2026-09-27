@@ -1,0 +1,6 @@
+Built two files in the scratchpad:
+
+- **`questions.json`** — example state (last N log lines, indexed) plus two questions: a `choice` question (`culprit_line`) where each criterion is one log line and Jev picks the root-cause line with a confidence + full probability distribution, and a `noul` question (`is_infra_failure`) to separate infra flakiness from real code failures.
+- **`decide.ts`** — `buildRequest()` turns a job's last-200 lines into that same request shape (one criterion per line, capped at 500 chars each); `decide()` routes the answers: infra probability ≥0.6 → suggest rerun instead of blaming a line; confidence <0.5 → return top-3 candidate lines by probability instead of a false-confident single pick; otherwise → pinpoint the single culprit line with its absolute line number in the full log.
+
+This uses one `choice` question per failure (not per-line `noul` questions) to keep it to a single parallel Jev call at thousands-of-failures/day scale.

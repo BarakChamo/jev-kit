@@ -1,0 +1,72 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "post": {
+      "id": "p_123",
+      "text": "example post text",
+      "author_id": "u_456",
+      "created_at": "2026-09-25T12:00:00Z",
+      "media_urls": []
+    },
+    "context": { "platform": "comments", "locale": "en-US" }
+  },
+  "questions": {
+    "hate_speech": {
+      "type": "noul",
+      "instructions": "Does post.text attack, demean, or dehumanize people based on a protected trait (race, ethnicity, religion, gender, sexual orientation, disability, etc.)?",
+      "criteria": {
+        "true": "Contains slurs, dehumanizing comparisons, or explicit calls for exclusion/harm directed at a protected group.",
+        "false": "No attack on a protected group; criticism of ideas, institutions, or individual behavior without group-based dehumanization."
+      }
+    },
+    "violence_threat": {
+      "type": "noul",
+      "instructions": "Does post.text threaten or incite physical violence against a specific person, group, or location?",
+      "criteria": {
+        "true": "States or strongly implies intent to harm, or calls on others to do so, against an identifiable target.",
+        "false": "No credible threat; includes hyperbole, fiction, or discussion of violence without incitement."
+      }
+    },
+    "sexual_content_minors": {
+      "type": "noul",
+      "instructions": "Does post.text or any post.media_urls depict, describe, or solicit sexual content involving a minor?",
+      "criteria": {
+        "true": "Any sexualized depiction, description, or solicitation involving someone who is or appears to be under 18.",
+        "false": "No such content present."
+      }
+    },
+    "self_harm_content": {
+      "type": "noul",
+      "instructions": "Does post.text promote, instruct, or encourage suicide or self-harm (as opposed to recovery discussion or seeking help)?",
+      "criteria": {
+        "true": "Provides methods/encouragement for self-harm or suicide, or glorifies it.",
+        "false": "Neutral, supportive, or help-seeking discussion of self-harm/suicide; news reporting."
+      }
+    },
+    "spam_or_scam": {
+      "type": "noul",
+      "instructions": "Is post.text unsolicited commercial spam, a phishing attempt, or a financial scam?",
+      "criteria": {
+        "true": "Unsolicited promotion, fake giveaways, credential/payment phishing, or deceptive financial schemes.",
+        "false": "Genuine, on-topic content, including legitimate self-promotion in context."
+      }
+    },
+    "violation_category": {
+      "type": "choice",
+      "instructions": "If post.text violates policy, which single category best describes the primary violation? Pick 'none' if it does not violate policy.",
+      "criteria": {
+        "none": "No policy violation.",
+        "hate_speech": "Attacks or dehumanizes based on a protected trait.",
+        "violence": "Threatens or incites physical harm.",
+        "csam": "Sexual content involving minors.",
+        "self_harm": "Promotes or encourages self-harm/suicide.",
+        "spam": "Commercial spam, phishing, or scam content."
+      }
+    },
+    "severity": {
+      "type": "score",
+      "instructions": "Overall, how severe is this post's policy violation, considering both the content and its likely real-world harm?",
+      "criteria": ["none", "low", "medium", "high", "critical"]
+    }
+  }
+}

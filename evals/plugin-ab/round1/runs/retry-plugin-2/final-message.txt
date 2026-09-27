@@ -1,0 +1,11 @@
+Two files, no API calls made:
+
+**`questions.json`** — one `choice` question (`failure_cause`) classifying the failure into `infra_transient` / `flaky_test` (retryable) vs `deterministic_code_failure` / `deterministic_test_failure` / `environment_config` (terminal) vs `unknown`, plus one `noul` detector (`cause_visible_in_log`) checking whether the log tail actually shows the underlying error or just a generic wrapper message. Both are scoped to named state fields (`log_tail`, `attempt`, etc.) per the "name the field" rule, and ask what's true now — no "would retrying help" framing.
+
+**`decide.ts`** — all the "should we act" logic lives in code, not in the question:
+- `attempt >= max_attempts` is a hard cap checked first, since it's already a known fact.
+- Gates on summed *probability mass* over the retryable/terminal label sets, not the `confidence` scalar.
+- If `cause_visible_in_log` is low, escalates regardless of what `failure_cause` says — low confidence never relaxes toward "retry."
+- Anything that doesn't clear a threshold (including `unknown` winning, or a near-even split) escalates to a human instead of guessing.
+
+Before trusting this, it needs the `jev-eval` skill run against ~30 labelled real failures (retry-succeeded vs retry-failed-again cases) to pick real thresholds and catch any confidently-wrong classifications — the 0.7 cutoffs here are placeholders.

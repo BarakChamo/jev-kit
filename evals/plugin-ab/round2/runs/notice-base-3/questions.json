@@ -1,0 +1,47 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contractText": "This Agreement shall automatically renew for successive one (1) year terms unless either party provides written notice of non-renewal at least sixty (60) days prior to the end of the then-current Term. Notice must be sent to legal@vendor.com or via certified mail to the address set forth above.",
+    "cancellationEmailText": "Hi team, following up on our call — we've decided not to continue our subscription and would like to cancel before it renews. Please confirm this has been processed.",
+    "cancellationReceivedDate": "2026-08-01",
+    "currentTermEndDate": "2026-10-01"
+  },
+  "questions": {
+    "autoRenewal": {
+      "type": "noul",
+      "instructions": "Read the contract in state.contractText. Determine whether it contains a clause that automatically renews the agreement unless the customer affirmatively gives notice to prevent renewal.",
+      "criteria": {
+        "true": "The contract auto-renews (evergreen/auto-renewal clause) unless notice of non-renewal is given.",
+        "false": "The contract does not auto-renew, or renewal requires the customer's affirmative opt-in rather than notice to opt out."
+      }
+    },
+    "requiredNoticeDays": {
+      "type": "choice",
+      "instructions": "Read state.contractText and determine the minimum number of days of advance notice, before the end of the current term, that the customer must give to prevent auto-renewal. Choose the option matching the contract's stated period; choose 'unspecified' if no notice period is stated.",
+      "criteria": {
+        "15": "Contract requires at least 15 days notice.",
+        "30": "Contract requires at least 30 days notice.",
+        "45": "Contract requires at least 45 days notice.",
+        "60": "Contract requires at least 60 days notice.",
+        "90": "Contract requires at least 90 days notice.",
+        "unspecified": "The contract does not state a specific notice period."
+      }
+    },
+    "noticeMethodCompliant": {
+      "type": "noul",
+      "instructions": "Compare any notice-delivery requirements in state.contractText (required recipient/address, written form, delivery channel such as certified mail) to state.cancellationEmailText, which was sent as an email. If the contract states no specific method, treat email as compliant.",
+      "criteria": {
+        "true": "The email satisfies the contract's method requirements for cancellation/non-renewal notice, or the contract specifies no particular method.",
+        "false": "The contract requires a specific method (e.g. certified mail, a specific address/recipient, a signed form) that the email does not satisfy."
+      }
+    },
+    "cancellationIntentClear": {
+      "type": "noul",
+      "instructions": "Read state.cancellationEmailText. Determine whether it unambiguously communicates the customer's intent to cancel or not renew the contract, as opposed to a general inquiry, complaint, or conditional/ambiguous statement.",
+      "criteria": {
+        "true": "The email clearly and unambiguously states intent to cancel or not renew.",
+        "false": "The email is ambiguous, conditional, or does not clearly state intent to cancel or not renew."
+      }
+    }
+  }
+}

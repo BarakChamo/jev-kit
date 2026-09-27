@@ -1,0 +1,1 @@
+This command needs your approval to run — could you approve the `npx tsx` check, or let me know if you'd rather I skip live verification?

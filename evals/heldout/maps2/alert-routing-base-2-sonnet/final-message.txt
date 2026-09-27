@@ -1,0 +1,5 @@
+Wrote `map.mjs`. Approach:
+
+- **`buildState`**: passes through the alert text and full catalog as-is.
+- **`questions`**: asks Jev two `choice` questions in parallel — (1) which cataloged service is the one actually experiencing the problem (with an explicit "unclear" option to catch ambiguous/multi-service alerts), and (2) the alert's severity bucketed as critical/high/other.
+- **`decide`**: looks up the chosen service in the catalog for `owner_team`/`tier`; abstains entirely if the service choice is "unclear" or low-confidence (<0.55); abstains only `page_now` if severity confidence is low but the service is known; otherwise applies the policy (`critical` → page, `high` + tier 1 → page, else ticket).

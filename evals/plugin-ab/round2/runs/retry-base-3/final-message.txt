@@ -1,0 +1,4 @@
+Created both files:
+
+- **`questions.json`** — example job state (repo/branch/runner/attempt/log tail) plus three Jev questions answered in one pass: `transient_failure` (noul — is this environmental vs. deterministic), `failure_category` (choice — infra/flaky_test/dependency/code_defect/config/unknown), `retry_confidence` (score — how likely a bare retry succeeds).
+- **`decide.ts`** — `decideRetry(job, answers)`: hard-stops at max attempts or on high-confidence `code_defect`/`config` (retrying can't fix those), otherwise blends `transient_failure.probability` with the `retry_confidence` level into a score, checked against a higher bar on protected branches, and returns `{retry, reason, delaySeconds}` with exponential backoff when retrying.

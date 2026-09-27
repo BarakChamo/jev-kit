@@ -1,0 +1,65 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job": {
+      "name": "web-build",
+      "repo": "acme/webapp",
+      "runId": "run_9f21",
+      "command": "pnpm build"
+    },
+    "totalLines": 200,
+    "candidates": [
+      {
+        "id": "L142",
+        "line": 142,
+        "text": "ERROR in ./src/components/Cart.tsx",
+        "context": "141: Module build failed\n142: ERROR in ./src/components/Cart.tsx\n143: Module not found: Error: Can't resolve './utils' in '/app/src/components'"
+      },
+      {
+        "id": "L143",
+        "line": 143,
+        "text": "Module not found: Error: Can't resolve './utils' in '/app/src/components'",
+        "context": "142: ERROR in ./src/components/Cart.tsx\n143: Module not found: Error: Can't resolve './utils' in '/app/src/components'\n144: resolve './utils' in '/app/src/components'"
+      },
+      {
+        "id": "L198",
+        "line": 198,
+        "text": "npm ERR! code ELIFECYCLE",
+        "context": "197: npm ERR! errno 1\n198: npm ERR! code ELIFECYCLE\n199: npm ERR! webapp@1.0.0 build: `next build`"
+      },
+      {
+        "id": "L199",
+        "line": 199,
+        "text": "npm ERR! Exit status 1",
+        "context": "198: npm ERR! code ELIFECYCLE\n199: npm ERR! Exit status 1\n200: npm ERR! Failed at the webapp@1.0.0 build script."
+      },
+      {
+        "id": "L200",
+        "line": 200,
+        "text": "Error: Process completed with exit code 1.",
+        "context": "199: npm ERR! Exit status 1\n200: Error: Process completed with exit code 1."
+      }
+    ]
+  },
+  "questions": {
+    "culprit": {
+      "type": "choice",
+      "instructions": "This is a CI job log for `pnpm build` in acme/webapp. Below are candidate lines (with 1-line context) pulled from the last 200 lines of a failed run. Pick the single line that is the ROOT CAUSE of the failure -- the earliest, most specific line that explains WHY the build broke -- not a downstream symptom that just restates 'something failed' (generic exit codes, lifecycle wrappers, CI runner summaries).",
+      "criteria": {
+        "L142": "Module build failed / ERROR in ./src/components/Cart.tsx",
+        "L143": "Module not found: Error: Can't resolve './utils' in '/app/src/components'",
+        "L198": "npm ERR! code ELIFECYCLE -- generic lifecycle wrapper error, not descriptive",
+        "L199": "npm ERR! Exit status 1 -- generic exit status, not descriptive",
+        "L200": "Error: Process completed with exit code 1. -- CI runner's generic failure summary"
+      }
+    },
+    "single_root_cause": {
+      "type": "noul",
+      "instructions": "Looking at the full set of candidate lines together: does this failure trace back to one clear, identifiable root cause line, as opposed to multiple unrelated errors, flaky/infra noise, or a cascade where no single line clearly explains it?",
+      "criteria": {
+        "true": "There is one line that clearly and specifically explains the failure.",
+        "false": "The candidates are ambiguous, unrelated to each other, or none is specific enough to call the cause."
+      }
+    }
+  }
+}

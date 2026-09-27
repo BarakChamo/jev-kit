@@ -1,0 +1,5 @@
+Wrote `map.mjs` implementing the three exports:
+
+- **`buildState`**: passes through the alert text and catalog as-is.
+- **`questions`**: two `choice` questions — `service` (options are every catalog service name plus a `none_or_unclear` escape hatch, with instructions to distinguish the actually-affected service from ones mentioned only as context/dependency) and `severity` (`critical` / `high` / `other`).
+- **`decide`**: looks up the chosen service in the catalog (only if confidence ≥ 0.55, else `team: "abstain"`), then applies the policy — `critical` → page now; `high` → page now only if the resolved service is tier 1, else no; if service is unresolved but severity is `high`, abstains on `page_now` since tier can't be checked; `other` severity → no page; low-confidence severity → abstain.

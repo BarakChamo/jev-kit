@@ -1,0 +1,8 @@
+Both files are wired correctly and type-consistent (`gates` is generically typed over `keyof JevAnswers`, so no other code paths needed touching). Since I edited the whole map, per the skill's workflow I owe a quick note on the existing questions:
+
+**Change made:**
+- Added `state.cancellation.fromAddress` (the sender's email).
+- Added a new `sender_is_authorized_contact` `noul` question that checks that address against the authorized-contacts language in `state.contract.text`.
+- Added it as a fourth gate in `decide.ts`'s existing gate list — a `false` now produces `INSUFFICIENT_NOTICE` with a specific reason, and low confidence produces `NEEDS_HUMAN_REVIEW` like the other gates.
+
+**One existing-question note, per the skill's rule 3 (split compound questions):** `notice_method_compliant` bundles two different judgments — "does the contract require a specific delivery method/recipient" and "does the email satisfy it" — into one question, similar to the "satisfy whatever notice method the contract requires" case that measured 0.50–0.79 confidence in the study. Splitting it into "what delivery method/recipient does the contract require for notice?" and comparing that against the email in code would likely sharpen it. I left it as-is since you didn't ask for that change and it's unmeasured here — flagging per the skill's guidance rather than rewriting speculatively.

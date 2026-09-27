@@ -1,0 +1,566 @@
+{
+  "name": "expense-review.hard",
+  "description": "Adversarial cases for expense-review: amounts at and one cent over limits, conversions landing either side of a limit, and alcohol cues.",
+  "cases": [
+    {
+      "id": "expense-hard-01",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Denver",
+          "amount": 75,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "exactly at the limit",
+      "facts": {
+        "usd": 75
+      }
+    },
+    {
+      "id": "expense-hard-02",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Denver",
+          "amount": 75.01,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "one cent over",
+      "facts": {
+        "usd": 75.01
+      }
+    },
+    {
+      "id": "expense-hard-03",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "New York",
+          "amount": 110,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "exactly at the high-cost limit",
+      "facts": {
+        "usd": 110
+      }
+    },
+    {
+      "id": "expense-hard-04",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "hotel",
+          "city": "Boston",
+          "amount": 250,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Hotel, 1 night"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "at limit, standard city",
+      "facts": {
+        "usd": 250
+      }
+    },
+    {
+      "id": "expense-hard-05",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "hotel",
+          "city": "San Francisco",
+          "amount": 399,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Hotel, 1 night"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "high-cost, under",
+      "facts": {
+        "usd": 399
+      }
+    },
+    {
+      "id": "expense-hard-06",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Chicago",
+          "amount": 74,
+          "currency": "USD",
+          "receipt_attached": false,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "no receipt, under 75",
+      "facts": {
+        "usd": 74
+      }
+    },
+    {
+      "id": "expense-hard-07",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Chicago",
+          "amount": 76,
+          "currency": "USD",
+          "receipt_attached": false,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "no receipt, over 75 and over limit",
+      "facts": {
+        "usd": 76
+      }
+    },
+    {
+      "id": "expense-hard-08",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "transport",
+          "city": "Boston",
+          "amount": 76,
+          "currency": "USD",
+          "receipt_attached": false,
+          "description": "Taxi to the airport"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "no receipt, over 75, under limit",
+      "facts": {
+        "usd": 76
+      }
+    },
+    {
+      "id": "expense-hard-09",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Portland",
+          "amount": 48,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Lunch at the Wine Barrel Grill (food only)"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "wine in the restaurant name, no alcohol",
+      "facts": {
+        "usd": 48
+      }
+    },
+    {
+      "id": "expense-hard-10",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Portland",
+          "amount": 55,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Dinner and a bottle of wine"
+        }
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "notes": "alcohol",
+      "facts": {
+        "usd": 55
+      }
+    },
+    {
+      "id": "expense-hard-11",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Berlin",
+          "amount": 69,
+          "currency": "EUR",
+          "receipt_attached": true,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "74.52 USD, just under",
+      "facts": {
+        "usd": 74.52
+      }
+    },
+    {
+      "id": "expense-hard-12",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Berlin",
+          "amount": 70,
+          "currency": "EUR",
+          "receipt_attached": true,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "75.60 USD, just over",
+      "facts": {
+        "usd": 75.6
+      }
+    },
+    {
+      "id": "expense-hard-13",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "hotel",
+          "city": "London",
+          "amount": 315,
+          "currency": "GBP",
+          "receipt_attached": true,
+          "description": "Hotel, 1 night"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "400.05 USD, just over",
+      "facts": {
+        "usd": 400.05
+      }
+    },
+    {
+      "id": "expense-hard-14",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "hotel",
+          "city": "London",
+          "amount": 314,
+          "currency": "GBP",
+          "receipt_attached": true,
+          "description": "Hotel, 1 night"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "398.78 USD, just under",
+      "facts": {
+        "usd": 398.78
+      }
+    },
+    {
+      "id": "expense-hard-15",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Tokyo",
+          "amount": 16400,
+          "currency": "JPY",
+          "receipt_attached": true,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "109.88 USD, just under",
+      "facts": {
+        "usd": 109.88
+      }
+    },
+    {
+      "id": "expense-hard-16",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "meal",
+          "city": "Kyoto",
+          "amount": 12000,
+          "currency": "JPY",
+          "receipt_attached": true,
+          "description": "Dinner"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "80.40 USD, standard city, over",
+      "facts": {
+        "usd": 80.4
+      }
+    },
+    {
+      "id": "expense-hard-17",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "entertainment",
+          "city": "Chicago",
+          "amount": 30,
+          "currency": "USD",
+          "receipt_attached": true,
+          "description": "Museum tickets for a client"
+        }
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "notes": "entertainment is never reimbursable",
+      "facts": {
+        "usd": 30
+      }
+    },
+    {
+      "id": "expense-hard-18",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "transport",
+          "city": "Zurich",
+          "amount": 134,
+          "currency": "CHF",
+          "receipt_attached": true,
+          "description": "Train to Geneva"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "150.08 USD, just over",
+      "facts": {
+        "usd": 150.08
+      }
+    },
+    {
+      "id": "expense-hard-19",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "transport",
+          "city": "Zurich",
+          "amount": 133,
+          "currency": "CHF",
+          "receipt_attached": true,
+          "description": "Train to Geneva"
+        }
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "notes": "148.96 USD, just under",
+      "facts": {
+        "usd": 148.96
+      }
+    },
+    {
+      "id": "expense-hard-20",
+      "input": {
+        "policy_text": "Travel and expense policy (2026).\n1. Meals: up to USD 75 per person per day in standard cities and USD 110 in high-cost cities (London, New York, Tokyo, Zurich, San Francisco).\n2. Hotels: up to USD 250 per night in standard cities and USD 400 in high-cost cities.\n3. Ground transport (taxi, rideshare, train): up to USD 150 per trip.\n4. Alcohol and entertainment are never reimbursable.\n5. Any single expense above USD 75 needs an itemised receipt; without one it needs manager approval.\n6. Anything above its limit needs manager approval; it is not rejected.",
+        "fx_to_usd": {
+          "USD": 1,
+          "EUR": 1.08,
+          "GBP": 1.27,
+          "JPY": 0.0067,
+          "CHF": 1.12
+        },
+        "expense": {
+          "category": "hotel",
+          "city": "Manchester",
+          "amount": 197,
+          "currency": "GBP",
+          "receipt_attached": true,
+          "description": "Hotel, 1 night"
+        }
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "notes": "250.19 USD, just over",
+      "facts": {
+        "usd": 250.19
+      }
+    }
+  ]
+}

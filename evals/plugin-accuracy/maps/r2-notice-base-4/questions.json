@@ -1,0 +1,54 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract": {
+      "id": "C-1001",
+      "text": "This Agreement shall automatically renew for successive one (1) year terms unless either party provides written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be sent to legal@vendor.com or by certified mail to the address on file.",
+      "current_term_end": "2026-12-31"
+    },
+    "cancellation": {
+      "id": "CANC-2001",
+      "text": "Hi team, we'd like to cancel our subscription and not renew for next year. Please confirm. Thanks, Jane",
+      "date_received": "2026-09-20"
+    }
+  },
+  "questions": {
+    "auto_renewal_clause": {
+      "type": "noul",
+      "instructions": "Read state.contract.text. Determine whether the contract automatically renews for another term unless the customer affirmatively cancels or gives notice of non-renewal.",
+      "criteria": {
+        "true": "The contract contains an automatic/evergreen renewal clause: it renews by default unless the customer opts out or gives notice.",
+        "false": "The contract has no auto-renewal clause, or renewal requires the customer's affirmative opt-in (renewal is not automatic)."
+      }
+    },
+    "required_notice_days": {
+      "type": "choice",
+      "instructions": "Read state.contract.text. Identify how many days of advance notice, before the end of the current term, the contract requires in order to prevent automatic renewal. Pick the closest matching bucket.",
+      "criteria": {
+        "15_days": "Contract requires roughly 15 days (1-20 days) of advance notice.",
+        "30_days": "Contract requires roughly 30 days (21-35 days) of advance notice.",
+        "45_days": "Contract requires roughly 45 days (36-50 days) of advance notice.",
+        "60_days": "Contract requires roughly 60 days (51-75 days) of advance notice.",
+        "90_days": "Contract requires roughly 90 days (76-105 days) of advance notice.",
+        "120_days": "Contract requires roughly 120 days or more (106+ days) of advance notice.",
+        "other_or_unspecified": "No numeric notice period is stated, the period doesn't fit any bucket above, or there is no renewal-notice requirement at all."
+      }
+    },
+    "valid_cancellation_notice": {
+      "type": "noul",
+      "instructions": "Read state.cancellation.text and any notice-form requirements in state.contract.text (e.g. required recipient, written form, method of delivery). Determine whether the cancellation email is unambiguous notice of cancellation/non-renewal and satisfies any stated form requirements.",
+      "criteria": {
+        "true": "The email clearly states intent to cancel or not renew, and meets any form requirements the contract specifies (or the contract specifies none).",
+        "false": "The email is ambiguous or doesn't clearly request cancellation/non-renewal, or it fails a specific form requirement stated in the contract (e.g. wrong recipient, wrong method)."
+      }
+    },
+    "notice_timely": {
+      "type": "noul",
+      "instructions": "Using the notice period required by state.contract.text, state.contract.current_term_end, and state.cancellation.date_received, determine whether the cancellation was received early enough to meet the contract's notice deadline and avoid automatic renewal.",
+      "criteria": {
+        "true": "state.cancellation.date_received is on or before the deadline implied by the contract's notice period counted back from state.contract.current_term_end.",
+        "false": "state.cancellation.date_received is after that deadline, so notice was too late to prevent auto-renewal."
+      }
+    }
+  }
+}

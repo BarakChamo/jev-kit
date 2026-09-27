@@ -1,0 +1,18 @@
+Wrote `map.mjs` in the working directory, built on the `jev-questions` rules:
+
+**State** (`buildState`): raw `policy_text`, `fx_to_usd`, and each expense field named individually (`expense_category`, `expense_description`, `expense_city`, `expense_amount`, `expense_currency`, `expense_receipt_attached`) — no unscoped "the state" references.
+
+**Questions** (`questions`) — only for genuinely fuzzy judgments, all `choice`/`noul` (no fragile `score`):
+- `category` (choice): normalizes free-text category/description into `meal`/`hotel`/`ground_transport`/`other`.
+- `high_cost_city` (noul): whether `expense_city` matches the high-cost list stated in `policy_text`.
+- `includes_alcohol_or_entertainment` (noul): phrased as "includes," per rule 7, not "is."
+- `unit_count` (choice): how many people/nights/trips the stated amount covers, bucketed like the date-as-choice pattern (one/two/three/four/five_or_more/not_stated).
+
+**Decision** (`decide`) — everything numeric happens in code, never asked of Jev:
+- Parses the policy's numeric limits (meal/hotel tiers, ground-transport cap, receipt threshold) and each rule's stated *consequence* (reject vs. needs-approval vs. unstated) straight from `policy_text`, line by line.
+- Converts currency and divides by `unit_count` in code, then compares against the limit in code (rule 8).
+- Alcohol/entertainment is an absolute override: high probability → the policy's stated consequence; mid-probability (ambiguous) → escalate to `needs_approval`, never silently approve (rule 13).
+- Abstains when: the policy text doesn't parse (no receipt threshold found), the currency has no FX rate, category classification confidence is low, a needed category limit can't be parsed, or a triggered rule's consequence isn't recognized in the text.
+- Otherwise `approve`.
+
+I traced it by hand through the example line (approve, since $62 < $75 and $62 isn't over the $75 receipt threshold) plus a high-cost over-limit case, an alcohol case, a missing-receipt case, and unparseable/unknown-currency/low-confidence abstain cases — all resolved as intended. I couldn't execute `node` directly in this sandbox to run it live (only `node -v` is permitted, not script execution) — worth running through `jev-eval` on a labelled suite before trusting it in production, per the skill's own recommendation.

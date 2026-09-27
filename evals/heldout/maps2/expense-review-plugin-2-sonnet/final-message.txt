@@ -1,0 +1,13 @@
+Wrote `map.mjs` in the scratchpad. Design summary:
+
+**State** (`buildState`): the full `policy_text`, and the expense fields plus `usd_amount` pre-converted via `fx_to_usd` in code (never asks Jev to convert currency or compare amounts).
+
+**Questions** (7, all independent, one parallel pass):
+- `category_bucket` (choice) — classifies what the expense *actually* is (meals/hotel/ground-transport/other_uncovered) from category+description, catching mislabeled lines.
+- `is_never_reimbursable` (noul) — catches alcohol/entertainment or any other categorical exclusion, even if mislabeled.
+- `meal_limit_usd` / `hotel_limit_usd` / `ground_transport_limit_usd` / `receipt_threshold_usd` (choice) — each reads the policy's *exact* stated USD figure off a fine-grained enumerated list ($5 increments to $200, then $10 to $500, then $50 to $1000, plus `not_specified`), rather than banding it — per the skill's rule that banding a stated number (e.g. reading "$75" as "70–75") causes silent errors near the boundary.
+- `reject_over_limit` (noul) — whether *this* policy rejects over-limit spend outright vs. requiring approval (varies per case's policy text, so it's asked rather than assumed).
+
+**decide()**: does all arithmetic/comparison in code — compares `usd_amount` against the extracted limit/threshold, gates on each answer's calibrated top-probability (never the raw `confidence` scalar), and always escalates to `needs_approval` rather than `approve` when unsure. `reject` only fires on high-confidence exclusion or an explicit reject-on-overage policy. `abstain` is reserved for structurally broken input (missing policy text, expense, or an unknown currency not in `fx_to_usd`).
+
+I traced five hand-built scenarios (under-limit/no-receipt, over-threshold, over-limit-with-receipt, high-confidence alcohol, uncovered category) through the logic manually and they resolve to the expected decisions; I wasn't able to execute `node` in this sandbox (script runs require approval that isn't available here), so this hasn't been run against the real Jev API or a labelled suite — recommend running it through `jev-eval` on ~30 labelled lines before trusting it in production, per the skill's own guidance.

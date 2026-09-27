@@ -1,0 +1,14 @@
+This reads correctly and matches the intended design — the code file is complete and self-consistent.
+
+## Summary
+
+`map.mjs` (at `/tmp/claude-0/-home-user-jev-discovery/.../reply-exposure-plugin-1-sonnet/map.mjs`) checks each draft for third-party PII this way:
+
+- **Code handles what code can settle exactly** (per the jev-questions rules): regex extracts email addresses, phone numbers, and order-id-shaped tokens from `draft_reply`, then filters out anything that exactly matches the recipient's own email/phone/order_ids. Only the *foreign* leftovers become candidates.
+- **Jev handles what needs judgment**, one narrow noul question per candidate, always naming the exact field it reads:
+  - each foreign email/phone → "is this a generic company contact, or an individual's personal one?"
+  - each foreign order-id-like token → "is this genuinely another customer's order, or a false-positive/self-match?"
+  - one holistic question, `third_party_name`, asking whether any third-party individual is named (explicitly excluding staff first-name signatures and the company/brand name).
+- **`decide`** treats these as an OR of reliable flags with a probability gate (0.7/0.3), not the `confidence` scalar: any strong "yes" signal → `"yes"`; all signals confidently clear → `"no"`; anything in between → `"abstain"` (sent to a human), since at millions of replies/month a false "no" is far costlier than a review escalation.
+
+I wasn't able to execute Node to smoke-test it (the sandbox required an approval that didn't come through in this session), so treat the logic as reasoned-through but not run — worth a quick `node` sanity pass or a labelled-case eval (via the jev-eval skill) before relying on it in production.

@@ -1,0 +1,16 @@
+The map is in place at `map.mjs`. I traced the logic by hand against several cases since interactive `node` execution wasn't approvable in this session, but the reasoning holds:
+
+- **extractUsdAmounts** picks up `{75, 110, 150, 250, 400}` from the example policy (USD-prefixed figures only; the `(2026)` in the header isn't matched).
+- Example case (meal, Chicago $62, no receipt) → standard limit 75, under it, no receipt issue → **approve**.
+- Same case at $90 → over receipt threshold with no receipt attached → **needs_approval** (also would be needs_approval via the over-limit path, per rule 6's "not rejected").
+- Alcohol line with high `never_reimbursable` probability → **reject**.
+- Unknown currency (not in `fx_to_usd`) → **abstain**.
+- Category the policy doesn't mention (both limit questions answer "none") → **abstain** rather than guessing.
+- $74 (at/under the $75 boundary, no receipt) → **approve**; $80 (over the $75 receipt threshold, no receipt) → **needs_approval**.
+
+Design notes, per the Jev question-writing rules:
+- Since `policy_text` and its dollar figures vary per case, code regex-extracts every stated USD figure and Jev only *picks which one applies* (a "pick one of many" `choice`, not a band) — never compares numbers or does arithmetic itself (rules 5 & 12). FX conversion and the amount-vs-limit comparison happen entirely in code.
+- Category ban, city classification, receipt threshold, and "reject vs. approve on overage" are each a single present-tense, field-scoped question (rules 3 & 4) rather than one compound question.
+- Gating uses the `choice`/`noul` probability distributions, not the `confidence` scalar (rule 8), and low confidence or missing data always falls to `needs_approval` or `abstain`, never `approve` (rule 9's "never relax on uncertainty").
+
+One caveat worth flagging: this hasn't been measured against labelled cases. Given the volume (hundreds of thousands of lines/month) and that a bad "reject" or wrongly-read limit is exactly the confidently-wrong failure mode these rules warn about, I'd strongly recommend running `jev-eval` on ~30+ labelled lines (varying categories, currencies, high-cost cities, missing receipts, boundary amounts) before this goes live.

@@ -1,0 +1,95 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "post_text": "Everyone who voted for the new zoning law is a corrupt, spineless coward and I hope they get what's coming to them.",
+    "is_reply": false,
+    "target_type": "group",
+    "quoted_or_reporting": false,
+    "has_media": false,
+    "media_description": null,
+    "author_prior_strikes": 0
+  },
+  "questions": {
+    "hate_speech": {
+      "type": "noul",
+      "instructions": "Does `post_text` attack, demean, or call for the exclusion of people because of a protected characteristic (race, ethnicity, national origin, religion, caste, sexual orientation, gender identity, or disability) that is named or unambiguously implied in `post_text`? Criticism of a belief, policy, or group that is not tied to a protected characteristic is not hate speech.",
+      "criteria": {
+        "true": "post_text attacks or demeans people because of a protected characteristic",
+        "false": "no such attack, or the target is not a protected characteristic"
+      }
+    },
+    "targeted_harassment": {
+      "type": "noul",
+      "instructions": "Does `post_text` direct insulting, demeaning, or intimidating language at a specific person or group, rather than making a general statement about a topic or policy? If `target_type` is `public_figure`, sharp criticism of their public actions alone is not harassment; personal insults or intimidation directed at them still are.",
+      "criteria": {
+        "true": "post_text targets a specific person or group with abusive or intimidating language",
+        "false": "post_text is general commentary, or not abusive"
+      }
+    },
+    "violent_threat": {
+      "type": "noul",
+      "instructions": "Does `post_text` state or clearly imply that the author, or someone the author supports, wants or intends to physically harm a specific person or group?",
+      "criteria": {
+        "true": "post_text expresses intent or desire to cause physical harm to a specific target",
+        "false": "no expression of intent or desire to cause physical harm"
+      }
+    },
+    "sexual_exploitation": {
+      "type": "noul",
+      "instructions": "Does `post_text`, or `media_description` when `has_media` is true, sexualize a minor, or describe, share, or solicit intimate imagery of a real person shared without that person's consent?",
+      "criteria": {
+        "true": "content sexualizes a minor, or involves non-consensual intimate imagery",
+        "false": "neither is present"
+      }
+    },
+    "self_harm_promotion": {
+      "type": "noul",
+      "instructions": "Does `post_text` encourage, give instructions for, or glorify suicide or self-harm, as opposed to discussing it neutrally, seeking help, or supporting someone's recovery?",
+      "criteria": {
+        "true": "post_text encourages, instructs, or glorifies suicide or self-harm",
+        "false": "post_text does not encourage, instruct, or glorify suicide or self-harm"
+      }
+    },
+    "doxxing": {
+      "type": "noul",
+      "instructions": "Does `post_text` publish a named private individual's home address, phone number, financial account number, or government ID number without that person's consent?",
+      "criteria": {
+        "true": "post_text publishes such private information without consent",
+        "false": "no such private information is published"
+      }
+    },
+    "spam_or_scam": {
+      "type": "noul",
+      "instructions": "Is `post_text` primarily unsolicited commercial promotion, a repeated or templated message, or an attempt to deceive the reader into sending money or credentials?",
+      "criteria": {
+        "true": "post_text is spam, a scam, or unsolicited bulk promotion",
+        "false": "post_text is genuine discussion, even if it mentions a product or service"
+      }
+    },
+    "regulated_goods": {
+      "type": "noul",
+      "instructions": "Does `post_text` offer to buy, sell, trade, or arrange delivery of firearms, drugs, or counterfeit goods?",
+      "criteria": {
+        "true": "post_text offers or solicits a trade in one of these goods",
+        "false": "no such offer or solicitation"
+      }
+    },
+    "content_context": {
+      "type": "choice",
+      "instructions": "Considering `post_text` and whether `quoted_or_reporting` is true, is the author expressing this content as their own statement, or quoting/describing someone else's content in order to report on, condemn, or discuss it?",
+      "criteria": {
+        "own_statement": "post_text is the author's own view or statement",
+        "counter_speech_or_report": "post_text quotes, reports on, or condemns someone else's content rather than endorsing it",
+        "unclear": "cannot tell from post_text whether this is the author's own statement"
+      }
+    },
+    "review_flag": {
+      "type": "choice",
+      "instructions": "Taken as a whole, would a policy-trained reviewer agree on how `post_text` should be classified against the categories evaluated above, or is it a genuinely close call?",
+      "criteria": {
+        "clear": "a reasonable, policy-trained reviewer would not disagree about whether post_text violates any category above",
+        "genuinely_ambiguous": "a reasonable, policy-trained reviewer could go either way on at least one category above"
+      }
+    }
+  }
+}

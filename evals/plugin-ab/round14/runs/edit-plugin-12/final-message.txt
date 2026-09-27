@@ -1,0 +1,11 @@
+Done. Changes:
+
+- **questions.json**: added `cancellation.fromAddress` (the fact the new question needs) and a short authorised-contacts clause to `contract.text`, plus a new `sender_is_authorized_contact` noul question that names both fields it reads.
+- **decide.ts**: added `sender_is_authorized_contact` to `JevAnswers` and to the gates array, so a "false"/uncertain answer now drives `INSUFFICIENT_NOTICE` / `NEEDS_HUMAN_REVIEW` the same way the existing gates do. No API calls made.
+
+Two pre-existing questions in this map are known bad patterns per the jev-questions rules, worth flagging even though out of scope for this edit:
+
+- `notice_method_compliant` is a compound "does X satisfy whatever Y requires" question — the skill's own evidence shows this exact phrasing sits at 0.50–0.79 confidence and should be split into "does the contract require method M?" (read from contract) combined in code with "was the email sent via M?".
+- `notice_timely` asks Jev to do the deadline comparison directly instead of reading the term-end date and notice window as bucketed choices and comparing in code — the skill flags this precise phrasing as the "41.7%-class" comparison defect.
+
+Neither was touched, per "keep the change minimal," but worth a measured look before relying on this map.

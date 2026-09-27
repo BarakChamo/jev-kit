@@ -1,0 +1,1 @@
+This command needs your approval to run — could you approve it so I can verify `adapter.ts` loads cleanly with `npx tsx`?

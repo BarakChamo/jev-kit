@@ -1,0 +1,5 @@
+Created `map.mjs` in the working directory with:
+
+- **`buildState`** — passes through the recipient's known data (name/email/phone/order_ids) and the draft reply.
+- **`questions`** — a single `noul` question asking Jev whether the draft discloses a name/email/phone/order id identifying someone *other than* the addressed customer, explicitly excluding the customer's own data, company contact info, and support-staff first names.
+- **`decide`** — thresholds the returned probability: `≥0.65` → `"yes"`, `≤0.25` → `"no"`, otherwise `"abstain"` (sent to a human).

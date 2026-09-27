@@ -1,0 +1,215 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "vendor_name": "Acme Cloud Services, Inc.",
+    "contract_id": "CTR-2026-00931",
+    "contract_text": "<<< full extracted text of the 30-80 page vendor contract goes here >>>"
+  },
+  "questions": {
+    "governing_law": {
+      "type": "choice",
+      "instructions": "From the governing law / choice of law clause in state.contract_text, identify the jurisdiction whose law governs the contract.",
+      "criteria": {
+        "delaware": "Governed by Delaware law",
+        "new_york": "Governed by New York law",
+        "california": "Governed by California law",
+        "other_us_state": "Governed by the law of a US state other than DE, NY or CA",
+        "england_wales": "Governed by the law of England and Wales",
+        "other_non_us": "Governed by the law of a non-US jurisdiction other than England and Wales",
+        "not_specified": "No governing law clause found"
+      }
+    },
+    "auto_renewal": {
+      "type": "noul",
+      "instructions": "Determine whether the contract automatically renews for a further term unless a party affirmatively opts out.",
+      "criteria": {
+        "true": "Contract states it auto-renews / renews automatically absent notice to the contrary",
+        "false": "Contract expires at term end, requires affirmative renewal, or has no renewal provision"
+      }
+    },
+    "renewal_notice_period_band": {
+      "type": "score",
+      "instructions": "How much advance notice must a party give to prevent auto-renewal (or to renew, if renewal is not automatic)? If there is no renewal provision, use 'not_applicable'.",
+      "criteria": ["not_applicable", "under_30_days", "30_to_60_days", "61_to_90_days", "over_90_days"]
+    },
+    "liability_cap_present": {
+      "type": "noul",
+      "instructions": "Does the limitation of liability clause set a monetary cap on either party's aggregate liability?",
+      "criteria": {
+        "true": "A liability cap (fixed amount, fees-paid formula, etc.) is stated",
+        "false": "No cap is stated, or liability is explicitly uncapped/unlimited"
+      }
+    },
+    "liability_cap_amount_band": {
+      "type": "choice",
+      "instructions": "If a liability cap exists, classify its size. If uncapped or no cap clause exists, choose 'not_applicable'.",
+      "criteria": {
+        "not_applicable": "No cap present or liability is uncapped",
+        "under_100k": "Cap is a fixed amount under $100,000, or a fees-paid formula that clearly nets to under $100,000",
+        "100k_to_1m": "Cap is between $100,000 and $1,000,000 (fixed amount or fees-paid formula in that range)",
+        "over_1m": "Cap is above $1,000,000",
+        "fees_paid_formula_unspecified": "Cap is tied to fees paid over a period (e.g. trailing 12 months) but the resulting dollar amount cannot be determined from the text"
+      }
+    },
+    "liability_cap_mutual": {
+      "type": "noul",
+      "instructions": "If a liability cap exists, does it apply equally to both parties (mutual) rather than only limiting the vendor's liability?",
+      "criteria": {
+        "true": "The cap is mutual / applies to both parties equally",
+        "false": "The cap only limits one party's liability, or there is no cap"
+      }
+    },
+    "indemnity_scope": {
+      "type": "choice",
+      "instructions": "Classify the scope of the indemnification clause(s).",
+      "criteria": {
+        "none": "No indemnification clause",
+        "ip_infringement_only": "Indemnity limited to third-party IP infringement claims",
+        "one_sided_vendor_to_customer": "Vendor indemnifies customer broadly, with no reciprocal customer indemnity of comparable scope",
+        "one_sided_customer_to_vendor": "Customer indemnifies vendor broadly, with no reciprocal vendor indemnity of comparable scope",
+        "mutual_broad": "Both parties indemnify each other for a broad set of claims (e.g. breach, negligence, IP, data)"
+      }
+    },
+    "data_processing_terms_present": {
+      "type": "noul",
+      "instructions": "Does the contract include data processing / data protection terms (a DPA, either as a standalone exhibit referenced in the text or embedded clauses covering processing of personal data, e.g. GDPR/CCPA obligations)?",
+      "criteria": {
+        "true": "Data processing terms or a DPA are present or incorporated by reference",
+        "false": "No data processing terms are present"
+      }
+    },
+    "termination_for_convenience": {
+      "type": "noul",
+      "instructions": "May either party terminate the contract for convenience (without cause), rather than only for breach or insolvency?",
+      "criteria": {
+        "true": "At least one party may terminate for convenience on notice",
+        "false": "Termination is only permitted for cause/breach/insolvency, or the contract is non-terminable before its term ends"
+      }
+    },
+    "termination_notice_period_band": {
+      "type": "score",
+      "instructions": "If termination for convenience is available, how much advance notice is required? Use 'not_applicable' if there is no termination-for-convenience right.",
+      "criteria": ["not_applicable", "under_30_days", "30_to_60_days", "61_to_90_days", "over_90_days"]
+    },
+    "payment_terms_band": {
+      "type": "choice",
+      "instructions": "Classify the standard invoice payment term stated in the contract.",
+      "criteria": {
+        "due_on_receipt": "Payment due immediately / on receipt of invoice",
+        "net_15": "Payment due within 15 days",
+        "net_30": "Payment due within 30 days",
+        "net_45": "Payment due within 45 days",
+        "net_60_plus": "Payment due within 60 days or more",
+        "not_specified": "No payment term stated"
+      }
+    },
+    "confidentiality_survival_band": {
+      "type": "score",
+      "instructions": "How long do confidentiality obligations survive after termination or expiration? Use 'not_applicable' if there is no confidentiality clause.",
+      "criteria": ["not_applicable", "under_2_years", "2_to_5_years", "over_5_years", "indefinite_or_trade_secret_duration"]
+    },
+    "ip_ownership": {
+      "type": "choice",
+      "instructions": "Who owns intellectual property created or delivered under the contract (deliverables/work product), as distinct from each party's pre-existing IP?",
+      "criteria": {
+        "vendor_retains": "Vendor/provider retains ownership; customer receives a license only",
+        "customer_owns": "Customer owns deliverables/work product created under the contract",
+        "joint_ownership": "IP in deliverables is jointly owned",
+        "not_specified": "No IP ownership clause for deliverables/work product"
+      }
+    },
+    "warranty_disclaimer_present": {
+      "type": "noul",
+      "instructions": "Does the contract disclaim implied warranties (e.g. 'AS IS', disclaimer of merchantability/fitness for a particular purpose)?",
+      "criteria": {
+        "true": "Implied warranties are disclaimed",
+        "false": "No warranty disclaimer, or the contract affirmatively grants warranties without disclaiming implied ones"
+      }
+    },
+    "force_majeure_present": {
+      "type": "noul",
+      "instructions": "Does the contract include a force majeure clause excusing performance for events beyond a party's reasonable control?",
+      "criteria": {
+        "true": "A force majeure clause is present",
+        "false": "No force majeure clause"
+      }
+    },
+    "insurance_requirements_present": {
+      "type": "noul",
+      "instructions": "Does the contract require either party (typically the vendor) to maintain specified types/amounts of insurance?",
+      "criteria": {
+        "true": "Minimum insurance coverage requirements are specified",
+        "false": "No insurance requirement is stated"
+      }
+    },
+    "audit_rights_present": {
+      "type": "noul",
+      "instructions": "Does the contract give a party (typically the customer) the right to audit the other party's records, security controls, or compliance?",
+      "criteria": {
+        "true": "An audit right is granted",
+        "false": "No audit right is granted"
+      }
+    },
+    "sla_present": {
+      "type": "noul",
+      "instructions": "Does the contract include a service level agreement (uptime/availability, response time, or other measurable performance commitment)?",
+      "criteria": {
+        "true": "An SLA with measurable performance commitments is present",
+        "false": "No SLA / performance commitment is present"
+      }
+    },
+    "dispute_resolution_method": {
+      "type": "choice",
+      "instructions": "How must disputes arising under the contract be resolved?",
+      "criteria": {
+        "litigation": "Disputes are resolved through court litigation (no mandatory arbitration)",
+        "binding_arbitration": "Disputes must go to binding arbitration",
+        "non_binding_arbitration": "Disputes must go to non-binding arbitration",
+        "mediation_then_litigation_or_arbitration": "Mediation is a mandatory precondition before litigation or arbitration",
+        "not_specified": "No dispute resolution mechanism is specified"
+      }
+    },
+    "assignment_restricted": {
+      "type": "noul",
+      "instructions": "Does the contract restrict a party's ability to assign the agreement without the other party's consent?",
+      "criteria": {
+        "true": "Assignment requires consent or is otherwise restricted (change-of-control carve-outs still count as restricted)",
+        "false": "Either party may freely assign, or there is no assignment clause"
+      }
+    },
+    "exclusivity_present": {
+      "type": "noul",
+      "instructions": "Does the contract contain an exclusivity commitment (e.g. sole-source vendor, exclusive territory, or customer commits not to use competitors)?",
+      "criteria": {
+        "true": "An exclusivity obligation is present",
+        "false": "No exclusivity obligation"
+      }
+    },
+    "non_solicitation_present": {
+      "type": "noul",
+      "instructions": "Does the contract include a non-solicitation clause (restricting hiring or soliciting the other party's employees/customers)?",
+      "criteria": {
+        "true": "A non-solicitation clause is present",
+        "false": "No non-solicitation clause"
+      }
+    },
+    "contract_term_band": {
+      "type": "score",
+      "instructions": "What is the length of the initial contract term stated in the agreement?",
+      "criteria": ["month_to_month", "one_year", "two_to_three_years", "four_to_five_years", "over_five_years_or_perpetual"]
+    },
+    "subcontracting_allowed": {
+      "type": "noul",
+      "instructions": "May the vendor use subcontractors / third parties to perform its obligations under the contract?",
+      "criteria": {
+        "true": "Subcontracting is expressly permitted (with or without conditions such as notice or consent)",
+        "false": "Subcontracting is expressly prohibited, or not addressed"
+      }
+    },
+    "data_breach_notification_band": {
+      "type": "score",
+      "instructions": "If the contract specifies a deadline for the vendor to notify the customer after discovering a data breach/security incident, what is that deadline? Use 'not_applicable' if no such obligation exists.",
+      "criteria": ["not_applicable", "under_24_hours", "24_to_72_hours", "73_hours_to_7_days", "over_7_days_or_unspecified_timeframe"]
+    }
+  }
+}

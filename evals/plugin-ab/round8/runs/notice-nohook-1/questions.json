@@ -1,0 +1,60 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months. Thereafter, this Agreement automatically renews for successive twelve (12) month terms unless either party gives the other written notice of non-renewal at least sixty (60) days before the end of the then-current term. Notice may be given by email to the address on file for the other party. Effective Date: January 15, 2025.",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current term ends. Please treat this email as our formal notice of non-renewal and let us know the off-boarding steps. Thanks.",
+    "cancellation_received_date": "2026-08-20"
+  },
+  "questions": {
+    "auto_renewal_present": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which this contract automatically renews for a further term unless a party gives notice?",
+      "criteria": {
+        "true": "contract_text states the contract auto-renews (e.g. 'automatically renews', 'evergreen', 'continues unless cancelled') absent notice",
+        "false": "contract_text does not auto-renew: it has a fixed term with no renewal, or renewal requires an affirmative new agreement"
+      }
+    },
+    "notice_period_days": {
+      "type": "choice",
+      "instructions": "Per the renewal/cancellation clause in `contract_text`, how many days of advance notice must a customer give, before the end of the then-current term, to prevent automatic renewal?",
+      "criteria": {
+        "none": "no minimum notice period is stated, or the contract does not auto-renew",
+        "under_30": "fewer than 30 days notice is required",
+        "30_to_59": "at least 30 but fewer than 60 days notice is required",
+        "60_to_89": "at least 60 but fewer than 90 days notice is required",
+        "90_to_119": "at least 90 but fewer than 120 days notice is required",
+        "120_plus": "120 or more days notice is required",
+        "unclear": "contract_text does not clearly state a specific number of days"
+      }
+    },
+    "days_until_renewal_at_receipt": {
+      "type": "choice",
+      "instructions": "Using `contract_text` to find how the current term's end/renewal date is determined (e.g. from the Effective Date and term length), how much time was there between `cancellation_received_date` and that current term's end/renewal date?",
+      "criteria": {
+        "already_renewed_or_passed": "cancellation_received_date is on or after the date the current term ends/renews",
+        "under_30": "0 to 29 days between cancellation_received_date and the renewal date",
+        "30_to_59": "30 to 59 days between cancellation_received_date and the renewal date",
+        "60_to_89": "60 to 89 days between cancellation_received_date and the renewal date",
+        "90_to_119": "90 to 119 days between cancellation_received_date and the renewal date",
+        "120_plus": "120 or more days between cancellation_received_date and the renewal date",
+        "unclear": "contract_text does not give enough information to determine the current term's end/renewal date"
+      }
+    },
+    "cancellation_intent_clear": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly communicate the sender's intent to cancel the contract or not renew it?",
+      "criteria": {
+        "true": "cancellation_email_text unambiguously states the customer will not continue/renew",
+        "false": "cancellation_email_text is a question, complaint, or otherwise does not clearly state an intent to cancel or not renew"
+      }
+    },
+    "email_method_permitted": {
+      "type": "noul",
+      "instructions": "Does `contract_text` allow notice of cancellation/non-renewal to be given by email, rather than requiring some other exclusive delivery method (e.g. certified mail only)?",
+      "criteria": {
+        "true": "contract_text permits email as a valid method of giving notice, or states no specific required method",
+        "false": "contract_text requires a different, exclusive method of notice and does not permit email"
+      }
+    }
+  }
+}

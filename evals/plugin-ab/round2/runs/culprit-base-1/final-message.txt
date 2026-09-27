@@ -1,0 +1,4 @@
+Both files are in the scratchpad run directory:
+
+- **`questions.json`** — example Jev request: a job's candidate error lines (already regex-filtered from a 200-line tail) as `state`, plus two questions answered in one pass: `culprit` (`choice` — which candidate line is the root cause) and `single_root_cause` (`noul` — is there even one clear cause, vs. noise/cascade).
+- **`decide.ts`** — `filterCandidates` (local regex pre-filter to keep Jev calls cheap at scale), `buildRequest` (builds the real request from a job + 200 lines), and `decide` (turns the two answers into a `Verdict`: `pinpoint` a single line when both confidences clear 0.6, otherwise `ranked` top-3 candidates with the reason). The actual `fetch`/POST is left as a one-line comment, per your instruction not to call the API.

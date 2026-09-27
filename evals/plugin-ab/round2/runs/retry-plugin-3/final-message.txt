@@ -1,0 +1,10 @@
+Done. Two files in the working directory:
+
+**`questions.json`** — the Jev request. Single `choice` question, `failure_cause`, classifying the last-200-line log tail into 6 causes (`transient_infrastructure`, `resource_exhaustion`, `flaky_test`, `deterministic_code_failure`, `environment_configuration_issue`, `unknown_insufficient_evidence`). This mirrors the skill's directly-cited pattern ("retry iff cause ∈ {flaky, infrastructure}" derived in code, +12.5–29 pts) rather than asking Jev "should we retry" as a holistic judgment.
+
+**`decide.ts`** — all the logic that runs on the answer:
+- Attempt-budget check (`attempt_number >= max_attempts`) is a pure numeric comparison done in code, never sent to Jev.
+- Retry/no-retry is gated on **summed probability mass** over cause groups (retryable vs. terminal), not the `confidence` scalar, at a 0.7 threshold.
+- Below threshold on both sides → `escalate` (ambiguous cases go to a human queue, never default to `retry` — low confidence must never relax toward the riskier action).
+
+Not called the API, per your instructions. Before trusting this in production, it should go through `jev-eval` against ~30 labelled real failures (transient/flaky/deterministic mix) to check the threshold and category boundaries actually hold.

@@ -1,0 +1,45 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "user_question": "How large a file can I upload?",
+    "matched_faq": {
+      "id": "faq_upload_limit",
+      "question": "What is the maximum file upload size?",
+      "canonical_answer": "The maximum upload size is 500MB per file. This limit applies to all paid plans; the free plan limit is 50MB."
+    },
+    "passages": [
+      {
+        "id": "p1",
+        "text": "Files up to 100MB can be uploaded on any plan, including paid plans.",
+        "source": "docs/upload-limits.md",
+        "retrieved_at": "2026-09-20"
+      },
+      {
+        "id": "p2",
+        "text": "To upload a file, click the paperclip icon in the toolbar and select a file from your device.",
+        "source": "docs/how-to-upload.md",
+        "retrieved_at": "2026-09-22"
+      }
+    ]
+  },
+  "questions": {
+    "p1_status": {
+      "type": "choice",
+      "instructions": "Compare the claim in passages.p1.text to matched_faq.canonical_answer, which is the current, correct answer to matched_faq.question.",
+      "criteria": {
+        "consistent": "passages.p1.text states a fact about the same topic as matched_faq.canonical_answer, and that fact matches matched_faq.canonical_answer",
+        "contradicts": "passages.p1.text states a fact about the same topic as matched_faq.canonical_answer, and that fact conflicts with or is superseded by matched_faq.canonical_answer",
+        "unrelated": "passages.p1.text does not state a fact that overlaps with matched_faq.canonical_answer, so it cannot be checked against it"
+      }
+    },
+    "p2_status": {
+      "type": "choice",
+      "instructions": "Compare the claim in passages.p2.text to matched_faq.canonical_answer, which is the current, correct answer to matched_faq.question.",
+      "criteria": {
+        "consistent": "passages.p2.text states a fact about the same topic as matched_faq.canonical_answer, and that fact matches matched_faq.canonical_answer",
+        "contradicts": "passages.p2.text states a fact about the same topic as matched_faq.canonical_answer, and that fact conflicts with or is superseded by matched_faq.canonical_answer",
+        "unrelated": "passages.p2.text does not state a fact that overlaps with matched_faq.canonical_answer, so it cannot be checked against it"
+      }
+    }
+  }
+}

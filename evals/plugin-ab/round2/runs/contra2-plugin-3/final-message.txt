@@ -1,0 +1,6 @@
+That's fine as-is (equivalent to `pTop`). Both files are ready in the scratchpad:
+
+- **questions.json** — example state (FAQ question, CMS canonical answer, retrieved passages) plus one `choice` question per passage (`status_<id>` → `contradicts` / `consistent` / `unrelated`), each scoped to that passage's text per the "name the field" rule.
+- **decide.ts** — `buildQuestions()` generates the real per-passage question map at runtime (passage count varies per query, unlike the static example); `decide()` gates on the label's probability (not the confidence scalar): confirmed `contradicts` → drop as stale, confident `consistent`/`unrelated` → keep, anything unsure → `needs_review` and excluded from the generator, never relaxed to keep; `filterForGenerator()` applies the verdicts.
+
+Next step per the skill would be running `jev-eval` on ~30 labelled stale/current/unrelated passages before trusting the thresholds — didn't do that here since you said not to call the API.

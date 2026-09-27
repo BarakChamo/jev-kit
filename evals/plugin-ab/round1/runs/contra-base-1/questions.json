@@ -1,0 +1,50 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "faq_question": "What is the refund window for annual plans?",
+    "verified_answer": "Annual plans can be refunded in full within 30 days of purchase; after 30 days refunds are prorated.",
+    "passages": [
+      {
+        "id": "p1",
+        "source": "kb/billing-faq.md#L12",
+        "text": "You have a full 30-day window to request a complete refund on any annual subscription. Past that, we'll prorate based on unused months."
+      },
+      {
+        "id": "p2",
+        "source": "kb/legacy-pricing.md#L47",
+        "text": "Annual plans are non-refundable once activated; monthly plans can be cancelled anytime."
+      },
+      {
+        "id": "p3",
+        "source": "kb/plans-overview.md#L5",
+        "text": "Annual plans offer a 15% discount over paying monthly and include priority support."
+      }
+    ]
+  },
+  "questions": {
+    "p1": {
+      "type": "noul",
+      "instructions": "state.passages contains a passage with id 'p1'. Compare its claim to state.verified_answer, the verified answer to state.faq_question. Does passage p1 assert something that directly conflicts with the verified answer (e.g. a different refund window, a different amount, an opposite policy)? Being silent, partial, or adding unrelated detail is NOT a contradiction.",
+      "criteria": {
+        "true": "Passage p1 makes a claim that directly conflicts with the verified answer.",
+        "false": "Passage p1 is consistent with, silent on, or merely less detailed than the verified answer."
+      }
+    },
+    "p2": {
+      "type": "noul",
+      "instructions": "state.passages contains a passage with id 'p2'. Compare its claim to state.verified_answer, the verified answer to state.faq_question. Does passage p2 assert something that directly conflicts with the verified answer (e.g. a different refund window, a different amount, an opposite policy)? Being silent, partial, or adding unrelated detail is NOT a contradiction.",
+      "criteria": {
+        "true": "Passage p2 makes a claim that directly conflicts with the verified answer.",
+        "false": "Passage p2 is consistent with, silent on, or merely less detailed than the verified answer."
+      }
+    },
+    "p3": {
+      "type": "noul",
+      "instructions": "state.passages contains a passage with id 'p3'. Compare its claim to state.verified_answer, the verified answer to state.faq_question. Does passage p3 assert something that directly conflicts with the verified answer (e.g. a different refund window, a different amount, an opposite policy)? Being silent, partial, or adding unrelated detail is NOT a contradiction.",
+      "criteria": {
+        "true": "Passage p3 makes a claim that directly conflicts with the verified answer.",
+        "false": "Passage p3 is consistent with, silent on, or merely less detailed than the verified answer."
+      }
+    }
+  }
+}

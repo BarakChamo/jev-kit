@@ -1,0 +1,17 @@
+Done. Changes:
+
+- **questions.json**: added `state.cancellation.fromAddress` (the premise this question needs, currently missing entirely) and a new `sender_is_authorized_contact` noul question that names both fields it reads and compares them.
+- **decide.ts**: added it to `JevAnswers` and to the existing gate list, so an unauthorized sender now routes to `INSUFFICIENT_NOTICE` alongside the other required gates.
+
+Per the question-map review the harness asked for, here's every question in the file checked against the design rules, including ones I didn't touch:
+
+| Question | Verdict |
+|---|---|
+| `auto_renewal_clause` | OK — scoped to `state.contract.text`, present-tense, clean polarity. |
+| `required_notice_window` | OK — correctly buckets the notice period instead of asking a raw comparison. |
+| `notice_method_compliant` | OK-ish — it's a lookup/match against the contract, same shape I used for the new question. Worth a labelled check but not an obvious defect. |
+| `cancellation_intent_clear` | OK — present-tense, scoped, clear criteria. |
+| **`notice_timely`** | **Likely defect.** It asks Jev to directly judge "was the notice received early enough" by internally comparing a deadline derived from the contract against `receivedAt`. This is exactly the anti-pattern the rules call out (deadline/"on time" comparisons measured 41.7% as a single question vs. 92–100% when decomposed). Since `required_notice_window` already extracts the notice window as a bucket, the fix would be to also get the term end date as a bucket/date fact and compute the deadline + comparison in code, dropping `notice_timely` as an ask. I did not change this since it wasn't part of the request, but it's the highest-risk question in the file and should be measured (jev-eval) before trusting it. |
+| **`sender_is_authorized_contact` (new)** | Flag on the premise, not the question shape: the sample `contract.text` is truncated ("...") and doesn't visibly contain an authorized-contacts clause. If the real contract states this elsewhere, make sure that section is included in `state.contract.text` — otherwise this question fails silently at high confidence per rule 1. I added `fromAddress` to state since it was missing outright. |
+
+Didn't call the API — this is unmeasured. Recommend running `jev-eval` on ~30 labelled cases (including some with an unauthorized sender and some where the contract doesn't name any authorized contacts) before trusting the new gate, and consider fixing `notice_timely` in the same pass.

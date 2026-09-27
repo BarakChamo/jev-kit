@@ -1,0 +1,13 @@
+Done. Two files in the working directory:
+
+**`questions.json`** — an example state (repo/branch/runner/attempt metadata + `log_tail`, the last 200 log lines) plus two questions:
+- `failure_cause` (`choice`, 7 mutually-exclusive labels: infra / dependency / flaky_test / timeout / build_failure / test_failure / unclear) — the one holistic judgment that actually needs the model, scoped to `log_tail`.
+- `log_manipulated` (`noul`) — a detector question, since log content is untrusted job output an attacker or misbehaving test could use to steer an automated retry decision.
+
+**`decide.ts`** — everything else is derived in code, per the skill's rules:
+- Attempt cap (`attempt_number >= max_attempts`) is a pure code decision — never sent to Jev.
+- Retry-ability is a class membership fact (`cause ∈ {infra, dependency, flaky_test, timeout}`), derived in code rather than asked as a holistic "should we retry?" question.
+- Gates on the summed *probability* of the retryable/non-retryable label set, not the `confidence` scalar.
+- A low-confidence classification or a suspected manipulated log always routes to `manual_review`, never to an auto-retry.
+
+I didn't call the API — per the skill, this should go through a ~30-case labelled eval (`jev:jev-eval`) before being trusted in production, particularly to calibrate the two probability thresholds.

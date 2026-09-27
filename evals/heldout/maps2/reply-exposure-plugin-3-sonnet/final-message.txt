@@ -1,0 +1,8 @@
+Written to `map.mjs`. Design notes:
+
+- Four scoped `noul` questions (name, email, phone, order id), each named to the exact field it reads (`draft_reply` against `recipient.*`), per the rule that meaning must live in instructions/criteria and questions must name the field they read.
+- Company contact addresses/numbers and staff first-names are carved out directly in each question's instructions, matching the stated policy.
+- `decide` derives the verdict in code from the four probabilities: "yes" if any exceeds 0.6, "no" if all are ≤0.2, otherwise `"abstain"` — sending the ambiguous middle band to a human rather than guessing, since a false "no" here is a real data leak.
+- Order-id matching tolerates formatting noise (dashes/case/spacing) per instructions rather than relying on a fragile regex extraction, since draft text is free-form prose.
+
+This hasn't been run against labelled cases — per the skill, thresholds and question wording should be tuned with `jev-eval` on a real sample before trusting it at scale.

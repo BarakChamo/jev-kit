@@ -1,0 +1,49 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "MASTER SUBSCRIPTION AGREEMENT ... This Agreement commences on the Effective Date, March 1, 2024, and continues for an initial term of one (1) year (the \"Initial Term\"). Upon expiration of the Initial Term, this Agreement shall automatically renew for successive one (1) year periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice under this Section may be delivered by email to the address on file or by certified mail. ...",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current term ends. Please treat this as our formal notice that we will not be renewing. Thanks, Dana",
+    "cancellation_received_date": "2024-12-20",
+    "renewal_date": "2025-03-01"
+  },
+  "questions": {
+    "auto_renewal_exists": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which this agreement renews automatically at the end of its term unless a party gives notice?",
+      "criteria": {
+        "true": "the contract auto-renews (evergreen/rollover) absent timely notice of non-renewal",
+        "false": "the contract has a fixed term with no automatic renewal, or renewal requires an affirmative opt-in"
+      }
+    },
+    "notice_period_days": {
+      "type": "choice",
+      "instructions": "How many days of advance notice does `contract_text` require, before the end of the term, to prevent automatic renewal?",
+      "criteria": {
+        "15": "the clause requires 15 days or fewer",
+        "30": "the clause requires 16-30 days",
+        "45": "the clause requires 31-45 days",
+        "60": "the clause requires 46-60 days",
+        "90": "the clause requires 61-90 days",
+        "120": "the clause requires 91-120 days",
+        "over_120": "the clause requires more than 120 days",
+        "not_specified": "no notice period is stated, or there is no auto-renewal clause"
+      }
+    },
+    "method_allows_email": {
+      "type": "noul",
+      "instructions": "Does the notice/cancellation clause in `contract_text` permit notice of non-renewal to be given by email?",
+      "criteria": {
+        "true": "email is stated as an acceptable delivery method (alone or alongside others)",
+        "false": "only a method other than email is acceptable (e.g. certified/physical mail, courier, an online portal), or no method is specified"
+      }
+    },
+    "cancellation_email_is_clear": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` unambiguously state that the customer will not renew, or wants to cancel, the contract?",
+      "criteria": {
+        "true": "the email clearly communicates non-renewal or cancellation intent",
+        "false": "the email is vague, conditional, only asks questions, or does not actually state that intent"
+      }
+    }
+  }
+}

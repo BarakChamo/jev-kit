@@ -1,0 +1,7 @@
+Wrote `map.mjs`. Design notes:
+
+- `buildState`: deterministically converts `expense.amount` to USD via `fx_to_usd` and includes it in state, so Jev never has to do currency math itself.
+- `questions`: two Jev calls per case — a `choice` question (`approve`/`needs_approval`/`reject`) instructed to apply only the limits/rules literally present in `policy_text` (not hardcoded numbers, since policy text varies per case), plus a `noul` question flagging cases the policy text doesn't clearly cover.
+- `decide`: abstains if the currency has no FX rate, if the "unclear" probability is ≥0.5, if the choice answer is missing/invalid, or if confidence/top-probability is below thresholds (0.6/0.55) — otherwise returns the model's choice directly.
+
+This keeps arithmetic and abstain-thresholding deterministic in code, while leaving policy interpretation (which varies by case) to Jev.

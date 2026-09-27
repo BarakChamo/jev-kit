@@ -1,0 +1,6 @@
+Both files are in place at `notice-base-4/`:
+
+- **`questions.json`** — example `state` (contract text + current term end date; cancellation email text + date received) and four Jev questions per contract/cancellation pair: whether an auto-renewal clause exists (`noul`), the required notice period bucketed into common day-counts (`choice`), whether the email is a valid cancellation notice (`noul`), and Jev's own direct read on whether notice was timely (`noul`).
+- **`decide.ts`** — combines the answers: short-circuits on "no auto-renewal" or "invalid notice"; where the notice-period bucket resolves to a concrete number, cross-checks a deterministic date calculation against Jev's own `notice_timely` judgment (flagging `needs_review` on disagreement); otherwise falls back to Jev's direct assessment. Anything below a 0.7/0.3 confidence threshold also routes to `needs_review` rather than guessing.
+
+Not called the API — these are ready for you to wire into the ingestion pipeline (one Jev call per contract+cancellation pair, then `decide()` on the result).

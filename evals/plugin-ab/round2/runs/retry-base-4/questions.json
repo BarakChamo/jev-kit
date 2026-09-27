@@ -1,0 +1,52 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "repo": "acme/webapp",
+    "branch": "main",
+    "runner": "ubuntu-22.04-4core",
+    "job_name": "test-integration",
+    "attempt": 1,
+    "max_attempts": 3,
+    "log_tail": [
+      "Run npm run test:integration",
+      "...",
+      "FetchError: request to https://registry.npmjs.org/lodash failed, reason: connect ETIMEDOUT",
+      "    at ClientRequest.<anonymous> (/home/runner/work/webapp/node_modules/node-fetch/lib/index.js:1461:11)",
+      "npm ERR! network request to https://registry.npmjs.org/lodash failed",
+      "npm ERR! network This is a problem related to network connectivity.",
+      "##[error]Process completed with exit code 1."
+    ]
+  },
+  "questions": {
+    "is_transient": {
+      "type": "noul",
+      "instructions": "Given the job metadata and the last 200 log lines in state, decide whether this failure looks transient/environmental (network blip, DNS/registry timeout, runner or infra flake, disk/resource exhaustion, rate limiting) as opposed to a deterministic failure caused by the code or test changes themselves.",
+      "criteria": {
+        "true": "The log shows signs of an environmental/infra problem: network timeouts, connection resets, DNS failures, registry/package-mirror errors, runner provisioning errors, out-of-disk/out-of-memory, container pull failures, or other issues unrelated to the actual code under test.",
+        "false": "The log shows a deterministic failure: a failing assertion, a compile/type error, a lint error, a stack trace pointing into application or test code, or any failure that would reproduce identically on a clean retry."
+      }
+    },
+    "failure_category": {
+      "type": "choice",
+      "instructions": "Classify the root cause of this CI job failure using the log tail and job metadata in state.",
+      "criteria": {
+        "infra_flake": "Network, DNS, package registry, container registry, or CI-runner infrastructure problem.",
+        "resource_exhaustion": "Out of memory, out of disk, CPU/timeout limits, or other resource exhaustion on the runner.",
+        "flaky_test": "A test failed in a way typical of flakiness (timing, ordering, race condition) rather than a real logic error.",
+        "code_defect": "A real bug or regression in application/test code caused a legitimate assertion failure, compile error, or type error.",
+        "dependency_error": "A specific dependency/package version conflict or missing dependency error, not a general network flake.",
+        "unknown": "The log does not give enough evidence to classify the failure confidently."
+      }
+    },
+    "retry_value": {
+      "type": "score",
+      "instructions": "Considering the failure category, the transience signal, and how many attempts this job has already had (attempt vs max_attempts in state), estimate how valuable it is to automatically retry this job.",
+      "criteria": [
+        "not_worth_retrying",
+        "low_value",
+        "moderate_value",
+        "high_value"
+      ]
+    }
+  }
+}

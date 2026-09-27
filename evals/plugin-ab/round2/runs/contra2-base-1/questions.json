@@ -1,0 +1,54 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "passages": [
+      {
+        "id": "p1",
+        "text": "You can request a refund within 14 days of purchase, no questions asked.",
+        "faq_id": "faq_refund_window",
+        "faq_question": "What is your refund window?",
+        "canonical_answer": "Refunds are available within 30 days of purchase, provided the product is unused."
+      },
+      {
+        "id": "p2",
+        "text": "Our free tier includes up to 3 projects and 1GB of storage.",
+        "faq_id": "faq_free_tier_limits",
+        "faq_question": "What are the limits of the free tier?",
+        "canonical_answer": "The free tier includes up to 3 projects and 1GB of storage."
+      },
+      {
+        "id": "p3",
+        "text": "To export your data, go to Settings > Account > Export (legacy UI).",
+        "faq_id": "faq_export_data",
+        "faq_question": "How do I export my data?",
+        "canonical_answer": "Go to Settings > Data > Export CSV. The legacy Account tab no longer has an export option."
+      }
+    ]
+  },
+  "questions": {
+    "stale_p1": {
+      "type": "noul",
+      "instructions": "A retrieved passage was matched to an FAQ question. Compare the passage's factual claims to the canonical current answer maintained by the support team, which is ground truth today.\n\nFAQ question: \"What is your refund window?\"\nCanonical current answer: \"Refunds are available within 30 days of purchase, provided the product is unused.\"\nRetrieved passage: \"You can request a refund within 14 days of purchase, no questions asked.\"\n\nDoes the passage assert a fact (number, policy, feature, price, deadline, etc.) that contradicts or has been superseded by the canonical answer? Ignore differences in wording, tone, or extra non-conflicting detail.",
+      "criteria": {
+        "true": "The passage states a fact that conflicts with or is outdated relative to the canonical current answer.",
+        "false": "The passage is factually consistent with the canonical current answer."
+      }
+    },
+    "stale_p2": {
+      "type": "noul",
+      "instructions": "A retrieved passage was matched to an FAQ question. Compare the passage's factual claims to the canonical current answer maintained by the support team, which is ground truth today.\n\nFAQ question: \"What are the limits of the free tier?\"\nCanonical current answer: \"The free tier includes up to 3 projects and 1GB of storage.\"\nRetrieved passage: \"Our free tier includes up to 3 projects and 1GB of storage.\"\n\nDoes the passage assert a fact (number, policy, feature, price, deadline, etc.) that contradicts or has been superseded by the canonical answer? Ignore differences in wording, tone, or extra non-conflicting detail.",
+      "criteria": {
+        "true": "The passage states a fact that conflicts with or is outdated relative to the canonical current answer.",
+        "false": "The passage is factually consistent with the canonical current answer."
+      }
+    },
+    "stale_p3": {
+      "type": "noul",
+      "instructions": "A retrieved passage was matched to an FAQ question. Compare the passage's factual claims to the canonical current answer maintained by the support team, which is ground truth today.\n\nFAQ question: \"How do I export my data?\"\nCanonical current answer: \"Go to Settings > Data > Export CSV. The legacy Account tab no longer has an export option.\"\nRetrieved passage: \"To export your data, go to Settings > Account > Export (legacy UI).\"\n\nDoes the passage assert a fact (number, policy, feature, price, deadline, etc.) that contradicts or has been superseded by the canonical answer? Ignore differences in wording, tone, or extra non-conflicting detail.",
+      "criteria": {
+        "true": "The passage states a fact that conflicts with or is outdated relative to the canonical current answer.",
+        "false": "The passage is factually consistent with the canonical current answer."
+      }
+    }
+  }
+}

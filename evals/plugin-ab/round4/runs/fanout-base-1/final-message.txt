@@ -1,0 +1,11 @@
+Both files are done:
+
+**`questions.json`** — one Jev call covering all 25 fields, with `state.contract_text` holding the full extracted contract text. Everything is expressed as `noul`/`choice`/`score` since Jev has no free-text extraction type — banded fields (renewal notice, liability cap amount, payment terms, term length) use `choice` with explicit range buckets rather than trying to pull raw numbers/dollars.
+
+**`decide.ts`** — converts the raw answers into a typed `ContractRecord`:
+- `noul` → boolean at the 0.5 threshold, flagged for review if probability falls in 0.4–0.6
+- `choice` → the returned choice, flagged if confidence < 0.6 or the top two options are within 0.15 of each other
+- `score` → the returned level, flagged if confidence < 0.6
+- Gating logic: dependent fields (e.g. `renewal_notice_period_band`, `liability_cap_amount_band`) are forced to their "n/a" value when the parent boolean (e.g. `auto_renewal`, `liability_cap_present`) is false, rather than trusting whatever the model guessed for an inapplicable question
+
+At 40k contracts/year, the `review` array is the key output for ops — it's a targeted QA queue (uncertain answers only) rather than manual review of every field on every contract.

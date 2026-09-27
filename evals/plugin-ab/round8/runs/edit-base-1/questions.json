@@ -1,0 +1,68 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract": {
+      "id": "C-1042",
+      "text": "MASTER SERVICES AGREEMENT ... This Agreement has an initial term of twelve (12) months from the Effective Date. Thereafter, this Agreement shall automatically renew for successive twelve (12) month terms unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be sent to the addresses set forth in Section 14 (Notices) or to legal@vendor.example. ..."
+    },
+    "cancellation": {
+      "text": "Hi team, we would like to cancel our subscription and confirm that we will not be renewing our contract for the next term. Please let us know if you need anything else from us to process this. Thanks, Jamie",
+      "receivedAt": "2026-09-25"
+    }
+  },
+  "questions": {
+    "auto_renewal_clause": {
+      "type": "noul",
+      "instructions": "Read the contract text at state.contract.text. Determine whether the contract contains an automatic (evergreen) renewal clause, meaning it renews for another term unless the customer affirmatively cancels or gives notice of non-renewal.",
+      "criteria": {
+        "true": "The contract automatically renews for a new term unless the customer gives notice to cancel/not renew.",
+        "false": "The contract does not auto-renew (e.g. it ends unless the customer opts in, or it is a one-time/non-renewing agreement)."
+      }
+    },
+    "required_notice_window": {
+      "type": "choice",
+      "instructions": "Read the contract text at state.contract.text. Identify how much advance notice, before the end of the current term, the customer must give to prevent automatic renewal.",
+      "criteria": {
+        "none": "No advance notice period is required, or the renewal clause is silent on timing.",
+        "1_15_days": "Notice must be given 1-15 days before the term end/renewal date.",
+        "16_30_days": "Notice must be given 16-30 days before the term end/renewal date.",
+        "31_60_days": "Notice must be given 31-60 days before the term end/renewal date.",
+        "61_90_days": "Notice must be given 61-90 days before the term end/renewal date.",
+        "over_90_days": "Notice must be given more than 90 days before the term end/renewal date.",
+        "unclear": "The contract requires advance notice but the exact window cannot be determined from the text."
+      }
+    },
+    "notice_method_compliant": {
+      "type": "noul",
+      "instructions": "Compare any notice-delivery requirements in state.contract.text (required method, format, or recipient/address for a cancellation/non-renewal notice) against the message in state.cancellation.text. Determine whether the cancellation message satisfies those requirements.",
+      "criteria": {
+        "true": "The contract imposes no specific delivery method/format requirement, or the email satisfies whatever requirement exists.",
+        "false": "The contract requires a specific method or recipient (e.g. certified mail, a named notices address) that the email does not satisfy."
+      }
+    },
+    "sender_is_authorized_contact": {
+      "type": "noul",
+      "instructions": "Read state.contract.text for any authorised contacts or notices addresses it lists, and read state.cancellation.text (including the sender's email address) to determine whether the cancellation was sent from one of those authorised addresses.",
+      "criteria": {
+        "true": "The cancellation was sent from an email address the contract lists as an authorised contact/notices address.",
+        "false": "The cancellation was sent from an address the contract does not list as an authorised contact, or no authorised contact can be matched."
+      }
+    },
+    "cancellation_intent_clear": {
+      "type": "noul",
+      "instructions": "Read state.cancellation.text. Determine whether it clearly and unambiguously communicates the customer's intent to cancel and not renew the contract.",
+      "criteria": {
+        "true": "The message unambiguously states intent to cancel / not renew the contract.",
+        "false": "The message is ambiguous, conditional, merely inquisitive, or does not clearly express intent to cancel."
+      }
+    },
+    "notice_timely": {
+      "type": "noul",
+      "instructions": "Using state.contract.text (the current term's end/renewal date and the required notice window) and the cancellation received on state.cancellation.receivedAt, determine whether the cancellation notice was received early enough to satisfy the contract's notice requirement and prevent automatic renewal.",
+      "criteria": {
+        "true": "The notice was received on or before the deadline implied by the contract's required notice period.",
+        "false": "The notice was received after that deadline, so automatic renewal would occur under the contract's terms."
+      }
+    }
+  }
+}

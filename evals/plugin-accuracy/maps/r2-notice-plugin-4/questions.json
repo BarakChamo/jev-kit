@@ -1,0 +1,50 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "SECTION 8. TERM AND RENEWAL. This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months (the \"Initial Term\"). Upon expiration of the Initial Term, this Agreement will automatically renew for successive twelve (12) month terms (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days before the end of the then-current term. Notice of non-renewal must be sent by email to legal@vendor.example or by certified mail to the address in Section 14.",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current contract term ends. Please treat this as our formal notice of non-renewal and let us know the next steps to wind down access. Thanks, Dana",
+    "cancellation_received_date": "2026-08-05",
+    "current_term_end_date": "2026-10-01"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the agreement automatically renews for a further term unless a party gives notice? Answer based only on the presence of that mechanism, not on whether proper notice was later given.",
+      "criteria": {
+        "true": "contract_text describes an automatic/evergreen renewal that occurs unless notice is given",
+        "false": "contract_text has no automatic renewal (fixed term only, renewal requires an affirmative new agreement, or no term/renewal provision at all)"
+      }
+    },
+    "notice_days_required": {
+      "type": "choice",
+      "instructions": "According to `contract_text`, how many days of advance notice must a party give, before the end of the then-current term, to prevent automatic renewal? Convert stated units to days (e.g. '1 month' -> 30_days, '3 months' -> 90_days, '6 months' -> 180_days) and pick the closest listed bucket. If contract_text does not state an automatic-renewal notice period at all, choose other_or_unspecified.",
+      "criteria": {
+        "none_required": "renewal can be avoided with no minimum advance notice",
+        "15_days": "contract_text requires 15 days (or ~2 weeks) advance notice",
+        "30_days": "contract_text requires 30 days (or 1 month) advance notice",
+        "45_days": "contract_text requires 45 days advance notice",
+        "60_days": "contract_text requires 60 days (or 2 months) advance notice",
+        "90_days": "contract_text requires 90 days (or 3 months) advance notice",
+        "120_days": "contract_text requires 120 days (or 4 months) advance notice",
+        "180_days": "contract_text requires 180 days (or 6 months) advance notice",
+        "other_or_unspecified": "contract_text states a different period, or states none at all"
+      }
+    },
+    "notice_method_restricted": {
+      "type": "noul",
+      "instructions": "Does `contract_text` require non-renewal/cancellation notice to be delivered by a specific method (e.g. certified mail, a named portal, a specific address) that an ordinary email to the vendor would NOT satisfy on its own? If email to a stated address or contact is listed as an accepted method, answer false.",
+      "criteria": {
+        "true": "contract_text requires a delivery method that a plain email would not satisfy",
+        "false": "contract_text allows email as an accepted method, or states no method restriction"
+      }
+    },
+    "email_states_cancellation": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly communicate the customer's intent to cancel the contract or not renew it, as opposed to e.g. a complaint, a request for a discount, or a question about the contract?",
+      "criteria": {
+        "true": "cancellation_email_text unambiguously states an intent to cancel or not renew",
+        "false": "cancellation_email_text is ambiguous or does not state that intent"
+      }
+    }
+  }
+}

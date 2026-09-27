@@ -1,0 +1,4185 @@
+[
+  {
+    "map": "r11-notice-plugin-31",
+    "n": 30,
+    "right": 28,
+    "wrong": 0,
+    "abstain": 2,
+    "errors": 0,
+    "accuracy_all": 0.9333333333333333,
+    "accuracy_decided": 1,
+    "coverage": 0.9333333333333333,
+    "rows": [
+      {
+        "id": "notice-001",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "January",
+            "confidence": 1,
+            "probabilities": {
+              "September": 0,
+              "March": 0,
+              "November": 0,
+              "December": 0,
+              "April": 0,
+              "October": 0,
+              "June": 0,
+              "August": 0,
+              "February": 0,
+              "January": 1,
+              "July": 0,
+              "May": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "15",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 1,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "3 years": 0,
+              "1 month": 0,
+              "6 months": 0,
+              "other or unclear": 0,
+              "2 years": 0,
+              "1 year": 1
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 1,
+              "120 days": 0,
+              "30 days": 0,
+              "other or unclear": 0,
+              "90 days": 0,
+              "45 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-002",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "March",
+            "confidence": 1,
+            "probabilities": {
+              "July": 0,
+              "August": 0,
+              "March": 1,
+              "November": 0,
+              "June": 0,
+              "October": 0,
+              "April": 0,
+              "September": 0,
+              "May": 0,
+              "January": 0,
+              "December": 0,
+              "February": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "other or unclear": 0,
+              "1 month": 0,
+              "2 years": 0,
+              "1 year": 1,
+              "3 months": 0,
+              "3 years": 0,
+              "6 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "120 days": 0,
+              "90 days": 0,
+              "15 days": 0,
+              "other or unclear": 0,
+              "45 days": 0,
+              "30 days": 0,
+              "60 days": 1
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-003",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "February",
+            "confidence": 1,
+            "probabilities": {
+              "September": 0,
+              "March": 0,
+              "November": 0,
+              "December": 0,
+              "August": 0,
+              "April": 0,
+              "June": 0,
+              "October": 0,
+              "February": 1,
+              "May": 0,
+              "July": 0,
+              "January": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "10",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 1,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "3 years": 0,
+              "other or unclear": 0,
+              "1 month": 0,
+              "6 months": 0,
+              "1 year": 1,
+              "2 years": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 0,
+              "120 days": 0,
+              "30 days": 1,
+              "other or unclear": 0,
+              "90 days": 0,
+              "45 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-004",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "June",
+            "confidence": 1,
+            "probabilities": {
+              "January": 0,
+              "December": 0,
+              "February": 0,
+              "September": 0,
+              "November": 0,
+              "August": 0,
+              "May": 0,
+              "June": 1,
+              "October": 0,
+              "April": 0,
+              "March": 0,
+              "July": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "3 years": 0,
+              "2 years": 0,
+              "6 months": 0,
+              "1 year": 1,
+              "other or unclear": 0,
+              "1 month": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 0,
+              "other or unclear": 0,
+              "120 days": 0,
+              "45 days": 0,
+              "90 days": 0,
+              "30 days": 1,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-005",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "April",
+            "confidence": 1,
+            "probabilities": {
+              "January": 0,
+              "December": 0,
+              "February": 0,
+              "September": 0,
+              "November": 0,
+              "August": 0,
+              "May": 0,
+              "April": 1,
+              "October": 0,
+              "June": 0,
+              "March": 0,
+              "July": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "20",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 1,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "other or unclear": 0,
+              "1 month": 0,
+              "6 months": 0,
+              "1 year": 1,
+              "2 years": 0,
+              "3 years": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 0,
+              "other or unclear": 0,
+              "120 days": 0,
+              "45 days": 0,
+              "90 days": 1,
+              "30 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-006",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "May",
+            "confidence": 1,
+            "probabilities": {
+              "July": 0,
+              "March": 0,
+              "November": 0,
+              "December": 0,
+              "August": 0,
+              "May": 1,
+              "April": 0,
+              "September": 0,
+              "October": 0,
+              "January": 0,
+              "February": 0,
+              "June": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "5",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 1,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "1 month": 0,
+              "other or unclear": 0,
+              "2 years": 0,
+              "6 months": 0,
+              "3 years": 0,
+              "1 year": 1,
+              "3 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "120 days": 0,
+              "45 days": 0,
+              "other or unclear": 0,
+              "30 days": 0,
+              "15 days": 0,
+              "60 days": 0,
+              "90 days": 1
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-007",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "July",
+            "confidence": 1,
+            "probabilities": {
+              "February": 0,
+              "June": 0,
+              "December": 0,
+              "March": 0,
+              "January": 0,
+              "October": 0,
+              "August": 0,
+              "September": 0,
+              "May": 0,
+              "July": 1,
+              "April": 0,
+              "November": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "1 year": 1,
+              "other or unclear": 0,
+              "3 months": 0,
+              "1 month": 0,
+              "6 months": 0,
+              "3 years": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "120 days",
+            "confidence": 1,
+            "probabilities": {
+              "30 days": 0,
+              "45 days": 0,
+              "120 days": 1,
+              "90 days": 0,
+              "15 days": 0,
+              "other or unclear": 0,
+              "60 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-008",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "August",
+            "confidence": 1,
+            "probabilities": {
+              "June": 0,
+              "October": 0,
+              "March": 0,
+              "December": 0,
+              "August": 1,
+              "September": 0,
+              "July": 0,
+              "February": 0,
+              "April": 0,
+              "May": 0,
+              "January": 0,
+              "November": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "12",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 1,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "other or unclear": 0,
+              "1 year": 1,
+              "3 months": 0,
+              "3 years": 0,
+              "6 months": 0,
+              "1 month": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "120 days",
+            "confidence": 1,
+            "probabilities": {
+              "120 days": 1,
+              "other or unclear": 0,
+              "30 days": 0,
+              "45 days": 0,
+              "15 days": 0,
+              "90 days": 0,
+              "60 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-009",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "January",
+            "confidence": 1,
+            "probabilities": {
+              "August": 0,
+              "October": 0,
+              "November": 0,
+              "September": 0,
+              "March": 0,
+              "July": 0,
+              "May": 0,
+              "December": 0,
+              "February": 0,
+              "January": 1,
+              "June": 0,
+              "April": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "31",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 1
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "1 year": 1,
+              "2 years": 0,
+              "6 months": 0,
+              "other or unclear": 0,
+              "3 months": 0,
+              "3 years": 0,
+              "1 month": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "90 days": 0,
+              "45 days": 0,
+              "15 days": 0,
+              "60 days": 1,
+              "other or unclear": 0,
+              "120 days": 0,
+              "30 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-010",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "February",
+            "confidence": 1,
+            "probabilities": {
+              "December": 0,
+              "July": 0,
+              "September": 0,
+              "March": 0,
+              "August": 0,
+              "October": 0,
+              "January": 0,
+              "May": 0,
+              "April": 0,
+              "February": 1,
+              "November": 0,
+              "June": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "28",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 1,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "3 months": 0,
+              "other or unclear": 0,
+              "3 years": 0,
+              "1 month": 0,
+              "1 year": 1,
+              "6 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "120 days": 0,
+              "other or unclear": 0,
+              "30 days": 0,
+              "90 days": 0,
+              "45 days": 0,
+              "60 days": 1,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-011",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "September",
+            "confidence": 1,
+            "probabilities": {
+              "September": 1,
+              "May": 0,
+              "June": 0,
+              "November": 0,
+              "August": 0,
+              "October": 0,
+              "July": 0,
+              "January": 0,
+              "February": 0,
+              "April": 0,
+              "December": 0,
+              "March": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "15",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 1,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "6 months": 0,
+              "3 months": 0,
+              "other or unclear": 0,
+              "2 years": 0,
+              "1 year": 1,
+              "3 years": 0,
+              "1 month": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30 days",
+            "confidence": 1,
+            "probabilities": {
+              "45 days": 0,
+              "other or unclear": 0,
+              "90 days": 0,
+              "60 days": 0,
+              "30 days": 1,
+              "120 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-012",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "October",
+            "confidence": 1,
+            "probabilities": {
+              "November": 0,
+              "August": 0,
+              "May": 0,
+              "February": 0,
+              "July": 0,
+              "March": 0,
+              "January": 0,
+              "June": 0,
+              "October": 1,
+              "April": 0,
+              "December": 0,
+              "September": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "2 years": 0,
+              "1 month": 0,
+              "other or unclear": 0,
+              "3 years": 0,
+              "1 year": 1,
+              "6 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30 days",
+            "confidence": 1,
+            "probabilities": {
+              "45 days": 0,
+              "120 days": 0,
+              "15 days": 0,
+              "other or unclear": 0,
+              "90 days": 0,
+              "60 days": 0,
+              "30 days": 1
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-013",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "March",
+            "confidence": 1,
+            "probabilities": {
+              "June": 0,
+              "April": 0,
+              "May": 0,
+              "February": 0,
+              "January": 0,
+              "August": 0,
+              "November": 0,
+              "October": 0,
+              "December": 0,
+              "September": 0,
+              "July": 0,
+              "March": 1
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "15",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 1,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "other or unclear": 0,
+              "1 month": 0,
+              "1 year": 1,
+              "2 years": 0,
+              "6 months": 0,
+              "3 years": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "90 days": 1,
+              "other or unclear": 0,
+              "120 days": 0,
+              "60 days": 0,
+              "45 days": 0,
+              "30 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-014",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "November",
+            "confidence": 1,
+            "probabilities": {
+              "March": 0,
+              "January": 0,
+              "August": 0,
+              "February": 0,
+              "May": 0,
+              "September": 0,
+              "October": 0,
+              "June": 0,
+              "December": 0,
+              "November": 1,
+              "April": 0,
+              "July": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "20",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 1,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "1 year": 1,
+              "other or unclear": 0,
+              "3 years": 0,
+              "6 months": 0,
+              "1 month": 0,
+              "3 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "15 days": 0,
+              "other or unclear": 0,
+              "120 days": 0,
+              "60 days": 0,
+              "90 days": 1,
+              "30 days": 0,
+              "45 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-015",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "June",
+            "confidence": 1,
+            "probabilities": {
+              "September": 0,
+              "March": 0,
+              "November": 0,
+              "December": 0,
+              "April": 0,
+              "August": 0,
+              "June": 1,
+              "October": 0,
+              "February": 0,
+              "January": 0,
+              "July": 0,
+              "May": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "30",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 1,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "3 years": 0,
+              "6 months": 0,
+              "1 month": 0,
+              "other or unclear": 0,
+              "2 years": 0,
+              "1 year": 1
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "45 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 0,
+              "45 days": 1,
+              "30 days": 0,
+              "other or unclear": 0,
+              "90 days": 0,
+              "120 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-016",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "December",
+            "confidence": 1,
+            "probabilities": {
+              "January": 0,
+              "December": 1,
+              "February": 0,
+              "September": 0,
+              "November": 0,
+              "August": 0,
+              "May": 0,
+              "June": 0,
+              "October": 0,
+              "April": 0,
+              "March": 0,
+              "July": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "3 years": 0,
+              "1 month": 0,
+              "2 years": 0,
+              "1 year": 1,
+              "other or unclear": 0,
+              "6 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "45 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 0,
+              "120 days": 0,
+              "other or unclear": 0,
+              "45 days": 1,
+              "90 days": 0,
+              "30 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-017",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "April",
+            "confidence": 1,
+            "probabilities": {
+              "March": 0,
+              "July": 0,
+              "December": 0,
+              "August": 0,
+              "January": 0,
+              "October": 0,
+              "February": 0,
+              "November": 0,
+              "April": 1,
+              "June": 0,
+              "September": 0,
+              "May": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "3 months": 0,
+              "1 year": 1,
+              "other or unclear": 0,
+              "3 years": 0,
+              "6 months": 0,
+              "1 month": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "45 days": 0,
+              "15 days": 0,
+              "60 days": 1,
+              "120 days": 0,
+              "90 days": 0,
+              "other or unclear": 0,
+              "30 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-018",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "January",
+            "confidence": 1,
+            "probabilities": {
+              "September": 0,
+              "October": 0,
+              "May": 0,
+              "June": 0,
+              "August": 0,
+              "April": 0,
+              "January": 1,
+              "March": 0,
+              "November": 0,
+              "February": 0,
+              "July": 0,
+              "December": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "10",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 1,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "3 months": 0,
+              "other or unclear": 0,
+              "1 year": 1,
+              "3 years": 0,
+              "1 month": 0,
+              "6 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "120 days": 0,
+              "90 days": 1,
+              "60 days": 0,
+              "45 days": 0,
+              "30 days": 0,
+              "15 days": 0,
+              "other or unclear": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-019",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "May",
+            "confidence": 1,
+            "probabilities": {
+              "January": 0,
+              "December": 0,
+              "February": 0,
+              "September": 0,
+              "November": 0,
+              "August": 0,
+              "May": 1,
+              "June": 0,
+              "October": 0,
+              "April": 0,
+              "March": 0,
+              "July": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "18",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 1,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "6 months": 0,
+              "1 month": 0,
+              "3 years": 0,
+              "1 year": 1,
+              "2 years": 0,
+              "other or unclear": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 0,
+              "other or unclear": 0,
+              "120 days": 0,
+              "45 days": 0,
+              "90 days": 1,
+              "30 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-020",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "July",
+            "confidence": 1,
+            "probabilities": {
+              "May": 0,
+              "February": 0,
+              "October": 0,
+              "April": 0,
+              "June": 0,
+              "January": 0,
+              "March": 0,
+              "August": 0,
+              "December": 0,
+              "July": 1,
+              "November": 0,
+              "September": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "22",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 1,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "other or unclear": 0,
+              "2 years": 0,
+              "1 month": 0,
+              "1 year": 1,
+              "6 months": 0,
+              "3 years": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "other or unclear": 0,
+              "15 days": 0,
+              "45 days": 0,
+              "120 days": 0,
+              "30 days": 0,
+              "90 days": 0,
+              "60 days": 1
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-021",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2023",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 1,
+              "2024": 0,
+              "2025": 0,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "February",
+            "confidence": 1,
+            "probabilities": {
+              "November": 0,
+              "August": 0,
+              "January": 0,
+              "May": 0,
+              "April": 0,
+              "September": 0,
+              "July": 0,
+              "June": 0,
+              "December": 0,
+              "October": 0,
+              "February": 1,
+              "March": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "6 months": 0,
+              "2 years": 0,
+              "1 year": 1,
+              "3 months": 0,
+              "3 years": 0,
+              "1 month": 0,
+              "other or unclear": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "90 days": 0,
+              "30 days": 0,
+              "120 days": 0,
+              "45 days": 0,
+              "15 days": 0,
+              "60 days": 1,
+              "other or unclear": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-022",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2023",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 1,
+              "2024": 0,
+              "2025": 0,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "September",
+            "confidence": 1,
+            "probabilities": {
+              "August": 0,
+              "July": 0,
+              "March": 0,
+              "December": 0,
+              "February": 0,
+              "October": 0,
+              "January": 0,
+              "November": 0,
+              "April": 0,
+              "June": 0,
+              "May": 0,
+              "September": 1
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "1 year": 1,
+              "3 months": 0,
+              "other or unclear": 0,
+              "6 months": 0,
+              "3 years": 0,
+              "1 month": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "45 days": 0,
+              "15 days": 0,
+              "60 days": 1,
+              "120 days": 0,
+              "90 days": 0,
+              "other or unclear": 0,
+              "30 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-023",
+        "gold": {
+          "outcome": "avoided"
+        },
+        "pred": {
+          "outcome": "avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2024",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 1,
+              "2025": 0,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "March",
+            "confidence": 1,
+            "probabilities": {
+              "June": 0,
+              "February": 0,
+              "December": 0,
+              "November": 0,
+              "July": 0,
+              "August": 0,
+              "October": 0,
+              "March": 1,
+              "January": 0,
+              "April": 0,
+              "September": 0,
+              "May": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "10",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 1,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "2 years",
+            "confidence": 1,
+            "probabilities": {
+              "6 months": 0,
+              "3 months": 0,
+              "1 year": 0,
+              "3 years": 0,
+              "1 month": 0,
+              "2 years": 1,
+              "other or unclear": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "other or unclear": 0,
+              "90 days": 1,
+              "60 days": 0,
+              "120 days": 0,
+              "45 days": 0,
+              "30 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-024",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2024",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 1,
+              "2025": 0,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "June",
+            "confidence": 1,
+            "probabilities": {
+              "June": 1,
+              "March": 0,
+              "September": 0,
+              "February": 0,
+              "May": 0,
+              "November": 0,
+              "April": 0,
+              "August": 0,
+              "October": 0,
+              "January": 0,
+              "December": 0,
+              "July": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "5",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 1,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "2 years",
+            "confidence": 1,
+            "probabilities": {
+              "other or unclear": 0,
+              "3 years": 0,
+              "1 year": 0,
+              "3 months": 0,
+              "1 month": 0,
+              "6 months": 0,
+              "2 years": 1
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "90 days",
+            "confidence": 1,
+            "probabilities": {
+              "45 days": 0,
+              "15 days": 0,
+              "other or unclear": 0,
+              "90 days": 1,
+              "60 days": 0,
+              "120 days": 0,
+              "30 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-025",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "February",
+            "confidence": 1,
+            "probabilities": {
+              "January": 0,
+              "December": 0,
+              "February": 1,
+              "September": 0,
+              "November": 0,
+              "August": 0,
+              "May": 0,
+              "June": 0,
+              "October": 0,
+              "April": 0,
+              "March": 0,
+              "July": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "3 years": 0,
+              "2 years": 0,
+              "6 months": 0,
+              "1 year": 1,
+              "other or unclear": 0,
+              "1 month": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "other or unclear",
+            "confidence": 1,
+            "probabilities": {
+              "120 days": 0,
+              "other or unclear": 1,
+              "60 days": 0,
+              "45 days": 0,
+              "90 days": 0,
+              "30 days": 0,
+              "15 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-026",
+        "gold": {
+          "outcome": "not_applicable"
+        },
+        "pred": {
+          "outcome": "not_applicable"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "August",
+            "confidence": 1,
+            "probabilities": {
+              "February": 0,
+              "June": 0,
+              "December": 0,
+              "March": 0,
+              "January": 0,
+              "October": 0,
+              "August": 1,
+              "July": 0,
+              "September": 0,
+              "May": 0,
+              "November": 0,
+              "April": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "1",
+            "confidence": 1,
+            "probabilities": {
+              "1": 1,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "1 month": 0,
+              "other or unclear": 0,
+              "3 months": 0,
+              "1 year": 1,
+              "3 years": 0,
+              "6 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "other or unclear",
+            "confidence": 1,
+            "probabilities": {
+              "45 days": 0,
+              "30 days": 0,
+              "other or unclear": 1,
+              "90 days": 0,
+              "15 days": 0,
+              "120 days": 0,
+              "60 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-027",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "March",
+            "confidence": 1,
+            "probabilities": {
+              "July": 0,
+              "September": 0,
+              "August": 0,
+              "March": 1,
+              "April": 0,
+              "June": 0,
+              "January": 0,
+              "February": 0,
+              "October": 0,
+              "May": 0,
+              "December": 0,
+              "November": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "20",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 1,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "3 months": 0,
+              "1 year": 1,
+              "other or unclear": 0,
+              "3 years": 0,
+              "1 month": 0,
+              "6 months": 0,
+              "2 years": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "60 days": 1,
+              "45 days": 0,
+              "other or unclear": 0,
+              "15 days": 0,
+              "90 days": 0,
+              "30 days": 0,
+              "120 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-028",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "not_avoided"
+        },
+        "grade": "right",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "October",
+            "confidence": 1,
+            "probabilities": {
+              "February": 0,
+              "December": 0,
+              "June": 0,
+              "March": 0,
+              "January": 0,
+              "August": 0,
+              "October": 1,
+              "May": 0,
+              "July": 0,
+              "September": 0,
+              "April": 0,
+              "November": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "10",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 1,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "1 month": 0,
+              "other or unclear": 0,
+              "3 months": 0,
+              "1 year": 1,
+              "3 years": 0,
+              "6 months": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30 days",
+            "confidence": 1,
+            "probabilities": {
+              "45 days": 0,
+              "30 days": 1,
+              "120 days": 0,
+              "90 days": 0,
+              "15 days": 0,
+              "60 days": 0,
+              "other or unclear": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-029",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "May",
+            "confidence": 1,
+            "probabilities": {
+              "November": 0,
+              "August": 0,
+              "June": 0,
+              "May": 1,
+              "January": 0,
+              "September": 0,
+              "July": 0,
+              "April": 0,
+              "December": 0,
+              "October": 0,
+              "February": 0,
+              "March": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "25",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 0,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 1,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "6 months": 0,
+              "2 years": 0,
+              "1 year": 1,
+              "3 months": 0,
+              "3 years": 0,
+              "1 month": 0,
+              "other or unclear": 0
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "60 days",
+            "confidence": 1,
+            "probabilities": {
+              "other or unclear": 0,
+              "30 days": 0,
+              "120 days": 0,
+              "45 days": 0,
+              "15 days": 0,
+              "60 days": 1,
+              "90 days": 0
+            }
+          }
+        }
+      },
+      {
+        "id": "notice-030",
+        "gold": {
+          "outcome": "not_avoided"
+        },
+        "pred": {
+          "outcome": "abstain"
+        },
+        "grade": "abstain",
+        "answers": {
+          "has_auto_renewal": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "email_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "email_states_cancellation": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "start_year": {
+            "type": "choice",
+            "choice": "2025",
+            "confidence": 1,
+            "probabilities": {
+              "2010": 0,
+              "2011": 0,
+              "2012": 0,
+              "2013": 0,
+              "2014": 0,
+              "2015": 0,
+              "2016": 0,
+              "2017": 0,
+              "2018": 0,
+              "2019": 0,
+              "2020": 0,
+              "2021": 0,
+              "2022": 0,
+              "2023": 0,
+              "2024": 0,
+              "2025": 1,
+              "2026": 0,
+              "2027": 0,
+              "2028": 0,
+              "2029": 0,
+              "2030": 0,
+              "2031": 0,
+              "2032": 0
+            }
+          },
+          "start_month": {
+            "type": "choice",
+            "choice": "September",
+            "confidence": 1,
+            "probabilities": {
+              "May": 0,
+              "June": 0,
+              "February": 0,
+              "October": 0,
+              "August": 0,
+              "September": 1,
+              "July": 0,
+              "December": 0,
+              "April": 0,
+              "March": 0,
+              "November": 0,
+              "January": 0
+            }
+          },
+          "start_day": {
+            "type": "choice",
+            "choice": "9",
+            "confidence": 1,
+            "probabilities": {
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0,
+              "9": 1,
+              "10": 0,
+              "11": 0,
+              "12": 0,
+              "13": 0,
+              "14": 0,
+              "15": 0,
+              "16": 0,
+              "17": 0,
+              "18": 0,
+              "19": 0,
+              "20": 0,
+              "21": 0,
+              "22": 0,
+              "23": 0,
+              "24": 0,
+              "25": 0,
+              "26": 0,
+              "27": 0,
+              "28": 0,
+              "29": 0,
+              "30": 0,
+              "31": 0
+            }
+          },
+          "term_length": {
+            "type": "choice",
+            "choice": "1 year",
+            "confidence": 1,
+            "probabilities": {
+              "2 years": 0,
+              "3 months": 0,
+              "1 month": 0,
+              "other or unclear": 0,
+              "3 years": 0,
+              "6 months": 0,
+              "1 year": 1
+            }
+          },
+          "notice_period": {
+            "type": "choice",
+            "choice": "30 days",
+            "confidence": 1,
+            "probabilities": {
+              "15 days": 0,
+              "other or unclear": 0,
+              "120 days": 0,
+              "45 days": 0,
+              "90 days": 0,
+              "30 days": 1,
+              "60 days": 0
+            }
+          }
+        }
+      }
+    ]
+  }
+]

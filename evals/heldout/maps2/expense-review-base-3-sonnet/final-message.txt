@@ -1,0 +1,8 @@
+This looks correct and self-contained. `map.mjs` is now written at the project root (`/tmp/.../expense-review-base-3-sonnet/map.mjs`).
+
+Summary of the design:
+- **`buildState`**: deterministically converts the expense amount to USD using the given `fx_to_usd` rate (no need to make Jev do arithmetic), passing through `policy_text` and expense fields plus `usd_amount`/`fx_rate` (null if currency unknown).
+- **`questions`**: two Jev questions answered in one pass:
+  - `decision` (choice: approve/needs_approval/reject) — does the actual policy-vs-expense reasoning, since `policy_text` varies per case and can't be hardcoded; instructed to prefer `needs_approval` over rejecting on overages/missing receipts/unresolvable FX, per policy conventions like "exceeds limit → approval, not rejection."
+  - `ambiguous` (noul) — flags cases where the policy text doesn't clearly cover the line (missing category/city tier, contradictory rules, etc.).
+- **`decide`**: abstains if the choice isn't one of the three valid values, if confidence < 0.55, or if the ambiguity signal ≥ 0.5; otherwise returns the model's choice directly. This routes genuinely unclear cases to a human while letting the high-volume clear-cut majority auto-resolve.

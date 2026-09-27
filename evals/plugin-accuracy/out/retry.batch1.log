@@ -1,0 +1,9 @@
+{"map":"r1-retry-base-1","n":30,"right":26,"wrong":4,"abstain":0,"errors":0,"accuracy_all":0.8666666666666667,"accuracy_decided":0.8666666666666667,"coverage":1}
+{"map":"r1-retry-base-2","n":30,"right":30,"wrong":0,"abstain":0,"errors":0,"accuracy_all":1,"accuracy_decided":1,"coverage":1}
+{"map":"r1-retry-plugin-1","n":30,"right":24,"wrong":0,"abstain":6,"errors":0,"accuracy_all":0.8,"accuracy_decided":1,"coverage":0.8}
+{"map":"r1-retry-plugin-2","n":30,"right":21,"wrong":0,"abstain":9,"errors":0,"accuracy_all":0.7,"accuracy_decided":1,"coverage":0.7}
+{"map":"r2-retry-base-3","n":30,"right":16,"wrong":14,"abstain":0,"errors":0,"accuracy_all":0.5333333333333333,"accuracy_decided":0.5333333333333333,"coverage":1}
+{"map":"r2-retry-base-4","n":30,"right":24,"wrong":6,"abstain":0,"errors":0,"accuracy_all":0.8,"accuracy_decided":0.8,"coverage":1}
+{"map":"r2-retry-plugin-3","n":30,"right":30,"wrong":0,"abstain":0,"errors":0,"accuracy_all":1,"accuracy_decided":1,"coverage":1}
+{"map":"r2-retry-plugin-4","n":30,"right":22,"wrong":0,"abstain":8,"errors":0,"accuracy_all":0.7333333333333333,"accuracy_decided":1,"coverage":0.7333333333333333}
+{"map":"r6-retry-plugin-7","n":30,"right":17,"wrong":0,"abstain":13,"errors":0,"accuracy_all":0.5666666666666667,"accuracy_decided":1,"coverage":0.5666666666666667}

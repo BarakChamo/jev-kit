@@ -1,0 +1,77 @@
+| task / arm | maps | accuracy (abstain = wrong) | wrong decisions | coverage | accuracy when it decides |
+| notice / no plugin | 4 | 69.2% | 3.3% | 72.5% | 95.5% |
+| notice / plugin v1 (rounds 1-7) | 12 | 56.9% | 4.7% | 61.7% | 91.4% |
+| notice / plugin v2 (round 10) | 4 | 58.3% | 5.0% | 63.3% | 91.2% |
+| notice / plugin v3 (rounds 11-12) | 4 | 91.7% | 0.0% | 91.7% | 100.0% |
+| retry / no plugin | 4 | 80.0% | 20.0% | 100.0% | 80.0% |
+| retry / plugin v1 (rounds 1-7) | 6 | 76.1% | 1.7% | 77.8% | 98.1% |
+| retry / plugin v3 (rounds 11-12) | 3 | 85.6% | 3.3% | 88.9% | 95.9% |
+| culprit / no plugin | 3 | 77.8% | 13.3% | 91.1% | 86.3% |
+| culprit / plugin v1 (rounds 1-7) | 8 | 47.5% | 45.8% | 93.3% | 51.7% |
+| culprit / plugin v2 (round 10) | 4 | 100.0% | 0.0% | 100.0% | 100.0% |
+| culprit / plugin v3 (rounds 11-12) | 3 | 86.7% | 13.3% | 100.0% | 86.7% |
+
+| notice/PASS | 12 | 62.8% | 4.4% | 67.2% | 92.2% |
+| notice/PARTIAL | 1 | 96.7% | 0.0% | 96.7% | 100.0% |
+| notice/FAIL | 3 | 36.7% | 5.6% | 42.2% | 90.6% |
+| retry/PASS | 6 | 76.1% | 1.7% | 77.8% | 98.1% |
+| retry/PARTIAL | 4 | 80.0% | 20.0% | 100.0% | 80.0% |
+| culprit/PASS | 5 | 41.3% | 50.7% | 92.0% | 48.0% |
+| culprit/PARTIAL | 3 | 57.8% | 37.8% | 95.6% | 57.9% |
+| culprit/FAIL | 3 | 77.8% | 13.3% | 91.1% | 86.3% |
+
+r1-notice-base-1       FAIL     acc= 20.0 wrong= 0 abst=24 dec=100.0
+r1-notice-base-2       FAIL     acc= 60.0 wrong= 4 abst= 8 dec= 81.8
+r1-notice-plugin-1     PASS     acc= 20.0 wrong= 0 abst=24 dec=100.0
+r1-notice-plugin-2     PASS     acc= 63.3 wrong= 3 abst= 8 dec= 86.4
+r1-retry-base-1        PARTIAL  acc= 86.7 wrong= 4 abst= 0 dec= 86.7
+r1-retry-base-2        PARTIAL  acc=100.0 wrong= 0 abst= 0 dec=100.0
+r1-retry-plugin-1      PASS     acc= 80.0 wrong= 0 abst= 6 dec=100.0
+r1-retry-plugin-2      PASS     acc= 70.0 wrong= 0 abst= 9 dec=100.0
+r10-culprit-plugin-21  ?        acc=100.0 wrong= 0 abst= 0 dec=100.0 top3=100
+r10-culprit-plugin-22  ?        acc=100.0 wrong= 0 abst= 0 dec=100.0 top3=100
+r10-culprit-plugin-23  ?        acc=100.0 wrong= 0 abst= 0 dec=100.0 top3=100
+r10-culprit-plugin-24  ?        acc=100.0 wrong= 0 abst= 0 dec=100.0 top3=100
+r10-notice-plugin-21   ?        acc= 60.0 wrong= 2 abst=10 dec= 90.0
+r10-notice-plugin-22   ?        acc= 33.3 wrong= 0 abst=20 dec=100.0
+r10-notice-plugin-23   ?        acc=100.0 wrong= 0 abst= 0 dec=100.0
+r10-notice-plugin-24   ?        acc= 40.0 wrong= 4 abst=14 dec= 75.0
+r11-notice-plugin-31   ?        acc= 93.3 wrong= 0 abst= 2 dec=100.0
+r11-notice-plugin-32   ?        acc= 86.7 wrong= 0 abst= 4 dec=100.0
+r11-notice-plugin-33   ?        acc=100.0 wrong= 0 abst= 0 dec=100.0
+r11-notice-plugin-34   ?        acc= 86.7 wrong= 0 abst= 4 dec=100.0
+r12-culprit-plugin-41  ?        acc=100.0 wrong= 0 abst= 0 dec=100.0 top3=100
+r12-culprit-plugin-42  ?        acc= 80.0 wrong= 6 abst= 0 dec= 80.0 top3=90
+r12-culprit-plugin-43  ?        acc= 80.0 wrong= 6 abst= 0 dec= 80.0 top3=100
+r12-retry-plugin-41    ?        acc= 70.0 wrong= 2 abst= 7 dec= 91.3
+r12-retry-plugin-42    ?        acc= 90.0 wrong= 1 abst= 2 dec= 96.4
+r12-retry-plugin-43    ?        acc= 96.7 wrong= 0 abst= 1 dec=100.0
+r2-culprit-base-1      FAIL     acc= 63.3 wrong=11 abst= 0 dec= 63.3 top3=63
+r2-culprit-base-2      FAIL     acc= 70.0 wrong= 1 abst= 8 dec= 95.5 top3=73
+r2-culprit-base-3      FAIL     acc=100.0 wrong= 0 abst= 0 dec=100.0 top3=100
+r2-culprit-plugin-1    PARTIAL  acc=  3.3 wrong=25 abst= 4 dec=  3.8 top3=3
+r2-culprit-plugin-2    PARTIAL  acc= 70.0 wrong= 9 abst= 0 dec= 70.0 top3=70
+r2-culprit-plugin-3    PARTIAL  acc=100.0 wrong= 0 abst= 0 dec=100.0 top3=100
+r2-notice-base-3       PASS     acc=100.0 wrong= 0 abst= 0 dec=100.0
+r2-notice-base-4       PARTIAL  acc= 96.7 wrong= 0 abst= 1 dec=100.0
+r2-notice-plugin-3     PASS     acc= 56.7 wrong= 5 abst= 8 dec= 77.3
+r2-notice-plugin-4     PASS     acc= 86.7 wrong= 0 abst= 4 dec=100.0
+r2-retry-base-3        PARTIAL  acc= 53.3 wrong=14 abst= 0 dec= 53.3
+r2-retry-base-4        PARTIAL  acc= 80.0 wrong= 6 abst= 0 dec= 80.0
+r2-retry-plugin-3      PASS     acc=100.0 wrong= 0 abst= 0 dec=100.0
+r2-retry-plugin-4      PASS     acc= 73.3 wrong= 0 abst= 8 dec=100.0
+r3-culprit-plugin-4    PASS     acc= 73.3 wrong= 0 abst= 8 dec=100.0 top3=73
+r3-culprit-plugin-5    PASS     acc= 56.7 wrong=13 abst= 0 dec= 56.7 top3=63
+r3-culprit-plugin-6    PASS     acc= 43.3 wrong=13 abst= 4 dec= 50.0 top3=43
+r6-culprit-plugin-7    PASS     acc= 13.3 wrong=26 abst= 0 dec= 13.3 top3=43
+r6-culprit-plugin-8    PASS     acc= 20.0 wrong=24 abst= 0 dec= 20.0 top3=60
+r6-notice-plugin-7     PASS     acc= 16.7 wrong= 1 abst=24 dec= 83.3
+r6-notice-plugin-8     FAIL     acc= 30.0 wrong= 1 abst=20 dec= 90.0
+r6-retry-plugin-7      PASS     acc= 56.7 wrong= 0 abst=13 dec=100.0
+r6-retry-plugin-8      PASS     acc= 76.7 wrong= 3 abst= 4 dec= 88.5
+r7-notice-plugin-10    PASS     acc= 43.3 wrong= 2 abst=15 dec= 86.7
+r7-notice-plugin-11    PASS     acc= 96.7 wrong= 1 abst= 0 dec= 96.7
+r7-notice-plugin-12    PASS     acc=100.0 wrong= 0 abst= 0 dec=100.0
+r7-notice-plugin-13    PASS     acc= 40.0 wrong= 2 abst=16 dec= 85.7
+r7-notice-plugin-14    PASS     acc= 63.3 wrong= 0 abst=11 dec=100.0
+r7-notice-plugin-9     PASS     acc= 66.7 wrong= 2 abst= 8 dec= 90.9

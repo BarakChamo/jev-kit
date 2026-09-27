@@ -1,0 +1,11 @@
+Skipping the shell check since it needs approval I can't grant here — I visually verified the JSON is well-formed while writing it (25 question ids, matching brace/bracket nesting). Both files are ready.
+
+**Files** (in the working directory):
+- `questions.json` — the literal request body: `model`, an example `state` (pre-segmented clause excerpts per field, so every question names the exact excerpt it reads), and a `questions` map with 25 ids covering all `noul`/`choice`/`score` types.
+- `decide.ts` — pure `decide(contract_id, answers)` function that gates each answer on the probability of the label (not the SDK confidence scalar), derives the single `liability_cap_amount_band` DB column from three Jev sub-answers (type + fixed-amount band + fee-multiple band) instead of asking Jev to compare across units, and flags any contract with an unconfident field for human review rather than silently guessing.
+
+Key design choices worth knowing about:
+- **State is pre-segmented by clause**, not raw full-text — each question is scoped to a named field (e.g. `` `limitation_of_liability_clause` ``) per the rule that unscoped questions absorb unrelated evidence. The upstream splitter (heading match) isn't built here, just assumed.
+- **Bucketed bands, not raw numbers** — dollar/day/multiple values are asked as buckets and compared/combined in code, since Jev is unreliable at holding a value against a separately-stated one.
+- **25 DB columns ≠ 25 Jev questions 1:1** — `liability_cap_amount_band` is derived from 3 questions; two extra columns (`needs_human_review`, `low_confidence_fields`) are pipeline metadata, which is realistic at 40k contracts/year.
+- Not yet measured against labelled cases — before trusting this on real volume, run the `jev-eval` skill on ~30 labelled contracts, focusing first on the confidently-wrong queue for `governing_law`, `liability_cap_type`, and `indemnity_scope` (the most judgment-heavy fields here).

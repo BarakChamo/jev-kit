@@ -1,0 +1,32 @@
+{
+  "_comment": "Example only. Real state.log_lines is built by decide.ts from a filtered candidate set (see candidateLines()), not hand-written. The questions map has one noul question per candidate line, generated the same way.",
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_id": "ci-8841",
+    "command": "npm test",
+    "log_lines": [
+      { "i": 143, "text": "Running test suite: integration/checkout.spec.ts" },
+      { "i": 151, "text": "  ✓ applies discount code (212ms)" },
+      { "i": 158, "text": "  ✗ charges the saved card on file (14ms)" },
+      { "i": 159, "text": "AssertionError: expected 200 to equal 402" },
+      { "i": 160, "text": "    at Context.<anonymous> (integration/checkout.spec.ts:47:10)" },
+      { "i": 167, "text": "Error: Stripe webhook secret is undefined in this environment" },
+      { "i": 168, "text": "    at validateWebhook (src/payments/stripe.ts:22:9)" },
+      { "i": 178, "text": "npm ERR! Test failed. See above for more details." },
+      { "i": 179, "text": "npm ERR! command sh -c mocha --reporter spec" },
+      { "i": 190, "text": "##[error]Process completed with exit code 1." }
+    ]
+  },
+  "questions": {
+    "cause_143": { "type": "noul", "instructions": "Does log_lines[i=143].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_151": { "type": "noul", "instructions": "Does log_lines[i=151].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_158": { "type": "noul", "instructions": "Does log_lines[i=158].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_159": { "type": "noul", "instructions": "Does log_lines[i=159].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_160": { "type": "noul", "instructions": "Does log_lines[i=160].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_167": { "type": "noul", "instructions": "Does log_lines[i=167].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_168": { "type": "noul", "instructions": "Does log_lines[i=168].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_178": { "type": "noul", "instructions": "Does log_lines[i=178].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_179": { "type": "noul", "instructions": "Does log_lines[i=179].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } },
+    "cause_190": { "type": "noul", "instructions": "Does log_lines[i=190].text directly show the reason this CI job failed — an error message, exception, stack trace frame, assertion failure, or an explicit non-zero exit/failure report — as opposed to setup, progress, or unrelated output?", "criteria": { "true": "this line itself states or shows the failure", "false": "this line is context, setup, progress, or success output" } }
+  }
+}

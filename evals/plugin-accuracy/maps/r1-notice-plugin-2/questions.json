@@ -1,0 +1,71 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement shall automatically renew for successive one-year terms unless either party gives the other party written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be delivered to the addresses set forth in Section 12 (Notices) by certified mail, return receipt requested, or by email to legal@vendor.example with confirmation of receipt. The Initial Term begins January 15, 2025 and ends January 14, 2026.",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current term ends. Please treat this as our formal notice that we will not be renewing. Let us know if you need anything else from us to process this.",
+    "cancellation_received_date": "2025-11-01"
+  },
+  "questions": {
+    "auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which this contract automatically renews for another term unless a party gives notice to stop it?",
+      "criteria": {
+        "true": "the contract states the term automatically renews absent notice of non-renewal",
+        "false": "the contract does not auto-renew, or renewal requires an affirmative opt-in"
+      }
+    },
+    "renewal_notice_required": {
+      "type": "choice",
+      "instructions": "Per the auto-renewal or termination clause in `contract_text`, how many days of advance notice must a party give, measured before the end of the then-current term (the renewal date), to prevent automatic renewal? Pick the bucket containing the exact number of days stated in the contract.",
+      "criteria": {
+        "under_15": "fewer than 15 days",
+        "d15_29": "15 to 29 days",
+        "d30_44": "30 to 44 days",
+        "d45_59": "45 to 59 days",
+        "d60_74": "60 to 74 days",
+        "d75_89": "75 to 89 days",
+        "d90_119": "90 to 119 days",
+        "d120_149": "120 to 149 days",
+        "d150_179": "150 to 179 days",
+        "d180_239": "180 to 239 days",
+        "d240_plus": "240 days or more",
+        "not_specified": "the contract does not state a numeric notice period"
+      }
+    },
+    "actual_notice_lead": {
+      "type": "choice",
+      "instructions": "Using the term start date and term length stated in `contract_text`, determine the contract's next renewal / term-end date on or after `cancellation_received_date`. How many days before that renewal date does `cancellation_received_date` fall? Pick the bucket containing that exact number of days.",
+      "criteria": {
+        "under_15": "fewer than 15 days before the renewal date",
+        "d15_29": "15 to 29 days before the renewal date",
+        "d30_44": "30 to 44 days before the renewal date",
+        "d45_59": "45 to 59 days before the renewal date",
+        "d60_74": "60 to 74 days before the renewal date",
+        "d75_89": "75 to 89 days before the renewal date",
+        "d90_119": "90 to 119 days before the renewal date",
+        "d120_149": "120 to 149 days before the renewal date",
+        "d150_179": "150 to 179 days before the renewal date",
+        "d180_239": "180 to 239 days before the renewal date",
+        "d240_plus": "240 days or more before the renewal date",
+        "on_or_after": "on or after the renewal date (no lead time at all)"
+      }
+    },
+    "cancellation_clarity": {
+      "type": "choice",
+      "instructions": "Does the text in `cancellation_email_text` clearly and unambiguously communicate that the customer wants to cancel the contract or not renew it?",
+      "criteria": {
+        "clear_cancellation": "the email unambiguously states intent to cancel or not renew",
+        "ambiguous": "the email hints at cancellation but is unclear, conditional, or could be read another way",
+        "not_a_cancellation": "the email does not communicate any intent to cancel or not renew"
+      }
+    },
+    "delivery_method_ok": {
+      "type": "noul",
+      "instructions": "Does `contract_text` require notice of cancellation/non-renewal to be delivered by a specific method (e.g. certified mail, a specific address or department) that would NOT be satisfied by an ordinary email such as the one in `cancellation_email_text`?",
+      "criteria": {
+        "true": "the contract requires a delivery method the email does not satisfy",
+        "false": "the contract has no such requirement, or the email satisfies it (e.g. contract allows email notice)"
+      }
+    }
+  }
+}

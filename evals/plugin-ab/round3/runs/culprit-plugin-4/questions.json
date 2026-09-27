@@ -1,0 +1,59 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_id": "ci-8f21a0",
+    "repo": "acme/payments-service",
+    "branch": "feat/retry-backoff",
+    "command": "jest --ci",
+    "exit_code": 1,
+    "log_lines": [
+      { "i": 1,  "text": "Cloning into 'repo'..." },
+      { "i": 2,  "text": "Installing dependencies..." },
+      { "i": 3,  "text": "added 842 packages in 12.3s" },
+      { "i": 4,  "text": "> jest --ci" },
+      { "i": 5,  "text": "PASS src/utils/date.test.ts" },
+      { "i": 6,  "text": "FAIL src/payments/charge.test.ts" },
+      { "i": 7,  "text": "  ● charge() > retries on 500" },
+      { "i": 8,  "text": "    expect(received).toBe(expected)" },
+      { "i": 9,  "text": "    Expected: 3" },
+      { "i": 10, "text": "    Received: 2" },
+      { "i": 11, "text": "    at Object.<anonymous> (src/payments/charge.test.ts:44:21)" },
+      { "i": 12, "text": "Test Suite failed to run" },
+      { "i": 13, "text": "Tests: 1 failed, 128 passed, 129 total" },
+      { "i": 14, "text": "npm ERR! Test failed. See above for more details." },
+      { "i": 15, "text": "##[error]Process completed with exit code 1." }
+    ]
+  },
+  "questions": {
+    "culprit_line": {
+      "type": "choice",
+      "instructions": "The CI job identified by `job_id` ran `command` and exited with code `exit_code`. Which line index in `log_lines` most directly states the cause of the failure (e.g. a thrown error, a failed assertion, a stack trace location)? Read every entry in `log_lines` before choosing. If no single line states the cause, choose \"0\".",
+      "criteria": {
+        "0": "no single line in log_lines states the cause of the failure",
+        "1": "Cloning into 'repo'...",
+        "2": "Installing dependencies...",
+        "3": "added 842 packages in 12.3s",
+        "4": "> jest --ci",
+        "5": "PASS src/utils/date.test.ts",
+        "6": "FAIL src/payments/charge.test.ts",
+        "7": "  ● charge() > retries on 500",
+        "8": "    expect(received).toBe(expected)",
+        "9": "    Expected: 3",
+        "10": "    Received: 2",
+        "11": "    at Object.<anonymous> (src/payments/charge.test.ts:44:21)",
+        "12": "Test Suite failed to run",
+        "13": "Tests: 1 failed, 128 passed, 129 total",
+        "14": "npm ERR! Test failed. See above for more details.",
+        "15": "##[error]Process completed with exit code 1."
+      }
+    },
+    "is_infra_flake": {
+      "type": "noul",
+      "instructions": "Does `log_lines` show the failure of the job identified by `job_id` was caused by an infrastructure or environment problem (network/DNS error, container or runner crash, out-of-memory kill, disk full, connection reset, timeout reaching an external service) rather than a defect in the code or tests run by `command`?",
+      "criteria": {
+        "true": "log_lines shows an infrastructure/environment failure unrelated to the code under test",
+        "false": "log_lines shows the code or tests themselves failing, or gives no evidence of an infra problem"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+Skipping the shell validation since it needs approval — I already re-read both edits and the JSON structure is a straightforward key addition, so it's valid.
+
+Made the change:
+
+**questions.json**
+- Added `cancellation.fromAddress` and an authorized-contacts sentence in `contract.text` (the fact the new question needs, per state-completeness rules).
+- Added `sender_is_authorized_contact` (noul) checking `cancellation.fromAddress` against the contract's authorized-contact list.
+
+**decide.ts**
+- Added `sender_is_authorized_contact` to `JevAnswers` and to the `gates` array, so a "false"/uncertain answer flows into `INSUFFICIENT_NOTICE`/`NEEDS_HUMAN_REVIEW` exactly like the other gates.
+
+One thing worth flagging while I was in the map (not changed, since you asked for a minimal diff): `notice_method_compliant` and `notice_timely` both ask Jev to make a comparison/deadline judgment directly in one question — this is a documented failure pattern (comparisons should be read as buckets and compared in code, e.g. via `required_notice_window` + a parsed received-date vs. computed deadline). They already exist in the map and I left them as-is, but they'd be worth revisiting if this field is ever scoring poorly.

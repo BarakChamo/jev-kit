@@ -1,0 +1,43 @@
+{
+  "//": "Example only. In production, `state.lines` and `questions.culprit_line.criteria` are generated for the run's actual last-200 lines by decide.ts::buildRequest — see that file.",
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job": {
+      "id": "gh-run-48213-job-3",
+      "workflow": "ci.yml",
+      "step": "Run tests",
+      "conclusion": "failure"
+    },
+    "lines": [
+      { "n": 1, "text": "Run npm test" },
+      { "n": 2, "text": "> myapp@1.0.0 test" },
+      { "n": 3, "text": "> jest --ci" },
+      { "n": 4, "text": "PASS src/utils/format.test.ts" },
+      { "n": 5, "text": "FAIL src/payments/charge.test.ts" },
+      { "n": 6, "text": "  ● charge() > retries on network error" },
+      { "n": 7, "text": "    TypeError: Cannot read properties of undefined (reading 'amount')" },
+      { "n": 8, "text": "      at charge (src/payments/charge.ts:42:18)" },
+      { "n": 9, "text": "Tests:       1 failed, 47 passed, 48 total" },
+      { "n": 10, "text": "##[error]Process completed with exit code 1." }
+    ]
+  },
+  "questions": {
+    "culprit_line": {
+      "type": "choice",
+      "instructions": "`lines` is the tail of a CI job's log, in order. Which single line number states the specific error that caused the job (see `job`) to fail — the actual exception, assertion failure, failing command, or stack-trace frame that pinpoints the fault? Do not pick a generic wrapper or summary line: skip step banners ('Run ...'), pass/fail counts ('Tests: ... failed, ... passed'), and runner exit-code wrappers ('Process completed with exit code N', '##[error]Process completed...'). If no line in the given window actually states the fault (e.g. the log was truncated before the real error appears), answer 'unclear'.",
+      "criteria": {
+        "1": "Run npm test",
+        "2": "> myapp@1.0.0 test",
+        "3": "> jest --ci",
+        "4": "PASS src/utils/format.test.ts",
+        "5": "FAIL src/payments/charge.test.ts",
+        "6": "  ● charge() > retries on network error",
+        "7": "    TypeError: Cannot read properties of undefined (reading 'amount')",
+        "8": "      at charge (src/payments/charge.ts:42:18)",
+        "9": "Tests:       1 failed, 47 passed, 48 total",
+        "10": "##[error]Process completed with exit code 1.",
+        "unclear": "no line in the window actually states the fault"
+      }
+    }
+  }
+}

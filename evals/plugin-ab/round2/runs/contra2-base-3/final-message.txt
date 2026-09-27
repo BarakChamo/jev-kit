@@ -1,0 +1,6 @@
+Both files are in the working directory:
+
+- **`questions.json`** — example Jev request. `state` holds the matched FAQ (with the CMS's canonical answer) and the retrieved passages. One `choice` question per passage asks Jev to classify it as `consistent`, `stale`, or `unrelated` relative to the canonical answer.
+- **`decide.ts`** — `buildRequest(faq, passages)` generates that same request for any actual passage set; `decide(passages, answers)` turns the Jev response into per-passage verdicts, dropping `stale` passages (flagged with a reason, confidence-gated wording) and keeping `consistent`/`unrelated` ones; `filterPassages`/`flaggedForReview` split the result for the generator vs. a review queue.
+
+Not called the API, as requested.

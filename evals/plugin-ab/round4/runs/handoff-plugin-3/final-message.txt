@@ -1,0 +1,14 @@
+Both files are in the working directory (not called, as requested):
+
+**`questions.json`** — example state (a session's extracted findings: commands, file diffs, test before/after counts, edited tests, security flags, errors, the agent's own final summary) plus 6 questions:
+- 4 narrow `noul` facts, each scoped to a named field: `task_completed`, `tests_weakened`, `destructive_out_of_scope`, `security_regression`
+- `summary_overclaims` — a detector paired next to the completion judgment, since the agent's self-report is the one thing in the state that could be manipulated
+- `outcome_choice` — an independent holistic `choice` (with an `unclear` abstain option) over the same four labels, used as a cross-check rather than the sole decision
+
+**`decide.ts`** — `decideOutcome(state, answers)`:
+- Derives `unsafe` in code as an OR of the three reliable flags rather than asking one fuzzy "was this unsafe" question
+- Settles `testsRegressed`/`hasUnresolvedErrors` directly from state (code can compute these outright)
+- Gates on each `noul` probability against fixed thresholds (0.65/0.35), never on the confidence scalar
+- Escalates to `needs_human_review` — never silently downgrades to a lenient label — on: ambiguous completion probability, a completed-but-regressed-tests contradiction, an overclaiming summary, low-confidence or "unclear" cross-check, or disagreement between the derived label and the cross-check
+
+Per the skill's own guidance, this hasn't been measured — worth running jev-eval on ~30 labelled sessions (weighted toward the hard/ambiguous ones) before trusting the thresholds or gates.

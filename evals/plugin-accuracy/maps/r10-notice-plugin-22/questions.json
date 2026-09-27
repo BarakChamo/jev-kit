@@ -1,0 +1,59 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract": "This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months. Upon expiration of the initial term, this Agreement shall automatically renew for successive twelve (12) month terms unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice under this Section may be delivered by email to the address on file, by courier, or by certified mail. All other notices under this Agreement must be delivered by certified mail or courier.",
+    "cancellationEmail": "Hi team, we've decided not to continue with the service after our current term ends. Please treat this as our formal notice that we will not be renewing. Thanks, Dana",
+    "receivedDate": "2026-08-15"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract` contain a clause under which the agreement automatically renews for a further term unless the customer gives notice of non-renewal or cancellation?",
+      "criteria": {
+        "true": "the contract auto-renews unless the customer acts to stop it",
+        "false": "the contract does not auto-renew, or renewal instead requires the customer's affirmative opt-in"
+      }
+    },
+    "requests_cancellation": {
+      "type": "noul",
+      "instructions": "Does `cancellationEmail` clearly communicate the customer's intent to cancel the contract or decline its renewal?",
+      "criteria": {
+        "true": "the email clearly asks to cancel, terminate, or not renew",
+        "false": "the email does not clearly request cancellation or non-renewal (e.g. it's a question, a complaint, or about something else)"
+      }
+    },
+    "allows_email_notice": {
+      "type": "noul",
+      "instructions": "Does the non-renewal / cancellation notice clause in `contract` (not any other, unrelated notice clause) permit that specific notice to be given by email, either because it names email as an acceptable method or because it only requires 'written notice' or similar language without restricting the medium?",
+      "criteria": {
+        "true": "email is an acceptable method for the non-renewal / cancellation notice under `contract`",
+        "false": "the non-renewal / cancellation notice clause requires a different method (e.g. certified mail, courier, in-app cancellation) and excludes email"
+      }
+    },
+    "required_notice_window": {
+      "type": "choice",
+      "instructions": "Per the auto-renewal clause in `contract`, how much advance notice before the renewal / current-term-end date must the customer give to prevent renewal?",
+      "criteria": {
+        "none_or_unspecified": "no minimum lead time is stated; any notice before the renewal date suffices",
+        "up_to_30_days": "the required lead time is 30 days or fewer",
+        "31_to_60_days": "the required lead time is more than 30 and up to 60 days",
+        "61_to_90_days": "the required lead time is more than 60 and up to 90 days",
+        "91_to_120_days": "the required lead time is more than 90 and up to 120 days",
+        "over_120_days": "the required lead time is more than 120 days"
+      }
+    },
+    "actual_notice_window": {
+      "type": "choice",
+      "instructions": "Using the renewal or current-term-end date implied by `contract`'s auto-renewal clause, and given that `cancellationEmail` was received on `receivedDate`, how many days before that renewal / term-end date was it received?",
+      "criteria": {
+        "not_determinable": "`contract` does not state enough (start date, term length, or renewal date) to determine a renewal / term-end date",
+        "on_or_after_renewal_date": "`receivedDate` is on or after the renewal / term-end date",
+        "up_to_30_days": "received 1 to 30 days before that date",
+        "31_to_60_days": "received 31 to 60 days before that date",
+        "61_to_90_days": "received 61 to 90 days before that date",
+        "91_to_120_days": "received 91 to 120 days before that date",
+        "over_120_days": "received more than 120 days before that date"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+Wrote `map.mjs` at `/tmp/claude-0/-home-user-jev-discovery/c35f5c53-e272-5f13-8872-8508765d320f/scratchpad/heldout2/runs/alert-routing-plugin-2-sonnet/map.mjs`.
+
+Design:
+- **`affected_service`** — one `choice` over all catalog services (plus `unclear`), rubric explicitly distinguishes the alert's own metric target from services only mentioned as context/dependency (rule 11: pick-one-of-many via a single `choice`, not a `noul` per candidate).
+- **`severity`** — one `choice` over `critical/high/other/unclear`, scoped to what the alert text itself states (avoids conflating stated severity with perceived badness).
+- **`decide`** derives team, tier, and the page/ticket policy purely in code from the catalog lookup (rule 12) — Jev is never asked to compare or apply the policy itself.
+- Gates on the **probability of the chosen label** (not the raw `confidence` scalar, per rule 8) plus an explicit `unclear` option (rule 9); either low confidence or `unclear` abstains that field, and `page_now` abstains whenever team or severity isn't resolved, since applying the policy without both would be a guess.
+
+Not yet run against labelled cases — worth doing a quick `jev-eval` pass (e.g. via `jev-run`) before trusting the thresholds, especially the 0.55 confidence cutoffs.

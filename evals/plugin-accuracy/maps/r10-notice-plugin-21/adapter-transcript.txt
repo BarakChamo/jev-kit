@@ -1,0 +1,1 @@
+I need your approval to run the verification command (`npx tsx -e "import('./adapter.ts')..."`). Could you approve it so I can confirm the file loads without syntax errors?

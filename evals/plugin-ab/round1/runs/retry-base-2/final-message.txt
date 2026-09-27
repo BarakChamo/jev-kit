@@ -1,0 +1,4 @@
+Created both files in the scratchpad:
+
+- **questions.json** — example state (job metadata + 200-line log tail, truncated for the example) plus three parallel Jev questions: `is_transient` (noul, probability the failure is infra/timing vs. deterministic), `failure_category` (choice among infra_flake/test_flake/code_defect/dependency_or_config/unknown), `retry_value` (score none→high, expected value of retrying).
+- **decide.ts** — `decideRetry(job, answers)`: hard-stops at `attempt >= maxAttempts`, then requires transient probability ≥0.6, a retriable category with confidence ≥0.5, and retry_value ≥ medium; otherwise no retry, each branch returning a human-readable reason.

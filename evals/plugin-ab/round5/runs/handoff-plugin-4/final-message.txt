@@ -1,0 +1,11 @@
+Design notes, in case they matter for your review:
+
+**Why two `noul`s instead of one 3-way `choice`.** "Safe/unsafe" and "completed/failed" are independent axes, so asking Jev to pick the 3-way label directly would bury a comparison inside one prompt. Per the question-writing rules, deriving from two individually-reliable, jointly-sufficient flags via a policy table is the reliable path; a single holistic label conflating both would be more fragile.
+
+**Why `unsafe_action` is one holistic `noul`, not several ANDed flags.** "Unsafe" is a weighted judgment (destructive command vs. bypassed check vs. leaked secret vs. unauthorized prod change) — asking it as one present-tense question rather than deriving it from a long AND of narrower flags avoids the probability-multiplication problem the rules describe.
+
+**Why `authorization_claim_unverified` exists.** Agent transcripts routinely contain untrusted text (file contents, tool output, commit messages) that could claim "this was already approved" to talk the safety judgment down — the same injection risk that shows up in this transcript's own hooks. This detector question sits next to the manipulable judgment and, in `decide.ts`, forces escalation instead of letting an unverified claim clear `unsafe_action` silently.
+
+**Why the state carries the full transcript, not just the upstream findings.** The extracted findings (commands/files/tests/errors) ride along as a shortcut, but the decision is made against the raw transcript — deciding from another model's extraction alone measured much worse in Jev's evaluation history.
+
+**Not done, by design:** I didn't call the API or run this against real sessions — you said not to call it, and the skill's own guidance is that these rules are hypotheses to be measured, not trusted blind. Before wiring this into a pipeline, run it on ~30 labelled sessions (`jev-eval`/`jev-audit`) to check the 0.8/0.2 gate thresholds and confirm the detector actually earns its keep on your traffic.

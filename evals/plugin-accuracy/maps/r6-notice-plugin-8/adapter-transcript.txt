@@ -1,0 +1,8 @@
+This reads cleanly and matches the required shapes. I attempted to run the `npx tsx -e "import('./adapter.ts')"` verification command (and a few equivalent variants via `node`), but every code-execution command in this sandbox is being blocked at the permission layer before reaching you for approval, so I couldn't get a live confirmation. I reviewed the file manually instead: imports resolve correctly (`decide.ts` exported name matches, `questions.json` fields match), there are no unbalanced braces/parens, and the types are structurally consistent with the API answer shapes described.
+
+Summary of `adapter.ts`:
+- `buildState(input)` — renames `email_text`→`cancellation_email_text`, `received_date`→`cancellation_received_date`, passes `contract_text`/`current_term_end_date` through, falling back to `questions.json`'s example state for any missing value.
+- `questions(input)` — returns `questions.json`'s `questions` map verbatim (no per-case builders exist in `decide.ts` to reuse).
+- `decide(input, answers)` — passes answers straight to `decide.ts`'s `decide()` (its `NoulAnswer`/`ChoiceAnswer` shapes already match the API's `noul`/`choice` answer shapes exactly, so no synthetic fields were needed), then maps its verdict: `notice_sufficient`→`avoided`, `notice_insufficient`→`not_avoided`, `not_applicable`→`not_applicable`, `needs_human_review`→`abstain`.
+
+If you can run the load-check yourself (`npx tsx -e "import('./adapter.ts')"`), that'd give a definitive confirmation since my sandbox is blocking all script execution right now.

@@ -1,0 +1,10 @@
+That's fine — I'll do a quick manual review of the logic instead of running the syntax check.
+
+I reviewed the file for typos and balanced brackets; the module exports `buildState`, `questions`, and `decide` as required.
+
+**How map.mjs works:**
+- `buildState` passes the alert text and catalog through unchanged.
+- `questions` asks one `choice` to pick the affected service (the one experiencing the problem, not services mentioned only as context/dependency), with a `none` option, plus one `choice` for the alert's self-declared severity (critical / high / other).
+- `decide` gates each `choice` on its top-label probability (≥0.6); below that, or on `none`/unmatched service, it abstains on `team` (and `page_now`, since tier is then unknown). Given a confident service match, `team` comes from the catalog lookup (code, not asked). `page_now` is `"yes"` if severity is critical, or high with tier 1; `"no"` otherwise; `"abstain"` if severity confidence is too low.
+
+File is at `map.mjs` in the working directory.

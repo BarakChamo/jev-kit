@@ -1,0 +1,4920 @@
+[
+  {
+    "map": "expense-review-plugin-4-sonnet",
+    "task": "expense-review",
+    "n": 30,
+    "right": 27,
+    "wrong": 3,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 0.9,
+    "wrongRate": 0.1,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.98,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "not_addressed": 0,
+              "rejected": 0.99
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.91,
+            "probabilities": {
+              "needs_approval": 0.05,
+              "not_addressed": 0.94,
+              "rejected": 0.01
+            }
+          }
+        },
+        "latencyMs": 303.85580300000015,
+        "inputTokens": 1857,
+        "listCostUsd": 0.00007799400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-002",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 1,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 1,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "rejected": 0.98,
+              "needs_approval": 0.02,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.84,
+            "probabilities": {
+              "rejected": 0.01,
+              "needs_approval": 0.1,
+              "not_addressed": 0.89
+            }
+          }
+        },
+        "latencyMs": 685.542802,
+        "inputTokens": 1860,
+        "listCostUsd": 0.00007812,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 1,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 1,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 0.03,
+              "rejected": 0.97
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.81,
+            "probabilities": {
+              "not_addressed": 0.88,
+              "needs_approval": 0.12,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 235.18642699999998,
+        "inputTokens": 1861,
+        "listCostUsd": 0.00007816200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-004",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.98,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "not_addressed": 0,
+              "rejected": 0.99
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.93,
+            "probabilities": {
+              "needs_approval": 0.05,
+              "not_addressed": 0.95,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 212.6156309999999,
+        "inputTokens": 1855,
+        "listCostUsd": 0.00007791,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-005",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "needs_approval": 0.02,
+              "rejected": 0.98,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.86,
+            "probabilities": {
+              "needs_approval": 0.09,
+              "rejected": 0,
+              "not_addressed": 0.91
+            }
+          }
+        },
+        "latencyMs": 197.32089200000019,
+        "inputTokens": 1858,
+        "listCostUsd": 0.00007803600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-006",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "rejected": 0.98,
+              "not_addressed": 0,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.85,
+            "probabilities": {
+              "rejected": 0.01,
+              "not_addressed": 0.9,
+              "needs_approval": 0.09
+            }
+          }
+        },
+        "latencyMs": 228.63351000000011,
+        "inputTokens": 1860,
+        "listCostUsd": 0.00007812,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "rejected": 0.98,
+              "not_addressed": 0,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.86,
+            "probabilities": {
+              "rejected": 0.01,
+              "not_addressed": 0.9,
+              "needs_approval": 0.09
+            }
+          }
+        },
+        "latencyMs": 367.4260379999996,
+        "inputTokens": 1861,
+        "listCostUsd": 0.00007816200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-008",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0.98,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.9,
+            "probabilities": {
+              "not_addressed": 0.9400000000000001,
+              "rejected": 0,
+              "needs_approval": 0.06
+            }
+          }
+        },
+        "latencyMs": 199.09658799999988,
+        "inputTokens": 1857,
+        "listCostUsd": 0.00007799400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-009",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "needs_approval": 0.02,
+              "rejected": 0.98,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.86,
+            "probabilities": {
+              "needs_approval": 0.07,
+              "rejected": 0.02,
+              "not_addressed": 0.91
+            }
+          }
+        },
+        "latencyMs": 222.55796499999997,
+        "inputTokens": 1856,
+        "listCostUsd": 0.00007795200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-010",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.95,
+            "probabilities": {
+              "needs_approval": 0.03,
+              "not_addressed": 0,
+              "rejected": 0.97
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.84,
+            "probabilities": {
+              "needs_approval": 0.1,
+              "not_addressed": 0.9,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 320.03483499999993,
+        "inputTokens": 1859,
+        "listCostUsd": 0.00007807800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-011",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0.98,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.87,
+            "probabilities": {
+              "not_addressed": 0.92,
+              "rejected": 0,
+              "needs_approval": 0.08
+            }
+          }
+        },
+        "latencyMs": 221.08459700000003,
+        "inputTokens": 1859,
+        "listCostUsd": 0.00007807800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-012",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "rejected": 0.98,
+              "not_addressed": 0,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.91,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0.94,
+              "needs_approval": 0.06
+            }
+          }
+        },
+        "latencyMs": 191.50356699999975,
+        "inputTokens": 1859,
+        "listCostUsd": 0.00007807800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.94,
+            "probabilities": {
+              "needs_approval": 0.04,
+              "not_addressed": 0,
+              "rejected": 0.96
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.85,
+            "probabilities": {
+              "needs_approval": 0.1,
+              "not_addressed": 0.9,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 218.5078050000002,
+        "inputTokens": 1859,
+        "listCostUsd": 0.00007807800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "needs_approval": 0.02,
+              "not_addressed": 0,
+              "rejected": 0.98
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.87,
+            "probabilities": {
+              "needs_approval": 0.08,
+              "not_addressed": 0.92,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 374.27695300000005,
+        "inputTokens": 1863,
+        "listCostUsd": 0.00007824600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 1,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 1,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.95,
+            "probabilities": {
+              "rejected": 0.97,
+              "needs_approval": 0.03,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.85,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 0.09,
+              "not_addressed": 0.91
+            }
+          }
+        },
+        "latencyMs": 200.39009699999997,
+        "inputTokens": 1864,
+        "listCostUsd": 0.000078288,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-016",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "rejected": 0.98,
+              "not_addressed": 0,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.88,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0.92,
+              "needs_approval": 0.08
+            }
+          }
+        },
+        "latencyMs": 192.0249530000001,
+        "inputTokens": 1861,
+        "listCostUsd": 0.00007816200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-017",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "needs_approval": 0.02,
+              "not_addressed": 0,
+              "rejected": 0.98
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.86,
+            "probabilities": {
+              "needs_approval": 0.09,
+              "not_addressed": 0.91,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 209.20367299999998,
+        "inputTokens": 1862,
+        "listCostUsd": 0.00007820400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "250",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 1,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "400",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 1,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "rejected": 0.99,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.87,
+            "probabilities": {
+              "needs_approval": 0.08,
+              "rejected": 0,
+              "not_addressed": 0.92
+            }
+          }
+        },
+        "latencyMs": 202.92972800000007,
+        "inputTokens": 1863,
+        "listCostUsd": 0.00007824600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-019",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "150",
+            "confidence": 0.92,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.93,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.07
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 0.84,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.13,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.87
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 1,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 1,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.98,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 0.01,
+              "rejected": 0.99
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.93,
+            "probabilities": {
+              "not_addressed": 0.96,
+              "needs_approval": 0.04,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 207.22834600000033,
+        "inputTokens": 1859,
+        "listCostUsd": 0.00007807800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-020",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "150",
+            "confidence": 0.98,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.99,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.01
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 0.91,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.08,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.92
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.98,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "rejected": 0.99,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.92,
+            "probabilities": {
+              "needs_approval": 0.05,
+              "rejected": 0,
+              "not_addressed": 0.95
+            }
+          }
+        },
+        "latencyMs": 218.08981799999992,
+        "inputTokens": 1859,
+        "listCostUsd": 0.00007807800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "150",
+            "confidence": 0.99,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.99,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.01
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 0.95,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.04,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.96
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "needs_approval": 0.02,
+              "rejected": 0.97,
+              "not_addressed": 0.01
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.88,
+            "probabilities": {
+              "needs_approval": 0.08,
+              "rejected": 0,
+              "not_addressed": 0.92
+            }
+          }
+        },
+        "latencyMs": 451.3633840000002,
+        "inputTokens": 1861,
+        "listCostUsd": 0.00007816200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-022",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "150",
+            "confidence": 0.95,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.96,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.04
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 0.82,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.15,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.85
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "not_addressed": 0,
+              "rejected": 0.99
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.83,
+            "probabilities": {
+              "needs_approval": 0.11,
+              "not_addressed": 0.89,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 247.89960900000005,
+        "inputTokens": 1860,
+        "listCostUsd": 0.00007812,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-023",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "150",
+            "confidence": 0.98,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.98,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.02
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 0.9,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.08,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.92
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "rejected": 0,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "needs_approval": 0.02,
+              "rejected": 0.98,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.87,
+            "probabilities": {
+              "needs_approval": 0.09,
+              "rejected": 0,
+              "not_addressed": 0.91
+            }
+          }
+        },
+        "latencyMs": 324.79575099999965,
+        "inputTokens": 1860,
+        "listCostUsd": 0.00007812,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "150",
+            "confidence": 0.99,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.99,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.01
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 0.9,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.09,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.91
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "rejected": 0.97,
+              "not_addressed": 0.01,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.89,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0.93,
+              "needs_approval": 0.07
+            }
+          }
+        },
+        "latencyMs": 197.43852100000004,
+        "inputTokens": 1854,
+        "listCostUsd": 0.00007786800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-025",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 1,
+              "not_addressed": 0,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.98,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "not_addressed": 0,
+              "rejected": 0.99
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.9,
+            "probabilities": {
+              "needs_approval": 0.06,
+              "not_addressed": 0.9400000000000001,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 193.5923810000004,
+        "inputTokens": 1852,
+        "listCostUsd": 0.00007778400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-026",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "rejected": 0.98,
+              "not_addressed": 0,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.84,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0.9,
+              "needs_approval": 0.1
+            }
+          }
+        },
+        "latencyMs": 197.20276099999955,
+        "inputTokens": 1852,
+        "listCostUsd": 0.00007778400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-027",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 1
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 1
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_addressed": 0.01,
+              "rejected": 0,
+              "needs_approval": 0.99
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.96,
+            "probabilities": {
+              "not_addressed": 0,
+              "rejected": 0.98,
+              "needs_approval": 0.02
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.63,
+            "probabilities": {
+              "not_addressed": 0.75,
+              "rejected": 0.06,
+              "needs_approval": 0.19
+            }
+          }
+        },
+        "latencyMs": 186.33906800000022,
+        "inputTokens": 1868,
+        "listCostUsd": 0.00007845600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-028",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 1,
+              "not_addressed": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 1,
+              "not_addressed": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.98,
+            "probabilities": {
+              "rejected": 0.99,
+              "needs_approval": 0.01,
+              "not_addressed": 0
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.85,
+            "probabilities": {
+              "rejected": 0,
+              "needs_approval": 0.1,
+              "not_addressed": 0.9
+            }
+          }
+        },
+        "latencyMs": 216.45942600000035,
+        "inputTokens": 1859,
+        "listCostUsd": 0.00007807800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-029",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "110",
+            "confidence": 1,
+            "probabilities": {
+              "75": 0,
+              "110": 1,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 1,
+              "rejected": 0
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 1,
+              "rejected": 0
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.97,
+            "probabilities": {
+              "not_addressed": 0,
+              "needs_approval": 0.02,
+              "rejected": 0.98
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.84,
+            "probabilities": {
+              "not_addressed": 0.9,
+              "needs_approval": 0.1,
+              "rejected": 0
+            }
+          }
+        },
+        "latencyMs": 188.21819500000038,
+        "inputTokens": 1860,
+        "listCostUsd": 0.00007812,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "category_limit_standard": {
+            "type": "choice",
+            "choice": "150",
+            "confidence": 0.93,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.94,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.06
+            }
+          },
+          "category_limit_highcost": {
+            "type": "choice",
+            "choice": "not_stated",
+            "confidence": 0.86,
+            "probabilities": {
+              "75": 0,
+              "110": 0,
+              "150": 0.12,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0.88
+            }
+          },
+          "receipt_required_threshold": {
+            "type": "choice",
+            "choice": "75",
+            "confidence": 1,
+            "probabilities": {
+              "75": 1,
+              "110": 0,
+              "150": 0,
+              "250": 0,
+              "400": 0,
+              "not_stated": 0
+            }
+          },
+          "alcohol_entertainment_included": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "over_limit_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "missing_receipt_consequence": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 1,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0,
+              "needs_approval": 1
+            }
+          },
+          "alcohol_entertainment_consequence": {
+            "type": "choice",
+            "choice": "rejected",
+            "confidence": 0.98,
+            "probabilities": {
+              "rejected": 0.99,
+              "not_addressed": 0,
+              "needs_approval": 0.01
+            }
+          },
+          "uncovered_category_consequence": {
+            "type": "choice",
+            "choice": "not_addressed",
+            "confidence": 0.87,
+            "probabilities": {
+              "rejected": 0,
+              "not_addressed": 0.91,
+              "needs_approval": 0.09
+            }
+          }
+        },
+        "latencyMs": 185.3743999999997,
+        "inputTokens": 1864,
+        "listCostUsd": 0.000078288,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      }
+    ]
+  },
+  {
+    "map": "expense-review-plugin-5-sonnet",
+    "task": "expense-review",
+    "n": 30,
+    "right": 30,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 195.37844300000052,
+        "inputTokens": 872,
+        "listCostUsd": 0.00003662400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-002",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 182.83917999999994,
+        "inputTokens": 875,
+        "listCostUsd": 0.000036750000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 190.0431150000004,
+        "inputTokens": 876,
+        "listCostUsd": 0.000036792,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-004",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 194.58876299999974,
+        "inputTokens": 870,
+        "listCostUsd": 0.000036540000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-005",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 175.61268799999925,
+        "inputTokens": 949,
+        "listCostUsd": 0.000039858000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-006",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 249.61234100000001,
+        "inputTokens": 874,
+        "listCostUsd": 0.000036708,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 203.23924199999965,
+        "inputTokens": 875,
+        "listCostUsd": 0.000036750000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-008",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 170.1989080000003,
+        "inputTokens": 872,
+        "listCostUsd": 0.00003662400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-009",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 183.6610499999997,
+        "inputTokens": 871,
+        "listCostUsd": 0.000036582,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-010",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 184.73125199999959,
+        "inputTokens": 873,
+        "listCostUsd": 0.000036666000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-011",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 227.55357399999957,
+        "inputTokens": 873,
+        "listCostUsd": 0.000036666000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-012",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 414.15236300000015,
+        "inputTokens": 874,
+        "listCostUsd": 0.000036708,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 188.08646099999987,
+        "inputTokens": 950,
+        "listCostUsd": 0.00003990000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 234.13239900000008,
+        "inputTokens": 876,
+        "listCostUsd": 0.000036792,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 182.32523200000014,
+        "inputTokens": 889,
+        "listCostUsd": 0.00003733800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-016",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 188.5411549999999,
+        "inputTokens": 875,
+        "listCostUsd": 0.000036750000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-017",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 177.53017900000032,
+        "inputTokens": 952,
+        "listCostUsd": 0.000039984,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 189.2240810000003,
+        "inputTokens": 877,
+        "listCostUsd": 0.00003683400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-019",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 205.44074699999965,
+        "inputTokens": 874,
+        "listCostUsd": 0.000036708,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-020",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 222.25703299999986,
+        "inputTokens": 888,
+        "listCostUsd": 0.000037296000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 252.8350849999997,
+        "inputTokens": 890,
+        "listCostUsd": 0.000037380000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-022",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 169.08586000000014,
+        "inputTokens": 876,
+        "listCostUsd": 0.000036792,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-023",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 313.1054210000002,
+        "inputTokens": 876,
+        "listCostUsd": 0.000036792,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 172.94898300000023,
+        "inputTokens": 870,
+        "listCostUsd": 0.000036540000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-025",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 189.91177599999992,
+        "inputTokens": 867,
+        "listCostUsd": 0.00003641400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-026",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "high_cost_city": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 193.19873800000005,
+        "inputTokens": 943,
+        "listCostUsd": 0.00003960600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-027",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 204.1965170000003,
+        "inputTokens": 879,
+        "listCostUsd": 0.00003691800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-028",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 215.0641059999998,
+        "inputTokens": 872,
+        "listCostUsd": 0.00003662400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-029",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 199.65155999999934,
+        "inputTokens": 886,
+        "listCostUsd": 0.000037212,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "forbidden_content": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "claims_override": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 209.98758500000076,
+        "inputTokens": 892,
+        "listCostUsd": 0.000037464000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "expense-review-plugin-6-sonnet",
+    "task": "expense-review",
+    "n": 30,
+    "right": 30,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.09
+          }
+        },
+        "latencyMs": 209.45216000000073,
+        "inputTokens": 398,
+        "listCostUsd": 0.000016716,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-002",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 193.94385300000067,
+        "inputTokens": 398,
+        "listCostUsd": 0.000016716,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 229.62482400000044,
+        "inputTokens": 398,
+        "listCostUsd": 0.000016716,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-004",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.13
+          }
+        },
+        "latencyMs": 249.4865719999998,
+        "inputTokens": 393,
+        "listCostUsd": 0.000016506,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-005",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.17
+          }
+        },
+        "latencyMs": 195.8744769999994,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-006",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.13
+          }
+        },
+        "latencyMs": 190.6622439999992,
+        "inputTokens": 393,
+        "listCostUsd": 0.000016506,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.13
+          }
+        },
+        "latencyMs": 194.66355600000134,
+        "inputTokens": 393,
+        "listCostUsd": 0.000016506,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-008",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.23
+          }
+        },
+        "latencyMs": 195.07058900000084,
+        "inputTokens": 398,
+        "listCostUsd": 0.000016716,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-009",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 198.97684900000058,
+        "inputTokens": 397,
+        "listCostUsd": 0.000016674000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-010",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 181.77106200000162,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-011",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 227.85089999999946,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-012",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 294.08637500000077,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 187.8165570000001,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 191.98788799999966,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 181.91365899999983,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-016",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 183.89659100000063,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-017",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 193.81452399999944,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 193.91468799999893,
+        "inputTokens": 400,
+        "listCostUsd": 0.000016800000000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-019",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 187.81152099999963,
+        "inputTokens": 398,
+        "listCostUsd": 0.000016716,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-020",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 230.66251600000032,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 207.41599700000006,
+        "inputTokens": 398,
+        "listCostUsd": 0.000016716,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-022",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 216.02697200000148,
+        "inputTokens": 397,
+        "listCostUsd": 0.000016674000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-023",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 174.2478579999988,
+        "inputTokens": 396,
+        "listCostUsd": 0.000016632000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 199.1085149999999,
+        "inputTokens": 395,
+        "listCostUsd": 0.000016590000000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-025",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 239.0043339999993,
+        "inputTokens": 393,
+        "listCostUsd": 0.000016506,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-026",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.13
+          }
+        },
+        "latencyMs": 272.75023599999986,
+        "inputTokens": 393,
+        "listCostUsd": 0.000016506,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-027",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 177.89437700000053,
+        "inputTokens": 399,
+        "listCostUsd": 0.000016758,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-028",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.13
+          }
+        },
+        "latencyMs": 179.01254599999993,
+        "inputTokens": 393,
+        "listCostUsd": 0.000016506,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-029",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 288.13235200000054,
+        "inputTokens": 393,
+        "listCostUsd": 0.000016506,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "expense-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "prohibited_content": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 311.57166099999995,
+        "inputTokens": 397,
+        "listCostUsd": 0.000016674000000000003,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  }
+]

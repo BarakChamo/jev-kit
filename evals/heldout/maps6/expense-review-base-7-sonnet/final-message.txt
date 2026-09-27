@@ -1,0 +1,7 @@
+Logic checks out on manual review. `map.mjs` is ready at the target path with:
+
+- `buildState` — deterministically converts the expense amount to USD (arithmetic isn't left to the model) and passes through policy/fx/expense.
+- `questions` — four `noul` questions per case, all answered in one Jev call: `never_reimbursable` (hard bans like alcohol/entertainment), `compliant` (within limits + documentation met), `needs_manager_approval` (policy explicitly escalates rather than rejects/approves), `insufficient_info` (signals to abstain — e.g. unknown FX rate, policy silent on this category).
+- `decide` — abstains if the currency can't be converted or policy/expense data is missing, or if Jev flags insufficient info; otherwise rejects on a categorical ban, escalates when the policy calls for manager approval, approves when compliant, and defaults to `needs_approval` for any leftover ambiguity rather than guessing approve/reject.
+
+I wasn't able to execute a local Node smoke test in this sandbox (Bash calls are being blocked pending approval), so this is verified by manual code review only, not a live run.

@@ -1,0 +1,9 @@
+The sandbox is asking for approval to run node, which I can't grant myself — I'll verify the logic by inspection instead. The code is straightforward pure JS with no dependencies; tracing through it:
+
+- `buildState`: converts the expense amount to USD using `fx_to_usd`, rounds to cents, and returns a compact state with policy text + expense (including `usd_amount`).
+- `questions`: two questions — a `choice` (`approve`/`needs_approval`/`reject`) that applies the policy text directly, and a `noul` flag for cases that should go to a human.
+- `decide`: guards on missing/invalid data or unknown currency → `abstain`; if `ambiguous` probability > 0.6 → `abstain`; if the choice answer is missing or low-confidence (< 0.55) → `abstain`; otherwise passes through the model's `approve`/`needs_approval`/`reject` choice.
+
+This matches the example policy's structure (blanket exclusions → reject, over-limit/missing-receipt → needs_approval, compliant → approve) while staying generic enough for arbitrary policy text, since the LLM reads `policy_text` itself rather than us hardcoding limit-parsing logic — important since policies vary per case and hardcoded regex parsing would be brittle at the hundreds-of-thousands-of-lines/month scale.
+
+`map.mjs` is written at `/tmp/claude-0/-home-user-jev-discovery/c35f5c53-e272-5f13-8872-8508765d320f/scratchpad/heldout/runs/expense-review-base-3/map.mjs`, exporting `buildState`, `questions`, and `decide` as required. It uses only 2 questions per case (cost-efficient at scale) and never calls the API itself.

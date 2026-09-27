@@ -1,0 +1,15 @@
+Created two files in the working directory:
+
+**`questions.json`** — example state (contract text, cancellation email text/sender/recipient, `email_received_date`) plus four independent questions:
+- `has_auto_renewal` (noul) — gates whether a deadline even applies
+- `required_notice_days` (choice, bucketed 0–120+ days) — the contract's required notice window
+- `term_end_relative_to_email` (choice, bucketed relative to `email_received_date`) — when the renewing term ends, expressed relative to the email so Jev never has to do date arithmetic itself
+- `notice_method_valid` (noul) — whether the email satisfies any required delivery method/recipient
+
+**`decide.ts`** — `decideNoticeSufficiency()`:
+- Gates on `has_auto_renewal`'s probability (not the confidence scalar); ambiguous → human review, low → `NO_AUTO_RENEWAL`.
+- Compares the two bucketed quantities in code by pairing their full probability distributions (not just top choice) into a timing-sufficiency probability — this is the pattern the skill's rule 5 calls for: bucket in Jev, compare in code.
+- Multiplies timing probability by the method-validity probability (a short, reliable conjunction, safe to derive per rule 6).
+- Thresholds at 0.8/0.2 into `SUFFICIENT_NOTICE` / `INSUFFICIENT_NOTICE`, with everything in between — and any bucket landing mostly on "unclear"/"already_ended" ambiguity — routed to `NEEDS_HUMAN_REVIEW` rather than defaulting to "allow."
+
+Next step before trusting this: run `jev-eval` against ~30 labelled contract/email pairs (include edge cases — no renewal clause, ambiguous term-end dates, wrong-recipient emails) to check the bucket boundaries and thresholds actually calibrate, per the skill's guidance that these are hypotheses, not guarantees.

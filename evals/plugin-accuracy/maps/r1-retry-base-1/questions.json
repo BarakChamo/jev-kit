@@ -1,0 +1,48 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "repo": "acme/payments-service",
+    "branch": "main",
+    "runner": "ubuntu-22.04-4core",
+    "attempt": 1,
+    "maxAttempts": 3,
+    "logTail": [
+      "npm ERR! network request to https://registry.npmjs.org/left-pad failed, reason: connect ETIMEDOUT",
+      "npm ERR! This is a problem related to network connectivity.",
+      "##[error]Process completed with exit code 1.",
+      "... (198 more lines from the last 200 log lines)"
+    ]
+  },
+  "questions": {
+    "transient": {
+      "type": "noul",
+      "instructions": "Given the job metadata (repo, branch, runner, attempt number) and the last 200 log lines in `state`, decide whether the failure looks transient/environmental (network blip, runner resource exhaustion, package registry hiccup, flaky external service, timeout unrelated to test logic) as opposed to a deterministic failure caused by the code or test itself.",
+      "criteria": {
+        "true": "The logs point to infrastructure, network, timing, or environment causes that would plausibly not reproduce on a clean retry.",
+        "false": "The logs point to a genuine code defect, failing assertion, compile error, or lint/type error that will reproduce identically on retry."
+      }
+    },
+    "category": {
+      "type": "choice",
+      "instructions": "Classify the root cause of this CI job failure using the job metadata and last 200 log lines in `state`. Pick the single best-fitting category.",
+      "criteria": {
+        "infra_transient": "Runner, network, registry, or cloud provider issue (timeouts, connection resets, DNS failures, OOM-killed runner, disk full).",
+        "flaky_test": "A specific test failed in a way consistent with known flakiness (race condition, timing assertion, order-dependent test, intermittent third-party test double).",
+        "code_defect": "A test or build step failed due to an actual bug or incorrect code change (assertion mismatch tied to logic, compile/type error, lint failure).",
+        "dependency_or_config": "Failure due to a missing/misconfigured dependency, environment variable, credential, or config value.",
+        "unknown": "Logs are inconclusive or do not clearly indicate any of the above."
+      }
+    },
+    "retrySuccessLikelihood": {
+      "type": "score",
+      "instructions": "Considering the failure category, log contents, and the fact this is attempt {state.attempt} of {state.maxAttempts} on branch {state.branch}, estimate how likely an immediate retry of this exact job is to succeed.",
+      "criteria": [
+        "very_unlikely",
+        "unlikely",
+        "uncertain",
+        "likely",
+        "very_likely"
+      ]
+    }
+  }
+}

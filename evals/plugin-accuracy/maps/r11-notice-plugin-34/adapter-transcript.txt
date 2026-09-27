@@ -1,0 +1,10 @@
+I don't have permission to run this command in the current session, so I can't execute the `npx tsx` verification myself. I did statically check the file for syntax correctness — it's straightforward TS with no unusual syntax. Could you approve the Bash tool (or run this yourself) so I can confirm it loads?
+
+```
+cd /home/user/jev-discovery/results/experiments/plugin-accuracy/maps/r11-notice-plugin-34 && npx tsx -e "import('./adapter.ts').then(m => console.log(Object.keys(m)))"
+```
+
+**Summary of `adapter.ts`:**
+- `buildState(input)`: copies `contract_text` and `received_date` straight through, renames `email_text` → `cancellation_email_text` (matching `questions.json`'s example state fields exactly).
+- `questions(input)`: returns `questions.json`'s `questions` map verbatim (it's static, not built per-case).
+- `decide(input, answers)`: calls `decide.ts`'s `decide(answers, input.received_date)` — no extra convenience fields were needed since the API's noul/choice answer shapes already satisfy `decide.ts`'s `Noul`/`Choice` interfaces — then maps its 5-way `decision` to the required 4-way outcome (`notice_sufficient`→avoided, `notice_too_late`/`method_not_allowed`→not_avoided, `no_auto_renewal`→not_applicable, `needs_review`→abstain).

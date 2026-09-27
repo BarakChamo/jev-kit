@@ -1,0 +1,47 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "repo": "acme/webapp",
+    "branch": "main",
+    "workflow": "ci.yml",
+    "job": "test-integration",
+    "runner": "ubuntu-22.04-8core",
+    "attempt": 1,
+    "maxAttempts": 3,
+    "logTail": [
+      "Run npm test",
+      "...",
+      "Error: connect ETIMEDOUT 10.0.4.12:5432",
+      "    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)",
+      "FATAL: could not connect to database, retrying...",
+      "##[error]Process completed with exit code 1."
+    ]
+  },
+  "questions": {
+    "transient_failure": {
+      "type": "noul",
+      "instructions": "Given the job metadata and the last 200 log lines in state.logTail, decide whether this failure looks transient/infrastructural (network blips, DNS/connection timeouts, runner resource exhaustion, flaky test races, service unavailable, rate limiting) rather than a deterministic defect in the code or configuration under test.",
+      "criteria": {
+        "true": "The log shows signs of a transient/environmental issue: timeouts, connection resets, OOM/killed processes, disk pressure, flaky test retries, DNS or registry hiccups, throttling.",
+        "false": "The log shows a deterministic failure: assertion mismatch, compile/type error, failing unit test with a stable diff, syntax error, missing file, bad config, or any error that would reproduce identically on every run."
+      }
+    },
+    "failure_category": {
+      "type": "choice",
+      "instructions": "Classify the root cause of this CI job failure using state.logTail and the job metadata.",
+      "criteria": {
+        "infra": "Runner, network, cloud provider, or CI platform issue (timeouts, connection resets, disk/OOM, DNS, registry/pull failures).",
+        "flaky_test": "A specific test is known to be nondeterministic/racy, or the log shows intermittent assertion failures typical of flakiness (timing, ordering, random data) rather than a consistent break.",
+        "dependency": "Failure to install/resolve a package, version conflict, lockfile mismatch, or an upstream dependency's registry/service being unavailable.",
+        "code_defect": "The code under test is genuinely broken: failing assertions tied to a real logic change, compile/type errors, lint failures.",
+        "config": "Misconfiguration in the workflow/job itself: bad env vars, missing secrets, wrong paths, invalid YAML.",
+        "unknown": "The log is inconclusive, truncated, or doesn't clearly indicate a cause."
+      }
+    },
+    "retry_confidence": {
+      "type": "score",
+      "instructions": "Given the failure category and the evidence in state.logTail, how likely is it that simply retrying this exact job (same code, same branch, no changes) would succeed on the next attempt?",
+      "criteria": ["very_unlikely", "unlikely", "possible", "likely", "very_likely"]
+    }
+  }
+}

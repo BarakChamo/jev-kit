@@ -1,0 +1,12 @@
+Two files in `/tmp/.../notice-plugin-14/`:
+
+**questions.json** — state has `contract_text`, `cancellation_email_text`, `cancellation_received_date` (the last is a known input, not asked). Five questions:
+- `has_auto_renewal` (noul) — does the contract auto-renew at all
+- `clear_cancellation_intent` (noul) — does the email actually say "we're not renewing"
+- `method_restricted` (noul) — does the contract require a delivery method a plain email wouldn't satisfy
+- `required_notice_band` (choice) — the notice period the contract requires, bucketed
+- `lead_time_band` (choice) — how far before the renewal date the cancellation was received, bucketed
+
+**decide.ts** — no direct "was notice enough?" question, per the skill's strongest rule on deadlines: Jev is unreliable comparing two separately-stated quantities but reliable at bucketing each one. Code computes `P(lead_time_band ≥ required_notice_band)` as a joint probability over the two independent distributions (not just top picks — the full 8-band distributions), then gates: ≥0.8 → sufficient, ≤0.2 → insufficient, otherwise → human review. Low confidence, "unclear" bands, unclear cancellation intent, or a restrictive delivery method all route to `needs_human_review` rather than silently passing — per the "uncertainty never relaxes a decision" rule.
+
+Not yet measured against labelled cases — before trusting this in production, run it through `jev-eval` on ~30 real contract/cancellation pairs (mix of clear-pass, clear-fail, and boundary cases) and check the confidently-wrong queue.

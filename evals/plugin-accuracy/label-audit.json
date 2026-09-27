@@ -1,0 +1,1757 @@
+{
+  "model": "zai/glm-5.3-flash",
+  "suites": {
+    "notice": {
+      "n": 30,
+      "parsed": 30,
+      "agreement": 1,
+      "disputed": [],
+      "costUsd": 0.008751249999999999,
+      "rows": [
+        {
+          "id": "notice-001",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews unless written notice of non-renewal is given at least 60 days before the end of the then-current term (Initial Term ends January 15, 2026). The email clearly states the customer will not renew and asks it be treated as formal notice of non-renewal. Notices by email are expressly permitted under Section 14. The email was received on 2025-10-12. Counting 60 days back from January 15, 2026: Jan 15 → Dec 16 is 30 days, → Nov 16 is 60 days, so the deadline was November 16, 2025. October 12, 2025 is well before that deadline, satisfying the notice period. All conditions are met, so the renewal was avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00024119999999999998,
+          "facts": {
+            "term_end": "2026-01-15",
+            "required_notice_days": 60,
+            "actual_lead_days": 95,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-002",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms unless either party gives written notice at least 60 days before the end of the then-current term. The email clearly states the customer will not renew, and notices may be given by email per Section 14, so those conditions are met. However, the Initial Term ends March 1, 2026, and the email was received on February 9, 2026 — only 20 days before the term's end. Since 20 days is less than the required 60-day notice period, the notice was insufficient and the contract was not avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00023469999999999999,
+          "facts": {
+            "term_end": "2026-03-01",
+            "required_notice_days": 60,
+            "actual_lead_days": 20,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-003",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews for successive 12-month terms unless written notice of non-renewal is given at least 30 days before the end of the then-current term. The email clearly states the customer will not renew. Email is a permitted notice method under Section 14 (Notices may be given by email). The email was received on 2025-12-02, which is 70 days before the end of the Initial Term on 2026-02-10 (Dec 2 → Feb 10: 29 remaining days in December + 31 in January + 10 in February = 70 days), well beyond the required 30-day notice period. All conditions are satisfied, so the renewal was avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002317,
+          "facts": {
+            "term_end": "2026-02-10",
+            "required_notice_days": 30,
+            "actual_lead_days": 70,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-004",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms and permits notice by email, and the email clearly states the customer will not renew. However, the email was received on May 22, 2026, which is only 10 days before the current term ends on June 1, 2026 — short of the required 30 days' notice (deadline was May 2, 2026). The notice period condition fails, so the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002002,
+          "facts": {
+            "term_end": "2026-06-01",
+            "required_notice_days": 30,
+            "actual_lead_days": 10,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-005",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews for successive 12-month terms unless written notice of non-renewal is given at least 90 days before the end of the then-current term. The email clearly states the customer will not renew, and it was sent by email, which Section 14 expressly permits for notices. The Initial Term ends April 20, 2026; the email was received November 21, 2025, which is 150 days before the term ends (9 days remaining in November + 31 Dec + 31 Jan + 28 Feb + 31 Mar + 20 Apr = 150 days). This exceeds the required 90-day notice period, so all conditions are met and the renewal was avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002432,
+          "facts": {
+            "term_end": "2026-04-20",
+            "required_notice_days": 90,
+            "actual_lead_days": 150,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-006",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms unless written notice of non-renewal is given at least 90 days before the end of the then-current term. The email clearly states the customer will not renew, and email is a permitted notice method under Section 14. However, the email was received on 2026-03-26, and the current term ends 2026-05-05 — only about 40 days of notice (March 26 → May 5 is 40 days), which is less than the required 90 days. Therefore the notice condition fails and the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002492,
+          "facts": {
+            "term_end": "2026-05-05",
+            "required_notice_days": 90,
+            "actual_lead_days": 40,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-007",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews unless either party gives written notice of non-renewal at least 120 days before the end of the then-current term. The email clearly states the customer will not renew, and it was sent by email, which the contract's Notices clause (Section 14) expressly permits. The email was received on 2025-12-13. The current term (Initial Term) ends on 2026-07-01. From 2025-12-13 to 2026-07-01: Dec 13→Jan 13 = 31 days; Jan 13→Feb 13 = 31; Feb 13→Mar 13 = 28; Mar 13→Apr 13 = 31; Apr 13→May 13 = 30; May 13→Jun 13 = 31; Jun 13→Jul 1 = 18. Total = 200 days, which is at least the required 120 days' notice. All conditions are met, so the renewal is avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0003145,
+          "facts": {
+            "term_end": "2026-07-01",
+            "required_notice_days": 120,
+            "actual_lead_days": 200,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-008",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract renews automatically, and email notice is a permitted method. However, the required notice is 120 days before the end of the then-current term. The Initial Term ends August 12, 2026, so notice was due no later than April 14, 2026 (120 days prior). The cancellation email was received on 2026-06-13, only 60 days before the term ends (June 13 to August 12, 2026 = 17 + 31 + 12 = 60 days), well short of the 120-day notice period. The notice condition fails, so the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0003545,
+          "facts": {
+            "term_end": "2026-08-12",
+            "required_notice_days": 120,
+            "actual_lead_days": 60,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-009",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews for successive 12-month terms, so the rule applies. The email clearly states the customer will not renew (\"formal notice that we will not renew the agreement\"). Email is a permitted method of notice under Section 14. The email was received on 2025-11-28. The current term ends 2026-01-31; counting from 2025-11-28 to 2026-01-31: Nov 28→Dec 28 = 30 days, Dec 28→Jan 28 = 31 days, Jan 28→Jan 31 = 3 days, totaling 64 days before the end of the term. This exceeds the required 60-day notice period, so all three conditions are satisfied."
+          },
+          "agree": true,
+          "costUsd": 0.0002737,
+          "facts": {
+            "term_end": "2026-01-31",
+            "required_notice_days": 60,
+            "actual_lead_days": 64,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-010",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms and permits notice by email (Section 14), and the email clearly states the customer will not renew. However, the notice must be given at least 60 days before the end of the then-current term. The Initial Term ends February 28, 2026; counting back 60 days gives a deadline of December 30, 2025 (28 Feb minus 28 days to 31 Jan, plus 31 days to 31 Dec = 30 Dec 2025). The email was received on 2026-01-03, only 56 days before the end of the term, which is less than the required 60 days' notice. Therefore the notice condition fails and the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002187,
+          "facts": {
+            "term_end": "2026-02-28",
+            "required_notice_days": 60,
+            "actual_lead_days": 56,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-011",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews unless written notice of non-renewal is given at least 30 days before the end of the current term (Initial Term ends September 15, 2026). The email clearly states the customer will not renew. The contract's Notices clause (Section 14) expressly permits notice by email. The email was received on August 12, 2026, which is 34 days before September 15, 2026 — at least 30 days before the end of the term. All conditions are met, so the outcome is avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002092,
+          "facts": {
+            "term_end": "2026-09-15",
+            "required_notice_days": 30,
+            "actual_lead_days": 34,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-012",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews (Section 9) and permits email notice (Section 14). The email clearly states non-renewal. However, the notice period requires at least 30 days before the end of the term. The current term ends October 1, 2026, so notice must be received by September 1, 2026. The email was received on September 5, 2026, which is only 26 days before the term ends — short of the required 30 days. Since one condition fails, the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002002,
+          "facts": {
+            "term_end": "2026-10-01",
+            "required_notice_days": 30,
+            "actual_lead_days": 26,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-013",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews for successive 12-month terms unless written notice of non-renewal is given at least 90 days before the end of the then-current term. The Initial Term ends March 15, 2026. The cancellation email was received on December 10, 2025, which is 95 days before March 15, 2026 (21 remaining days in December + 31 in January + 28 in February + 15 in March), satisfying the 90-day notice requirement. The email clearly states the customer will not renew (\"formal notice that we will not renew the agreement when the current term ends\"), and the contract permits notice by email (Section 14 allows notices by email to Schedule 1 addresses). All conditions are met, so the renewal is avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002682,
+          "facts": {
+            "term_end": "2026-03-15",
+            "required_notice_days": 90,
+            "actual_lead_days": 95,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-014",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms. The cancellation email clearly states the customer will not renew, and notice by email is permitted under Section 14. However, the email was received on 2026-08-27, and the current term ends 2026-11-20. Ninety days before 2026-11-20 is 2026-08-22, so notice was required by 2026-08-22. Since 2026-08-27 is only 85 days before the term ends, the required 90-day notice period was not met, so the notice was not timely and the contract was not avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002092,
+          "facts": {
+            "term_end": "2026-11-20",
+            "required_notice_days": 90,
+            "actual_lead_days": 85,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-015",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract renews automatically (Section 9: auto-renewal for successive 12-month terms unless written notice of non-renewal is given at least 45 days before the end of the then-current term). The email clearly states the customer will not renew (\"formal notice that we will not renew the agreement when the current term ends\"). Email is a method the contract permits (Section 14: notices may be given by email). Date check: the Initial Term ends June 30, 2026, and the email was received May 12, 2026. Forty-five days before June 30, 2026 is May 16, 2026 (May 16 → May 31 = 15 days; June 1 → June 30 = 30 days; total 45 days). May 12, 2026 is 49 days before the term end, which is at least the required 45 days' notice. All three conditions are satisfied, so the outcome is avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00063505,
+          "facts": {
+            "term_end": "2026-06-30",
+            "required_notice_days": 45,
+            "actual_lead_days": 49,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-016",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract renews automatically (Section 9) and requires written notice of non-renewal at least 45 days before the end of the then-current term. The Initial Term ends December 1, 2026, so notice was due no later than October 17, 2026 (45 days prior). The cancellation email was received October 21, 2026 — only 41 days before the term ends — so the required notice period was missed. The email clearly states non-renewal and email is a permitted notice method under Section 14, but the timing condition fails, so the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0004640499999999999,
+          "facts": {
+            "term_end": "2026-12-01",
+            "required_notice_days": 45,
+            "actual_lead_days": 41,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-017",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms unless written notice of non-renewal is given at least 60 days before the end of the then-current term. The Initial Term ends April 1, 2026, so notice had to be received by February 1, 2026 (60 days prior). The cancellation email, which clearly states the customer will not renew, was received on February 3, 2026 — only 57 days before the term ends, short of the required 60-day notice period. Because the timely-notice condition fails, the outcome is not_avoided. (The email method itself is permitted, since Section 14 allows notices by email.)"
+          },
+          "agree": true,
+          "costUsd": 0.0002387,
+          "facts": {
+            "term_end": "2026-04-01",
+            "required_notice_days": 60,
+            "actual_lead_days": 57,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-018",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews for successive 12-month terms unless written notice of non-renewal is given at least 3 months before the end of the then-current term. The email clearly states the customer will not renew, and Section 14 permits notices by email. The Initial Term ends January 10, 2026; three months before that is October 10, 2025. The email was received October 2, 2025, which is more than 3 months before the term's end. All conditions are met, so the renewal was avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00035039999999999995,
+          "facts": {
+            "term_end": "2026-01-10",
+            "required_notice_days": 90,
+            "actual_lead_days": 100,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-019",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract renews automatically (Section 9: successive 12-month Renewal Terms unless notice is given). The email clearly states the customer will not renew (\"formal notice that we will not renew the agreement when the current term ends\"), and email is a permitted notice method under Section 14. However, the notice-period condition fails. The email was received on 2026-03-04, during the Initial Term ending May 18, 2026. The required notice period is three months, so notice had to be received by February 18, 2026. From March 4, 2026 to May 18, 2026 is only 2 months and 14 days, which is less than the required 3 months. Therefore the renewal was not avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00044489999999999997,
+          "facts": {
+            "term_end": "2026-05-18",
+            "required_notice_days": 90,
+            "actual_lead_days": 75,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-020",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract renews automatically unless written notice of non-renewal is given at least two months before the end of the then-current term. The Initial Term ends July 22, 2026. The email clearly states the customer will not renew, and the contract's Notices clause (Section 14) explicitly permits notice by email. The email was received on May 17, 2026, which is two months and five days before the term ends on July 22, 2026 (the required deadline being May 22, 2026). All three conditions are met, so the renewal was avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002162,
+          "facts": {
+            "term_end": "2026-07-22",
+            "required_notice_days": 60,
+            "actual_lead_days": 66,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-021",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews (Section 9: renewal unless written non-renewal notice at least 60 days before end of the then-current term). The email clearly states the customer will not renew (\"formal notice that we will not renew the agreement when the current term ends\"). Notices may be given by email per Section 14, so the method is permitted. Date check: the email was received 2025-11-13, during the current term running February 1, 2025 – February 1, 2026. Sixty days before February 1, 2026 is December 3, 2025 (Jan 1 → Dec 3, counting back 31 days to Jan 1 and 29 more days to Dec 3). Received date November 13, 2025 is 80 days before February 1, 2026 (Nov 13 → Dec 13 = 30; Dec 13 → Jan 13 = 31; Jan 13 → Feb 1 = 19), which exceeds the 60-day requirement. All conditions are met, so the renewal is avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0006004,
+          "facts": {
+            "term_end": "2026-02-01",
+            "required_notice_days": 60,
+            "actual_lead_days": 80,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-022",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms (Initial Term ending Sep 1, 2024; Renewal Term 2 ending Sep 1, 2026). The email clearly states the customer will not renew, and email is a permitted notice method under Section 14. However, the email was received on 2026-08-02, which falls in the term ending September 1, 2026. The contract requires written notice at least 60 days before the end of the then-current term, i.e., by July 3, 2026. The email arrived only 30 days before the term end (Aug 2 → Sep 1, 2026), so the notice-period condition fails."
+          },
+          "agree": true,
+          "costUsd": 0.0006753999999999999,
+          "facts": {
+            "term_end": "2026-09-01",
+            "required_notice_days": 60,
+            "actual_lead_days": 30,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-023",
+          "gold": {
+            "outcome": "avoided"
+          },
+          "independent": {
+            "outcome": "avoided",
+            "reason": "The contract automatically renews for successive 24-month terms (initial term ends March 10, 2026). The email clearly states the customer will not renew, email notice is permitted under Section 14, and it was received on 2025-11-20 — 110 days before the term end (2026-03-10), which is at least the required 90 days' notice (deadline 2025-12-10)."
+          },
+          "agree": true,
+          "costUsd": 0.00018585,
+          "facts": {
+            "term_end": "2026-03-10",
+            "required_notice_days": 90,
+            "actual_lead_days": 110,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-024",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract renews automatically, and the email is a clear non-renewal notice sent by a permitted method (email is allowed under Section 14). However, notice timing fails: the Initial Term ends June 5, 2026, and the email was received March 27, 2026 — only 70 days before term end (4 remaining days in March + 30 in April + 31 in May + 5 in June), which is less than the required 90 days' notice. Since one of the required conditions fails, the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00021434999999999998,
+          "facts": {
+            "term_end": "2026-06-05",
+            "required_notice_days": 90,
+            "actual_lead_days": 70,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-025",
+          "gold": {
+            "outcome": "not_applicable"
+          },
+          "independent": {
+            "outcome": "not_applicable",
+            "reason": "The contract does not renew automatically. Section 9 states the Agreement \"shall expire at the end of the Initial Term unless the parties agree in writing to extend it,\" meaning it expires on February 1, 2026 unless extended by mutual written agreement. Since there is no automatic renewal, the labelling rule's outcome for non-auto-renewing contracts applies, regardless of the cancellation email's content or timing."
+          },
+          "agree": true,
+          "costUsd": 0.00020815,
+          "facts": {
+            "term_end": "2026-02-01",
+            "required_notice_days": 60,
+            "actual_lead_days": 10,
+            "auto_renews": false,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-026",
+          "gold": {
+            "outcome": "not_applicable"
+          },
+          "independent": {
+            "outcome": "not_applicable",
+            "reason": "The contract states it \"shall expire at the end of the Initial Term unless the parties agree in writing to extend it\" — there is no automatic renewal provision, so the labelling rule does not apply."
+          },
+          "agree": true,
+          "costUsd": 0.0001368,
+          "facts": {
+            "term_end": "2026-08-01",
+            "required_notice_days": 60,
+            "actual_lead_days": 90,
+            "auto_renews": false,
+            "email_allowed": true,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-027",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms. The email clearly states the customer will not renew, and timing-wise it was received 2025-11-20, which is 120 days before the end of the Initial Term (2026-03-20), well beyond the required 60-day notice. However, Section 14 requires notices of non-renewal to be sent by certified mail, return receipt requested, and explicitly states that email notice is not sufficient. The email was therefore sent by a method the contract does not permit, so the cancellation condition fails and the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002117,
+          "facts": {
+            "term_end": "2026-03-20",
+            "required_notice_days": 60,
+            "actual_lead_days": 120,
+            "auto_renews": true,
+            "email_allowed": false,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-028",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews (Section 9). The email clearly states the customer will not renew, and it was received on 2026-08-21, which is 50 days before the end of the current term (2026-10-10), satisfying the 30-day notice period. However, the email was not sent by a permitted method: Section 14 requires notices of non-renewal to be sent by certified mail, return receipt requested, and expressly states that email notice is not sufficient. Because the permitted-method condition fails, the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.0002192,
+          "facts": {
+            "term_end": "2026-10-10",
+            "required_notice_days": 30,
+            "actual_lead_days": 50,
+            "auto_renews": true,
+            "email_allowed": false,
+            "intent_clear": true
+          }
+        },
+        {
+          "id": "notice-029",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract renews automatically (Section 9) and the email was received on 2026-02-14, which is more than 60 days before the Initial Term ends on 2026-05-25 (the notice deadline would be 2026-03-26). However, the email does not clearly state the customer will not renew or wants to cancel — it only says they \"may not continue\" and asks for renewal pricing to compare vendors. Since the condition requiring clear non-renewal intent fails, the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00024985000000000003,
+          "facts": {
+            "term_end": "2026-05-25",
+            "required_notice_days": 60,
+            "actual_lead_days": 100,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": false
+          }
+        },
+        {
+          "id": "notice-030",
+          "gold": {
+            "outcome": "not_avoided"
+          },
+          "independent": {
+            "outcome": "not_avoided",
+            "reason": "The contract automatically renews for successive 12-month terms (Section 9). The email was received on 2026-07-26, which is 45 days before the end of the current term on 2026-09-09, so the 30-day notice period would be satisfied, and email is a permitted notice method under Section 14. However, the email does not clearly state that the customer will not renew or wants to cancel — it says they \"may not continue\" and instead asks for renewal pricing to compare, which is hedged and non-committal. Since the clear statement of non-renewal condition fails, the outcome is not_avoided."
+          },
+          "agree": true,
+          "costUsd": 0.00025184999999999997,
+          "facts": {
+            "term_end": "2026-09-09",
+            "required_notice_days": 30,
+            "actual_lead_days": 45,
+            "auto_renews": true,
+            "email_allowed": true,
+            "intent_clear": false
+          }
+        }
+      ]
+    },
+    "retry": {
+      "n": 30,
+      "parsed": 30,
+      "agreement": 1,
+      "disputed": [],
+      "costUsd": 0.007919349999999999,
+      "rows": [
+        {
+          "id": "retry-001",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "timing-dependent test timeout",
+            "reason": "The failure is \"poller > emits an update after the interval\" timing out at 5003ms against a 5000ms testTimeout. A test that waits on an interval just barely exceeding the timeout is characteristic of a timing/scheduling race on a loaded runner rather than a deterministic code defect — all 311 other tests passed, and the test overshot its limit by only 3ms. This is a flaky, timing-sensitive failure, so retrying may pass."
+          },
+          "agree": true,
+          "costUsd": 0.00025834999999999996,
+          "facts": {
+            "cause": "flaky_timing"
+          }
+        },
+        {
+          "id": "retry-002",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "Timing-sensitive test timeout: \"poller > emits an update after the interval\" failed at exactly 5003ms, just over the 5000ms default vitest testTimeout — the interval-based test was likely simply too slow on this run rather than deterministically broken (311 of 312 tests passed, all other test files green in both runs). This is a timing-related flaky test.",
+            "reason": "yes"
+          },
+          "agree": true,
+          "costUsd": 0.00034375,
+          "facts": {
+            "cause": "flaky_timing"
+          }
+        },
+        {
+          "id": "retry-003",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "Shared state between concurrently running tests",
+            "reason": "The failing test src/db/session.test.ts \"reuses the pooled connection\" failed because it shares a global connection pool with src/db/pool.test.ts, which ran concurrently in the same shard — a nondeterministic shared-state flake, not a code defect. The test passed on the previous 41 runs of main. The log tail itself even shows the same tests passing earlier in the log, underscoring nondeterminism. Transient flaky test → retry (attempt 1 of 3)."
+          },
+          "agree": true,
+          "costUsd": 0.00022465,
+          "facts": {
+            "cause": "flaky_order"
+          }
+        },
+        {
+          "id": "retry-004",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "flaky_test_shared_state",
+            "reason": "The failing test src/db/session.test.ts (\"reuses the pooled connection\", expecting 'conn-3' but got 'conn-7') shares a global pool with src/db/pool.test.ts, which ran concurrently in this shard. The failure is caused by shared mutable state between tests running concurrently, making it nondeterministic. The log notes the test passed on the previous 41 runs of main, and all other tests (format, client, Button) passed deterministically. This is a flaky test due to test ordering/concurrency/shared state, which is transient — retrying can pass. Not a code-under-test bug, CI config issue, or dependency change (lockfile is up to date and the failure isn't related to the renovate branch's dependency changes)."
+          },
+          "agree": true,
+          "costUsd": 0.00024985,
+          "facts": {
+            "cause": "flaky_order"
+          }
+        },
+        {
+          "id": "retry-005",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "Package registry outage: pnpm install failed with ERR_PNPM_FETCH_503 fetching @types/node from registry.npmjs.org (Service Unavailable)",
+            "reason": "The failure is not in the code, tests, or CI configuration. The log shows repeated 503 responses from the npm registry during pnpm install, which is a transient infrastructure failure (package registry). Retrying is likely to succeed once the registry is available again."
+          },
+          "agree": true,
+          "costUsd": 0.0002049,
+          "facts": {
+            "cause": "infra_network"
+          }
+        },
+        {
+          "id": "retry-006",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "Package registry returned HTTP 503 (ERR_PNPM_FETCH_503) while fetching @types/node from registry.npmjs.org",
+            "reason": "The job failed during `pnpm install --frozen-lockfile` with ERR_PNPM_FETCH_503 from registry.npmjs.org — a service unavailable error from the package registry. This is infrastructure/transient (the registry, not the code, tests, or config). Note the job is on attempt 2 of 3, and prior attempts already passed the test suite and reached install; the failure is purely a registry outage, so a retry can succeed."
+          },
+          "agree": true,
+          "costUsd": 0.00022085,
+          "facts": {
+            "cause": "infra_network"
+          }
+        },
+        {
+          "id": "retry-007",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "infrastructure",
+            "reason": "The job did not fail due to code or test failure: the log tail shows tests passing (all listed suites green) before \"##[error]The runner has received a shutdown signal... The operation was canceled.\" The runner itself was shut down/canceled, which is an infrastructure failure (the runner), so retrying is appropriate."
+          },
+          "agree": true,
+          "costUsd": 0.00021184999999999997,
+          "facts": {
+            "cause": "infra_runner"
+          }
+        },
+        {
+          "id": "retry-008",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "Runner received a shutdown signal; the job was canceled by the runner service, not by a test or build failure",
+            "reason": "The log tail shows tests passing normally (format, client, Button, cart all ✓) with no test failure, no build error, and no dependency/config problem. The failure is explicit: 'The runner has received a shutdown signal... The operation was canceled.' This is an infrastructure issue (runner service stopped), which is transient — a retry may succeed on a healthy runner."
+          },
+          "agree": true,
+          "costUsd": 0.00021745,
+          "facts": {
+            "cause": "infra_runner"
+          }
+        },
+        {
+          "id": "retry-009",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "Disk space exhausted on the self-hosted runner (ENOSPC, filesystem 100% full) while writing the bundle",
+            "reason": "The failure is ENOSPC: no space left on device on the runner's filesystem, which is explicitly listed as infrastructure (disk space) under transient causes. It is not in the code under test, not a deterministic test failure, not CI configuration, and not a dependency change (pnpm install succeeded with the lockfile up to date). A retry on a runner with freed disk space would succeed."
+          },
+          "agree": true,
+          "costUsd": 0.00022009999999999998,
+          "facts": {
+            "cause": "infra_disk"
+          }
+        },
+        {
+          "id": "retry-010",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "ENOSPC: no space left on device while writing dist/assets/index-9f2c.js; filesystem /dev/root at 100% (84G/84G used)",
+            "reason": "The failure is ENOSPC: no space left on device on the runner's root filesystem (84G used, 0 available, 100% usage), occurring while the bundle test tried to write a build artifact. Disk exhaustion on the CI runner is an infrastructure issue, not a problem in the code under test or the build/CI configuration — the tests themselves passed (format, client, Button) and the lockfile was unchanged. Retrying (attempt 2 of 3) may succeed if the runner gets a clean disk."
+          },
+          "agree": true,
+          "costUsd": 0.00023059999999999997,
+          "facts": {
+            "cause": "infra_disk"
+          }
+        },
+        {
+          "id": "retry-011",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Deterministic test failure in code under test",
+            "reason": "The failure is a single test assertion in src/pricing/discount.test.ts: \"discount > applies the loyalty tier before tax\" expected 91.8 to be 90. This is a deterministic numeric/rounding expectation mismatch in the pricing logic under test, not a flaky timing/ordering/shared-state issue or an infrastructure problem. Given the branch is fix/rounding, the failure stems from the code under test, and retrying would produce the same result."
+          },
+          "agree": true,
+          "costUsd": 0.0002293,
+          "facts": {
+            "cause": "code_assert"
+          }
+        },
+        {
+          "id": "retry-012",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Deterministic test failure in src/pricing/discount.test.ts: the assertion \"expected 91.8 to be 90\" indicates a wrong expected value / behavior change in the code under test, not a transient issue. (Also worth noting: the log is from repo acme/webapp, not the metadata's acme/mobile — a mismatch that itself cannot justify a retry.)",
+            "reason": "no"
+          },
+          "agree": true,
+          "costUsd": 0.00022895,
+          "facts": {
+            "cause": "code_assert"
+          }
+        },
+        {
+          "id": "retry-013",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Deterministic test failure in src/pricing/discount.test.ts (\"applies the loyalty tier before tax\" expected 91.8 to be 90) — the discount logic in the code under test, not flakiness or infrastructure. A retry would fail the same way.",
+            "reason": "no"
+          },
+          "agree": true,
+          "costUsd": 0.0001989,
+          "facts": {
+            "cause": "code_assert"
+          }
+        },
+        {
+          "id": "retry-014",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "TypeScript compilation errors in src/api/orders.ts (TS2339 'shippingAddress' does not exist on type 'Order', TS2322 type mismatch) — a deterministic failure in the code under test.",
+            "reason": "The log tail shows `pnpm typecheck` failing with two TypeScript errors in src/api/orders.ts (property not existing on a type, and a string | undefined not assignable to string). These are deterministic compile errors in the source code of the repository, not flaky tests or infrastructure issues. The earlier test runs passed, and the failure is reproducible on every retry since the code itself is invalid. Retrying would fail the same way, so the label is \"no\"."
+          },
+          "agree": true,
+          "costUsd": 0.00024199999999999997,
+          "facts": {
+            "cause": "code_type"
+          }
+        },
+        {
+          "id": "retry-015",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "TypeScript compile errors in src/api/orders.ts (TS2339/TS2322) — a deterministic failure in the code under test",
+            "reason": "The log tail shows the failure is from `pnpm typecheck` reporting fixed type errors in source code (Property 'shippingAddress' does not exist on type 'Order'; string|undefined not assignable to string). This is a deterministic error in the code under test, not a flaky test or infrastructure issue, so retrying would fail the same way."
+          },
+          "agree": true,
+          "costUsd": 0.00023099999999999998,
+          "facts": {
+            "cause": "code_type"
+          }
+        },
+        {
+          "id": "retry-016",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Deterministic test failure caused by a code change: src/queue/worker.test.ts (\"worker > drains the queue and resolves\") times out after 10000ms, with drain() visibly stuck in a loop \"awaiting job 17 of 17\", i.e. a deadlock/livelock introduced by commit 4e1a9c2 (\"make drain() await the last ack\"). The log itself notes the test has failed on every run since that commit, 6 of 6 attempts.",
+            "reason": "The rule says to retry only if the failure is transient (flaky test or infrastructure). Here the timeout is not timing/ordering flakiness that varies run to run: the log explicitly records that this test has failed on 100% of runs (6/6 attempts) since commit 4e1a9c2, which changed drain() to await the last ack. The repeating \"awaiting job 17 of 17\" lines show the code deterministically livelocks on the final job, so the cause is in the code under test and retrying would fail the same way — attempt 1 of 3 failing identically confirms this. (The metadata/log repo-name mismatch of acme/mobile vs acme/webapp would, if taken as a checkout/config error, also fall under the \"no\" branch as a CI configuration cause.) Label: no."
+          },
+          "agree": true,
+          "costUsd": 0.00082645,
+          "facts": {
+            "cause": "code_timeout_bug"
+          }
+        },
+        {
+          "id": "retry-017",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Deterministic code failure",
+            "reason": "The failure is in src/queue/worker.test.ts: the test 'worker > drains the queue and resolves' timed out, with the drain() loop stuck awaiting job 17 of 17 repeatedly. The log notes this test has failed on every run (6 of 6 attempts) since commit 4e1a9c2 (\"make drain() await the last ack\"), indicating the cause is the code change in the commit — a deterministic failure in the code under test, not something transient. Retrying would fail the same way."
+          },
+          "agree": true,
+          "costUsd": 0.00022695000000000001,
+          "facts": {
+            "cause": "code_timeout_bug"
+          }
+        },
+        {
+          "id": "retry-018",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "code-under-test",
+            "reason": "The worker drain test timed out deterministically: the log explicitly notes it has failed on every run (6 of 6 attempts) since commit 4e1a9c2 (\"make drain() await the last ack\"). The failure is tied to a code change in the repository (worker.ts drain logic), not a flaky test or infrastructure issue, so retrying would fail the same way."
+          },
+          "agree": true,
+          "costUsd": 0.0002104,
+          "facts": {
+            "cause": "code_timeout_bug"
+          }
+        },
+        {
+          "id": "retry-019",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Port mismatch between the mock server and the tests (code/config bug, not transient)",
+            "reason": "The two failing tests fail because nothing is listening on localhost:4010 (ECONNREFUSED 127.0.0.1:4010), while the test setup logs \"Mock server config (tests/setup.ts): listening on port 4001\". The mock server is started on a different port than the one the tests request — a deterministic mismatch in the test setup code under the repository, not an infrastructure or flaky failure. Retrying would fail the same way, so label \"no\"."
+          },
+          "agree": true,
+          "costUsd": 0.00024175,
+          "facts": {
+            "cause": "code_network_bug"
+          }
+        },
+        {
+          "id": "retry-020",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "The tests failed with ECONNREFUSED on port 4010 while the mock server setup (tests/setup.ts) reports listening on port 4001 — a deterministic port mismatch in the test configuration/code, not a transient issue.",
+            "reason": "The failing tests (\"fetches the profile from the mock server\" and \"retries on 502\") both fail with connect ECONNREFUSED 127.0.0.1:4010, and the log shows \"Mock server config (tests/setup.ts): listening on port 4001\". The client is configured to hit port 4010 while the mock server starts on 4001, so the connection can never succeed regardless of retries. This is a deterministic failure rooted in the code/test configuration (a hard-coded port mismatch), so retrying would fail the same way. Notably, other tests that don't depend on the mock server pass, which further confirms the failure is specific to this misconfiguration rather than flaky infrastructure."
+          },
+          "agree": true,
+          "costUsd": 0.00030234999999999995,
+          "facts": {
+            "cause": "code_network_bug"
+          }
+        },
+        {
+          "id": "retry-021",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Port mismatch between test setup and client code (mock server listens on port 4001 but client requests port 4010, ECONNREFUSED)",
+            "reason": "The log shows the tests failed with ECONNREFUSED on 127.0.0.1:4010 while the mock server setup reports \"listening on port 4001\". This is a deterministic mismatch between the port the mock server binds to and the port the client under test targets — it is in the code/test configuration, not transient. The same failures reproduced across attempts (the log tail shows repeated identical runs and this is attempt 2 of 3), so retrying would fail the same way. Not a flaky timing/ordering/shared-state issue or infrastructure failure."
+          },
+          "agree": true,
+          "costUsd": 0.00028675,
+          "facts": {
+            "cause": "code_network_bug"
+          }
+        },
+        {
+          "id": "retry-022",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Missing secrets due to CI workflow change in this PR",
+            "reason": "The stripe tests fail with \"STRIPE_SECRET_KEY is not set\", and the log explicitly notes the workflow file was changed in this PR and no longer passes 'secrets: inherit' to the reusable test job. This is a failure caused by a CI configuration change made by the commit (secrets not propagated), not by anything transient. Retrying would fail the same way, so the label is \"no\"."
+          },
+          "agree": true,
+          "costUsd": 0.00021279999999999997,
+          "facts": {
+            "cause": "config_env"
+          }
+        },
+        {
+          "id": "retry-023",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Missing secret due to CI configuration change: the log shows all 7 stripe tests failing with \"Error: STRIPE_SECRET_KEY is not set\", and the note states the workflow file was changed in this PR and no longer passes 'secrets: inherit' to the reusable test job.",
+            "reason": "This is not a transient failure. The cause is a secrets/CI configuration change made by the PR (workflow no longer passes 'secrets: inherit'), so the STRIPE_SECRET_KEY is unavailable to the test job. The failure is deterministic and environment/configuration-based; retrying (attempts 2 and 3) would fail the same way. Per the rule, a secrets or CI configuration cause must be labelled \"no\"."
+          },
+          "agree": true,
+          "costUsd": 0.0003736,
+          "facts": {
+            "cause": "config_env"
+          }
+        },
+        {
+          "id": "retry-024",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "CI workflow configuration / missing secret",
+            "reason": "All test failures report \"STRIPE_SECRET_KEY is not set\", and the log notes the PR changed the workflow file and removed 'secrets: inherit' from the reusable test job. This is a deterministic failure caused by CI configuration (secrets), not by a flaky test or infrastructure issue, so retrying would fail the same way."
+          },
+          "agree": true,
+          "costUsd": 0.0002184,
+          "facts": {
+            "cause": "config_env"
+          }
+        },
+        {
+          "id": "retry-025",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "The failure is caused by a dependency change made by the commit: the third run shows `pnpm install` (not --frozen-lockfile) regenerating the lockfile, which resolved react-dom to 20.0.0 (^19 -> *), and the build then fails deterministically because './server' is not exported by react-dom 20. This is a code/dependency-caused failure, not transient infrastructure or flakiness.",
+            "reason": "no"
+          },
+          "agree": true,
+          "costUsd": 0.00021985,
+          "facts": {
+            "cause": "dep_breaking"
+          }
+        },
+        {
+          "id": "retry-026",
+          "gold": {
+            "retry": "no"
+          },
+          "independent": {
+            "retry": "no",
+            "cause": "Dependency change made by the commit",
+            "reason": "The build failed because react-dom was resolved to 20.0.0 since the PR regenerated the lockfile (upgrading react-dom from ^19 to *). The error \"Package subpath './server' is not defined by exports\" is a deterministic consequence of this dependency change made by the commit, not a transient infrastructure or flaky-test issue. Note also the repo/job metadata mismatch (repo acme/api, branch feature/checkout-v2, but logs are for acme/webapp and a pnpm build step despite job_name \"test\"), but the failure cause is clearly the lockfile regeneration changing react-dom to an incompatible major version. Retrying would fail the same way."
+          },
+          "agree": true,
+          "costUsd": 0.00024175,
+          "facts": {
+            "cause": "dep_breaking"
+          }
+        },
+        {
+          "id": "retry-027",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "Test timeout on timing-sensitive test",
+            "reason": "The failure is a vitest test timeout: \"poller > emits an update after the interval\" took 5003ms and was killed at the 5000ms default testTimeout. This is a timing-sensitive test that overran the limit by only 3ms, which is characteristic of flaky timing (slow runner/scheduling jitter) rather than a deterministic assertion failure — there is no assertion error, only a timeout. Notably, the log shows an earlier identical run of the same steps where the same test files passed, further indicating nondeterministic behavior. Per the rule, timing-related flakiness counts as transient, so retry is warranted."
+          },
+          "agree": true,
+          "costUsd": 0.00036724999999999995,
+          "facts": {
+            "cause": "flaky_timing"
+          }
+        },
+        {
+          "id": "retry-028",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "package registry outage",
+            "reason": "The job failed during `pnpm install --frozen-lockfile` with ERR_PNPM_FETCH_503 from registry.npmjs.org (Service Unavailable) for @types/node. This is an infrastructure failure — a package registry being temporarily unavailable — not a problem with the code, tests, or build configuration. Retrying is likely to succeed once the registry responds again."
+          },
+          "agree": true,
+          "costUsd": 0.00021505,
+          "facts": {
+            "cause": "infra_network"
+          }
+        },
+        {
+          "id": "retry-029",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "flaky test — nondeterministic shared state",
+            "reason": "src/db/session.test.ts failed with an assertion error ('conn-7' vs 'conn-3'), and the log itself notes it passed on the previous 41 runs of main and shares a global connection pool with src/db/pool.test.ts which ran concurrently in this shard. The failure is caused by nondeterministic shared state between tests (test ordering/concurrency), not by the code under test, build config, or a dependency change. Everything else in the run (checkout, frozen-lockfile install, all other tests) succeeded identically across attempts. This is a classic flaky test, so retrying is appropriate."
+          },
+          "agree": true,
+          "costUsd": 0.00023219999999999998,
+          "facts": {
+            "cause": "flaky_order"
+          }
+        },
+        {
+          "id": "retry-030",
+          "gold": {
+            "retry": "yes"
+          },
+          "independent": {
+            "retry": "yes",
+            "cause": "The runner received a shutdown signal and the operation was canceled while tests were still passing — an infrastructure/runner issue, not a code failure.",
+            "reason": "The log shows checkout, install, and all tests completing successfully (multiple test files passing, no test failures). The job ended with \"The runner has received a shutdown signal... The operation was canceled\" and an orphan process cleanup — i.e., the failure was caused by the runner (self-hosted-linux-3) being stopped or canceled, which is infrastructure and transient. No deterministic test failure, build config error, or code defect is present, so a retry is appropriate."
+          },
+          "agree": true,
+          "costUsd": 0.00023129999999999998,
+          "facts": {
+            "cause": "infra_runner"
+          }
+        }
+      ]
+    },
+    "culprit": {
+      "n": 30,
+      "parsed": 30,
+      "agreement": 0.9333333333333333,
+      "disputed": [
+        "culprit-021",
+        "culprit-025"
+      ],
+      "costUsd": 0.011794699999999998,
+      "rows": [
+        {
+          "id": "culprit-001",
+          "gold": {
+            "culprit_lines": [
+              33
+            ]
+          },
+          "independent": {
+            "best_line": 33,
+            "acceptable_lines": [
+              33
+            ],
+            "reason": "Line 33 (\"→ Test timed out in 5000ms.\") is the only line that states the actual cause of the failure — the test 'poller > emits an update after the interval' timed out. Line 31 only reports that one test failed without the reason; line 32 identifies the failing test name but not the cause; lines 35-36 are summary counts; lines 34 and 38-39 are advice/wrapper lines that do not state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.0002628,
+          "facts": {
+            "cause": "flaky_timing"
+          }
+        },
+        {
+          "id": "culprit-002",
+          "gold": {
+            "culprit_lines": [
+              33
+            ]
+          },
+          "independent": {
+            "best_line": 33,
+            "acceptable_lines": [
+              32,
+              33
+            ],
+            "reason": "The failure cause is the test timing out: line 33 states it directly (\"→ Test timed out in 5000ms.\"). Line 32 is also acceptable as it identifies the specific failing test that timed out (\"× poller > emits an update after the interval 5003ms\"). Lines 35–36 are summary counts, line 38 is a generic ELIFECYCLE wrapper, and line 39 is the exit-code wrapper — none of these state the cause. Line 34 is advice about configuring timeouts, not the cause itself."
+          },
+          "agree": true,
+          "costUsd": 0.00030464999999999995,
+          "facts": {
+            "cause": "flaky_timing"
+          }
+        },
+        {
+          "id": "culprit-003",
+          "gold": {
+            "culprit_lines": [
+              34
+            ]
+          },
+          "independent": {
+            "best_line": 34,
+            "acceptable_lines": [
+              33,
+              34
+            ],
+            "reason": "Line 34 gives the actual assertion failure (\"expected 'conn-7' to be 'conn-3'\"), which directly states why the job failed. Line 33 identifies the failing test name and is an acceptable, if less specific, statement of the failure. Line 35 only gives the location (file:line) without the failure reason, line 36 is context/speculation rather than a statement of cause, line 37 is a summary count, line 38 is a generic error tag, and line 39 is a wrapper exit-code line — none of these state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.00038084999999999996,
+          "facts": {
+            "cause": "flaky_order"
+          }
+        },
+        {
+          "id": "culprit-004",
+          "gold": {
+            "culprit_lines": [
+              34
+            ]
+          },
+          "independent": {
+            "best_line": 34,
+            "acceptable_lines": [
+              33,
+              34,
+              35
+            ],
+            "reason": "Line 34 directly states the failure cause: the assertion \"expected 'conn-7' to be 'conn-3' // Object.is equality\" from the failing test. Line 33 identifies which test failed (\"session > reuses the pooled connection\") and line 35 gives the failing test location (src/db/session.test.ts:88:31); both are acceptable pointers to the cause but are less direct than the assertion message itself. Line 37 is a summary count and line 39 is a wrapper (\"Process completed with exit code 1\"), neither states the cause. Line 36 is a note/speculation about flakiness, not a statement of the cause."
+          },
+          "agree": true,
+          "costUsd": 0.00031269999999999996,
+          "facts": {
+            "cause": "flaky_order"
+          }
+        },
+        {
+          "id": "culprit-005",
+          "gold": {
+            "culprit_lines": [
+              35,
+              38
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              35,
+              38
+            ],
+            "reason": "The failure cause is the npm registry being unavailable: `ERR_PNPM_FETCH_503  GET https://registry.npmjs.org/@types%2Fnode: Service Unavailable - 503`. Line 35 is the first statement of this cause, and line 38 restates it after the final retry (attempt 3 of 3), so both are accepted. Line 36 only adds context about where the error occurred, line 37 is a retry notice, and line 39 is just the generic \"Process completed with exit code 1\" wrapper, none of which state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.0005034,
+          "facts": {
+            "cause": "infra_network"
+          }
+        },
+        {
+          "id": "culprit-006",
+          "gold": {
+            "culprit_lines": [
+              35,
+              38
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              35,
+              36,
+              38
+            ],
+            "reason": "The failure occurs during the \"pnpm install --frozen-lockfile\" step, not during the test runs (which all pass). The cause is explicitly stated by the ERR_PNPM_FETCH_503 error: a GET to https://registry.npmjs.org/@types%2Fnode returned 503 Service Unavailable. Line 35 is the first and clearest statement of this cause. Line 38 is a repeat of the same error on the final retry and equally states the cause. Line 36 (\"This error happened while installing a direct dependency...\") is context identifying where the error occurred and is acceptable as cause-stating. Line 39 is just the exit-code wrapper and does not state the cause. All test lines (12-14, 27-29) are passing output, and checkout/install setup lines are not causes."
+          },
+          "agree": true,
+          "costUsd": 0.0002824,
+          "facts": {
+            "cause": "infra_network"
+          }
+        },
+        {
+          "id": "culprit-007",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              37
+            ],
+            "reason": "The job did not fail from a test or build error — all test suites shown passed. The cause is that the runner itself was shut down/canceled mid-run. Line 36 states this cause most completely: \"The runner has received a shutdown signal. This can happen when the runner service is stopped, or a manually started runner is canceled.\" Line 37 (\"The operation was canceled.\") also correctly states the cause at a coarser level of detail, so it is acceptable too. Lines 38–39 are cleanup steps, not the cause, and no line is a mere exit-code wrapper or summary count."
+          },
+          "agree": true,
+          "costUsd": 0.00031085,
+          "facts": {
+            "cause": "infra_runner"
+          }
+        },
+        {
+          "id": "culprit-008",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36
+            ],
+            "reason": "Line 36 is the error message that states the actual cause of the failure: the runner received a shutdown signal (runner service stopped or manually started runner canceled), which aborted the job mid-run. Line 37 (\"The operation was canceled.\") is a generic consequence/wrapper of that cancellation and does not explain why, and lines 38-39 are cleanup output. Everything before line 35 shows passing tests, so the only cause-stating line is 36."
+          },
+          "agree": true,
+          "costUsd": 0.0003092,
+          "facts": {
+            "cause": "infra_runner"
+          }
+        },
+        {
+          "id": "culprit-009",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              38
+            ],
+            "reason": "Line 36 explicitly states the cause of the failure: \"ENOSPC: no space left on device\" when writing the bundle output. Line 38 corroborates this by showing the root filesystem at 100% usage with 0 available space, so it is also acceptable as stating the cause. Line 35 only identifies which test failed, not why, and line 39 is a wrapper exit-code line. Lines 0-34 are setup/steps from prior passing stages and do not state a cause."
+          },
+          "agree": true,
+          "costUsd": 0.00028759999999999994,
+          "facts": {
+            "cause": "infra_disk"
+          }
+        },
+        {
+          "id": "culprit-010",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              38
+            ],
+            "reason": "Line 36 explicitly states the cause: \"ENOSPC: no space left on device, write '/home/runner/work/webapp/dist/assets/index-9f2c.js'\". Line 38 (the df output showing /dev/root at 100% used, 0 available) corroborates and states the underlying disk-full condition, so it is also acceptable. Line 34 is a summary count of a failed test group, line 35 only names the failed test without stating why, and line 39 is a wrapper \"Process completed with exit code 1\" — none of these state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.00033144999999999995,
+          "facts": {
+            "cause": "infra_disk"
+          }
+        },
+        {
+          "id": "culprit-011",
+          "gold": {
+            "culprit_lines": [
+              35
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              34,
+              35
+            ],
+            "reason": "The failure is a vitest assertion failure in src/pricing/discount.test.ts. Line 35 states the actual cause directly: \"→ expected 91.8 to be 90 // Object.is equality\", i.e. the loyalty discount was applied at the wrong stage of the price calculation, producing 91.8 instead of the expected 90. Line 34 is also acceptable since it identifies the specific failing test (\"discount > applies the loyalty tier before tax\") that constitutes the failure. Line 33 is only a count of failures, line 36 is merely a source-location pointer, lines 37–38 are summary/status lines, and line 39 is the generic wrapper \"Process completed with exit code 1\" — none of these state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.0005484999999999999,
+          "facts": {
+            "cause": "code_assert"
+          }
+        },
+        {
+          "id": "culprit-012",
+          "gold": {
+            "culprit_lines": [
+              35
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              35
+            ],
+            "reason": "The failure cause is the failed assertion: line 35 (\"→ expected 91.8 to be 90 // Object.is equality\") states the actual reason the test failed. Line 33 only announces a file has a failed test, line 34 names the failing test, line 36 gives its location, line 37 is a summary count, line 38 is a generic \"Test failed.\" wrapper, and line 39 is the exit-code wrapper — none of these state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.0005057,
+          "facts": {
+            "cause": "code_assert"
+          }
+        },
+        {
+          "id": "culprit-013",
+          "gold": {
+            "culprit_lines": [
+              35
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              34,
+              35
+            ],
+            "reason": "Line 35 gives the actual assertion failure: \"expected 91.8 to be 90 // Object.is equality\" in the discount test — this directly states why the job failed. Line 34 identifies the failing test case name, which also points the developer at the failure. Line 33 only says a file failed (1 of 18 tests), without the cause; line 36 is just a source location pointer; line 37 is a summary count; lines 38–39 are wrapper/exit-code messages that don't state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.00033299999999999996,
+          "facts": {
+            "cause": "code_assert"
+          }
+        },
+        {
+          "id": "culprit-014",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              37
+            ],
+            "reason": "The failure is caused by TypeScript compilation errors in the `pnpm typecheck` step. Line 36 is the first concrete compiler diagnostic (`error TS2339: Property 'shippingAddress' does not exist on type 'Order'` at src/api/orders.ts(112,19)), which states the cause directly. Line 37 is equally valid, stating the second cause (`error TS2322: Type 'string | undefined' is not assignable to type 'string'`). Line 38 (\"Found 2 errors...\") is only a summary count and does not state the cause, and line 39 (\"##[error]Process completed with exit code 2.\") is a wrapper/exit-code line, so neither qualifies. The earlier vitest test runs all pass (✓ marks) and are not the cause of the failure."
+          },
+          "agree": true,
+          "costUsd": 0.00029009999999999995,
+          "facts": {
+            "cause": "code_type"
+          }
+        },
+        {
+          "id": "culprit-015",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              37
+            ],
+            "reason": "The failure occurs in the final \"Run pnpm typecheck\" step. Lines 36 and 37 are the actual TypeScript compiler errors (TS2339 at src/api/orders.ts:112 and TS2322 at src/api/orders.ts:118) that state the cause of the failure. Line 38 is only a summary count and line 39 is a generic wrapper (\"Process completed with exit code 2\"), so neither states the cause. Line 36 is the single best line because it's the first error, corresponding to the file location cited in the summary (\"starting at: src/api/orders.ts:112\")."
+          },
+          "agree": true,
+          "costUsd": 0.00042459999999999997,
+          "facts": {
+            "cause": "code_type"
+          }
+        },
+        {
+          "id": "culprit-016",
+          "gold": {
+            "culprit_lines": [
+              35,
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              33,
+              34,
+              35
+            ],
+            "reason": "Line 35 explicitly states why the job failed: \"Test timed out in 10000ms\" for the test named on line 34 (summarized on line 33 as the failed suite). Line 36 is diagnostic loop output, line 37 is regression history context, line 38 is a summary, and line 39 is the generic exit-code wrapper — none of these states the cause itself."
+          },
+          "agree": true,
+          "costUsd": 0.00035665,
+          "facts": {
+            "cause": "code_timeout_bug"
+          }
+        },
+        {
+          "id": "culprit-017",
+          "gold": {
+            "culprit_lines": [
+              35,
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              35
+            ],
+            "reason": "Line 35 states the actual cause of the failure: \"Test timed out in 10000ms.\" for the failing test worker > drains the queue and resolves (src/queue/worker.test.ts, lines 33–34 identify which test failed, but line 35 is the one that states why). Line 36 shows the stuck drain() loop consistent with the timeout, line 37 gives history since commit 4e1a9c2, line 38 is an ELIFECYCLE summary, and line 39 is the wrapper \"Process completed with exit code 1\" which does not state the cause. No other line states the cause, so the only acceptable line is 35."
+          },
+          "agree": true,
+          "costUsd": 0.0003423,
+          "facts": {
+            "cause": "code_timeout_bug"
+          }
+        },
+        {
+          "id": "culprit-018",
+          "gold": {
+            "culprit_lines": [
+              35,
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              35
+            ],
+            "reason": "Line 35 (\"→ Test timed out in 10000ms.\") is the line that explicitly states the cause of the failure — the failing test in src/queue/worker.test.ts timed out. Line 33/34 identify the failing suite/test, line 36 shows the hang symptom (repeated \"awaiting job 17\"), and line 37 gives history, but none of these state the cause. Line 38 is a generic failure message and line 39 is the wrapper \"Process completed with exit code 1\", which the rule excludes."
+          },
+          "agree": true,
+          "costUsd": 0.00036715,
+          "facts": {
+            "cause": "code_timeout_bug"
+          }
+        },
+        {
+          "id": "culprit-019",
+          "gold": {
+            "culprit_lines": [
+              34,
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 34,
+            "acceptable_lines": [
+              34,
+              36
+            ],
+            "reason": "The failure is two test cases in src/api/client.test.ts, and the error detail lines explicitly state the cause: \"request to http://localhost:4010/v2/profile failed, reason: connect ECONNREFUSED 127.0.0.1:4010\". Line 34 is the first such error line and directly states the cause (connection refused to the mock server on port 4010). Line 36 states the identical cause for the second failing test and is equally acceptable. Line 33/35 only name the failing tests without stating why; line 37 (mock server listening on port 4001) is diagnostic context hinting at a port mismatch but does not itself state the failure cause; line 38 (\"ELIFECYCLE Test failed.\") and line 39 (exit code wrapper) are wrappers/summaries that do not state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.00039654999999999996,
+          "facts": {
+            "cause": "code_network_bug"
+          }
+        },
+        {
+          "id": "culprit-020",
+          "gold": {
+            "culprit_lines": [
+              34,
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 34,
+            "acceptable_lines": [
+              34,
+              36,
+              37
+            ],
+            "reason": "The failure is that the test suite's HTTP calls to the mock server are refused: line 34 explicitly states the cause of the first failing test (\"request to http://localhost:4010/v2/profile failed, reason: connect ECONNREFUSED 127.0.0.1:4010\"). Line 36 is an equally valid statement of the cause for the second failing test (same ECONNREFUSED error), so it is acceptable too. Line 37 (\"Mock server config (tests/setup.ts): listening on port 4001\") reveals the root cause — a port mismatch between the mock server (4001) and the port the tests dial (4010) — so it also correctly states the cause and is acceptable. Line 38 (\"ELIFECYCLE Test failed.\") and line 39 (\"##[error]Process completed with exit code 1.\") are wrapper/summary lines that do not state the cause, and the interleaved checkout/install groups (lines 15–32) show only passing tests, so they are irrelevant. Line 34 is the best single line because it is the first explicit statement of why the tests failed."
+          },
+          "agree": true,
+          "costUsd": 0.00044439999999999996,
+          "facts": {
+            "cause": "code_network_bug"
+          }
+        },
+        {
+          "id": "culprit-021",
+          "gold": {
+            "culprit_lines": [
+              34,
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 37,
+            "acceptable_lines": [
+              34,
+              36,
+              37
+            ],
+            "reason": "The two failing tests both report \"connect ECONNREFUSED 127.0.0.1:4010\" (lines 34 and 36), which is the direct error. Line 37 is the key causal statement: the mock server is configured to listen on port 4001, while the tests attempt to connect to port 4010 — this port mismatch is the root cause of the connection refusals and the test failures. Lines 38 (\"ELIFECYCLE Test failed.\") and 39 (\"Process completed with exit code 1.\") are only summary/wrapper lines and do not state the cause, so they are not accepted."
+          },
+          "agree": false,
+          "costUsd": 0.0006290499999999999,
+          "facts": {
+            "cause": "code_network_bug"
+          }
+        },
+        {
+          "id": "culprit-022",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            "reason": "Line 36 is the direct error message stating the failure cause: \"Error: STRIPE_SECRET_KEY is not set. Add it to the repository secrets.\" The surrounding lines (34, 35, 37) report the failing test file/test names and that the same error applies to the other tests, all of which correctly point at the same cause. Line 38 additionally explains the root cause (the workflow change removing 'secrets: inherit'), so it is also acceptable. Line 39 (\"Process completed with exit code 1\") is only a wrapper line and does not state the cause, so it is excluded, as are all setup/pass lines."
+          },
+          "agree": true,
+          "costUsd": 0.0003942,
+          "facts": {
+            "cause": "config_env"
+          }
+        },
+        {
+          "id": "culprit-023",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              38
+            ],
+            "reason": "Line 36 is the explicit error message stating the cause: \"Error: STRIPE_SECRET_KEY is not set. Add it to the repository secrets.\" Line 38 also states the underlying cause (the workflow change in this PR dropped 'secrets: inherit' from the reusable test job, which explains why the secret was not propagated), so it is acceptable as well. Lines 35 and 37 merely reference the failing tests without stating the cause; line 39 (\"##[error]Process completed with exit code 1.\") is a wrapper exit-code line that does not state the cause, and the test-pass/progress lines are not causal statements."
+          },
+          "agree": true,
+          "costUsd": 0.00030385,
+          "facts": {
+            "cause": "config_env"
+          }
+        },
+        {
+          "id": "culprit-024",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              38
+            ],
+            "reason": "Line 36 is the single best line: it gives the explicit error message \"STRIPE_SECRET_KEY is not set. Add it to the repository secrets.\", which is the direct cause of the 7 stripe test failures. Line 38 is also acceptable as correctly stating the cause, since it gives the underlying root cause (the workflow change stopped passing 'secrets: inherit', which is why the secret is missing in the reusable job). Lines 34 (\"7 tests | 7 failed\") and 37 (\"same error for 6 more tests\") are summary counts and line 39 (\"Process completed with exit code 1\") is a wrapper line — per the rule, none of these state the cause. Line 35 merely names a failing test without saying why it failed."
+          },
+          "agree": true,
+          "costUsd": 0.00112555,
+          "facts": {
+            "cause": "config_env"
+          }
+        },
+        {
+          "id": "culprit-025",
+          "gold": {
+            "culprit_lines": [
+              37
+            ]
+          },
+          "independent": {
+            "best_line": 38,
+            "acceptable_lines": [
+              37,
+              38
+            ],
+            "reason": "Line 37 reports the actual error (react-dom's \"exports\" field does not define subpath './server'), and line 38 explains the root cause: the PR regenerated the lockfile so react-dom was upgraded from ^19 to 20.0.0, which is an API change causing the error. Line 38 is the best single line because it states why the failure happened, not just what it is; line 37 is also acceptable since it directly states the failing error. Line 39 is a wrapper \"Process completed with exit code 1\" and other lines are normal setup/test output."
+          },
+          "agree": false,
+          "costUsd": 0.0003128,
+          "facts": {
+            "cause": "dep_breaking"
+          }
+        },
+        {
+          "id": "culprit-026",
+          "gold": {
+            "culprit_lines": [
+              37
+            ]
+          },
+          "independent": {
+            "best_line": 37,
+            "acceptable_lines": [
+              37,
+              38
+            ],
+            "reason": "Line 37 states the actual failure: \"Error: Package subpath './server' is not defined by \\\"exports\\\" in .../react-dom/package.json\", which directly identifies what broke the build. Line 38 is also acceptable since it explains the root cause (react-dom resolved to 20.0.0 because the lockfile was regenerated in the PR), i.e., why the failing subpath no longer exists. Line 39 (\"Process completed with exit code 1\") is merely a wrapper/exit-code summary and does not state the cause; all earlier lines are successful setup/test steps with no error information."
+          },
+          "agree": true,
+          "costUsd": 0.00031015000000000003,
+          "facts": {
+            "cause": "dep_breaking"
+          }
+        },
+        {
+          "id": "culprit-027",
+          "gold": {
+            "culprit_lines": [
+              33
+            ]
+          },
+          "independent": {
+            "best_line": 33,
+            "acceptable_lines": [
+              33
+            ],
+            "reason": "Line 33 (\"→ Test timed out in 5000ms.\") is the actual cause statement: the test \"poller > emits an update after the interval\" (line 32) failed because it timed out. Line 31 is only a summary count of the failing file, line 32 identifies the failing test but not the cause, lines 35-36 are summary counts, line 38 is a wrapper (\"ELIFECYCLE Test failed\"), and line 39 is a generic \"Process completed with exit code 1\" wrapper — none of these state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.00029279999999999996,
+          "facts": {
+            "cause": "flaky_timing"
+          }
+        },
+        {
+          "id": "culprit-028",
+          "gold": {
+            "culprit_lines": [
+              35,
+              38
+            ]
+          },
+          "independent": {
+            "best_line": 35,
+            "acceptable_lines": [
+              35,
+              38
+            ],
+            "reason": "The job failed during pnpm install: line 35 states the actual cause — ERR_PNPM_FETCH_503, a 503 Service Unavailable response from the npm registry when fetching @types/node. Line 38 repeats the same 503 error on the final retry, so it also correctly states the cause. Line 36 only adds context (which project the failing install was for) without stating the cause itself, and line 39 (\"Process completed with exit code 1\") is a wrapper/summary line, not a cause. All other lines are successful setup/test output from earlier steps."
+          },
+          "agree": true,
+          "costUsd": 0.00030789999999999995,
+          "facts": {
+            "cause": "infra_network"
+          }
+        },
+        {
+          "id": "culprit-029",
+          "gold": {
+            "culprit_lines": [
+              34
+            ]
+          },
+          "independent": {
+            "best_line": 34,
+            "acceptable_lines": [
+              33,
+              34,
+              35
+            ],
+            "reason": "The actual cause of the failure is the assertion error: line 34 \"→ expected 'conn-7' to be 'conn-3' // Object.is equality\" states exactly what went wrong. Line 33 identifies the failing test (\"session > reuses the pooled connection\") and line 35 gives the source location (src/db/session.test.ts:88:31), so both are acceptable pointers, but line 34 is the single best since it states the failure itself. Lines 37 (summary count) and 38–39 (wrapper/exit code lines) do not state the cause. Line 36 is only a flakiness note about concurrent pool sharing, not a statement of the failure cause."
+          },
+          "agree": true,
+          "costUsd": 0.00052585,
+          "facts": {
+            "cause": "flaky_order"
+          }
+        },
+        {
+          "id": "culprit-030",
+          "gold": {
+            "culprit_lines": [
+              36
+            ]
+          },
+          "independent": {
+            "best_line": 36,
+            "acceptable_lines": [
+              36,
+              37
+            ],
+            "reason": "Line 36 states the cause of the failure: the runner received a shutdown signal (runner service stopped or manually started runner canceled), which interrupted the test run mid-way (the third \"pnpm test\" step never produced its test output before the cancellation). Line 37 (\"The operation was canceled.\") is acceptable as it correctly identifies the failure as a cancellation, but line 36 is the best because it explains why the operation was canceled. Lines 38-39 are cleanup output, and the \"Process completed\" style wrapper/summary lines are absent; the passing test lines and setup steps do not state the cause."
+          },
+          "agree": true,
+          "costUsd": 0.00029769999999999997,
+          "facts": {
+            "cause": "infra_runner"
+          }
+        }
+      ]
+    }
+  }
+}

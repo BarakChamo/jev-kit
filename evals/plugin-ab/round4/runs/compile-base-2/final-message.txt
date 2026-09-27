@@ -1,0 +1,11 @@
+Validation commands are being blocked pending approval in this sandbox — I've visually double-checked the JSON structure (matching braces/commas) and the TS syntax instead. Both look correct.
+
+## Summary
+
+Three files in the working directory:
+
+- **`questions.json`** — an example Jev request: a realistic `state` (post + author + context) and a `questions` map covering the standard T&S categories (hate speech, harassment, violent threats, CSAE, sexual content, self-harm, spam/scam, regulated/illegal goods) as `noul` probability checks, plus one `score` question for overall severity and one `choice` question for a recommended action.
+- **`decide.ts`** — pure decision logic over the answers: CSAE is zero-tolerance and short-circuits to `remove_and_escalate`; otherwise thresholds on max probability / severity / triggered categories pick `allow` / `reduce_reach` / `escalate_human_review` / `remove`, with the model's own `recommended_action` allowed to escalate but never downgrade the numeric verdict. Thresholds are isolated as constants so they're tuned independently from the LLM-generated question content.
+- **`generate-questions.prompt.md`** — the prompt that actually removes the policy team from the loop: fed the full policy doc, an LLM regenerates `questions.json` (one `noul` question per distinct rule, stable ids, section citations), with a note to diff against the prior version and require human sign-off only on id changes or CSAE/violence criteria changes before auto-deploying.
+
+No API calls were made, per your instruction.

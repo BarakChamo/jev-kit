@@ -1,0 +1,62 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "SERVICE AGREEMENT ... Section 8 (Term and Renewal): This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months. Upon expiration of the initial term, this Agreement will automatically renew for successive twelve (12) month terms unless either party gives the other party written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be delivered to the addresses listed in Section 14 (Notices) or sent to legal@vendor.example. Effective Date: 2025-03-01.",
+    "email_text": "Subject: Cancelling our subscription\n\nHi team,\n\nWe've decided not to continue with the service after this contract term. Please treat this email as our formal notice that we will not be renewing. Let us know if you need anything else from us to process this.\n\nThanks,\nJordan",
+    "email_received_date": "2026-08-14"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the agreement automatically renews for an additional term unless the customer takes some action (such as giving notice) to prevent it?",
+      "criteria": {
+        "true": "contract_text contains an automatic/evergreen renewal clause",
+        "false": "contract_text has no automatic renewal clause, or renewal requires an affirmative opt-in action by the customer"
+      }
+    },
+    "required_notice_days": {
+      "type": "choice",
+      "instructions": "How many days of advance notice does `contract_text` require the customer to give before the current term's end/renewal date in order to prevent automatic renewal? Read any notice-period, cancellation, or auto-renewal clause in `contract_text` and classify the required amount into one bucket below. If the contract states a formula (e.g. 'the greater of 30 days or 5% of the remaining term'), compute the resulting number of days for this specific contract's term and pick the bucket it falls into. If no clause requires advance notice to avoid renewal, choose no_notice_required. If contract_text does not allow this to be determined, choose unclear.",
+      "criteria": {
+        "no_notice_required": "no advance notice is required to prevent automatic renewal",
+        "0-15_days": "required notice is between 0 and 15 days",
+        "16-30_days": "required notice is between 16 and 30 days",
+        "31-60_days": "required notice is between 31 and 60 days",
+        "61-90_days": "required notice is between 61 and 90 days",
+        "91-180_days": "required notice is between 91 and 180 days",
+        "over_180_days": "required notice is more than 180 days",
+        "unclear": "contract_text does not clearly state a required notice period"
+      }
+    },
+    "days_from_notice_to_term_end": {
+      "type": "choice",
+      "instructions": "`email_received_date` is the date the customer's cancellation notice was received. Determine, from `contract_text`, the date on which the current contract term ends or the automatic renewal would take effect (e.g. an explicit renewal date, or the start/effective date plus the stated term length). Classify the number of days between `email_received_date` and that term-end/renewal date into one bucket below. If the term-end/renewal date is on or before `email_received_date`, choose already_past_or_same_day. If contract_text does not allow the term-end/renewal date to be determined, choose unclear.",
+      "criteria": {
+        "already_past_or_same_day": "the term-end/renewal date is before or the same day as email_received_date",
+        "0-15_days": "the term-end/renewal date is 0 to 15 days after email_received_date",
+        "16-30_days": "the term-end/renewal date is 16 to 30 days after email_received_date",
+        "31-60_days": "the term-end/renewal date is 31 to 60 days after email_received_date",
+        "61-90_days": "the term-end/renewal date is 61 to 90 days after email_received_date",
+        "91-180_days": "the term-end/renewal date is 91 to 180 days after email_received_date",
+        "over_180_days": "the term-end/renewal date is more than 180 days after email_received_date",
+        "unclear": "contract_text does not allow the term-end/renewal date to be determined"
+      }
+    },
+    "clear_cancellation_intent": {
+      "type": "noul",
+      "instructions": "Does `email_text` clearly and unambiguously state that the customer wants to cancel the contract or not renew it?",
+      "criteria": {
+        "true": "email_text plainly communicates a decision to cancel or not renew the contract",
+        "false": "email_text does not clearly communicate that decision (e.g. it is a complaint, a question, a request for information, or is ambiguous about whether the customer wants to cancel)"
+      }
+    },
+    "requires_specific_delivery_method": {
+      "type": "noul",
+      "instructions": "Does `contract_text` require cancellation or non-renewal notice to be delivered through a specific method or to a specific address (for example certified mail, a particular email address, or a written letter) in order to be effective, rather than accepting notice through any reasonable written communication?",
+      "criteria": {
+        "true": "contract_text specifies a required delivery method or address for effective notice",
+        "false": "contract_text does not specify a required delivery method, or accepts any written notice including ordinary email"
+      }
+    }
+  }
+}

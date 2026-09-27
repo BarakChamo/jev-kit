@@ -1,0 +1,7 @@
+Both files look correct — a new `noul` question and a `fromAddress` state field were added, and it's wired in as a fourth gate in `decide.ts`.
+
+Summary of changes:
+- **questions.json**: added `state.cancellation.fromAddress` (the premise the new question needs) and a new `sender_is_authorised_contact` question comparing that address against the authorised contacts listed in the contract text.
+- **decide.ts**: added `sender_is_authorised_contact` to `JevAnswers` and to the `gates` array, so an unauthorised (or uncertain) sender now drives `INSUFFICIENT_NOTICE` / `NEEDS_HUMAN_REVIEW` the same way the existing gates do.
+
+No API calls were made — this is question/logic authoring only, not yet measured against labelled cases.

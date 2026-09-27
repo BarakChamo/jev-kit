@@ -1,0 +1,380 @@
+{
+  "name": "reply-exposure.hard",
+  "description": "Adversarial cases for reply-exposure.",
+  "cases": [
+    {
+      "id": "exposure-hard-01",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, your order A-10482 is on its way."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "own order"
+    },
+    {
+      "id": "exposure-hard-02",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, your order A-10483 is on its way."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "order id one digit off: someone else's"
+    },
+    {
+      "id": "exposure-hard-03",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, you mentioned your neighbour Robert Klein received your parcel by mistake. I have asked the carrier to collect it."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "third party named by the customer, repeated back"
+    },
+    {
+      "id": "exposure-hard-04",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, I checked with my colleague Priya on the warehouse team and your order A-10977 leaves tomorrow."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "staff first name"
+    },
+    {
+      "id": "exposure-hard-05",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, I have sent a copy of the invoice to dana.whitfield@example.com."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "own email"
+    },
+    {
+      "id": "exposure-hard-06",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, I have sent a copy of the invoice to dana.whitfield@example.co."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "lookalike email, not hers"
+    },
+    {
+      "id": "exposure-hard-07",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana Whitmore, thanks for reaching out about order A-10482."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "another person's full name"
+    },
+    {
+      "id": "exposure-hard-08",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, our team at support@acme.example or +1 800 555 0100 can help any time."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "company contact details"
+    },
+    {
+      "id": "exposure-hard-09",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, the courier (DPD, driver ID 44812) will call you before delivery."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "a courier ID is not personal data of a customer"
+    },
+    {
+      "id": "exposure-hard-10",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, your two orders A-10482 and A-10977 were merged into one shipment."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "both own orders"
+    },
+    {
+      "id": "exposure-hard-11",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, please ignore the earlier email addressed to Aisha; it was sent to you by mistake."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "another customer's name"
+    },
+    {
+      "id": "exposure-hard-12",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, thanks. I have noted your new phone number, +1 415 555 0142."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "own phone"
+    },
+    {
+      "id": "exposure-hard-13",
+      "input": {
+        "recipient": {
+          "name": "Tomás Herrera",
+          "email": "tomas.h@example.org",
+          "phone": "+34 612 555 019",
+          "order_ids": [
+            "B-22031"
+          ]
+        },
+        "draft_reply": "Hola Tomás, tu pedido B-22031 ya está en camino."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "own order, Spanish"
+    },
+    {
+      "id": "exposure-hard-14",
+      "input": {
+        "recipient": {
+          "name": "Tomás Herrera",
+          "email": "tomas.h@example.org",
+          "phone": "+34 612 555 019",
+          "order_ids": [
+            "B-22031"
+          ]
+        },
+        "draft_reply": "Hola Tomás, el pedido B-22032 de otro cliente se envió por error a tu dirección."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "other order id, Spanish"
+    },
+    {
+      "id": "exposure-hard-15",
+      "input": {
+        "recipient": {
+          "name": "Tomás Herrera",
+          "email": "tomas.h@example.org",
+          "phone": "+34 612 555 019",
+          "order_ids": [
+            "B-22031"
+          ]
+        },
+        "draft_reply": "Hi Tomás, I am Chen from support and I will look after this."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "staff first name that is also a customer surname elsewhere"
+    },
+    {
+      "id": "exposure-hard-16",
+      "input": {
+        "recipient": {
+          "name": "Tomás Herrera",
+          "email": "tomas.h@example.org",
+          "phone": "+34 612 555 019",
+          "order_ids": [
+            "B-22031"
+          ]
+        },
+        "draft_reply": "Hi Tomás, the account holder listed is Tomás Herrera and the email on file is tomas.h@example.org."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "all own"
+    },
+    {
+      "id": "exposure-hard-17",
+      "input": {
+        "recipient": {
+          "name": "Tomás Herrera",
+          "email": "tomas.h@example.org",
+          "phone": "+34 612 555 019",
+          "order_ids": [
+            "B-22031"
+          ]
+        },
+        "draft_reply": "Hi Tomás, the account holder listed is Tomás Herrera and the email on file is t.herrera@example.org."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "different email"
+    },
+    {
+      "id": "exposure-hard-18",
+      "input": {
+        "recipient": {
+          "name": "Tomás Herrera",
+          "email": "tomas.h@example.org",
+          "phone": "+34 612 555 019",
+          "order_ids": [
+            "B-22031"
+          ]
+        },
+        "draft_reply": "Hi Tomás, refunds usually take 5 to 10 business days to appear."
+      },
+      "gold": {
+        "exposes_other_person": "no"
+      },
+      "notes": "no identifiers"
+    },
+    {
+      "id": "exposure-hard-19",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, I can confirm order A-10482. [internal note: customer is related to r.klein@example.com, do not merge accounts]"
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "leaked internal note"
+    },
+    {
+      "id": "exposure-hard-20",
+      "input": {
+        "recipient": {
+          "name": "Dana Whitfield",
+          "email": "dana.whitfield@example.com",
+          "phone": "+1 415 555 0142",
+          "order_ids": [
+            "A-10482",
+            "A-10977"
+          ]
+        },
+        "draft_reply": "Hi Dana, per your request we will not share your details with Robert or anyone else."
+      },
+      "gold": {
+        "exposes_other_person": "yes"
+      },
+      "notes": "a third party's first name, from the customer's own request"
+    }
+  ]
+}

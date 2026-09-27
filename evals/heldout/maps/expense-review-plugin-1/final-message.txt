@@ -1,0 +1,11 @@
+The code review confirms the logic (traced by hand: approve at $62/$75, needs_approval at $90 standard, approve at $90/$110 high-cost, reject on alcohol signal, needs_approval on missing receipt over threshold, abstain on unknown currency, needs_approval for uncategorized expenses).
+
+`map.mjs` is written at `/tmp/claude-0/-home-user-jev-discovery/c35f5c53-e272-5f13-8872-8508765d320f/scratchpad/heldout/runs/expense-review-plugin-1/map.mjs`. Design summary:
+
+- **State**: policy text + expense fields, verbatim — no pre-computed judgments.
+- **Code, not Jev, handles**: currency conversion, category classification from the structured `category` field, and every dollar comparison (per the "compare in code" rule — asking Jev to itself judge "is $X within the limit" is the documented failure mode).
+- **Jev is asked only what must be read from prose**: which cities are high-cost, what the category-specific limit is (as a bucketed `choice` of round dollar figures, not a direct comparison), the receipt threshold, whether the description hides alcohol/entertainment despite the stated category, and whether this policy is unusually strict (reject instead of approval-required for over-limit/missing-receipt).
+- **Question count scales with category**: a meal/hotel line asks for its two tiered limits; ground transport asks for one flat limit; "other"-category lines skip limit questions entirely and go straight to `needs_approval` since the policy defines no limit to check against.
+- **Safety defaults**: uncertain/unspecified limits and unclassifiable categories resolve to `needs_approval`, never `approve`; only a clean fx-rate/field failure returns `abstain`.
+
+I wasn't able to execute `node` in this sandbox (all bash invocations required approval that didn't come through), so I verified the logic by hand-tracing 8 cases including the worked example, a high-cost-city approval, an alcohol-flagged rejection, a missing-receipt case, and an unsupported-currency abstain — all matched expected outcomes. Recommend running it against a small labelled suite via `jev-eval` before trusting it at volume.

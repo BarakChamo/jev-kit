@@ -1,0 +1,13 @@
+Both files are written to the scratchpad. Design summary:
+
+**`questions.json`** — one worked example request (14-line log; the pattern scales to 200):
+- `state.lines` is an indexed array — every line the judgment needs is right there, none of it left implicit (rule 1).
+- One `noul` question per line, each named `culprit_<i>` and scoped to that exact line's text quoted in the instruction (rule 4), asking a present-tense fact — "does this line state the cause" — never "would this be the cause if..." (rule 3). This is the "score candidates, argmax in code" pattern (rule 11) rather than one crowded choice, since 200 options with quoted line text each would be an unwieldy criteria block.
+- One `choice` question, `diagnosable`, distinguishing single_line / multi_line / not_in_excerpt — this is the abstain signal (rule 9), catching logs where no single line is the answer (flaky infra, multi-frame traces) before the argmax is even trusted.
+- All 200+1 questions go in **one request** — splitting per-line requests would pay for the state repeatedly (measured 11.7× more expensive for the same answers).
+
+**`decide.ts`**:
+- `buildRequest(job, rawLines)` generates the per-line questions programmatically from the last 200 log lines.
+- `decide(lines, answers)` does everything in code: if `diagnosable` isn't `single_line`, escalate. Otherwise argmax the `culprit_i` probabilities; if the top probability is below 0.5, or the runner-up is within 0.15 of it, escalate as ambiguous rather than silently picking a weak winner (rule: low confidence never relaxes a decision). Escalation always returns the top 3 candidates, not just a verdict, so a human isn't shown a bare label (rule: show a person the top options).
+
+Not measured against real logs yet — before trusting this on live CI traffic, run it through `jev-eval` against ~30 labelled failures (including ambiguous ones) to check the escalation thresholds and the `diagnosable` split actually hold.

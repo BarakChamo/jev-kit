@@ -1,0 +1,61 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "SERVICE AGREEMENT ... This Agreement has an initial term of twelve (12) months beginning January 15, 2026. At the end of the initial term and each renewal term, this Agreement automatically renews for successive twelve (12) month terms unless either party gives the other written notice of non-renewal at least thirty (30) days before the end of the then-current term. Notice must be delivered to the email address on file for the counterparty's account administrator. ...",
+    "cancellation_email_text": "Subject: Cancelling our subscription\n\nHi team, we'd like to cancel our contract effective at the end of the current term and do not want it to auto-renew. Please confirm receipt.\n\nThanks,\nJordan",
+    "cancellation_received_date": "2026-12-10"
+  },
+  "questions": {
+    "autorenewal_clause_present": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the contract automatically renews for a further term unless the customer gives notice by a deadline?",
+      "criteria": {
+        "true": "contract_text states the contract auto-renews absent timely notice",
+        "false": "contract_text has no automatic renewal clause, or renewal requires an affirmative opt-in instead"
+      }
+    },
+    "clause_clarity": {
+      "type": "score",
+      "instructions": "How clearly does `contract_text` state (a) the renewal or term-end date the next auto-renewal would take effect on, and (b) the notice period required to avoid that renewal?",
+      "criteria": [
+        "unclear: neither the renewal/term-end date nor the required notice period can be determined from contract_text",
+        "partial: one of the two is stated but the other is ambiguous, missing, or requires interpretation beyond the text",
+        "clear: both the renewal/term-end date and the required notice period are stated unambiguously"
+      ]
+    },
+    "required_notice_days": {
+      "type": "choice",
+      "instructions": "Per `contract_text`, how much advance notice must the customer give, before the current term's renewal/end date, to avoid automatic renewal? If the clause defines the period by a formula (e.g. the greater of a fixed period and a percentage of the term), compute the resulting number of days and choose the bucket it falls in.",
+      "criteria": {
+        "not_specified": "contract_text does not clearly specify a required notice period, or there is no auto-renewal clause",
+        "under_15": "required notice is 1-14 days",
+        "15_29": "required notice is 15-29 days",
+        "30_59": "required notice is 30-59 days",
+        "60_89": "required notice is 60-89 days",
+        "90_179": "required notice is 90-179 days",
+        "180_plus": "required notice is 180 days or more"
+      }
+    },
+    "actual_notice_days": {
+      "type": "choice",
+      "instructions": "Using `cancellation_received_date` as the date the cancellation notice was received, and the renewal/current-term-end date stated in `contract_text`, how many days before that renewal/term-end date was the notice received?",
+      "criteria": {
+        "on_or_after_deadline": "cancellation_received_date is on or after the renewal/term-end date, or the renewal/term-end date cannot be determined",
+        "under_15": "notice was given 1-14 days before the renewal/term-end date",
+        "15_29": "notice was given 15-29 days before the renewal/term-end date",
+        "30_59": "notice was given 30-59 days before the renewal/term-end date",
+        "60_89": "notice was given 60-89 days before the renewal/term-end date",
+        "90_179": "notice was given 90-179 days before the renewal/term-end date",
+        "180_plus": "notice was given 180 or more days before the renewal/term-end date"
+      }
+    },
+    "notice_method_satisfied": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` satisfy any requirements `contract_text` states for the manner of a cancellation/non-renewal notice (for example: must be in writing, sent to a specific address, or addressed to a specific recipient)? If contract_text states no such requirements, answer true.",
+      "criteria": {
+        "true": "cancellation_email_text meets every method requirement contract_text states, or none are stated",
+        "false": "contract_text states a method requirement that cancellation_email_text does not meet"
+      }
+    }
+  }
+}

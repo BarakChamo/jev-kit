@@ -1,0 +1,50 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months. Upon expiration of the initial term, this Agreement shall automatically renew for successive twelve (12) month terms unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice must be delivered by email to legal@vendor.example or by certified mail to the address listed in the Order Form...",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current term ends. Please treat this email as our formal notice of non-renewal and cancel any upcoming invoices. Thanks, Jamie",
+    "cancellation_received_date": "2026-09-20",
+    "current_term_end_date": "2026-11-15"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the agreement automatically renews for a further term unless the customer gives notice, and is that clause currently in effect (i.e. the contract has not already converted to a non-renewing or month-to-month state)?",
+      "criteria": {
+        "true": "contract_text describes an active automatic/evergreen renewal mechanism",
+        "false": "contract_text has no auto-renewal clause, or renewal no longer applies"
+      }
+    },
+    "required_notice_days": {
+      "type": "choice",
+      "instructions": "Per `contract_text`, how many days of advance notice must a party give, before the end of the then-current term (`current_term_end_date`), to prevent automatic renewal? If the clause defines the period by a formula, compute the resulting number of days for this term and bucket it.",
+      "criteria": {
+        "not_specified": "contract_text states no notice period, or has no auto-renewal clause",
+        "0_15": "0 to 15 days before term end",
+        "16_30": "16 to 30 days before term end",
+        "31_60": "31 to 60 days before term end",
+        "61_90": "61 to 90 days before term end",
+        "91_180": "91 to 180 days before term end",
+        "over_180": "more than 180 days before term end"
+      }
+    },
+    "notice_timeliness": {
+      "type": "choice",
+      "instructions": "`cancellation_email_text` was received on `cancellation_received_date`. Using the notice deadline required by `contract_text` relative to `current_term_end_date`, is that receipt date on or before the deadline, or after it?",
+      "criteria": {
+        "on_time": "cancellation_received_date is on or before the deadline required by contract_text to avoid renewal",
+        "late": "cancellation_received_date is after the deadline required by contract_text",
+        "not_applicable": "contract_text has no auto-renewal clause, or no renewal is currently pending for current_term_end_date",
+        "unclear": "contract_text does not state the notice period or the current term end clearly enough to place the deadline"
+      }
+    },
+    "clear_cancellation_intent": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly and unambiguously state that the sender wants to cancel or not renew the contract, as opposed to e.g. asking a question, requesting a pause, or complaining without asking to cancel?",
+      "criteria": {
+        "true": "cancellation_email_text unambiguously requests cancellation or non-renewal",
+        "false": "cancellation_email_text is ambiguous, conditional, or does not actually request cancellation"
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "post_id": "p_8f3a1c92",
+    "post_text": "example post text goes here",
+    "is_reply": false,
+    "parent_post_text": null,
+    "media_description": null,
+    "author_account_age_days": 412,
+    "author_prior_violations_90d": 0,
+    "policy_version": "2026-09"
+  },
+  "questions": {
+    "violates_hate_speech": {
+      "type": "noul",
+      "instructions": "Does the text in `post_text` attack, demean, or incite hatred against people on the basis of a protected characteristic (race, ethnicity, national origin, religion, caste, sex, sexual orientation, gender identity, age, or serious disability/disease)?",
+      "criteria": {
+        "true": "`post_text` dehumanizes, slurs, or calls for exclusion/harm of people because of a protected characteristic",
+        "false": "`post_text` does not target people on the basis of a protected characteristic this way"
+      }
+    },
+    "violates_violent_threat": {
+      "type": "noul",
+      "instructions": "Does `post_text` threaten violence or serious physical harm against a specific person, an identifiable group, or a specific location?",
+      "criteria": {
+        "true": "`post_text` states or strongly implies an intent or wish to inflict violence on a specific target",
+        "false": "`post_text` contains no such threat"
+      }
+    },
+    "violates_self_harm_content": {
+      "type": "noul",
+      "instructions": "Does `post_text` encourage, instruct, or glorify suicide or self-harm, or solicit methods for either?",
+      "criteria": {
+        "true": "`post_text` promotes, gives instructions for, or asks how to commit suicide or self-harm",
+        "false": "`post_text` does none of that (includes recovery talk, help-seeking, and news reporting)"
+      }
+    },
+    "violates_csam": {
+      "type": "noul",
+      "instructions": "Does `post_text`, read together with `media_description` when it is present, sexualize a minor or solicit sexual content involving a minor?",
+      "criteria": {
+        "true": "the combined content sexualizes a minor or solicits sexual content of a minor",
+        "false": "it does not"
+      }
+    },
+    "violates_harassment": {
+      "type": "noul",
+      "instructions": "When `is_reply` is true, `parent_post_text` is the message `post_text` replies to. Does `post_text` target a specific private individual with repeated, degrading, or intimidating content directed at them personally, rather than criticizing a public figure's public actions?",
+      "criteria": {
+        "true": "`post_text` personally demeans or intimidates an identifiable private individual",
+        "false": "`post_text` does not target a private individual this way"
+      }
+    },
+    "violates_spam": {
+      "type": "noul",
+      "instructions": "Is `post_text` unsolicited repetitive promotional content, engagement bait, or a scripted/automated pattern rather than genuine communication?",
+      "criteria": {
+        "true": "`post_text` reads as spam, bulk promotion, or an automated/repeated template",
+        "false": "`post_text` reads as genuine, one-off communication"
+      }
+    },
+    "violates_illegal_goods": {
+      "type": "noul",
+      "instructions": "Does `post_text` offer to buy, sell, or arrange trade of illegal drugs, weapons, or other goods or services the policy prohibits?",
+      "criteria": {
+        "true": "`post_text` offers or solicits a prohibited good or service",
+        "false": "`post_text` does not"
+      }
+    },
+    "claims_exemption_context": {
+      "type": "noul",
+      "instructions": "Does `post_text` explicitly claim to be news reporting, a direct quotation of someone else, satire, or academic/counter-speech commentary, offered as a justification for content that would otherwise break the rules above?",
+      "criteria": {
+        "true": "`post_text` explicitly invokes one of these exemptions as justification",
+        "false": "`post_text` makes no such claim"
+      }
+    }
+  }
+}

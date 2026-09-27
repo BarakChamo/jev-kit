@@ -1,0 +1,41 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "faq_question": "What is the maximum file size I can upload?",
+    "canonical_answer": "The maximum upload size is 500 MB per file, effective since our 2025 storage upgrade.",
+    "passages": [
+      { "id": "p1", "text": "Files larger than 100 MB cannot be uploaded to your account." },
+      { "id": "p2", "text": "Our upload system supports files up to 500 MB, matching most cloud storage limits." },
+      { "id": "p3", "text": "To reset your password, go to Settings > Security and click 'Reset Password'." }
+    ]
+  },
+  "questions": {
+    "p1": {
+      "type": "choice",
+      "instructions": "The question in `faq_question` was matched to this passage. Compare the claim made by the passage with id \"p1\" in `passages` against the canonical answer in `canonical_answer`. Does the passage's claim about `faq_question` match the canonical answer, conflict with it, or not address it at all?",
+      "criteria": {
+        "consistent": "the passage's claim about the question agrees with canonical_answer",
+        "contradicts": "the passage states a fact about the question that conflicts with canonical_answer",
+        "unrelated": "the passage does not make any claim that bears on the question"
+      }
+    },
+    "p2": {
+      "type": "choice",
+      "instructions": "The question in `faq_question` was matched to this passage. Compare the claim made by the passage with id \"p2\" in `passages` against the canonical answer in `canonical_answer`. Does the passage's claim about `faq_question` match the canonical answer, conflict with it, or not address it at all?",
+      "criteria": {
+        "consistent": "the passage's claim about the question agrees with canonical_answer",
+        "contradicts": "the passage states a fact about the question that conflicts with canonical_answer",
+        "unrelated": "the passage does not make any claim that bears on the question"
+      }
+    },
+    "p3": {
+      "type": "choice",
+      "instructions": "The question in `faq_question` was matched to this passage. Compare the claim made by the passage with id \"p3\" in `passages` against the canonical answer in `canonical_answer`. Does the passage's claim about `faq_question` match the canonical answer, conflict with it, or not address it at all?",
+      "criteria": {
+        "consistent": "the passage's claim about the question agrees with canonical_answer",
+        "contradicts": "the passage states a fact about the question that conflicts with canonical_answer",
+        "unrelated": "the passage does not make any claim that bears on the question"
+      }
+    }
+  }
+}

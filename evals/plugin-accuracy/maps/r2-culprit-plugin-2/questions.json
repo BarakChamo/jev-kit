@@ -1,0 +1,66 @@
+{
+  "_comment": "Example request for one CI job's culprit-line lookup. state.lines is the full last-200-line window (trimmed here for readability); state.candidate_indices is the small set of lines code pre-selected as failure-signal lines (see decide.ts:selectCandidates). Jev only scores those candidates, one `noul` each, plus one abstain `noul`.",
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_id": "gha-run-48213-job-2",
+    "repo": "acme/webapp",
+    "step": "npm test",
+    "lines": [
+      { "i": 1, "text": "Run npm ci" },
+      { "i": 2, "text": "added 842 packages in 12s" },
+      { "i": 3, "text": "Run npm test" },
+      { "i": 4, "text": "  PASS  src/utils.test.ts" },
+      { "i": 5, "text": "ERROR: Missing required environment variable DATABASE_URL" },
+      { "i": 6, "text": "  FAIL  src/db.test.ts" },
+      { "i": 7, "text": "    ● connects to database" },
+      { "i": 8, "text": "    Error: connect ECONNREFUSED 127.0.0.1:5432" },
+      { "i": 9, "text": "Tests: 1 failed, 12 passed, 13 total" },
+      { "i": 10, "text": "npm ERR! Test failed.  See above for more details." },
+      { "i": 11, "text": "npm ERR! code ELIFECYCLE" },
+      { "i": 12, "text": "Process completed with exit code 1." }
+    ],
+    "candidate_indices": [5, 6, 8, 9, 10, 11, 12]
+  },
+  "questions": {
+    "line_5": {
+      "type": "noul",
+      "instructions": "In state.lines, is the log line at index 5 the single line that most directly reveals the underlying cause of this CI job's failure, as opposed to a downstream symptom, an unrelated warning, retry/informational output, or a generic \"exited with code\" message?",
+      "criteria": { "true": "this line is the root-cause line", "false": "this line is not the root-cause line" }
+    },
+    "line_6": {
+      "type": "noul",
+      "instructions": "In state.lines, is the log line at index 6 the single line that most directly reveals the underlying cause of this CI job's failure, as opposed to a downstream symptom, an unrelated warning, retry/informational output, or a generic \"exited with code\" message?",
+      "criteria": { "true": "this line is the root-cause line", "false": "this line is not the root-cause line" }
+    },
+    "line_8": {
+      "type": "noul",
+      "instructions": "In state.lines, is the log line at index 8 the single line that most directly reveals the underlying cause of this CI job's failure, as opposed to a downstream symptom, an unrelated warning, retry/informational output, or a generic \"exited with code\" message?",
+      "criteria": { "true": "this line is the root-cause line", "false": "this line is not the root-cause line" }
+    },
+    "line_9": {
+      "type": "noul",
+      "instructions": "In state.lines, is the log line at index 9 the single line that most directly reveals the underlying cause of this CI job's failure, as opposed to a downstream symptom, an unrelated warning, retry/informational output, or a generic \"exited with code\" message?",
+      "criteria": { "true": "this line is the root-cause line", "false": "this line is not the root-cause line" }
+    },
+    "line_10": {
+      "type": "noul",
+      "instructions": "In state.lines, is the log line at index 10 the single line that most directly reveals the underlying cause of this CI job's failure, as opposed to a downstream symptom, an unrelated warning, retry/informational output, or a generic \"exited with code\" message?",
+      "criteria": { "true": "this line is the root-cause line", "false": "this line is not the root-cause line" }
+    },
+    "line_11": {
+      "type": "noul",
+      "instructions": "In state.lines, is the log line at index 11 the single line that most directly reveals the underlying cause of this CI job's failure, as opposed to a downstream symptom, an unrelated warning, retry/informational output, or a generic \"exited with code\" message?",
+      "criteria": { "true": "this line is the root-cause line", "false": "this line is not the root-cause line" }
+    },
+    "line_12": {
+      "type": "noul",
+      "instructions": "In state.lines, is the log line at index 12 the single line that most directly reveals the underlying cause of this CI job's failure, as opposed to a downstream symptom, an unrelated warning, retry/informational output, or a generic \"exited with code\" message?",
+      "criteria": { "true": "this line is the root-cause line", "false": "this line is not the root-cause line" }
+    },
+    "no_clear_culprit": {
+      "type": "noul",
+      "instructions": "Considering all lines listed in state.candidate_indices together, is it true that none of them alone clearly reveals the cause of the failure, because the real cause requires combining multiple lines or is not present in this log at all?",
+      "criteria": { "true": "no single candidate line explains the failure", "false": "at least one candidate line clearly explains the failure" }
+    }
+  }
+}

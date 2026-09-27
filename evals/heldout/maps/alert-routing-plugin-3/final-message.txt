@@ -1,0 +1,9 @@
+`map.mjs` is written at the scratchpad path. Since sandboxed `node` execution isn't approved in this environment, I verified the logic by manual read-through rather than running it — happy to re-check with execution if you approve a bash command.
+
+Design summary:
+- **`affected_service`** (choice, one option per catalog service + `"none"`): picks the service that is *actually alerting*, explicitly excluding services mentioned only as context/dependencies (per rule 11 — one `choice` to pick among many, not a `noul` per candidate).
+- **`severity`** (choice: critical/high/medium/low/none): reads whatever severity/priority indicator appears in the alert text (bracketed tag, sev/P level, or plain word).
+- **`decide`** looks up `owner_team` and `tier` for the chosen service from `input.catalog` in code (rule 12 — code does deterministic lookups/policy, Jev only supplies facts read from text). Paging policy (`critical` → yes; `high` + tier 1 → yes; else → no) is applied entirely in code, never asked directly.
+- Gates on the **probability of the chosen label** (rule 8), not the `confidence` scalar, with a 0.6 threshold on both fields. If the affected service can't be pinned confidently (or resolves to `"none"`), both `team` and `page_now` abstain. If the service is confident but severity isn't, `team` still resolves but `page_now` abstains.
+
+This is a first cut with an untuned 0.6 threshold — worth running through `jev-eval` on ~30 labelled alerts to calibrate the threshold and check the "context-only service" exclusion actually holds before it runs on live traffic.

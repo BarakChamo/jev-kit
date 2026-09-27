@@ -1,0 +1,7 @@
+I created three files in the working directory (no API calls made):
+
+- **`generate-questions.ts`** — the "policy team never writes questions" piece. Feeds the current policy doc to an LLM with a system prompt that defines Jev's three question schemas (`noul`/`choice`/`score`) and constraints (self-contained instructions referencing state fields, stable ids, no invented rules). Rerun whenever the policy doc changes.
+- **`questions.json`** — example output of that generation: an example `state` (a post + context) and a `questions` map covering typical T&S categories (hate speech, violence, CSAM, self-harm, spam) plus a `choice` and a `score` question, as illustrations of each Jev question type.
+- **`decide.ts`** — post-processing on the answers: per-category probability thresholds (CSAM set much lower — zero tolerance), a severity-score gate for auto-remove vs. escalate, and a hard-coded report path for any CSAM signal that bypasses everything else.
+
+One judgment call worth flagging: thresholds in `decide.ts` (e.g. 0.85 for hate speech, 0.3 for CSAM) are illustrative placeholders — the policy team would need to actually calibrate these against labeled examples.

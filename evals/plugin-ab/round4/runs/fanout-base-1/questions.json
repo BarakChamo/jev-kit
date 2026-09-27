@@ -1,0 +1,254 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_id": "vc-2026-000123",
+    "vendor_name": "Acme Cloud Services, Inc.",
+    "contract_text": "<full extracted text of the 30-80 page vendor contract, including any amendments/exhibits>"
+  },
+  "questions": {
+    "governing_law": {
+      "type": "choice",
+      "instructions": "From the governing law / choice of law clause in state.contract_text, identify which jurisdiction's law governs the agreement.",
+      "criteria": {
+        "delaware": "Delaware",
+        "california": "California",
+        "new_york": "New York",
+        "texas": "Texas",
+        "other_us_state": "A US state other than Delaware, California, New York, or Texas",
+        "england_wales": "England and Wales",
+        "ireland": "Ireland",
+        "singapore": "Singapore",
+        "other_non_us": "A non-US jurisdiction other than England/Wales, Ireland, or Singapore",
+        "not_specified": "No governing law clause is present or the jurisdiction is not stated"
+      }
+    },
+    "auto_renewal": {
+      "type": "noul",
+      "instructions": "Determine whether the contract automatically renews for additional term(s) unless a party affirmatively gives notice not to renew.",
+      "criteria": {
+        "true": "The contract contains an evergreen/auto-renewal clause that extends the term by default",
+        "false": "The contract expires at the end of the stated term unless the parties affirmatively agree to renew, or no renewal mechanism is present"
+      }
+    },
+    "renewal_notice_period_band": {
+      "type": "choice",
+      "instructions": "If auto-renewal applies, find the notice period a party must give before the renewal date to stop the contract from auto-renewing.",
+      "criteria": {
+        "none_or_na": "No auto-renewal, so no notice period applies",
+        "under_30_days": "Notice period is less than 30 days",
+        "30_to_60_days": "Notice period is 30 to 60 days",
+        "61_to_90_days": "Notice period is 61 to 90 days",
+        "over_90_days": "Notice period is more than 90 days",
+        "not_specified": "Auto-renewal applies but no notice period is stated"
+      }
+    },
+    "liability_cap_present": {
+      "type": "noul",
+      "instructions": "Determine whether the contract includes a limitation of liability clause that caps one or both parties' total liability.",
+      "criteria": {
+        "true": "A clause caps total liability at a stated amount or formula",
+        "false": "No liability cap is present, or liability is expressly stated as unlimited"
+      }
+    },
+    "liability_cap_amount_band": {
+      "type": "choice",
+      "instructions": "If a liability cap is present, classify the cap amount relative to fees paid under the contract.",
+      "criteria": {
+        "no_cap": "No liability cap exists",
+        "under_1x_annual_fees": "Cap is less than one year's fees",
+        "one_x_annual_fees": "Cap is equal to approximately one year's fees",
+        "two_to_3x_annual_fees": "Cap is between roughly two and three times annual fees",
+        "over_3x_annual_fees": "Cap is more than three times annual fees",
+        "fixed_dollar_amount": "Cap is a fixed dollar amount unrelated to fees paid",
+        "unlimited_for_certain_claims": "Cap is unlimited for specific carve-out claims (e.g. confidentiality, IP, gross negligence) even if capped generally",
+        "not_specified": "A cap is present but its amount or formula cannot be determined"
+      }
+    },
+    "liability_cap_mutual": {
+      "type": "noul",
+      "instructions": "If a liability cap is present, determine whether it applies mutually to both the vendor and the customer, as opposed to protecting only the vendor.",
+      "criteria": {
+        "true": "The cap (and its carve-outs) applies equally to both parties",
+        "false": "The cap applies only to one party, or no cap is present"
+      }
+    },
+    "indemnity_scope": {
+      "type": "choice",
+      "instructions": "Determine the scope of indemnification obligations in the contract.",
+      "criteria": {
+        "none": "No indemnification clause is present",
+        "ip_infringement_only": "Indemnity is limited to third-party IP infringement claims",
+        "confidentiality_breach_only": "Indemnity is limited to breaches of confidentiality/data protection obligations",
+        "general_broad": "Indemnity broadly covers general third-party claims arising from the agreement, owed by one party",
+        "mutual_broad": "Both parties owe each other broad general indemnification",
+        "not_specified": "An indemnity reference exists but its scope cannot be determined"
+      }
+    },
+    "dpa_present": {
+      "type": "noul",
+      "instructions": "Determine whether the contract includes data processing terms governing the handling of personal data (a standalone DPA, an exhibit, or a data protection clause in the body).",
+      "criteria": {
+        "true": "Data processing / data protection terms covering personal data handling are present",
+        "false": "No data processing terms are present"
+      }
+    },
+    "termination_for_convenience": {
+      "type": "noul",
+      "instructions": "Determine whether either party may terminate the contract for convenience (without cause) before the end of the term.",
+      "criteria": {
+        "true": "At least one party has a right to terminate without cause on notice",
+        "false": "Termination is only permitted for cause (e.g. breach, insolvency), or not at all before term end"
+      }
+    },
+    "termination_notice_band": {
+      "type": "choice",
+      "instructions": "If termination for convenience is available, find the notice period required to exercise it.",
+      "criteria": {
+        "none_or_na": "No termination-for-convenience right exists",
+        "under_30_days": "Notice period is less than 30 days",
+        "30_to_60_days": "Notice period is 30 to 60 days",
+        "61_to_90_days": "Notice period is 61 to 90 days",
+        "over_90_days": "Notice period is more than 90 days",
+        "not_specified": "The right exists but the notice period is not stated"
+      }
+    },
+    "payment_terms_band": {
+      "type": "choice",
+      "instructions": "Identify the standard invoice payment terms stated in the contract.",
+      "criteria": {
+        "due_on_receipt": "Payment is due immediately or on receipt of invoice",
+        "net_15": "Payment due within 15 days of invoice",
+        "net_30": "Payment due within 30 days of invoice",
+        "net_45": "Payment due within 45 days of invoice",
+        "net_60": "Payment due within 60 days of invoice",
+        "net_90_or_more": "Payment due in 90 or more days",
+        "milestone_based": "Payment is tied to milestones/deliverables rather than a fixed invoice term",
+        "not_specified": "No payment term is stated"
+      }
+    },
+    "consequential_damages_excluded": {
+      "type": "noul",
+      "instructions": "Determine whether the contract excludes consequential, indirect, special, or punitive damages.",
+      "criteria": {
+        "true": "Such damages are expressly excluded/waived",
+        "false": "No such exclusion is present"
+      }
+    },
+    "confidentiality_survival": {
+      "type": "noul",
+      "instructions": "Determine whether the confidentiality obligations are stated to survive termination or expiration of the agreement.",
+      "criteria": {
+        "true": "The contract explicitly states confidentiality obligations survive termination/expiration",
+        "false": "No survival language for confidentiality is present, or there is no confidentiality clause"
+      }
+    },
+    "ip_ownership": {
+      "type": "choice",
+      "instructions": "Determine who owns intellectual property in deliverables/work product created under the contract.",
+      "criteria": {
+        "vendor_retains_all_ip": "The vendor retains ownership of all IP, granting the customer only a license",
+        "customer_owns_deliverables": "The customer owns IP in deliverables created specifically for it",
+        "work_for_hire": "Deliverables are explicitly designated work made for hire owned by the customer",
+        "joint_ownership": "IP in deliverables is jointly owned by both parties",
+        "not_specified": "No IP ownership clause is present or ownership cannot be determined"
+      }
+    },
+    "assignment_consent_required": {
+      "type": "noul",
+      "instructions": "Determine whether the contract requires the other party's prior written consent before a party may assign the agreement.",
+      "criteria": {
+        "true": "Assignment requires the other party's prior consent (subject to customary carve-outs like M&A/affiliates)",
+        "false": "Assignment is freely permitted, or no assignment clause is present"
+      }
+    },
+    "exclusivity_present": {
+      "type": "noul",
+      "instructions": "Determine whether the contract grants exclusivity to either party (e.g. sole-source vendor commitment, exclusive territory or category).",
+      "criteria": {
+        "true": "An exclusivity commitment is present",
+        "false": "No exclusivity commitment is present"
+      }
+    },
+    "non_solicitation_clause": {
+      "type": "noul",
+      "instructions": "Determine whether the contract includes a non-solicitation clause restricting hiring/soliciting the other party's employees.",
+      "criteria": {
+        "true": "A non-solicitation clause is present",
+        "false": "No non-solicitation clause is present"
+      }
+    },
+    "insurance_requirements_present": {
+      "type": "noul",
+      "instructions": "Determine whether the contract requires either party to maintain specified insurance coverage.",
+      "criteria": {
+        "true": "Minimum insurance coverage requirements are specified",
+        "false": "No insurance requirements are stated"
+      }
+    },
+    "sla_present": {
+      "type": "noul",
+      "instructions": "Determine whether the contract includes a service level agreement or uptime/performance commitment.",
+      "criteria": {
+        "true": "Specific service levels, uptime, or performance metrics are committed to",
+        "false": "No service level commitments are present"
+      }
+    },
+    "sla_credits_present": {
+      "type": "noul",
+      "instructions": "If an SLA is present, determine whether the contract provides service credits or similar remedies for missed service levels.",
+      "criteria": {
+        "true": "Missed service levels entitle the customer to credits, refunds, or a defined remedy",
+        "false": "No such remedy is provided, or there is no SLA"
+      }
+    },
+    "audit_rights_present": {
+      "type": "noul",
+      "instructions": "Determine whether either party has a contractual right to audit the other party's records, security, or compliance.",
+      "criteria": {
+        "true": "An audit right is granted to at least one party",
+        "false": "No audit right is present"
+      }
+    },
+    "force_majeure_present": {
+      "type": "noul",
+      "instructions": "Determine whether the contract includes a force majeure clause excusing performance for events beyond a party's control.",
+      "criteria": {
+        "true": "A force majeure clause is present",
+        "false": "No force majeure clause is present"
+      }
+    },
+    "dispute_resolution_method": {
+      "type": "choice",
+      "instructions": "Identify the primary mechanism the contract designates for resolving disputes.",
+      "criteria": {
+        "litigation_courts": "Disputes are resolved through litigation in courts",
+        "binding_arbitration": "Disputes are resolved through binding arbitration",
+        "mediation_then_litigation": "Mediation is required before litigation",
+        "mediation_then_arbitration": "Mediation is required before arbitration",
+        "not_specified": "No dispute resolution mechanism is specified"
+      }
+    },
+    "warranty_disclaimer_level": {
+      "type": "score",
+      "instructions": "Assess how broadly the contract disclaims warranties on the vendor's products/services.",
+      "criteria": [
+        "no_disclaimer",
+        "limited_disclaimer_with_specific_warranties",
+        "broad_as_is_disclaimer_of_all_warranties"
+      ]
+    },
+    "contract_term_length_band": {
+      "type": "choice",
+      "instructions": "Identify the length of the initial contract term.",
+      "criteria": {
+        "under_1_year": "Initial term is less than 1 year",
+        "one_year": "Initial term is 1 year",
+        "two_years": "Initial term is 2 years",
+        "three_years": "Initial term is 3 years",
+        "over_3_years": "Initial term is more than 3 years",
+        "perpetual_or_indefinite": "The contract has no fixed end date",
+        "not_specified": "The initial term length cannot be determined"
+      }
+    }
+  }
+}

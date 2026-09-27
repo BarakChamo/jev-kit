@@ -1,0 +1,94 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "<full text of the customer contract>",
+    "cancellation_email_text": "<full text of the cancellation email>",
+    "received_date": "2026-08-14"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause that automatically renews the contract for another term unless the customer gives notice?",
+      "criteria": {
+        "true": "the contract states the term renews automatically absent timely notice",
+        "false": "the contract has no automatic-renewal clause, or renewal requires the customer to opt in"
+      }
+    },
+    "email_allowed": {
+      "type": "noul",
+      "instructions": "Does `contract_text` permit the customer to give cancellation or non-renewal notice by email?",
+      "criteria": {
+        "true": "email is an allowed method of notice, or the contract does not restrict the method of notice",
+        "false": "the contract requires a different method (e.g. certified mail, written letter, a portal) and excludes email"
+      }
+    },
+    "email_states_cancellation": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly state that the customer is cancelling the contract or declining to renew it?",
+      "criteria": {
+        "true": "the email clearly communicates present intent to cancel or not renew",
+        "false": "the email is ambiguous, conditional, a question, or about something other than cancelling"
+      }
+    },
+    "start_year": {
+      "type": "choice",
+      "instructions": "In `contract_text`, what calendar year is the contract's effective date (the start of its initial term)?",
+      "criteria": {
+        "2010": "2010", "2011": "2011", "2012": "2012", "2013": "2013", "2014": "2014",
+        "2015": "2015", "2016": "2016", "2017": "2017", "2018": "2018", "2019": "2019",
+        "2020": "2020", "2021": "2021", "2022": "2022", "2023": "2023", "2024": "2024",
+        "2025": "2025", "2026": "2026", "2027": "2027", "2028": "2028", "2029": "2029",
+        "2030": "2030", "2031": "2031", "2032": "2032"
+      }
+    },
+    "start_month": {
+      "type": "choice",
+      "instructions": "In `contract_text`, what calendar month is the contract's effective date (the start of its initial term)?",
+      "criteria": {
+        "January": "January", "February": "February", "March": "March", "April": "April",
+        "May": "May", "June": "June", "July": "July", "August": "August",
+        "September": "September", "October": "October", "November": "November", "December": "December"
+      }
+    },
+    "start_day": {
+      "type": "choice",
+      "instructions": "In `contract_text`, what day of the month is the contract's effective date (the start of its initial term)?",
+      "criteria": {
+        "1": "day 1 of the month", "2": "day 2 of the month", "3": "day 3 of the month", "4": "day 4 of the month",
+        "5": "day 5 of the month", "6": "day 6 of the month", "7": "day 7 of the month", "8": "day 8 of the month",
+        "9": "day 9 of the month", "10": "day 10 of the month", "11": "day 11 of the month", "12": "day 12 of the month",
+        "13": "day 13 of the month", "14": "day 14 of the month", "15": "day 15 of the month", "16": "day 16 of the month",
+        "17": "day 17 of the month", "18": "day 18 of the month", "19": "day 19 of the month", "20": "day 20 of the month",
+        "21": "day 21 of the month", "22": "day 22 of the month", "23": "day 23 of the month", "24": "day 24 of the month",
+        "25": "day 25 of the month", "26": "day 26 of the month", "27": "day 27 of the month", "28": "day 28 of the month",
+        "29": "day 29 of the month", "30": "day 30 of the month", "31": "day 31 of the month"
+      }
+    },
+    "term_length": {
+      "type": "choice",
+      "instructions": "In `contract_text`, how long is each contract term (the initial term and each renewal term)?",
+      "criteria": {
+        "1 month": "each term is 1 month",
+        "3 months": "each term is 3 months (a quarter)",
+        "6 months": "each term is 6 months",
+        "1 year": "each term is 1 year",
+        "2 years": "each term is 2 years",
+        "3 years": "each term is 3 years",
+        "other or unclear": "the term length is some other duration, or `contract_text` does not clearly state it"
+      }
+    },
+    "notice_period": {
+      "type": "choice",
+      "instructions": "In `contract_text`, how many days of advance written notice must the customer give to prevent automatic renewal?",
+      "criteria": {
+        "15 days": "notice must be given at least 15 days before the term ends",
+        "30 days": "notice must be given at least 30 days before the term ends",
+        "45 days": "notice must be given at least 45 days before the term ends",
+        "60 days": "notice must be given at least 60 days before the term ends",
+        "90 days": "notice must be given at least 90 days before the term ends",
+        "120 days": "notice must be given at least 120 days before the term ends",
+        "other or unclear": "the required notice period is some other length, or `contract_text` does not clearly state it"
+      }
+    }
+  }
+}

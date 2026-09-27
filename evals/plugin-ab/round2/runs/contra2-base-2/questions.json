@@ -1,0 +1,55 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "user_question": "Can I export my data to CSV?",
+    "matched_faq": {
+      "id": "faq_042",
+      "question": "How do I export my data?",
+      "canonical_answer": "You can export your data to CSV or JSON from Settings > Data > Export. XML export was discontinued in v4.0 (June 2025)."
+    },
+    "passages": [
+      {
+        "id": "p1",
+        "source": "help-center/export-guide.md",
+        "text": "To export your data, go to Settings > Data > Export and choose CSV, JSON, or XML."
+      },
+      {
+        "id": "p2",
+        "source": "help-center/export-guide.md#csv-steps",
+        "text": "CSV export is available under Settings > Data > Export."
+      }
+    ]
+  },
+  "questions": {
+    "p1_status": {
+      "type": "choice",
+      "instructions": "state.matched_faq.canonical_answer is the current, authoritative answer from the support team's CMS for the FAQ state.matched_faq.question. The passage state.passages[id=p1].text was retrieved as a candidate answer to the same FAQ. Classify the passage against the canonical answer.",
+      "criteria": {
+        "consistent": "Every factual claim in the passage still agrees with the canonical answer.",
+        "outdated": "The passage describes something that used to be true, but the canonical answer shows it has since changed (removed/renamed feature, changed price, changed limit, discontinued option, etc.).",
+        "contradicts": "The passage conflicts with the canonical answer for a reason other than staleness (wrong steps, wrong numbers, wrong requirement).",
+        "unrelated": "The passage doesn't say enough about the FAQ topic to be judged true or false against the canonical answer."
+      }
+    },
+    "p1_severity": {
+      "type": "score",
+      "instructions": "If passage state.passages[id=p1].text were shown to a customer as-is in place of state.matched_faq.canonical_answer, how much would it mislead them or cause them to take a wrong action?",
+      "criteria": ["none", "minor", "moderate", "severe"]
+    },
+    "p2_status": {
+      "type": "choice",
+      "instructions": "state.matched_faq.canonical_answer is the current, authoritative answer from the support team's CMS for the FAQ state.matched_faq.question. The passage state.passages[id=p2].text was retrieved as a candidate answer to the same FAQ. Classify the passage against the canonical answer.",
+      "criteria": {
+        "consistent": "Every factual claim in the passage still agrees with the canonical answer.",
+        "outdated": "The passage describes something that used to be true, but the canonical answer shows it has since changed (removed/renamed feature, changed price, changed limit, discontinued option, etc.).",
+        "contradicts": "The passage conflicts with the canonical answer for a reason other than staleness (wrong steps, wrong numbers, wrong requirement).",
+        "unrelated": "The passage doesn't say enough about the FAQ topic to be judged true or false against the canonical answer."
+      }
+    },
+    "p2_severity": {
+      "type": "score",
+      "instructions": "If passage state.passages[id=p2].text were shown to a customer as-is in place of state.matched_faq.canonical_answer, how much would it mislead them or cause them to take a wrong action?",
+      "criteria": ["none", "minor", "moderate", "severe"]
+    }
+  }
+}

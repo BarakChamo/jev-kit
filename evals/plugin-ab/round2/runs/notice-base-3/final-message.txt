@@ -1,0 +1,13 @@
+Design split: **Jev handles interpretation** (contract prose is fuzzy), **decide.ts handles arithmetic/ruling** (dates should never be probabilistic).
+
+**questions.json** — one Jev call per cancellation, four questions:
+- `autoRenewal` (noul) — does the contract actually auto-renew?
+- `requiredNoticeDays` (choice: 15/30/45/60/90/unspecified) — the notice period, bucketed to common contract terms
+- `noticeMethodCompliant` (noul) — does an email satisfy the contract's stated delivery/recipient requirements?
+- `cancellationIntentClear` (noul) — does the email unambiguously say "cancel," not just complain or ask questions?
+
+`currentTermEndDate` and `cancellationReceivedDate` are passed in as known facts (from your billing/ingestion system), not asked as Jev questions — those are deterministic, not interpretive.
+
+**decide.ts** — takes the four answers plus the two dates and produces one of: `NO_AUTO_RENEWAL_CLAUSE`, `RENEWAL_AVOIDED`, `RENEWAL_NOT_AVOIDED`, `INVALID_NOTICE` (wrong method/unclear intent regardless of timing), or `NEEDS_REVIEW` (contract has no stated notice period — can't compute a deadline automatically). It also returns the computed deadline, days late, an overall confidence (min across the relevant probabilities), and human-readable reasons.
+
+I did not call the API, per your instructions.

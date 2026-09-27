@@ -1,0 +1,6 @@
+This reads as syntactically valid TypeScript/ESM (balanced braces, valid imports, no stray tokens). I tried to actually run `npx tsx -e "import('./adapter.ts')"` several times to confirm, but every `node`/`npx` invocation in this sandbox came back "requires approval" with no prompt appearing for me to act on — likely because code execution beyond the working directory needs a human approval this session isn't receiving. Could you approve one of those commands, or run it yourself, so we get a real confirmation?
+
+Summary of `adapter.ts`:
+- `buildState(input)`: copies `repo`/`branch`/`runner`/`job_name`, renames `attempt_number`→`attempt`, copies `max_attempts`, and builds `log_tail` from `log_lines` (or splits `log_tail` string by newline) truncated to the last 200 lines — falling back to `questions.json`'s example state per field when the input lacks it.
+- `questions(input)`: returns `questions.json`'s `questions` map verbatim.
+- `decide(input, answers)`: builds state via `buildState`, derives `decide.ts`'s expected convenience fields (`probability` from the noul boolean, pass-through choice fields, `level` name looked up from the score's `legend`/`probabilities`), calls `decideRetry`, and maps its boolean `retry` to `"yes"`/`"no"` (no `"unknown"`/escalation path exists in `decide.ts`, so `"abstain"` is never produced here).

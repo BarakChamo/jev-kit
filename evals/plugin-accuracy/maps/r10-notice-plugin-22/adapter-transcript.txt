@@ -1,0 +1,6 @@
+This looks syntactically sound. I wasn't able to execute `npx tsx` in this sandbox (all shell execution commands beyond `ls`/`echo` are being blocked from approval here), so I verified by manual review instead.
+
+Summary of `adapter.ts`:
+- `buildState(input)`: maps `contract_text`→`contract`, `email_text`→`cancellationEmail`, `received_date`→`receivedDate` (plain renaming, matching `questions.json`'s example state; `email_from`/`current_term_end_date` aren't used by any question).
+- `questions(input)`: returns `questions.json`'s `questions` verbatim (no per-case building in decide.ts/questions.json, so no custom builder needed).
+- `decide(input, answers)`: calls `decide.ts`'s `decide()` directly — its `NoulAnswer`/`ChoiceAnswer` shapes are already subsets of the API's `noul`/`choice` answer shapes, so no synthetic fields were needed — then maps its `Decision` to the required outcome: `sufficient_notice`→`avoided`, `insufficient_notice`/`not_a_cancellation_request`→`not_avoided`, `no_auto_renewal_clause`→`not_applicable`, `needs_human_review`→`abstain`.

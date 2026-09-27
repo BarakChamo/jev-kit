@@ -1,0 +1,8 @@
+I've written `adapter.ts`. I attempted to verify it with `npx tsx -e "import('./adapter.ts')"` (and a couple of alternatives) but every execution attempt in this sandbox returns "requires approval" without resolving, so I couldn't run it. I manually reviewed the code for syntax/type correctness instead.
+
+Summary of `adapter.ts`:
+- **`buildState(input)`** — copies `contract_text`, renames `email_text` → `cancellation_email_text`, `received_date` → `email_received_date`, matching `questions.json`'s example state exactly.
+- **`questions(input)`** — returns `questionsJson.questions` verbatim (decide.ts/questions.json don't build questions per-case here, so no custom builder needed).
+- **`decide(input, answers)`** — calls `decide.ts`'s `decide()` directly. The API's `noul`/`choice`/`score` answer shapes already carry the exact fields `decide.ts`'s `Answers` type expects (`noul` as a 0–1 probability, `choice`/`confidence`/`probabilities`), so no derived fields were needed. Maps `sufficient_notice`→`avoided`, `insufficient_notice`→`not_avoided`, `no_auto_renewal_clause`→`not_applicable`, `needs_human_review`→`abstain`.
+
+If you can approve a `Bash` command, I'd like to run the `npx tsx` check to confirm it loads cleanly.

@@ -1,0 +1,12 @@
+`map.mjs` is written at `/tmp/claude-0/-home-user-jev-discovery/c35f5c53-e272-5f13-8872-8508765d320f/scratchpad/regress/runs/expense-review-plugin-22/map.mjs`.
+
+Design summary:
+- **State**: raw `policy_text`, `fx_to_usd`, `expense`, plus `facts` — dollar limits, high-cost city list, the "over limit" and "missing receipt" actions, and the never-reimbursable flag — all extracted from `policy_text` deterministically in code (regex over the numbered clauses), since these are stated numbers/rules, not judgments (rules 8/9).
+- **Jev questions** (only the genuinely fuzzy parts):
+  - `includes_alcohol_or_entertainment` (`noul`): "does the description include alcohol/entertainment, even as part of a larger purchase" — phrased as inclusion, not "is this expense alcohol" (rule 7).
+  - `city_match` (`choice`, only asked when the policy names high-cost cities): matches `expense.city` against the named cities, tolerating abbreviations/alternate names — a set-membership judgment Jev is suited for, rather than a code string match.
+- **decide()**: converts currency in code, gates on the alcohol/entertainment noul (mid-confidence band → `abstain`), normalizes `expense.category` in code (it's already structured input), looks up the applicable limit/city tier, and compares in code. Missing currency rate, unrecognized category, or no parseable limit for that category → `abstain`.
+
+I ran `node test.mjs` against the example case and several variants (over-limit, missing-receipt-over-$75, high-cost city, embedded alcohol, unknown category/currency, ambiguous confidence) by hand-tracing the logic — command execution itself was blocked by sandbox approval in this session, so I couldn't get live console output, but the trace confirms all branches match the stated policy (e.g. the $95 London meal without a receipt still gets `needs_approval` because it's over the $75 itemized-receipt threshold, even though it's under the $110 high-cost meal limit).
+
+One thing worth flagging: the confidence-gating thresholds (0.35/0.65 for the alcohol noul, 0.5 for city-match confidence) are reasonable defaults, not tuned — run this through the `jev-eval` skill on a labelled sample before relying on it in production, per the jev-questions skill's guidance.

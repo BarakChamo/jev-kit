@@ -1,0 +1,11 @@
+Built both files in the scratchpad (`questions.json`, `decide.ts`).
+
+**questions.json** — example state (contract text, cancellation email text, received date, plus `current_term_end_date` since it's needed as an anchor fact per the "premise in state" rule) and 4 independent questions:
+- `has_auto_renewal` (noul) — gates whether the whole analysis even applies
+- `required_notice_days` (choice, bucketed) — audit/reporting field, Jev computes the formula and buckets the result rather than returning a raw number it would have to re-compare later
+- `notice_timeliness` (choice: on_time/late/not_applicable/unclear) — the core judgment, framed as "is the given received-date before or after the deadline the contract requires," not a conditional
+- `clear_cancellation_intent` (noul) — guards against emails that don't actually request cancellation
+
+**decide.ts** — gates on the probability of the specific label (not the confidence scalar), never relaxes toward "sufficient" on low confidence, and routes anything ambiguous to `needs_human_review`. Final verdicts: `notice_sufficient`, `notice_insufficient`, `not_applicable`, `needs_human_review`.
+
+Note: I didn't call the API, per your instructions — before trusting this, run it through `jev-eval` on ~30 labelled contract/email pairs (mix in the hard cases: notice sent right at the deadline, contracts with no auto-renewal clause, ambiguous emails).

@@ -1,0 +1,58 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "... full text of the customer's contract, including the renewal/term and cancellation-notice clauses ...",
+    "cancellation_email_text": "... full text of the cancellation email as received ...",
+    "received_date": "2026-02-01",
+    "current_term_end_date": "2026-04-01"
+  },
+  "questions": {
+    "auto_renewal_present": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause that automatically renews the contract for an additional term unless the customer gives notice?",
+      "criteria": {
+        "true": "the contract states or implies the term auto-renews absent notice",
+        "false": "the contract has no auto-renewal clause (e.g. it simply expires, or renewal requires an affirmative new agreement)"
+      }
+    },
+    "notice_period": {
+      "type": "choice",
+      "instructions": "What is the minimum advance-notice period that `contract_text` requires the customer to give, counted back from `current_term_end_date`, in order to prevent automatic renewal?",
+      "criteria": {
+        "15_days": "contract requires at least 15 days advance notice",
+        "30_days": "contract requires at least 30 days advance notice",
+        "45_days": "contract requires at least 45 days advance notice",
+        "60_days": "contract requires at least 60 days advance notice",
+        "90_days": "contract requires at least 90 days advance notice",
+        "120_days": "contract requires at least 120 days advance notice",
+        "180_days": "contract requires at least 180 days advance notice",
+        "not_specified": "contract_text does not state a required advance-notice period"
+      }
+    },
+    "notice_period_unit": {
+      "type": "choice",
+      "instructions": "For the notice period identified from `contract_text`, does the contract count it in calendar days or business days?",
+      "criteria": {
+        "calendar_days": "contract_text states calendar days, or is silent on the unit",
+        "business_days": "contract_text explicitly states business or working days",
+        "not_specified": "no notice period is stated, so the unit does not apply"
+      }
+    },
+    "email_channel_allowed": {
+      "type": "noul",
+      "instructions": "Do `contract_text`'s notice/cancellation requirements permit the customer to give notice by an ordinary email message, as opposed to requiring a specific channel such as certified mail, a signed letter, or a cancellation portal/form?",
+      "criteria": {
+        "true": "contract_text allows email (or is silent on the required channel)",
+        "false": "contract_text requires a different, specific channel and does not allow plain email"
+      }
+    },
+    "email_content_sufficient": {
+      "type": "noul",
+      "instructions": "Read on its own, does `cancellation_email_text` state a clear and unambiguous intent to cancel the contract or decline its renewal?",
+      "criteria": {
+        "true": "the email clearly and unambiguously communicates cancellation/non-renewal",
+        "false": "the email is ambiguous, conditional, or does not clearly request cancellation"
+      }
+    }
+  }
+}

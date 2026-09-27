@@ -1,0 +1,12 @@
+Both files are done in `/tmp/claude-0/.../scratchpad/ab/runs/notice-plugin-1/`:
+
+**`questions.json`** — state (contract text, cancellation email text, date received) plus 5 questions:
+- `has_autorenewal` (noul) — gates whether the whole decision even applies
+- `notice_days_required` (choice, bucketed to standard values 15/30/.../180/other/not_specified)
+- `days_until_next_renewal` (choice, bucketed day-ranges whose edges land exactly on the standard notice values)
+- `notice_method_satisfied` (noul) — does the email meet any method requirement (written, certified mail, etc.)
+- `cancellation_intent_clear` (noul) — is it actually a cancellation, not something ambiguous
+
+**`decide.ts`** — all comparison/arithmetic happens in code, not in Jev, per the bucketed-comparison rule: the two day-buckets are compared numerically (their edges are deliberately aligned so no bucket ever straddles a required threshold, avoiding ambiguous cutoffs). Every noul/choice is gated at 0.75 probability/confidence; anything unsure — or an "other"/"cannot_determine" bucket — routes to `needs_human_review` rather than silently resolving in the customer's or vendor's favor.
+
+One thing worth flagging: I haven't measured this against labelled cases (the `jev-eval` skill's confidently-wrong audit) — the bucket boundaries and 0.75 gate are reasonable defaults, not validated numbers. Worth running ~30 labelled contract/email pairs through it before trusting the thresholds in production.

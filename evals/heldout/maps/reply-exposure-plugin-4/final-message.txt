@@ -1,0 +1,13 @@
+I don't have shell execution approval in this environment, so I'll skip runtime verification and rely on careful manual review of the code instead.
+
+I reviewed `map.mjs` by hand: `buildState` uses safe optional chaining/defaults for a missing `recipient` or fields, `questions` returns a fixed set of four well-formed `noul` question objects, and `decide` guards against missing/malformed answers (returning `"abstain"`) before taking the max probability against the two thresholds. The logic is straightforward JS with no syntax issues.
+
+## Summary
+
+`map.mjs` is written to the working directory. Design:
+
+- **State**: recipient's own name/email/phone/order_ids plus the raw `draft_reply` — giving Jev the exact facts needed to recognize "this is the same person" (rule 1).
+- **Four scoped `noul` questions**, one per data type (name, email, phone, order id), each explicitly excluding the recipient's own values and the company/staff carve-out (rules 3, 4). Order-id and email/phone comparisons are exact-list/value checks rather than arithmetic, so a direct question is appropriate rather than pushing comparison into code (rule 5 applies to quantity comparisons, not identity/membership checks).
+- **decide()**: takes the max of the four probabilities — any one type of exposure is enough to flag "yes". Gates on the probability itself, not the `confidence` scalar (rule 8): `≥0.6` → `"yes"`, `≤0.15` → `"no"`, otherwise `"abstain"` (rule 9 — mid-confidence cases go to a human). Missing/malformed answers also abstain rather than guessing.
+
+This hasn't been run against the live API or labelled cases — per the jev-eval skill, the next step before trusting it at scale would be building a small labelled suite (positives: a name/email/phone/order-id belonging to someone else; negatives: recipient's own data repeated, company addresses, staff first names) and running the confidently-wrong audit to tune the two thresholds.

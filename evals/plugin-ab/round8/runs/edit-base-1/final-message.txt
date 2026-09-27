@@ -1,0 +1,1 @@
+Added `sender_is_authorized_contact` (type `noul`) to `questions.json`, and added it to `JevAnswers` and the `gates` array in `decide.ts` so a mismatch now yields `INSUFFICIENT_NOTICE` (or `NEEDS_HUMAN_REVIEW` if uncertain), just like the other gating checks. No API calls made.

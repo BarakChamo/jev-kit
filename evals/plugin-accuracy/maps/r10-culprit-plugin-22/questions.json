@@ -1,0 +1,38 @@
+{
+  "model": "typesafe-ai/jev",
+
+  "//": "Example state — decide.ts builds this per job from the last 200 non-blank log lines.",
+  "state": {
+    "job_id": "build-42891",
+    "lines": [
+      { "index": 12, "text": "Run npm ci" },
+      { "index": 13, "text": "npm WARN deprecated inflight@1.0.6" },
+      { "index": 41, "text": "> myapp@1.0.0 build" },
+      { "index": 42, "text": "> tsc -b" },
+      { "index": 43, "text": "src/utils/parse.ts(42,17): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'." },
+      { "index": 44, "text": "npm ERR! code ELIFECYCLE" },
+      { "index": 45, "text": "npm ERR! errno 2" },
+      { "index": 46, "text": "npm ERR! myapp@1.0.0 build: `tsc -b`" },
+      { "index": 47, "text": "Error: Process completed with exit code 2." }
+    ]
+  },
+
+  "questions": {
+    "culprit": {
+      "type": "choice",
+      "instructions": "Each option is one line, named by its `index` in `lines`, from the tail of a failed CI job's log. Which line states the specific underlying error or failure reason — the root cause a developer would need to open and fix? Skip generic wrapper and footer lines that only report that the job failed, without saying why: 'Process completed with exit code N', 'npm ERR! code ELIFECYCLE', 'npm ERR! errno N', re-echoed commands, timestamps, and summary/count lines. Pick the line that names the actual error, exception, assertion, or failing check. If no single line in `lines` states the cause, choose 'unclear'.",
+      "criteria": {
+        "12": "Run npm ci",
+        "13": "npm WARN deprecated inflight@1.0.6",
+        "41": "> myapp@1.0.0 build",
+        "42": "> tsc -b",
+        "43": "src/utils/parse.ts(42,17): error TS2345: Argument of type 'string | undefined' is not assignable to parameter of type 'string'.",
+        "44": "npm ERR! code ELIFECYCLE",
+        "45": "npm ERR! errno 2",
+        "46": "npm ERR! myapp@1.0.0 build: `tsc -b`",
+        "47": "Error: Process completed with exit code 2.",
+        "unclear": "No single line in `lines` clearly states the cause of failure"
+      }
+    }
+  }
+}

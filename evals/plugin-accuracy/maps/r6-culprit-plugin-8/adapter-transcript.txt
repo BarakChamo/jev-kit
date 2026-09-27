@@ -1,0 +1,6 @@
+This is syntactically valid — clean ESM/TS, matching decide.ts's actual exports (`buildQuestions`, `decide`), with no typos or unbalanced brackets. I attempted to run `npx tsx -e "import('./adapter.ts')..."` to confirm it loads, but this sandboxed session blocks all code-execution commands (even `node -e`) pending approval that never resolves here — only plain filesystem commands like `ls` go through. I could not get a live execution check, so I verified by careful manual reading instead.
+
+Summary of `adapter.ts`:
+- `buildState(input)` — copies `input.log_lines` into `state.logLines`, matching questions.json's example state shape exactly.
+- `questions(input)` — reuses decide.ts's own `buildQuestions(logLines)`, since this map builds one `is_cause_N` question per candidate line rather than a fixed set.
+- `decide(input, answers)` — passes `input.log_lines` and the raw noul answers straight through to decide.ts's `decide()` (its `NoulAnswers` type already expects `{ noul: number }`, matching the API's noul answer field name/shape one-to-one, so no derived fields were needed), then maps its `Verdict` union to `{ culprit_lines: number[] }`: single → one-element array, shortlist → ranked indices, none → `[]`.

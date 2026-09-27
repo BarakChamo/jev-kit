@@ -1,0 +1,10 @@
+Created both files in the working directory (not the API called, as instructed):
+
+- **`questions.json`** — the Jev request: example `state` (contract text + cancellation email text/date) plus a `questions` map with 5 questions answered in one pass:
+  - `auto_renewal_clause` (noul) — does the contract auto-renew at all
+  - `required_notice_window` (choice) — bucketed notice period, for context/audit
+  - `notice_method_compliant` (noul) — does the email satisfy any required delivery method
+  - `cancellation_intent_clear` (noul) — is intent to cancel unambiguous
+  - `notice_timely` (noul) — was it received early enough given the contract's window and the email's date
+
+- **`decide.ts`** — pure post-processing logic: classifies each `noul` probability against thresholds (≥0.65 true, ≤0.35 false, else uncertain), short-circuits to `NOT_APPLICABLE` if there's no renewal clause, `INSUFFICIENT_NOTICE` if any gating question fails, `NEEDS_HUMAN_REVIEW` if any gate is too close to call, otherwise `SUFFICIENT_NOTICE` — returning a verdict, confidence, and human-readable reasons.

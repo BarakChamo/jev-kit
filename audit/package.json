@@ -1,0 +1,40 @@
+{
+  "name": "jev-audit",
+  "version": "0.1.0",
+  "description": "Offline audits for Jev eval results: confidently-wrong queue, one-direction error detection, calibration, top-k recall and gate fitting. Needs no API key.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "jev-audit": "./bin/jev-audit.mjs"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "jev",
+    "typesafe",
+    "system-one",
+    "evals",
+    "calibration"
+  ],
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.7",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "_comment": "Example Jev request. This file's `questions` map is not hand-written: an LLM pass over the current 12-page trust & safety policy PDF regenerates it whenever the policy team edits the document, so questions stay in sync with policy without anyone transcribing rules by hand. `state.policy_version` should be set to the doc revision the questions were generated from, for audit trail. `state.post` below is one example of the per-post state passed at call time.",
+  "model": "typesafe-ai/jev",
+  "state": {
+    "policy_version": "2026-09-01",
+    "post": {
+      "id": "post_8f2a1c",
+      "author_id": "user_5521",
+      "text": "example post text goes here",
+      "media_urls": [],
+      "created_at": "2026-09-24T18:03:00Z",
+      "locale": "en-US"
+    }
+  },
+  "questions": {
+    "incites_violence": {
+      "type": "noul",
+      "instructions": "Does this post threaten, encourage, glorify, or call for physical violence against a person or group? Judge intent and severity, not just the presence of violent words.",
+      "criteria": {
+        "true": "The post threatens, encourages, glorifies, or calls for physical violence against a specific person, group, or identifiable target.",
+        "false": "The post does not threaten, encourage, glorify, or call for physical violence."
+      }
+    },
+    "hate_speech": {
+      "type": "noul",
+      "instructions": "Does this post attack, demean, or dehumanize people based on a protected attribute (race, ethnicity, religion, gender, sexual orientation, disability, etc.)?",
+      "criteria": {
+        "true": "The post attacks, demeans, or dehumanizes an individual or group based on a protected attribute.",
+        "false": "The post does not attack, demean, or dehumanize based on a protected attribute."
+      }
+    },
+    "self_harm_risk": {
+      "type": "score",
+      "instructions": "Assess how strongly this post indicates the author or another named person is at risk of suicide or self-harm.",
+      "criteria": ["none", "general_distress", "ideation", "imminent_risk"]
+    },
+    "sexual_content": {
+      "type": "score",
+      "instructions": "Rate the level of sexual content in this post.",
+      "criteria": ["none", "suggestive", "explicit_non_graphic", "graphic"]
+    },
+    "harassment_target": {
+      "type": "choice",
+      "instructions": "Classify whether this post targets a specific, identifiable individual with harassing content, and who bears it.",
+      "criteria": {
+        "none": "No harassment present.",
+        "public_figure": "Targets a public figure, celebrity, or politician in their public capacity.",
+        "private_individual": "Targets a private individual, e.g. a named or clearly identifiable non-public person.",
+        "self": "Author is targeting or demeaning themselves."
+      }
+    },
+    "spam_or_scam": {
+      "type": "noul",
+      "instructions": "Is this post unsolicited commercial spam, a scam, or a phishing attempt?",
+      "criteria": {
+        "true": "The post is spam, a scam, or a phishing/fraud attempt.",
+        "false": "The post is not spam, scam, or phishing."
+      }
+    },
+    "recommended_action": {
+      "type": "choice",
+      "instructions": "Weighing everything above and the full policy, what enforcement action does policy recommend for this post?",
+      "criteria": {
+        "allow": "No policy violation; leave the post up as-is.",
+        "label": "Minor or borderline violation; leave up but attach a warning label.",
+        "remove": "Clear policy violation; remove the post.",
+        "remove_and_suspend": "Severe or repeat violation; remove the post and suspend the account."
+      }
+    }
+  }
+}

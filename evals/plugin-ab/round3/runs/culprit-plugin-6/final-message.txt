@@ -1,0 +1,13 @@
+Two files, no API calls made:
+
+**`questions.json`** — example state (a truncated CI log + a `candidates` list pre-filtered to error-looking lines) and the request: one `noul` per candidate ("is this line the origin of the failure?") plus one `no_candidate_is_root_cause` abstain question.
+
+**`decide.ts`** — `selectCandidates()` regex-filters the last-200-lines log down to plausible error lines (caps at 25, so the request stays one cheap call per job even at thousands/day); `buildQuestions()` generates the per-candidate `noul` map; `decide()` ranks candidates by probability and returns a **top-3 shortlist**, never a single answer.
+
+Worth flagging up front: "which line caused this" is explicitly the weakest measured pattern for Jev — causal pointing among similar candidates scored 65–67.5% at ~0.88 mean confidence, the worst calibration seen in the study. That's why the design deviates from "point at the one line":
+
+- Output is always a ranked shortlist (top 2–3 with probabilities), never an auto-selected single line.
+- A code-side gate (top probability ≥ 0.75 *and* margin over runner-up ≥ 0.2) only controls a "confident" display hint — it never hides the other candidates or triggers auto-action.
+- The abstain question (`no_candidate_is_root_cause`) catches failures whose real cause isn't in the filtered candidate set at all.
+
+Before shipping: run `jev-eval` against ~30 labelled real failures (half of them ones where the obvious top log line is *not* the actual cause) to tune those two thresholds and check the regex prefilter isn't dropping the true culprit line. If accuracy on your logs lands near the 65–67% ceiling from the study, consider keeping this as a shortlist-for-humans permanently rather than trying to push it toward auto-triage.

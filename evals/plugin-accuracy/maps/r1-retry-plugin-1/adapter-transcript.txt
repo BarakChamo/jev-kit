@@ -1,0 +1,1 @@
+Loading adapter.ts requires running `npx tsx`, which needs your approval to execute. Could you approve the command so I can verify it loads without syntax errors?

@@ -1,0 +1,10 @@
+`map.mjs` is written at the working directory root. Summary of the design:
+
+- **`buildState`** parses `policy_text` in code (regex, per rule 9 — no Jev arithmetic) to pull out meal/hotel/transport limits, the itemized-receipt threshold, whether over-limit means reject vs. needs_approval, and the high-cost city list. It also converts `expense.amount` to USD using `fx_to_usd` in code.
+- **`questions`** asks Jev only the three facts that genuinely need judgment, each scoped to named fields (rule 2):
+  - `category` (`choice`): maps the expense's category/description onto `meal` / `hotel` / `ground_transport` / `other` (uncovered by policy).
+  - `includes_alcohol_or_entertainment` (`noul`): catches alcohol/entertainment bundled into an otherwise-legit expense (rule 7's "includes" framing).
+  - `high_cost_city` (`noul`): matches `expense.city` against the extracted high-cost list, tolerating aliases/abbreviations.
+- **`decide`** does all comparisons and thresholding in code (rule 8): alcohol/entertainment → reject (high confidence) or needs_approval (mid-confidence, never silently approved); unknown currency, unclassifiable/uncovered category, or an ambiguous high-cost-city call → `abstain`; over the applicable limit → needs_approval (or reject, if the policy text says over-limit is rejected); missing receipt above the itemization threshold → needs_approval; otherwise approve.
+
+I manually traced six scenarios (plain approve, over-limit, alcohol bundled in a meal, high-cost city under its higher limit, unrecognized currency, uncovered category) through the code and all resolved to the expected decision. I wasn't able to actually run `node` in this sandbox (command execution requires approval that didn't go through), so this is a hand-trace, not an executed test — worth running the real `jev-eval` suite before trusting it at volume.

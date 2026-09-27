@@ -1,0 +1,7 @@
+Written `map.mjs` at the project directory. Design:
+
+- **State**: just `recipient` (name/email/phone/order_ids) and `draft_reply`, named plainly per rule 1/4 — everything Jev needs is already in the input.
+- **Four scoped `noul` questions**, one per data type (name, email, phone, order id), each explicitly comparing against the recipient's own values and carving out the stated exceptions (company contact addresses, staff first-name signatures). Per rule 6, this is a short OR of independently-reliable flags, which is a case the rules call out as worth deriving in code (+10).
+- **`decide`**: OR's the four probabilities — any ≥0.65 → `"yes"`; all ≤0.3 → `"no"`; otherwise `"abstain"` (sent to a human), per rules 8/9 (gate on the label probability, offer abstain, never let low confidence relax toward "no").
+
+This hasn't been measured against labelled cases yet — per the skill's own guidance, that's the next step (jev-eval) before trusting thresholds like 0.65/0.3 at production volume. Want me to build a small labelled suite and check calibration?

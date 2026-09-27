@@ -1,0 +1,61 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "jobId": "build-7821-test",
+    "logUrl": "https://ci.example.com/jobs/build-7821-test/log",
+    "_comment": "In production `lines` holds the last 200 log lines (numbered), not a truncated sample like below.",
+    "lines": [
+      { "n": 181, "text": "> myapp@1.4.2 test" },
+      { "n": 182, "text": "> jest --ci" },
+      { "n": 183, "text": "" },
+      { "n": 184, "text": "PASS src/utils/date.test.ts" },
+      { "n": 185, "text": "FAIL src/orders/checkout.test.ts" },
+      { "n": 186, "text": "  ● checkout > applies discount code" },
+      { "n": 187, "text": "" },
+      { "n": 188, "text": "    TypeError: Cannot read properties of undefined (reading 'total')" },
+      { "n": 189, "text": "        at applyDiscount (src/orders/checkout.ts:42:18)" },
+      { "n": 190, "text": "        at Object.<anonymous> (src/orders/checkout.test.ts:19:5)" },
+      { "n": 191, "text": "" },
+      { "n": 192, "text": "Tests:       1 failed, 47 passed, 48 total" },
+      { "n": 193, "text": "Test Suites: 1 failed, 12 passed, 13 total" },
+      { "n": 194, "text": "npm ERR! Test failed.  See above for more details." },
+      { "n": 195, "text": "npm ERR! code ELIFECYCLE" },
+      { "n": 196, "text": "npm ERR! errno 1" },
+      { "n": 197, "text": "##[error]Process completed with exit code 1." },
+      { "n": 198, "text": "##[error]Job failed" },
+      { "n": 199, "text": "" },
+      { "n": 200, "text": "Cleaning up workspace" }
+    ]
+  },
+  "questions": {
+    "culprit": {
+      "type": "choice",
+      "instructions": "This is a CI job's last 200 log lines (state.lines), numbered. Pick the single line that is the root cause of the failure — the original error/exception/assertion, not a downstream symptom. Prefer a specific thrown error or assertion failure over generic wrapper lines like 'npm ERR! code ELIFECYCLE', '##[error]Process completed with exit code 1', or summary counts like 'Tests: 1 failed'. If several lines are part of one stack trace or one multi-line error message, pick the line where the error/exception is actually raised (the message line), not a frame beneath it.",
+      "criteria": {
+        "184": "PASS src/utils/date.test.ts",
+        "185": "FAIL src/orders/checkout.test.ts",
+        "186": "  ● checkout > applies discount code",
+        "188": "    TypeError: Cannot read properties of undefined (reading 'total')",
+        "189": "        at applyDiscount (src/orders/checkout.ts:42:18)",
+        "190": "        at Object.<anonymous> (src/orders/checkout.test.ts:19:5)",
+        "192": "Tests: 1 failed, 47 passed, 48 total",
+        "194": "npm ERR! Test failed.  See above for more details.",
+        "195": "npm ERR! code ELIFECYCLE",
+        "197": "##[error]Process completed with exit code 1."
+      }
+    },
+    "isInfra": {
+      "type": "noul",
+      "instructions": "Given the same last-200-lines log, is this failure caused by infrastructure/environment flakiness (timeouts, network/connection errors, OOM, disk space, docker/registry pulls, DNS, 'connection reset', runner setup) rather than an actual bug in the application code or its tests?",
+      "criteria": {
+        "true": "The failure stems from infra/environment issues unrelated to the code under test (network, timeout, resource exhaustion, flaky external dependency, CI runner problem).",
+        "false": "The failure is caused by the application/test code itself (assertion failure, thrown exception in app logic, compile/type error, lint error)."
+      }
+    },
+    "confidence": {
+      "type": "score",
+      "instructions": "How confident are you that the line picked in 'culprit' is truly the single root cause, versus the log being ambiguous (e.g. multiple unrelated failures, or no clear single culprit)?",
+      "criteria": ["low", "medium", "high"]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "faq_question": "What is the maximum file size for uploads?",
+    "verified_answer": "The maximum file size for uploads is 25 MB per file.",
+    "passages": [
+      {
+        "id": "p1",
+        "source": "help-center/uploads.md",
+        "text": "You can upload files up to 25 MB in size. Larger files must be split before uploading."
+      },
+      {
+        "id": "p2",
+        "source": "legacy/faq-2021.md",
+        "text": "The upload limit is 10 MB per file. Contact support for bulk transfers."
+      },
+      {
+        "id": "p3",
+        "source": "blog/2023-platform-update.md",
+        "text": "We now support parallel batch uploads for large datasets, with automatic retry on failure."
+      }
+    ]
+  },
+  "questions": {
+    "contradicts_p1": {
+      "type": "noul",
+      "instructions": "Does the claim in passages[0].text (id p1) state something about the same aspect of faq_question that conflicts with the fact stated in verified_answer?",
+      "criteria": {
+        "true": "passages[0].text asserts a fact incompatible with verified_answer",
+        "false": "passages[0].text agrees with verified_answer, elaborates on it without conflict, or does not address the same aspect"
+      }
+    },
+    "contradicts_p2": {
+      "type": "noul",
+      "instructions": "Does the claim in passages[1].text (id p2) state something about the same aspect of faq_question that conflicts with the fact stated in verified_answer?",
+      "criteria": {
+        "true": "passages[1].text asserts a fact incompatible with verified_answer",
+        "false": "passages[1].text agrees with verified_answer, elaborates on it without conflict, or does not address the same aspect"
+      }
+    },
+    "contradicts_p3": {
+      "type": "noul",
+      "instructions": "Does the claim in passages[2].text (id p3) state something about the same aspect of faq_question that conflicts with the fact stated in verified_answer?",
+      "criteria": {
+        "true": "passages[2].text asserts a fact incompatible with verified_answer",
+        "false": "passages[2].text agrees with verified_answer, elaborates on it without conflict, or does not address the same aspect"
+      }
+    }
+  }
+}

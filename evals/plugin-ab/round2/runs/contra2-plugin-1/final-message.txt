@@ -1,0 +1,6 @@
+Built two files in the scratchpad:
+
+- **`questions.json`** — one `choice` question per retrieved passage (`consistent` / `contradicts` / `unrelated`), each scoped to a named passage id and compared against `canonical_answer` for the matched `faq_question`. Kept as `choice` rather than `noul` so a passage that's simply off-topic isn't conflated with one that's actively wrong, and so the full calibrated distribution is available for gating.
+- **`decide.ts`** — gates on `P(contradicts)` (not the confidence scalar), treats a thin margin between top labels as `review` rather than defaulting to keep, and exposes `filterForGenerator` to strip flagged/uncertain passages before they reach the generator.
+
+Before wiring this in, run it through `jev-eval` on ~30 labelled (question, canonical answer, passage) triples — especially cases where a passage is *stale in a way that reads as plausible* — and tune `FLAG_THRESHOLD`/`FLAG_MARGIN` against that.

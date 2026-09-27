@@ -1,0 +1,62 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "logLines": [
+      "Installing dependencies...",
+      "added 842 packages in 12s",
+      "Running test suite...",
+      "PASS src/utils/date.test.ts",
+      "PASS src/utils/string.test.ts",
+      "FAIL src/payments/charge.test.ts",
+      "  ● charge() > retries on network error",
+      "    TypeError: Cannot read properties of undefined (reading 'id')",
+      "      at charge (src/payments/charge.ts:42:18)",
+      "      at Object.<anonymous> (src/payments/charge.test.ts:15:5)",
+      "Tests:       1 failed, 47 passed, 48 total",
+      "npm ERR! Test failed.  See above for more details.",
+      "Error: Process completed with exit code 1."
+    ]
+  },
+  "questions": {
+    "is_cause_5": {
+      "type": "noul",
+      "instructions": "Is line 5 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 5 is the direct cause of the failure", "false": "line 5 is not the direct cause" }
+    },
+    "is_cause_6": {
+      "type": "noul",
+      "instructions": "Is line 6 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 6 is the direct cause of the failure", "false": "line 6 is not the direct cause" }
+    },
+    "is_cause_7": {
+      "type": "noul",
+      "instructions": "Is line 7 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 7 is the direct cause of the failure", "false": "line 7 is not the direct cause" }
+    },
+    "is_cause_8": {
+      "type": "noul",
+      "instructions": "Is line 8 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 8 is the direct cause of the failure", "false": "line 8 is not the direct cause" }
+    },
+    "is_cause_9": {
+      "type": "noul",
+      "instructions": "Is line 9 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 9 is the direct cause of the failure", "false": "line 9 is not the direct cause" }
+    },
+    "is_cause_10": {
+      "type": "noul",
+      "instructions": "Is line 10 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 10 is the direct cause of the failure", "false": "line 10 is not the direct cause" }
+    },
+    "is_cause_11": {
+      "type": "noul",
+      "instructions": "Is line 11 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 11 is the direct cause of the failure", "false": "line 11 is not the direct cause" }
+    },
+    "is_cause_12": {
+      "type": "noul",
+      "instructions": "Is line 12 of `logLines` the specific line that caused the CI job to fail — the direct root-cause line, not a symptom, a passing/unrelated line, or scaffolding around the failure?",
+      "criteria": { "true": "line 12 is the direct cause of the failure", "false": "line 12 is not the direct cause" }
+    }
+  }
+}

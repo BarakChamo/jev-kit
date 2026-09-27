@@ -1,0 +1,38 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "faq_question": "What is the refund window for annual plans?",
+    "verified_answer": "Annual plans can be refunded in full within 30 days of purchase. After 30 days, refunds are prorated for the unused months.",
+    "passages": {
+      "p1": "Our annual subscription is fully refundable for the first 30 days. Past that window we issue a prorated refund for remaining months.",
+      "p2": "Annual plans are non-refundable once activated; only monthly plans can be cancelled for a refund.",
+      "p3": "You can upgrade from a monthly to an annual plan at any time from the billing settings page."
+    }
+  },
+  "questions": {
+    "contradicts_p1": {
+      "type": "noul",
+      "instructions": "Does the text in `passages.p1` assert a fact about the refund window for annual plans that conflicts with the fact stated in `verified_answer`? Judge only what `passages.p1` itself asserts, not what it omits.",
+      "criteria": {
+        "true": "passages.p1 states a refund rule for annual plans that is factually incompatible with verified_answer",
+        "false": "passages.p1 is consistent with verified_answer, silent on the refund window, or only paraphrases it"
+      }
+    },
+    "contradicts_p2": {
+      "type": "noul",
+      "instructions": "Does the text in `passages.p2` assert a fact about the refund window for annual plans that conflicts with the fact stated in `verified_answer`? Judge only what `passages.p2` itself asserts, not what it omits.",
+      "criteria": {
+        "true": "passages.p2 states a refund rule for annual plans that is factually incompatible with verified_answer",
+        "false": "passages.p2 is consistent with verified_answer, silent on the refund window, or only paraphrases it"
+      }
+    },
+    "contradicts_p3": {
+      "type": "noul",
+      "instructions": "Does the text in `passages.p3` assert a fact about the refund window for annual plans that conflicts with the fact stated in `verified_answer`? Judge only what `passages.p3` itself asserts, not what it omits.",
+      "criteria": {
+        "true": "passages.p3 states a refund rule for annual plans that is factually incompatible with verified_answer",
+        "false": "passages.p3 is consistent with verified_answer, silent on the refund window, or only paraphrases it"
+      }
+    }
+  }
+}

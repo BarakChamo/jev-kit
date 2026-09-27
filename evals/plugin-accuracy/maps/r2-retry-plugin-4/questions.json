@@ -1,0 +1,28 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "repo": "acme/checkout-service",
+    "branch": "main",
+    "runner": "gh-hosted-ubuntu-22.04-4core",
+    "attempt_number": 1,
+    "max_attempts": 3,
+    "job_name": "test",
+    "log_tail": "...(last 200 lines of job log, newest last)...\nConnecting to registry.npmjs.org...\nnpm ERR! network request to https://registry.npmjs.org/left-pad failed, reason: connect ETIMEDOUT 104.16.0.35:443\nnpm ERR! network This is a problem related to network connectivity.\nError: Process completed with exit code 1."
+  },
+  "questions": {
+    "failure_cause": {
+      "type": "choice",
+      "instructions": "Read `log_tail`. Classify the single most likely root cause of this CI job's failure. Base the answer only on evidence in `log_tail`, not on `repo`, `branch`, `runner`, `attempt_number` or `job_name`.",
+      "criteria": {
+        "flaky_test": "a test failed in a way consistent with nondeterminism: timing/race condition, order-dependence, a known-flaky assertion, or a result that differs from what the code logically implies (e.g. an intermittent network call inside the test itself)",
+        "transient_infra": "the failure is in tooling/infrastructure around the job rather than the job's own code or tests: network timeout or DNS failure reaching a registry/service, runner lost connectivity, container/daemon crashed, temporary 5xx from an external dependency, disk or runner provisioning error",
+        "deterministic_code_defect": "a compile error, syntax error, type error, lint failure, or a test assertion failure that reflects the code's actual logic and would fail identically on an unchanged retry",
+        "resource_limit_exceeded": "the job's own process exceeded a configured resource limit: out-of-memory in the job (not the runner), disk quota exceeded by job output, or the job exceeded its time limit under normal (non-infra) load",
+        "dependency_or_environment_missing": "a required package, binary, environment variable, secret value, or config file was missing or mismatched (not merely slow/unreachable)",
+        "auth_or_permission_error": "the failure is an authentication or authorization error: invalid/expired token, revoked credential, insufficient permissions",
+        "cancelled_or_external": "the job was cancelled (by a user or a newer push) or failed only because an upstream/dependent job it relies on failed",
+        "unknown": "log_tail does not contain enough evidence to determine which of the above applies"
+      }
+    }
+  }
+}

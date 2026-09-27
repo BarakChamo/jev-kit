@@ -1,0 +1,16 @@
+{
+  "name": "jev",
+  "owner": {
+    "name": "Barak Chamo"
+  },
+  "metadata": {
+    "description": "Measured best practices and evaluation tools for Jev (TypeSafe System One) question maps."
+  },
+  "plugins": [
+    {
+      "name": "jev",
+      "source": "./plugin",
+      "description": "Measured guidance for writing Jev (System One) question maps and evaluating them: design rules backed by a 57-suite study, plus an offline audit that finds the defects static review misses."
+    }
+  ]
+}

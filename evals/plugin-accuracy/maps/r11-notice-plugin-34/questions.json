@@ -1,0 +1,94 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement commences on the Effective Date of March 1, 2024 (\"Effective Date\") for an initial term of twelve (12) months (\"Initial Term\"). Upon expiration of the Initial Term, this Agreement shall automatically renew for successive twelve (12) month periods (each a \"Renewal Term\") unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice under this Section must be delivered by email to the address on file or by certified mail.",
+    "cancellation_email_text": "Hi team, we've decided not to continue with the service after our current term. Please treat this email as our formal notice of non-renewal and cancel our subscription at the end of the current term. Thanks, Alex",
+    "received_date": "2025-11-15"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause that automatically renews the agreement for another term unless the customer gives notice?",
+      "criteria": {
+        "true": "`contract_text` states the term renews automatically absent notice of non-renewal or cancellation",
+        "false": "`contract_text` has no automatic renewal clause (e.g. it is month-to-month at will, or ends outright at term end)"
+      }
+    },
+    "effective_year": {
+      "type": "choice",
+      "instructions": "What year does the Effective Date / Commencement Date stated in `contract_text` fall in?",
+      "criteria": {
+        "2015": "2015", "2016": "2016", "2017": "2017", "2018": "2018", "2019": "2019",
+        "2020": "2020", "2021": "2021", "2022": "2022", "2023": "2023", "2024": "2024",
+        "2025": "2025", "2026": "2026",
+        "unclear": "no effective/commencement date is stated in `contract_text`"
+      }
+    },
+    "effective_month": {
+      "type": "choice",
+      "instructions": "What calendar month does the Effective Date / Commencement Date stated in `contract_text` fall in?",
+      "criteria": {
+        "1": "January", "2": "February", "3": "March", "4": "April", "5": "May", "6": "June",
+        "7": "July", "8": "August", "9": "September", "10": "October", "11": "November", "12": "December",
+        "unclear": "no effective/commencement date is stated in `contract_text`"
+      }
+    },
+    "effective_day": {
+      "type": "choice",
+      "instructions": "What day of the month is the Effective Date / Commencement Date stated in `contract_text`?",
+      "criteria": {
+        "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
+        "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20",
+        "21": "21", "22": "22", "23": "23", "24": "24", "25": "25", "26": "26", "27": "27", "28": "28", "29": "29", "30": "30", "31": "31",
+        "unclear": "no effective/commencement date is stated in `contract_text`"
+      }
+    },
+    "initial_term_length": {
+      "type": "choice",
+      "instructions": "How long is the Initial Term stated in `contract_text` (the first term, before any renewal)?",
+      "criteria": {
+        "1_month": "one month", "3_months": "three months", "6_months": "six months",
+        "12_months": "twelve months / one year", "24_months": "twenty-four months / two years",
+        "36_months": "thirty-six months / three years", "60_months": "sixty months / five years",
+        "other_or_unclear": "a different length, or the initial term length is not stated in `contract_text`"
+      }
+    },
+    "renewal_term_length": {
+      "type": "choice",
+      "instructions": "How long is each Renewal Term stated in `contract_text` (the term that repeats after the Initial Term ends)?",
+      "criteria": {
+        "same_as_initial_term": "`contract_text` states renewal terms are the same length as the Initial Term",
+        "1_month": "one month", "3_months": "three months", "6_months": "six months",
+        "12_months": "twelve months / one year", "24_months": "twenty-four months / two years",
+        "36_months": "thirty-six months / three years", "60_months": "sixty months / five years",
+        "no_automatic_renewal": "`contract_text` does not provide for automatic renewal",
+        "other_or_unclear": "a different length, or the renewal term length is not stated in `contract_text`"
+      }
+    },
+    "notice_period": {
+      "type": "choice",
+      "instructions": "How much advance notice, before the end of the then-current term, does `contract_text` require a customer to give to prevent automatic renewal?",
+      "criteria": {
+        "no_notice_required": "`contract_text` states the customer may cancel at any time or requires no advance notice to prevent renewal",
+        "15_days": "15 days", "30_days": "30 days", "45_days": "45 days", "60_days": "60 days", "90_days": "90 days",
+        "other_or_unclear": "a different notice period, or no notice period is stated in `contract_text`"
+      }
+    },
+    "allows_email_notice": {
+      "type": "noul",
+      "instructions": "Does the notice provision in `contract_text` permit a customer to give notice of cancellation or non-renewal by email?",
+      "criteria": {
+        "true": "the notice provision in `contract_text` allows email as a valid delivery method (either naming email specifically, or allowing any written notice without restricting the medium)",
+        "false": "the notice provision in `contract_text` requires a delivery method that excludes email (e.g. certified mail only, in-person, a specific portal)"
+      }
+    },
+    "email_states_cancellation": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly communicate the customer's intent to cancel the contract or not renew it?",
+      "criteria": {
+        "true": "`cancellation_email_text` clearly states the customer wants to cancel or not renew",
+        "false": "`cancellation_email_text` is ambiguous, conditional, or does not clearly state an intent to cancel or not renew"
+      }
+    }
+  }
+}

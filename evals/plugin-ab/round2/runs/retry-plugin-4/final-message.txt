@@ -1,0 +1,9 @@
+Both files are in place at `retry-plugin-4/`.
+
+**Design summary:**
+
+- **`questions.json`** — one question, `failure_cause`, a `choice` over 8 mutually-exclusive classes (`flaky_test`, `transient_infra`, `deterministic_code_defect`, `resource_limit_exceeded`, `dependency_or_environment_missing`, `auth_or_permission_error`, `cancelled_or_external`, `unknown`). The state carries only what the question needs — `log_tail` — plus metadata for code-side use. Instructions pin the question to `log_tail` specifically and exclude the other state fields as evidence (rule 4), and `unknown` is a built-in abstain option (rule 9). This is a single-question ask because classifying mutually-exclusive causes is exactly the "classify classes → one `choice`" case (rule 11); asking overlapping noul flags for the same judgment would just be redundant asks.
+
+- **`decide.ts`** — everything else is a policy table in code, per rule 6: "retry iff cause ∈ {flaky, infra}" is definitionally a function of the class, so it's derived, not asked. Max-attempts is a plain numeric comparison from metadata (derive, rule 5/12). The gate uses `probabilities[chosen]`, not the `confidence` scalar (rule 8), with a 0.7 threshold; anything below that or `unknown` escalates rather than defaulting to retry — low confidence only ever tightens the decision (rule 9).
+
+Not yet done, per the skill: this hasn't been measured against labelled cases. Before trusting it in production, run `jev-eval` on ~30 labelled failed jobs (skewed toward the ambiguous ones — mixed infra/test-flake logs) and check the confidently-wrong queue, especially around the `deterministic_code_defect` vs `flaky_test` boundary, which is the one most likely to need a state fix (e.g. a known-flaky-test-name list) rather than a wording fix.

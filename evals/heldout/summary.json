@@ -1,0 +1,532 @@
+[
+ {
+  "map": "alert-routing-base-1",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-base-1-sonnet",
+  "task": "alert-routing",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-base-2",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-base-2-sonnet",
+  "task": "alert-routing",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-base-3",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-base-3-sonnet",
+  "task": "alert-routing",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-base-4",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-plugin-1",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-plugin-1-sonnet",
+  "task": "alert-routing",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-plugin-2",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-plugin-2-sonnet",
+  "task": "alert-routing",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-plugin-3",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-plugin-3-sonnet",
+  "task": "alert-routing",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "alert-routing-plugin-4",
+  "task": "alert-routing",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-base-1",
+  "task": "expense-review",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.9,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-base-1-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 0.9666666666666667,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-base-2",
+  "task": "expense-review",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 0.8666666666666667,
+  "wrong": 0,
+  "hacc": 0.8,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-base-2-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 0.8666666666666667,
+  "wrong": 0,
+  "hacc": 0.9,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-base-3",
+  "task": "expense-review",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 0.9333333333333333,
+  "wrong": 0,
+  "hacc": 0.85,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-base-3-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 0.9333333333333333,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-base-4",
+  "task": "expense-review",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 0.9666666666666667,
+  "wrong": 0,
+  "hacc": 0.9,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-plugin-1",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-plugin-1-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-10",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin (final)",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-plugin-11",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin (final)",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-plugin-12",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin (final)",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-2",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-plugin-2-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.9,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-3",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-3-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 0.9666666666666667,
+  "wrong": 0.03333333333333333,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-4",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 0.9333333333333333,
+  "wrong": 0.06666666666666667,
+  "hacc": 0.5,
+  "hwrong": 0.5
+ },
+ {
+  "map": "expense-review-plugin-4-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "plugin (final)",
+  "acc": 0.9,
+  "wrong": 0.1,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-5",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 0.9666666666666667,
+  "wrong": 0.03333333333333333,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-5-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "plugin (final)",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-6",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 0.9,
+  "wrong": 0.1,
+  "hacc": 0.9,
+  "hwrong": 0.1
+ },
+ {
+  "map": "expense-review-plugin-6-sonnet",
+  "task": "expense-review",
+  "model": "sonnet",
+  "version": "plugin (final)",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "expense-review-plugin-7",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 0.7666666666666667,
+  "wrong": 0,
+  "hacc": 0.75,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-8",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 0.8333333333333334,
+  "wrong": 0.03333333333333333,
+  "hacc": 0.85,
+  "hwrong": 0.05
+ },
+ {
+  "map": "expense-review-plugin-9",
+  "task": "expense-review",
+  "model": "default",
+  "version": "plugin (final)",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 1,
+  "hwrong": 0
+ },
+ {
+  "map": "reply-exposure-base-1",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 0.9333333333333333,
+  "wrong": 0,
+  "hacc": 0.8,
+  "hwrong": 0.05
+ },
+ {
+  "map": "reply-exposure-base-1-sonnet",
+  "task": "reply-exposure",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 0.8,
+  "wrong": 0.06666666666666667,
+  "hacc": 0.75,
+  "hwrong": 0.05
+ },
+ {
+  "map": "reply-exposure-base-2",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 0.8,
+  "wrong": 0,
+  "hacc": 0.75,
+  "hwrong": 0.1
+ },
+ {
+  "map": "reply-exposure-base-2-sonnet",
+  "task": "reply-exposure",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 0.8666666666666667,
+  "wrong": 0.03333333333333333,
+  "hacc": 0.7,
+  "hwrong": 0.1
+ },
+ {
+  "map": "reply-exposure-base-3",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 0.9333333333333333,
+  "wrong": 0,
+  "hacc": 0.7,
+  "hwrong": 0.1
+ },
+ {
+  "map": "reply-exposure-base-3-sonnet",
+  "task": "reply-exposure",
+  "model": "sonnet",
+  "version": "no plugin",
+  "acc": 0.8666666666666667,
+  "wrong": 0,
+  "hacc": 0.75,
+  "hwrong": 0.1
+ },
+ {
+  "map": "reply-exposure-base-4",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "no plugin",
+  "acc": 0.8666666666666667,
+  "wrong": 0,
+  "hacc": 0.8,
+  "hwrong": 0.1
+ },
+ {
+  "map": "reply-exposure-plugin-1",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.8,
+  "hwrong": 0.05
+ },
+ {
+  "map": "reply-exposure-plugin-1-sonnet",
+  "task": "reply-exposure",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 0.9333333333333333,
+  "wrong": 0.06666666666666667,
+  "hacc": 0.85,
+  "hwrong": 0.1
+ },
+ {
+  "map": "reply-exposure-plugin-2",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 0.9333333333333333,
+  "wrong": 0,
+  "hacc": 0.85,
+  "hwrong": 0.05
+ },
+ {
+  "map": "reply-exposure-plugin-2-sonnet",
+  "task": "reply-exposure",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.8,
+  "hwrong": 0.1
+ },
+ {
+  "map": "reply-exposure-plugin-3",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.95,
+  "hwrong": 0
+ },
+ {
+  "map": "reply-exposure-plugin-3-sonnet",
+  "task": "reply-exposure",
+  "model": "sonnet",
+  "version": "plugin v3 + rule 5 refined",
+  "acc": 1,
+  "wrong": 0,
+  "hacc": 0.85,
+  "hwrong": 0
+ },
+ {
+  "map": "reply-exposure-plugin-4",
+  "task": "reply-exposure",
+  "model": "default",
+  "version": "plugin v3",
+  "acc": 0.9333333333333333,
+  "wrong": 0,
+  "hacc": 0.9,
+  "hwrong": 0.05
+ }
+]

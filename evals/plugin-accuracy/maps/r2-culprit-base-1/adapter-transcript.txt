@@ -1,0 +1,7 @@
+`adapter.ts` is written. Summary of the implementation:
+
+- **`buildState(input)`** — builds `Job`/`LogLine[]` from the canonical input (plain renames: `job_name→name`, `repo→repo`, 1-indexing `log_lines`) and calls `decide.ts`'s own `buildRequest()` to get `.state`, so candidate filtering matches production exactly. `runId`/`command` aren't in the input, so they fall back to the example state's literal values (`"run_9f21"` / `"pnpm build"`), per the spec.
+- **`questions(input)`** — same `buildRequest()` call, returns `.questions`, reusing `decide.ts`'s own instructions/criteria builder rather than duplicating it.
+- **`decide(input, answers)`** — takes the API answer shapes, adds the missing `probability` field on the noul answer (`noul ? 1 : 0`, mechanical), calls `decide.ts`'s `decide()`, and maps its `Verdict` to `{ culprit_lines: number[] }` (0-based), handling both `pinpoint` (single line) and `ranked` (shortlist) modes.
+
+One caveat: I couldn't run the requested `npx tsx -e "import('./adapter.ts')"` check — every `node`/`npx` invocation in this sandbox, even trivial ones like `node -e "console.log(1+1)"`, was rejected with "This command requires approval" (not a script error, an environment-wide execution restriction). I reviewed the file manually for syntax correctness (balanced braces, valid import/export forms, matching names from `decide.ts`) and it looks clean, but you may want to run that check yourself to be sure.

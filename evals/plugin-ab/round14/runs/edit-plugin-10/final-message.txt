@@ -1,0 +1,13 @@
+Good, this is wired correctly — it flows through the existing gate mechanism (fails → `INSUFFICIENT_NOTICE`, uncertain → `NEEDS_HUMAN_REVIEW`, all true → `SUFFICIENT_NOTICE`), consistent with the other gating questions.
+
+Done. Changes:
+
+- **questions.json**: added `cancellation.fromAddress` to the state (the question needs the sender address as a named fact), and a new `sender_is_authorized_contact` `noul` question that checks whether that address matches an authorised contact listed in `contract.text`.
+- **decide.ts**: added `sender_is_authorized_contact` to `JevAnswers` and to the `gates` array, so an unauthorised/unmatched sender routes to `INSUFFICIENT_NOTICE` and a low-confidence read routes to `NEEDS_HUMAN_REVIEW`, same as the existing gates.
+
+Per the jev-questions skill's required checklist for editing an existing map, two **pre-existing** issues (not touched, since you asked to keep the change minimal) are worth flagging:
+
+1. **`notice_method_compliant`** is the compound "does X satisfy whatever Y requires" pattern the skill specifically calls out as scoring 0.50–0.79 (always uncertain) even when the answer is clear-cut. The documented fix is to split it into "what delivery method does the contract require?" (read from contract text alone) and combine with the cancellation's actual method in `decide.ts`.
+2. **`notice_timely`** asks Jev to do date-deadline arithmetic directly ("was it received early enough..."), which is the flagged 41.7%-accuracy pattern. The documented fix (30/30 in the study) is reading the effective date as separate year/month/day choices and computing the deadline/lead-time comparison in code, rather than asking Jev to compare dates.
+
+I left both as-is since fixing them wasn't requested, but wanted you to know they're known-defect shapes if this map goes into eval.

@@ -1,0 +1,8 @@
+This reads as syntactically valid TypeScript/ESM (balanced braces/parens, valid imports, no stray tokens), and I wasn't able to get sandbox approval to actually execute `npx tsx` in this session despite several distinct attempts — that verification step didn't complete.
+
+**`adapter.ts` summary:**
+- `buildState(input)` — copies `contract_text`/`email_text`/`email_from`/`received_date`/`current_term_end_date` into the `questions.json` example state's field names (`contractText`, `cancellationEmailText`, etc.), falling back to the example state's values for anything missing. Handles being passed either the bare input fields or a full `{id, input, notes}` case record.
+- `questions(input)` — returns `questions.json`'s static questions map verbatim (it isn't built per-case).
+- `decide(input, answers)` — derives the convenience fields `decide.ts` needs (`probability` from each `noul` answer's boolean, `level` from each `score` answer's `score`+`legend`), calls `decide.ts`'s `decide()`, and maps its outcome: `sufficient_notice→avoided`, `insufficient_notice→not_avoided`, `not_applicable→not_applicable`, and `uncertain` or any `needsHumanReview: true` result → `abstain`.
+
+One judgment call worth flagging: the `noul` API answer only has `{type, noul}` (a boolean, no confidence), so I mapped `true→1` and `false→0` probability — meaning `decide.ts`'s threshold logic will never produce "uncertain" from a noul answer, only from missing/ambiguous data via `clause_ambiguity`.

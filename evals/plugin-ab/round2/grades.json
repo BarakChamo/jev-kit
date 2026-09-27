@@ -1,0 +1,5 @@
+{"notice-196":{"P":"PARTIAL","S3":1},"notice-290":{"P":"PASS","S3":0},"notice-410":{"P":"PASS","S3":1},"notice-557":{"P":"PASS","S3":1},
+ "retry-192":{"P":"PARTIAL","S3":0},"retry-245":{"P":"PARTIAL","S3":0},"retry-651":{"P":"PASS","S3":1},"retry-929":{"P":"PASS","S3":1},
+ "contra2-289":{"P":"PASS","S3":1},"contra2-294":{"P":"PASS","S3":1},"contra2-562":{"P":"PASS","S3":1},"contra2-620":{"P":"PASS","S3":0},"contra2-701":{"P":"PASS","S3":1},"contra2-975":{"P":"PASS","S3":0},
+ "cheapest-563":{"P":"PASS","S3":0},"cheapest-576":{"P":"PASS","S3":1},"cheapest-673":{"P":"PASS","S3":0},"cheapest-899":{"P":"PASS","S3":1,"detector":1},"cheapest-977":{"P":"PASS","S3":1,"detector":1},"cheapest-986":{"P":"PASS","S3":0},
+ "culprit-587":{"P":"FAIL","S3":1},"culprit-624":{"P":"FAIL","S3":1},"culprit-728":{"P":"PARTIAL","S3":1},"culprit-744":{"P":"PARTIAL","S3":1},"culprit-912":{"P":"PARTIAL","S3":1},"culprit-923":{"P":"FAIL","S3":1}}

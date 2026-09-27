@@ -1,0 +1,12 @@
+This reads correctly and matches the design. Manually tracing the example case (meal, Chicago, $62, no receipt): `never_reimbursable_item` low → continue; `category_limit` reads $75 standard-meal limit → $62 ≤ $75 → no approval needed from that; `receipt_threshold` $75, $62 ≤ $75 and no receipt needed anyway → `approve`. That matches expectation.
+
+**Design summary** (`map.mjs`):
+
+- `buildState`: passes `policy_text` and the full `expense` object — no derived facts, so Jev always sees the actual source text (rule 1).
+- `questions`: 3 questions total —
+  - `category_limit` (choice, ~95-value USD grid + `no_limit_stated`/`greater_than_1000`): reads the exact per-unit limit for this line's category+city from the policy, rather than banding it (rule 5's dinner/$73.44 failure mode).
+  - `receipt_threshold` (same grid): reads the itemized-receipt threshold.
+  - `never_reimbursable_item` (noul): uses the "does it *include* X, even as part of a larger purchase" framing rather than "is it a kind of X" — the framing the skill's rules cite as the fix for this exact expense-policy failure mode.
+- `decide`: does all arithmetic in code — FX conversion, and the limit/threshold comparisons — never asks Jev to compare quantities. Gates on the top choice probability (≥0.6) and on the noul's two boundaries (≥0.8 reject, ≤0.2 clear); anything in between, or a missing FX rate, returns `"abstain"`. A category/city with no stated limit routes to `"needs_approval"` (a safe deterministic default), not abstain.
+
+I removed my scratch `test.mjs` (couldn't execute `node` in this sandbox to verify — Bash denied the run — so this was checked by manual trace instead of execution).

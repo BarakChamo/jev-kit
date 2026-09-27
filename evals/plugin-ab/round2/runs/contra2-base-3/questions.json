@@ -1,0 +1,60 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "faq": {
+      "id": "faq_142",
+      "question": "What is the maximum file size I can upload?",
+      "canonicalAnswer": "The maximum upload size is 500 MB per file on all plans.",
+      "lastUpdated": "2026-08-01"
+    },
+    "passages": [
+      {
+        "id": "p1",
+        "text": "Files larger than 100 MB will be rejected by the uploader.",
+        "source": "help-center/uploads-guide",
+        "retrievedAt": "2024-03-10"
+      },
+      {
+        "id": "p2",
+        "text": "You can upload files up to 500 MB regardless of your subscription tier.",
+        "source": "help-center/uploads-guide",
+        "retrievedAt": "2026-08-15"
+      },
+      {
+        "id": "p3",
+        "text": "Uploaded files are automatically scanned for viruses before processing.",
+        "source": "help-center/security-overview",
+        "retrievedAt": "2025-11-02"
+      }
+    ]
+  },
+  "questions": {
+    "p1": {
+      "type": "choice",
+      "instructions": "state.faq.canonicalAnswer is the current, correct answer to state.faq.question per the CMS. Compare it to the passage with id \"p1\" in state.passages. Judge whether that passage's claim about the same fact matches the canonical answer.",
+      "criteria": {
+        "consistent": "The passage states the same fact as the canonical answer (no material difference in numbers/policy).",
+        "stale": "The passage states a fact that contradicts the canonical answer (e.g. a different number, limit, or policy for the same topic).",
+        "unrelated": "The passage does not address the specific fact given in the canonical answer, so it cannot be judged consistent or contradictory."
+      }
+    },
+    "p2": {
+      "type": "choice",
+      "instructions": "state.faq.canonicalAnswer is the current, correct answer to state.faq.question per the CMS. Compare it to the passage with id \"p2\" in state.passages. Judge whether that passage's claim about the same fact matches the canonical answer.",
+      "criteria": {
+        "consistent": "The passage states the same fact as the canonical answer (no material difference in numbers/policy).",
+        "stale": "The passage states a fact that contradicts the canonical answer (e.g. a different number, limit, or policy for the same topic).",
+        "unrelated": "The passage does not address the specific fact given in the canonical answer, so it cannot be judged consistent or contradictory."
+      }
+    },
+    "p3": {
+      "type": "choice",
+      "instructions": "state.faq.canonicalAnswer is the current, correct answer to state.faq.question per the CMS. Compare it to the passage with id \"p3\" in state.passages. Judge whether that passage's claim about the same fact matches the canonical answer.",
+      "criteria": {
+        "consistent": "The passage states the same fact as the canonical answer (no material difference in numbers/policy).",
+        "stale": "The passage states a fact that contradicts the canonical answer (e.g. a different number, limit, or policy for the same topic).",
+        "unrelated": "The passage does not address the specific fact given in the canonical answer, so it cannot be judged consistent or contradictory."
+      }
+    }
+  }
+}

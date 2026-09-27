@@ -1,0 +1,11 @@
+Both files are updated. Summary of the change:
+
+- **`questions.json`**: added `cancellation.from` to the state (the fact the new question needs, per rule 1), and a new `sender_is_authorised_contact` noul question scoped to `state.contract.text` and `state.cancellation.from`, asking the present-tense fact of whether the sender is listed as an authorised notice contact.
+- **`decide.ts`**: added `sender_is_authorised_contact` to `JevAnswers` and to the gate list, so an unauthorised or uncertain sender now blocks `SUFFICIENT_NOTICE` the same way the other gates do.
+
+Per the skill's checklist for editing existing maps, I reviewed every existing question and found two pre-existing defects worth flagging (I left them unchanged since you asked for a minimal, scoped edit):
+
+1. **`notice_method_compliant`** (rule 6/8): asks Jev to compare the contract's delivery requirement against the email *and* judge compliance in one step — this is the exact compound-comparison pattern the skill's evidence shows scoring 0.50–0.79 instead of 0.90+. It should be split into "what does the contract require" and "what did the customer do," compared in code.
+2. **`notice_timely`** (rule 8/9): asks Jev to do date arithmetic and a deadline comparison internally. The skill's evidence shows this pattern scoring 64–75% vs. 30/30 when dates/terms are read as exact `choice`s and the deadline math is done in `decide.ts` instead.
+
+Neither was touched, but worth fixing before relying on this map for real decisions — happy to do it if you want.

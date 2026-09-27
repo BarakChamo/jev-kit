@@ -1,0 +1,12 @@
+Wrote both files to the scratchpad:
+
+**`questions.json`** — state carries the full contract text, full cancellation email text, `received_date`, and `current_term_end_date` (assumed known from billing/CRM, not extracted from the contract — Jev's typed questions can bucket a stated notice *period* but can't reliably pull an arbitrary absolute date out of free text). Five questions:
+- `auto_renewal_present` (noul) — is there an auto-renewal clause at all
+- `notice_period` (choice, bucketed to common day counts) — required advance notice
+- `notice_period_unit` (choice) — calendar vs. business days
+- `email_channel_allowed` (noul) — does the contract permit email as the notice channel
+- `email_content_sufficient` (noul) — does the email's own text clearly state cancellation
+
+**`decide.ts`** — the deadline comparison (`current_term_end_date` minus required notice, vs. `received_date`) is computed in code, not asked of Jev as one question, per the rule that Jev is unreliable at comparing separately-stated quantities. It gates each noul on the label's own probability (not the confidence scalar) and each choice on its top probability, routing anything uncertain to `needs_human_review` rather than ever defaulting to "sufficient."
+
+Next step per the skill would be `jev-eval` with ~30 labelled contract/email pairs before trusting this, but I didn't call the API as instructed.

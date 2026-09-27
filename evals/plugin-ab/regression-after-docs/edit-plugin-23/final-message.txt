@@ -1,0 +1,16 @@
+Done. Summary of changes:
+
+**questions.json**
+- Added `cancellation.fromAddress` to the state (the fact was missing entirely — needed it in state per rule 1 before any question could reference it).
+- Added one new question, `sender_is_authorised_contact` (type `noul`), scoped to `state.contract.text` and `state.cancellation.fromAddress`, asking whether the sender's address matches an authorised customer contact in the contract.
+
+**decide.ts**
+- Added `sender_is_authorised_contact` to `JevAnswers`.
+- Added it to the `gates` array, so a "false" (or uncertain) answer drives `INSUFFICIENT_NOTICE` / `NEEDS_HUMAN_REVIEW` the same way the other gates do — no other logic changed.
+
+Since I was editing an existing map, per the jev-questions skill I reviewed every existing question and found two pre-existing defects worth flagging (not fixed, since you asked for a minimal change):
+
+- **`notice_method_compliant`**: asks Jev to compare the contract's delivery requirements against the email and judge compliance in one step — this is the compound-comparison pattern the skill's rule 6/8 flags as a known accuracy risk (0.50–0.79 confidence band in the study). Splitting into "what does the contract require" + "what did the email do" and comparing in code would likely help.
+- **`notice_timely`**: asks Jev to do the date comparison itself ("was it received early enough to satisfy the deadline"). Rule 8/9 found this pattern only 64–75% accurate versus 30/30 when dates/terms are read as exact fields and the deadline math is done in code.
+
+Both currently sit in the `gates` array, so their weaknesses propagate straight into the verdict. Happy to fix either if you want — just flagging since they were already in the map.

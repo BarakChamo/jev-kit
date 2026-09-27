@@ -1,0 +1,1 @@
+Built `map.mjs` with a single Jev `noul` question that compares `draft_reply` against the recipient's own identifiers, explicitly excluding company contact info and staff first names. `decide` thresholds the returned probability (≥0.7 → yes, ≤0.3 → no, otherwise → abstain) so ambiguous cases get routed to a human rather than auto-decided.

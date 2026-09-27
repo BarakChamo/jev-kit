@@ -1,0 +1,9 @@
+I've written `adapter.ts`, but I'm unable to execute `node`/`npx` in this sandbox to verify it loads — every execution attempt is stuck pending approval (even plain `node script.js`), so I can't complete that check myself right now. You may need to approve the command in the app, or I can skip runtime verification and rely on manual review.
+
+Manual review of the file: it only uses `node:fs`, `node:path`, `node:url` (builtins), relative `.ts`/`.json` imports, standard ESM syntax, no exotic TS features (no enums/decorators) — this should load cleanly under `tsx` or `node --experimental-strip-types`. Summary of what it does:
+
+- **`buildState(input)`** — maps `repo/branch/runner/attempt_number/max_attempts` directly, builds `logTail` from `log_lines` (or splits `log_tail` if `log_lines` absent), truncated to last 200 lines, falling back to `questions.json`'s example state for any missing field.
+- **`questions(input)`** — returns `questions.json`'s `questions` map verbatim (it's static, not built per-case).
+- **`decide(input, answers)`** — converts the raw API answer shapes into what `decide.ts` expects: `noul` → `probability` (used as-is if numeric, else boolean→1/0), score's `score` string → `level`; `choice` passes through unchanged (its shape already matches). Calls `decide.ts`'s `decide()` and maps its boolean `retry` to `"yes"`/`"no"` (there's no escalate/unknown path in `decide.ts`, so `"abstain"` is only a defensive fallback that can't currently trigger).
+
+Want me to retry the verification command, or would you like to run it on your end?

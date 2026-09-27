@@ -1,0 +1,10 @@
+**A caveat worth flagging up front:** "which log line caused this" is the single weakest pattern measured for Jev — 65–67.5% accuracy at 0.88 mean confidence, across every encoding tried in the underlying study. So I didn't build an auto-pointer.
+
+What's in the two files:
+- **questions.json** — example state + a `noul` question per *candidate* line ("does this line name the actual cause, vs. a symptom/retry/summary"), scoped to one line index each.
+- **decide.ts**:
+  - `selectCandidates` — regex pre-filter (error/exception/assert/fail/exit-code/stack-frame patterns) narrows 200 lines to ≤30 candidates before Jev ever sees them, falling back to the log tail if nothing matches.
+  - `buildQuestions` — generates the per-candidate `cause_<i>` noul questions.
+  - `decide` — ranks candidates by `P(true)`, and only reports a `singleCulprit` when the top probability clears 0.75 *and* beats the runner-up by ≥0.2 margin; otherwise it returns a top-3 `shortlist` for a developer to glance at.
+
+Before wiring this into the CI pipeline for real: label ~30 failures (half genuinely ambiguous) with the actual culprit line and run them through `jev-eval` to check where the confident/margin thresholds should actually sit — don't trust the 0.75/0.2 gate values above, they're placeholders, not measured.

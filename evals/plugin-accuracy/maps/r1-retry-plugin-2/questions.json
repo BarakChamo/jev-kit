@@ -1,0 +1,33 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "repo": "acme/checkout-service",
+    "branch": "main",
+    "runner": "ubuntu-22.04-4core",
+    "attempt": 2,
+    "max_attempts": 3,
+    "log_tail": "Run npm test\n...\nFetching https://registry.npmjs.org/lodash: ETIMEDOUT\nnpm ERR! network request to https://registry.npmjs.org/lodash failed, reason: connect ETIMEDOUT 104.16.0.35:443\nnpm ERR! A complete log of this run can be found in: /home/runner/.npm/_logs/2026-09-25T10_02_11_123Z-debug-0.log\nError: Process completed with exit code 1."
+  },
+  "questions": {
+    "failure_cause": {
+      "type": "choice",
+      "instructions": "Classify the root cause of the CI job failure using the last 200 log lines in `log_tail`, for the job identified by `repo`, `branch`, `runner`, and `attempt` in the state.",
+      "criteria": {
+        "infra_transient": "log_tail shows a failure caused by infrastructure outside the job's own code or tests: network errors, DNS failures, connection resets/timeouts, package-registry or container-registry unavailability, runner provisioning failures, out-of-memory or disk-space exhaustion, or a CI platform outage message.",
+        "flaky_test": "log_tail shows a test failing in a way that points to non-determinism: a race condition, a timing/ordering assertion, an explicit flaky/intermittent marker, or a test whose own retry mechanism almost passed.",
+        "deterministic_code_failure": "log_tail shows the job failing to build or lint: a compile error, syntax error, type error, or lint/static-analysis failure that will reproduce on every attempt against this code.",
+        "deterministic_test_failure": "log_tail shows a test assertion failing in a way tied to the code under test (wrong value, wrong behavior, snapshot mismatch) with no sign of timing or environment involvement.",
+        "environment_config": "log_tail shows a failure caused by missing or invalid configuration: a missing environment variable, invalid or expired credentials, or a permissions/authorization error that will not change on retry.",
+        "unknown": "log_tail does not contain enough information to determine which of the above applies."
+      }
+    },
+    "cause_visible_in_log": {
+      "type": "noul",
+      "instructions": "Does `log_tail` contain the specific error, exception, or failing assertion that caused the job to fail?",
+      "criteria": {
+        "true": "log_tail shows the specific underlying error, exception, or failing assertion",
+        "false": "log_tail shows only a generic wrapper or summary message (e.g. 'Process completed with exit code 1', a truncated stack, a bare 'job failed') with no specific underlying error visible"
+      }
+    }
+  }
+}

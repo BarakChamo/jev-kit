@@ -1,0 +1,68 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "MASTER SUBSCRIPTION AGREEMENT ... This Agreement has an initial term of twelve (12) months commencing on January 1, 2025 (the 'Effective Date'). Upon expiration of the initial term, this Agreement shall automatically renew for successive twelve (12) month periods unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice under this Section must be delivered by email to legal@vendor.example or by certified mail to the address in Section 14. ...",
+    "cancellation_email_text": "Hi team, we'd like to cancel our subscription and not renew for another year. Please confirm receipt. Thanks, Jordan (Acme Co.)",
+    "email_received_date": "2026-08-10"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause that automatically renews the agreement for another term unless the customer gives notice?",
+      "criteria": {
+        "true": "the contract auto-renews absent timely notice of non-renewal",
+        "false": "the contract has no auto-renewal clause (e.g. it expires on its own, or is month-to-month with no notice requirement)"
+      }
+    },
+    "notice_method_valid": {
+      "type": "noul",
+      "instructions": "Does `contract_text` permit cancellation/non-renewal notice to be given by the method used to send `cancellation_email_text` (i.e. email)? Answer true if the contract allows email as a valid method (either specifically, or by not restricting notice to another exclusive method), false if the contract requires a different method (e.g. certified mail only, a signed form only) and excludes email.",
+      "criteria": {
+        "true": "email is an allowed method of notice under the contract",
+        "false": "the contract requires a different, exclusive method and email does not satisfy it"
+      }
+    },
+    "states_cancellation_intent": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly state the customer's intent to cancel or not renew the contract, as opposed to some other request (e.g. a billing question, a pause request, or general feedback)?",
+      "criteria": {
+        "true": "the email clearly communicates intent to cancel/not renew",
+        "false": "the email does not clearly communicate that intent"
+      }
+    },
+    "claims_earlier_notice": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` assert that the customer already gave notice of cancellation or non-renewal on some earlier occasion (e.g. a prior call, letter, or conversation), predating `email_received_date`?",
+      "criteria": {
+        "true": "the email claims an earlier notice was already given",
+        "false": "the email makes no such claim; it is treated as the notice itself"
+      }
+    },
+    "required_notice_bucket": {
+      "type": "choice",
+      "instructions": "How much advance notice, before the renewal/term-end date, does `contract_text` require the customer to give in order to prevent automatic renewal?",
+      "criteria": {
+        "none": "the contract auto-renews but does not require any minimum advance notice period",
+        "up_to_15_days": "the required notice period is 15 days or less",
+        "16_to_30_days": "the required notice period is 16 to 30 days",
+        "31_to_60_days": "the required notice period is 31 to 60 days",
+        "61_to_90_days": "the required notice period is 61 to 90 days",
+        "over_90_days": "the required notice period is more than 90 days",
+        "unspecified": "the contract has an auto-renewal clause but does not state a specific required notice period"
+      }
+    },
+    "actual_notice_bucket": {
+      "type": "choice",
+      "instructions": "Using the renewal/term-end date stated in `contract_text` and the date `email_received_date`, how far before that renewal/term-end date was the email received?",
+      "criteria": {
+        "on_or_after": "the email was received on or after the renewal/term-end date",
+        "up_to_15_days": "the email was received 1 to 15 days before the renewal/term-end date",
+        "16_to_30_days": "the email was received 16 to 30 days before the renewal/term-end date",
+        "31_to_60_days": "the email was received 31 to 60 days before the renewal/term-end date",
+        "61_to_90_days": "the email was received 61 to 90 days before the renewal/term-end date",
+        "over_90_days": "the email was received more than 90 days before the renewal/term-end date",
+        "unknown": "`contract_text` does not state an identifiable renewal/term-end date"
+      }
+    }
+  }
+}

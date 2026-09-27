@@ -1,0 +1,8 @@
+The JSON is well-formed by construction (single write, matching braces/keys); no further validation tooling is available in this sandbox without approval, and it's not worth prompting for.
+
+Both files are in the scratchpad directory:
+
+- **questions.json** — example state (contract text, cancellation email text, `received_date`) plus 6 questions: `clear_intent_to_cancel` and `auto_renewal_clause` (noul guards), `deadline_determinable` (noul guard on whether the contract even gives Jev enough to compute a deadline), `required_notice_bucket` / `actual_notice_bucket` (matching bucketed `choice` questions so the notice-period comparison happens in code, per the deadline-comparison rule), and `notice_method_compliant` (noul, catches contracts that require a specific notice channel).
+- **decide.ts** — `decide(answers)` gates on each guard's probability (never the `confidence` scalar), compares the two buckets by ordinal index, and returns one of `NO_AUTO_RENEWAL_CLAUSE` / `NOTICE_SUFFICIENT` / `NOTICE_INSUFFICIENT` / `NEEDS_HUMAN_REVIEW` — low confidence anywhere routes to human review rather than silently passing.
+
+Next step before trusting this: run it through `jev-eval` on ~30 labelled (contract, cancellation, correct-outcome) cases to tune the thresholds and bucket boundaries — I didn't call the API per your instructions.

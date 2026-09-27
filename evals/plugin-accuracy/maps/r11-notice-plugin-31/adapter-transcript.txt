@@ -1,0 +1,6 @@
+This looks syntactically sound. I attempted to verify with `npx tsx -e` as instructed, but this sandbox blocks all code-execution commands (`node -e`, `node script.mjs`, `npx ...`) requiring approval that isn't available here — only file read/list/write/rm operations go through. I cleaned up the scratch test file I created for that attempt.
+
+Summary of `adapter.ts`:
+- `buildState(input)` — copies `contract_text`, renames `email_text` → `cancellation_email_text`, copies `received_date`, matching questions.json's example state fields.
+- `questions(input)` — returns questions.json's static questions map verbatim (decide.ts has no per-case question builder to reuse).
+- `decide(input, answers)` — converts each API noul answer `{type, noul, confidence?, probabilities?}` into the plain P(true) number decide.ts expects (preferring `probabilities.true`, falling back to `noul`/`confidence`), passes choice answers through as-is, calls `decideNotice(input.received_date, ...)`, and maps its outcome to `avoided` / `not_avoided` (also for `INVALID_METHOD`, since an email notice barred by the contract doesn't avoid renewal) / `not_applicable` / `abstain`.

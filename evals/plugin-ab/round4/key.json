@@ -1,0 +1,20 @@
+{
+ "compile-365": "compile-base-1",
+ "compile-397": "compile-base-2",
+ "compile-801": "compile-base-3",
+ "compile-800": "compile-plugin-1",
+ "compile-921": "compile-plugin-2",
+ "compile-969": "compile-plugin-3",
+ "fanout-290": "fanout-base-1",
+ "fanout-767": "fanout-base-2",
+ "fanout-336": "fanout-base-3",
+ "fanout-782": "fanout-plugin-1",
+ "fanout-250": "fanout-plugin-2",
+ "fanout-990": "fanout-plugin-3",
+ "handoff-330": "handoff-base-1",
+ "handoff-756": "handoff-base-2",
+ "handoff-851": "handoff-base-3",
+ "handoff-291": "handoff-plugin-1",
+ "handoff-233": "handoff-plugin-2",
+ "handoff-172": "handoff-plugin-3"
+}

@@ -1,0 +1,11 @@
+Both files are in the project directory now (`questions.json`, `decide.ts`).
+
+**`questions.json`** — example state (user question, the matched FAQ's canonical CMS answer, two retrieved passages) plus one `choice` question per passage (`p1_status`, `p2_status`): `consistent` / `contradicts` / `unrelated` against `matched_faq.canonical_answer`.
+
+**`decide.ts`**:
+- `buildRequest()` generates that same per-passage question shape for any number of passages, so the whole batch of retrieved passages for one query goes in a single Jev call (state is paid for once, not per passage).
+- `decide()` gates on `probabilities.contradicts`, not the confidence scalar: ≥0.7 → drop, 0.4–0.7 → send for human review (never silently kept), below → keep. Also surfaces the top-two labels for anyone reviewing flagged passages.
+
+Design choices per the skill's rules: the canonical answer lives in the state as the ground truth (rule 1); each question is scoped to its own `passages.pN.text` field (rule 4); it's a present-tense comparison, not "would this be wrong" (rule 3); and `unrelated` acts as an abstain option so passages that just don't overlap the FAQ's claim aren't miscoded as contradictions (rule 9).
+
+Not measured yet — before wiring this into the pipeline, run `jev-eval` against ~30 labelled (question, canonical answer, passage) triples, weighted toward genuinely stale-but-plausible passages, to pick the real thresholds and catch any confidently-wrong cases.

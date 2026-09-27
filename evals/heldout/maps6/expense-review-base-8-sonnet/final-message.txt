@@ -1,0 +1,8 @@
+The code reads correctly on manual review — logic is straightforward and syntax is standard ES module JS with no obvious errors.
+
+**Design summary** (`map.mjs`):
+- `buildState`: deterministically converts the expense amount to USD via `fx_to_usd`; no LLM math.
+- `questions`: asks Jev 4 targeted judgment questions against the raw policy text — `prohibited_expense`, `receipt_required_and_missing`, `within_limit` (each `choice`: yes/no/unclear), and `needs_human` (`noul`, catches description/category mismatches, circumvention, or policy gaps the other three don't cover).
+- `decide`: combines answers deterministically — reject on prohibited, `needs_approval` on missing required receipt or over-limit, `approve` only when all three checks are clean; abstains whenever currency/amount data is unusable, any answer is missing/`"unclear"`, confidence is below 0.6, or `needs_human` probability ≥ 0.5.
+
+This keeps FX math and combination logic auditable in plain code, uses Jev only for the genuinely fuzzy natural-language judgment (reading the policy prose), and abstains rather than guessing on anything ambiguous or low-confidence — appropriate given the volume and the cost of a wrong auto-decision.

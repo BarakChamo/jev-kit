@@ -1,0 +1,53 @@
+{
+  "model": "typesafe-ai/jev",
+
+  "//example_state_note": "Real requests carry all ~200 lines of the failing job's log tail, unfiltered. This example shows 14 for readability; `culprit_line.criteria` always has one entry per line in `lines`, plus `unclear`.",
+
+  "state": {
+    "job": {
+      "name": "test-integration",
+      "workflow": "ci.yml",
+      "conclusion": "failure"
+    },
+    "lines": [
+      { "n": 1, "text": "Run npm ci" },
+      { "n": 2, "text": "added 812 packages in 9s" },
+      { "n": 3, "text": "Run npm test" },
+      { "n": 4, "text": "> jest --ci" },
+      { "n": 5, "text": "PASS src/utils/date.test.ts" },
+      { "n": 6, "text": "FAIL src/api/orders.test.ts" },
+      { "n": 7, "text": "  ● creates an order > throws on negative quantity" },
+      { "n": 8, "text": "    TypeError: Cannot read properties of undefined (reading 'quantity')" },
+      { "n": 9, "text": "      at validateOrder (src/api/orders.ts:42:18)" },
+      { "n": 10, "text": "      at Object.<anonymous> (src/api/orders.test.ts:31:5)" },
+      { "n": 11, "text": "Tests: 1 failed, 47 passed, 48 total" },
+      { "n": 12, "text": "Snapshots: 0 total" },
+      { "n": 13, "text": "##[error]Process completed with exit code 1" },
+      { "n": 14, "text": "Process completed with exit code 1" }
+    ]
+  },
+
+  "questions": {
+    "culprit_line": {
+      "type": "choice",
+      "instructions": "Exactly one line in `lines` states the specific error that caused this CI job to fail — the assertion, exception, or tool diagnostic that names what actually went wrong. Pick its `n`. Skip lines that only report that the job failed without saying why: exit-code wrappers (`##[error]Process completed with exit code 1`, `Process completed with exit code 1`), step/job summary lines, and pass/fail counts (`Tests: 1 failed, 47 passed, 48 total`). If a stack trace is present, pick the line with the error message itself, not a `at ...` frame. If no single line in `lines` states a specific cause, choose `unclear`.",
+      "criteria": {
+        "1": "line 1 of `lines` is the specific line that states the cause of the failure",
+        "2": "line 2 of `lines` is the specific line that states the cause of the failure",
+        "3": "line 3 of `lines` is the specific line that states the cause of the failure",
+        "4": "line 4 of `lines` is the specific line that states the cause of the failure",
+        "5": "line 5 of `lines` is the specific line that states the cause of the failure",
+        "6": "line 6 of `lines` is the specific line that states the cause of the failure",
+        "7": "line 7 of `lines` is the specific line that states the cause of the failure",
+        "8": "line 8 of `lines` is the specific line that states the cause of the failure",
+        "9": "line 9 of `lines` is the specific line that states the cause of the failure",
+        "10": "line 10 of `lines` is the specific line that states the cause of the failure",
+        "11": "line 11 of `lines` is the specific line that states the cause of the failure",
+        "12": "line 12 of `lines` is the specific line that states the cause of the failure",
+        "13": "line 13 of `lines` is the specific line that states the cause of the failure",
+        "14": "line 14 of `lines` is the specific line that states the cause of the failure",
+        "unclear": "no single line in `lines` states a specific cause (e.g. the log tail is truncated, silent, or the failure requires combining several lines)"
+      }
+    }
+  }
+}

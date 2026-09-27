@@ -1,0 +1,42 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_name": "test",
+    "step_name": "Run unit tests",
+    "exit_code": 1,
+    "lines": {
+      "189": "npm run test:unit",
+      "190": "",
+      "191": "  UserService",
+      "192": "    ✓ creates a user",
+      "193": "    ✗ rejects duplicate emails",
+      "194": "",
+      "195": "  1) UserService rejects duplicate emails:",
+      "196": "     AssertionError: expected 409 but got 500",
+      "197": "     at Context.<anonymous> (test/user.service.test.ts:42:10)",
+      "198": "",
+      "199": "  15 passing, 1 failing",
+      "200": "npm ERR! Test failed. See above for more details.",
+      "201": "##[error]Process completed with exit code 1."
+    }
+  },
+  "questions": {
+    "culprit_line": {
+      "type": "choice",
+      "instructions": "The numbered entries in `lines` are the last 200 lines of a failed CI job's log, in order. Which single line number states the specific, concrete reason the job failed — the actual error, exception, assertion failure, or the specific command that returned a non-zero exit? Skip generic wrapper, summary or banner lines that only report that the job failed without saying why, such as 'npm ERR! Test failed. See above for more details.', '##[error]Process completed with exit code 1.', 'Error: Process completed with exit code N', a bare re-run/exit-status line, or pass/fail totals like '15 passing, 1 failing'. When several lines are part of one error (e.g. a message plus its stack frames), pick the line that states the message itself, not a frame below it. If two unrelated errors both appear, pick the one that occurs first. Choose 'unclear' only if no single line in `lines` states a concrete cause.",
+      "criteria": {
+        "189": "npm run test:unit",
+        "191": "UserService",
+        "192": "✓ creates a user",
+        "193": "✗ rejects duplicate emails",
+        "195": "1) UserService rejects duplicate emails:",
+        "196": "AssertionError: expected 409 but got 500",
+        "197": "at Context.<anonymous> (test/user.service.test.ts:42:10)",
+        "199": "15 passing, 1 failing",
+        "200": "npm ERR! Test failed. See above for more details.",
+        "201": "##[error]Process completed with exit code 1.",
+        "unclear": "no single line in `lines` states a concrete, specific cause"
+      }
+    }
+  }
+}

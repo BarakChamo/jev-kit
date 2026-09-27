@@ -1,0 +1,1 @@
+Wrote `map.mjs` at the run directory. It asks Jev a single `noul` question that compares `draft_reply` against the recipient's own listed name/email/phone/order_ids, explicitly excluding company addresses and staff first names, then maps the returned probability to `yes` (≥0.6), `no` (≤0.3), or `abstain` for the ambiguous middle band.

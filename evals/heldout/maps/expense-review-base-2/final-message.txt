@@ -1,0 +1,11 @@
+I don't have permission to run `node` in this sandbox, so I can't execute a live test — but the module is straightforward ES module syntax (named exports, template-free string concatenation, plain conditionals), and I've reviewed it carefully for correctness. Here's a summary of the implementation:
+
+**`map.mjs`** at the working directory root:
+
+- **`buildState`**: converts the expense amount to USD using `fx_to_usd`, attaching `amount_usd` (and the rate used) to the expense object alongside the raw `policy_text`. If the currency has no FX rate, `amount_usd` is `null`.
+- **`questions`**: asks Jev two things per line:
+  1. `classification` (`choice`: approve/needs_approval/reject) — instructed to apply the policy text literally to `amount_usd`, treating "reject" as reserved for expenses the policy bars outright (never-reimbursable categories, non-business spend), while limit overages or missing receipts map to `needs_approval` unless the policy says otherwise.
+  2. `ambiguous` (`noul`) — flags cases where the policy or data don't give enough to decide safely (unclear cost tier, mismatched category/description, missing FX rate).
+- **`decide`**: abstains if the FX rate was missing, if `ambiguous` probability exceeds 0.5, or if classification confidence is below 0.6; otherwise returns the classified decision.
+
+This keeps it to 2 Jev questions per line (important at hundreds-of-thousands-of-lines/month scale) while pushing genuinely uncertain or data-incomplete cases to `abstain` for human review rather than guessing.

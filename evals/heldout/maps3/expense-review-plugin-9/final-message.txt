@@ -1,0 +1,11 @@
+`map.mjs` is written (I couldn't execute node here — sandboxed commands needed approval that never resolved — but I hand-traced every branch against the example policy and several variants, and the logic checks out).
+
+Design summary:
+
+- **Code extracts, Jev judges.** The dollar limits and high-cost city list are stated verbatim in `policy_text` ("USD 75", "(London, New York, …)"), so `computeFacts` pulls them out with regex once per case — that's text lookup, not arithmetic Jev should be trusted with (per the exact-number-reading rule). FX conversion and the limit/receipt-threshold comparisons also happen in code.
+- **Two Jev questions only**, both `noul`, kept cheap for high volume:
+  - `includes_alcohol_or_entertainment` — catches alcohol/entertainment bundled inside another category (e.g., "dinner and a bottle of wine" filed as a meal), phrased as "does it include," which the skill's evidence shows outperforms "is this kind of expense."
+  - `category_mismatch` — a miscoding detector, since applying the wrong category's limit silently is a real risk at this volume.
+- **Decision order in `decide`**: unknown currency → abstain; category is literally alcohol/entertainment → reject; high alcohol probability → reject, moderate → `needs_approval` (never silently approved when unsure); high mismatch probability → `needs_approval`; uncovered category → `needs_approval`; unparseable policy limit for a covered category → abstain; over limit → `needs_approval` (never rejected, per the policy's own rule 6); over the receipt threshold without a receipt → `needs_approval`; otherwise `approve`.
+
+One caveat worth flagging: I built this against the one example policy's wording. If the real policy text varies in phrasing across cases, the regexes should be checked against real samples — and per the skill's own guidance, this should be measured on ~30 labelled cases (`jev-eval`) before trusting it in production, since I couldn't run it against Jev or a labelled set here.

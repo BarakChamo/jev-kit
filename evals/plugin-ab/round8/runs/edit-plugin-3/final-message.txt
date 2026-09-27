@@ -1,0 +1,6 @@
+Both files updated:
+
+- **questions.json**: added `state.cancellation.fromAddress` (the premise the question needs) and a new `sender_is_authorised_contact` noul question that names both fields it compares (`state.cancellation.fromAddress` vs. authorised contacts in `state.contract.text`).
+- **decide.ts**: added `sender_is_authorised_contact` to `JevAnswers`, added it as a fourth AND-gate (alongside timing, intent, and delivery method) so an unauthorised sender now yields `INSUFFICIENT_NOTICE`, and updated the success reason text.
+
+No API calls were made.

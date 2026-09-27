@@ -1,0 +1,65 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "faq_question": "What is the maximum file size for uploads on the free plan?",
+    "verified_answer": "The free plan allows uploads up to 25 MB per file.",
+    "passages": [
+      { "id": "p1", "text": "Free accounts can upload files as large as 25 MB each." },
+      { "id": "p2", "text": "Uploads on the free tier are capped at 10 MB per file; paid plans raise this to 25 MB." },
+      { "id": "p3", "text": "Our pricing page lists the differences between free and pro subscriptions." }
+    ]
+  },
+  "questions": {
+    "p1": {
+      "type": "choice",
+      "instructions": "state.faq_question is an FAQ question with verified correct answer state.verified_answer. Compare it against the passage state.passages[0].text (id 'p1'). Classify the relationship of the passage to the verified answer.",
+      "criteria": {
+        "supports": "Passage states or implies the same fact as the verified answer, no conflicting numbers or claims.",
+        "contradicts": "Passage states a fact that conflicts with the verified answer (e.g. different number, opposite claim).",
+        "unrelated": "Passage does not address the question the verified answer is about."
+      }
+    },
+    "p2": {
+      "type": "choice",
+      "instructions": "state.faq_question is an FAQ question with verified correct answer state.verified_answer. Compare it against the passage state.passages[1].text (id 'p2'). Classify the relationship of the passage to the verified answer.",
+      "criteria": {
+        "supports": "Passage states or implies the same fact as the verified answer, no conflicting numbers or claims.",
+        "contradicts": "Passage states a fact that conflicts with the verified answer (e.g. different number, opposite claim).",
+        "unrelated": "Passage does not address the question the verified answer is about."
+      }
+    },
+    "p3": {
+      "type": "choice",
+      "instructions": "state.faq_question is an FAQ question with verified correct answer state.verified_answer. Compare it against the passage state.passages[2].text (id 'p3'). Classify the relationship of the passage to the verified answer.",
+      "criteria": {
+        "supports": "Passage states or implies the same fact as the verified answer, no conflicting numbers or claims.",
+        "contradicts": "Passage states a fact that conflicts with the verified answer (e.g. different number, opposite claim).",
+        "unrelated": "Passage does not address the question the verified answer is about."
+      }
+    },
+    "p1_severity": {
+      "type": "noul",
+      "instructions": "Is passage state.passages[0].text ('p1') factually incompatible with state.verified_answer, such that a reader relying on the passage would reach a wrong conclusion about state.faq_question?",
+      "criteria": {
+        "true": "The passage's claim cannot both be true and the verified answer be true.",
+        "false": "The passage is consistent with, silent on, or a harmless rephrasing of the verified answer."
+      }
+    },
+    "p2_severity": {
+      "type": "noul",
+      "instructions": "Is passage state.passages[1].text ('p2') factually incompatible with state.verified_answer, such that a reader relying on the passage would reach a wrong conclusion about state.faq_question?",
+      "criteria": {
+        "true": "The passage's claim cannot both be true and the verified answer be true.",
+        "false": "The passage is consistent with, silent on, or a harmless rephrasing of the verified answer."
+      }
+    },
+    "p3_severity": {
+      "type": "noul",
+      "instructions": "Is passage state.passages[2].text ('p3') factually incompatible with state.verified_answer, such that a reader relying on the passage would reach a wrong conclusion about state.faq_question?",
+      "criteria": {
+        "true": "The passage's claim cannot both be true and the verified answer be true.",
+        "false": "The passage is consistent with, silent on, or a harmless rephrasing of the verified answer."
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+I've written `map.mjs` at the scratchpad path with:
+
+- **`buildState(input)`** — deterministically converts the expense amount to USD via `fx_to_usd` and returns `{policy_text, fx_to_usd, expense: {...expense, amount_usd}}`. Currency math stays in plain JS rather than being left to the model.
+- **`questions(input)`** — asks Jev to interpret the free-text policy per line: whether the category is categorically non-reimbursable (`neverReimbursable`), whether the USD amount is within the applicable category/city limit (`withinLimit`), whether receipt/documentation requirements are met (`receiptOk`), what the policy prescribes for over-limit expenses and for missing receipts (`overLimitAction` / `missingReceiptAction`, each `reject` vs `needs_approval`), and whether the case is too ambiguous for automation (`ambiguous`).
+- **`decide(answers, input)`** — combines these: abstains on invalid/missing data (bad currency, missing category/city) or malformed answers; abstains if `ambiguous` is high or key probabilities sit near 0.5 (low-confidence read of the policy); rejects if the category is categorically barred; otherwise applies whichever policy-prescribed consequence (`reject` or `needs_approval`) fires for over-limit and/or missing-receipt issues, defaulting to `approve` when neither issue applies.
+
+This keeps the arithmetic exact and deterministic while letting Jev do the actual policy-text interpretation per line, with abstain as the fallback whenever the model itself signals low confidence or ambiguity — appropriate given the high volume and the cost of a wrong auto-approve/reject.
+
+One thing worth flagging: I couldn't run Node in this session (Bash execution isn't approved here) to smoke-test the module, so this hasn't been executed — only manually reviewed. Want me to try running a quick test, or are you comfortable taking it from here?

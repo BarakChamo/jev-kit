@@ -1,0 +1,11 @@
+{
+  "name": "jev",
+  "version": "0.1.0",
+  "description": "Measured guidance for writing Jev (System One) question maps and evaluating them: design rules backed by a 57-suite study, plus an offline audit that finds the defects static review misses.",
+  "author": {
+    "name": "Barak Chamo"
+  },
+  "license": "MIT",
+  "keywords": ["jev", "typesafe", "system-one", "evals", "classification", "calibration"],
+  "skills": "./skills/"
+}

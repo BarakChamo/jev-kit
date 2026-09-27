@@ -1,0 +1,9 @@
+The file reads correctly and traces through the worked example as expected (meal, $62, Chicago → not high-cost → limit 75 → under limit, under $75 receipt threshold → `approve`). I attempted to run it through Node to confirm no syntax errors, but Bash execution is being blocked pending approval in this sandbox, so I verified by careful manual trace instead.
+
+Summary of the design (`map.mjs`):
+
+- **State**: full `policy_text`, the `expense` object, and a list of every USD amount mentioned in the policy (regex-extracted) — Jev never has to do arithmetic, just pick from amounts that actually appear in the text.
+- **Questions** (9, all scoped to named fields): `city_high_cost`, `includes_alcohol` (asks *includes*, not *is*, per rule 7), `alcohol_never_reimbursable`, `category_recognized`, `standard_limit`/`highcost_limit` (each a `choice` over the extracted dollar amounts, not a comparison), `receipt_threshold`, `over_limit_consequence`, `missing_receipt_consequence`.
+- **decide()**: converts currency and compares amounts in code (never asks Jev to compare); alcohol+outright-ban → `reject`; unrecognized/uncovered category, ambiguous alcohol content, or low-confidence extractions → `abstain`; over-limit or missing-receipt → `needs_approval` unless the policy explicitly says "rejected"; otherwise `approve`.
+
+If you'd like, I can run it through `jev-eval` against a labelled suite once you're able to grant Bash execution — that's the step that actually validates the extraction questions rather than just my manual trace.

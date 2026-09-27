@@ -1,0 +1,11 @@
+This wires correctly — it flows through the existing gate mechanism, so it inherits the same threshold-gating, failure, and uncertainty-escalation behavior as the other checks.
+
+## Summary
+
+Added `sender_authorised_contact` (a `noul` question) to `questions.json`, plus the missing state fact it needs: `cancellation.fromAddress`, and a matching authorised-contacts clause in `contract.text` so the fixture is self-consistent. Wired it into `decide.ts` as a new gate — if the sender isn't an authorised contact, the verdict becomes `INSUFFICIENT_NOTICE` (or `NEEDS_HUMAN_REVIEW` if the answer is in the uncertain band), same as the other gating questions.
+
+Two pre-existing issues I noticed while reviewing the map (per the jev-questions skill's editing checklist), left unchanged since they're out of scope for this task:
+- **`notice_timely`** asks Jev to do date arithmetic and compare against a computed deadline in one shot — the skill's rule 9 flags this as a known weak pattern (64–75% accuracy vs. 30/30 when dates are read as explicit values and the comparison is done in code).
+- **`notice_method_compliant`** compounds two separate facts (what the contract requires vs. what the email did) into one question — rule 6 flags this pattern specifically (0.50–0.79 vs. 0.90+ when split).
+
+Worth revisiting if this map's accuracy is ever measured with `jev-eval`.

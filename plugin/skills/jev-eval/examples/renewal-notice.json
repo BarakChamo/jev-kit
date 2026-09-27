@@ -1,0 +1,351 @@
+{
+  "name": "renewal-notice",
+  "description": "Did a cancellation email avoid a contract's automatic renewal? 30 cases, gold computed by rule from the generated facts; boundary cases sit 3-6 days either side of the deadline. Grade a map with: jev-run renewal-notice.json --map renewal-notice.map.mjs",
+  "cases": [
+    {
+      "id": "notice-001",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on January 15, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on January 15, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-10-12"
+      },
+      "gold": {
+        "outcome": "avoided"
+      },
+      "notes": "well before"
+    },
+    {
+      "id": "notice-002",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on March 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on March 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-02-09"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "well after"
+    },
+    {
+      "id": "notice-003",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on February 10, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on February 10, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least thirty (30) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-12-02"
+      },
+      "gold": {
+        "outcome": "avoided"
+      }
+    },
+    {
+      "id": "notice-004",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on June 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on June 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least thirty (30) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-05-22"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    },
+    {
+      "id": "notice-005",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on April 20, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on April 20, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least ninety (90) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-11-21"
+      },
+      "gold": {
+        "outcome": "avoided"
+      }
+    },
+    {
+      "id": "notice-006",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on May 5, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on May 5, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least ninety (90) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-03-26"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    },
+    {
+      "id": "notice-007",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on July 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on July 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least one hundred twenty (120) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-12-13"
+      },
+      "gold": {
+        "outcome": "avoided"
+      }
+    },
+    {
+      "id": "notice-008",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on August 12, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on August 12, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least one hundred twenty (120) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-06-13"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    },
+    {
+      "id": "notice-009",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on January 31, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on January 31, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-11-28"
+      },
+      "gold": {
+        "outcome": "avoided"
+      },
+      "notes": "four days early"
+    },
+    {
+      "id": "notice-010",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on February 28, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on February 28, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-01-03"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "four days late"
+    },
+    {
+      "id": "notice-011",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on September 15, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on September 15, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least thirty (30) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-08-12"
+      },
+      "gold": {
+        "outcome": "avoided"
+      }
+    },
+    {
+      "id": "notice-012",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on October 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on October 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least thirty (30) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-09-05"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    },
+    {
+      "id": "notice-013",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on March 15, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on March 15, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least ninety (90) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-12-10"
+      },
+      "gold": {
+        "outcome": "avoided"
+      }
+    },
+    {
+      "id": "notice-014",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on November 20, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on November 20, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least ninety (90) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-08-27"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    },
+    {
+      "id": "notice-015",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on June 30, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on June 30, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least forty-five (45) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-05-12"
+      },
+      "gold": {
+        "outcome": "avoided"
+      }
+    },
+    {
+      "id": "notice-016",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on December 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on December 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least forty-five (45) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-10-21"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    },
+    {
+      "id": "notice-017",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on April 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on April 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-02-03"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "three days late"
+    },
+    {
+      "id": "notice-018",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on January 10, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on January 10, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least three (3) months prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-10-02"
+      },
+      "gold": {
+        "outcome": "avoided"
+      },
+      "notes": "3 months"
+    },
+    {
+      "id": "notice-019",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on May 18, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on May 18, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least three (3) months prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-03-04"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "3 months, late"
+    },
+    {
+      "id": "notice-020",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on July 22, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on July 22, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least two (2) months prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-05-17"
+      },
+      "gold": {
+        "outcome": "avoided"
+      },
+      "notes": "2 months"
+    },
+    {
+      "id": "notice-021",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on February 1, 2023 (the \"Effective Date\") and continues for an initial term of 12 months, ending on February 1, 2024 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-11-13"
+      },
+      "gold": {
+        "outcome": "avoided"
+      },
+      "notes": "third term"
+    },
+    {
+      "id": "notice-022",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on September 1, 2023 (the \"Effective Date\") and continues for an initial term of 12 months, ending on September 1, 2024 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-08-02"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "third term, late"
+    },
+    {
+      "id": "notice-023",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on March 10, 2024 (the \"Effective Date\") and continues for an initial term of 24 months, ending on March 10, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date 2 years after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 24-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least ninety (90) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-11-20"
+      },
+      "gold": {
+        "outcome": "avoided"
+      },
+      "notes": "24-month term"
+    },
+    {
+      "id": "notice-024",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on June 5, 2024 (the \"Effective Date\") and continues for an initial term of 24 months, ending on June 5, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date 2 years after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 24-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least ninety (90) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-03-27"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "24-month term, late"
+    },
+    {
+      "id": "notice-025",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on February 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on February 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. This Agreement shall expire at the end of the Initial Term unless the parties agree in writing to extend it.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-01-22"
+      },
+      "gold": {
+        "outcome": "not_applicable"
+      },
+      "notes": "no auto-renewal: nothing to avoid"
+    },
+    {
+      "id": "notice-026",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on August 1, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on August 1, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. This Agreement shall expire at the end of the Initial Term unless the parties agree in writing to extend it.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-05-03"
+      },
+      "gold": {
+        "outcome": "not_applicable"
+      }
+    },
+    {
+      "id": "notice-027",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on March 20, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on March 20, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices of non-renewal are effective only if sent by certified mail, return receipt requested, to the address in Schedule 1. Email notice is not sufficient.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2025-11-20"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "on time but email not a valid method"
+    },
+    {
+      "id": "notice-028",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on October 10, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on October 10, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least thirty (30) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices of non-renewal are effective only if sent by certified mail, return receipt requested, to the address in Schedule 1. Email notice is not sufficient.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hello, please treat this as our formal notice that we will not renew the agreement when the current term ends. Thank you, Robin (Customer Ops)",
+        "received_date": "2026-08-21"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    },
+    {
+      "id": "notice-029",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on May 25, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on May 25, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least sixty (60) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hi, we are reviewing our vendors next year and may not continue. Can you send over pricing for the renewal so we can compare? Thanks, Robin",
+        "received_date": "2026-02-14"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      },
+      "notes": "not a notice"
+    },
+    {
+      "id": "notice-030",
+      "input": {
+        "contract_text": "MASTER SUBSCRIPTION AGREEMENT\n\n1. Services. Vendor will provide the subscription services described in each Order Form.\n\n2. Fees. Customer will pay the fees in each Order Form within thirty days of invoice.\n\n9. Term and Renewal. This Agreement begins on September 9, 2025 (the \"Effective Date\") and continues for an initial term of 12 months, ending on September 9, 2026 (the \"Initial Term\"). Each Renewal Term ends on the same calendar date one year after the term before it. Upon expiration of the Initial Term, this Agreement shall automatically renew for successive 12-month periods (each a \"Renewal Term\") unless either party gives the other written notice of non-renewal at least thirty (30) days prior to the end of the then-current term.\n\n12. Confidentiality. Each party will protect the other's Confidential Information with reasonable care for three years after disclosure.\n\n14. Notices. Notices under this Agreement may be given by email to the addresses in Schedule 1, including legal@vendor.example.\n\n15. Governing Law. This Agreement is governed by the laws of the State of Delaware.",
+        "email_text": "Hi, we are reviewing our vendors next year and may not continue. Can you send over pricing for the renewal so we can compare? Thanks, Robin",
+        "received_date": "2026-07-26"
+      },
+      "gold": {
+        "outcome": "not_avoided"
+      }
+    }
+  ]
+}

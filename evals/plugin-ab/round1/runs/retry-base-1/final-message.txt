@@ -1,0 +1,6 @@
+Created both files in the scratchpad:
+
+- **questions.json** — example job state (repo/branch/runner/attempt/logTail) plus 3 Jev questions run in one pass: `transient` (noul: probability the failure is environmental vs. code-caused), `category` (choice: infra_transient / flaky_test / code_defect / dependency_or_config / unknown), `retrySuccessLikelihood` (score: how likely an immediate retry succeeds).
+- **decide.ts** — pure `decide(state, answers)` function: blocks retries once `attempt >= maxAttempts`, blocks on confident `code_defect`, approves on confident `infra_transient`/`flaky_test` + high transient probability + high success score, otherwise falls back to a blended threshold on the remaining two signals.
+
+No API calls were made, per your instruction.

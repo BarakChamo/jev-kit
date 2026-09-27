@@ -1,0 +1,60 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Master Services Agreement (\"Agreement\") begins on the Effective Date, March 1, 2025, for an initial term of twelve (12) months. Upon expiration of the initial term, this Agreement will automatically renew for successive twelve (12) month terms unless either party provides the other with written notice of non-renewal at least sixty (60) days prior to the end of the then-current term. Notice under this Section may be delivered by email to the addresses set forth in the Order Form.",
+    "cancellation_email_text": "Hi team, We would like to cancel our subscription and not renew for another year. Please let us know if you need anything else from us. Thanks, Dana",
+    "cancellation_email_received_date": "2026-01-15",
+    "current_term_end_date": "2026-03-01"
+  },
+  "questions": {
+    "auto_renews": {
+      "type": "noul",
+      "instructions": "Does `contract_text` state that this agreement automatically renews for a further term unless a party gives notice of non-renewal?",
+      "criteria": {
+        "true": "the contract has an automatic-renewal (evergreen) clause",
+        "false": "the contract does not auto-renew, or renewal requires an affirmative opt-in"
+      }
+    },
+    "notice_period_required": {
+      "type": "choice",
+      "instructions": "How far before the end of the current term does `contract_text` require notice of non-renewal to be given, to prevent automatic renewal? Pick the bucket containing the stated period (e.g. \"at least one month\" -> the 30-44 day bucket). If the contract does not require advance notice, pick none. If no notice period can be determined from `contract_text`, pick unclear.",
+      "criteria": {
+        "none": "no advance notice is required to prevent renewal",
+        "lt15": "1 to 14 days before term end",
+        "d15_29": "15 to 29 days before term end",
+        "d30_44": "30 to 44 days before term end (e.g. \"one month\", \"30 days\")",
+        "d45_59": "45 to 59 days before term end",
+        "d60_89": "60 to 89 days before term end (e.g. \"60 days\", \"two months\")",
+        "d90_119": "90 to 119 days before term end (e.g. \"90 days\", \"three months\")",
+        "d120_179": "120 to 179 days before term end",
+        "d180_364": "180 to 364 days before term end (e.g. \"six months\")",
+        "d365plus": "365 days or more before term end",
+        "unclear": "contract_text does not state a determinable notice period"
+      }
+    },
+    "notice_method_permits_email": {
+      "type": "noul",
+      "instructions": "Does `contract_text` allow notice of cancellation or non-renewal to be given by email, as opposed to requiring exclusively postal mail, certified mail, or a signed written letter?",
+      "criteria": {
+        "true": "email is an acceptable method of giving notice under the contract",
+        "false": "the contract requires a different method and does not permit email"
+      }
+    },
+    "is_clear_cancellation": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly state that the customer is cancelling the contract or declining to renew it?",
+      "criteria": {
+        "true": "the email clearly and unambiguously communicates cancellation or non-renewal",
+        "false": "the email is ambiguous, conditional, or does not clearly request cancellation/non-renewal"
+      }
+    },
+    "claims_prior_agreement": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` claim that the provider already agreed to waive the notice requirement, extend a deadline, or approve this cancellation outside of this email (e.g. \"as your rep confirmed on our call\")?",
+      "criteria": {
+        "true": "the email asserts some prior approval or waiver by the provider",
+        "false": "the email makes no such claim"
+      }
+    }
+  }
+}

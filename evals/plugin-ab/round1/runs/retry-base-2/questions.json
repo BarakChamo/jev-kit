@@ -1,0 +1,54 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job": {
+      "id": "job_9f3ac2",
+      "repo": "acme/payments-api",
+      "branch": "feature/add-retry-backoff",
+      "runner": "github-hosted-ubuntu-22.04",
+      "attempt": 1,
+      "maxAttempts": 3
+    },
+    "log_tail": [
+      "Run npm test",
+      "  ...",
+      "FetchError: request to https://registry.npmjs.org/left-pad failed, reason: connect ETIMEDOUT",
+      "    at ClientRequest.<anonymous> (/home/runner/work/node_modules/node-fetch/lib/index.js:1501:11)",
+      "npm ERR! code ETIMEDOUT",
+      "npm ERR! network request to https://registry.npmjs.org/left-pad failed",
+      "npm ERR! network This is a problem related to network connectivity.",
+      "Error: Process completed with exit code 1."
+    ]
+  },
+  "questions": {
+    "is_transient": {
+      "type": "noul",
+      "instructions": "Given the job metadata and the last 200 log lines in state.job / state.log_tail, does the failure look like a transient condition (network blip, DNS/registry timeout, runner provisioning error, disk/rate-limit contention, flaky test known to be order- or timing-dependent) rather than a deterministic problem with the code or configuration under test?",
+      "criteria": {
+        "true": "The log shows infra/network/environment symptoms (timeouts, connection resets, registry/DNS failures, OOM-killed runner, docker pull errors, rate limiting) with no indication the actual code logic is wrong.",
+        "false": "The log shows a deterministic failure caused by the code/config itself (compile error, failed assertion, type error, lint failure, missing file committed, bad config) that will reproduce on an identical retry."
+      }
+    },
+    "failure_category": {
+      "type": "choice",
+      "instructions": "Classify the root cause of this CI job failure using state.job and state.log_tail.",
+      "criteria": {
+        "infra_flake": "CI infrastructure/network issue: registry/DNS timeout, runner provisioning failure, docker pull error, rate limiting, disk full on runner.",
+        "test_flake": "A test failed in a way consistent with known flakiness: timing/race condition, order-dependent test, nondeterministic external service in a unit test, intermittent timeout in an otherwise-passing suite.",
+        "code_defect": "A real bug: failed assertion tied to the code change, exception from application logic, type/compile error.",
+        "dependency_or_config": "Build/config problem: missing dependency, bad lockfile, misconfigured env var/secret, broken CI config.",
+        "unknown": "Log is inconclusive or truncated; cannot confidently attribute a cause."
+      }
+    },
+    "retry_value": {
+      "type": "score",
+      "instructions": "Considering state.job.attempt vs state.job.maxAttempts and the nature of the failure in state.log_tail, how much expected value is there in retrying this job (likelihood a retry succeeds, weighed against wasted compute if it will just fail again the same way)?",
+      "criteria": [
+        "none",
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  }
+}

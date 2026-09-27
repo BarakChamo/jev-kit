@@ -1,0 +1,12 @@
+Created both files in the working directory (no API calls made):
+
+**`questions.json`** — example `state` (contract id/vendor/text) plus a `questions` map covering all 25 fields:
+- `noul` for present/absent flags (auto_renewal, liability_cap_present, termination_for_convenience, data_processing_terms_present, warranty_disclaimer_present, force_majeure_present, insurance_requirements_present, audit_rights_present, sla_present, assignment_restricted, exclusivity_present, non_solicitation_present, subcontracting_allowed, liability_cap_mutual)
+- `choice` for categorical fields (governing_law, liability_cap_amount_band, indemnity_scope, payment_terms_band, ip_ownership, dispute_resolution_method)
+- `score` for ordered bands (renewal_notice_period_band, termination_notice_period_band, confidentiality_survival_band, contract_term_band, data_breach_notification_band)
+
+**`decide.ts`** — turns a Jev response into a DB row:
+- thresholds `probability`→boolean for `noul` (0.5 cutoff, flags 0.35–0.65 as ambiguous for human QA)
+- passes through `choice`/`score` values, flagging confidence `< 0.6` for review
+- nulls out dependent fields (e.g. `liability_cap_amount_band`, `renewal_notice_period_band`) when their gating field resolved false, so the model's answer to a moot question doesn't pollute the DB
+- a thin `processContract` helper showing the one-call-per-contract pattern for the 40k/yr volume

@@ -1,0 +1,50 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "faq_question": "What is the maximum file size I can upload?",
+    "canonical_answer": "The maximum upload size is 500 MB per file on all paid plans, and 100 MB on the free plan.",
+    "passages": [
+      {
+        "id": "p1",
+        "text": "Files larger than 100 MB will be rejected. This limit applies to every account, regardless of plan."
+      },
+      {
+        "id": "p2",
+        "text": "Paid subscribers can upload files up to 500 MB each; free accounts are capped at 100 MB."
+      },
+      {
+        "id": "p3",
+        "text": "To upload a file, click the paperclip icon in the toolbar and select your file."
+      }
+    ]
+  },
+  "questions": {
+    "status_p1": {
+      "type": "choice",
+      "instructions": "Compare passages.p1.text against canonical_answer, which is the support team's current, authoritative answer to faq_question. Does passages.p1.text state a fact about the same topic that conflicts with canonical_answer, does it agree with canonical_answer, or does it not address the fact(s) in canonical_answer at all?",
+      "criteria": {
+        "contradicts": "passages.p1.text makes a claim about the same fact as canonical_answer that conflicts with it (e.g. a different limit, price, feature availability, or policy)",
+        "consistent": "passages.p1.text agrees with canonical_answer, or states a subset of it, with no conflicting claim",
+        "unrelated": "passages.p1.text does not address the specific fact(s) stated in canonical_answer"
+      }
+    },
+    "status_p2": {
+      "type": "choice",
+      "instructions": "Compare passages.p2.text against canonical_answer, which is the support team's current, authoritative answer to faq_question. Does passages.p2.text state a fact about the same topic that conflicts with canonical_answer, does it agree with canonical_answer, or does it not address the fact(s) in canonical_answer at all?",
+      "criteria": {
+        "contradicts": "passages.p2.text makes a claim about the same fact as canonical_answer that conflicts with it (e.g. a different limit, price, feature availability, or policy)",
+        "consistent": "passages.p2.text agrees with canonical_answer, or states a subset of it, with no conflicting claim",
+        "unrelated": "passages.p2.text does not address the specific fact(s) stated in canonical_answer"
+      }
+    },
+    "status_p3": {
+      "type": "choice",
+      "instructions": "Compare passages.p3.text against canonical_answer, which is the support team's current, authoritative answer to faq_question. Does passages.p3.text state a fact about the same topic that conflicts with canonical_answer, does it agree with canonical_answer, or does it not address the fact(s) in canonical_answer at all?",
+      "criteria": {
+        "contradicts": "passages.p3.text makes a claim about the same fact as canonical_answer that conflicts with it (e.g. a different limit, price, feature availability, or policy)",
+        "consistent": "passages.p3.text agrees with canonical_answer, or states a subset of it, with no conflicting claim",
+        "unrelated": "passages.p3.text does not address the specific fact(s) stated in canonical_answer"
+      }
+    }
+  }
+}

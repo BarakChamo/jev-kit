@@ -1,0 +1,3 @@
+It seems this requires explicit user approval to run. Let me ask before proceeding.
+
+I've written `adapter.ts`. Running `npx tsx -e "import('./adapter.ts')"` to verify it loads needs your approval to execute — want me to proceed?

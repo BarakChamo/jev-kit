@@ -1,0 +1,13 @@
+`map.mjs` is written at `/tmp/claude-0/-home-user-jev-discovery/c35f5c53-e272-5f13-8872-8508765d320f/scratchpad/heldout2/runs/expense-review-plugin-7/map.mjs`. I couldn't execute `node` in this sandbox (every run was blocked pending approval that never resolved), so I hand-traced the regex parsing and branch logic against 8 cases instead (in `test.mjs` alongside it, left in place for you to run) and everything checked out.
+
+Design, following the jev-questions rules:
+
+- **Code does all arithmetic** (rule 12): FX conversion and limit comparisons happen in `buildState`/`decide`, not Jev. `parsePolicy()` regex-extracts the exact dollar limits, the high-cost city list, and the receipt threshold straight from `policy_text` — no bucketing of stated numbers (rule 5's $73.44-in-a-band failure mode).
+- **Two Jev questions only**, for the parts that need judgment on free text:
+  - `never_reimbursable` (noul): catches both an explicit alcohol/entertainment category *and* a description that reveals hidden alcohol/entertainment under a different category label — a rule 10 detector pattern. Gated at ≥0.7 → reject, 0.35–0.7 → needs_approval (uncertain, don't auto-reject), <0.35 → proceed.
+  - `ambiguous` (noul): rule 9's explicit abstain-and-gate combo; ≥0.6 sends the line to a person.
+- **Explicit category match** (`alcohol`/`entertainment`) short-circuits to reject in code before even consulting the noul, since that's a fact code can settle completely.
+- **Abstain** fires when: ambiguity is flagged, the category isn't one the policy covers (meal/hotel/ground_transport), the currency has no FX rate, or the policy regex fails to find a needed limit — all "send to a human" situations rather than guesses.
+- Over-limit and missing-receipt-over-threshold both map to `needs_approval` per the policy's explicit rule 6 (never auto-reject for exceeding a limit).
+
+One caveat: the regex parser is shaped to this policy's phrasing ("Meals: up to USD X ... standard cities and USD Y ... high-cost cities (list)", etc.). If the policy wording changes structurally in future cases, the parser should be re-checked — per the skill's own guidance, this needs measuring on real labelled cases (via `jev-eval`) before trusting it at volume, not just my manual trace.

@@ -1,0 +1,1 @@
+This command needs your approval to run (it will fetch `tsx` via npx). Could you approve it, or should I try a different verification approach (e.g., a local syntax check with `node --check` after stripping types)?

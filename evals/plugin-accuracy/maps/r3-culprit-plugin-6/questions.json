@@ -1,0 +1,62 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "job_id": "ci-4821-build-42",
+    "log_lines": [
+      "> ci-pipeline@1.0.0 test",
+      "> jest --ci",
+      "",
+      "PASS src/utils/date.test.ts",
+      "PASS src/utils/string.test.ts",
+      "FAIL src/payments/charge.test.ts",
+      "  ● Charge service › retries on gateway timeout",
+      "",
+      "    expect(received).toBe(expected) // Object.is equality",
+      "",
+      "    Expected: 3",
+      "    Received: 1",
+      "",
+      "      42 |   await charge(order);",
+      "      43 |   expect(gateway.retryCount).toBe(3);",
+      "         |                              ^",
+      "      44 | });",
+      "",
+      "      at Object.<anonymous> (src/payments/charge.test.ts:43:32)",
+      "",
+      "PASS src/payments/refund.test.ts",
+      "PASS src/auth/session.test.ts",
+      "",
+      "Test Suites: 1 failed, 3 passed, 4 total",
+      "Tests:       1 failed, 27 passed, 28 total",
+      "Snapshots:   0 total",
+      "Time:        4.812 s",
+      "Ran all test suites.",
+      "npm ERR! Test failed.  See above for more details.",
+      "npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2026-09-25T10_00_00_000Z-debug-0.log",
+      "##[error]Process completed with exit code 1."
+    ],
+    "candidates": [
+      { "index": 6, "text": "FAIL src/payments/charge.test.ts" },
+      { "index": 9, "text": "    expect(received).toBe(expected) // Object.is equality" },
+      { "index": 11, "text": "    Expected: 3" },
+      { "index": 12, "text": "    Received: 1" },
+      { "index": 15, "text": "      43 |   await charge(order);" },
+      { "index": 16, "text": "      44 |   expect(gateway.retryCount).toBe(3);" },
+      { "index": 19, "text": "      at Object.<anonymous> (src/payments/charge.test.ts:43:32)" },
+      { "index": 29, "text": "npm ERR! Test failed.  See above for more details." },
+      { "index": 31, "text": "##[error]Process completed with exit code 1." }
+    ]
+  },
+  "questions": {
+    "cause_6":  { "type": "noul", "instructions": "In `log_lines`, is the line at index 6 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 6 is the origin of the failure", "false": "line 6 is not the origin of the failure" } },
+    "cause_9":  { "type": "noul", "instructions": "In `log_lines`, is the line at index 9 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 9 is the origin of the failure", "false": "line 9 is not the origin of the failure" } },
+    "cause_11": { "type": "noul", "instructions": "In `log_lines`, is the line at index 11 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 11 is the origin of the failure", "false": "line 11 is not the origin of the failure" } },
+    "cause_12": { "type": "noul", "instructions": "In `log_lines`, is the line at index 12 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 12 is the origin of the failure", "false": "line 12 is not the origin of the failure" } },
+    "cause_15": { "type": "noul", "instructions": "In `log_lines`, is the line at index 15 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 15 is the origin of the failure", "false": "line 15 is not the origin of the failure" } },
+    "cause_16": { "type": "noul", "instructions": "In `log_lines`, is the line at index 16 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 16 is the origin of the failure", "false": "line 16 is not the origin of the failure" } },
+    "cause_19": { "type": "noul", "instructions": "In `log_lines`, is the line at index 19 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 19 is the origin of the failure", "false": "line 19 is not the origin of the failure" } },
+    "cause_29": { "type": "noul", "instructions": "In `log_lines`, is the line at index 29 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 29 is the origin of the failure", "false": "line 29 is not the origin of the failure" } },
+    "cause_31": { "type": "noul", "instructions": "In `log_lines`, is the line at index 31 in `candidates` the specific line whose content is the origin of the CI job failure (the actual error, exception, or assertion output), as opposed to a related passing test, a context line, or a generic summary/exit line?", "criteria": { "true": "line 31 is the origin of the failure", "false": "line 31 is not the origin of the failure" } },
+    "no_candidate_is_root_cause": { "type": "noul", "instructions": "Considering all of `log_lines`, is it likely that the true root cause of the failure is not represented by any single line in `candidates` — for example because it appears earlier in `log_lines` outside `candidates`, or is not present in the last 200 lines at all?", "criteria": { "true": "no listed candidate is the root cause", "false": "the root cause is represented by one of the candidates" } }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement begins on the Effective Date and continues for an initial term of twelve (12) months. Upon expiration of the initial term, this Agreement automatically renews for successive twelve (12) month terms unless either party gives the other written notice of non-renewal at least sixty (60) days before the end of the then-current term. Notice under this Section must be delivered by email to the addresses on file or by certified mail. Effective Date: 2025-11-01.",
+    "cancellation_email_text": "Hi team, we won't be renewing our contract for another year. Please make sure our account is closed out before the next billing cycle. Thanks, Dana",
+    "cancellation_received_date": "2026-09-10"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` contain a clause under which the agreement automatically renews for another term unless a party acts to stop it?",
+      "criteria": {
+        "true": "the contract states or clearly implies the agreement auto-renews absent action",
+        "false": "the contract has no auto-renewal mechanism, or renewal requires an affirmative opt-in instead"
+      }
+    },
+    "clear_cancellation_intent": {
+      "type": "noul",
+      "instructions": "Does `cancellation_email_text` clearly and unambiguously communicate that the customer does not want the agreement to renew / wants to cancel?",
+      "criteria": {
+        "true": "a reasonable reader would understand this as a clear statement of intent not to renew",
+        "false": "the text is a complaint, a question, a partial/conditional statement, or otherwise does not clearly convey that intent"
+      }
+    },
+    "method_restricted": {
+      "type": "noul",
+      "instructions": "Does `contract_text` require notice of non-renewal to be delivered by a specific method (e.g. certified mail, a named address, a notarized letter) such that a plain email like `cancellation_email_text` would not, by itself, satisfy the required method?",
+      "criteria": {
+        "true": "the contract names a required delivery method that excludes plain email, or requires email plus something else",
+        "false": "the contract does not restrict the method, or plain email is an accepted method"
+      }
+    },
+    "required_notice_band": {
+      "type": "choice",
+      "instructions": "Per `contract_text`, how much advance notice (measured in days before the end of the then-current term / renewal date) must be given to prevent automatic renewal?",
+      "criteria": {
+        "under_7": "less than 7 days notice is required",
+        "d7_13": "at least 7 but fewer than 14 days notice is required",
+        "d14_29": "at least 14 but fewer than 30 days notice is required",
+        "d30_44": "at least 30 but fewer than 45 days notice is required",
+        "d45_59": "at least 45 but fewer than 60 days notice is required",
+        "d60_89": "at least 60 but fewer than 90 days notice is required",
+        "d90_179": "at least 90 but fewer than 180 days notice is required",
+        "d180_plus": "180 days or more notice is required",
+        "unclear": "contract_text does not state, or does not allow determining, a specific required notice period"
+      }
+    },
+    "lead_time_band": {
+      "type": "choice",
+      "instructions": "Per `contract_text`, as of the date in `cancellation_received_date`, how many days before the end of the then-current term / next renewal date does that date fall?",
+      "criteria": {
+        "renewal_already_passed": "the renewal/term-end date, per the contract's term structure, had already occurred before cancellation_received_date",
+        "under_7": "cancellation_received_date is less than 7 days before that renewal/term-end date",
+        "d7_13": "cancellation_received_date is at least 7 but fewer than 14 days before that date",
+        "d14_29": "cancellation_received_date is at least 14 but fewer than 30 days before that date",
+        "d30_44": "cancellation_received_date is at least 30 but fewer than 45 days before that date",
+        "d45_59": "cancellation_received_date is at least 45 but fewer than 60 days before that date",
+        "d60_89": "cancellation_received_date is at least 60 but fewer than 90 days before that date",
+        "d90_179": "cancellation_received_date is at least 90 but fewer than 180 days before that date",
+        "d180_plus": "cancellation_received_date is 180 days or more before that date",
+        "unclear": "contract_text does not give enough information to place the renewal/term-end date relative to cancellation_received_date"
+      }
+    }
+  }
+}

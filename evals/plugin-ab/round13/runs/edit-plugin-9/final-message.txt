@@ -1,0 +1,6 @@
+Both files updated:
+
+- **questions.json**: added `state.cancellation.from` (the sender address, a fact the judgment needs — rule 1) and a new `sender_is_authorized_contact` noul question, scoped to that field (rule 4), comparing it against the contract's authorized-contact/notices addresses.
+- **decide.ts**: added `sender_is_authorized_contact` to `JevAnswers` and to the existing `gates` array, so an unauthorized sender now yields `INSUFFICIENT_NOTICE`, and an uncertain answer routes to `NEEDS_HUMAN_REVIEW` — the same treatment as the other gating questions.
+
+One note per the skill's review guidance: this is an extraction/match against prose (not a numeric comparison), so it's kept as a single scoped `noul` rather than split into code-side comparison — consistent with how `notice_method_compliant` already handles a similar contract-vs-message check. I didn't call the API, per your instruction; measure this field on a few labelled cases before trusting it, same as any other question here.

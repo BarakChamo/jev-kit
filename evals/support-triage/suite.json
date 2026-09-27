@@ -1,0 +1,520 @@
+{
+  "name": "support-triage",
+  "description": "Route a support ticket, rate its urgency, and decide whether money back is being asked for. Mirrors the published customer-service workflow, with multi-intent, tone-vs-severity and negated-refund cases added.",
+  "questions": {
+    "department": {
+      "type": "choice",
+      "instructions": "Which team should handle this ticket? Choose the team that owns the main thing the customer needs done.",
+      "criteria": {
+        "billing": "Charges, invoices, refunds, plans, pricing",
+        "technical": "Bugs, outages, API errors, product behaviour, feature requests",
+        "account": "Sign-in, passwords, two-factor, permissions, account deletion",
+        "shipping": "Physical delivery, tracking, damaged or missing parcels"
+      }
+    },
+    "urgency": {
+      "type": "score",
+      "instructions": "How urgent is this ticket, judged by the impact on the customer right now, not by how loudly it is written?",
+      "criteria": [
+        "low: a question or a nice-to-have; nothing is blocked",
+        "medium: something is wrong and the customer is inconvenienced but still working",
+        "high: the customer is blocked, losing money, or at security risk right now"
+      ]
+    },
+    "refund": {
+      "type": "noul",
+      "instructions": "Is the customer asking for money back in this message?",
+      "criteria": {
+        "true": "They ask for a refund, reversal, chargeback or their money back, now",
+        "false": "No such ask, or they mention refunds only in passing, hypothetically, or to decline one"
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "triage-001",
+      "state": "I was charged twice for the same order last Tuesday. Can someone look into it?",
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "yes"
+      }
+    },
+    {
+      "id": "triage-002",
+      "state": "My card was declined but the money left my account anyway.",
+      "gold": {
+        "department": "billing",
+        "urgency": "high",
+        "refund": "yes"
+      }
+    },
+    {
+      "id": "triage-003",
+      "state": "Where can I download last quarter's invoices for my accountant?",
+      "gold": {
+        "department": "billing",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-004",
+      "state": "Please cancel my subscription before the next renewal on the 3rd.",
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-005",
+      "state": "You billed me $499 instead of $49. This is the third month in a row.",
+      "gold": {
+        "department": "billing",
+        "urgency": "high",
+        "refund": "yes"
+      }
+    },
+    {
+      "id": "triage-006",
+      "state": "Do you offer annual plans, and is there a discount?",
+      "gold": {
+        "department": "billing",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-007",
+      "state": "The export button does nothing in Safari. Works in Chrome.",
+      "gold": {
+        "department": "technical",
+        "urgency": "medium",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-008",
+      "state": "Our production webhooks have been failing with 500s since the deploy this morning. Customers are affected.",
+      "gold": {
+        "department": "technical",
+        "urgency": "high",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-009",
+      "state": "Is there a dark mode?",
+      "gold": {
+        "department": "technical",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-010",
+      "state": "API returns 401 with a key I generated ten minutes ago.",
+      "gold": {
+        "department": "technical",
+        "urgency": "high",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-011",
+      "state": "The CSV import silently drops rows with commas inside quotes.",
+      "gold": {
+        "department": "technical",
+        "urgency": "medium",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-012",
+      "state": "Feature request: let me sort the dashboard by last edited.",
+      "gold": {
+        "department": "technical",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-013",
+      "state": "I cannot log in. Password reset emails never arrive.",
+      "gold": {
+        "department": "account",
+        "urgency": "high",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-014",
+      "state": "Please add my colleague sam@acme.com as an admin.",
+      "gold": {
+        "department": "account",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-015",
+      "state": "I want to delete my account and everything in it under GDPR.",
+      "gold": {
+        "department": "account",
+        "urgency": "medium",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-016",
+      "state": "Two-factor is locked to an old phone I no longer have.",
+      "gold": {
+        "department": "account",
+        "urgency": "high",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-017",
+      "state": "How do I change the email address on my profile?",
+      "gold": {
+        "department": "account",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-018",
+      "state": "Someone else logged into my account from another country last night.",
+      "gold": {
+        "department": "account",
+        "urgency": "high",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-019",
+      "state": "My package says delivered but nothing arrived.",
+      "gold": {
+        "department": "shipping",
+        "urgency": "high",
+        "refund": "no"
+      },
+      "notes": "warrants a refund, does not ask for one"
+    },
+    {
+      "id": "triage-020",
+      "state": "Can I change the delivery address on order B-2291? It has not shipped yet.",
+      "gold": {
+        "department": "shipping",
+        "urgency": "medium",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-021",
+      "state": "How long does standard delivery take to Portugal?",
+      "gold": {
+        "department": "shipping",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-022",
+      "state": "The box arrived crushed and the screen is cracked.",
+      "gold": {
+        "department": "shipping",
+        "urgency": "high",
+        "refund": "no"
+      },
+      "notes": "damage report, no ask"
+    },
+    {
+      "id": "triage-023",
+      "state": "Tracking has not updated in six days.",
+      "gold": {
+        "department": "shipping",
+        "urgency": "medium",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-024",
+      "state": "Do you ship to PO boxes?",
+      "gold": {
+        "department": "shipping",
+        "urgency": "low",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-025",
+      "state": "I cannot log in, and while you are at it I want last month refunded.",
+      "gold": {
+        "department": "account",
+        "urgency": "high",
+        "refund": "yes"
+      },
+      "notes": "multi-intent: login blocks use, refund is secondary"
+    },
+    {
+      "id": "triage-026",
+      "state": "The app crashes on upload and I have been charged for a plan I never used.",
+      "gold": {
+        "department": "technical",
+        "urgency": "high",
+        "refund": "yes"
+      },
+      "notes": "multi-intent"
+    },
+    {
+      "id": "triage-027",
+      "state": "My order is late and the discount code did not apply.",
+      "gold": {
+        "department": "shipping",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "multi-intent; a pricing complaint is not a refund request"
+    },
+    {
+      "id": "triage-028",
+      "state": "Please close my account and refund the unused portion of the year.",
+      "gold": {
+        "department": "account",
+        "urgency": "medium",
+        "refund": "yes"
+      },
+      "notes": "multi-intent"
+    },
+    {
+      "id": "triage-029",
+      "state": "Hi, hope you are well. Small thing: our whole team has been locked out since 6am.",
+      "gold": {
+        "department": "account",
+        "urgency": "high",
+        "refund": "no"
+      },
+      "notes": "politeness masks severity"
+    },
+    {
+      "id": "triage-030",
+      "state": "No rush at all, but production has been down for two hours.",
+      "gold": {
+        "department": "technical",
+        "urgency": "high",
+        "refund": "no"
+      },
+      "notes": "explicit no-rush wording contradicts severity"
+    },
+    {
+      "id": "triage-031",
+      "state": "THIS IS ABSOLUTELY UNACCEPTABLE. The logo is the wrong shade of blue.",
+      "gold": {
+        "department": "technical",
+        "urgency": "low",
+        "refund": "no"
+      },
+      "notes": "tone loud, impact trivial"
+    },
+    {
+      "id": "triage-032",
+      "state": "I am furious. Your FAQ has a typo on page two.",
+      "gold": {
+        "department": "technical",
+        "urgency": "low",
+        "refund": "no"
+      },
+      "notes": "tone loud, impact trivial"
+    },
+    {
+      "id": "triage-033",
+      "state": "I read your refund policy and it seems fair. No action needed.",
+      "gold": {
+        "department": "billing",
+        "urgency": "low",
+        "refund": "no"
+      },
+      "notes": "mentions refunds without asking"
+    },
+    {
+      "id": "triage-034",
+      "state": "Do not refund me — I want the item replaced instead.",
+      "gold": {
+        "department": "shipping",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "explicit negation of refund"
+    },
+    {
+      "id": "triage-035",
+      "state": "A friend told me you refunded her. Is that normal?",
+      "gold": {
+        "department": "billing",
+        "urgency": "low",
+        "refund": "no"
+      },
+      "notes": "third-party refund mention"
+    },
+    {
+      "id": "triage-036",
+      "state": "If this happens again I will ask for my money back.",
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "conditional future refund, not a request now"
+    },
+    {
+      "id": "triage-037",
+      "state": "I would like my money back for the duplicate charge.",
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "yes"
+      },
+      "notes": "refund without the word refund"
+    },
+    {
+      "id": "triage-038",
+      "state": "Please reverse the payment from yesterday.",
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "yes"
+      },
+      "notes": "refund phrased as reversal"
+    },
+    {
+      "id": "triage-039",
+      "state": "Charge me back for the month the service was down.",
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "yes"
+      },
+      "notes": "refund phrased as chargeback"
+    },
+    {
+      "id": "triage-040",
+      "state": "There are three charges from a country I have never visited.",
+      "gold": {
+        "department": "billing",
+        "urgency": "high",
+        "refund": "no"
+      },
+      "notes": "fraud flavour; reporting charges is not asking for a reversal"
+    },
+    {
+      "id": "triage-041",
+      "state": "I received a password reset I did not request, twice.",
+      "gold": {
+        "department": "account",
+        "urgency": "high",
+        "refund": "no"
+      },
+      "notes": "possible account takeover"
+    },
+    {
+      "id": "triage-042",
+      "state": {
+        "subject": "Invoice mismatch",
+        "body": "PO says 1,200 EUR, invoice says 2,100 EUR.",
+        "plan": "enterprise"
+      },
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "JSON state"
+    },
+    {
+      "id": "triage-043",
+      "state": {
+        "subject": "SDK timeout",
+        "body": "client.connect() hangs for 30s then throws ETIMEDOUT",
+        "region": "eu-central-1"
+      },
+      "gold": {
+        "department": "technical",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "JSON state"
+    },
+    {
+      "id": "triage-044",
+      "state": "broken",
+      "gold": {
+        "department": "technical",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "almost no signal"
+    },
+    {
+      "id": "triage-045",
+      "state": "?",
+      "gold": {
+        "department": "technical",
+        "urgency": "low",
+        "refund": "no"
+      },
+      "notes": "no signal at all — any answer is a guess"
+    },
+    {
+      "id": "triage-046",
+      "state": "help",
+      "gold": {
+        "department": "technical",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "no signal"
+    },
+    {
+      "id": "triage-047",
+      "state": "It is doing the thing again.",
+      "gold": {
+        "department": "technical",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "anaphora with no antecedent"
+    },
+    {
+      "id": "triage-048",
+      "state": "Our SSO metadata expired and nobody in the company can sign in.",
+      "gold": {
+        "department": "account",
+        "urgency": "high",
+        "refund": "no"
+      }
+    },
+    {
+      "id": "triage-049",
+      "state": "The invoice PDF renders the total as NaN.",
+      "gold": {
+        "department": "billing",
+        "urgency": "medium",
+        "refund": "no"
+      },
+      "notes": "billing content, technical symptom"
+    },
+    {
+      "id": "triage-050",
+      "state": "Courier left the parcel in the rain and the box is soaked.",
+      "gold": {
+        "department": "shipping",
+        "urgency": "high",
+        "refund": "no"
+      },
+      "notes": "damage without an explicit refund ask"
+    }
+  ]
+}

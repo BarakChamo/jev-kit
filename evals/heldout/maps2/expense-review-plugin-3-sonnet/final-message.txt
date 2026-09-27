@@ -1,0 +1,13 @@
+The file reads correctly and the logic traces match my manual walkthrough of the six test cases.
+
+`map.mjs` is written at the requested path. Design summary:
+
+- **State**: raw `policy_text`, `fx_to_usd`, `expense`, plus `amount_usd` (computed by code from the fx table) and `candidate_amounts` — every USD figure literally present in the policy text (regex-extracted), used as exact `choice` options rather than bucketed ranges (per the skill's documented $73.44-dinner failure mode).
+- **Questions** (4, all independent, one pass):
+  - `never_reimbursable` (noul) — reads category + description against "never reimbursable" clauses.
+  - `applicable_limit` (choice over the exact extracted dollar figures + `"none"`) — picks which stated figure is the limit for this category/city, accounting for high-cost-city tiering itself.
+  - `receipt_threshold` (choice, same style) — the itemised-receipt threshold, if any.
+  - `suspicious_claim` (noul) — detects a description trying to claim pre-approval or exemption (injection guard).
+- **decide()**: all currency conversion and the amount-vs-limit / amount-vs-threshold comparisons happen in code, never asked of Jev. Precedence: abstain (unsupported currency, or no dollar figures found in policy at all) → reject (confident never-reimbursable) → needs_approval (ambiguous never-reimbursable, unresolved/uncertain limit, over limit, missing receipt above threshold, or suspicious claim) → approve.
+
+I couldn't execute Bash in this session (approvals aren't going through), so I verified by hand-tracing six representative cases (under-limit, over-limit, missing-receipt-only, alcohol reject, injected pre-approval claim, unsupported currency) against the code — all resolved as expected. You may want to run this against a small labelled suite (per the jev-eval skill) before shipping at volume.

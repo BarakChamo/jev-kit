@@ -1,0 +1,50 @@
+{
+  "state": {
+    "job_id": "example-job-id",
+    "start_line": 1801,
+    "lines": [
+      "Run npm test",
+      "> myapp@1.0.0 test",
+      "> jest",
+      "PASS src/utils.test.ts",
+      "FAIL src/payment.test.ts",
+      "  ● charges the correct amount",
+      "    expect(received).toBe(expected)",
+      "    Expected: 4200",
+      "    Received: 4000",
+      "      at Object.<anonymous> (src/payment.test.ts:42:19)",
+      "Tests:       1 failed, 24 passed, 25 total",
+      "npm ERR! Test failed.  See above for more details.",
+      "Error: Process completed with exit code 1."
+    ]
+  },
+  "questions": {
+    "culprit_line": {
+      "type": "choice",
+      "instructions": "This is the tail of a CI job log (state.lines), one array entry per log line, indexed from 0 in order. The job failed. Pick the single line that is the root cause of the failure: the first assertion failure, thrown exception, compiler/lint error, or first non-zero-exit-triggering error that explains why the job failed. Do NOT pick a downstream summary line (e.g. 'Tests: 1 failed'), a re-print/echo of an earlier error, or generic wrapper output (e.g. 'npm ERR! Test failed', 'Process completed with exit code 1').",
+      "criteria": {
+        "0": "Run npm test",
+        "1": "> myapp@1.0.0 test",
+        "2": "> jest",
+        "3": "PASS src/utils.test.ts",
+        "4": "FAIL src/payment.test.ts",
+        "5": "  ● charges the correct amount",
+        "6": "    expect(received).toBe(expected)",
+        "7": "    Expected: 4200",
+        "8": "    Received: 4000",
+        "9": "      at Object.<anonymous> (src/payment.test.ts:42:19)",
+        "10": "Tests:       1 failed, 24 passed, 25 total",
+        "11": "npm ERR! Test failed.  See above for more details.",
+        "12": "Error: Process completed with exit code 1."
+      }
+    },
+    "is_infra_failure": {
+      "type": "noul",
+      "instructions": "Given the same CI log tail (state.lines), decide whether this failure is caused by infrastructure/environment problems (runner OOM, network timeout, docker pull failure, disk full, package registry outage, flaky runner crash) rather than by the code or tests under test.",
+      "criteria": {
+        "true": "The log shows infra/environment breakage unrelated to application code: timeouts, OOM kills, network or registry errors, runner crashes, 'no space left on device', etc.",
+        "false": "The log shows a normal code-caused failure: a failing test/assertion, a compile/type error, a lint error, or an application exception."
+      }
+    }
+  }
+}

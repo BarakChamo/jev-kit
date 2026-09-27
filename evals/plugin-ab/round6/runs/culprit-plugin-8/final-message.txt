@@ -1,0 +1,10 @@
+I've written both files to the scratchpad:
+
+**`questions.json`** — example request body: `state.logLines` is a sample CI failure log, and the questions map has one `noul` question per candidate line (5–12), asking "is line N the direct cause of the failure" scoped to that specific line.
+
+**`decide.ts`** — the code side:
+- `selectCandidates` — a regex prefilter (error/fail/exception/etc. + 2 lines of trailing context for stack frames) that shrinks 200 lines down to the handful worth asking Jev about, keeping the request small and never sending Jev a judgment code can already rule out.
+- `buildQuestions` — generates the actual `is_cause_<i>` question map from that shortlist.
+- `decide` — reads back the `noul` probabilities, argmaxes them, and only returns a single culprit line when the top answer clears both a confidence bar (≥0.85) *and* a margin over the runner-up (≥0.25). Otherwise it returns a ranked top-3 shortlist instead of guessing.
+
+The design leans on one rule from the jev-questions skill that applies directly here: pointing at which of several similar lines *caused* a failure is explicitly the weakest-measured mode for Jev (~65–67% accuracy despite ~0.88 confidence — the worst calibration in the study), regardless of encoding. So rather than trusting a single auto-picked line, the system is built to fall back to a shortlist whenever the signal isn't decisively lopsided — that's the mode you should expect it to be in most of the time, with single-line auto-pointing reserved for the clear-cut cases. Worth measuring on ~30 labelled real failures (via jev-eval) before trusting the threshold values.

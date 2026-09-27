@@ -1,0 +1,12 @@
+Both files are in the scratchpad:
+
+**`questions.json`** — the Jev request. State holds the user question, the matched FAQ's `canonical_answer` (from the CMS), and the candidate `passages`. For each passage it asks two questions in the same pass:
+- `{id}_status` (`choice`): `consistent` / `outdated` / `contradicts` / `unrelated`, judged against the canonical answer.
+- `{id}_severity` (`score`): `none` → `severe`, how harmful showing that passage as-is would be.
+
+In production you'd generate one such pair per retrieved passage; the file shows two as a worked example.
+
+**`decide.ts`** — post-processing logic:
+- `decide(passages, answers)` combines each passage's status/confidence/severity into a verdict, flagging it as wrong (`outdated`/`contradicts` above a confidence threshold, lowered for `severe` cases) or excluding it as `unrelated`.
+- `filterForGenerator(verdicts)` returns only the passages safe to hand to the generator.
+- `flaggedForReview(verdicts)` returns the wrong ones, most severe first, for the support team to fix in the CMS.

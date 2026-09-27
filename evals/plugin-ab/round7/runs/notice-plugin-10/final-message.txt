@@ -1,0 +1,9 @@
+Built both files in the scratchpad (`questions.json`, `decide.ts`).
+
+**Design choices:**
+- `questions.json` puts the full `contract_text` and `cancellation_email_text` plus the exogenous `cancellation_received_date` in state — the source, not an extraction of it (rule 1).
+- The required-notice-period and days-until-renewal are each asked as a *bucketed `choice`* over identical day ranges, since "was notice given in time" is a comparison of two quantities — Jev is unreliable comparing them directly (41.7%→100%/92.9% in the measured study) but reliable bucketing each one, so `decide.ts` does the actual comparison.
+- Three `noul` questions gate the edge cases before the timing comparison even matters: is this actually a cancellation notice, does an auto-renewal clause exist at all, and does the notice's delivery method (email) satisfy what the contract requires (e.g. some contracts demand certified mail).
+- `decide.ts` gates on each answer's own probability/confidence (not a blended scalar), and additionally escalates "close calls" where the two day-buckets land within one bucket-width of each other, since the buckets are coarse — better to route those to a human than guess.
+
+Not yet done, and worth doing before trusting this: run it through `jev-eval` on ~30 labelled contract/email pairs, especially ones designed to be hard (ambiguous renewal clauses, non-email notice requirements, borderline timing).

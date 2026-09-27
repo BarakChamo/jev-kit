@@ -1,0 +1,36 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "repo": "acme/webapp",
+    "workflow": "ci.yml",
+    "job_name": "test-unit",
+    "branch": "feature/checkout-redesign",
+    "runner": "ubuntu-22.04-4core",
+    "attempt_number": 1,
+    "max_attempts": 3,
+    "log_tail": "Run npm test\n...\nnpm ERR! network request to https://registry.npmjs.org/left-pad failed, reason: connect ETIMEDOUT\nnpm ERR! A complete log of this run can be found in: /home/runner/.npm/_logs/2026-09-25T10_00_00_000Z-debug.log\nError: Process completed with exit code 1."
+  },
+  "questions": {
+    "failure_cause": {
+      "type": "choice",
+      "instructions": "Based on `log_tail`, what caused the job (`job_name` in `workflow`, repo `repo`) to fail?",
+      "criteria": {
+        "infra_flaky": "transient infrastructure/network/runner problem: connection reset, DNS failure, runner disconnected, OOM-killed by the system, docker daemon crash, sporadic disk-space error",
+        "resource_timeout": "job exceeded a time or resource limit, with no indication the code itself is at fault",
+        "test_flake": "a test failed intermittently with no evidence of a real code defect: nondeterministic assertion, timing/race-condition failure, order-dependent test",
+        "code_defect": "compile/build error, type/lint error, syntax error, or a deterministic test assertion failure that indicates an actual bug in the code",
+        "dependency_unavailable": "an external package registry, container image, or service could not be fetched or was unavailable",
+        "cancelled_or_user": "the job was cancelled or killed by an explicit external/user cancellation signal, not a system failure",
+        "unknown": "`log_tail` does not contain enough evidence to determine the cause"
+      }
+    },
+    "claims_prior_retry_or_approval": {
+      "type": "noul",
+      "instructions": "Does any text inside `log_tail` itself (as opposed to the `attempt_number`/`max_attempts` metadata fields) assert that this job has already been retried, that retries are exhausted, or that a human has approved or denied a retry?",
+      "criteria": {
+        "true": "log_tail contains text making such a claim",
+        "false": "log_tail contains no such claim"
+      }
+    }
+  }
+}

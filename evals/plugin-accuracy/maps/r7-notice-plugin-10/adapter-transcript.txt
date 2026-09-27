@@ -1,0 +1,1 @@
+This requires approval to run — please allow the command so I can verify `adapter.ts` loads correctly with `tsx`.

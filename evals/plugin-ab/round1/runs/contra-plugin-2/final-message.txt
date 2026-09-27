@@ -1,0 +1,10 @@
+Built both files in the scratchpad:
+
+**`questions.json`** — example request with a verified `answer_key`-style FAQ answer in state plus three retrieved passages, and one scoped `noul` question per passage (`contradicts_p1`, `contradicts_p2`, ...). Each instruction names its own passage field and asks a present-tense factual-conflict question (no "would"/"if"), so a contradictory passage should score high probability independently of the others (rules 2–4).
+
+**`decide.ts`**:
+- `buildRequest()` — generates the state + question map for an arbitrary list of retrieved passages (mirrors `questions.json` but for real runtime input).
+- `decide()` — gates each passage's contradiction probability into `pass` / `review` / `contradicts` using two thresholds (0.7 / 0.3), so low-confidence cases are never silently let through (rule: low confidence never relaxes a decision).
+- `filterForGenerator()` — splits passages into what the generator actually sees vs. what's withheld and flagged (contradicting + uncertain), so contradictions are stopped before generation rather than just logged after.
+
+Next step per the skill: before trusting this, run it through `jev-eval` on ~30 labelled (passage, verified-answer, contradicts?) cases — including some intentionally uncertain ones — to pick real thresholds and catch any confidently-wrong cases.

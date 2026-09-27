@@ -1,0 +1,7 @@
+Both files are in the scratchpad (`questions.json`, `decide.ts`). Design choices, tied to the jev-questions rules:
+
+- **`cause` (choice, 5 options)** classifies the failure from `log_tail` into `flaky_test` / `infrastructure` / `code_defect` / `config_or_credentials` / `unknown`. Asked as a present-tense fact ("what caused this"), not "would a retry help" — the retry/no-retry branch is derived in code (`RETRYABLE = {flaky_test, infrastructure}`), matching rule 6's exact example (deriving from class membership: +12.5–29 pts vs asking directly).
+- **`injection_attempt` (noul)** is a detector sitting next to the manipulable `cause` judgment (rule 10) — log output can contain untrusted/adversarial text (e.g. from a test or a compromised dependency) trying to talk the retrier into retrying or not; if flagged, it overrides straight to `escalate`.
+- **`decide.ts`** does everything code can settle completely (rule 12): the `attempt >= max_attempts` cap is a pure state comparison, never asked. It gates on the summed *probability* of the retryable labels rather than the `confidence` scalar (rule 8), and low-confidence cases fall to `escalate`, never to `retry` (a gate must never relax toward action on low confidence).
+
+Not done, and worth flagging: this is unvalidated — per the skill, it should be measured against ~30 labelled cases with `jev-eval` before trusting the thresholds (0.7 gate, 0.5 injection) or the category boundaries.

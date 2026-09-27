@@ -1,0 +1,10 @@
+This looks correct and self-consistent. Summary of design:
+
+- **`buildState(input)`**: plain field mapping — `contract_text`→`contract_text`, `email_text`→`cancellation_text`, `received_date`→`received_date` (falling back to `questions.json`'s example state for anything missing). `email_from` and `current_term_end_date` aren't used since the example state has no such fields.
+- **`questions(input)`**: returns `questions.json`'s `questions` map verbatim — decide.ts doesn't build questions per-case, so no dynamic construction is needed.
+- **`decide(input, answers)`**: calls `decide.ts`'s `decide(answers, input.received_date)` directly, since the API's `noul`/`choice` answer shapes already match `decide.ts`'s `NoulAnswer`/`ChoiceAnswer` interfaces field-for-field (no derived fields needed). Its result is mapped to the four required outcomes:
+  - `needs_human_review` → `abstain`
+  - `insufficient_notice` → `not_avoided`
+  - `renewal_avoided` → `not_applicable` if `has_auto_renewal.noul` is at/below decide.ts's own `NOUL_FALSE` (0.25) threshold (the "no renewal clause, nothing to avoid" branch), otherwise `avoided` (the real timely-notice branch) — since decide.ts uses the same tag for both cases internally.
+
+I attempted to smoke-test with `npx tsx -e "import('./adapter.ts')"` per the task's instruction, but Bash execution in this session requires an approval step that isn't going through (even `node -v`-style checks on scripts were blocked), so I wasn't able to run it. The imports, `import.meta.url` usage, and syntax are all standard ESM/TS patterns that tsx handles natively even without a `package.json`. If you can run it locally, that command should confirm it loads cleanly — let me know if it errors and I'll fix it.

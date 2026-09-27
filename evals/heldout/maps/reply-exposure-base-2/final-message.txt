@@ -1,0 +1,5 @@
+Wrote `map.mjs` with:
+
+- **`buildState`** — passes the recipient's own name/email/phone/order_ids and the draft text as-is, so Jev has the "who this belongs to" baseline to compare against.
+- **`questions`** — one `choice` question (`yes`/`no`) asking whether the draft names or gives contact/order info for anyone *other* than the addressed recipient, explicitly excluding the recipient's own matching info, company contact addresses, and staff first names.
+- **`decide`** — maps the choice straight through when confidence ≥ 0.65; otherwise returns `"abstain"` so low-confidence cases go to a human rather than risk a wrong auto-decision at millions-per-month scale.

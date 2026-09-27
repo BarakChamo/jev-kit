@@ -1,0 +1,6 @@
+This looks syntactically correct and matches the required exports. I attempted to execute it via `npx tsx`/`node` to verify, but command execution is blocked by sandbox approval in this environment — the file is manually verified for correctness instead.
+
+**Summary of `adapter.ts`:**
+- `buildState(input)` — copies `contract_text`/`current_term_end_date` and `email_text`/`received_date` into the `contract`/`cancellation` shape from `questions.json`'s example state, filling `id` fields (not present in the canonical input) from the example state.
+- `questions(input)` — returns `questions.json`'s `questions` map verbatim (it's static, not built per-case).
+- `decide(input, answers)` — converts API answers into `decide.ts`'s expected shape (deriving `probability` for `noul` answers as `1`/`0` from the boolean `noul` field, passing `choice`/`confidence`/`probabilities` through for the choice answer), calls `decide.ts`'s `decide()`, and maps its `Decision` union to `avoided`/`not_avoided`/`not_applicable`/`abstain` (with `needs_review` → `abstain`).

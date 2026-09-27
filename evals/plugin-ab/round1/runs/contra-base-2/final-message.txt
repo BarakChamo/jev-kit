@@ -1,0 +1,4 @@
+Created both files in the scratchpad:
+
+- **questions.json** — example Jev request: `state` holds an FAQ question, its verified answer, and 3 sample retrieved passages. For each passage there's a `choice` question (supports/contradicts/unrelated vs. the verified answer) and a `noul` severity question (probability the passage is factually incompatible) — two independent signals per passage.
+- **decide.ts** — `buildQuestions(state)` generates that same questions map for any number of passages (so it's not hardcoded to 3), and `decide(state, answers)` flags a passage if either the choice model says "contradicts" above a confidence threshold, or the severity `noul` probability crosses its threshold — returning flagged passages sorted by signal strength before they'd reach the generator.

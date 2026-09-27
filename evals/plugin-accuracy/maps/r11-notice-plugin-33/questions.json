@@ -1,0 +1,96 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_text": "This Agreement begins on the Effective Date of March 1, 2024 and continues for an initial term of twelve (12) months. Thereafter, this Agreement shall automatically renew for successive twelve (12) month periods unless either party gives the other written notice of non-renewal at least sixty (60) days before the end of the then-current term. Notice may be delivered by email to the addresses on file.",
+    "cancellation_text": "Hi team, we will not be renewing our subscription for another year. Please treat this as our formal notice of non-renewal. Thanks.",
+    "received_date": "2025-01-15"
+  },
+  "questions": {
+    "has_auto_renewal": {
+      "type": "noul",
+      "instructions": "Does `contract_text` state that this agreement automatically renews for a further term unless a party gives notice of non-renewal?",
+      "criteria": {
+        "true": "contract_text contains an automatic-renewal / evergreen clause",
+        "false": "contract_text has no automatic-renewal clause, or renewal requires an affirmative opt-in"
+      }
+    },
+    "start_year": {
+      "type": "choice",
+      "instructions": "In `contract_text`, what year is the contract's Effective Date (or the start date of the current/most recently started term)?",
+      "criteria": {
+        "before_2010": "stated date is before 2010",
+        "2010": "2010", "2011": "2011", "2012": "2012", "2013": "2013", "2014": "2014",
+        "2015": "2015", "2016": "2016", "2017": "2017", "2018": "2018", "2019": "2019",
+        "2020": "2020", "2021": "2021", "2022": "2022", "2023": "2023", "2024": "2024",
+        "2025": "2025", "2026": "2026", "2027": "2027", "2028": "2028",
+        "after_2028": "stated date is after 2028",
+        "not_stated": "no such date is stated in contract_text"
+      }
+    },
+    "start_month": {
+      "type": "choice",
+      "instructions": "In `contract_text`, what month is the contract's Effective Date (or the start date of the current/most recently started term)?",
+      "criteria": {
+        "January": "January", "February": "February", "March": "March", "April": "April",
+        "May": "May", "June": "June", "July": "July", "August": "August",
+        "September": "September", "October": "October", "November": "November", "December": "December",
+        "not_stated": "no such date is stated in contract_text"
+      }
+    },
+    "start_day": {
+      "type": "choice",
+      "instructions": "In `contract_text`, what day of the month is the contract's Effective Date (or the start date of the current/most recently started term)?",
+      "criteria": {
+        "1": "1", "2": "2", "3": "3", "4": "4", "5": "5", "6": "6", "7": "7", "8": "8", "9": "9", "10": "10",
+        "11": "11", "12": "12", "13": "13", "14": "14", "15": "15", "16": "16", "17": "17", "18": "18", "19": "19", "20": "20",
+        "21": "21", "22": "22", "23": "23", "24": "24", "25": "25", "26": "26", "27": "27", "28": "28", "29": "29", "30": "30", "31": "31",
+        "not_stated": "no such date is stated in contract_text"
+      }
+    },
+    "initial_term_months": {
+      "type": "choice",
+      "instructions": "In `contract_text`, how long is the initial contract term (the term running from the Effective Date, before any renewal)?",
+      "criteria": {
+        "1_month": "one month", "3_months": "three months", "6_months": "six months",
+        "12_months": "twelve months / one year", "24_months": "twenty-four months / two years",
+        "36_months": "thirty-six months / three years", "other": "a different length is stated",
+        "not_stated": "no term length is stated"
+      }
+    },
+    "renewal_term_months": {
+      "type": "choice",
+      "instructions": "In `contract_text`, how long is each automatic renewal term (the successive term after the initial term)? If the contract says renewal terms are the same length as the initial term, or does not separately state a renewal length, answer same_as_initial.",
+      "criteria": {
+        "same_as_initial": "renewal term is the same length as the initial term, or no separate length is given",
+        "1_month": "one month", "3_months": "three months", "6_months": "six months",
+        "12_months": "twelve months / one year", "24_months": "twenty-four months / two years",
+        "36_months": "thirty-six months / three years", "other": "a different length is stated"
+      }
+    },
+    "notice_period_days": {
+      "type": "choice",
+      "instructions": "In `contract_text`, how many days of advance notice must be given before the end of the then-current term to prevent automatic renewal?",
+      "criteria": {
+        "15_days": "15 days", "30_days": "30 days", "45_days": "45 days", "60_days": "60 days",
+        "90_days": "90 days", "120_days": "120 days", "other": "a different number of days is stated",
+        "not_stated": "no notice period is stated"
+      }
+    },
+    "email_method_restricted": {
+      "type": "noul",
+      "instructions": "Does `contract_text` require non-renewal notice to be given by a specific method that excludes plain email (e.g. certified mail only, a specific portal only, notice to a specific legal address only), such that an ordinary email would not satisfy it?",
+      "criteria": {
+        "true": "contract_text names a required method other than email and does not also allow email",
+        "false": "contract_text allows email, or states no particular method, or only requires notice to be 'in writing' without excluding email"
+      }
+    },
+    "email_requests_cancellation": {
+      "type": "noul",
+      "instructions": "Does `cancellation_text` clearly communicate that the customer does not want the contract/subscription to renew, or wants to cancel it?",
+      "criteria": {
+        "true": "cancellation_text clearly states an intent to cancel or not renew",
+        "false": "cancellation_text is ambiguous, ambivalent, or about something else (e.g. a complaint, a billing question)"
+      }
+    }
+  }
+}

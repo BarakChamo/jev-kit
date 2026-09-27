@@ -1,0 +1,1 @@
+This requires your approval to run — could you approve the sandbox-disabled `npx tsx` command, or approve it in your normal permission flow?

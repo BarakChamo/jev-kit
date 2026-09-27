@@ -1,0 +1,3 @@
+Good, plain `rm` works — it's specifically `node`/`npx` execution that's stuck needing approval I can't obtain right now. I removed the scratch test file so the directory only has the requested `adapter.ts` change.
+
+I've written `adapter.ts` (importing `buildRequest`/`decide`/types from `decide.ts`) with `buildState`, `questions`, and `decide` as specified — I checked it carefully by eye but couldn't get the `npx tsx -e "import('./adapter.ts')"` load-check to actually execute since every `node`/`npx` invocation here is stuck on an approval gate. Could you either approve one of those Bash calls or run that command yourself and tell me if it errors?

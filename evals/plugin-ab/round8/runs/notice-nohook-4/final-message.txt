@@ -1,0 +1,15 @@
+Built two files in the working directory:
+
+**`questions.json`** — the Jev request. State carries the full contract text, full cancellation email text, and the received date (rule 1: put the whole source in state, not an extraction). Five questions:
+- `auto_renewal_clause` (noul) — does the contract even auto-renew
+- `required_notice_band` / `actual_lead_band` (choice, same day-buckets) — the notice period the contract requires and the lead time the customer actually gave, kept as **separate bucketed quantities** rather than one direct "was it on time?" question, per the rule that Jev is unreliable holding one extracted value against another but fine naming the band a value falls in
+- `clear_cancellation_intent` (noul) — does the email actually say they're cancelling
+- `method_compliant` (noul) — does the notice satisfy any manner-of-notice requirement (address, written form, etc.)
+
+**`decide.ts`** — the comparison and gating logic, all in code:
+- No auto-renewal clause → `NOT_APPLICABLE`
+- Unclear cancellation intent or wrong notice method → `INSUFFICIENT_NOTICE`
+- Bucket rank of `required` vs `actual` → `SUFFICIENT_NOTICE` / `INSUFFICIENT_NOTICE`
+- Any low-confidence choice, unspecified/not-ascertainable band, or uncertain noul → `NEEDS_HUMAN_REVIEW` (never silently defaults to "sufficient")
+
+Not implemented: the actual API call — you asked me not to make it. Next step would be running this against ~30 labelled cancellation/contract pairs to check the bucket boundaries and thresholds actually hold before trusting the gate.

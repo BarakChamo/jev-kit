@@ -1,0 +1,769 @@
+{
+  "name": "jagged-probes",
+  "description": "Yes/no claims about small data blobs, grouped by what they demand: counting, arithmetic, date ordering, negation, multi-hop indirection, and the same judgment with and without irrelevant filler. The point is to locate the failure boundary, not to score well.",
+  "questions": {
+    "holds": {
+      "type": "noul",
+      "instructions": "Is the statement in `claim` true of the `data`?",
+      "criteria": {
+        "true": "The claim holds",
+        "false": "The claim does not hold"
+      }
+    },
+    "holds_choice": {
+      "type": "choice",
+      "instructions": "Is the statement in `claim` true of the `data`?",
+      "criteria": {
+        "yes": "The claim holds",
+        "no": "The claim does not hold"
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "probe-001",
+      "state": {
+        "data": {
+          "text": "The customer thanked us and asked nothing further."
+        },
+        "claim": "The customer is satisfied."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "probe-002",
+      "state": {
+        "data": {
+          "text": "This is the fourth time I have written and nobody has replied."
+        },
+        "claim": "The customer is frustrated."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "probe-003",
+      "state": {
+        "data": {
+          "text": "Could you point me at the API docs?"
+        },
+        "claim": "The customer reported an outage."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "probe-004",
+      "state": {
+        "data": {
+          "text": "Our payment failed and the team is blocked."
+        },
+        "claim": "The message describes a blocking problem."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "probe-005",
+      "state": {
+        "data": {
+          "text": "The invoice arrived on time and matched the purchase order."
+        },
+        "claim": "There is a billing dispute."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "control"
+      ]
+    },
+    {
+      "id": "probe-006",
+      "state": {
+        "data": {
+          "items": [
+            "apple",
+            "wrench",
+            "banana",
+            "hammer",
+            "pear"
+          ]
+        },
+        "claim": "The list contains exactly three fruits."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "counting"
+      ]
+    },
+    {
+      "id": "probe-007",
+      "state": {
+        "data": {
+          "items": [
+            "apple",
+            "wrench",
+            "banana",
+            "hammer",
+            "pear"
+          ]
+        },
+        "claim": "The list contains exactly two tools."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "counting"
+      ]
+    },
+    {
+      "id": "probe-008",
+      "state": {
+        "data": {
+          "items": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k"
+          ]
+        },
+        "claim": "The list has eleven entries."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "counting"
+      ]
+    },
+    {
+      "id": "probe-009",
+      "state": {
+        "data": {
+          "items": [
+            "a",
+            "b",
+            "c",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k"
+          ]
+        },
+        "claim": "The list has twelve entries."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "counting"
+      ]
+    },
+    {
+      "id": "probe-010",
+      "state": {
+        "data": {
+          "word": "calibration"
+        },
+        "claim": "The word contains exactly four vowels."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "counting"
+      ],
+      "notes": "it has five"
+    },
+    {
+      "id": "probe-011",
+      "state": {
+        "data": {
+          "sentence": "the cat sat on the mat and the dog sat on the log"
+        },
+        "claim": "The word \"the\" appears four times."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "counting"
+      ]
+    },
+    {
+      "id": "probe-012",
+      "state": {
+        "data": {
+          "errors": [
+            "E01",
+            "E02",
+            "E01",
+            "E03",
+            "E01"
+          ]
+        },
+        "claim": "E01 occurs more often than every other code combined."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "counting"
+      ],
+      "notes": "three E01 against two others — needs a tally"
+    },
+    {
+      "id": "probe-013",
+      "state": {
+        "data": {
+          "a": 1299,
+          "b": 1301
+        },
+        "claim": "a is greater than b."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "numeric"
+      ]
+    },
+    {
+      "id": "probe-014",
+      "state": {
+        "data": {
+          "invoice": 2100,
+          "purchase_order": 1200
+        },
+        "claim": "The invoice exceeds the purchase order by more than 50%."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "numeric"
+      ]
+    },
+    {
+      "id": "probe-015",
+      "state": {
+        "data": {
+          "margin_last_year": 0.14,
+          "margin_now": 0.11
+        },
+        "claim": "Margin fell by three percentage points."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "numeric"
+      ]
+    },
+    {
+      "id": "probe-016",
+      "state": {
+        "data": {
+          "uptime": "99.97%",
+          "sla": "99.99%"
+        },
+        "claim": "Uptime met the SLA."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "numeric"
+      ]
+    },
+    {
+      "id": "probe-017",
+      "state": {
+        "data": {
+          "colour": "#b91c1c"
+        },
+        "claim": "This colour reads as a warning colour."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "numeric"
+      ],
+      "notes": "hex rather than the word red"
+    },
+    {
+      "id": "probe-018",
+      "state": {
+        "data": {
+          "colour": "#1c4fb9"
+        },
+        "claim": "This colour reads as a warning colour."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "numeric"
+      ]
+    },
+    {
+      "id": "probe-019",
+      "state": {
+        "data": {
+          "latency_ms": [
+            120,
+            140,
+            900,
+            130
+          ]
+        },
+        "claim": "The worst latency is more than five times the median."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "numeric"
+      ]
+    },
+    {
+      "id": "probe-020",
+      "state": {
+        "data": {
+          "start": "2026-03-14",
+          "end": "2026-03-02"
+        },
+        "claim": "The end date is after the start date."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "dates"
+      ]
+    },
+    {
+      "id": "probe-021",
+      "state": {
+        "data": {
+          "invoice_date": "2026-01-31",
+          "due": "30 days after invoice"
+        },
+        "claim": "The invoice is due in February 2026."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "dates"
+      ]
+    },
+    {
+      "id": "probe-022",
+      "state": {
+        "data": {
+          "signed": "14 March 2026",
+          "effective": "2026-03-01"
+        },
+        "claim": "The contract took effect before it was signed."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "dates"
+      ]
+    },
+    {
+      "id": "probe-023",
+      "state": {
+        "data": {
+          "incident_start": "14:12 UTC",
+          "restored": "15:47 UTC"
+        },
+        "claim": "The outage lasted more than two hours."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "dates"
+      ]
+    },
+    {
+      "id": "probe-024",
+      "state": {
+        "data": {
+          "event": "2026-09-20",
+          "quarter_end": "2026-09-30"
+        },
+        "claim": "The event falls in the final quarter of the calendar year."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "dates"
+      ],
+      "notes": "Q3, not Q4"
+    },
+    {
+      "id": "probe-025",
+      "state": {
+        "data": {
+          "hired": "2025-11-01",
+          "today": "2026-09-20"
+        },
+        "claim": "The employee has completed six months of service."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "dates"
+      ]
+    },
+    {
+      "id": "probe-026",
+      "state": {
+        "data": {
+          "renewal": "2026-02-29"
+        },
+        "claim": "The renewal date is a real date."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "dates"
+      ],
+      "notes": "2026 is not a leap year"
+    },
+    {
+      "id": "probe-027",
+      "state": {
+        "data": {
+          "text": "Do not refund me — I want a replacement instead."
+        },
+        "claim": "The customer is asking for a refund."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "negation"
+      ]
+    },
+    {
+      "id": "probe-028",
+      "state": {
+        "data": {
+          "text": "It is not true that the service was unavailable."
+        },
+        "claim": "The service was available."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "negation"
+      ]
+    },
+    {
+      "id": "probe-029",
+      "state": {
+        "data": {
+          "text": "I never said I did not want the upgrade."
+        },
+        "claim": "The customer rejected the upgrade."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "negation"
+      ]
+    },
+    {
+      "id": "probe-030",
+      "state": {
+        "data": {
+          "text": "Nothing in the report suggests the data was not encrypted."
+        },
+        "claim": "The report raises doubt about encryption."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "negation"
+      ]
+    },
+    {
+      "id": "probe-031",
+      "state": {
+        "data": {
+          "order": {
+            "id": "A-1",
+            "customer": {
+              "tier": "enterprise",
+              "region": "EU"
+            }
+          },
+          "policy": {
+            "enterprise": "priority handling",
+            "standard": "normal queue"
+          }
+        },
+        "claim": "This order gets priority handling."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "indirection"
+      ]
+    },
+    {
+      "id": "probe-032",
+      "state": {
+        "data": {
+          "ticket": {
+            "assignee": "sam"
+          },
+          "team": {
+            "sam": "billing",
+            "alex": "technical"
+          },
+          "rules": {
+            "billing": "needs finance sign-off"
+          }
+        },
+        "claim": "This ticket needs finance sign-off."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "indirection"
+      ]
+    },
+    {
+      "id": "probe-033",
+      "state": {
+        "data": {
+          "user": {
+            "plan": "free"
+          },
+          "features": {
+            "export": [
+              "pro",
+              "enterprise"
+            ]
+          }
+        },
+        "claim": "This user can export."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "indirection"
+      ]
+    },
+    {
+      "id": "probe-034",
+      "state": {
+        "data": {
+          "alert": {
+            "service": "api"
+          },
+          "ownership": {
+            "api": "team-core",
+            "web": "team-ui"
+          },
+          "oncall": {
+            "team-core": "paged",
+            "team-ui": "email only"
+          }
+        },
+        "claim": "Someone gets paged for this alert."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "indirection"
+      ]
+    },
+    {
+      "id": "probe-035",
+      "state": {
+        "data": {
+          "text": "Our payment failed and the team is blocked."
+        },
+        "claim": "The message describes a blocking problem."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "context-clean"
+      ]
+    },
+    {
+      "id": "probe-036",
+      "state": {
+        "data": {
+          "filler": "Changelog entry 1: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 2: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 3: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 4: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 5: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 6: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 7: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 8: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 9: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 10: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 11: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 12: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 13: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 14: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 15: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 16: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 17: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 18: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 19: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 20: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 21: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 22: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 23: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 24: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 25: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 26: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 27: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 28: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing.",
+          "text": "Our payment failed and the team is blocked."
+        },
+        "claim": "The message describes a blocking problem."
+      },
+      "gold": {
+        "holds": "yes",
+        "holds_choice": "yes"
+      },
+      "tags": [
+        "context-rot"
+      ],
+      "notes": "same case as context-clean, buried in filler"
+    },
+    {
+      "id": "probe-037",
+      "state": {
+        "data": {
+          "text": "Could you point me at the API docs?"
+        },
+        "claim": "The message describes a blocking problem."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "context-clean"
+      ]
+    },
+    {
+      "id": "probe-038",
+      "state": {
+        "data": {
+          "filler": "Changelog entry 1: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 2: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 3: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 4: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 5: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 6: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 7: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 8: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 9: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 10: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 11: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 12: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 13: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 14: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 15: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 16: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 17: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 18: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 19: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 20: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 21: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 22: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 23: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 24: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 25: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 26: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 27: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 28: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing.",
+          "text": "Could you point me at the API docs?"
+        },
+        "claim": "The message describes a blocking problem."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "context-rot"
+      ],
+      "notes": "same case as context-clean, buried in filler"
+    },
+    {
+      "id": "probe-039",
+      "state": {
+        "data": {
+          "text": "The invoice arrived on time and matched the purchase order."
+        },
+        "claim": "There is a billing dispute."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "context-clean"
+      ]
+    },
+    {
+      "id": "probe-040",
+      "state": {
+        "data": {
+          "filler": "Changelog entry 1: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 2: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 3: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 4: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 5: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 6: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 7: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 8: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 9: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 10: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 11: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 12: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 13: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 14: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 15: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 16: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 17: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 18: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 19: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 20: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 21: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 22: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 23: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 24: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 25: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 26: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 27: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing. Changelog entry 28: the settings page gained a new toggle, the icon set was refreshed, and the release notes were translated into three languages. Nothing in this entry concerns billing, incidents or staffing.",
+          "text": "The invoice arrived on time and matched the purchase order."
+        },
+        "claim": "There is a billing dispute."
+      },
+      "gold": {
+        "holds": "no",
+        "holds_choice": "no"
+      },
+      "tags": [
+        "context-rot"
+      ],
+      "notes": "same case as context-clean, buried in filler"
+    }
+  ]
+}

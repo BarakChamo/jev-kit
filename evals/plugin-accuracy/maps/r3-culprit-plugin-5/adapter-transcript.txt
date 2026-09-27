@@ -1,0 +1,1 @@
+Running the verification command requires your approval. Should I proceed with `npx tsx -e "import('./adapter.ts')..."` to confirm it loads cleanly?

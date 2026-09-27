@@ -1,0 +1,10 @@
+Built both files:
+
+**`questions.json`** — example state (job's last-200-line log, numbered, plus `candidate_indices` code pre-selected via failure-signal regex) and the request: one `noul` per candidate line ("is this the root-cause line, not a downstream symptom") plus one abstain `noul` ("does no single candidate explain it").
+
+**`decide.ts`**:
+- `selectCandidates` — cheap regex filter (error/fail/exception/etc. + last 5 lines) to keep the request small; this is a reliable pre-filter, not the judgment itself.
+- `buildQuestions` — generates the per-line `noul` questions + the abstain question.
+- `decide` — argmax over per-line probabilities (the measured-best encoding for scoring candidates), gates on the winning probability *and* its margin over the runner-up, and treats a high abstain score as ambiguous too. Anything ambiguous returns the top-2 lines for a human instead of an auto-answer — never silently relaxes to a guess.
+
+One thing this needs before trusting it in prod: run `jev-eval` against ~30 labelled CI failures (real root-cause line marked by a human) to check the per-candidate `noul` actually separates root cause from symptom, and to tune `CONFIDENCE_THRESHOLD`/`AMBIGUITY_MARGIN`. Want me to draft that eval suite next?

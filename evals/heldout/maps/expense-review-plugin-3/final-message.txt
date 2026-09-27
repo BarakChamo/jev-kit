@@ -1,0 +1,15 @@
+I've written `map.mjs` implementing `buildState`, `questions`, and `decide`. Design summary:
+
+**buildState** — passes through `policy_text` and `expense`, and computes `amount_usd` via exact currency conversion (arithmetic done in code, never asked of Jev).
+
+**questions** — always asks two narrow `noul`s (is this alcohol/entertainment by category+description; does the policy forbid alcohol/entertainment) and a `choice` for the receipt-itemization threshold. For meal/hotel categories it also asks a `choice` for city tier (standard vs high-cost, matched against the policy's named list) and bucketed `choice`s for the standard/high-cost per-unit limit; for transport, one bucketed limit. Limits are read as buckets (a lookup) rather than having Jev compare amount-vs-limit directly, per the "compare in code" rule — Jev never sees the actual dollar amount, only produces the limit the policy states.
+
+**decide** — does all arithmetic and comparisons in code:
+- Invalid/missing currency rate or amount → `abstain`.
+- Combined P(alcohol/entertainment) ≥ 0.55 → `reject`; 0.25–0.55 → `needs_approval` (never auto-reject on ambiguous signal).
+- Uncategorized expense types with no policy limit → `needs_approval`.
+- Amount over the applicable limit, or missing receipt above the receipt threshold → `needs_approval` (matches the policy's own rule that over-limit is escalated, not rejected).
+- Otherwise → `approve`.
+- City-tier ambiguity defaults to the stricter "standard" tier rather than assuming the more permissive high-cost limit — low confidence never relaxes toward approval.
+
+I manually traced the example case (Chicago team lunch, $62, no receipt) through the logic and it correctly resolves to `approve`. I wasn't able to run `node` in this sandbox (execution approval wasn't available), so I'd recommend running it against a small labelled suite via `jev-eval` before trusting it at volume.

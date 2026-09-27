@@ -1,0 +1,254 @@
+{
+  "model": "typesafe-ai/jev",
+  "state": {
+    "contract_id": "VC-2026-04213",
+    "vendor_name": "Acme Cloud Services, Inc.",
+    "customer_name": "Northwind Retail Corp.",
+    "full_text": "<complete extracted text of the contract, all pages, exhibits and amendments included, in reading order>"
+  },
+  "questions": {
+    "governing_law": {
+      "type": "choice",
+      "instructions": "Which jurisdiction's law does the governing-law clause in `full_text` name as controlling this contract?",
+      "criteria": {
+        "delaware": "Delaware",
+        "california": "California",
+        "new_york": "New York",
+        "texas": "Texas",
+        "illinois": "Illinois",
+        "washington": "Washington State",
+        "massachusetts": "Massachusetts",
+        "other_us_state": "a US state not listed above",
+        "england_and_wales": "England and Wales",
+        "ireland": "Ireland",
+        "germany": "Germany",
+        "canada_ontario": "Ontario, Canada",
+        "singapore": "Singapore",
+        "other_non_us": "a non-US jurisdiction not listed above",
+        "not_specified": "`full_text` has no governing-law clause, or it does not name a jurisdiction"
+      }
+    },
+    "auto_renewal": {
+      "type": "noul",
+      "instructions": "Does the term clause in `full_text` state that the contract renews for an additional term automatically, unless a party acts to stop it?",
+      "criteria": {
+        "true": "the contract renews automatically absent action by a party",
+        "false": "the contract ends at the end of its term unless the parties affirmatively agree to renew, or there is no renewal provision"
+      }
+    },
+    "renewal_notice_period_band": {
+      "type": "choice",
+      "instructions": "How much advance notice does `full_text` require to prevent the contract's automatic renewal or to decline the next renewal term?",
+      "criteria": {
+        "no_notice_or_not_stated": "no notice is required, or `full_text` does not state a notice period for this",
+        "1_to_30_days": "1 to 30 days",
+        "31_to_60_days": "31 to 60 days",
+        "61_to_90_days": "61 to 90 days",
+        "91_to_180_days": "91 to 180 days",
+        "over_180_days": "more than 180 days"
+      }
+    },
+    "termination_for_convenience": {
+      "type": "noul",
+      "instructions": "Does `full_text` give either party the right to terminate the contract before the end of its term without needing cause, on notice?",
+      "criteria": {
+        "true": "at least one party may terminate for convenience, without cause, on notice",
+        "false": "termination before the end of the term requires cause (e.g. breach, insolvency), or no such right exists"
+      }
+    },
+    "termination_for_convenience_notice_band": {
+      "type": "choice",
+      "instructions": "For the termination-for-convenience right in `full_text`, how much advance written notice does it require?",
+      "criteria": {
+        "no_notice_or_not_stated": "no notice is required, or `full_text` does not state a notice period for this",
+        "1_to_30_days": "1 to 30 days",
+        "31_to_60_days": "31 to 60 days",
+        "61_to_90_days": "61 to 90 days",
+        "over_90_days": "more than 90 days"
+      }
+    },
+    "liability_cap_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` state a maximum dollar limit on either party's total liability arising out of the contract?",
+      "criteria": {
+        "true": "a numeric or formula-based cap on total liability is stated",
+        "false": "no cap is stated, or liability is expressly unlimited"
+      }
+    },
+    "liability_cap_amount_band": {
+      "type": "choice",
+      "instructions": "What is the liability cap amount stated in `full_text`? If it is defined as a multiple of fees paid rather than a fixed dollar figure, say so.",
+      "criteria": {
+        "not_specified_or_no_cap": "no cap is stated in `full_text`",
+        "under_100k": "under $100,000",
+        "100k_to_1m": "$100,000 to $1,000,000",
+        "1m_to_10m": "$1,000,000 to $10,000,000",
+        "over_10m": "over $10,000,000",
+        "tied_to_fees_paid": "defined as a multiple of fees paid (e.g. 12 months' fees) rather than a fixed dollar amount"
+      }
+    },
+    "liability_cap_carveouts_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` list categories of claims (such as confidentiality breach, IP infringement, indemnification obligations, gross negligence, or willful misconduct) that are excluded from the liability cap?",
+      "criteria": {
+        "true": "one or more carve-out categories are excluded from the cap",
+        "false": "the cap applies to all claims with no stated carve-outs, or there is no cap"
+      }
+    },
+    "indemnity_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` contain a clause obligating a party to indemnify, defend, or hold harmless the other party against third-party claims?",
+      "criteria": {
+        "true": "an indemnification obligation is stated",
+        "false": "no indemnification obligation is stated"
+      }
+    },
+    "indemnity_scope": {
+      "type": "choice",
+      "instructions": "Which party or parties owe the indemnification obligation(s) stated in `full_text`, and how broad are they?",
+      "criteria": {
+        "mutual_broad": "both parties indemnify each other, for claims generally (not limited to IP)",
+        "vendor_only_broad": "only the vendor indemnifies the customer, for claims generally",
+        "customer_only_broad": "only the customer indemnifies the vendor, for claims generally",
+        "ip_infringement_only": "indemnification is limited to intellectual-property infringement claims",
+        "not_specified": "`full_text` has no indemnification clause"
+      }
+    },
+    "consequential_damages_waiver": {
+      "type": "noul",
+      "instructions": "Does `full_text` state that a party is not liable for indirect, consequential, incidental, special, or punitive damages?",
+      "criteria": {
+        "true": "such a waiver or exclusion is stated for at least one party",
+        "false": "no such waiver or exclusion is stated"
+      }
+    },
+    "data_processing_terms_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` include terms governing how personal data is processed on behalf of a party, such as a data processing addendum, a data protection clause, or processor obligations?",
+      "criteria": {
+        "true": "personal-data-processing terms are present",
+        "false": "no personal-data-processing terms are present"
+      }
+    },
+    "data_processing_regulatory_reference": {
+      "type": "choice",
+      "instructions": "Which privacy or data-protection law, if any, does `full_text` explicitly name in connection with data processing?",
+      "criteria": {
+        "gdpr_only": "only the GDPR (or EU/UK data protection law) is named",
+        "ccpa_cpra_only": "only the CCPA/CPRA (or other US state privacy law) is named",
+        "both_named": "both GDPR-type and CCPA/CPRA-type law are named",
+        "other_named": "a different privacy/data-protection law is named",
+        "none_named": "no specific privacy or data-protection law is named"
+      }
+    },
+    "confidentiality_clause_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` contain a clause restricting a party's use or disclosure of the other party's confidential information?",
+      "criteria": {
+        "true": "a confidentiality/non-disclosure clause is present",
+        "false": "no confidentiality/non-disclosure clause is present"
+      }
+    },
+    "confidentiality_survival_band": {
+      "type": "choice",
+      "instructions": "For how long after termination does the confidentiality clause in `full_text` state that confidentiality obligations continue?",
+      "criteria": {
+        "no_survival_stated": "`full_text` has no confidentiality clause, or states no survival period",
+        "term_only": "obligations end when the contract ends",
+        "1_to_2_years": "1 to 2 years after termination",
+        "3_to_5_years": "3 to 5 years after termination",
+        "indefinite_or_perpetual": "obligations continue indefinitely or perpetually, or for as long as the information remains confidential"
+      }
+    },
+    "payment_terms_band": {
+      "type": "choice",
+      "instructions": "What payment timing does `full_text` state for invoices under this contract?",
+      "criteria": {
+        "due_on_receipt": "due on receipt or immediately",
+        "net_15": "net 15 days",
+        "net_30": "net 30 days",
+        "net_45": "net 45 days",
+        "net_60": "net 60 days",
+        "net_90_or_more": "net 90 days or more",
+        "milestone_or_usage_based": "tied to milestones, deliverables, or usage rather than a fixed number of days",
+        "not_specified": "`full_text` does not state payment timing"
+      }
+    },
+    "price_escalation_clause_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` allow the vendor to increase fees during the term or upon renewal, such as an annual increase, CPI adjustment, or similar escalator?",
+      "criteria": {
+        "true": "a fee-increase mechanism during the term or at renewal is stated",
+        "false": "fees are fixed for the term with no stated increase mechanism"
+      }
+    },
+    "assignment_restriction": {
+      "type": "choice",
+      "instructions": "What does `full_text` say about a party's ability to assign or transfer the contract to another entity?",
+      "criteria": {
+        "no_assignment_without_consent": "assignment requires the other party's prior consent",
+        "permitted_to_affiliates_or_successors": "assignment is permitted without consent to affiliates, or in connection with a merger/sale/successor",
+        "freely_assignable": "either party may assign without restriction or consent",
+        "not_specified": "`full_text` has no assignment clause"
+      }
+    },
+    "exclusivity_clause_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` restrict the customer from obtaining similar goods or services from other vendors, or restrict the vendor from selling to other customers, during the term?",
+      "criteria": {
+        "true": "such an exclusivity restriction is stated for at least one party",
+        "false": "no such restriction is stated"
+      }
+    },
+    "most_favored_nation_clause_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` guarantee the customer pricing or terms at least as favorable as those the vendor offers to other, comparable customers?",
+      "criteria": {
+        "true": "such a most-favored-customer/pricing guarantee is stated",
+        "false": "no such guarantee is stated"
+      }
+    },
+    "insurance_requirement_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` require either party to carry and maintain specified types or minimum amounts of insurance during the term?",
+      "criteria": {
+        "true": "a minimum-insurance requirement is stated for at least one party",
+        "false": "no insurance requirement is stated"
+      }
+    },
+    "audit_rights_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` give the customer the right to audit or inspect the vendor's records, systems, security controls, or compliance during the term?",
+      "criteria": {
+        "true": "a customer audit or inspection right is stated",
+        "false": "no such right is stated"
+      }
+    },
+    "force_majeure_clause_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` excuse a party's non-performance caused by events beyond its reasonable control (e.g. natural disaster, war, government action)?",
+      "criteria": {
+        "true": "a force majeure clause is present",
+        "false": "no force majeure clause is present"
+      }
+    },
+    "dispute_resolution_mechanism": {
+      "type": "choice",
+      "instructions": "How does `full_text` require the parties to resolve a dispute arising under the contract?",
+      "criteria": {
+        "binding_arbitration": "binding arbitration is required",
+        "mediation_or_escalation_then_litigation": "mediation or an internal escalation step is required before either party may litigate",
+        "litigation_only": "the contract contemplates court litigation, with no arbitration or mandatory mediation step",
+        "not_specified": "`full_text` has no dispute-resolution clause"
+      }
+    },
+    "non_compete_or_non_solicit_present": {
+      "type": "noul",
+      "instructions": "Does `full_text` restrict either party from soliciting or hiring the other party's employees, or from competing in a defined market, during or after the term?",
+      "criteria": {
+        "true": "a non-solicitation or non-competition restriction is stated",
+        "false": "no such restriction is stated"
+      }
+    }
+  }
+}

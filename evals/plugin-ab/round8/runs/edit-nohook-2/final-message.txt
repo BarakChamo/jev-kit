@@ -1,0 +1,6 @@
+Both files are updated:
+
+- **`questions.json`**: added `state.cancellation.fromAddress` (the premise, per the skill's rule of putting facts in state rather than making the model dig through text) and the list of authorised contacts in `contract.text`, plus the new `sender_is_authorised_contact` noul question scoped to those two exact fields.
+- **`decide.ts`**: added `sender_is_authorised_contact` to `JevAnswers` and into the existing `gates` array, so an unauthorised or low-confidence sender now drives `INSUFFICIENT_NOTICE`/`NEEDS_HUMAN_REVIEW` the same way the other gates do.
+
+No API calls were made.

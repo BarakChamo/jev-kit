@@ -1,0 +1,10 @@
+Both files are now in the working directory: `questions.json` and `decide.ts`.
+
+**Design choices:**
+- **State** carries the full `contract_text` and `email_text` (never an extraction of them — rule 1), plus `date_received` and `current_term_end_date` as tracked facts from your system.
+- **4 questions, not 5**: I initially added a bucketed "actual notice given" choice question, then dropped it — since `current_term_end_date` is already a known fact, the actual lead time is exact date math, so it belongs in code (rule 12), not asked of Jev.
+- **`required_notice_band`** is the one genuine comparison-quantity question: it lets Jev read and compute contract notice-period language (including formulas like "greater of 30 days or 5% of the term") and bucket it, which is the proven 32/32 pattern (rule 5) — asking for an exact number or a direct yes/no "was notice timely" would be the 41.7%-accuracy failure mode.
+- **`auto_renewal_exists`**, **`is_cancellation_notice`**, **`notice_method_valid`** are independent `noul` judgments, each scoped to the exact field it reads.
+- `decide.ts` computes exact `actualLeadDays` in code, compares it against the required band's lower bound, and gates every probability against a threshold (not the `confidence` scalar) — low confidence always routes to `NEEDS_HUMAN_REVIEW`, never a lenient default.
+
+Before trusting this on real cases, run it through `jev-eval` on ~30 labelled contract/email pairs (weighted toward near-boundary and edge cases like "no minimum stated" or wrong notice method) to check calibration and catch any confidently-wrong answers.
