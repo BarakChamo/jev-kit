@@ -2,7 +2,7 @@
 
 **Get your coding agent to write [Jev](https://docs.typesafe.ai) questions that work the first time.**
 
-[Installation](#installation) · [Quick start](#quick-start) · [Using the skills](#using-the-skills) · [Using the scripts](#using-the-scripts) · [Use cases](docs/use-cases.md) · [Rules](docs/rules.md) · [Evaluations](docs/evals.md)
+[Where the rules come from](#where-the-rules-come-from) · [Installation](#installation) · [Quick start](#quick-start) · [Using the skills](#using-the-skills) · [Using the scripts](#using-the-scripts) · [Use cases](docs/use-cases.md) · [Rules](docs/rules.md) · [Evaluations](docs/evals.md)
 
 Jev, TypeSafe's System One model, answers typed questions about your data for a fraction of what an LLM costs.
 It is 20–100× cheaper than a small LLM (`zai/glm-5.3-flash`), answers in ~600 ms, and returned no malformed output in ~1,900 calls. The catch is that
@@ -21,6 +21,21 @@ the result. Maps that Claude Code agents wrote with and without it, graded on Je
 
 The effect isn't limited to Claude. Nine other models wrote maps too, including GPT, Gemini, DeepSeek, GLM and
 Qwen. With the skill, wrong decisions fell for eight of them. The ninth made none either way.
+
+## Where the rules come from
+
+The skills rest on 16 rules for writing Jev questions. None came from intuition:
+
+1. **Measured failures.** A study of 57 hand-labelled suites (1,836 cases) read every case Jev got wrong with high
+   confidence, and measured each fix.
+2. **Replicated before use.** A finding became a rule only after it held on a second task. Rules that hold only
+   under a condition state it.
+3. **Re-tested since.** Ten rules were probed in three new domains each. The skill as a whole was tested on four rounds
+   of held-out tasks, with maps from ten authoring models.
+
+Browse [the rules](docs/rules.md), each with an example, its evidence and its status. Follow them into
+[the evidence behind every rule](plugin/skills/jev-questions/references/rules.md) and
+[the evaluations](docs/evals.md).
 
 ## Why this exists
 
