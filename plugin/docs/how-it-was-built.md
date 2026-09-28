@@ -148,19 +148,19 @@ edit-task review flagged the trap 3/3. Nothing the agents relied on was lost.
 ## 5b. Do the rules hold elsewhere? Rule probes
 
 Each rule's recommended wording and the wording it warns against, on 12 items in each of three new
-domains, with truth by construction. Jev only. [Full table](../../results/experiments/rule-probes/README.md).
+domains, with truth by construction. Jev only. [Full table](../../evals/rule-probes/README.md).
 
 | outcome | rules |
 | --- | --- |
-| held in every domain | 1, 2, 4, 5, 7, 9, 10, 15 |
-| only partly supported | 6: a compound question tied, but lost decisiveness where the requirement took reasoning |
+| held in every domain | 1, 4, 5, 7, 9, 10, 15 |
+| held under its condition | 2: mattered where the state held other material; 6: a compound question tied, but lost decisiveness where the requirement took reasoning |
 | narrowed | 8: two *stated* values compare fine; a side that must be *computed* does not (9/12 at 0.25) |
 
 ## 5c. Other authors, other vendors: the second held-out round
 
 Five new tasks, pre-registered, labels audited by `zai/glm-5.3` (119/119). **10 authoring models, 266 maps,
 all graded end to end on Jev:** Claude Code agents, plus GLM 5.3, Qwen 3.8 Max and seven other vendors'
-models writing each map in one API call. [Full results and a models-used table](../../results/experiments/heldout2/README.md).
+models writing each map in one API call. [Full results and a models-used table](../../evals/heldout2/README.md).
 
 | | no plugin | skill v3 | skill v4.2 |
 | --- | ---: | ---: | ---: |
@@ -209,4 +209,6 @@ can run their maps, had none.
 | design A/B (rounds 1–14) | `results/experiments/plugin-ab/` | `evals/plugin-ab/` |
 | accuracy eval | `results/experiments/plugin-accuracy/` | `evals/plugin-accuracy/` |
 | held-out tasks, second model | `results/experiments/heldout/` | `evals/heldout/` |
+| rule probes | `results/experiments/rule-probes/` | `evals/rule-probes/` |
+| held-out round 2, ten authoring models | `results/experiments/heldout2/` | `evals/heldout2/` |
 | pre-registered bars, every round | `rubric.md`, `PREREGISTRATION.md` in the above | same |

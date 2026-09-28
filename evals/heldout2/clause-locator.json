@@ -1,0 +1,876 @@
+{
+  "name": "clause-locator",
+  "description": "Which numbered section of the contract sets the asked-about term? Sections are shuffled, some untitled, and some other sections cross-reference the topic.",
+  "cases": [
+    {
+      "id": "clause-001",
+      "input": {
+        "contract_text": "1. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n2. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n3. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n4. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n5. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n6. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n7. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n8. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n9. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n10. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n11. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n12. Confidentiality. The obligations in this Section continue for five years after termination.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the governing law terms?"
+      },
+      "gold": {
+        "section": "9"
+      },
+      "facts": {
+        "topic": "governing law",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-002",
+      "input": {
+        "contract_text": "1. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n2. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights. The indemnity in this Section is not subject to the cap on liability described elsewhere in this Agreement.\n\n3. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n4. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n5. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n6. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n7. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n8. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n9. Confidentiality. The obligations in this Section continue for five years after termination.\n\n10. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n11. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n12. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the limitation of liability terms?"
+      },
+      "gold": {
+        "section": "12"
+      },
+      "facts": {
+        "topic": "limitation of liability",
+        "untitled": false,
+        "cross_reference": true
+      }
+    },
+    {
+      "id": "clause-003",
+      "input": {
+        "contract_text": "1. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n2. Confidentiality. The obligations in this Section continue for five years after termination.\n\n3. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n4. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n5. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n6. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n7. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n8. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n10. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n11. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n12. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the termination for convenience terms?"
+      },
+      "gold": {
+        "section": "4"
+      },
+      "facts": {
+        "topic": "termination for convenience",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-004",
+      "input": {
+        "contract_text": "1. Section 1. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n2. Section 2. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n3. Section 3. The obligations in this Section continue for five years after termination.\n\n4. Section 4. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n5. Section 5. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n6. Section 6. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n7. Section 7. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n8. Section 8. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Section 9. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2. Personal data is also Confidential Information.\n\n10. Section 10. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n11. Section 11. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n12. Section 12. Either party may terminate this Agreement for any reason on ninety days' written notice.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the confidentiality period terms?"
+      },
+      "gold": {
+        "section": "3"
+      },
+      "facts": {
+        "topic": "confidentiality period",
+        "untitled": true,
+        "cross_reference": true
+      }
+    },
+    {
+      "id": "clause-005",
+      "input": {
+        "contract_text": "1. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n2. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n3. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n4. Confidentiality. The obligations in this Section continue for five years after termination.\n\n5. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n6. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n7. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n8. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n10. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n11. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n12. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the payment terms terms?"
+      },
+      "gold": {
+        "section": "9"
+      },
+      "facts": {
+        "topic": "payment terms",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-006",
+      "input": {
+        "contract_text": "1. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n2. Confidentiality. The obligations in this Section continue for five years after termination.\n\n3. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n4. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n5. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n6. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n7. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n8. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n9. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n10. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n11. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n12. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the automatic renewal terms?"
+      },
+      "gold": {
+        "section": "6"
+      },
+      "facts": {
+        "topic": "automatic renewal",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-007",
+      "input": {
+        "contract_text": "1. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n2. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n3. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n4. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n5. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n6. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n7. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n8. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n9. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n10. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n11. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n12. Confidentiality. The obligations in this Section continue for five years after termination.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the indemnification terms?"
+      },
+      "gold": {
+        "section": "9"
+      },
+      "facts": {
+        "topic": "indemnification",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-008",
+      "input": {
+        "contract_text": "1. Section 1. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n2. Section 2. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n3. Section 3. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n4. Section 4. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n5. Section 5. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n6. Section 6. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n7. Section 7. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n8. Section 8. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n9. Section 9. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n10. Section 10. The obligations in this Section continue for five years after termination.\n\n11. Section 11. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n12. Section 12. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the data protection terms?"
+      },
+      "gold": {
+        "section": "4"
+      },
+      "facts": {
+        "topic": "data protection",
+        "untitled": true,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-009",
+      "input": {
+        "contract_text": "1. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n2. Confidentiality. The obligations in this Section continue for five years after termination.\n\n3. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n4. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n5. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n6. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n7. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n8. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n9. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n10. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n11. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n12. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the force majeure terms?"
+      },
+      "gold": {
+        "section": "7"
+      },
+      "facts": {
+        "topic": "force majeure",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-010",
+      "input": {
+        "contract_text": "1. Confidentiality. The obligations in this Section continue for five years after termination.\n\n2. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n3. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n4. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n5. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n6. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n7. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n8. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n9. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n10. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n11. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n12. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the assignment terms?"
+      },
+      "gold": {
+        "section": "12"
+      },
+      "facts": {
+        "topic": "assignment",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-011",
+      "input": {
+        "contract_text": "1. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n2. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n3. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n4. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n5. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n6. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n7. Confidentiality. The obligations in this Section continue for five years after termination.\n\n8. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n9. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n10. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n11. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n12. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the notices terms?"
+      },
+      "gold": {
+        "section": "4"
+      },
+      "facts": {
+        "topic": "notices",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-012",
+      "input": {
+        "contract_text": "1. Section 1. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n2. Section 2. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n3. Section 3. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n4. Section 4. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n5. Section 5. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n6. Section 6. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n7. Section 7. The obligations in this Section continue for five years after termination.\n\n8. Section 8. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n9. Section 9. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n10. Section 10. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n11. Section 11. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n12. Section 12. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the warranty terms?"
+      },
+      "gold": {
+        "section": "9"
+      },
+      "facts": {
+        "topic": "warranty",
+        "untitled": true,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-013",
+      "input": {
+        "contract_text": "1. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n2. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n3. Confidentiality. The obligations in this Section continue for five years after termination.\n\n4. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n5. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n6. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n7. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n8. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n9. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n10. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n11. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n12. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the governing law terms?"
+      },
+      "gold": {
+        "section": "10"
+      },
+      "facts": {
+        "topic": "governing law",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-014",
+      "input": {
+        "contract_text": "1. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n2. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n3. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n4. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights. The indemnity in this Section is not subject to the cap on liability described elsewhere in this Agreement.\n\n5. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n6. Confidentiality. The obligations in this Section continue for five years after termination.\n\n7. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n8. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n9. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n10. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n11. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n12. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the limitation of liability terms?"
+      },
+      "gold": {
+        "section": "9"
+      },
+      "facts": {
+        "topic": "limitation of liability",
+        "untitled": false,
+        "cross_reference": true
+      }
+    },
+    {
+      "id": "clause-015",
+      "input": {
+        "contract_text": "1. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n2. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n3. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n4. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n5. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n6. Confidentiality. The obligations in this Section continue for five years after termination.\n\n7. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n8. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n9. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n10. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n11. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n12. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the termination for convenience terms?"
+      },
+      "gold": {
+        "section": "8"
+      },
+      "facts": {
+        "topic": "termination for convenience",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-016",
+      "input": {
+        "contract_text": "1. Section 1. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n2. Section 2. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n3. Section 3. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2. Personal data is also Confidential Information.\n\n4. Section 4. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n5. Section 5. The obligations in this Section continue for five years after termination.\n\n6. Section 6. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n7. Section 7. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n8. Section 8. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Section 9. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n10. Section 10. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n11. Section 11. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n12. Section 12. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the confidentiality period terms?"
+      },
+      "gold": {
+        "section": "5"
+      },
+      "facts": {
+        "topic": "confidentiality period",
+        "untitled": true,
+        "cross_reference": true
+      }
+    },
+    {
+      "id": "clause-017",
+      "input": {
+        "contract_text": "1. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n2. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n3. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n4. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n5. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n6. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n7. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n8. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n10. Confidentiality. The obligations in this Section continue for five years after termination.\n\n11. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n12. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the payment terms terms?"
+      },
+      "gold": {
+        "section": "2"
+      },
+      "facts": {
+        "topic": "payment terms",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-018",
+      "input": {
+        "contract_text": "1. Confidentiality. The obligations in this Section continue for five years after termination.\n\n2. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n3. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n4. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n5. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n6. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n7. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n8. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n9. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n10. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n11. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n12. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the automatic renewal terms?"
+      },
+      "gold": {
+        "section": "3"
+      },
+      "facts": {
+        "topic": "automatic renewal",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-019",
+      "input": {
+        "contract_text": "1. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n2. Confidentiality. The obligations in this Section continue for five years after termination.\n\n3. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n4. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n5. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n6. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n7. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n8. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n10. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n11. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n12. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the indemnification terms?"
+      },
+      "gold": {
+        "section": "4"
+      },
+      "facts": {
+        "topic": "indemnification",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-020",
+      "input": {
+        "contract_text": "1. Section 1. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n2. Section 2. The obligations in this Section continue for five years after termination.\n\n3. Section 3. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n4. Section 4. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n5. Section 5. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n6. Section 6. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n7. Section 7. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n8. Section 8. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n9. Section 9. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n10. Section 10. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n11. Section 11. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n12. Section 12. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the data protection terms?"
+      },
+      "gold": {
+        "section": "10"
+      },
+      "facts": {
+        "topic": "data protection",
+        "untitled": true,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-021",
+      "input": {
+        "contract_text": "1. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n2. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n3. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n4. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n5. Confidentiality. The obligations in this Section continue for five years after termination.\n\n6. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n7. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n8. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n9. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n10. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n11. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n12. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the force majeure terms?"
+      },
+      "gold": {
+        "section": "1"
+      },
+      "facts": {
+        "topic": "force majeure",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-022",
+      "input": {
+        "contract_text": "1. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n2. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n3. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n4. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n5. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n6. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n7. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n8. Confidentiality. The obligations in this Section continue for five years after termination.\n\n9. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n10. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n11. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n12. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the assignment terms?"
+      },
+      "gold": {
+        "section": "9"
+      },
+      "facts": {
+        "topic": "assignment",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-023",
+      "input": {
+        "contract_text": "1. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n2. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n3. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n4. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n5. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n6. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n7. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n8. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n10. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n11. Confidentiality. The obligations in this Section continue for five years after termination.\n\n12. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the notices terms?"
+      },
+      "gold": {
+        "section": "3"
+      },
+      "facts": {
+        "topic": "notices",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-024",
+      "input": {
+        "contract_text": "1. Section 1. The obligations in this Section continue for five years after termination.\n\n2. Section 2. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n3. Section 3. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n4. Section 4. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n5. Section 5. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n6. Section 6. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n7. Section 7. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n8. Section 8. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n9. Section 9. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n10. Section 10. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n11. Section 11. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n12. Section 12. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the warranty terms?"
+      },
+      "gold": {
+        "section": "4"
+      },
+      "facts": {
+        "topic": "warranty",
+        "untitled": true,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-025",
+      "input": {
+        "contract_text": "1. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n2. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n3. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n4. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n5. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n6. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n7. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n8. Confidentiality. The obligations in this Section continue for five years after termination.\n\n9. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n10. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n11. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n12. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the governing law terms?"
+      },
+      "gold": {
+        "section": "4"
+      },
+      "facts": {
+        "topic": "governing law",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-026",
+      "input": {
+        "contract_text": "1. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights. The indemnity in this Section is not subject to the cap on liability described elsewhere in this Agreement.\n\n2. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n3. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n4. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n5. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n6. Confidentiality. The obligations in this Section continue for five years after termination.\n\n7. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n8. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n9. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n10. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n11. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n12. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the limitation of liability terms?"
+      },
+      "gold": {
+        "section": "4"
+      },
+      "facts": {
+        "topic": "limitation of liability",
+        "untitled": false,
+        "cross_reference": true
+      }
+    },
+    {
+      "id": "clause-027",
+      "input": {
+        "contract_text": "1. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n2. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n3. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n4. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n5. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n6. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n7. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n8. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n9. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n10. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n11. Confidentiality. The obligations in this Section continue for five years after termination.\n\n12. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the termination for convenience terms?"
+      },
+      "gold": {
+        "section": "5"
+      },
+      "facts": {
+        "topic": "termination for convenience",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-028",
+      "input": {
+        "contract_text": "1. Section 1. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2. Personal data is also Confidential Information.\n\n2. Section 2. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n3. Section 3. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n4. Section 4. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n5. Section 5. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n6. Section 6. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n7. Section 7. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n8. Section 8. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n9. Section 9. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n10. Section 10. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n11. Section 11. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n12. Section 12. The obligations in this Section continue for five years after termination.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the confidentiality period terms?"
+      },
+      "gold": {
+        "section": "12"
+      },
+      "facts": {
+        "topic": "confidentiality period",
+        "untitled": true,
+        "cross_reference": true
+      }
+    },
+    {
+      "id": "clause-029",
+      "input": {
+        "contract_text": "1. Confidentiality. The obligations in this Section continue for five years after termination.\n\n2. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n3. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\n\n4. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n5. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n6. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n7. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n8. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n9. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n10. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n11. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n12. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the payment terms terms?"
+      },
+      "gold": {
+        "section": "10"
+      },
+      "facts": {
+        "topic": "payment terms",
+        "untitled": false,
+        "cross_reference": false
+      }
+    },
+    {
+      "id": "clause-030",
+      "input": {
+        "contract_text": "1. Termination. Either party may terminate this Agreement for any reason on ninety days' written notice.\n\n2. Assignment. Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\n\n3. Confidentiality. The obligations in this Section continue for five years after termination.\n\n4. Notices. Notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation.\n\n5. Indemnification. Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\n\n6. Data Protection. Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\n\n7. Term and Renewal. This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\n\n8. Force Majeure. Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\n\n9. Governing Law. This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\n\n10. Fees and Payment. Customer will pay each invoice within thirty days of its date. Late amounts accrue interest at 1% per month.\n\n11. Limitation of Liability. Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim.\n\n12. Warranties. Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.",
+        "section_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "question": "Which section sets the automatic renewal terms?"
+      },
+      "gold": {
+        "section": "7"
+      },
+      "facts": {
+        "topic": "automatic renewal",
+        "untitled": false,
+        "cross_reference": false
+      }
+    }
+  ]
+}

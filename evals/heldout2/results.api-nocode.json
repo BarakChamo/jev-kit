@@ -1,0 +1,50 @@
+[
+  {
+    "map": "access-request-plugin-2-alibaba_qwen3_8-max-0902",
+    "task": "access-request",
+    "arm": "plugin",
+    "rep": 2,
+    "author": "alibaba_qwen3_8-max-0902",
+    "loadError": "no map.mjs"
+  },
+  {
+    "map": "access-request-plugin-3-alibaba_qwen3_8-max-0902",
+    "task": "access-request",
+    "arm": "plugin",
+    "rep": 3,
+    "author": "alibaba_qwen3_8-max-0902",
+    "loadError": "no map.mjs"
+  },
+  {
+    "map": "culprit-base-3-alibaba_qwen3_8-max-0902",
+    "task": "culprit",
+    "arm": "base",
+    "rep": 3,
+    "author": "alibaba_qwen3_8-max-0902",
+    "loadError": "no map.mjs"
+  },
+  {
+    "map": "refund-eligibility-plugin-1-alibaba_qwen3_8-max-0902",
+    "task": "refund-eligibility",
+    "arm": "plugin",
+    "rep": 1,
+    "author": "alibaba_qwen3_8-max-0902",
+    "loadError": "no map.mjs"
+  },
+  {
+    "map": "refund-eligibility-plugin-2-alibaba_qwen3_8-max-0902",
+    "task": "refund-eligibility",
+    "arm": "plugin",
+    "rep": 2,
+    "author": "alibaba_qwen3_8-max-0902",
+    "loadError": "no map.mjs"
+  },
+  {
+    "map": "sla-breach-base-2-alibaba_qwen3_8-max-0902",
+    "task": "sla-breach",
+    "arm": "base",
+    "rep": 2,
+    "author": "alibaba_qwen3_8-max-0902",
+    "loadError": "no map.mjs"
+  }
+]

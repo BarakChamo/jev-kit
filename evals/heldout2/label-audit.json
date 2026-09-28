@@ -1,0 +1,1879 @@
+{
+  "sla-breach": {
+    "zai/glm-5.3": {
+      "agreement": 1,
+      "parsed": 30,
+      "disputed": [],
+      "rows": [
+        {
+          "id": "sla-001",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-03-06 15:30 UTC (Friday) with priority High, so the target is 4 business hours. Business hours are 09:00–17:00 UTC, Mon–Fri, excluding the listed holidays (none fall on these dates). From Friday 15:30 to 17:00 = 1.5 business hours, leaving 2.5 business hours. The next business day is Monday 2026-03-09 (not a holiday); 2.5 business hours from 09:00 gives a target of 11:30 UTC on "
+        },
+        {
+          "id": "sla-002",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened 2026-03-06 15:30 UTC (Friday) with priority High, so the 4-business-hour first-response target applies (business hours 09:00–17:00 UTC, Mon–Fri, excluding listed holidays; 2026-03-06/09 are not holidays).\n\nCounting 4 business hours from opening:\n- Friday 2026-03-06 15:30 → 17:00 = 1.5 business hours used (2.5 remaining).\n- Saturday/Sunday (Mar 7–8) are non-business days.\n- Mo"
+        },
+        {
+          "id": "sla-003",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-03-06 16:50 UTC (Friday) with priority Urgent. Under the policy, Urgent tickets require a first response within 1 hour, around the clock (all days, all hours), so the target was 2026-03-06 17:50 UTC. The first reply from a support agent (Jonas) came at 2026-03-06 17:40 UTC, which is 50 minutes after opening — before the 17:50 UTC target. Since the reply arrived within"
+        },
+        {
+          "id": "sla-004",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-03-06 at 16:50 UTC with priority Urgent. The Urgent SLA requires a first response within 1 hour, around the clock, so the target time was 2026-03-06 17:50 UTC. The first reply from a support agent (Mei) came at 2026-03-06 18:15 UTC, which is 1 hour 25 minutes after opening — later than the 17:50 UTC target. Therefore the SLA was breached."
+        },
+        {
+          "id": "sla-005",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-04-02 16:00 UTC (Thursday) with priority High → target is 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri, excluding 2026-04-03 (a public holiday). From opening at 16:00 UTC Thursday, 1 business hour remains until 17:00 (1 of 4 used). Friday 2026-04-03 is a holiday and Sat/Sun are weekend, so the next business time is Monday 2026-04-06 09:00 UTC. The remaining 3 bus"
+        },
+        {
+          "id": "sla-006",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-04-02 16:00 UTC (Thursday) with priority High, so the target is 4 business hours. Business hours are 09:00–17:00 UTC, Mon–Fri, excluding listed holidays (2026-04-03 is one). Counting business hours from opening: Thursday 16:00–17:00 = 1 hour; Friday 2026-04-03 is a public holiday (0 hours); Sat/Sun 2026-04-04/05 are weekend (0 hours); Monday 2026-04-06 business hours start at 09"
+        },
+        {
+          "id": "sla-007",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-05-22 (Friday) 14:00 UTC with priority Normal, so the target is 2 business days (16 business hours), with business hours 09:00–17:00 UTC Mon–Fri excluding listed holidays (2026-05-25 is one).\n\nCounting business hours from 2026-05-22 14:00:\n- Fri 2026-05-22: 14:00→17:00 = 3 hours (total 3; 13 remaining)\n- Sat/Sun: not business days\n- Mon 2026-05-25: public holiday, skipped\n- Tue "
+        },
+        {
+          "id": "sla-008",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-05-22 14:00 UTC (Friday) with priority Normal → target is 16 business hours. Business hours are 09:00–17:00 UTC Mon–Fri, excluding listed holidays (incl. 2026-05-25).\n\nCounting business hours from opening:\n- Fri 2026-05-22, 14:00–17:00 = 3 hours (total 3)\n- Sat/Sun: not business hours\n- Mon 2026-05-25: public holiday, excluded\n- Tue 2026-05-26, 09:00–17:00 = 8 hours (total 11)\n-"
+        },
+        {
+          "id": "sla-009",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-02-10 08:15 UTC (Tuesday) with priority High. High priority target: within 4 business hours. Business hours are 09:00–17:00 UTC, Monday–Friday, excluding listed holidays; 2026-02-10 (Tuesday) is a business day and not a holiday. Since the ticket opened at 08:15, before business hours begin, business-hour counting starts at 09:00 UTC. Four business hours from 09:00 UTC ends at 13"
+        },
+        {
+          "id": "sla-010",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-02-10 (Tuesday) at 08:15 UTC with priority High, so the \"within 4 business hours\" target applies. Business hours are 09:00–17:00 UTC, Monday–Friday. The ticket was opened before 09:00, so business-hour counting starts at 09:00 UTC. 4 business hours later, the target time is 13:00 UTC the same day (Tuesday is not a listed public holiday). The first support agent reply "
+        },
+        {
+          "id": "sla-011",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-02-14 11:00 UTC (Saturday) with priority Low. Low priority target: 16 business hours (2 business days), business hours 09:00–17:00 UTC Mon–Fri excluding listed holidays. Since the ticket was opened on a Saturday (outside business hours), the clock starts Monday 2026-02-16 09:00 UTC (not a listed holiday). Counting 16 business hours: Monday 09:00–17:00 = 8 hours; Tuesday 09:00–17"
+        },
+        {
+          "id": "sla-012",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-02-14 11:00 UTC (Saturday) with priority Low → target is 2 business days (16 business hours). Business hours are 09:00–17:00 UTC Mon–Fri, excluding listed holidays (none fall in this window). Counting from the opening: Saturday 11:00 is outside business hours, so counting starts Monday 2026-02-16 09:00 UTC. Monday gives 8 business hours (through 17:00), leaving 8 more; Tuesday 2"
+        },
+        {
+          "id": "sla-013",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-07-01 09:00 UTC with priority Urgent. Per the policy, Urgent tickets have a first-response target of 1 hour, around the clock (no business-hours or holiday restrictions apply), so the deadline was 2026-07-01 10:00 UTC. The first reply from a support agent (Priya) came at 2026-07-01 09:55 UTC, which is 55 minutes after opening — within the 1-hour target. Customer messa"
+        },
+        {
+          "id": "sla-014",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "1. Ticket opened 2026-07-01 09:00 UTC (Wednesday) with priority Urgent — this is the priority that applies per policy.\n2. Urgent target: first response within 1 hour, around the clock, so no business-hours or holiday adjustments apply. Target = 09:00 UTC + 1 hour = 10:00 UTC on 2026-07-01.\n3. Customer messages (09:03 UTC) and the later customer reply (10:52 UTC) do not count as first responses; on"
+        },
+        {
+          "id": "sla-015",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-09-15 13:00 UTC (Tuesday) with priority High. High priority target: 4 business hours. Business hours are 09:00-17:00 UTC, Mon-Fri; 2026-09-15 is a Tuesday and not a listed holiday, so business hours apply. Opening at 13:00 leaves 4 business hours until 17:00 the same day, so the deadline for first agent response is 2026-09-15 17:00 UTC. The automatic acknowledgement at 13:01 doe"
+        },
+        {
+          "id": "sla-016",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-09-15 13:00 UTC (Tuesday) with priority High. High priority target: 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri; 2026-09-15 is not a listed holiday, and the ticket opened within business hours. The 4 business hours run from 13:00 to 17:00 UTC on Tuesday 2026-09-15 (exactly 4 hours remaining that day), so the first-response target is 2026-09-15 17:00 UTC. The aut"
+        },
+        {
+          "id": "sla-017",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-10-05 10:00 UTC (Monday) with priority Normal; the later change to Urgent is irrelevant because the priority at open applies. Normal target: 16 business hours within 09:00–17:00 UTC, Mon–Fri. Starting from Monday 10:00: Monday 10:00–17:00 gives 7 business hours (9 remaining); Tuesday 09:00–17:00 gives 8 more (1 remaining); Wednesday 09:00–10:00 gives the final hour. T"
+        },
+        {
+          "id": "sla-018",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-10-05 10:00 UTC (Monday) with priority Urgent. Per the policy, the priority at opening applies (later changes don't matter), so the Urgent target applies: first response within 1 hour, around the clock. Target deadline = 10:00 + 1 hour = 11:00 UTC on 2026-10-05. The first reply from a support agent (Sam) came at 11:30 UTC, which is after the 11:00 UTC target. Therefore the SLA w"
+        },
+        {
+          "id": "sla-019",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on Friday 2026-11-20 at 16:30 UTC with priority High, so the 4-business-hour first-response target applies.\n\nStep 1: Count remaining business time on the opening day. Business hours are 09:00–17:00 UTC, Mon–Fri. Friday 2026-11-20 is a business day (not a listed holiday). From 16:30 to 17:00 gives 0.5 business hours used, leaving 3.5 business hours of the target.\n\nStep 2: Skip"
+        },
+        {
+          "id": "sla-020",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-11-20 16:30 UTC (Friday) with priority High, so the target is within 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri, excluding listed holidays (2026-11-20 and 2026-11-23 are not holidays). Friday 16:30–17:00 gives 0.5 business hours, leaving 3.5 business hours. The weekend is skipped, so counting resumes Monday 2026-11-23 at 09:00; 3.5 business hours later gives a "
+        },
+        {
+          "id": "sla-021",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-12-24 15:00 UTC (Thursday) with priority Normal, so the target is 16 business hours. Business hours are 09:00–17:00 UTC, Mon–Fri, excluding public holidays including 2026-12-25.\n\nCounting 16 business hours from opening:\n- Thu 2026-12-24: 15:00–17:00 = 2 business hours (14 remaining).\n- Fri 2026-12-25: public holiday, excluded. Sat/Sun not business days.\n- Mon 2026-12-28: 8 busin"
+        },
+        {
+          "id": "sla-022",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on Thursday 2026-12-24 at 15:00 UTC with priority Normal, so the target is 16 business hours (2 business days). Business hours are 09:00–17:00 UTC, Monday–Friday, excluding the listed holidays (including 2026-12-25). Counting 16 business hours from 2026-12-24 15:00 UTC: Thu 2026-12-24 gives 2 hours (15:00–17:00), leaving 14; Fri 2026-12-25 is a public holiday (0 hours); Sat/S"
+        },
+        {
+          "id": "sla-023",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-06-12 23:40 UTC (Friday) with priority Urgent. Per policy, Urgent has a first-response target of 1 hour around the clock (all days, all hours), so the target deadline was 2026-06-13 00:40 UTC. The first reply from a support agent (Jonas) came at 2026-06-13 00:20 UTC — before the target. Therefore, the reply did not come later than the target; no breach."
+        },
+        {
+          "id": "sla-024",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-06-12 23:40 UTC (Friday) with priority Urgent. Urgent target: first response within 1 hour, around the clock (no business-hours restriction), so the target deadline is 2026-06-13 00:40 UTC. The first agent reply came from Mei at 2026-06-13 01:30 UTC, which is 1h50m after opening — later than the 00:40 UTC target. The later customer message does not count as a first response. The"
+        },
+        {
+          "id": "sla-025",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-08-03 (Monday) at 12:00 UTC with priority High. High priority target: within 4 business hours. Business hours are 09:00–17:00 UTC, Mon–Fri; 2026-08-03 is a Monday and not a listed public holiday, and 12:00 falls within business hours. Counting 4 business hours from 12:00: 12:00 → 16:00 UTC (still within the same business day), so the first-response target is 2026-08-0"
+        },
+        {
+          "id": "sla-026",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-08-03 12:00 UTC (Monday) with priority High. High priority target: first response within 4 business hours. 2026-08-03 is a Monday, not a listed public holiday, and 12:00 UTC is within business hours (09:00–17:00 UTC). So the target is 12:00 + 4 business hours = 16:00 UTC on 2026-08-03. The ticket log shows no reply from a support agent (only the customer opening the ticket), so "
+        },
+        {
+          "id": "sla-027",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket was opened 2026-03-30 09:00 UTC (Monday) with priority Low. Low priority target: within 2 business days (16 business hours). Business hours are 09:00–17:00 UTC, Mon–Fri, excluding listed holidays (2026-03-30 and 2026-03-31 are not holidays).\n\nElapsed business hours from opening to the first agent reply (2026-03-31 16:30 UTC, Tuesday):\n- Monday 2026-03-30: 09:00 → 17:00 = 8 business hours\n- "
+        },
+        {
+          "id": "sla-028",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-03-30 09:00 UTC (Monday) with priority Low → target is 2 business days = 16 business hours (09:00–17:00 UTC, Mon–Fri, excluding listed holidays). Counting business hours from opening: Mon 2026-03-30 09:00→17:00 = 8h; Tue 2026-03-31 = 8h (16h total reached at Wed 09:00); Wed 2026-04-01 09:00→09:30 = 0.5h. No holidays fall in this window (2026-04-03 is Friday, after the reply). Th"
+        },
+        {
+          "id": "sla-029",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-01-02 16:00 UTC (Friday) with priority Normal, so the target is 2 business days = 16 business hours.\n\nCounting business hours (09:00–17:00 UTC, Mon–Fri, excluding listed holidays):\n- Fri 2026-01-02: opened 16:00, so 1 business hour remains that day (16:00–17:00). Total: 1h.\n- Sat 01-03 / Sun 01-04: not business days.\n- Mon 2026-01-05: 8 business hours (09:00–17:00). Total: 9h.\n-"
+        },
+        {
+          "id": "sla-030",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "Ticket opened 2026-01-02 16:00 UTC (Friday) with Normal priority → target is 16 business hours (2 business days). Counting business hours (09:00–17:00 UTC, Mon–Fri, excluding listed holidays): Friday 2026-01-02 gives 1 hour (16:00–17:00), Monday 2026-01-05 gives 8 hours (total 9), leaving 7 hours into Tuesday 2026-01-06 → target is 09:00 + 7h = 16:00 UTC on 2026-01-06. The first agent reply came a"
+        }
+      ]
+    },
+    "alibaba/qwen3.8-max-0902": {
+      "agreement": 0.6333333333333333,
+      "parsed": 30,
+      "disputed": [
+        {
+          "id": "sla-005",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The ticket was opened on 2026-04-02 (Thursday) at 16:00 UTC with High priority, requiring a first response within 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri, excluding holidays. On Thursday 2026-04-02, only 1 hour remains in business hours (16:00–17:00). Friday 2026-04-03 is a public holiday, so no business hours count. The next business day is Monday 2026-04-06. Adding the remai"
+        },
+        {
+          "id": "sla-007",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The ticket was opened on 2026-05-22 (Friday) at 14:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Mon-Fri, excluding holidays.\n\nCounting business hours from 2026-05-22 14:00 UTC:\n- Friday 2026-05-22: 3 hours remaining (14:00 to 17:00) → cumulative 3 hours\n- Monday 2026-05-25 is a public holiday (excluded)\n"
+        },
+        {
+          "id": "sla-008",
+          "gold": "yes",
+          "got": "no",
+          "reasoning": "The ticket was opened on Friday 2026-05-22 at 14:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Mon-Fri, excluding holidays.\n\nRemaining business hours on Friday 2026-05-22: 14:00 to 17:00 = 3 hours.\nMonday 2026-05-25 is a public holiday (excluded).\nTuesday 2026-05-26: full business day = 8 hours. Cumulativ"
+        },
+        {
+          "id": "sla-010",
+          "gold": "yes",
+          "got": "no",
+          "reasoning": "The ticket was opened on Tuesday 2026-02-10 at 08:15 UTC with High priority. The SLA for High priority is 4 business hours (09:00–17:00 UTC, Mon–Fri). Business hours start at 09:00, so the 4-hour window runs from 09:00 to 13:00 UTC on that day. The first agent reply was at 13:20 UTC, which is 20 minutes past the 13:00 deadline. However, rechecking: 4 business hours from 09:00 is exactly 13:00. The"
+        },
+        {
+          "id": "sla-012",
+          "gold": "yes",
+          "got": "no",
+          "reasoning": "The ticket was opened on Saturday 2026-02-14 at 11:00 UTC with priority Low, which has a target of 2 business days (16 business hours). Business hours are Mon-Fri 09:00-17:00 UTC. The next business day after opening is Monday 2026-02-16. Counting 16 business hours from Monday 09:00: Monday provides 8 hours (09:00-17:00), and Tuesday 2026-02-17 provides another 8 hours (09:00-17:00), reaching the 1"
+        },
+        {
+          "id": "sla-016",
+          "gold": "yes",
+          "got": "no",
+          "reasoning": "The ticket was opened on 2026-09-15 at 13:00 UTC (Tuesday) with High priority, which has a target of 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri. On Tuesday, 4 business hours remain after 13:00 (until 17:00). The first agent reply came the next business day (Wednesday) at 09:35 UTC, which is only 35 minutes into Wednesday's business hours. Total elapsed business time = 4 hours (Tu"
+        },
+        {
+          "id": "sla-019",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The ticket was opened on Friday 2026-11-20 at 16:30 UTC with High priority, which has a target of 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. On Friday, only 30 minutes of business time remained (16:30 to 17:00). The next business day is Monday 2026-11-23 (no holidays in between). To reach 4 business hours total, 3.5 more hours were needed on Monday, making the deadline 12:30 UTC"
+        },
+        {
+          "id": "sla-020",
+          "gold": "yes",
+          "got": "no",
+          "reasoning": "The ticket was opened on Friday 2026-11-20 at 16:30 UTC with High priority, which has a target of 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. On Friday, 30 minutes of business time remained (16:30 to 17:00). The remaining 3.5 business hours were completed on Monday 2026-11-23 from 09:00 to 12:30 UTC. The target deadline was therefore 2026-11-23 12:30 UTC. The first agent reply ca"
+        },
+        {
+          "id": "sla-021",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The ticket was opened on 2026-12-24 (Thursday) at 15:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00–17:00 UTC, Mon–Fri, excluding holidays.\n\nRemaining business hours on 2026-12-24 (Thu): 15:00 to 17:00 = 2 hours.\n2026-12-25 (Fri) is a public holiday, so 0 business hours.\n2026-12-28 (Mon): full business day = 8 hours."
+        },
+        {
+          "id": "sla-026",
+          "gold": "yes",
+          "got": "no",
+          "reasoning": "The ticket was opened on Monday 2026-08-03 at 12:00 UTC with High priority. The SLA target for High priority is 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. From 12:00 to 17:00 on Monday is 5 business hours, so the 4-hour target would be met at 16:00 UTC on Monday. Current time is 17:00 UTC, which is past the target, but there has been no agent reply yet. However, since now (17:00"
+        },
+        {
+          "id": "sla-028",
+          "gold": "yes",
+          "got": "no",
+          "reasoning": "The ticket was opened on 2026-03-30 (Monday) at 09:00 UTC with priority Low. The SLA for Low priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Monday-Friday, excluding public holidays.\n\nCounting business hours from 2026-03-30 09:00 UTC:\n- Monday 2026-03-30: 8 hours (09:00-17:00) → cumulative 8 hours\n- Tuesday 2026-03-31: 8 hours (09:00-17:00) → cumulative 16 hour"
+        }
+      ],
+      "rows": [
+        {
+          "id": "sla-001",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on Friday 2026-03-06 at 15:30 UTC with High priority, which has a target of 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. Remaining business hours on Friday: 17:00 - 15:30 = 1.5 hours. The weekend (Sat/Sun) does not count. Monday 2026-03-09 is a business day; the remaining 2.5 hours of the SLA are consumed starting at 09:00, making the deadline 11:30 UTC on Mo"
+        },
+        {
+          "id": "sla-002",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on Friday 2026-03-06 at 15:30 UTC with High priority, which requires a first response within 4 business hours (09:00–17:00 UTC, Mon–Fri). On Friday, only 1.5 business hours remained (15:30 to 17:00). The next business day is Monday 2026-03-09 (no holidays in between), so the remaining 2.5 business hours carry over, making the SLA target Monday at 11:30 UTC (09:00 + 2.5 hours)"
+        },
+        {
+          "id": "sla-003",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-03-06 at 16:50 UTC with Urgent priority. The SLA for Urgent tickets requires a first response within 1 hour, around the clock. The deadline is therefore 2026-03-06 17:50 UTC. The first reply from support agent Jonas came at 17:40 UTC, which is 10 minutes before the deadline. Thus, the SLA was not breached."
+        },
+        {
+          "id": "sla-004",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-03-06 at 16:50 UTC with Urgent priority. The SLA for Urgent tickets requires a first response within 1 hour, around the clock. The target deadline is therefore 2026-03-06 17:50 UTC. The first reply from a support agent (Mei) occurred at 2026-03-06 18:15 UTC, which is 25 minutes past the 1-hour target. Thus, the SLA was breached."
+        },
+        {
+          "id": "sla-005",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The ticket was opened on 2026-04-02 (Thursday) at 16:00 UTC with High priority, requiring a first response within 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri, excluding holidays. On Thursday 2026-04-02, only 1 hour remains in business hours (16:00–17:00). Friday 2026-04-03 is a public holiday, so no business hours count. The next business day is Monday 2026-04-06. Adding the remai"
+        },
+        {
+          "id": "sla-006",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-04-02 (Thursday) at 16:00 UTC with High priority, which requires a first response within 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri, excluding holidays. On 2026-04-02, only 1 hour remained in business hours (16:00–17:00). The next day, 2026-04-03 (Friday), is a public holiday and does not count. The following business day is 2026-04-06 (Monday), when"
+        },
+        {
+          "id": "sla-007",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The ticket was opened on 2026-05-22 (Friday) at 14:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Mon-Fri, excluding holidays.\n\nCounting business hours from 2026-05-22 14:00 UTC:\n- Friday 2026-05-22: 3 hours remaining (14:00 to 17:00) → cumulative 3 hours\n- Monday 2026-05-25 is a public holiday (excluded)\n"
+        },
+        {
+          "id": "sla-008",
+          "gold": "yes",
+          "got": "no",
+          "agree": false,
+          "reasoning": "The ticket was opened on Friday 2026-05-22 at 14:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Mon-Fri, excluding holidays.\n\nRemaining business hours on Friday 2026-05-22: 14:00 to 17:00 = 3 hours.\nMonday 2026-05-25 is a public holiday (excluded).\nTuesday 2026-05-26: full business day = 8 hours. Cumulativ"
+        },
+        {
+          "id": "sla-009",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on Tuesday 2026-02-10 at 08:15 UTC with High priority, which has a target of 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. Since the ticket was opened before business hours started, the SLA clock begins at 09:00 UTC. Adding 4 business hours results in a target deadline of 13:00 UTC on 2026-02-10. The first reply from support agent Luis was at 12:40 UTC, which "
+        },
+        {
+          "id": "sla-010",
+          "gold": "yes",
+          "got": "no",
+          "agree": false,
+          "reasoning": "The ticket was opened on Tuesday 2026-02-10 at 08:15 UTC with High priority. The SLA for High priority is 4 business hours (09:00–17:00 UTC, Mon–Fri). Business hours start at 09:00, so the 4-hour window runs from 09:00 to 13:00 UTC on that day. The first agent reply was at 13:20 UTC, which is 20 minutes past the 13:00 deadline. However, rechecking: 4 business hours from 09:00 is exactly 13:00. The"
+        },
+        {
+          "id": "sla-011",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on Saturday 2026-02-14 at 11:00 UTC with priority Low, which has a target of 2 business days (16 business hours). Business hours are Mon-Fri 09:00-17:00 UTC. The first reply came on Tuesday 2026-02-17 at 15:00 UTC. Counting business hours from the next business day after opening: Monday 2026-02-16 provides 8 business hours (09:00-17:00), and Tuesday 2026-02-17 from 09:00 to 1"
+        },
+        {
+          "id": "sla-012",
+          "gold": "yes",
+          "got": "no",
+          "agree": false,
+          "reasoning": "The ticket was opened on Saturday 2026-02-14 at 11:00 UTC with priority Low, which has a target of 2 business days (16 business hours). Business hours are Mon-Fri 09:00-17:00 UTC. The next business day after opening is Monday 2026-02-16. Counting 16 business hours from Monday 09:00: Monday provides 8 hours (09:00-17:00), and Tuesday 2026-02-17 provides another 8 hours (09:00-17:00), reaching the 1"
+        },
+        {
+          "id": "sla-013",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened at 2026-07-01 09:00 UTC with priority Urgent, which has a first-response target of within 1 hour (around the clock). The deadline is therefore 2026-07-01 10:00 UTC. The first reply from a support agent came at 2026-07-01 09:55 UTC, which is before the deadline. Thus, the SLA was not breached."
+        },
+        {
+          "id": "sla-014",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-07-01 at 09:00 UTC with Urgent priority, which has a target of within 1 hour (around the clock). The deadline for first response was therefore 2026-07-01 10:00 UTC. The first reply from a support agent came at 10:15 UTC, which is 15 minutes past the 1-hour target. Thus, the SLA was breached."
+        },
+        {
+          "id": "sla-015",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on Tuesday 2026-09-15 at 13:00 UTC with High priority. The SLA target for High priority is 4 business hours (09:00–17:00 UTC, Mon–Fri). Starting from 13:00 UTC on Tuesday, 4 business hours later is 17:00 UTC on the same day. The first reply from a support agent came at 16:45 UTC on Tuesday, which is before the 17:00 UTC deadline. Therefore, the SLA was not breached."
+        },
+        {
+          "id": "sla-016",
+          "gold": "yes",
+          "got": "no",
+          "agree": false,
+          "reasoning": "The ticket was opened on 2026-09-15 at 13:00 UTC (Tuesday) with High priority, which has a target of 4 business hours. Business hours are 09:00–17:00 UTC Mon–Fri. On Tuesday, 4 business hours remain after 13:00 (until 17:00). The first agent reply came the next business day (Wednesday) at 09:35 UTC, which is only 35 minutes into Wednesday's business hours. Total elapsed business time = 4 hours (Tu"
+        },
+        {
+          "id": "sla-017",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened with priority Normal, so the SLA target is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC Mon-Fri. The ticket opened at 2026-10-05 10:00 UTC (Monday). Counting 16 business hours from that time: Monday 10:00-17:00 = 7 hours; Tuesday 09:00-17:00 = 8 hours (total 15); Wednesday 09:00-10:00 = 1 hour (total 16). The target deadline is 2026-10-07 10:00 UTC."
+        },
+        {
+          "id": "sla-018",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened with Urgent priority, which has a 1-hour first-response target around the clock. The ticket was opened at 2026-10-05 10:00 UTC, so the target was 2026-10-05 11:00 UTC. The first reply from a support agent came at 2026-10-05 11:30 UTC, which is 30 minutes past the target. Therefore, the SLA was breached."
+        },
+        {
+          "id": "sla-019",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The ticket was opened on Friday 2026-11-20 at 16:30 UTC with High priority, which has a target of 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. On Friday, only 30 minutes of business time remained (16:30 to 17:00). The next business day is Monday 2026-11-23 (no holidays in between). To reach 4 business hours total, 3.5 more hours were needed on Monday, making the deadline 12:30 UTC"
+        },
+        {
+          "id": "sla-020",
+          "gold": "yes",
+          "got": "no",
+          "agree": false,
+          "reasoning": "The ticket was opened on Friday 2026-11-20 at 16:30 UTC with High priority, which has a target of 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. On Friday, 30 minutes of business time remained (16:30 to 17:00). The remaining 3.5 business hours were completed on Monday 2026-11-23 from 09:00 to 12:30 UTC. The target deadline was therefore 2026-11-23 12:30 UTC. The first agent reply ca"
+        },
+        {
+          "id": "sla-021",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The ticket was opened on 2026-12-24 (Thursday) at 15:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00–17:00 UTC, Mon–Fri, excluding holidays.\n\nRemaining business hours on 2026-12-24 (Thu): 15:00 to 17:00 = 2 hours.\n2026-12-25 (Fri) is a public holiday, so 0 business hours.\n2026-12-28 (Mon): full business day = 8 hours."
+        },
+        {
+          "id": "sla-022",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-12-24 (Thursday) at 15:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00–17:00 UTC, Mon–Fri, excluding holidays.\n\nStep-by-step calculation of the deadline:\n1. Thursday 2026-12-24: Ticket opened at 15:00. Remaining business hours that day = 17:00 - 15:00 = 2 hours. Total elapsed: 2 hours. Re"
+        },
+        {
+          "id": "sla-023",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-06-12 at 23:40 UTC with Urgent priority. The SLA for Urgent tickets requires a first response within 1 hour, around the clock (all days, all hours). The first reply from a support agent came at 2026-06-13 00:20 UTC, which is 40 minutes after the ticket was opened. Since 40 minutes is within the 1-hour target, the SLA was not breached."
+        },
+        {
+          "id": "sla-024",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-06-12 at 23:40 UTC with Urgent priority. The SLA for Urgent tickets requires a first response within 1 hour, around the clock (all days, all hours). The target time for the first response was therefore 2026-06-13 00:40 UTC. The first reply from a support agent came at 2026-06-13 01:30 UTC, which is 50 minutes past the 1-hour target. Thus, the SLA was breached."
+        },
+        {
+          "id": "sla-025",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on Monday 2026-08-03 at 12:00 UTC with High priority, which has a target of 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. Starting from 12:00 UTC on Monday, adding 4 business hours results in a target time of 16:00 UTC on the same day (Monday). The current time (`now`) is 15:00 UTC, which is before the 16:00 UTC deadline. Since there is no agent reply yet but "
+        },
+        {
+          "id": "sla-026",
+          "gold": "yes",
+          "got": "no",
+          "agree": false,
+          "reasoning": "The ticket was opened on Monday 2026-08-03 at 12:00 UTC with High priority. The SLA target for High priority is 4 business hours. Business hours are 09:00-17:00 UTC Mon-Fri. From 12:00 to 17:00 on Monday is 5 business hours, so the 4-hour target would be met at 16:00 UTC on Monday. Current time is 17:00 UTC, which is past the target, but there has been no agent reply yet. However, since now (17:00"
+        },
+        {
+          "id": "sla-027",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened with Low priority, which has a target of 2 business days (16 business hours). Business hours are 09:00-17:00 UTC Monday-Friday. The ticket opened Monday 2026-03-30 at 09:00. Counting business hours: Monday provides 8 hours (09:00-17:00), and Tuesday provides another 8 hours (09:00-17:00), reaching the 16-hour target at Tuesday 2026-03-31 17:00 UTC. The first agent reply came "
+        },
+        {
+          "id": "sla-028",
+          "gold": "yes",
+          "got": "no",
+          "agree": false,
+          "reasoning": "The ticket was opened on 2026-03-30 (Monday) at 09:00 UTC with priority Low. The SLA for Low priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Monday-Friday, excluding public holidays.\n\nCounting business hours from 2026-03-30 09:00 UTC:\n- Monday 2026-03-30: 8 hours (09:00-17:00) → cumulative 8 hours\n- Tuesday 2026-03-31: 8 hours (09:00-17:00) → cumulative 16 hour"
+        },
+        {
+          "id": "sla-029",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-01-02 (Friday) at 16:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Mon-Fri.\n\nStarting from 2026-01-02 16:00 UTC:\n- Friday 2026-01-02: 1 hour remaining in business day (16:00 to 17:00) → 1 hour elapsed, 15 hours remaining\n- Monday 2026-01-05: Full business day (09:00-17:00) → "
+        },
+        {
+          "id": "sla-030",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The ticket was opened on 2026-01-02 (Friday) at 16:00 UTC with Normal priority. The SLA target for Normal priority is 2 business days (16 business hours). Business hours are 09:00-17:00 UTC, Monday-Friday.\n\nStarting from 2026-01-02 16:00 UTC:\n- Friday 2026-01-02: 1 hour remaining (16:00-17:00) → 1 hour used, 15 hours remaining\n- Monday 2026-01-05: 8 hours (09:00-17:00) → 9 hours used, 7 hours rema"
+        }
+      ]
+    }
+  },
+  "refund-eligibility": {
+    "zai/glm-5.3": {
+      "agreement": 1,
+      "parsed": 30,
+      "disputed": [],
+      "rows": [
+        {
+          "id": "refund-001",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the headphones (Aurora wireless headphones, SKU-1000, electronics), explicitly keeping the skillet. Applying the electronics policy: electronics can be returned within 15 days of delivery if unopened (unless defective, then 30 days). Delivery day counts as day 1, so with delivery on 2026-06-30, day 1 = 2026-06-30, day 15 = 2026-07-14. The request on 2026-07-11 is day 12"
+        },
+        {
+          "id": "refund-002",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the Pixel-8 smart speaker (SKU-1001, electronics, not final sale, delivered 2026-07-11). Policy rule 2 applies: electronics can be returned within 15 days of delivery only if unopened, unless defective (then 30 days). Counting the delivery day as day 1, the request on 2026-07-24 is day 14, so it is within the 15-day window. However, the customer states the speaker is op"
+        },
+        {
+          "id": "refund-003",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the Trailblazer rain jacket (SKU-1002), which is apparel, not final sale, priced $129, delivered 2026-06-02. The headphones are explicitly kept, so they are not part of this return request.\n\nThe rain jacket is a regular (non-electronic, non-final-sale) item, so policy rule 1 applies: it can be returned within 30 days of delivery. Delivery day counts as day 1, so June 2 "
+        },
+        {
+          "id": "refund-004",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the socks (Merino crew socks 3-pack, SKU-1003, apparel, not final sale). The applicable policy is the general 30-day return window (not the electronics rule, and final sale doesn't apply). Delivery was 2026-07-30, which counts as day 1. Day 30 of the window is therefore 2026-08-28. The request date is 2026-08-29, which is day 31 — outside the 30-day window. Therefore, t"
+        },
+        {
+          "id": "refund-005",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer is asking to return the Cast-iron skillet 28 cm (SKU-1004); they explicitly say they're keeping the rain jacket.\n\nApplying policy to the skillet:\n- Category is \"home\" (not electronics), and final_sale is false, so it's not excluded by rules 2 or 3. Rule 1 applies: 30-day return window.\n- Delivered 2026-06-26, which counts as day 1. June 26–30 are days 1–5, so July 25 is day 30 and Jul"
+        },
+        {
+          "id": "refund-006",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Linen duvet cover\" (SKU-1005), while keeping the cast-iron skillet. Applying the policy: the duvet cover is in the \"home\" category (not electronics), is not marked final sale, and is not a gift card, so the general 30-day return window applies. Delivery was 2026-07-04, which counts as day 1; the request on 2026-07-11 is day 8 — well within the 30-day window. Theref"
+        },
+        {
+          "id": "refund-007",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the gift card (SKU-1006, \"Gift card $50\"), explicitly keeping the linen duvet cover. Policy rule 3 states that gift cards cannot be returned. This exclusion applies regardless of timing, so even though the request on 2026-07-09 falls within the general 30-day window (delivery 2026-06-15 counts as day 1, making the request day 25), the gift card is not eligible for retur"
+        },
+        {
+          "id": "refund-008",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer is asking to return the \"Clearance desk lamp\" (SKU-1007). Per policy rule 3, items marked final sale cannot be returned. This item has final_sale: true, so it is ineligible regardless of the timing (delivered 2026-07-28, request 2026-08-23, which would be day 27 — within a 30-day window, but the final sale designation overrides this). Answer: no."
+        },
+        {
+          "id": "refund-009",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the Aurora wireless headphones (SKU-1000, electronics, not final sale), delivered 2026-07-11. They mention it stopped working after two days, so it is defective — under policy rule 2, defective electronics can be returned within 30 days of delivery. Counting the delivery day as day 1: 2026-07-11 is day 1, 2026-07-31 is day 21, 2026-08-01 is day 22, 2026-08-09 is day 30,"
+        },
+        {
+          "id": "refund-010",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Pixel-8 smart speaker\" (SKU-1001), which is an electronics item, not final sale.\n\nStep 1 - Identify the return window: Delivered 2026-07-24, which counts as day 1. Counting forward: July 25 = day 2, July 31 = day 8, August 1 = day 9, August 7 = day 15. The request on 2026-08-07 falls on day 15, which is within the 15-day window for electronics.\n\nStep 2 - Apply the "
+        },
+        {
+          "id": "refund-011",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Trailblazer rain jacket\" (SKU-1002), apparel, not final sale. Rule 1 applies: returnable within 30 days of delivery. Delivery day 2026-07-17 counts as day 1, so day 30 is 2026-08-15. The request on 2026-08-16 is day 31, which falls outside the 30-day window. Therefore the jacket is not eligible for return. (The speaker is being kept, so it's irrelevant.)"
+        },
+        {
+          "id": "refund-012",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the Merino crew socks (3-pack) (SKU-1003). This is an apparel item, not marked final sale, not a gift card, so rule 1 applies: it can be returned within 30 days of delivery, with the delivery day counting as day 1. Delivered on 2026-07-25 (day 1), so July 31 is day 7, and the request on 2026-08-27 is day 8 + 26 = day 34. Day 34 exceeds the 30-day window, so the return i"
+        },
+        {
+          "id": "refund-013",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return \"the pan\" — the Cast-iron skillet 28 cm (SKU-1004). They explicitly keep the gift card, so it is not the return item. Applying policy to the skillet: it is not electronics, not final sale, and not a gift card, so rule 1 applies (30-day window from delivery). Delivery was 2026-07-21, which counts as day 1. The request on 2026-07-28 is day 8, well within the 30-day window"
+        },
+        {
+          "id": "refund-014",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Linen duvet cover\" (SKU-1005), which is a home category item, not final sale, and not a gift card — so the general 30-day return window applies. Delivery was 2026-07-26, which counts as day 1. Counting: July 26 = day 1, July 31 = day 6, August 1 = day 7, and the request on 2026-08-19 falls on day 25 (24 days after delivery). Since day 25 is within the 30-day window"
+        },
+        {
+          "id": "refund-015",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Gift card $50\" (SKU-1006). Applying the policy: rule 3 states that gift cards cannot be returned (along with items marked final sale). The item's category is \"gift card\", so it is categorically ineligible for return regardless of the request date (2026-07-10) or delivery date. Therefore, the return is not eligible."
+        },
+        {
+          "id": "refund-016",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the lamp (\"Clearance desk lamp\", SKU-1007), explicitly keeping the socks. Applying the policy: the lamp is marked final_sale = true. Policy item 3 states that items marked final sale cannot be returned. Although the request date (2026-07-24) is within 30 days of delivery (2026-06-26 — delivery day counts as day 1, making the request day 29), the final-sale exclusion app"
+        },
+        {
+          "id": "refund-017",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the Aurora wireless headphones (SKU-1000). Checking the timeline: delivered 2026-06-01, which counts as day 1, so day 15 is 2026-06-15. The request on 2026-06-15 falls within the 15-day electronics window. However, the policy states electronics can be returned only if unopened, unless defective. The customer explicitly says they opened it and tried it, and it works fine"
+        },
+        {
+          "id": "refund-018",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the Pixel-8 smart speaker (SKU-1001), which is an electronics item, not final sale. The customer states it stopped working after two days, i.e., it is defective. Per policy, defective electronics can be returned within 30 days of delivery (the unopened/15-day restriction doesn't apply). Delivery day (2026-07-29) counts as day 1; the request on 2026-08-26 is day 29, whic"
+        },
+        {
+          "id": "refund-019",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the jacket (\"Trailblazer rain jacket\", SKU-1002, apparel, not final sale); the duvet cover is being kept. Since it's apparel (not electronics, not final sale), the standard 30-day window applies. Delivery day counts as day 1: delivered 2026-07-17, so day 1 = July 17, day 15 = July 31, day 30 = August 15, 2026. The request date of 2026-08-19 is day 34 of the window, whic"
+        },
+        {
+          "id": "refund-020",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Merino crew socks (3-pack)\" (SKU-1003), which is apparel, not a final-sale item, and not a gift card. So rule 1 applies: it can be returned within 30 days of delivery. Delivery was 2026-07-02, which counts as day 1. The request date 2026-07-09 is day 8 of the 30-day window, well within the return period. Therefore, the item is eligible for return."
+        },
+        {
+          "id": "refund-021",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Cast-iron skillet 28 cm\" (SKU-1004). It is category \"home\" (not electronics) and not final sale, so rule 1 applies: returnable within 30 days of delivery. Delivery was 2026-06-05, which counts as day 1, making day 30 equal to 2026-07-04. The request on 2026-06-29 is day 25 of the window, within 30 days. Therefore the return is eligible."
+        },
+        {
+          "id": "refund-022",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the duvet cover (SKU-1005, \"Linen duvet cover\"); they explicitly keep the desk lamp. The duvet cover is a home item, not electronics, and not marked final sale, so rule 1 (30-day window) applies. Delivery date is 2026-06-29, with the delivery day counting as day 1: June 29 = day 1, June 30 = day 2, July 1 = day 3, so July N = day N+2. The request on 2026-07-25 is theref"
+        },
+        {
+          "id": "refund-023",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer's message identifies the item to return: \"Gift card $50\" (SKU-1006). The customer explicitly keeps the cast-iron skillet. Applying the policy: clause 3 states that \"Items marked final sale and gift cards cannot be returned.\" The item is a gift card, so it is not returnable regardless of timing. (For completeness: delivered 2026-06-15, request 2026-07-13 = day 28 of the window, which w"
+        },
+        {
+          "id": "refund-024",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Clearance desk lamp\" (SKU-1007), explicitly keeping the skillet. The desk lamp is marked final_sale: true. Per policy rule 3, items marked final sale cannot be returned, regardless of the request date (which would otherwise fall on day 30 of a 30-day window). Therefore, the return is not eligible."
+        },
+        {
+          "id": "refund-025",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the headphones (\"Aurora wireless headphones\", SKU-1000), an electronics item delivered on 2026-06-01 and not marked final sale. Policy for electronics: returnable within 15 days of delivery and only if unopened, unless defective (then 30 days). The customer explicitly says they opened it and it works (so not defective). Additionally, counting the delivery day 2026-06-01"
+        },
+        {
+          "id": "refund-026",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Pixel-8 smart speaker\" (SKU-1001), an electronics item that is not final sale. Electronics policy: returns allowed within 15 days of delivery only if unopened (30 days only if defective). Delivery was 2026-06-26, which counts as day 1. Counting days: June 26 = day 1, June 30 = day 5, July 1 = day 6, July 14 = day 19. The request on 2026-07-14 is on day 19, which ex"
+        },
+        {
+          "id": "refund-027",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the Trailblazer rain jacket (SKU-1002), keeping the smart speaker. The rain jacket is apparel, not marked final sale, and not a gift card, so the standard 30-day return window applies. It was delivered on 2026-07-19 (day 1), and the request on 2026-07-26 is day 8 of the window — well within 30 days. Therefore, the jacket is eligible for return."
+        },
+        {
+          "id": "refund-028",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return \"the socks\" — the Merino crew socks (3-pack), SKU-1003, category apparel, not final sale. Applying the policy: it is not a gift card and not marked final sale (rule 3 not triggered), and it is not an electronics item (rule 2 not triggered), so rule 1 applies — most items can be returned within 30 days of delivery. Delivery was 2026-06-04, which counts as day 1. The requ"
+        },
+        {
+          "id": "refund-029",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the \"Cast-iron skillet 28 cm\" (SKU-1004). This item is in the \"home\" category, is not marked final sale, and is not a gift card, so rule 1 applies: it can be returned within 30 days of delivery. Delivery date is 2026-07-10, which counts as day 1. Counting forward: July 31 is day 22, and August 5, 2026 (the request date) is day 27. Since day 27 is within the 30-day windo"
+        },
+        {
+          "id": "refund-030",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer asks to return the Linen duvet cover (SKU-1005); the gift card is explicitly being kept. The duvet cover is a \"home\" item, not final sale, not a gift card, and not electronics, so the general 30-day return policy applies. Delivery date is 2026-06-14, which counts as day 1. Day 30 would be 2026-07-13. The request date, 2026-07-12, is day 29, which falls within the 30-day window. Theref"
+        }
+      ]
+    },
+    "alibaba/qwen3.8-max-0902": {
+      "agreement": 0.8666666666666667,
+      "parsed": 30,
+      "disputed": [
+        {
+          "id": "refund-004",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The customer wants to return the \"Merino crew socks (3-pack)\" (SKU-1003), which is apparel and not final sale. The item was delivered on 2026-07-30, and the return request date is 2026-08-29. Counting the delivery day as day 1, July 30 is day 1, and August 29 is day 31. However, since the policy states a request made on day 30 is within the window and day 31 is not, we must verify the exact count:"
+        },
+        {
+          "id": "refund-009",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The customer wants to return the \"Aurora wireless headphones\" (SKU-1000), which is an electronics item delivered on 2026-07-11. The request date is 2026-08-10, which is day 31 of the return window (counting delivery as day 1). Normally, electronics have a 15-day return window, but since the item is defective (\"stopped working after two days\"), the policy allows returns within 30 days. However, day"
+        },
+        {
+          "id": "refund-011",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The customer wants to return the \"Trailblazer rain jacket\" (SKU-1002), which is apparel and not final sale. It was delivered on 2026-07-17, and the request date is 2026-08-16. Counting the delivery day as day 1, July has 31 days so July 17–31 = 15 days, plus August 1–16 = 16 days, totaling 31 days. However, rechecking: from July 17 to August 16 inclusive is actually 31 days? Let's recount carefull"
+        },
+        {
+          "id": "refund-026",
+          "gold": "no",
+          "got": "yes",
+          "reasoning": "The customer wants to return the \"Pixel-8 smart speaker\", which is an electronics item delivered on 2026-06-26. The request date is 2026-07-14. Counting the delivery day as day 1, the 15-day return window for unopened electronics ends on 2026-07-10 (June has 30 days: June 26-30 is 5 days, plus July 1-10 is 10 days = 15 days). The request on July 14 is day 19, which exceeds the 15-day window for un"
+        }
+      ],
+      "rows": [
+        {
+          "id": "refund-001",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Aurora wireless headphones\" (SKU-1000), which are electronics. The item was delivered on 2026-06-30 and the return request is made on 2026-07-11. Counting the delivery day as day 1, July 11 is day 12 (June 30 = day 1, July 1-10 = days 2-11, July 11 = day 12). Electronics can be returned within 15 days if unopened; the customer stated the item is unopened. Day 12 i"
+        },
+        {
+          "id": "refund-002",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the Pixel-8 smart speaker (electronics). It was delivered on 2026-07-11 and the request date is 2026-07-24, which is day 14 of the return window (within 15 days). However, the policy states electronics can only be returned within 15 days if unopened, unless defective. The customer stated they opened it and it works (not defective), so it is not eligible for return."
+        },
+        {
+          "id": "refund-003",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer requests to return the \"Trailblazer rain jacket\" (SKU-1002), which is apparel and not marked final sale. It was delivered on 2026-06-02 and the return request date is 2026-07-01. Counting the delivery day as day 1, June has 30 days so June 2 to June 30 is 29 days; adding July 1 makes it day 30. The item falls within the 30-day return window for non-electronics, so it is eligible."
+        },
+        {
+          "id": "refund-004",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The customer wants to return the \"Merino crew socks (3-pack)\" (SKU-1003), which is apparel and not final sale. The item was delivered on 2026-07-30, and the return request date is 2026-08-29. Counting the delivery day as day 1, July 30 is day 1, and August 29 is day 31. However, since the policy states a request made on day 30 is within the window and day 31 is not, we must verify the exact count:"
+        },
+        {
+          "id": "refund-005",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Cast-iron skillet 28 cm\" (SKU-1004), which is a home category item eligible for return within 30 days of delivery. The item was delivered on 2026-06-26, making day 1 June 26 and day 30 July 25. The return request date is 2026-07-29, which is day 34, exceeding the 30-day return window. Therefore, the item is not eligible for return."
+        },
+        {
+          "id": "refund-006",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Linen duvet cover\" (SKU-1005). It is in the \"home\" category and not marked as final sale, so the standard 30-day return policy applies. The item was delivered on 2026-07-04 and the request date is 2026-07-11. Counting the delivery day as day 1, the request is made on day 8, which is within the 30-day window. Therefore, it is eligible for return."
+        },
+        {
+          "id": "refund-007",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer asks to return the gift card. According to policy rule 3, gift cards cannot be returned regardless of timing. Therefore, the item is not eligible for return."
+        },
+        {
+          "id": "refund-008",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer requested to return the \"Clearance desk lamp\" (SKU-1007). According to the order data, this item is marked as final_sale: true. The policy explicitly states that \"Items marked final sale and gift cards cannot be returned.\" Therefore, regardless of the request date or delivery window, the item is not eligible for return."
+        },
+        {
+          "id": "refund-009",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The customer wants to return the \"Aurora wireless headphones\" (SKU-1000), which is an electronics item delivered on 2026-07-11. The request date is 2026-08-10, which is day 31 of the return window (counting delivery as day 1). Normally, electronics have a 15-day return window, but since the item is defective (\"stopped working after two days\"), the policy allows returns within 30 days. However, day"
+        },
+        {
+          "id": "refund-010",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Pixel-8 smart speaker\" (electronics). It was delivered on 2026-07-24 and the request date is 2026-08-07. Counting delivery as day 1, July has 31 days: July 24-31 = 8 days. August 1-7 = 7 days. Total = 15 days. The request is on day 15, which is within the 15-day window for electronics. However, the policy states electronics can only be returned if unopened unless "
+        },
+        {
+          "id": "refund-011",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The customer wants to return the \"Trailblazer rain jacket\" (SKU-1002), which is apparel and not final sale. It was delivered on 2026-07-17, and the request date is 2026-08-16. Counting the delivery day as day 1, July has 31 days so July 17–31 = 15 days, plus August 1–16 = 16 days, totaling 31 days. However, rechecking: from July 17 to August 16 inclusive is actually 31 days? Let's recount carefull"
+        },
+        {
+          "id": "refund-012",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return \"Merino crew socks (3-pack)\" which is an apparel item (not electronics, not final sale). The policy allows 30 days for most items. Delivery date was 2026-07-25 (day 1). The request date is 2026-08-27. Counting inclusively: July has 31 days, so from July 25 to July 31 is 7 days. August 1 to August 27 is 27 days. Total days elapsed = 7 + 27 = 34 days. Since day 30 would "
+        },
+        {
+          "id": "refund-013",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Cast-iron skillet 28 cm\" (the pan). It is a home category item, not final sale, and was delivered on 2026-07-21. The request date is 2026-07-28, which is day 8 of the 30-day return window (delivery day counts as day 1). Therefore, it is eligible for return."
+        },
+        {
+          "id": "refund-014",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Linen duvet cover\" (SKU-1005), which is in the \"home\" category and not marked as final sale. The item was delivered on 2026-07-26, and the return request was made on 2026-08-19. Counting the delivery day as day 1, July 26 is day 1, July 31 is day 6, August 18 is day 24, and August 19 is day 25. Since 25 days is within the 30-day return window for non-electronics i"
+        },
+        {
+          "id": "refund-015",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Gift card $50\". According to policy point 3, \"gift cards cannot be returned.\" Therefore, the item is not eligible for return regardless of the request date."
+        },
+        {
+          "id": "refund-016",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Clearance desk lamp\" (SKU-1007). According to the order data, this item is marked as final_sale: true. The policy states \"Items marked final sale and gift cards cannot be returned.\" Therefore, regardless of the delivery date or request date, the item is not eligible for return."
+        },
+        {
+          "id": "refund-017",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Aurora wireless headphones\" (SKU-1000), which is an electronics item delivered on 2026-06-01. The request date is 2026-06-15, which is day 15 of the return window (delivery day counts as day 1). According to the policy, electronics can be returned within 15 days only if unopened, unless defective. The customer stated they opened and tried the item and it works but"
+        },
+        {
+          "id": "refund-018",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Pixel-8 smart speaker\" (SKU-1001), which is an electronics item delivered on 2026-07-29. The request date is 2026-08-26. Counting the delivery day as day 1, August 26 is day 29 (July has 3 days remaining including the 29th + 26 days in August = 29). Although standard electronics returns are limited to 15 days if unopened, the policy states defective items can be r"
+        },
+        {
+          "id": "refund-019",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Trailblazer rain jacket\" (apparel, not final sale). The item was delivered on 2026-07-17. The request date is 2026-08-19. Counting the delivery day as day 1: July has 31 days, so July 17 to July 31 is 15 days. August 1 to August 19 is 19 days. Total days elapsed = 15 + 19 = 34 days. The policy allows 30 days for most items. Since day 34 > 30, the return window has"
+        },
+        {
+          "id": "refund-020",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return \"Merino crew socks (3-pack)\" which is in the apparel category and not marked as final sale. The item was delivered on 2026-07-02 and the return request was made on 2026-07-09, which is day 8 of the 30-day return window (delivery day counts as day 1). Since apparel items can be returned within 30 days of delivery and this request is well within that window, the item is "
+        },
+        {
+          "id": "refund-021",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Cast-iron skillet 28 cm\" (SKU-1004), which is in the \"home\" category and not marked as final sale. According to the policy, most items can be returned within 30 days of delivery. The item was delivered on 2026-06-05, making that day 1. The request date is 2026-06-29, which is day 25 (June 5 + 24 days). Since day 25 is within the 30-day window, the item is eligible"
+        },
+        {
+          "id": "refund-022",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Linen duvet cover\" (SKU-1005). It is a home category item, not final sale, and not an electronic. The policy allows most items to be returned within 30 days of delivery. The delivered date is 2026-06-29 (day 1). The request date is 2026-07-25. Counting inclusively: June has 30 days, so June 29-30 = 2 days; July 1-25 = 25 days. Total = 27 days. Day 27 is within the"
+        },
+        {
+          "id": "refund-023",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Gift card $50\". According to policy point 3, \"gift cards cannot be returned.\" Therefore, regardless of the request date, this item is not eligible for return."
+        },
+        {
+          "id": "refund-024",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Clearance desk lamp\" (SKU-1007). According to the order data, this item is marked as final_sale: true. The policy states \"Items marked final sale and gift cards cannot be returned.\" Therefore, regardless of the request date (2026-08-23) being within 30 days of delivery (2026-07-25), the item is ineligible for return because it is a final sale item."
+        },
+        {
+          "id": "refund-025",
+          "gold": "no",
+          "got": "no",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Aurora wireless headphones\" (SKU-1000), which are categorized as electronics. The item was delivered on 2026-06-01 and the return request was made on 2026-06-16. Counting the delivery day as day 1, June 16 is day 16. According to the policy, electronics can be returned within 15 days of delivery if unopened, or within 30 days if defective. Since the request is mad"
+        },
+        {
+          "id": "refund-026",
+          "gold": "no",
+          "got": "yes",
+          "agree": false,
+          "reasoning": "The customer wants to return the \"Pixel-8 smart speaker\", which is an electronics item delivered on 2026-06-26. The request date is 2026-07-14. Counting the delivery day as day 1, the 15-day return window for unopened electronics ends on 2026-07-10 (June has 30 days: June 26-30 is 5 days, plus July 1-10 is 10 days = 15 days). The request on July 14 is day 19, which exceeds the 15-day window for un"
+        },
+        {
+          "id": "refund-027",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Trailblazer rain jacket\" (SKU-1002), which is apparel and not marked as final sale. The item was delivered on 2026-07-19 and the return request was made on 2026-07-26. Counting the delivery day as day 1, July 26 is day 8, which is within the 30-day return window for non-electronics items. Therefore, the item is eligible for return."
+        },
+        {
+          "id": "refund-028",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Merino crew socks (3-pack)\" (SKU-1003), which is an apparel item, not a gift card or final sale item. The delivery date was 2026-06-04 and the request date is 2026-06-28. Counting the delivery day as day 1, June 28 is day 25 (4th to 28th inclusive: 28 - 4 + 1 = 25). Since 25 <= 30, the return is within the 30-day window for most items and is eligible."
+        },
+        {
+          "id": "refund-029",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Cast-iron skillet 28 cm\". It is in the \"home\" category (not electronics), not final sale, and not a gift card. The delivery date was 2026-07-10 and the request date is 2026-08-05. Counting the delivery day as day 1: July has 31 days, so July 10 to July 31 is 22 days. August 1 to August 5 is 5 days. Total days elapsed = 22 + 5 = 27 days. Since 27 <= 30, the item is"
+        },
+        {
+          "id": "refund-030",
+          "gold": "yes",
+          "got": "yes",
+          "agree": true,
+          "reasoning": "The customer wants to return the \"Linen duvet cover\" (SKU-1005), which is in the \"home\" category and not marked as final sale. The item was delivered on 2026-06-14, and the return request was made on 2026-07-12. Counting the delivery day as day 1, July 12 is day 29 (June has 30 days: 17 days remaining in June + 12 days in July = 29). Since this is within the 30-day return window for non-electronic"
+        }
+      ]
+    }
+  },
+  "access-request": {
+    "zai/glm-5.3": {
+      "agreement": 1,
+      "parsed": 30,
+      "disputed": [],
+      "rows": [
+        {
+          "id": "access-001",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Catalog lookup: billing-db is a production system. The request is for read-only (read) access. Rule 1 (admin) doesn't apply; rule 2 (contractors) doesn't apply since Ana is an employee; rules 3 and 4 apply only to non-production systems. Rule 5 governs: any access to production systems requires security approval, with the sole exception of read access to production for engineers currently on call."
+        },
+        {
+          "id": "access-002",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Catalog lookup — the requested system is \"search-sandbox\", which is listed with environment \"dev\", i.e., a non-production system (the mention of billing-db-replica is only background context in the request, not the system being requested).\n\nStep 2: Access level — the request asks for write access.\n\nStep 3: Policy application:\n- Rule 1: Not admin access, so not relevant.\n- Rule 2: Ben is an"
+        },
+        {
+          "id": "access-003",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1 — Catalog lookup: The requested system is \"ci-runners\", which is listed in the catalog with environment \"dev\" (a non-production system).\n\nStep 2 — Access level requested: Chloe asks for \"root\" on ci-runners. Root access is the highest privilege level, i.e., admin access.\n\nStep 3 — Apply policy to this requester:\n- Rule 1 states \"Nobody may be granted admin access through this form.\" Root/ad"
+        },
+        {
+          "id": "access-004",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Catalog lookup — \"search-cluster\" is listed in the catalog with environment \"production\".\n\nStep 2: Access level requested — the request text asks for \"read access\" to search-cluster.\n\nStep 3: Apply policy to requester Dev (employee, analyst, on_call=false):\n- Rule 1 (no admin access): not applicable — this is a read access request, not admin.\n- Rule 2 (contractors never access production):"
+        },
+        {
+          "id": "access-005",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1 — Catalog lookup: the requested system is \"ml-feature-store\", which the catalog lists with environment \"staging\", so it is a non-production system.\n\nStep 2 — Access level requested: \"edit rights\" corresponds to write access (not read, not admin).\n\nStep 3 — Apply policy to the requester (Eli, contractor, engineer, on-call):\n- Rule 1 (no admin grants): not applicable — the request is for writ"
+        },
+        {
+          "id": "access-006",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "Step 1: Look up the requested system \"billing-db-replica\" in the catalog — its environment is \"staging\", so it is a non-production system.\n\nStep 2: The request asks for \"read-only access\", i.e., read access (not admin, not write).\n\nStep 3: Apply the policy to Ben (employee, engineer, on call):\n- Rule 1 (no admin access via this form): not applicable — request is read access.\n- Rule 2 (contractors "
+        },
+        {
+          "id": "access-007",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1: Look up the requested system. The request is for write access to \"hr-portal\". In the catalog, hr-portal is listed with environment: production.\n\nStep 2: The access level requested is write access.\n\nStep 3: Apply the policy to the requester, Chloe:\n- Rule 1 (no admin access) doesn't apply since this is a write request.\n- Rule 2: Contractors may never access production systems. Chloe is a co"
+        },
+        {
+          "id": "access-008",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1: Catalog lookup — \"billing-db\" is listed in the catalog with environment \"production\".\n\nStep 2: Access level requested — \"root on billing-db\" means admin-level access to the billing-db system.\n\nStep 3: Apply policy — Policy rule 1 states \"Nobody may be granted admin access through this form.\" This is an absolute prohibition on admin access regardless of requester, system, or approvals. Rule"
+        },
+        {
+          "id": "access-009",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "Step 1: Look up the requested system, \"search-sandbox\", in the catalog — its environment is \"dev\", which is a non-production system.\n\nStep 2: The requested access level is \"read\" access.\n\nStep 3: Apply the policy to Eli (contractor, engineer, on call):\n- Rule 1 (no admin access): Not requesting admin — not applicable.\n- Rule 2 (contractors may never access production systems): search-sandbox is a "
+        },
+        {
+          "id": "access-010",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Catalog lookup — \"ci-runners\" is in the catalog with environment \"dev\", which is a non-production system. Step 2: The request asks to \"modify records,\" which is write access. Step 3: Apply policy to requester Ana (employee, engineer, not on call): Rule 1 (no admin via this form) doesn't apply since this is write, not admin. Rule 2 (contractors) doesn't apply since Ana is an employee. Rule "
+        },
+        {
+          "id": "access-011",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1: Look up the requested system in the catalog. The request is for \"search-cluster\", which in the catalog has environment \"production\".\n\nStep 2: Identify the access level requested. Chloe asks for \"read-only access\", i.e., read access.\n\nStep 3: Apply the policy to this requester:\n- Rule 1 (no admin access): Not applicable — only read access requested.\n- Rule 2 (contractors may never access pr"
+        },
+        {
+          "id": "access-012",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Catalog lookup: ml-feature-store is in the staging environment, so it is a non-production system. The requested access level is write. Applying policy: rule 1 (admin) doesn't apply; rule 2 (contractors/production) doesn't apply since Dev is an employee and the system is non-production; rule 3 (read access) doesn't apply since this is write access; rule 5 (production systems) doesn't apply. Rule 4 "
+        },
+        {
+          "id": "access-013",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1: Look up the requested system in the catalog. The request asks for \"billing-db-replica\", which is listed with environment \"staging\" (a non-production system). Step 2: Determine the access level requested: \"owner permissions\", which is admin-level access. Step 3: Apply the policy to the requester (Eli, a contractor, engineer, on call). Policy rule 1 states that nobody may be granted admin ac"
+        },
+        {
+          "id": "access-014",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: The requested system is \"hr-portal\", which the catalog lists as a production system.\n\nStep 2: The request asks to \"look at the data\" — this is read access (no write or admin access requested).\n\nStep 3: Applying policy:\n- Rule 1 (no admin through this form) — not applicable, only read access requested.\n- Rule 2 (contractors may never access production) — not applicable, Ana is an employee.\n"
+        },
+        {
+          "id": "access-015",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step by step: 1) The request asks to \"modify records in billing-db\", which is write access. 2) Catalog lookup: billing-db is in the \"production\" environment. 3) Policy check: Rule 1 (admin) doesn't apply — this is write access. Rule 2 doesn't apply — Ben is an employee, not a contractor. Rule 3 doesn't apply — this is not read access and not a non-production system. Rule 4 doesn't apply — billing-"
+        },
+        {
+          "id": "access-016",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "Step 1: Look up \"search-sandbox\" in the catalog — it exists with environment \"dev\", which is a non-production system. Step 2: The requested access level is \"read\" access. Step 3: Apply policy: Rule 1 (admin) doesn't apply since read access is requested. Rule 2 (contractors) doesn't apply since Dev is an employee. Rule 4 (write) and Rule 5 (production) don't apply since this is read access to a non"
+        },
+        {
+          "id": "access-017",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Look up the system. The request asks to \"push changes to ci-runners\". In the catalog, ci-runners has environment \"dev\", which is a non-production system.\n\nStep 2: Determine the access level. \"Push changes\" means write access, not admin and not read.\n\nStep 3: Apply the policy to Eli (contractor, engineer, on call).\n- Rule 1 (no admin): not applicable — this is write access, not admin.\n- Rul"
+        },
+        {
+          "id": "access-018",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1: Look up the requested system in the catalog. The request asks for \"search-cluster\", which the catalog lists with environment = production.\n\nStep 2: Determine the access level asked for. Ana requests \"owner permissions\", which is full administrative-level access — i.e., admin access.\n\nStep 3: Apply the policy:\n- Rule 1: \"Nobody may be granted admin access through this form.\" Owner/admin acc"
+        },
+        {
+          "id": "access-019",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "Step 1: Catalog lookup — ml-feature-store is listed with environment \"staging\", which is a non-production system. Step 2: Access level requested — \"read access\" to ml-feature-store. Step 3: Apply policy to requester Ben (employee, engineer, on-call). Rule 1 (no admin) doesn't apply since the request is read access. Rule 2 (contractors on production) doesn't apply — Ben is an employee and the syste"
+        },
+        {
+          "id": "access-020",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Look up the requested system. The request asks to \"push changes to billing-db-replica\". In the catalog, billing-db-replica has environment \"staging\", which is a non-production system.\n\nStep 2: Determine the access level. \"Push changes\" means write access (not admin, not read).\n\nStep 3: Apply policy to Chloe (contractor, engineer, on_call=false):\n- Rule 1 (no admin access): Not requesting a"
+        },
+        {
+          "id": "access-021",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1: The requested system is hr-portal (search-cluster is only mentioned as context where the same numbers were seen). Step 2: Catalog lookup: hr-portal is a production system. Step 3: \"View-only access\" = read access (not admin, so rule 1 is not at issue). Step 4: Applying policy to requester Eli (contractor, engineer, currently on call): Rule 2 states \"Contractors may never access production "
+        },
+        {
+          "id": "access-022",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Look up \"billing-db\" in the catalog — its environment is \"production\".\n\nStep 2: The requested access level is \"write\" (Ana explicitly asks for write access).\n\nStep 3: Apply the policy to this requester:\n- Rule 1 (no admin): Not applicable — write, not admin.\n- Rule 2 (contractors): Not applicable — Ana is an employee.\n- Rule 3 (read to non-production, granted): Not applicable — this is wri"
+        },
+        {
+          "id": "access-023",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "Step 1: Look up the system. \"search-sandbox\" is in the catalog with environment \"dev\", i.e., a non-production system.\n\nStep 2: Work out the access level asked for. Ben requests \"owner permissions\", which is a full-control/admin-equivalent level of access (it subsumes read/write and control of the resource), not merely read or write.\n\nStep 3: Apply the policy to this requester. Rule 1 states: \"Nobo"
+        },
+        {
+          "id": "access-024",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "Step 1 — Catalog lookup: the requested system is \"ci-runners\", which the catalog lists with environment \"dev\", i.e., a non-production system. Step 2 — Access level requested: \"look at the data\" is read access (no write or admin access requested). Step 3 — Apply policy to requester Chloe (contractor, engineer, not on call): Rule 1 (admin) is not triggered since only read access is requested. Rule 2"
+        },
+        {
+          "id": "access-025",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The request asks to \"modify records\" in search-cluster, which is write access. Catalog lookup: search-cluster is a production system. Applying policy: Rule 1 (admin) doesn't apply since this is write access. Rule 2 doesn't apply since Dev is an employee, not a contractor. Rules 3 and 4 apply only to non-production systems, so they don't apply here. Rule 5 governs: any access to production systems "
+        },
+        {
+          "id": "access-026",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "The request is for read access to ml-feature-store. Looking it up in the catalog, ml-feature-store is in the \"staging\" environment, so it is a non-production system. The requester Ana is an employee (not a contractor) and an engineer, but not on call — though that only matters for production systems. Applying the policy: Rule 1 (admin) doesn't apply since read access is requested. Rule 2 (contract"
+        },
+        {
+          "id": "access-027",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Catalog lookup: billing-db-replica is in the \"staging\" environment, so it is a non-production system. (The mention of ci-runners is irrelevant, and the production system billing-db is a distractor — the request is specifically for billing-db-replica.)\n\nAccess level requested: write access.\n\nApplying policy: Rule 1 (no admin) doesn't apply. Rule 2 doesn't apply since Ben is an employee, not a contr"
+        },
+        {
+          "id": "access-028",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "1. Look up the system: \"hr-portal\" is in the catalog with environment \"production\".\n2. Access level requested: \"root\" on hr-portal is admin-level access.\n3. Apply policy:\n   - Rule 1: Nobody may be granted admin access through this form. Root/admin access is outright prohibited, so the request must be denied regardless of any other considerations.\n   - Rule 2 additionally applies: Chloe is a contr"
+        },
+        {
+          "id": "access-029",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Look up the system. The request asks for read-only access to \"billing-db\", which the catalog lists as environment \"production\".\n\nStep 2: Access level requested. \"Read-only access\" = read access (not write, not admin).\n\nStep 3: Apply policy to requester (Dev: employee, analyst, not on call):\n- Rule 1 (no admin via this form): not requesting admin, not triggered.\n- Rule 2 (contractors never "
+        },
+        {
+          "id": "access-030",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "Step 1: Identify the requested system. \"search-sandbox\" appears in the catalog with environment \"dev\", so it is a non-production system.\n\nStep 2: Identify the access level. \"Push changes\" means write access (not admin, not read).\n\nStep 3: Apply policy to this requester (Eli, contractor, engineer, on call):\n- Rule 1 (no admin via this form): not requesting admin — not triggered.\n- Rule 2 (contracto"
+        }
+      ]
+    },
+    "alibaba/qwen3.8-max-0902": {
+      "agreement": 0.7666666666666667,
+      "parsed": 30,
+      "disputed": [
+        {
+          "id": "access-005",
+          "gold": "needs_approval",
+          "got": "deny",
+          "reasoning": "The requester is a contractor requesting write access ('edit rights') to ml-feature-store, which is a staging (non-production) system. While policy rule 4 states write access to non-production needs manager approval, policy rule 2 explicitly states 'Contractors may never access production systems.' However, since this is a non-production system, rule 2 does not apply directly. But wait - re-readin"
+        },
+        {
+          "id": "access-009",
+          "gold": "grant",
+          "got": "deny",
+          "reasoning": "The requester is a contractor. Although search-sandbox is a non-production (dev) system and read access to non-production systems is normally granted without approval (Rule 3), Rule 2 states that contractors may never access production systems. However, since search-sandbox is dev, not production, Rule 2 does not apply here. But wait—re-reading Rule 2: 'Contractors may never access production syst"
+        },
+        {
+          "id": "access-017",
+          "gold": "needs_approval",
+          "got": "deny",
+          "reasoning": "The requested system 'ci-runners' is in the 'dev' environment (non-production). The requester is a contractor. While Rule 2 explicitly bans contractors from production systems, it does not explicitly ban them from non-production. However, we must evaluate the specific access level. The request is to 'push changes', which constitutes Write access. Rule 4 states 'Write access to non-production syste"
+        },
+        {
+          "id": "access-020",
+          "gold": "needs_approval",
+          "got": "deny",
+          "reasoning": "The requested system 'billing-db-replica' is in the staging environment (non-production). The requester is a contractor. Policy rule 2 states 'Contractors may never access production systems', which does not apply here as it is non-production. However, the request is for write access ('push changes') to a non-production system. Policy rule 4 states 'Write access to non-production systems needs the"
+        },
+        {
+          "id": "access-023",
+          "gold": "deny",
+          "got": "needs_approval",
+          "reasoning": "The requested system 'search-sandbox' is in the 'dev' environment (non-production). The requester asks for 'owner permissions', which constitutes write/admin-level access rather than read-only. Policy rule 4 states that write access to non-production systems needs the requester's manager's approval. Although the request text claims manager approval was already given, policy rule 5 explicitly state"
+        },
+        {
+          "id": "access-024",
+          "gold": "grant",
+          "got": "deny",
+          "reasoning": "The requested system 'ci-runners' is in the 'dev' environment (non-production). The requester is a contractor. Policy rule 2 states 'Contractors may never access production systems', which does not apply here. However, policy rule 3 grants read access to non-production systems without approval, and rule 4 requires manager approval for write access. But we must first check if there are any blanket "
+        },
+        {
+          "id": "access-030",
+          "gold": "needs_approval",
+          "got": "deny",
+          "reasoning": "The requester is a contractor requesting write access to search-sandbox. According to the catalog, search-sandbox is in the 'dev' environment (non-production). Policy rule 2 states that contractors may never access production systems; however, this system is non-production. But wait, let me re-read rule 2: \"Contractors may never access production systems.\" This only restricts production. For non-p"
+        }
+      ],
+      "rows": [
+        {
+          "id": "access-001",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'billing-db' is in the 'production' environment. The requester is asking for read access. According to policy rule 5, any access to production systems needs security approval, except for read access by engineers currently on call. Since Ana is not on call (on_call: false), the exception does not apply, and security approval is required."
+        },
+        {
+          "id": "access-002",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'search-sandbox' is in the 'dev' environment (non-production). The requester is asking for write access. According to policy rule 4, write access to non-production systems needs the requester's manager's approval. Therefore, the decision is needs_approval."
+        },
+        {
+          "id": "access-003",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The requester is asking for 'root' access, which constitutes admin access. Policy rule 1 explicitly states that nobody may be granted admin access through this form. Additionally, the requester is a contractor; while ci-runners is a dev (non-production) system so rule 2 does not apply, rule 1 is a hard block on admin access regardless of role or environment."
+        },
+        {
+          "id": "access-004",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'search-cluster' is in the production environment. The requester is asking for read access. According to policy rule 5, any access to production systems needs security approval, except for read access by engineers who are currently on call. The requester is an analyst (not specified as an engineer) and is not on call, so the exception does not apply. Therefore, security approv"
+        },
+        {
+          "id": "access-005",
+          "gold": "needs_approval",
+          "got": "deny",
+          "agree": false,
+          "reasoning": "The requester is a contractor requesting write access ('edit rights') to ml-feature-store, which is a staging (non-production) system. While policy rule 4 states write access to non-production needs manager approval, policy rule 2 explicitly states 'Contractors may never access production systems.' However, since this is a non-production system, rule 2 does not apply directly. But wait - re-readin"
+        },
+        {
+          "id": "access-006",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "The requested system 'billing-db-replica' is in the catalog as a 'staging' (non-production) environment. The request is for 'read-only' access. According to policy rule 3, read access to non-production systems is granted without approval. The requester is an employee, so contractor restrictions do not apply, and the request is not for admin access."
+        },
+        {
+          "id": "access-007",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The requester is a contractor requesting write access to hr-portal. According to the catalog, hr-portal is a production system. Policy rule 2 states that contractors may never access production systems. Therefore, the request must be denied regardless of the access level or other conditions."
+        },
+        {
+          "id": "access-008",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The request is for 'root' access on 'billing-db'. Looking up 'billing-db' in the catalog shows it is a 'production' system. 'Root' access constitutes admin access. Policy rule 1 states: 'Nobody may be granted admin access through this form.' Therefore, the request must be denied."
+        },
+        {
+          "id": "access-009",
+          "gold": "grant",
+          "got": "deny",
+          "agree": false,
+          "reasoning": "The requester is a contractor. Although search-sandbox is a non-production (dev) system and read access to non-production systems is normally granted without approval (Rule 3), Rule 2 states that contractors may never access production systems. However, since search-sandbox is dev, not production, Rule 2 does not apply here. But wait—re-reading Rule 2: 'Contractors may never access production syst"
+        },
+        {
+          "id": "access-010",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requester is asking to modify records in ci-runners, which constitutes write access. Looking up ci-runners in the catalog shows it is a dev (non-production) environment. According to policy rule 4, write access to non-production systems needs the requester's manager's approval. The requester is an employee (not a contractor), so rule 2 does not block access. Rule 1 does not apply as this is no"
+        },
+        {
+          "id": "access-011",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The requester is a contractor requesting access to search-cluster, which the catalog identifies as a production system. Policy rule 2 states that contractors may never access production systems. Therefore, the request must be denied regardless of the access level or claimed prior approval."
+        },
+        {
+          "id": "access-012",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'ml-feature-store' is in the 'staging' environment (non-production). The requester is asking for write access. According to policy rule 4, write access to non-production systems needs the requester's manager's approval."
+        },
+        {
+          "id": "access-013",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The requester is a contractor requesting access to billing-db-replica, which is a staging (non-production) system. Policy rule 2 states that contractors may never access production systems; however, this system is non-production so rule 2 does not directly apply. But the request is for 'owner permissions', which constitutes admin access. Policy rule 1 explicitly states that nobody may be granted a"
+        },
+        {
+          "id": "access-014",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'hr-portal' is in the production environment. The requester is asking for read access ('look at the data'). According to policy rule 5, any access to production systems needs security approval, except for read access by engineers currently on call. Although Ana is an engineer, she is not on call (on_call: false). Therefore, the exception does not apply, and security approval i"
+        },
+        {
+          "id": "access-015",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'billing-db' is a production environment per the catalog. The request is to 'modify records', which constitutes write access. Policy rule 5 states that any access to production systems needs security approval, except for read access for on-call engineers. Since this is write access, the exception does not apply, and security approval is required."
+        },
+        {
+          "id": "access-016",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "The requested system 'search-sandbox' is in the catalog with environment 'dev', which is a non-production system. The requester is asking for read access. According to policy rule 3, read access to non-production systems is granted without approval. The requester is an employee (not a contractor), so rule 2 does not apply, and no other restrictions prevent granting this access."
+        },
+        {
+          "id": "access-017",
+          "gold": "needs_approval",
+          "got": "deny",
+          "agree": false,
+          "reasoning": "The requested system 'ci-runners' is in the 'dev' environment (non-production). The requester is a contractor. While Rule 2 explicitly bans contractors from production systems, it does not explicitly ban them from non-production. However, we must evaluate the specific access level. The request is to 'push changes', which constitutes Write access. Rule 4 states 'Write access to non-production syste"
+        },
+        {
+          "id": "access-018",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The requester is asking for 'owner permissions' on 'search-cluster'. Looking up 'search-cluster' in the catalog shows it is a 'production' system. 'Owner permissions' constitutes admin access. Policy rule 1 states: 'Nobody may be granted admin access through this form.' Therefore, the request must be denied."
+        },
+        {
+          "id": "access-019",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "The requested system is 'ml-feature-store', which the catalog lists as a 'staging' (non-production) environment. The requester asks for 'read access'. According to policy rule 3, 'Read access to non-production systems is granted without approval.' The requester is an employee, so contractor restrictions do not apply. The mention of prior manager approval is irrelevant per the final policy note but"
+        },
+        {
+          "id": "access-020",
+          "gold": "needs_approval",
+          "got": "deny",
+          "agree": false,
+          "reasoning": "The requested system 'billing-db-replica' is in the staging environment (non-production). The requester is a contractor. Policy rule 2 states 'Contractors may never access production systems', which does not apply here as it is non-production. However, the request is for write access ('push changes') to a non-production system. Policy rule 4 states 'Write access to non-production systems needs the"
+        },
+        {
+          "id": "access-021",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The requester is a contractor requesting access to hr-portal, which is a production system. Policy rule 2 states 'Contractors may never access production systems.' This prohibition applies regardless of the access level (view-only/read) or any claimed prior approval. Therefore, the request must be denied."
+        },
+        {
+          "id": "access-022",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'billing-db' is in the production environment. The requester is asking for write access. According to policy rule 5, any access to production systems needs security approval (except read access for on-call engineers, which does not apply here as this is write access and the requester is not on call). Therefore, security approval is needed."
+        },
+        {
+          "id": "access-023",
+          "gold": "deny",
+          "got": "needs_approval",
+          "agree": false,
+          "reasoning": "The requested system 'search-sandbox' is in the 'dev' environment (non-production). The requester asks for 'owner permissions', which constitutes write/admin-level access rather than read-only. Policy rule 4 states that write access to non-production systems needs the requester's manager's approval. Although the request text claims manager approval was already given, policy rule 5 explicitly state"
+        },
+        {
+          "id": "access-024",
+          "gold": "grant",
+          "got": "deny",
+          "agree": false,
+          "reasoning": "The requested system 'ci-runners' is in the 'dev' environment (non-production). The requester is a contractor. Policy rule 2 states 'Contractors may never access production systems', which does not apply here. However, policy rule 3 grants read access to non-production systems without approval, and rule 4 requires manager approval for write access. But we must first check if there are any blanket "
+        },
+        {
+          "id": "access-025",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'search-cluster' is in the production environment. The requester is asking for write access ('modify records'). According to policy rule 5, any access to production systems needs security approval (with an exception only for read access for on-call engineers, which does not apply here as the request is for write access and the requester is not on call). The claim that the mana"
+        },
+        {
+          "id": "access-026",
+          "gold": "grant",
+          "got": "grant",
+          "agree": true,
+          "reasoning": "The requester is asking for read access to ml-feature-store. According to the catalog, ml-feature-store is in the staging environment (non-production). Policy rule 3 states that read access to non-production systems is granted without approval. The requester is an employee (not a contractor), so rule 2 does not block access. Rule 1 does not apply as this is not admin access. Therefore, access is g"
+        },
+        {
+          "id": "access-027",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'billing-db-replica' is in the 'staging' environment (non-production). The requester is asking for write access. According to policy rule 4, write access to non-production systems needs the requester's manager's approval."
+        },
+        {
+          "id": "access-028",
+          "gold": "deny",
+          "got": "deny",
+          "agree": true,
+          "reasoning": "The request is for 'root' (admin) access on hr-portal. Policy rule 1 explicitly states that nobody may be granted admin access through this form. Additionally, the requester is a contractor and hr-portal is a production system; policy rule 2 prohibits contractors from accessing production systems. The claim of prior manager approval is disregarded per the final sentence of the policy. Therefore, t"
+        },
+        {
+          "id": "access-029",
+          "gold": "needs_approval",
+          "got": "needs_approval",
+          "agree": true,
+          "reasoning": "The requested system 'billing-db' is in the 'production' environment according to the catalog. The requester is asking for read access. Policy rule 5 states that any access to production systems needs security approval, except for read access for engineers currently on call. The requester is an analyst (not specified as engineer) and is not on call. Additionally, the policy explicitly states that "
+        },
+        {
+          "id": "access-030",
+          "gold": "needs_approval",
+          "got": "deny",
+          "agree": false,
+          "reasoning": "The requester is a contractor requesting write access to search-sandbox. According to the catalog, search-sandbox is in the 'dev' environment (non-production). Policy rule 2 states that contractors may never access production systems; however, this system is non-production. But wait, let me re-read rule 2: \"Contractors may never access production systems.\" This only restricts production. For non-p"
+        }
+      ]
+    }
+  },
+  "clause-locator": {
+    "zai/glm-5.3": {
+      "agreement": 1,
+      "parsed": 29,
+      "disputed": [],
+      "rows": [
+        {
+          "id": "clause-001",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9, titled \"Governing Law,\" actually sets the governing law term by stating that the Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules. No other section establishes this term; the others address assignment, notices, warranties, indemnification, data protection, term/renewal, liability, termination, force majeure, fees, and confidentiali"
+        },
+        {
+          "id": "clause-002",
+          "gold": "12",
+          "got": "12",
+          "agree": true,
+          "reasoning": "The question asks which section sets the limitation of liability terms. Section 12 (\"Limitation of Liability\") is the section that actually establishes those terms: it caps each party's total liability at the fees paid in the twelve months before the claim, except for breaches of confidentiality. Section 2 (Indemnification) merely refers to the cap (\"the cap on liability described elsewhere in thi"
+        },
+        {
+          "id": "clause-003",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "The question asks which section sets the termination for convenience terms. Section 4 (\"Termination\") states: \"Either party may terminate this Agreement for any reason on ninety days' written notice.\" Terminating \"for any reason\" on notice is a termination for convenience provision. Section 11 (Term and Renewal) only addresses renewal and non-renewal notice, not termination for convenience. Theref"
+        },
+        {
+          "id": "clause-004",
+          "gold": "3",
+          "got": "3",
+          "agree": true,
+          "reasoning": "The question asks which section sets the confidentiality period terms. Section 3 states: \"The obligations in this Section continue for five years after termination.\" This is the section that establishes the time period (five years after termination) during which the confidentiality obligations survive — i.e., it actually sets the duration/period. Other sections either deal with unrelated terms (re"
+        },
+        {
+          "id": "clause-005",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "The question asks which section sets the payment terms. Section 9 (\"Fees and Payment\") actually establishes the payment terms: it requires Customer to pay each invoice within thirty days of its date and specifies that late amounts accrue interest at 1% per month. No other section sets payment terms (other sections only cover termination, data protection, liability, confidentiality, indemnification"
+        },
+        {
+          "id": "clause-006",
+          "gold": "6",
+          "got": "6",
+          "agree": true,
+          "reasoning": "Section 6 (\"Term and Renewal\") is the section that actually sets the automatic renewal terms, stating that the Agreement \"renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\" No other section merely refers to it or sets renewal."
+        },
+        {
+          "id": "clause-007",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 (\"Indemnification\") is the section that actually sets the indemnification terms, stating that Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights. No other section merely refers to indemnification; section 9 directly establishes the term."
+        },
+        {
+          "id": "clause-008",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "The question asks which section sets the data protection terms. Section 4 addresses personal data processing directly: \"Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\" While it references the Data Processing Addendum (Schedule 2), Section 4 itself is the operative section in the contract text that sets the data protection obligations—n"
+        },
+        {
+          "id": "clause-009",
+          "gold": "7",
+          "got": "7",
+          "agree": true,
+          "reasoning": "The question asks which section sets the force majeure terms. Section 7, titled \"Force Majeure,\" states: \"Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\" This is the section that actually establishes the force majeure terms. No other section merely refers to force majeure, so section 7 is the correct answer."
+        },
+        {
+          "id": "clause-010",
+          "gold": "12",
+          "got": "12",
+          "agree": true,
+          "reasoning": "The question asks which section sets the assignment terms. Section 12 is titled \"Assignment\" and contains the substantive rule: \"Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.\" This is the section that actually sets the assignment terms, not merely one that refers to it. No other section addresses assignment."
+        },
+        {
+          "id": "clause-011",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4, titled \"Notices,\" actually sets the notices terms — it requires notices to be in writing and sent to the addresses in Schedule 1 by courier or by email with confirmation. No other section merely refers to notices; Section 4 is the operative section setting the term."
+        },
+        {
+          "id": "clause-012",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "The question asks which section sets the warranty terms. Reviewing the contract, Section 9 states: \"Vendor warrants that the Service will perform materially in accordance with the Documentation for the term.\" This is the section that actually establishes the warranty (the vendor's warranty of Service performance), not merely a reference to a warranty. No other section sets warranty terms — the oth"
+        },
+        {
+          "id": "clause-013",
+          "gold": "10",
+          "got": "10",
+          "agree": true,
+          "reasoning": "The question asks which section sets the governing law terms. Reviewing the contract: Section 10 is titled \"Governing Law\" and states \"This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\" This is the section that actually sets the governing law term (not merely referring to it). No other section establishes governing law. Therefore the ans"
+        },
+        {
+          "id": "clause-014",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 (\"Limitation of Liability\") is the section that actually sets the limitation of liability terms, stating that except for breaches of confidentiality, each party's total liability is capped at the fees paid in the twelve months before the claim. Section 4 only refers to the cap (\"The indemnity in this Section is not subject to the cap on liability described elsewhere in this Agreement\") b"
+        },
+        {
+          "id": "clause-015",
+          "gold": "8",
+          "got": "8",
+          "agree": true,
+          "reasoning": "The question asks which section sets the \"termination for convenience\" terms. Termination for convenience means the ability to terminate the agreement without cause, for any reason. Reviewing the sections: Section 8 (Termination) states \"Either party may terminate this Agreement for any reason on ninety days' written notice\" — this is the provision that actually sets the termination-for-convenienc"
+        },
+        {
+          "id": "clause-016",
+          "gold": "5",
+          "failure": "tool call refused (Model response did not contain a tool call even though tool choice was required.) and fallback did not parse"
+        },
+        {
+          "id": "clause-017",
+          "gold": "2",
+          "got": "2",
+          "agree": true,
+          "reasoning": "The question asks which section sets the payment terms. Section 2, titled \"Fees and Payment,\" actually sets those terms: it states that Customer will pay each invoice within thirty days of its date and that late amounts accrue interest at 1% per month. No other section sets payment terms, so the answer is section 2."
+        },
+        {
+          "id": "clause-018",
+          "gold": "3",
+          "got": "3",
+          "agree": true,
+          "reasoning": "Section 3 (\"Term and Renewal\") is the section that actually sets the automatic renewal terms: \"This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\" No other section merely refers to or establishes this term; Section 3 is the operative provision."
+        },
+        {
+          "id": "clause-019",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 is titled \"Indemnification\" and actually sets the indemnification terms: \"Vendor will defend and indemnify Customer against third-party claims that the Service infringes intellectual property rights.\" No other section merely refers to indemnification (Section 10 addresses liability caps, not indemnification), so Section 4 is the section that sets the term."
+        },
+        {
+          "id": "clause-020",
+          "gold": "10",
+          "got": "10",
+          "agree": true,
+          "reasoning": "The question asks which section sets the data protection terms. Reviewing the contract, Section 10 states: \"Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.\" This is the operative provision of the contract that establishes the data protection obligation. Although it references the Data Processing Addendum (Schedule 2, an external attachm"
+        },
+        {
+          "id": "clause-021",
+          "gold": "1",
+          "got": "1",
+          "agree": true,
+          "reasoning": "The question asks which section sets the force majeure terms. Section 1, titled \"Force Majeure,\" states: \"Neither party is liable for delays caused by events beyond its reasonable control, including natural disasters and war.\" This section actually establishes (sets) the force majeure terms rather than merely referring to them. No other section addresses force majeure. Therefore the answer is sect"
+        },
+        {
+          "id": "clause-022",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "The question asks which section sets the assignment terms. Reviewing the contract, Section 9 is titled \"Assignment\" and substantively establishes the assignment rule: neither party may assign the Agreement without the other party's written consent, with an exception for a successor in a merger. This section actually sets the assignment terms (rather than merely referring to them), so the answer is"
+        },
+        {
+          "id": "clause-023",
+          "gold": "3",
+          "got": "3",
+          "agree": true,
+          "reasoning": "The question asks which section sets the notices terms. Section 3, titled \"Notices,\" states that notices must be in writing and sent to the addresses in Schedule 1, by courier or by email with confirmation. This section itself establishes the notice requirements (form and delivery method), not merely referring to them elsewhere. Schedule 1 is only referenced for the addresses, but the substantive "
+        },
+        {
+          "id": "clause-024",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 states \"Vendor warrants that the Service will perform materially in accordance with the Documentation for the term\" — this is the section that actually sets the warranty terms. No other section establishes a warranty."
+        },
+        {
+          "id": "clause-025",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 (\"Governing Law\") directly sets the governing law terms: \"This Agreement is governed by the laws of the State of New York, without regard to its conflict-of-laws rules.\" This is the section that actually establishes the governing law provision, not merely one that refers to it."
+        },
+        {
+          "id": "clause-026",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "The question asks which section actually sets the limitation of liability terms. Section 4, titled \"Limitation of Liability,\" is the section that establishes the liability cap (\"Except for breaches of confidentiality, each party's total liability under this Agreement is capped at the fees paid in the twelve months before the claim\"). Section 1 only refers to the cap when stating that the indemnity"
+        },
+        {
+          "id": "clause-027",
+          "gold": "5",
+          "got": "5",
+          "agree": true,
+          "reasoning": "Section 5 (Termination) states that either party may terminate the Agreement for any reason on ninety days' written notice. Terminating \"for any reason\" is termination for convenience, so Section 5 is the section that actually sets those terms. No other section establishes or merely refers to this term."
+        },
+        {
+          "id": "clause-028",
+          "gold": "12",
+          "got": "12",
+          "agree": true,
+          "reasoning": "The question asks which section actually sets the confidentiality period (i.e., how long the obligations survive). Reviewing each section: Section 1 only refers to Confidential Information (stating that personal data is also Confidential Information) but sets no time period. Section 10 mentions breaches of confidentiality only as an exception to the liability cap, again just a reference. Section 1"
+        },
+        {
+          "id": "clause-029",
+          "gold": "10",
+          "got": "10",
+          "agree": true,
+          "reasoning": "The question asks which section sets the payment terms. Section 10, titled \"Fees and Payment,\" actually establishes the payment terms: it states that Customer will pay each invoice within thirty days of its date and that late amounts accrue interest at 1% per month. This is the section that sets the term (not merely referring to it), so the answer is section 10."
+        },
+        {
+          "id": "clause-030",
+          "gold": "7",
+          "got": "7",
+          "agree": true,
+          "reasoning": "Section 7 (\"Term and Renewal\") is the section that actually sets the automatic renewal terms: \"This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\" No other section merely refers to it; Section 7 is the operative provision on automatic renewal."
+        }
+      ]
+    },
+    "alibaba/qwen3.8-max-0902": {
+      "agreement": 1,
+      "parsed": 30,
+      "disputed": [],
+      "rows": [
+        {
+          "id": "clause-001",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 is titled 'Governing Law' and explicitly states that the agreement is governed by the laws of the State of New York, which directly sets the governing law terms."
+        },
+        {
+          "id": "clause-002",
+          "gold": "12",
+          "got": "12",
+          "agree": true,
+          "reasoning": "Section 12 is titled \"Limitation of Liability\" and explicitly sets the cap on total liability under the Agreement, which directly answers the question about where the limitation of liability terms are set."
+        },
+        {
+          "id": "clause-003",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 is titled \"Termination\" and explicitly states that either party may terminate the agreement for any reason on ninety days' written notice, which constitutes termination for convenience. Section 11 relates to renewal and non-renewal notice, not general termination for convenience."
+        },
+        {
+          "id": "clause-004",
+          "gold": "3",
+          "got": "3",
+          "agree": true,
+          "reasoning": "Section 9 mentions confidentiality but only defines personal data as Confidential Information and refers to a Data Processing Addendum; it does not set the duration. Section 3 explicitly states that 'The obligations in this Section continue for five years after termination,' which is the provision that actually sets the time period (term) for post-termination obligations, including confidentiality"
+        },
+        {
+          "id": "clause-005",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 is titled 'Fees and Payment' and explicitly sets the payment terms, stating that the Customer will pay each invoice within thirty days and specifying the interest rate for late amounts. No other section defines these payment obligations."
+        },
+        {
+          "id": "clause-006",
+          "gold": "6",
+          "got": "6",
+          "agree": true,
+          "reasoning": "Section 6 is titled \"Term and Renewal\" and explicitly states that \"This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal,\" which directly sets the automatic renewal terms."
+        },
+        {
+          "id": "clause-007",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 is titled 'Indemnification' and explicitly states that the Vendor will defend and indemnify the Customer against third-party claims, which directly sets the indemnification terms."
+        },
+        {
+          "id": "clause-008",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 explicitly states that 'Each party will process personal data in accordance with the Data Processing Addendum attached as Schedule 2.' This is the section that establishes the obligation and framework for data protection terms within the main agreement, whereas other sections do not address personal data or data processing."
+        },
+        {
+          "id": "clause-009",
+          "gold": "7",
+          "got": "7",
+          "agree": true,
+          "reasoning": "Section 7 is titled 'Force Majeure' and explicitly sets the terms regarding liability for delays caused by events beyond reasonable control, such as natural disasters and war."
+        },
+        {
+          "id": "clause-010",
+          "gold": "12",
+          "got": "12",
+          "agree": true,
+          "reasoning": "Section 12 is titled 'Assignment' and explicitly states the terms regarding assignment of the Agreement ('Neither party may assign this Agreement without the other party's written consent, except to a successor in a merger.'). No other section sets these terms."
+        },
+        {
+          "id": "clause-011",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 is titled 'Notices' and explicitly sets the terms for how notices must be delivered (in writing, to addresses in Schedule 1, by courier or email with confirmation). No other section defines these requirements."
+        },
+        {
+          "id": "clause-012",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 explicitly states that 'Vendor warrants that the Service will perform materially in accordance with the Documentation for the term,' which directly sets the warranty terms. Other sections do not contain warranty provisions."
+        },
+        {
+          "id": "clause-013",
+          "gold": "10",
+          "got": "10",
+          "agree": true,
+          "reasoning": "Section 10 is titled 'Governing Law' and explicitly states that the Agreement is governed by the laws of the State of New York, which directly sets the governing law terms."
+        },
+        {
+          "id": "clause-014",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 is titled 'Limitation of Liability' and explicitly sets the cap on total liability under the Agreement, which directly answers the question about where the limitation of liability terms are set."
+        },
+        {
+          "id": "clause-015",
+          "gold": "8",
+          "got": "8",
+          "agree": true,
+          "reasoning": "Section 8 explicitly states that either party may terminate the agreement for any reason on ninety days' written notice, which constitutes termination for convenience. Section 9 addresses renewal and non-renewal notice, not termination for convenience."
+        },
+        {
+          "id": "clause-016",
+          "gold": "5",
+          "got": "5",
+          "agree": true,
+          "reasoning": "Section 3 mentions that personal data is Confidential Information but does not set a duration. Section 5 states 'The obligations in this Section continue for five years after termination.' In the context of this contract structure, Section 5 is the standard placement for the survival/continuation of confidentiality obligations (often grouped with or immediately following the confidentiality defini"
+        },
+        {
+          "id": "clause-017",
+          "gold": "2",
+          "got": "2",
+          "agree": true,
+          "reasoning": "Section 2 is titled \"Fees and Payment\" and explicitly sets the payment terms, stating that the Customer will pay each invoice within thirty days of its date and specifying interest for late amounts. No other section defines these payment obligations."
+        },
+        {
+          "id": "clause-018",
+          "gold": "3",
+          "got": "3",
+          "agree": true,
+          "reasoning": "Section 3 is titled 'Term and Renewal' and explicitly states that 'This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal,' which directly sets the automatic renewal terms."
+        },
+        {
+          "id": "clause-019",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 is titled 'Indemnification' and explicitly sets the terms by stating that the Vendor will defend and indemnify the Customer against third-party claims regarding intellectual property infringement."
+        },
+        {
+          "id": "clause-020",
+          "gold": "10",
+          "got": "10",
+          "agree": true,
+          "reasoning": "Section 10 explicitly states that each party will process personal data in accordance with the Data Processing Addendum, which directly sets the terms regarding data protection within this agreement."
+        },
+        {
+          "id": "clause-021",
+          "gold": "1",
+          "got": "1",
+          "agree": true,
+          "reasoning": "Section 1 is titled 'Force Majeure' and explicitly sets the terms regarding liability for delays caused by events beyond reasonable control, which directly answers the question."
+        },
+        {
+          "id": "clause-022",
+          "gold": "9",
+          "got": "9",
+          "agree": true,
+          "reasoning": "Section 9 is titled 'Assignment' and explicitly sets the terms regarding the assignment of the Agreement, stating that neither party may assign it without written consent except to a successor in a merger."
+        },
+        {
+          "id": "clause-023",
+          "gold": "3",
+          "got": "3",
+          "agree": true,
+          "reasoning": "Section 3 is titled 'Notices' and explicitly sets the terms for how notices must be delivered (in writing, to addresses in Schedule 1, by courier or email with confirmation)."
+        },
+        {
+          "id": "clause-024",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 explicitly states 'Vendor warrants that the Service will perform materially in accordance with the Documentation for the term,' which directly sets the warranty terms. No other section addresses warranties."
+        },
+        {
+          "id": "clause-025",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 is titled 'Governing Law' and explicitly states that the agreement is governed by the laws of the State of New York, which directly sets the governing law terms."
+        },
+        {
+          "id": "clause-026",
+          "gold": "4",
+          "got": "4",
+          "agree": true,
+          "reasoning": "Section 4 is titled \"Limitation of Liability\" and explicitly sets the cap on total liability under the Agreement, which directly answers the question about where the limitation of liability terms are set."
+        },
+        {
+          "id": "clause-027",
+          "gold": "5",
+          "got": "5",
+          "agree": true,
+          "reasoning": "Section 5 is titled \"Termination\" and explicitly states that \"Either party may terminate this Agreement for any reason on ninety days' written notice,\" which defines the termination for convenience terms. Section 10 addresses renewal and non-renewal notice, not general termination for convenience."
+        },
+        {
+          "id": "clause-028",
+          "gold": "12",
+          "got": "12",
+          "agree": true,
+          "reasoning": "Section 1 is about data processing and states that personal data is confidential information, but does not set a time period. Section 12 explicitly sets the duration for obligations (\"continue for five years after termination\"). While Section 12 refers to \"obligations in this Section\" (which textually points to itself), in the context of this specific contract snippet where Section 1 defines confi"
+        },
+        {
+          "id": "clause-029",
+          "gold": "10",
+          "got": "10",
+          "agree": true,
+          "reasoning": "Section 10 is titled \"Fees and Payment\" and explicitly sets the payment terms, stating that the Customer will pay each invoice within thirty days and specifying the interest rate for late payments. No other section defines these payment obligations."
+        },
+        {
+          "id": "clause-030",
+          "gold": "7",
+          "got": "7",
+          "agree": true,
+          "reasoning": "Section 7 is titled \"Term and Renewal\" and explicitly states: \"This Agreement renews automatically for successive one-year terms unless either party gives sixty days' notice of non-renewal.\" This is the section that actually sets the automatic renewal terms."
+        }
+      ]
+    }
+  }
+}

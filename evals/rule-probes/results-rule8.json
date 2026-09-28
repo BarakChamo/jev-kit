@@ -1,0 +1,66 @@
+[
+  {
+    "rule": 8,
+    "domain": "unit conversion (g vs kg)",
+    "results": {
+      "direct comparison (warned)": {
+        "right": 12,
+        "n": 12,
+        "decisiveness": 0.9516666666666665
+      },
+      "read both, compare in code (recommended)": {
+        "right": 12,
+        "n": 12,
+        "decisiveness": 0.9983333333333334
+      }
+    }
+  },
+  {
+    "rule": 8,
+    "domain": "computed limit",
+    "results": {
+      "direct comparison (warned)": {
+        "right": 9,
+        "n": 12,
+        "decisiveness": 0.24833333333333332
+      },
+      "read both, compare in code (recommended)": {
+        "right": 12,
+        "n": 12,
+        "decisiveness": 0.8708333333333332
+      }
+    }
+  },
+  {
+    "rule": 8,
+    "domain": "distance (3k tokens apart)",
+    "results": {
+      "direct comparison (warned)": {
+        "right": 12,
+        "n": 12,
+        "decisiveness": 0.9600000000000003
+      },
+      "read both, compare in code (recommended)": {
+        "right": 12,
+        "n": 12,
+        "decisiveness": 1
+      }
+    }
+  },
+  {
+    "rule": 8,
+    "domain": "mixed periods (months vs days)",
+    "results": {
+      "direct comparison (warned)": {
+        "right": 11,
+        "n": 12,
+        "decisiveness": 0.5683333333333334
+      },
+      "read both, compare in code (recommended)": {
+        "right": 12,
+        "n": 12,
+        "decisiveness": 0.9908333333333333
+      }
+    }
+  }
+]

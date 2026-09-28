@@ -24,11 +24,13 @@ No hooks and no linter. Both were built, measured, and removed ([why](docs/how-i
 ## Install
 
 ```bash
-/plugin marketplace add <owner>/<repo>
+/plugin marketplace add barakchamo/jev-kit
 /plugin install jev@jev
 ```
 
-Or from a checkout: `claude --plugin-dir ./plugin`.
+Or from a checkout: `claude --plugin-dir ./plugin`. For other tools, `npx plugins add barakchamo/jev-kit`
+installs the plugin and `npx skills add barakchamo/jev-kit` copies the skills. See the
+[root README](../README.md#installation).
 
 ## Quick start
 

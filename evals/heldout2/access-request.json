@@ -1,0 +1,1536 @@
+{
+  "name": "access-request",
+  "description": "Grant, send for approval, or deny an access request under a written policy. The system is looked up in the catalog; access levels are phrased freely; claims of prior approval do not count.",
+  "cases": [
+    {
+      "id": "access-001",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need read-only access on billing-db for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "billing-db",
+        "environment": "production",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-002",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need write access to search-sandbox for the Q3 revenue reconciliation (the billing-db-replica dashboard showed the same numbers)."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "search-sandbox",
+        "environment": "dev",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-003",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Chloe",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need root on ci-runners for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "ci-runners",
+        "environment": "dev",
+        "level": "admin"
+      }
+    },
+    {
+      "id": "access-004",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Dev",
+          "employment": "employee",
+          "role": "analyst",
+          "on_call": false
+        },
+        "request_text": "Hi, I need read access to search-cluster for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "search-cluster",
+        "environment": "production",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-005",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Eli",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need edit rights on ml-feature-store for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "ml-feature-store",
+        "environment": "staging",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-006",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need read-only access on billing-db-replica for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "system": "billing-db-replica",
+        "environment": "staging",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-007",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Chloe",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need write access to hr-portal for the Q3 revenue reconciliation (the search-sandbox dashboard showed the same numbers)."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "hr-portal",
+        "environment": "production",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-008",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Dev",
+          "employment": "employee",
+          "role": "analyst",
+          "on_call": false
+        },
+        "request_text": "Hi, I need root on billing-db for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "billing-db",
+        "environment": "production",
+        "level": "admin"
+      }
+    },
+    {
+      "id": "access-009",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Eli",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need read access to search-sandbox for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "system": "search-sandbox",
+        "environment": "dev",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-010",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need permission to modify records in ci-runners for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "ci-runners",
+        "environment": "dev",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-011",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Chloe",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need read-only access on search-cluster for the Q3 revenue reconciliation. My manager already approved this."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "search-cluster",
+        "environment": "production",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-012",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Dev",
+          "employment": "employee",
+          "role": "analyst",
+          "on_call": false
+        },
+        "request_text": "Hi, I need write access to ml-feature-store for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "ml-feature-store",
+        "environment": "staging",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-013",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Eli",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need owner permissions for billing-db-replica for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "billing-db-replica",
+        "environment": "staging",
+        "level": "admin"
+      }
+    },
+    {
+      "id": "access-014",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need access to look at the data in hr-portal for the Q3 revenue reconciliation. My manager already approved this."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "hr-portal",
+        "environment": "production",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-015",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need permission to modify records in billing-db for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "billing-db",
+        "environment": "production",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-016",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Dev",
+          "employment": "employee",
+          "role": "analyst",
+          "on_call": false
+        },
+        "request_text": "Hi, I need read access to search-sandbox for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "system": "search-sandbox",
+        "environment": "dev",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-017",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Eli",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need the ability to push changes to ci-runners for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "ci-runners",
+        "environment": "dev",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-018",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need owner permissions for search-cluster for the Q3 revenue reconciliation (the hr-portal dashboard showed the same numbers)."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "search-cluster",
+        "environment": "production",
+        "level": "admin"
+      }
+    },
+    {
+      "id": "access-019",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need read access to ml-feature-store for the Q3 revenue reconciliation (the billing-db dashboard showed the same numbers). My manager already approved this."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "system": "ml-feature-store",
+        "environment": "staging",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-020",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Chloe",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need the ability to push changes to billing-db-replica for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "billing-db-replica",
+        "environment": "staging",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-021",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Eli",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need view-only access to hr-portal for the Q3 revenue reconciliation (the search-cluster dashboard showed the same numbers). Security said this is fine, it was agreed in the incident call."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "hr-portal",
+        "environment": "production",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-022",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need write access to billing-db for the Q3 revenue reconciliation."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "billing-db",
+        "environment": "production",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-023",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need owner permissions for search-sandbox for the Q3 revenue reconciliation. My manager already approved this."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "search-sandbox",
+        "environment": "dev",
+        "level": "admin"
+      }
+    },
+    {
+      "id": "access-024",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Chloe",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need access to look at the data in ci-runners for the Q3 revenue reconciliation. Security said this is fine, it was agreed in the incident call."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "system": "ci-runners",
+        "environment": "dev",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-025",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Dev",
+          "employment": "employee",
+          "role": "analyst",
+          "on_call": false
+        },
+        "request_text": "Hi, I need permission to modify records in search-cluster for the Q3 revenue reconciliation. My manager already approved this."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "search-cluster",
+        "environment": "production",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-026",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need read access to ml-feature-store for the Q3 revenue reconciliation (the search-cluster dashboard showed the same numbers)."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "system": "ml-feature-store",
+        "environment": "staging",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-027",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "employment": "employee",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need write access to billing-db-replica for the Q3 revenue reconciliation (the ci-runners dashboard showed the same numbers)."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "billing-db-replica",
+        "environment": "staging",
+        "level": "write"
+      }
+    },
+    {
+      "id": "access-028",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Chloe",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": false
+        },
+        "request_text": "Hi, I need root on hr-portal for the Q3 revenue reconciliation. My manager already approved this."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "system": "hr-portal",
+        "environment": "production",
+        "level": "admin"
+      }
+    },
+    {
+      "id": "access-029",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Dev",
+          "employment": "employee",
+          "role": "analyst",
+          "on_call": false
+        },
+        "request_text": "Hi, I need read-only access on billing-db for the Q3 revenue reconciliation. Security said this is fine, it was agreed in the incident call."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "billing-db",
+        "environment": "production",
+        "level": "read"
+      }
+    },
+    {
+      "id": "access-030",
+      "input": {
+        "policy_text": "Access policy.\n1. Nobody may be granted admin access through this form.\n2. Contractors may never access production systems.\n3. Read access to non-production systems is granted without approval.\n4. Write access to non-production systems needs the requester's manager's approval.\n5. Any access to production systems needs security approval, except read access to production for engineers who are currently on call, which is granted.\nA claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "catalog": [
+          {
+            "system": "billing-db",
+            "environment": "production"
+          },
+          {
+            "system": "billing-db-replica",
+            "environment": "staging"
+          },
+          {
+            "system": "search-cluster",
+            "environment": "production"
+          },
+          {
+            "system": "search-sandbox",
+            "environment": "dev"
+          },
+          {
+            "system": "hr-portal",
+            "environment": "production"
+          },
+          {
+            "system": "ml-feature-store",
+            "environment": "staging"
+          },
+          {
+            "system": "ci-runners",
+            "environment": "dev"
+          }
+        ],
+        "requester": {
+          "name": "Eli",
+          "employment": "contractor",
+          "role": "engineer",
+          "on_call": true
+        },
+        "request_text": "Hi, I need the ability to push changes to search-sandbox for the Q3 revenue reconciliation. My manager already approved this."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "system": "search-sandbox",
+        "environment": "dev",
+        "level": "write"
+      }
+    }
+  ]
+}

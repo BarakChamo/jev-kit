@@ -1,4 +1,4 @@
-# jev-audit
+# @barakchamo/jev-audit
 
 Offline audits for recorded [Jev](https://docs.typesafe.ai) results. No API key and no model calls.
 
@@ -10,13 +10,18 @@ Offline audits for recorded [Jev](https://docs.typesafe.ai) results. No API key 
 | gate | the lowest threshold that hits a target precision, and how much it automates |
 | diff | before/after per field: fixed, broken, flipped, and a sign test |
 
+Run it from this folder, with no install:
+
 ```bash
-npx jev-audit results.jsonl
-npx jev-audit diff before.jsonl after.jsonl
+node bin/jev-audit.mjs results.jsonl
+node bin/jev-audit.mjs diff before.jsonl after.jsonl
 ```
 
+The package is ready for npm as `@barakchamo/jev-audit` but not yet published. The unscoped `jev-audit`
+package on npm is an unrelated project, so don't `npx jev-audit`.
+
 ```js
-import { items, parseRows, confidentlyWrong, calibration, fitGate, diff } from 'jev-audit';
+import { items, parseRows, confidentlyWrong, calibration, fitGate, diff } from '@barakchamo/jev-audit';
 ```
 
 Input is one JSON object per line: `{ caseId, gold: { field: label }, raw: { field: <Jev answer> } }`.

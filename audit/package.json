@@ -1,5 +1,5 @@
 {
-  "name": "jev-audit",
+  "name": "@barakchamo/jev-audit",
   "version": "0.1.0",
   "description": "Offline audits for Jev eval results: confidently-wrong queue, one-direction error detection, calibration, top-k recall and gate fitting. Needs no API key.",
   "license": "MIT",

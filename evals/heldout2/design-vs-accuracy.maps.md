@@ -1,0 +1,14 @@
+| task | flag | value | maps | accuracy | wrong |
+| --- | --- | --- | ---: | ---: | ---: |
+| sla-breach | computesTimeInCode | yes | 4 | 112/120 | 1/120 |
+| sla-breach | computesTimeInCode | no | 2 | 26/60 | 14/60 |
+| sla-breach | asksBreachDirectly | yes | 3 | 54/90 | 14/90 |
+| sla-breach | asksBreachDirectly | no | 3 | 84/90 | 1/90 |
+| refund-eligibility | computesDaysInCode | yes | 4 | 94/120 | 1/120 |
+| refund-eligibility | computesDaysInCode | no | 2 | 30/60 | 1/60 |
+| refund-eligibility | asksEligibleDirectly | yes | 2 | 30/60 | 1/60 |
+| refund-eligibility | asksEligibleDirectly | no | 4 | 94/120 | 1/120 |
+| culprit | oneChoiceOverAllLines | yes | 3 | 64/90 | 0/90 |
+| culprit | oneChoiceOverAllLines | no | 3 | 60/90 | 12/90 |
+| culprit | preFilter | yes | 3 | 60/90 | 12/90 |
+| culprit | preFilter | no | 3 | 64/90 | 0/90 |

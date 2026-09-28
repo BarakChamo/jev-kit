@@ -1,0 +1,1236 @@
+{
+  "name": "refund-eligibility",
+  "description": "Is the item the customer asks to return eligible under the policy? Pick the item from the message, apply its category window counted inclusively, the unopened-unless-defective rule for electronics, and final-sale / gift-card exclusions.",
+  "cases": [
+    {
+      "id": "refund-001",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55100",
+          "items": [
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-06-30"
+            },
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-06-30"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-11",
+          "message": "Hi, I want to return the headphones. I never opened it. The pan from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Aurora wireless headphones",
+        "category": "electronics",
+        "days_inclusive": 12,
+        "condition": "sealed",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-002",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55101",
+          "items": [
+            {
+              "sku": "SKU-1005",
+              "name": "Linen duvet cover",
+              "category": "home",
+              "final_sale": false,
+              "price": 75,
+              "delivered_date": "2026-07-11"
+            },
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-07-11"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-24",
+          "message": "Hi, I want to return Pixel-8 smart speaker. I opened it and tried it, it works but I just do not like it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Pixel-8 smart speaker",
+        "category": "electronics",
+        "days_inclusive": 14,
+        "condition": "opened",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-003",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55102",
+          "items": [
+            {
+              "sku": "SKU-1002",
+              "name": "Trailblazer rain jacket",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 129,
+              "delivered_date": "2026-06-02"
+            },
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-06-02"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-01",
+          "message": "Hi, I want to return Trailblazer rain jacket. I would like to return it. The headphones from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Trailblazer rain jacket",
+        "category": "apparel",
+        "days_inclusive": 30,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-004",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55103",
+          "items": [
+            {
+              "sku": "SKU-1003",
+              "name": "Merino crew socks (3-pack)",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 35,
+              "delivered_date": "2026-07-30"
+            },
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-07-30"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-29",
+          "message": "Hi, I want to return the socks. I would like to return it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Merino crew socks (3-pack)",
+        "category": "apparel",
+        "days_inclusive": 31,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-005",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55104",
+          "items": [
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-06-26"
+            },
+            {
+              "sku": "SKU-1002",
+              "name": "Trailblazer rain jacket",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 129,
+              "delivered_date": "2026-06-26"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-29",
+          "message": "Hi, I want to return Cast-iron skillet 28 cm. I would like to return it. The jacket from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Cast-iron skillet 28 cm",
+        "category": "home",
+        "days_inclusive": 34,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-006",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55105",
+          "items": [
+            {
+              "sku": "SKU-1005",
+              "name": "Linen duvet cover",
+              "category": "home",
+              "final_sale": false,
+              "price": 75,
+              "delivered_date": "2026-07-04"
+            },
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-07-04"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-11",
+          "message": "Hi, I want to return Linen duvet cover. I would like to return it. The pan from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Linen duvet cover",
+        "category": "home",
+        "days_inclusive": 8,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-007",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55106",
+          "items": [
+            {
+              "sku": "SKU-1005",
+              "name": "Linen duvet cover",
+              "category": "home",
+              "final_sale": false,
+              "price": 75,
+              "delivered_date": "2026-06-15"
+            },
+            {
+              "sku": "SKU-1006",
+              "name": "Gift card $50",
+              "category": "gift card",
+              "final_sale": false,
+              "price": 50,
+              "delivered_date": "2026-06-15"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-09",
+          "message": "Hi, I want to return the gift card. It is not what I expected. The duvet cover from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Gift card $50",
+        "category": "gift card",
+        "days_inclusive": 25,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-008",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55107",
+          "items": [
+            {
+              "sku": "SKU-1007",
+              "name": "Clearance desk lamp",
+              "category": "home",
+              "final_sale": true,
+              "price": 30,
+              "delivered_date": "2026-07-28"
+            },
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-07-28"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-23",
+          "message": "Hi, I want to return Clearance desk lamp. I would like to return it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Clearance desk lamp",
+        "category": "home",
+        "days_inclusive": 27,
+        "condition": "neutral",
+        "final_sale": true
+      }
+    },
+    {
+      "id": "refund-009",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55108",
+          "items": [
+            {
+              "sku": "SKU-1007",
+              "name": "Clearance desk lamp",
+              "category": "home",
+              "final_sale": true,
+              "price": 30,
+              "delivered_date": "2026-07-11"
+            },
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-07-11"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-10",
+          "message": "Hi, I want to return Aurora wireless headphones. It stopped working after two days. The lamp from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Aurora wireless headphones",
+        "category": "electronics",
+        "days_inclusive": 31,
+        "condition": "defective",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-010",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55109",
+          "items": [
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-07-24"
+            },
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-07-24"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-07",
+          "message": "Hi, I want to return the speaker. Used it a couple of times, it is fine, I changed my mind."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Pixel-8 smart speaker",
+        "category": "electronics",
+        "days_inclusive": 15,
+        "condition": "opened",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-011",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55110",
+          "items": [
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-07-17"
+            },
+            {
+              "sku": "SKU-1002",
+              "name": "Trailblazer rain jacket",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 129,
+              "delivered_date": "2026-07-17"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-16",
+          "message": "Hi, I want to return Trailblazer rain jacket. It is not what I expected. The speaker from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Trailblazer rain jacket",
+        "category": "apparel",
+        "days_inclusive": 31,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-012",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55111",
+          "items": [
+            {
+              "sku": "SKU-1003",
+              "name": "Merino crew socks (3-pack)",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 35,
+              "delivered_date": "2026-07-25"
+            },
+            {
+              "sku": "SKU-1002",
+              "name": "Trailblazer rain jacket",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 129,
+              "delivered_date": "2026-07-25"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-27",
+          "message": "Hi, I want to return Merino crew socks (3-pack). It is not what I expected."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Merino crew socks (3-pack)",
+        "category": "apparel",
+        "days_inclusive": 34,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-013",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55112",
+          "items": [
+            {
+              "sku": "SKU-1006",
+              "name": "Gift card $50",
+              "category": "gift card",
+              "final_sale": false,
+              "price": 50,
+              "delivered_date": "2026-07-21"
+            },
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-07-21"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-28",
+          "message": "Hi, I want to return the pan. I would like to return it. The gift card from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Cast-iron skillet 28 cm",
+        "category": "home",
+        "days_inclusive": 8,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-014",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55113",
+          "items": [
+            {
+              "sku": "SKU-1005",
+              "name": "Linen duvet cover",
+              "category": "home",
+              "final_sale": false,
+              "price": 75,
+              "delivered_date": "2026-07-26"
+            },
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-07-26"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-19",
+          "message": "Hi, I want to return Linen duvet cover. It is not what I expected."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Linen duvet cover",
+        "category": "home",
+        "days_inclusive": 25,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-015",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55114",
+          "items": [
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-06-14"
+            },
+            {
+              "sku": "SKU-1006",
+              "name": "Gift card $50",
+              "category": "gift card",
+              "final_sale": false,
+              "price": 50,
+              "delivered_date": "2026-06-14"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-10",
+          "message": "Hi, I want to return Gift card $50. It is not what I expected."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Gift card $50",
+        "category": "gift card",
+        "days_inclusive": 27,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-016",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55115",
+          "items": [
+            {
+              "sku": "SKU-1003",
+              "name": "Merino crew socks (3-pack)",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 35,
+              "delivered_date": "2026-06-26"
+            },
+            {
+              "sku": "SKU-1007",
+              "name": "Clearance desk lamp",
+              "category": "home",
+              "final_sale": true,
+              "price": 30,
+              "delivered_date": "2026-06-26"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-24",
+          "message": "Hi, I want to return the lamp. I would like to return it. The socks from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Clearance desk lamp",
+        "category": "home",
+        "days_inclusive": 29,
+        "condition": "neutral",
+        "final_sale": true
+      }
+    },
+    {
+      "id": "refund-017",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55116",
+          "items": [
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-06-01"
+            },
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-06-01"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-06-15",
+          "message": "Hi, I want to return Aurora wireless headphones. I opened it and tried it, it works but I just do not like it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Aurora wireless headphones",
+        "category": "electronics",
+        "days_inclusive": 15,
+        "condition": "opened",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-018",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55117",
+          "items": [
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-07-29"
+            },
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-07-29"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-26",
+          "message": "Hi, I want to return Pixel-8 smart speaker. It stopped working after two days. The headphones from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Pixel-8 smart speaker",
+        "category": "electronics",
+        "days_inclusive": 29,
+        "condition": "defective",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-019",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55118",
+          "items": [
+            {
+              "sku": "SKU-1002",
+              "name": "Trailblazer rain jacket",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 129,
+              "delivered_date": "2026-07-17"
+            },
+            {
+              "sku": "SKU-1005",
+              "name": "Linen duvet cover",
+              "category": "home",
+              "final_sale": false,
+              "price": 75,
+              "delivered_date": "2026-07-17"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-19",
+          "message": "Hi, I want to return the jacket. It is not what I expected. The duvet cover from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Trailblazer rain jacket",
+        "category": "apparel",
+        "days_inclusive": 34,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-020",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55119",
+          "items": [
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-07-02"
+            },
+            {
+              "sku": "SKU-1003",
+              "name": "Merino crew socks (3-pack)",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 35,
+              "delivered_date": "2026-07-02"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-09",
+          "message": "Hi, I want to return Merino crew socks (3-pack). It is not what I expected."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Merino crew socks (3-pack)",
+        "category": "apparel",
+        "days_inclusive": 8,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-021",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55120",
+          "items": [
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-06-05"
+            },
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-06-05"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-06-29",
+          "message": "Hi, I want to return Cast-iron skillet 28 cm. I would like to return it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Cast-iron skillet 28 cm",
+        "category": "home",
+        "days_inclusive": 25,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-022",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55121",
+          "items": [
+            {
+              "sku": "SKU-1005",
+              "name": "Linen duvet cover",
+              "category": "home",
+              "final_sale": false,
+              "price": 75,
+              "delivered_date": "2026-06-29"
+            },
+            {
+              "sku": "SKU-1007",
+              "name": "Clearance desk lamp",
+              "category": "home",
+              "final_sale": true,
+              "price": 30,
+              "delivered_date": "2026-06-29"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-25",
+          "message": "Hi, I want to return the duvet cover. I would like to return it. The lamp from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Linen duvet cover",
+        "category": "home",
+        "days_inclusive": 27,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-023",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55122",
+          "items": [
+            {
+              "sku": "SKU-1006",
+              "name": "Gift card $50",
+              "category": "gift card",
+              "final_sale": false,
+              "price": 50,
+              "delivered_date": "2026-06-15"
+            },
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-06-15"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-13",
+          "message": "Hi, I want to return Gift card $50. I would like to return it. The pan from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Gift card $50",
+        "category": "gift card",
+        "days_inclusive": 29,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-024",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55123",
+          "items": [
+            {
+              "sku": "SKU-1007",
+              "name": "Clearance desk lamp",
+              "category": "home",
+              "final_sale": true,
+              "price": 30,
+              "delivered_date": "2026-07-25"
+            },
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-07-25"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-23",
+          "message": "Hi, I want to return Clearance desk lamp. I would like to return it. The pan from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Clearance desk lamp",
+        "category": "home",
+        "days_inclusive": 30,
+        "condition": "neutral",
+        "final_sale": true
+      }
+    },
+    {
+      "id": "refund-025",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55124",
+          "items": [
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-06-01"
+            },
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-06-01"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-06-16",
+          "message": "Hi, I want to return the headphones. I opened it and tried it, it works but I just do not like it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Aurora wireless headphones",
+        "category": "electronics",
+        "days_inclusive": 16,
+        "condition": "opened",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-026",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55125",
+          "items": [
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-06-26"
+            },
+            {
+              "sku": "SKU-1000",
+              "name": "Aurora wireless headphones",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 49,
+              "delivered_date": "2026-06-26"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-14",
+          "message": "Hi, I want to return Pixel-8 smart speaker. I never opened it."
+        }
+      },
+      "gold": {
+        "eligible": "no"
+      },
+      "facts": {
+        "item": "Pixel-8 smart speaker",
+        "category": "electronics",
+        "days_inclusive": 19,
+        "condition": "sealed",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-027",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55126",
+          "items": [
+            {
+              "sku": "SKU-1002",
+              "name": "Trailblazer rain jacket",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 129,
+              "delivered_date": "2026-07-19"
+            },
+            {
+              "sku": "SKU-1001",
+              "name": "Pixel-8 smart speaker",
+              "category": "electronics",
+              "final_sale": false,
+              "price": 89,
+              "delivered_date": "2026-07-19"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-26",
+          "message": "Hi, I want to return Trailblazer rain jacket. It is not what I expected. The speaker from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Trailblazer rain jacket",
+        "category": "apparel",
+        "days_inclusive": 8,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-028",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55127",
+          "items": [
+            {
+              "sku": "SKU-1006",
+              "name": "Gift card $50",
+              "category": "gift card",
+              "final_sale": false,
+              "price": 50,
+              "delivered_date": "2026-06-04"
+            },
+            {
+              "sku": "SKU-1003",
+              "name": "Merino crew socks (3-pack)",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 35,
+              "delivered_date": "2026-06-04"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-06-28",
+          "message": "Hi, I want to return the socks. It is not what I expected."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Merino crew socks (3-pack)",
+        "category": "apparel",
+        "days_inclusive": 25,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-029",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55128",
+          "items": [
+            {
+              "sku": "SKU-1004",
+              "name": "Cast-iron skillet 28 cm",
+              "category": "home",
+              "final_sale": false,
+              "price": 60,
+              "delivered_date": "2026-07-10"
+            },
+            {
+              "sku": "SKU-1003",
+              "name": "Merino crew socks (3-pack)",
+              "category": "apparel",
+              "final_sale": false,
+              "price": 35,
+              "delivered_date": "2026-07-10"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-08-05",
+          "message": "Hi, I want to return Cast-iron skillet 28 cm. It is not what I expected."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Cast-iron skillet 28 cm",
+        "category": "home",
+        "days_inclusive": 27,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    },
+    {
+      "id": "refund-030",
+      "input": {
+        "policy_text": "Returns policy.\n1. Most items can be returned within 30 days of delivery.\n2. Electronics can be returned within 15 days of delivery, and only if unopened, unless the item is defective (then within 30 days).\n3. Items marked final sale and gift cards cannot be returned.\nThe delivery day counts as day 1 of the window, so a request made on day 30 is within a 30-day window and one made on day 31 is not.",
+        "order": {
+          "order_id": "ORD-55129",
+          "items": [
+            {
+              "sku": "SKU-1006",
+              "name": "Gift card $50",
+              "category": "gift card",
+              "final_sale": false,
+              "price": 50,
+              "delivered_date": "2026-06-14"
+            },
+            {
+              "sku": "SKU-1005",
+              "name": "Linen duvet cover",
+              "category": "home",
+              "final_sale": false,
+              "price": 75,
+              "delivered_date": "2026-06-14"
+            }
+          ]
+        },
+        "request": {
+          "date": "2026-07-12",
+          "message": "Hi, I want to return Linen duvet cover. It is not what I expected. The gift card from the same order is great, I am keeping it."
+        }
+      },
+      "gold": {
+        "eligible": "yes"
+      },
+      "facts": {
+        "item": "Linen duvet cover",
+        "category": "home",
+        "days_inclusive": 29,
+        "condition": "neutral",
+        "final_sale": false
+      }
+    }
+  ]
+}
