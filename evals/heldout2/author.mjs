@@ -7,7 +7,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { join } from 'node:path';
-import { streamText } from 'ai';
+import { generateText, streamText } from 'ai';
 import { buildPrompt } from './prompt.mjs';
 
 const [task, arm, model, rep, outdir] = process.argv.slice(2);
@@ -30,11 +30,13 @@ const started = Date.now();
 let text = '', err;
 for (let attempt = 0; attempt < 2 && !text; attempt++) {
   try {
-    // Streamed, with reasoning left on (the models' best), and up to 30 minutes per map.
-    const r = streamText({ model, system, prompt: buildPrompt(task), maxOutputTokens: Number(process.env.MAX_OUTPUT ?? 32000), abortSignal: AbortSignal.timeout(1_800_000) });
+    // Streamed by default, with reasoning left on (the models' best), and up to 30 minutes per map. STREAM=0 sends
+    // one non-streaming request instead: the gateway caps how long a stream may run, and slow reasoning models hit it.
+    const opts = { model, system, prompt: buildPrompt(task), maxOutputTokens: Number(process.env.MAX_OUTPUT ?? 32000), abortSignal: AbortSignal.timeout(1_800_000) };
+    const r = process.env.STREAM === '0' ? await generateText(opts) : streamText(opts);
     text = await r.text;
     const skillSha = arm === 'plugin' ? createHash('sha256').update(skill()).digest('hex').slice(0, 12) : null;
-    writeFileSync(join(dir, 'usage.json'), JSON.stringify({ model, arm, skillSha, skillRef: process.env.SKILL_REF ?? 'working tree', maxOutputTokens: Number(process.env.MAX_OUTPUT ?? 32000), servedBy: (await r.response)?.modelId, usage: await r.usage, ms: Date.now() - started }, null, 2));
+    writeFileSync(join(dir, 'usage.json'), JSON.stringify({ model, arm, skillSha, skillRef: process.env.SKILL_REF ?? 'working tree', maxOutputTokens: Number(process.env.MAX_OUTPUT ?? 32000), stream: process.env.STREAM !== '0', servedBy: (await r.response)?.modelId, usage: await r.usage, ms: Date.now() - started }, null, 2));
   } catch (e) { err = String(e?.message ?? e); await new Promise((r) => setTimeout(r, 5000 * (attempt + 1))); }
 }
 writeFileSync(join(dir, 'response.md'), text || `ERROR: ${err}`);

@@ -1,0 +1,6053 @@
+[
+  {
+    "map": "procurement-base-1-claude",
+    "task": "procurement",
+    "arm": "base",
+    "rep": 1,
+    "author": "claude",
+    "n": 48,
+    "right": 17,
+    "wrong": 3,
+    "abstain": 28,
+    "errors": 0,
+    "accuracy": 0.3541666666666667,
+    "wrongRate": 0.0625,
+    "coverage": 0.4166666666666667,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.98,
+            "probabilities": {
+              "needs_finance": 0,
+              "needs_manager": 0.01,
+              "needs_security": 0,
+              "approve": 0.99,
+              "reject": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.43
+          }
+        },
+        "latencyMs": 867.6743130000001,
+        "inputTokens": 1253,
+        "listCostUsd": 0.00005262600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.94,
+            "probabilities": {
+              "approve": 0.02,
+              "needs_security": 0.94,
+              "needs_manager": 0.02,
+              "needs_finance": 0.02,
+              "reject": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.66
+          }
+        },
+        "latencyMs": 787.6261480000001,
+        "inputTokens": 1283,
+        "listCostUsd": 0.000053886000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.3,
+            "probabilities": {
+              "needs_security": 0.38,
+              "approve": 0.03,
+              "needs_manager": 0.13,
+              "reject": 0.01,
+              "needs_finance": 0.45
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.71
+          }
+        },
+        "latencyMs": 974.277542,
+        "inputTokens": 1265,
+        "listCostUsd": 0.00005313000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.66,
+            "probabilities": {
+              "needs_manager": 0,
+              "needs_security": 0.72,
+              "approve": 0,
+              "needs_finance": 0.05,
+              "reject": 0.23
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.64
+          }
+        },
+        "latencyMs": 216.00020800000004,
+        "inputTokens": 1288,
+        "listCostUsd": 0.000054096000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-005",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "reject": 1,
+              "approve": 0,
+              "needs_security": 0,
+              "needs_finance": 0,
+              "needs_manager": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.27
+          }
+        },
+        "latencyMs": 392.0988510000002,
+        "inputTokens": 1270,
+        "listCostUsd": 0.00005334000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-006",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.35,
+            "probabilities": {
+              "approve": 0.17,
+              "needs_security": 0,
+              "needs_manager": 0.49,
+              "reject": 0.03,
+              "needs_finance": 0.31
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.44
+          }
+        },
+        "latencyMs": 226.86858699999993,
+        "inputTokens": 1259,
+        "listCostUsd": 0.000052878000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.26,
+            "probabilities": {
+              "approve": 0.09,
+              "needs_finance": 0.35,
+              "needs_manager": 0.15,
+              "reject": 0.41000000000000003,
+              "needs_security": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.45
+          }
+        },
+        "latencyMs": 279.745807,
+        "inputTokens": 1271,
+        "listCostUsd": 0.000053382000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.84,
+            "probabilities": {
+              "reject": 0,
+              "needs_finance": 0,
+              "approve": 0.87,
+              "needs_security": 0.05,
+              "needs_manager": 0.08
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.43
+          }
+        },
+        "latencyMs": 287.962622,
+        "inputTokens": 1248,
+        "listCostUsd": 0.00005241600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-009",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.48,
+            "probabilities": {
+              "needs_finance": 0.59,
+              "approve": 0.02,
+              "needs_security": 0.07,
+              "needs_manager": 0.32,
+              "reject": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.66
+          }
+        },
+        "latencyMs": 266.35912600000006,
+        "inputTokens": 1259,
+        "listCostUsd": 0.000052878000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-010",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.78,
+            "probabilities": {
+              "reject": 0.01,
+              "needs_manager": 0.05,
+              "needs_finance": 0.11,
+              "approve": 0.01,
+              "needs_security": 0.82
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.76
+          }
+        },
+        "latencyMs": 295.16316299999994,
+        "inputTokens": 1257,
+        "listCostUsd": 0.00005279400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-011",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "reject": 1,
+              "approve": 0,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "needs_security": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.24
+          }
+        },
+        "latencyMs": 235.433632,
+        "inputTokens": 1247,
+        "listCostUsd": 0.000052374000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.27,
+            "probabilities": {
+              "needs_manager": 0.41,
+              "needs_security": 0,
+              "approve": 0.41,
+              "needs_finance": 0.17,
+              "reject": 0.01
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.46
+          }
+        },
+        "latencyMs": 339.999775,
+        "inputTokens": 1248,
+        "listCostUsd": 0.00005241600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.3,
+            "probabilities": {
+              "needs_security": 0,
+              "reject": 0,
+              "needs_manager": 0.45,
+              "approve": 0.19,
+              "needs_finance": 0.36
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.52
+          }
+        },
+        "latencyMs": 234.53905299999997,
+        "inputTokens": 1275,
+        "listCostUsd": 0.00005355000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.91,
+            "probabilities": {
+              "reject": 0,
+              "approve": 0.01,
+              "needs_finance": 0.04,
+              "needs_manager": 0.02,
+              "needs_security": 0.93
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.78
+          }
+        },
+        "latencyMs": 263.45967300000007,
+        "inputTokens": 1271,
+        "listCostUsd": 0.000053382000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.57,
+            "probabilities": {
+              "approve": 0.13,
+              "reject": 0,
+              "needs_security": 0.01,
+              "needs_finance": 0.2,
+              "needs_manager": 0.66
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.62
+          }
+        },
+        "latencyMs": 312.09205700000007,
+        "inputTokens": 1252,
+        "listCostUsd": 0.00005258400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-016",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.77,
+            "probabilities": {
+              "needs_manager": 0.01,
+              "reject": 0.01,
+              "needs_security": 0.81,
+              "approve": 0,
+              "needs_finance": 0.16
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.64
+          }
+        },
+        "latencyMs": 261.7604140000003,
+        "inputTokens": 1269,
+        "listCostUsd": 0.000053298000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-017",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "approve": 0,
+              "needs_finance": 0,
+              "needs_security": 0,
+              "reject": 1,
+              "needs_manager": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.18
+          }
+        },
+        "latencyMs": 239.6548929999999,
+        "inputTokens": 1249,
+        "listCostUsd": 0.000052458000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.34,
+            "probabilities": {
+              "approve": 0.47,
+              "reject": 0.01,
+              "needs_security": 0.01,
+              "needs_finance": 0.1,
+              "needs_manager": 0.41
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.58
+          }
+        },
+        "latencyMs": 216.4434229999997,
+        "inputTokens": 1271,
+        "listCostUsd": 0.000053382000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-019",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.38,
+            "probabilities": {
+              "needs_manager": 0.41,
+              "approve": 0.04,
+              "needs_finance": 0.51,
+              "reject": 0.04,
+              "needs_security": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.39
+          }
+        },
+        "latencyMs": 386.3609650000003,
+        "inputTokens": 1293,
+        "listCostUsd": 0.000054306000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.93,
+            "probabilities": {
+              "needs_finance": 0.01,
+              "reject": 0.05,
+              "needs_security": 0.94,
+              "approve": 0,
+              "needs_manager": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.45
+          }
+        },
+        "latencyMs": 283.0047629999999,
+        "inputTokens": 1271,
+        "listCostUsd": 0.000053382000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.95,
+            "probabilities": {
+              "approve": 0,
+              "needs_finance": 0,
+              "needs_manager": 0.04,
+              "needs_security": 0.96,
+              "reject": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.49
+          }
+        },
+        "latencyMs": 330.6545239999996,
+        "inputTokens": 1279,
+        "listCostUsd": 0.00005371800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.81,
+            "probabilities": {
+              "reject": 0.01,
+              "approve": 0.01,
+              "needs_finance": 0.08,
+              "needs_manager": 0.06,
+              "needs_security": 0.84
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.54
+          }
+        },
+        "latencyMs": 302.07484699999986,
+        "inputTokens": 1259,
+        "listCostUsd": 0.000052878000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-023",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_security": 0,
+              "reject": 1,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "approve": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.41
+          }
+        },
+        "latencyMs": 249.33858499999997,
+        "inputTokens": 1254,
+        "listCostUsd": 0.000052668000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.81,
+            "probabilities": {
+              "approve": 0.84,
+              "needs_security": 0,
+              "needs_manager": 0.15,
+              "needs_finance": 0.01,
+              "reject": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.45
+          }
+        },
+        "latencyMs": 249.35142899999983,
+        "inputTokens": 1263,
+        "listCostUsd": 0.00005304600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.83,
+            "probabilities": {
+              "needs_security": 0,
+              "needs_finance": 0.87,
+              "approve": 0,
+              "reject": 0,
+              "needs_manager": 0.13
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.33
+          }
+        },
+        "latencyMs": 264.2596389999999,
+        "inputTokens": 1267,
+        "listCostUsd": 0.00005321400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-026",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.36,
+            "probabilities": {
+              "approve": 0.02,
+              "needs_security": 0.48,
+              "needs_finance": 0.35,
+              "reject": 0.09,
+              "needs_manager": 0.06
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.51
+          }
+        },
+        "latencyMs": 272.9893280000001,
+        "inputTokens": 1272,
+        "listCostUsd": 0.00005342400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-027",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.52,
+            "probabilities": {
+              "needs_manager": 0.33,
+              "approve": 0.62,
+              "reject": 0,
+              "needs_finance": 0.04,
+              "needs_security": 0.01
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.34
+          }
+        },
+        "latencyMs": 273.61601199999996,
+        "inputTokens": 1265,
+        "listCostUsd": 0.00005313000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-028",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.41,
+            "probabilities": {
+              "needs_security": 0.54,
+              "needs_finance": 0.07,
+              "reject": 0,
+              "approve": 0.22,
+              "needs_manager": 0.17
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.68
+          }
+        },
+        "latencyMs": 312.0641949999999,
+        "inputTokens": 1253,
+        "listCostUsd": 0.00005262600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-029",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_manager": 0,
+              "reject": 1,
+              "approve": 0,
+              "needs_security": 0,
+              "needs_finance": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.21
+          }
+        },
+        "latencyMs": 296.927815,
+        "inputTokens": 1249,
+        "listCostUsd": 0.000052458000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.26,
+            "probabilities": {
+              "needs_manager": 0.42,
+              "needs_finance": 0.15,
+              "needs_security": 0,
+              "approve": 0.39,
+              "reject": 0.04
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.35
+          }
+        },
+        "latencyMs": 269.18696599999976,
+        "inputTokens": 1250,
+        "listCostUsd": 0.00005250000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-031",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.39,
+            "probabilities": {
+              "reject": 0,
+              "needs_security": 0.01,
+              "approve": 0.26,
+              "needs_finance": 0.22,
+              "needs_manager": 0.51
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.63
+          }
+        },
+        "latencyMs": 228.11942399999998,
+        "inputTokens": 1273,
+        "listCostUsd": 0.000053466000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-032",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.92,
+            "probabilities": {
+              "needs_manager": 0,
+              "needs_security": 0.93,
+              "approve": 0,
+              "needs_finance": 0.04,
+              "reject": 0.03
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.71
+          }
+        },
+        "latencyMs": 212.7544130000001,
+        "inputTokens": 1283,
+        "listCostUsd": 0.000053886000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-033",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.9,
+            "probabilities": {
+              "approve": 0.93,
+              "needs_finance": 0,
+              "needs_security": 0.07,
+              "reject": 0,
+              "needs_manager": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.4
+          }
+        },
+        "latencyMs": 282.3808250000002,
+        "inputTokens": 1267,
+        "listCostUsd": 0.00005321400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-034",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.3,
+            "probabilities": {
+              "needs_manager": 0.16,
+              "reject": 0.02,
+              "needs_finance": 0.43,
+              "needs_security": 0.36,
+              "approve": 0.03
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.56
+          }
+        },
+        "latencyMs": 234.74084399999992,
+        "inputTokens": 1271,
+        "listCostUsd": 0.000053382000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-035",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "reject": 1,
+              "needs_security": 0,
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_finance": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.22
+          }
+        },
+        "latencyMs": 279.25347100000045,
+        "inputTokens": 1266,
+        "listCostUsd": 0.000053172000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-036",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.83,
+            "probabilities": {
+              "approve": 0,
+              "reject": 0.87,
+              "needs_security": 0,
+              "needs_manager": 0.01,
+              "needs_finance": 0.12
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.55
+          }
+        },
+        "latencyMs": 220.1248700000001,
+        "inputTokens": 1274,
+        "listCostUsd": 0.00005350800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-037",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 1,
+            "probabilities": {
+              "needs_finance": 0,
+              "reject": 0,
+              "needs_manager": 1,
+              "approve": 0,
+              "needs_security": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.5
+          }
+        },
+        "latencyMs": 242.76276199999984,
+        "inputTokens": 1255,
+        "listCostUsd": 0.00005271000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-038",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.92,
+            "probabilities": {
+              "needs_finance": 0.05,
+              "approve": 0,
+              "needs_security": 0.93,
+              "reject": 0.01,
+              "needs_manager": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.53
+          }
+        },
+        "latencyMs": 258.28290300000026,
+        "inputTokens": 1272,
+        "listCostUsd": 0.00005342400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-039",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.27,
+            "probabilities": {
+              "needs_manager": 0.16,
+              "needs_finance": 0.41,
+              "approve": 0.02,
+              "needs_security": 0.12,
+              "reject": 0.29
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.72
+          }
+        },
+        "latencyMs": 210.61528699999963,
+        "inputTokens": 1270,
+        "listCostUsd": 0.00005334000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-040",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.71,
+            "probabilities": {
+              "approve": 0.18,
+              "needs_security": 0.77,
+              "needs_manager": 0.05,
+              "reject": 0,
+              "needs_finance": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.54
+          }
+        },
+        "latencyMs": 257.0817790000001,
+        "inputTokens": 1253,
+        "listCostUsd": 0.00005262600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-041",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "reject": 1,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_security": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.3
+          }
+        },
+        "latencyMs": 223.9944999999998,
+        "inputTokens": 1252,
+        "listCostUsd": 0.00005258400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-042",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.94,
+            "probabilities": {
+              "needs_manager": 0.01,
+              "reject": 0.95,
+              "approve": 0,
+              "needs_security": 0,
+              "needs_finance": 0.04
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.46
+          }
+        },
+        "latencyMs": 426.6834310000004,
+        "inputTokens": 1283,
+        "listCostUsd": 0.000053886000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-043",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.6,
+            "probabilities": {
+              "approve": 0.68,
+              "reject": 0,
+              "needs_finance": 0.02,
+              "needs_security": 0,
+              "needs_manager": 0.3
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.25
+          }
+        },
+        "latencyMs": 229.58914900000036,
+        "inputTokens": 1256,
+        "listCostUsd": 0.000052752000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-044",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.92,
+            "probabilities": {
+              "approve": 0.02,
+              "reject": 0,
+              "needs_manager": 0.01,
+              "needs_finance": 0.02,
+              "needs_security": 0.95
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.76
+          }
+        },
+        "latencyMs": 209.49091899999985,
+        "inputTokens": 1266,
+        "listCostUsd": 0.000053172000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-045",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.58,
+            "probabilities": {
+              "reject": 0,
+              "needs_finance": 0.17,
+              "needs_manager": 0.67,
+              "needs_security": 0.03,
+              "approve": 0.13
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.34
+          }
+        },
+        "latencyMs": 485.1317259999996,
+        "inputTokens": 1258,
+        "listCostUsd": 0.00005283600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-046",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.29,
+            "probabilities": {
+              "approve": 0.22,
+              "needs_security": 0.11,
+              "reject": 0.01,
+              "needs_manager": 0.43,
+              "needs_finance": 0.23
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.48
+          }
+        },
+        "latencyMs": 239.83696599999985,
+        "inputTokens": 1262,
+        "listCostUsd": 0.00005300400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-047",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_finance": 0,
+              "needs_security": 0,
+              "reject": 1,
+              "needs_manager": 0,
+              "approve": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.22
+          }
+        },
+        "latencyMs": 213.14228900000035,
+        "inputTokens": 1282,
+        "listCostUsd": 0.00005384400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-048",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.23,
+            "probabilities": {
+              "approve": 0.1,
+              "needs_finance": 0.39,
+              "needs_manager": 0.3,
+              "reject": 0.21,
+              "needs_security": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.48
+          }
+        },
+        "latencyMs": 263.3592329999992,
+        "inputTokens": 1267,
+        "listCostUsd": 0.00005321400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      }
+    ]
+  },
+  {
+    "map": "procurement-base-2-claude",
+    "task": "procurement",
+    "arm": "base",
+    "rep": 2,
+    "author": "claude",
+    "n": 48,
+    "right": 40,
+    "wrong": 0,
+    "abstain": 8,
+    "errors": 0,
+    "accuracy": 0.8333333333333334,
+    "wrongRate": 0,
+    "coverage": 0.8333333333333334,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.99,
+            "probabilities": {
+              "reject": 0,
+              "approve": 0.99,
+              "needs_manager": 0,
+              "needs_security": 0.01,
+              "needs_finance": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 824.797507,
+        "inputTokens": 1388,
+        "listCostUsd": 0.000058296000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.83,
+            "probabilities": {
+              "approve": 0.01,
+              "needs_security": 0.87,
+              "needs_manager": 0.12,
+              "reject": 0,
+              "needs_finance": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.52
+          }
+        },
+        "latencyMs": 897.125194,
+        "inputTokens": 1483,
+        "listCostUsd": 0.000062286,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.87,
+            "probabilities": {
+              "needs_security": 0.91,
+              "reject": 0,
+              "needs_finance": 0.09,
+              "needs_manager": 0,
+              "approve": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.57
+          }
+        },
+        "latencyMs": 821.018045,
+        "inputTokens": 1437,
+        "listCostUsd": 0.000060354000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.42,
+            "probabilities": {
+              "needs_manager": 0,
+              "needs_finance": 0,
+              "needs_security": 0.45,
+              "approve": 0,
+              "reject": 0.55
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.53
+          }
+        },
+        "latencyMs": 271.31130499999995,
+        "inputTokens": 1512,
+        "listCostUsd": 0.00006350400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-005",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "reject": 1,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "needs_security": 0,
+              "approve": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 343.4222309999999,
+        "inputTokens": 1442,
+        "listCostUsd": 0.000060564000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-006",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.99,
+            "probabilities": {
+              "approve": 0,
+              "reject": 0,
+              "needs_finance": 1,
+              "needs_manager": 0,
+              "needs_security": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.25
+          }
+        },
+        "latencyMs": 347.8906589999999,
+        "inputTokens": 1417,
+        "listCostUsd": 0.000059514000000000007,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.97,
+            "probabilities": {
+              "needs_finance": 0.98,
+              "needs_security": 0,
+              "approve": 0,
+              "needs_manager": 0,
+              "reject": 0.02
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.25
+          }
+        },
+        "latencyMs": 270.923456,
+        "inputTokens": 1460,
+        "listCostUsd": 0.00006132,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.87,
+            "probabilities": {
+              "needs_manager": 0.89,
+              "needs_finance": 0,
+              "approve": 0.02,
+              "reject": 0,
+              "needs_security": 0.09
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.4
+          }
+        },
+        "latencyMs": 256.29108499999984,
+        "inputTokens": 1367,
+        "listCostUsd": 0.00005741400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-009",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.91,
+            "probabilities": {
+              "approve": 0.01,
+              "reject": 0,
+              "needs_manager": 0.01,
+              "needs_finance": 0.93,
+              "needs_security": 0.05
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.29
+          }
+        },
+        "latencyMs": 259.32386599999995,
+        "inputTokens": 1413,
+        "listCostUsd": 0.00005934600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-010",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.91,
+            "probabilities": {
+              "needs_finance": 0,
+              "approve": 0,
+              "needs_security": 0.07,
+              "needs_manager": 0,
+              "reject": 0.93
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.48
+          }
+        },
+        "latencyMs": 267.36869,
+        "inputTokens": 1415,
+        "listCostUsd": 0.000059430000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-011",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_security": 0,
+              "reject": 1
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.2
+          }
+        },
+        "latencyMs": 223.42603000000008,
+        "inputTokens": 1373,
+        "listCostUsd": 0.000057666000000000007,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_finance": 1,
+              "reject": 0,
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_security": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.35
+          }
+        },
+        "latencyMs": 233.14649600000007,
+        "inputTokens": 1379,
+        "listCostUsd": 0.00005791800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.96,
+            "probabilities": {
+              "reject": 0,
+              "approve": 0.01,
+              "needs_finance": 0.97,
+              "needs_manager": 0.02,
+              "needs_security": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.21
+          }
+        },
+        "latencyMs": 643.7670569999998,
+        "inputTokens": 1466,
+        "listCostUsd": 0.00006157200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.78,
+            "probabilities": {
+              "reject": 0,
+              "needs_manager": 0,
+              "needs_finance": 0,
+              "needs_security": 0.17,
+              "approve": 0.83
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.53
+          }
+        },
+        "latencyMs": 248.53394800000024,
+        "inputTokens": 1444,
+        "listCostUsd": 0.000060648000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.85,
+            "probabilities": {
+              "needs_manager": 0.89,
+              "needs_security": 0.1,
+              "approve": 0.01,
+              "needs_finance": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.49
+          }
+        },
+        "latencyMs": 557.4191489999998,
+        "inputTokens": 1392,
+        "listCostUsd": 0.00005846400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-016",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.89,
+            "probabilities": {
+              "needs_manager": 0.02,
+              "approve": 0,
+              "needs_finance": 0.92,
+              "reject": 0,
+              "needs_security": 0.06
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.48
+          }
+        },
+        "latencyMs": 289.05738699999984,
+        "inputTokens": 1449,
+        "listCostUsd": 0.000060858000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-017",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_manager": 0,
+              "needs_finance": 0,
+              "needs_security": 0,
+              "approve": 0,
+              "reject": 1
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.15
+          }
+        },
+        "latencyMs": 250.51874799999996,
+        "inputTokens": 1373,
+        "listCostUsd": 0.000057666000000000007,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_security": 0,
+              "approve": 0,
+              "reject": 0,
+              "needs_manager": 1,
+              "needs_finance": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.3
+          }
+        },
+        "latencyMs": 255.69475300000022,
+        "inputTokens": 1447,
+        "listCostUsd": 0.000060774000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-019",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.99,
+            "probabilities": {
+              "reject": 0,
+              "approve": 0,
+              "needs_finance": 1,
+              "needs_manager": 0,
+              "needs_security": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.22
+          }
+        },
+        "latencyMs": 245.23089600000003,
+        "inputTokens": 1526,
+        "listCostUsd": 0.00006409200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_security": 1,
+              "needs_finance": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.25
+          }
+        },
+        "latencyMs": 269.64680799999996,
+        "inputTokens": 1457,
+        "listCostUsd": 0.00006119400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_security": 1,
+              "reject": 0,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "approve": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.29
+          }
+        },
+        "latencyMs": 263.0296720000001,
+        "inputTokens": 1467,
+        "listCostUsd": 0.00006161400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_manager": 0,
+              "reject": 0,
+              "needs_security": 0.99,
+              "approve": 0,
+              "needs_finance": 0.01
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.35
+          }
+        },
+        "latencyMs": 225.08450799999991,
+        "inputTokens": 1421,
+        "listCostUsd": 0.00005968200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-023",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_manager": 0,
+              "needs_security": 0,
+              "needs_finance": 0,
+              "reject": 1,
+              "approve": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 360.17953799999987,
+        "inputTokens": 1406,
+        "listCostUsd": 0.00005905200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_security": 0,
+              "needs_manager": 1,
+              "approve": 0,
+              "needs_finance": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.22
+          }
+        },
+        "latencyMs": 542.885585,
+        "inputTokens": 1412,
+        "listCostUsd": 0.00005930400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_security": 0,
+              "reject": 0,
+              "needs_finance": 0.99,
+              "needs_manager": 0.01,
+              "approve": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.23
+          }
+        },
+        "latencyMs": 234.11663499999986,
+        "inputTokens": 1442,
+        "listCostUsd": 0.000060564000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-026",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.95,
+            "probabilities": {
+              "needs_security": 0.03,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "reject": 0.97,
+              "approve": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.37
+          }
+        },
+        "latencyMs": 238.08317699999998,
+        "inputTokens": 1456,
+        "listCostUsd": 0.00006115200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-027",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.92,
+            "probabilities": {
+              "needs_finance": 0,
+              "reject": 0,
+              "needs_manager": 0.01,
+              "approve": 0.93,
+              "needs_security": 0.06
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.31
+          }
+        },
+        "latencyMs": 238.78577799999994,
+        "inputTokens": 1425,
+        "listCostUsd": 0.000059850000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-028",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.61,
+            "probabilities": {
+              "approve": 0.01,
+              "reject": 0,
+              "needs_finance": 0.7,
+              "needs_manager": 0.01,
+              "needs_security": 0.28
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.55
+          }
+        },
+        "latencyMs": 245.98171700000012,
+        "inputTokens": 1398,
+        "listCostUsd": 0.000058716000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-029",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_security": 0,
+              "needs_finance": 0,
+              "reject": 1,
+              "needs_manager": 0,
+              "approve": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.13
+          }
+        },
+        "latencyMs": 214.12831400000005,
+        "inputTokens": 1385,
+        "listCostUsd": 0.00005817000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 1,
+            "probabilities": {
+              "needs_manager": 0,
+              "needs_finance": 0,
+              "approve": 1,
+              "needs_security": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.31
+          }
+        },
+        "latencyMs": 241.99240599999985,
+        "inputTokens": 1381,
+        "listCostUsd": 0.000058002000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-031",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_manager": 0.99,
+              "approve": 0,
+              "needs_finance": 0.01,
+              "reject": 0,
+              "needs_security": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.28
+          }
+        },
+        "latencyMs": 385.39337000000023,
+        "inputTokens": 1460,
+        "listCostUsd": 0.00006132,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-032",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.68,
+            "probabilities": {
+              "approve": 0.02,
+              "needs_security": 0.18,
+              "needs_finance": 0.75,
+              "reject": 0,
+              "needs_manager": 0.05
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.59
+          }
+        },
+        "latencyMs": 248.61930399999983,
+        "inputTokens": 1487,
+        "listCostUsd": 0.00006245400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-033",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.9,
+            "probabilities": {
+              "needs_finance": 0,
+              "needs_security": 0.08,
+              "approve": 0.92,
+              "needs_manager": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.41
+          }
+        },
+        "latencyMs": 274.61232299999983,
+        "inputTokens": 1425,
+        "listCostUsd": 0.000059850000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-034",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.81,
+            "probabilities": {
+              "reject": 0,
+              "needs_finance": 0,
+              "needs_manager": 0.86,
+              "needs_security": 0.12,
+              "approve": 0.02
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.45
+          }
+        },
+        "latencyMs": 239.6274539999995,
+        "inputTokens": 1451,
+        "listCostUsd": 0.00006094200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-035",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_manager": 0,
+              "needs_finance": 0,
+              "approve": 0,
+              "needs_security": 0,
+              "reject": 1
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.18
+          }
+        },
+        "latencyMs": 265.02855199999976,
+        "inputTokens": 1442,
+        "listCostUsd": 0.000060564000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-036",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "reject": 1,
+              "approve": 0,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "needs_security": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.24
+          }
+        },
+        "latencyMs": 296.2225519999997,
+        "inputTokens": 1466,
+        "listCostUsd": 0.00006157200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-037",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.99,
+            "probabilities": {
+              "approve": 0,
+              "needs_security": 0,
+              "needs_manager": 1,
+              "needs_finance": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.15
+          }
+        },
+        "latencyMs": 229.44418000000042,
+        "inputTokens": 1400,
+        "listCostUsd": 0.000058800000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-038",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 1,
+            "probabilities": {
+              "approve": 0,
+              "needs_security": 1,
+              "needs_manager": 0,
+              "reject": 0,
+              "needs_finance": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.31
+          }
+        },
+        "latencyMs": 226.73430300000018,
+        "inputTokens": 1456,
+        "listCostUsd": 0.00006115200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-039",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.95,
+            "probabilities": {
+              "approve": 0,
+              "needs_finance": 0.03,
+              "needs_manager": 0,
+              "needs_security": 0.96,
+              "reject": 0.01
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.51
+          }
+        },
+        "latencyMs": 237.31292399999984,
+        "inputTokens": 1452,
+        "listCostUsd": 0.00006098400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-040",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.99,
+            "probabilities": {
+              "approve": 0,
+              "reject": 0,
+              "needs_manager": 0,
+              "needs_security": 1,
+              "needs_finance": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.25
+          }
+        },
+        "latencyMs": 361.61564999999973,
+        "inputTokens": 1386,
+        "listCostUsd": 0.000058212000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-041",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "approve": 0,
+              "reject": 1,
+              "needs_security": 0,
+              "needs_manager": 0,
+              "needs_finance": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.16
+          }
+        },
+        "latencyMs": 233.0906410000007,
+        "inputTokens": 1394,
+        "listCostUsd": 0.00005854800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-042",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "needs_security": 0,
+              "needs_manager": 0,
+              "needs_finance": 0,
+              "approve": 0,
+              "reject": 1
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.21
+          }
+        },
+        "latencyMs": 258.4495219999999,
+        "inputTokens": 1489,
+        "listCostUsd": 0.000062538,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-043",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_security": 0,
+              "needs_manager": 0,
+              "reject": 0,
+              "approve": 1,
+              "needs_finance": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.22
+          }
+        },
+        "latencyMs": 232.07350300000053,
+        "inputTokens": 1403,
+        "listCostUsd": 0.000058926000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-044",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.38,
+            "probabilities": {
+              "needs_security": 0.47,
+              "reject": 0,
+              "needs_manager": 0.01,
+              "approve": 0.02,
+              "needs_finance": 0.5
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.6
+          }
+        },
+        "latencyMs": 1755.405409,
+        "inputTokens": 1433,
+        "listCostUsd": 0.00006018600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-045",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.8,
+            "probabilities": {
+              "reject": 0,
+              "needs_manager": 0.11,
+              "needs_finance": 0.83,
+              "needs_security": 0.03,
+              "approve": 0.03
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.31
+          }
+        },
+        "latencyMs": 266.4546899999996,
+        "inputTokens": 1410,
+        "listCostUsd": 0.000059220000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-046",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.78,
+            "probabilities": {
+              "needs_security": 0.17,
+              "approve": 0.83,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.49
+          }
+        },
+        "latencyMs": 259.5787989999999,
+        "inputTokens": 1421,
+        "listCostUsd": 0.00005968200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-047",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "approve": 0,
+              "needs_finance": 0,
+              "reject": 1,
+              "needs_manager": 0,
+              "needs_security": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.19
+          }
+        },
+        "latencyMs": 231.358741,
+        "inputTokens": 1484,
+        "listCostUsd": 0.000062328,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-048",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.95,
+            "probabilities": {
+              "needs_finance": 0.97,
+              "needs_manager": 0.03,
+              "approve": 0,
+              "needs_security": 0,
+              "reject": 0
+            }
+          },
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.33
+          }
+        },
+        "latencyMs": 280.66524000000027,
+        "inputTokens": 1439,
+        "listCostUsd": 0.000060438000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "procurement-base-3-claude",
+    "task": "procurement",
+    "arm": "base",
+    "rep": 3,
+    "author": "claude",
+    "n": 48,
+    "right": 40,
+    "wrong": 5,
+    "abstain": 3,
+    "errors": 0,
+    "accuracy": 0.8333333333333334,
+    "wrongRate": 0.10416666666666667,
+    "coverage": 0.9375,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 0.93,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "none_or_unclear": 0.05,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0.95,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "le_1000",
+            "confidence": 1,
+            "probabilities": {
+              "gt10000_le50000": 0,
+              "gt50000": 0,
+              "gt1000_le10000": 0,
+              "unclear": 0,
+              "le_1000": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 870.429189,
+        "inputTokens": 1483,
+        "listCostUsd": 0.000062286,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 1,
+              "none_or_unclear": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.79,
+            "probabilities": {
+              "gt50000": 0.01,
+              "le_1000": 0.12,
+              "gt1000_le10000": 0.83,
+              "gt10000_le50000": 0.02,
+              "unclear": 0.02
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 786.116638,
+        "inputTokens": 1513,
+        "listCostUsd": 0.000063546,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 0.99,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0.99,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "none_or_unclear": 0.01,
+              "Umbrella Data": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.98,
+            "probabilities": {
+              "gt1000_le10000": 0,
+              "le_1000": 0,
+              "unclear": 0,
+              "gt50000": 0.01,
+              "gt10000_le50000": 0.99
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.87
+          }
+        },
+        "latencyMs": 886.47875,
+        "inputTokens": 1495,
+        "listCostUsd": 0.00006279000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 0.99,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "none_or_unclear": 0.01,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0.99
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.98,
+            "probabilities": {
+              "gt1000_le10000": 0,
+              "gt50000": 0.99,
+              "gt10000_le50000": 0.01,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.9
+          }
+        },
+        "latencyMs": 281.45894799999985,
+        "inputTokens": 1518,
+        "listCostUsd": 0.000063756,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-005",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "Northwind Systems": 0,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 1,
+            "probabilities": {
+              "gt1000_le10000": 1,
+              "gt50000": 0,
+              "gt10000_le50000": 0,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          }
+        },
+        "latencyMs": 257.13768099999993,
+        "inputTokens": 1500,
+        "listCostUsd": 0.00006300000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-006",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 0.96,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "none_or_unclear": 0.03,
+              "Hooli Analytics": 0.97
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.78,
+            "probabilities": {
+              "gt1000_le10000": 0.14,
+              "gt10000_le50000": 0.82,
+              "le_1000": 0.01,
+              "unclear": 0.01,
+              "gt50000": 0.02
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          }
+        },
+        "latencyMs": 265.76803500000005,
+        "inputTokens": 1489,
+        "listCostUsd": 0.000062538,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 1
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.95,
+            "probabilities": {
+              "gt10000_le50000": 0.04,
+              "gt50000": 0.96,
+              "gt1000_le10000": 0,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 244.016521,
+        "inputTokens": 1501,
+        "listCostUsd": 0.00006304200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.76,
+            "probabilities": {
+              "gt10000_le50000": 0,
+              "gt1000_le10000": 0.8200000000000001,
+              "gt50000": 0,
+              "le_1000": 0.18,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 1,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "none_or_unclear": 0
+            }
+          }
+        },
+        "latencyMs": 393.9144489999999,
+        "inputTokens": 1478,
+        "listCostUsd": 0.000062076,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-009",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 1,
+              "Umbrella Data": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "le_1000": 0,
+              "gt1000_le10000": 0,
+              "gt10000_le50000": 1,
+              "gt50000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 226.27650799999992,
+        "inputTokens": 1489,
+        "listCostUsd": 0.000062538,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-010",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Initech Consulting": 1,
+              "Umbrella Data": 0,
+              "none_or_unclear": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.73,
+            "probabilities": {
+              "le_1000": 0,
+              "gt50000": 0.79,
+              "gt10000_le50000": 0.2,
+              "gt1000_le10000": 0.01,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 261.7469080000001,
+        "inputTokens": 1487,
+        "listCostUsd": 0.00006245400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-011",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "none_or_unclear": 0,
+              "Umbrella Data": 1,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.78,
+            "probabilities": {
+              "unclear": 0.01,
+              "gt1000_le10000": 0.82,
+              "le_1000": 0.15,
+              "gt10000_le50000": 0.01,
+              "gt50000": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 219.113118,
+        "inputTokens": 1477,
+        "listCostUsd": 0.00006203400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "none_or_unclear": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.71,
+            "probabilities": {
+              "gt10000_le50000": 0.22,
+              "le_1000": 0,
+              "unclear": 0,
+              "gt50000": 0,
+              "gt1000_le10000": 0.78
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 271.71572100000003,
+        "inputTokens": 1478,
+        "listCostUsd": 0.000062076,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Northwind Systems": 1,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 1,
+            "probabilities": {
+              "gt50000": 0,
+              "gt1000_le10000": 0,
+              "gt10000_le50000": 1,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.11
+          }
+        },
+        "latencyMs": 300.82791799999995,
+        "inputTokens": 1505,
+        "listCostUsd": 0.00006321000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 1,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "none_or_unclear": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.57,
+            "probabilities": {
+              "gt50000": 0.01,
+              "unclear": 0.01,
+              "gt10000_le50000": 0.02,
+              "gt1000_le10000": 0.65,
+              "le_1000": 0.31
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.08
+          }
+        },
+        "latencyMs": 224.519272,
+        "inputTokens": 1501,
+        "listCostUsd": 0.00006304200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.62,
+            "probabilities": {
+              "gt10000_le50000": 0.29,
+              "gt1000_le10000": 0.71,
+              "gt50000": 0,
+              "le_1000": 0,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 1,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "none_or_unclear": 0
+            }
+          }
+        },
+        "latencyMs": 357.9022080000002,
+        "inputTokens": 1482,
+        "listCostUsd": 0.00006224400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-016",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "Initech Consulting": 1
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.72,
+            "probabilities": {
+              "gt50000": 0.22,
+              "gt1000_le10000": 0,
+              "gt10000_le50000": 0.78,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 241.5804149999999,
+        "inputTokens": 1499,
+        "listCostUsd": 0.000062958,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-017",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 1,
+              "none_or_unclear": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "le_1000",
+            "confidence": 1,
+            "probabilities": {
+              "gt1000_le10000": 0,
+              "unclear": 0,
+              "gt50000": 0,
+              "gt10000_le50000": 0,
+              "le_1000": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          }
+        },
+        "latencyMs": 230.88330499999984,
+        "inputTokens": 1479,
+        "listCostUsd": 0.000062118,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.84,
+            "probabilities": {
+              "gt10000_le50000": 0.09,
+              "gt1000_le10000": 0.88,
+              "gt50000": 0.01,
+              "le_1000": 0.02,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "none_or_unclear": 0
+            }
+          }
+        },
+        "latencyMs": 488.1290979999999,
+        "inputTokens": 1501,
+        "listCostUsd": 0.00006304200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-019",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 0.82,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "none_or_unclear": 0.14,
+              "Northwind Systems": 0.86,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.96,
+            "probabilities": {
+              "unclear": 0,
+              "gt1000_le10000": 0,
+              "le_1000": 0,
+              "gt10000_le50000": 0.97,
+              "gt50000": 0.03
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          }
+        },
+        "latencyMs": 206.56246800000008,
+        "inputTokens": 1523,
+        "listCostUsd": 0.000063966,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 0.97,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "none_or_unclear": 0.02,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0.98,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.97,
+            "probabilities": {
+              "unclear": 0.01,
+              "gt50000": 0.98,
+              "le_1000": 0,
+              "gt10000_le50000": 0.01,
+              "gt1000_le10000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          }
+        },
+        "latencyMs": 240.8560080000002,
+        "inputTokens": 1501,
+        "listCostUsd": 0.00006304200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 0.99,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "none_or_unclear": 0.01,
+              "Globex Hardware": 0.99,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.99,
+            "probabilities": {
+              "gt10000_le50000": 0,
+              "gt50000": 0,
+              "gt1000_le10000": 1,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.9
+          }
+        },
+        "latencyMs": 399.45188599999983,
+        "inputTokens": 1509,
+        "listCostUsd": 0.000063378,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 0.96,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0.97,
+              "none_or_unclear": 0.03,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.8,
+            "probabilities": {
+              "unclear": 0.01,
+              "gt1000_le10000": 0.13,
+              "le_1000": 0,
+              "gt10000_le50000": 0.84,
+              "gt50000": 0.02
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.84
+          }
+        },
+        "latencyMs": 229.83320400000002,
+        "inputTokens": 1489,
+        "listCostUsd": 0.000062538,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-023",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "none_or_unclear": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.91,
+            "probabilities": {
+              "unclear": 0.01,
+              "le_1000": 0,
+              "gt10000_le50000": 0.06,
+              "gt50000": 0.93,
+              "gt1000_le10000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.9
+          }
+        },
+        "latencyMs": 248.085282,
+        "inputTokens": 1484,
+        "listCostUsd": 0.000062328,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 0.99,
+            "probabilities": {
+              "Hooli Analytics": 0.99,
+              "none_or_unclear": 0.01,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.72,
+            "probabilities": {
+              "le_1000": 0.22,
+              "unclear": 0,
+              "gt1000_le10000": 0.78,
+              "gt10000_le50000": 0,
+              "gt50000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 231.18911000000026,
+        "inputTokens": 1493,
+        "listCostUsd": 0.000062706,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 1,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "none_or_unclear": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.99,
+            "probabilities": {
+              "gt1000_le10000": 0,
+              "le_1000": 0,
+              "gt50000": 0,
+              "unclear": 0,
+              "gt10000_le50000": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 238.3316460000001,
+        "inputTokens": 1497,
+        "listCostUsd": 0.00006287400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-026",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 1
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.75,
+            "probabilities": {
+              "unclear": 0,
+              "le_1000": 0,
+              "gt10000_le50000": 0.19,
+              "gt50000": 0.8,
+              "gt1000_le10000": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 253.44917299999997,
+        "inputTokens": 1502,
+        "listCostUsd": 0.00006308400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-027",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "none_or_unclear": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 1,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.7,
+            "probabilities": {
+              "gt1000_le10000": 0.77,
+              "unclear": 0,
+              "gt50000": 0,
+              "le_1000": 0.23,
+              "gt10000_le50000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 402.198844,
+        "inputTokens": 1495,
+        "listCostUsd": 0.00006279000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-028",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "none_or_unclear": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 1,
+              "Contoso Cloud": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.67,
+            "probabilities": {
+              "gt10000_le50000": 0.26,
+              "le_1000": 0,
+              "unclear": 0,
+              "gt50000": 0,
+              "gt1000_le10000": 0.74
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 241.68269099999998,
+        "inputTokens": 1483,
+        "listCostUsd": 0.000062286,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-029",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Umbrella Data": 1,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "none_or_unclear": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "gt10000_le50000": 1,
+              "le_1000": 0,
+              "gt50000": 0,
+              "gt1000_le10000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 264.9776139999999,
+        "inputTokens": 1479,
+        "listCostUsd": 0.000062118,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 1,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.45,
+            "probabilities": {
+              "unclear": 0,
+              "gt1000_le10000": 0.56,
+              "gt50000": 0.01,
+              "le_1000": 0.42,
+              "gt10000_le50000": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 260.58076200000005,
+        "inputTokens": 1480,
+        "listCostUsd": 0.00006216000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-031",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 1,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "none_or_unclear": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.71,
+            "probabilities": {
+              "le_1000": 0,
+              "gt50000": 0,
+              "unclear": 0,
+              "gt1000_le10000": 0.77,
+              "gt10000_le50000": 0.23
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.1
+          }
+        },
+        "latencyMs": 281.4017140000001,
+        "inputTokens": 1503,
+        "listCostUsd": 0.000063126,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-032",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 1,
+              "none_or_unclear": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.79,
+            "probabilities": {
+              "le_1000": 0,
+              "gt50000": 0.16,
+              "gt10000_le50000": 0.84,
+              "gt1000_le10000": 0,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.12
+          }
+        },
+        "latencyMs": 266.0040399999998,
+        "inputTokens": 1513,
+        "listCostUsd": 0.000063546,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-033",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "none_or_unclear": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 1,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "le_1000",
+            "confidence": 0.96,
+            "probabilities": {
+              "gt50000": 0,
+              "gt1000_le10000": 0.01,
+              "le_1000": 0.97,
+              "unclear": 0.01,
+              "gt10000_le50000": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.08
+          }
+        },
+        "latencyMs": 190.17671100000007,
+        "inputTokens": 1497,
+        "listCostUsd": 0.00006287400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-034",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 1,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "none_or_unclear": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.91,
+            "probabilities": {
+              "unclear": 0,
+              "gt10000_le50000": 0.03,
+              "gt50000": 0.01,
+              "gt1000_le10000": 0.93,
+              "le_1000": 0.02
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 237.19351400000005,
+        "inputTokens": 1501,
+        "listCostUsd": 0.00006304200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-035",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Umbrella Data": 1,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "none_or_unclear": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.98,
+            "probabilities": {
+              "unclear": 0,
+              "le_1000": 0,
+              "gt1000_le10000": 0,
+              "gt50000": 0.01,
+              "gt10000_le50000": 0.99
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          }
+        },
+        "latencyMs": 334.8414250000001,
+        "inputTokens": 1496,
+        "listCostUsd": 0.00006283200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-036",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 1,
+              "none_or_unclear": 0,
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.97,
+            "probabilities": {
+              "gt50000": 0.98,
+              "gt1000_le10000": 0,
+              "gt10000_le50000": 0.02,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.1
+          }
+        },
+        "latencyMs": 335.1952970000002,
+        "inputTokens": 1504,
+        "listCostUsd": 0.000063168,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-037",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 0.89,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0.91,
+              "none_or_unclear": 0.09,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 1,
+            "probabilities": {
+              "gt1000_le10000": 1,
+              "gt50000": 0,
+              "gt10000_le50000": 0,
+              "unclear": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 260.4716319999998,
+        "inputTokens": 1485,
+        "listCostUsd": 0.00006237000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-038",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 1,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "none_or_unclear": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.86,
+            "probabilities": {
+              "gt10000_le50000": 0.89,
+              "le_1000": 0,
+              "gt1000_le10000": 0.05,
+              "unclear": 0.05,
+              "gt50000": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        },
+        "latencyMs": 213.7287699999997,
+        "inputTokens": 1502,
+        "listCostUsd": 0.00006308400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-039",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "none_or_unclear": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 1,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.9,
+            "probabilities": {
+              "unclear": 0,
+              "gt1000_le10000": 0,
+              "gt10000_le50000": 0.07,
+              "gt50000": 0.93,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.83
+          }
+        },
+        "latencyMs": 203.89688699999988,
+        "inputTokens": 1500,
+        "listCostUsd": 0.00006300000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-040",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 0.97,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0.98,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "none_or_unclear": 0.02,
+              "Umbrella Data": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.7,
+            "probabilities": {
+              "gt50000": 0,
+              "le_1000": 0.23,
+              "gt1000_le10000": 0.77,
+              "gt10000_le50000": 0,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.88
+          }
+        },
+        "latencyMs": 204.16126799999984,
+        "inputTokens": 1483,
+        "listCostUsd": 0.000062286,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-041",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "none_or_unclear": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.99,
+            "probabilities": {
+              "gt1000_le10000": 0,
+              "le_1000": 0,
+              "unclear": 0.01,
+              "gt50000": 0,
+              "gt10000_le50000": 0.99
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          }
+        },
+        "latencyMs": 281.93438700000024,
+        "inputTokens": 1482,
+        "listCostUsd": 0.00006224400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-042",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 0.99,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "none_or_unclear": 0.01,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0.99,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt50000",
+            "confidence": 0.79,
+            "probabilities": {
+              "gt50000": 0.83,
+              "gt1000_le10000": 0.01,
+              "le_1000": 0,
+              "unclear": 0,
+              "gt10000_le50000": 0.16
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 212.56844400000045,
+        "inputTokens": 1513,
+        "listCostUsd": 0.000063546,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-043",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Northwind Systems": 1,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "none_or_unclear": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.74,
+            "probabilities": {
+              "gt1000_le10000": 0.79,
+              "gt50000": 0,
+              "unclear": 0,
+              "gt10000_le50000": 0,
+              "le_1000": 0.21
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 213.93181899999945,
+        "inputTokens": 1486,
+        "listCostUsd": 0.00006241200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-044",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "none_or_unclear": 0,
+              "Contoso Cloud": 1,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.48,
+            "probabilities": {
+              "gt10000_le50000": 0.41,
+              "unclear": 0,
+              "le_1000": 0,
+              "gt50000": 0,
+              "gt1000_le10000": 0.59
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          }
+        },
+        "latencyMs": 251.38432600000033,
+        "inputTokens": 1496,
+        "listCostUsd": 0.00006283200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-045",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "none_or_unclear": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 1,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 1,
+            "probabilities": {
+              "gt1000_le10000": 0,
+              "gt10000_le50000": 1,
+              "gt50000": 0,
+              "le_1000": 0,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 226.6162630000008,
+        "inputTokens": 1488,
+        "listCostUsd": 0.000062496,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-046",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "none_or_unclear": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 1
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.62,
+            "probabilities": {
+              "gt1000_le10000": 0.7,
+              "gt10000_le50000": 0.01,
+              "le_1000": 0.29,
+              "gt50000": 0,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 257.46939699999984,
+        "inputTokens": 1492,
+        "listCostUsd": 0.00006266400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-047",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "none_or_unclear": 0,
+              "Umbrella Data": 1,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt1000_le10000",
+            "confidence": 0.78,
+            "probabilities": {
+              "gt1000_le10000": 0.83,
+              "unclear": 0,
+              "gt50000": 0,
+              "le_1000": 0,
+              "gt10000_le50000": 0.17
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 244.55672200000026,
+        "inputTokens": 1512,
+        "listCostUsd": 0.00006350400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-048",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "none_or_unclear": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0
+            }
+          },
+          "amount_bucket": {
+            "type": "choice",
+            "choice": "gt10000_le50000",
+            "confidence": 0.74,
+            "probabilities": {
+              "gt50000": 0.2,
+              "gt10000_le50000": 0.8,
+              "unclear": 0,
+              "gt1000_le10000": 0,
+              "le_1000": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 254.57831299999998,
+        "inputTokens": 1497,
+        "listCostUsd": 0.00006287400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  }
+]

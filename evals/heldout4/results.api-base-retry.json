@@ -1,0 +1,3214 @@
+[
+  {
+    "map": "procurement-base-2-zai_glm-5_3",
+    "task": "procurement",
+    "arm": "base",
+    "rep": 2,
+    "author": "zai_glm-5_3",
+    "n": 48,
+    "right": 27,
+    "wrong": 0,
+    "abstain": 19,
+    "errors": 2,
+    "accuracy": 0.5625,
+    "wrongRate": 0,
+    "coverage": 0.5625,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.95,
+            "probabilities": {
+              "needs_security": 0.01,
+              "approve": 0.96,
+              "needs_manager": 0.01,
+              "reject": 0,
+              "unclear": 0.02,
+              "needs_finance": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 0.97,
+            "probabilities": {
+              "v1": 0,
+              "v2": 0,
+              "v0": 0.98,
+              "v3": 0,
+              "unclear": 0.02,
+              "v5": 0,
+              "not_listed": 0,
+              "v4": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b0",
+            "confidence": 1,
+            "probabilities": {
+              "b3": 0,
+              "b1": 0,
+              "b0": 1,
+              "b2": 0,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 9716.256074999998,
+        "inputTokens": 1835,
+        "listCostUsd": 0.00007707,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.92,
+            "probabilities": {
+              "b0": 0.02,
+              "b1": 0.93,
+              "b2": 0.03,
+              "b3": 0.01,
+              "unknown": 0
+            }
+          },
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.64,
+            "probabilities": {
+              "approve": 0.03,
+              "needs_finance": 0.15,
+              "needs_manager": 0.09,
+              "needs_security": 0.7,
+              "reject": 0.01,
+              "unclear": 0.02
+            }
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v1",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v1": 1,
+              "v2": 0,
+              "v3": 0,
+              "v4": 0,
+              "v5": 0
+            }
+          }
+        },
+        "latencyMs": 6505.261884,
+        "inputTokens": 1865,
+        "listCostUsd": 0.00007833,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.6,
+            "probabilities": {
+              "reject": 0.01,
+              "unclear": 0.05,
+              "needs_finance": 0.66,
+              "needs_security": 0.12,
+              "needs_manager": 0.15,
+              "approve": 0.01
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v2",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_listed": 0.01,
+              "v5": 0,
+              "v0": 0,
+              "unclear": 0,
+              "v1": 0,
+              "v2": 0.99,
+              "v4": 0,
+              "v3": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.98,
+            "probabilities": {
+              "b1": 0,
+              "b0": 0,
+              "unknown": 0,
+              "b3": 0.01,
+              "b2": 0.99
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.87
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 5858.241017999997,
+        "inputTokens": 1847,
+        "listCostUsd": 0.00007757400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.44,
+            "probabilities": {
+              "reject": 0.54,
+              "needs_security": 0.33,
+              "approve": 0,
+              "needs_finance": 0.12,
+              "needs_manager": 0,
+              "unclear": 0.01
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 0.99,
+            "probabilities": {
+              "v1": 0,
+              "v4": 0,
+              "v3": 1,
+              "v5": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v2": 0,
+              "not_listed": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b3",
+            "confidence": 0.99,
+            "probabilities": {
+              "unknown": 0,
+              "b2": 0.01,
+              "b1": 0,
+              "b3": 0.99,
+              "b0": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 2062.006876000003,
+        "inputTokens": 1870,
+        "listCostUsd": 0.00007854,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-005",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "approve": 0,
+              "needs_security": 0,
+              "needs_manager": 0,
+              "reject": 1,
+              "unclear": 0,
+              "needs_finance": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v2": 0,
+              "v0": 0,
+              "v3": 0,
+              "unclear": 0,
+              "v5": 0,
+              "not_listed": 0,
+              "v4": 1
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 1,
+            "probabilities": {
+              "b3": 0,
+              "b1": 1,
+              "b0": 0,
+              "b2": 0,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 486.77097299999514,
+        "inputTokens": 1852,
+        "listCostUsd": 0.00007778400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-006",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.36,
+            "probabilities": {
+              "needs_manager": 0.47,
+              "needs_finance": 0.36,
+              "approve": 0.1,
+              "unclear": 0.04,
+              "needs_security": 0,
+              "reject": 0.03
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 0.97,
+            "probabilities": {
+              "v5": 0.97,
+              "v3": 0,
+              "unclear": 0.02,
+              "v0": 0,
+              "v4": 0,
+              "not_listed": 0.01,
+              "v1": 0,
+              "v2": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.91,
+            "probabilities": {
+              "b1": 0.04,
+              "unknown": 0,
+              "b0": 0,
+              "b3": 0.02,
+              "b2": 0.93
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 328.4443669999964,
+        "inputTokens": 1841,
+        "listCostUsd": 0.00007732200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.35,
+            "probabilities": {
+              "approve": 0.01,
+              "needs_security": 0,
+              "needs_manager": 0.12,
+              "reject": 0.4,
+              "unclear": 0.01,
+              "needs_finance": 0.46
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v2": 0,
+              "v0": 1,
+              "v3": 0,
+              "unclear": 0,
+              "v5": 0,
+              "not_listed": 0,
+              "v4": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b3",
+            "confidence": 0.95,
+            "probabilities": {
+              "b3": 0.96,
+              "b1": 0,
+              "b0": 0,
+              "b2": 0.04,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 345.5676309999981,
+        "inputTokens": 1853,
+        "listCostUsd": 0.00007782600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.85,
+            "probabilities": {
+              "approve": 0.87,
+              "needs_manager": 0.04,
+              "unclear": 0.06,
+              "reject": 0,
+              "needs_security": 0.03,
+              "needs_finance": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v1",
+            "confidence": 1,
+            "probabilities": {
+              "v3": 0,
+              "v1": 1,
+              "unclear": 0,
+              "not_listed": 0,
+              "v4": 0,
+              "v0": 0,
+              "v2": 0,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.86,
+            "probabilities": {
+              "b3": 0,
+              "unknown": 0,
+              "b1": 0.89,
+              "b2": 0,
+              "b0": 0.11
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 468.6796269999977,
+        "inputTokens": 1830,
+        "listCostUsd": 0.00007686,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-009",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.72,
+            "probabilities": {
+              "unclear": 0.01,
+              "needs_security": 0.06,
+              "approve": 0,
+              "reject": 0,
+              "needs_finance": 0.77,
+              "needs_manager": 0.16
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v2",
+            "confidence": 1,
+            "probabilities": {
+              "v3": 0,
+              "v5": 0,
+              "v1": 0,
+              "unclear": 0,
+              "not_listed": 0,
+              "v2": 1,
+              "v4": 0,
+              "v0": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 1,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0,
+              "unknown": 0,
+              "b2": 1,
+              "b3": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 259.0740619999997,
+        "inputTokens": 1841,
+        "listCostUsd": 0.00007732200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-010",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.44,
+            "probabilities": {
+              "needs_finance": 0.33,
+              "approve": 0.01,
+              "needs_manager": 0.06,
+              "reject": 0.06,
+              "needs_security": 0.53,
+              "unclear": 0.01
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 1,
+            "probabilities": {
+              "v2": 0,
+              "v4": 0,
+              "not_listed": 0,
+              "v1": 0,
+              "v3": 1,
+              "v0": 0,
+              "v5": 0,
+              "unclear": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b3",
+            "confidence": 0.83,
+            "probabilities": {
+              "b2": 0.13,
+              "unknown": 0,
+              "b0": 0,
+              "b3": 0.86,
+              "b1": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 400.883968999995,
+        "inputTokens": 1839,
+        "listCostUsd": 0.00007723800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-011",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "reject": 1,
+              "approve": 0,
+              "needs_manager": 0,
+              "unclear": 0,
+              "needs_security": 0,
+              "needs_finance": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v4": 1,
+              "v2": 0,
+              "v3": 0,
+              "not_listed": 0,
+              "v5": 0,
+              "unclear": 0,
+              "v0": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.53,
+            "probabilities": {
+              "b0": 0.36,
+              "b1": 0.64,
+              "b2": 0,
+              "unknown": 0,
+              "b3": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 432.25683800000115,
+        "inputTokens": 1829,
+        "listCostUsd": 0.00007681800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.4,
+            "probabilities": {
+              "unclear": 0.03,
+              "needs_security": 0,
+              "needs_finance": 0.11,
+              "reject": 0,
+              "approve": 0.51,
+              "needs_manager": 0.35
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "v1": 0,
+              "v4": 0,
+              "v2": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v5": 1,
+              "v3": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.62,
+            "probabilities": {
+              "b3": 0,
+              "unknown": 0,
+              "b0": 0,
+              "b2": 0.3,
+              "b1": 0.7
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 5186.144269999997,
+        "inputTokens": 1830,
+        "listCostUsd": 0.00007686,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.52,
+            "probabilities": {
+              "unclear": 0.05,
+              "needs_security": 0,
+              "approve": 0.3,
+              "reject": 0,
+              "needs_finance": 0.05,
+              "needs_manager": 0.6
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 1,
+            "probabilities": {
+              "v5": 0,
+              "v3": 0,
+              "unclear": 0,
+              "v1": 0,
+              "not_listed": 0,
+              "v2": 0,
+              "v4": 0,
+              "v0": 1
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 1,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0,
+              "unknown": 0,
+              "b2": 1,
+              "b3": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.19
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 4973.3042669999995,
+        "inputTokens": 1857,
+        "listCostUsd": 0.00007799400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.45,
+            "probabilities": {
+              "b0": 0.43,
+              "b1": 0.56,
+              "b2": 0,
+              "b3": 0.01,
+              "unknown": 0
+            }
+          },
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.33,
+            "probabilities": {
+              "approve": 0.19,
+              "needs_finance": 0.29,
+              "needs_manager": 0.44,
+              "needs_security": 0.02,
+              "reject": 0.03,
+              "unclear": 0.03
+            }
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v1",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v1": 1,
+              "v2": 0,
+              "v3": 0,
+              "v4": 0,
+              "v5": 0
+            }
+          }
+        },
+        "latencyMs": 6443.100042999999,
+        "inputTokens": 1853,
+        "listCostUsd": 0.00007782600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.72,
+            "probabilities": {
+              "unclear": 0.04,
+              "needs_security": 0.01,
+              "approve": 0.07,
+              "reject": 0,
+              "needs_finance": 0.12,
+              "needs_manager": 0.76
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v2",
+            "confidence": 1,
+            "probabilities": {
+              "v5": 0,
+              "v3": 0,
+              "unclear": 0,
+              "v1": 0,
+              "not_listed": 0,
+              "v4": 0,
+              "v2": 1,
+              "v0": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.8,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0.84,
+              "unknown": 0,
+              "b2": 0.16,
+              "b3": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 475.61182499999995,
+        "inputTokens": 1834,
+        "listCostUsd": 0.00007702800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-016",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.39,
+            "probabilities": {
+              "approve": 0.01,
+              "needs_security": 0.26,
+              "needs_manager": 0.15,
+              "reject": 0.04,
+              "unclear": 0.05,
+              "needs_finance": 0.49
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v2": 0,
+              "v0": 0,
+              "v3": 1,
+              "unclear": 0,
+              "v5": 0,
+              "not_listed": 0,
+              "v4": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.86,
+            "probabilities": {
+              "b3": 0.11,
+              "b1": 0,
+              "b0": 0,
+              "b2": 0.89,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 648.4617120000039,
+        "inputTokens": 1851,
+        "listCostUsd": 0.00007774200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-017",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "amount": {
+            "type": "choice",
+            "choice": "b0",
+            "confidence": 1,
+            "probabilities": {
+              "b0": 1,
+              "b1": 0,
+              "b2": 0,
+              "b3": 0,
+              "unknown": 0
+            }
+          },
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "approve": 0,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "needs_security": 0,
+              "reject": 0.99,
+              "unclear": 0.01
+            }
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v1": 0,
+              "v2": 0,
+              "v3": 0,
+              "v4": 1,
+              "v5": 0
+            }
+          }
+        },
+        "latencyMs": 507.1381330000004,
+        "inputTokens": 1831,
+        "listCostUsd": 0.000076902,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.45,
+            "probabilities": {
+              "approve": 0.21,
+              "needs_security": 0,
+              "reject": 0.02,
+              "needs_finance": 0.2,
+              "needs_manager": 0.55,
+              "unclear": 0.02
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 1,
+            "probabilities": {
+              "v2": 0,
+              "v4": 0,
+              "v0": 0,
+              "v5": 1,
+              "unclear": 0,
+              "v1": 0,
+              "v3": 0,
+              "not_listed": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.89,
+            "probabilities": {
+              "b2": 0.04,
+              "unknown": 0,
+              "b1": 0.91,
+              "b3": 0.02,
+              "b0": 0.03
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.18
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 499.17164400000183,
+        "inputTokens": 1853,
+        "listCostUsd": 0.00007782600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-019",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.59,
+            "probabilities": {
+              "approve": 0.01,
+              "reject": 0.05,
+              "needs_manager": 0.27,
+              "needs_security": 0,
+              "unclear": 0.02,
+              "needs_finance": 0.65
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 0.9,
+            "probabilities": {
+              "v1": 0,
+              "v4": 0,
+              "v2": 0,
+              "v3": 0,
+              "not_listed": 0.01,
+              "v5": 0.02,
+              "unclear": 0.06,
+              "v0": 0.91
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.97,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0,
+              "b2": 0.98,
+              "unknown": 0,
+              "b3": 0.02
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 9059.526541999992,
+        "inputTokens": 1875,
+        "listCostUsd": 0.00007875000000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.78,
+            "probabilities": {
+              "needs_finance": 0.02,
+              "reject": 0.15,
+              "approve": 0,
+              "unclear": 0.01,
+              "needs_manager": 0,
+              "needs_security": 0.82
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v1",
+            "confidence": 0.97,
+            "probabilities": {
+              "v4": 0,
+              "v2": 0,
+              "not_listed": 0.01,
+              "v1": 0.98,
+              "v3": 0,
+              "v0": 0,
+              "v5": 0,
+              "unclear": 0.01
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b3",
+            "confidence": 0.99,
+            "probabilities": {
+              "b2": 0.01,
+              "unknown": 0,
+              "b0": 0,
+              "b3": 0.99,
+              "b1": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 232.8414699999994,
+        "inputTokens": 1853,
+        "listCostUsd": 0.00007782600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.46,
+            "probabilities": {
+              "needs_manager": 0.55,
+              "unclear": 0.02,
+              "reject": 0,
+              "needs_finance": 0,
+              "needs_security": 0.43,
+              "approve": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v2",
+            "confidence": 0.99,
+            "probabilities": {
+              "unclear": 0,
+              "v5": 0,
+              "not_listed": 0,
+              "v4": 0,
+              "v1": 0,
+              "v0": 0,
+              "v3": 0,
+              "v2": 1
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 1,
+            "probabilities": {
+              "b2": 0,
+              "unknown": 0,
+              "b3": 0,
+              "b0": 0,
+              "b1": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.9
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 396.0011919999961,
+        "inputTokens": 1861,
+        "listCostUsd": 0.00007816200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.65,
+            "probabilities": {
+              "reject": 0.01,
+              "needs_finance": 0.15,
+              "needs_manager": 0.07,
+              "unclear": 0.04,
+              "needs_security": 0.71,
+              "approve": 0.02
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_listed": 0,
+              "v0": 0,
+              "v4": 0,
+              "v5": 0,
+              "unclear": 0,
+              "v2": 0,
+              "v3": 1,
+              "v1": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.9,
+            "probabilities": {
+              "b3": 0.01,
+              "unknown": 0,
+              "b1": 0.06,
+              "b2": 0.93,
+              "b0": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.89
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 489.7450480000116,
+        "inputTokens": 1841,
+        "listCostUsd": 0.00007732200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-023",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.98,
+            "probabilities": {
+              "unclear": 0.01,
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_finance": 0,
+              "reject": 0.99,
+              "needs_security": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "v1": 0,
+              "v2": 0,
+              "v3": 0,
+              "not_listed": 0,
+              "v5": 0,
+              "v4": 1,
+              "v0": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b3",
+            "confidence": 0.95,
+            "probabilities": {
+              "b0": 0,
+              "unknown": 0,
+              "b1": 0,
+              "b2": 0.04,
+              "b3": 0.96
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 397.87032799998997,
+        "inputTokens": 1836,
+        "listCostUsd": 0.00007711200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.8,
+            "probabilities": {
+              "unclear": 0.02,
+              "needs_manager": 0.14,
+              "reject": 0,
+              "needs_finance": 0,
+              "needs_security": 0,
+              "approve": 0.84
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 0.99,
+            "probabilities": {
+              "unclear": 0.01,
+              "v5": 0.99,
+              "not_listed": 0,
+              "v4": 0,
+              "v1": 0,
+              "v3": 0,
+              "v0": 0,
+              "v2": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.81,
+            "probabilities": {
+              "b0": 0.15,
+              "unknown": 0,
+              "b3": 0,
+              "b2": 0,
+              "b1": 0.85
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 343.8811210000131,
+        "inputTokens": 1845,
+        "listCostUsd": 0.00007749,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.72,
+            "probabilities": {
+              "approve": 0,
+              "needs_security": 0,
+              "needs_manager": 0.23,
+              "reject": 0,
+              "unclear": 0,
+              "needs_finance": 0.77
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v2": 0,
+              "v0": 1,
+              "v3": 0,
+              "unclear": 0,
+              "v5": 0,
+              "not_listed": 0,
+              "v4": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 1,
+            "probabilities": {
+              "b3": 0,
+              "b1": 0,
+              "b0": 0,
+              "b2": 1,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 7815.5446479999955,
+        "inputTokens": 1849,
+        "listCostUsd": 0.00007765800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-026",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "error": "HTTP 503: {\"error\":{\"message\":\"Service Unavailable\",\"type\":\"AI_APICallError\",\"param\":{\"error\":\"Service Unavailable\",\"statusCode\":503,\"name\":\"AI_APICallError\",\"message\":\"Service Unavailable\",\"isRetryable\":true,\"type\":\"AI_APICallError\"}},\"providerMetadata\":{\"gateway\":{\"routing\":{\"originalModelId\":\"typesafe-ai/jev\",\"resolvedProvider\":\"digitalocean\",\"fallbacksAvailable\":[\"typesafe-ai\"],\"canonicalSlug\":\"typesafe-ai/jev\",\"modelAttemptCount\":1,\"modelAttempts\":[{\"canonicalSlug\":\"typesafe-ai/jev\",\"success\":false,\"providerAttemptCount\":2,\"providerAttempts\":[{\"provider\":\"digitalocean\",\"credentialType\":\"system\",\"success\":false,\"error\":\"Service temporarily unavailable\",\"startTime\":1790602569755,\"endTime\":1790602569842,\"providerRequestId\":\"f7a8431e-01b5-406c-bfbb-50c3f1d862f4\",\"statusCode\":503},{\"provider\":\"typesafe-ai\",\"credentialType\":\"system\",\"success\":false,\"error\":\"Service Unavailable\",\"startTime\":1790602569845,\"endTime\":1790602587978,\"statusCode\":503}]}],\"totalProviderAttemptCount\":2},\"generationId\":\"gen_01M3M3NT05G90W2FVZ65G6KMV3\"}}}"
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-027",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.57,
+            "probabilities": {
+              "reject": 0,
+              "unclear": 0.02,
+              "needs_finance": 0.02,
+              "needs_security": 0.01,
+              "approve": 0.64,
+              "needs_manager": 0.31
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v2",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "v4": 0,
+              "v0": 0,
+              "unclear": 0,
+              "v2": 1,
+              "v1": 0,
+              "v5": 0,
+              "v3": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.66,
+            "probabilities": {
+              "b1": 0.73,
+              "b0": 0.27,
+              "unknown": 0,
+              "b3": 0,
+              "b2": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 420.5682169999927,
+        "inputTokens": 1847,
+        "listCostUsd": 0.00007757400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-028",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.39,
+            "probabilities": {
+              "reject": 0,
+              "needs_finance": 0.05,
+              "needs_manager": 0.25,
+              "needs_security": 0.49,
+              "unclear": 0.03,
+              "approve": 0.18
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v3": 1,
+              "not_listed": 0,
+              "v4": 0,
+              "v0": 0,
+              "v2": 0,
+              "unclear": 0,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.75,
+            "probabilities": {
+              "b2": 0.19,
+              "b0": 0,
+              "unknown": 0,
+              "b1": 0.81,
+              "b3": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 9917.58159300001,
+        "inputTokens": 1835,
+        "listCostUsd": 0.00007707,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-029",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "needs_finance": 0,
+              "approve": 0,
+              "needs_security": 0,
+              "needs_manager": 0,
+              "reject": 1
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "v3": 0,
+              "unclear": 0,
+              "v4": 1,
+              "v1": 0,
+              "v0": 0,
+              "not_listed": 0,
+              "v2": 0,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 1,
+            "probabilities": {
+              "b3": 0,
+              "b0": 0,
+              "unknown": 0,
+              "b2": 1,
+              "b1": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 8760.712685000006,
+        "inputTokens": 1831,
+        "listCostUsd": 0.000076902,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.31,
+            "probabilities": {
+              "approve": 0.23,
+              "reject": 0.05,
+              "needs_manager": 0.43,
+              "unclear": 0.01,
+              "needs_security": 0,
+              "needs_finance": 0.28
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v4": 0,
+              "v2": 0,
+              "v3": 0,
+              "not_listed": 0,
+              "v5": 1,
+              "unclear": 0,
+              "v0": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.39,
+            "probabilities": {
+              "b0": 0.48,
+              "b1": 0.51,
+              "b2": 0,
+              "unknown": 0,
+              "b3": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 4397.480857000017,
+        "inputTokens": 1832,
+        "listCostUsd": 0.00007694400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-031",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.57,
+            "probabilities": {
+              "needs_manager": 0.65,
+              "needs_finance": 0.25,
+              "reject": 0,
+              "needs_security": 0.01,
+              "unclear": 0.02,
+              "approve": 0.07
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "v0": 1,
+              "v4": 0,
+              "v5": 0,
+              "unclear": 0,
+              "v2": 0,
+              "v3": 0,
+              "v1": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.83,
+            "probabilities": {
+              "b3": 0,
+              "unknown": 0,
+              "b1": 0.87,
+              "b2": 0.13,
+              "b0": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 231.59522699998342,
+        "inputTokens": 1855,
+        "listCostUsd": 0.00007791,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-032",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.77,
+            "probabilities": {
+              "approve": 0,
+              "needs_manager": 0.01,
+              "unclear": 0.01,
+              "reject": 0.05,
+              "needs_security": 0.81,
+              "needs_finance": 0.12
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v1",
+            "confidence": 1,
+            "probabilities": {
+              "v3": 0,
+              "v1": 1,
+              "unclear": 0,
+              "v5": 0,
+              "v4": 0,
+              "v0": 0,
+              "v2": 0,
+              "not_listed": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.93,
+            "probabilities": {
+              "b3": 0.06,
+              "unknown": 0,
+              "b1": 0,
+              "b2": 0.94,
+              "b0": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.19
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 477.2504500000214,
+        "inputTokens": 1865,
+        "listCostUsd": 0.00007833,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-033",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.94,
+            "probabilities": {
+              "unclear": 0.01,
+              "approve": 0.96,
+              "needs_finance": 0,
+              "needs_security": 0.03,
+              "needs_manager": 0,
+              "reject": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v2",
+            "confidence": 0.99,
+            "probabilities": {
+              "unclear": 0,
+              "v3": 0.01,
+              "v0": 0,
+              "v1": 0,
+              "v4": 0,
+              "not_listed": 0,
+              "v2": 0.99,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b0",
+            "confidence": 0.99,
+            "probabilities": {
+              "unknown": 0,
+              "b0": 1,
+              "b3": 0,
+              "b1": 0,
+              "b2": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 887.0528350000095,
+        "inputTokens": 1849,
+        "listCostUsd": 0.00007765800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-034",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.39,
+            "probabilities": {
+              "reject": 0.03,
+              "needs_finance": 0.49,
+              "unclear": 0.03,
+              "needs_security": 0.16,
+              "needs_manager": 0.23,
+              "approve": 0.06
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "v4": 0,
+              "v0": 0,
+              "unclear": 0,
+              "v1": 0,
+              "v2": 0,
+              "v5": 0,
+              "v3": 1
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.76,
+            "probabilities": {
+              "b1": 0.81,
+              "b0": 0.01,
+              "unknown": 0,
+              "b2": 0.15,
+              "b3": 0.03
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 347.5481049999944,
+        "inputTokens": 1853,
+        "listCostUsd": 0.00007782600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-035",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "approve": 0,
+              "reject": 1,
+              "needs_manager": 0,
+              "needs_security": 0,
+              "unclear": 0,
+              "needs_finance": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "v1": 0,
+              "v4": 1,
+              "v2": 0,
+              "v3": 0,
+              "not_listed": 0,
+              "v5": 0,
+              "unclear": 0,
+              "v0": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.98,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0,
+              "b2": 0.99,
+              "unknown": 0,
+              "b3": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 347.2932490000094,
+        "inputTokens": 1848,
+        "listCostUsd": 0.00007761600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-036",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "amount": {
+            "type": "choice",
+            "choice": "b3",
+            "confidence": 0.98,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0,
+              "b2": 0.02,
+              "b3": 0.98,
+              "unknown": 0
+            }
+          },
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.9,
+            "probabilities": {
+              "approve": 0,
+              "needs_finance": 0.07,
+              "needs_manager": 0,
+              "needs_security": 0,
+              "reject": 0.92,
+              "unclear": 0.01
+            }
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v1": 0,
+              "v2": 0,
+              "v3": 0,
+              "v4": 0,
+              "v5": 1
+            }
+          }
+        },
+        "latencyMs": 4882.899227000016,
+        "inputTokens": 1856,
+        "listCostUsd": 0.00007795200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-037",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.99,
+            "probabilities": {
+              "approve": 0,
+              "needs_security": 0,
+              "needs_manager": 0.99,
+              "reject": 0,
+              "needs_finance": 0,
+              "unclear": 0.01
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 0.98,
+            "probabilities": {
+              "v1": 0,
+              "v2": 0,
+              "v0": 0.99,
+              "v3": 0,
+              "unclear": 0.01,
+              "v5": 0,
+              "not_listed": 0,
+              "v4": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 1,
+            "probabilities": {
+              "b3": 0,
+              "b1": 1,
+              "b0": 0,
+              "b2": 0,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 3055.35035600001,
+        "inputTokens": 1837,
+        "listCostUsd": 0.00007715400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-038",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.85,
+            "probabilities": {
+              "unclear": 0.01,
+              "needs_manager": 0.01,
+              "approve": 0,
+              "reject": 0.01,
+              "needs_finance": 0.09,
+              "needs_security": 0.88
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v1",
+            "confidence": 1,
+            "probabilities": {
+              "v3": 0,
+              "v1": 1,
+              "v2": 0,
+              "unclear": 0,
+              "not_listed": 0,
+              "v5": 0,
+              "v4": 0,
+              "v0": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.97,
+            "probabilities": {
+              "b0": 0,
+              "unknown": 0,
+              "b1": 0.01,
+              "b2": 0.98,
+              "b3": 0.01
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 453.3223719999951,
+        "inputTokens": 1854,
+        "listCostUsd": 0.00007786800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-039",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "error": "HTTP 503: {\"error\":{\"message\":\"Service Unavailable\",\"type\":\"AI_APICallError\",\"param\":{\"error\":\"Service Unavailable\",\"statusCode\":503,\"name\":\"AI_APICallError\",\"message\":\"Service Unavailable\",\"isRetryable\":true,\"type\":\"AI_APICallError\"}},\"providerMetadata\":{\"gateway\":{\"routing\":{\"originalModelId\":\"typesafe-ai/jev\",\"resolvedProvider\":\"digitalocean\",\"fallbacksAvailable\":[\"typesafe-ai\"],\"canonicalSlug\":\"typesafe-ai/jev\",\"modelAttemptCount\":1,\"modelAttempts\":[{\"canonicalSlug\":\"typesafe-ai/jev\",\"success\":false,\"providerAttemptCount\":2,\"providerAttempts\":[{\"provider\":\"digitalocean\",\"credentialType\":\"system\",\"success\":false,\"error\":\"Service temporarily unavailable\",\"startTime\":1790602605012,\"endTime\":1790602605102,\"providerRequestId\":\"aa71865d-7ef6-464c-b771-a62e0902c29c\",\"statusCode\":503},{\"provider\":\"typesafe-ai\",\"credentialType\":\"system\",\"success\":false,\"error\":\"Service Unavailable\",\"startTime\":1790602605106,\"endTime\":1790602620650,\"statusCode\":503}]}],\"totalProviderAttemptCount\":2},\"generationId\":\"gen_01M3M3PWDHE1TANJEHQV1QMGA4\"}}}"
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-040",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.36,
+            "probabilities": {
+              "approve": 0.37,
+              "needs_security": 0.48,
+              "needs_manager": 0.06,
+              "reject": 0,
+              "unclear": 0.09,
+              "needs_finance": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 0.97,
+            "probabilities": {
+              "v1": 0,
+              "v2": 0,
+              "v0": 0,
+              "v3": 0.98,
+              "unclear": 0.01,
+              "v5": 0,
+              "not_listed": 0.01,
+              "v4": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.87,
+            "probabilities": {
+              "b3": 0,
+              "b1": 0.9,
+              "b0": 0.1,
+              "b2": 0,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.88
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 7316.726309999998,
+        "inputTokens": 1835,
+        "listCostUsd": 0.00007707,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-041",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "unclear": 0,
+              "reject": 1,
+              "needs_finance": 0,
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_security": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "v5": 0,
+              "v4": 1,
+              "v1": 0,
+              "not_listed": 0,
+              "v3": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v2": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 1,
+            "probabilities": {
+              "b0": 0,
+              "b3": 0,
+              "b1": 0,
+              "unknown": 0,
+              "b2": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 435.14286600000923,
+        "inputTokens": 1834,
+        "listCostUsd": 0.00007702800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-042",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.92,
+            "probabilities": {
+              "unclear": 0.01,
+              "reject": 0.93,
+              "needs_finance": 0.05,
+              "needs_manager": 0,
+              "approve": 0,
+              "needs_security": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 0.99,
+            "probabilities": {
+              "v5": 1,
+              "v4": 0,
+              "v1": 0,
+              "not_listed": 0,
+              "v3": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v2": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b3",
+            "confidence": 0.85,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0,
+              "b3": 0.88,
+              "b2": 0.12,
+              "unknown": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 534.2348939999938,
+        "inputTokens": 1865,
+        "listCostUsd": 0.00007833,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-043",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "approve",
+            "confidence": 0.55,
+            "probabilities": {
+              "unclear": 0.02,
+              "reject": 0,
+              "needs_finance": 0.02,
+              "needs_manager": 0.33,
+              "approve": 0.63,
+              "needs_security": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v0",
+            "confidence": 1,
+            "probabilities": {
+              "v2": 0,
+              "v4": 0,
+              "v1": 0,
+              "not_listed": 0,
+              "v3": 0,
+              "unclear": 0,
+              "v0": 1,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.56,
+            "probabilities": {
+              "b0": 0.35,
+              "b3": 0,
+              "b1": 0.65,
+              "unknown": 0,
+              "b2": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 211.35504300001776,
+        "inputTokens": 1838,
+        "listCostUsd": 0.00007719600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-044",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_security",
+            "confidence": 0.78,
+            "probabilities": {
+              "unclear": 0.01,
+              "needs_security": 0.8099999999999999,
+              "needs_finance": 0.07,
+              "reject": 0,
+              "approve": 0.05,
+              "needs_manager": 0.06
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v1",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "v1": 1,
+              "v4": 0,
+              "v2": 0,
+              "unclear": 0,
+              "v0": 0,
+              "v5": 0,
+              "v3": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.68,
+            "probabilities": {
+              "b3": 0,
+              "unknown": 0,
+              "b0": 0,
+              "b1": 0.75,
+              "b2": 0.25
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 352.86896899997373,
+        "inputTokens": 1848,
+        "listCostUsd": 0.00007761600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-045",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.61,
+            "probabilities": {
+              "approve": 0.27,
+              "needs_manager": 0.67,
+              "unclear": 0.01,
+              "reject": 0,
+              "needs_security": 0,
+              "needs_finance": 0.04
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v2",
+            "confidence": 1,
+            "probabilities": {
+              "v3": 0,
+              "unclear": 0,
+              "v1": 0,
+              "not_listed": 0,
+              "v4": 0,
+              "v0": 0,
+              "v2": 1,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 1,
+            "probabilities": {
+              "b3": 0,
+              "unknown": 0,
+              "b1": 0,
+              "b0": 0,
+              "b2": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 360.3690930000157,
+        "inputTokens": 1840,
+        "listCostUsd": 0.00007728,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-046",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_manager",
+            "confidence": 0.41,
+            "probabilities": {
+              "unclear": 0.03,
+              "reject": 0.01,
+              "needs_finance": 0.19,
+              "approve": 0.22,
+              "needs_manager": 0.51,
+              "needs_security": 0.04
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v3",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "not_listed": 0,
+              "v3": 1,
+              "v2": 0,
+              "v1": 0,
+              "v4": 0,
+              "v0": 0,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b0",
+            "confidence": 0.41,
+            "probabilities": {
+              "b0": 0.53,
+              "unknown": 0,
+              "b2": 0,
+              "b1": 0.47,
+              "b3": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 26063.509718000016,
+        "inputTokens": 1844,
+        "listCostUsd": 0.00007744800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-047",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "reject",
+            "confidence": 0.99,
+            "probabilities": {
+              "unclear": 0,
+              "needs_finance": 0,
+              "approve": 0,
+              "reject": 1,
+              "needs_manager": 0,
+              "needs_security": 0
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v4",
+            "confidence": 1,
+            "probabilities": {
+              "not_listed": 0,
+              "unclear": 0,
+              "v3": 0,
+              "v2": 0,
+              "v1": 0,
+              "v4": 1,
+              "v0": 0,
+              "v5": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b1",
+            "confidence": 0.89,
+            "probabilities": {
+              "b0": 0,
+              "b1": 0.91,
+              "b2": 0.09,
+              "unknown": 0,
+              "b3": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.04
+          }
+        },
+        "latencyMs": 341.5087610000046,
+        "inputTokens": 1864,
+        "listCostUsd": 0.000078288,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-048",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_finance",
+            "confidence": 0.49,
+            "probabilities": {
+              "approve": 0.05,
+              "needs_security": 0,
+              "unclear": 0.01,
+              "needs_finance": 0.57,
+              "needs_manager": 0.3,
+              "reject": 0.07
+            }
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "v5",
+            "confidence": 1,
+            "probabilities": {
+              "v2": 0,
+              "v4": 0,
+              "v0": 0,
+              "v5": 1,
+              "unclear": 0,
+              "v1": 0,
+              "v3": 0,
+              "not_listed": 0
+            }
+          },
+          "amount": {
+            "type": "choice",
+            "choice": "b2",
+            "confidence": 0.88,
+            "probabilities": {
+              "unknown": 0,
+              "b2": 0.91,
+              "b1": 0,
+              "b3": 0.09,
+              "b0": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 30742.110103000014,
+        "inputTokens": 1849,
+        "listCostUsd": 0.00007765800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ],
+    "firstError": "HTTP 503: {\"error\":{\"message\":\"Service Unavailable\",\"type\":\"AI_APICallError\",\"param\":{\"error\":\"Service Unavailable\",\"statusCode\":503,\"name\":\"AI_APICallError\",\"message\":\"Service Unavailable\",\"isRetryable\":true,\"type\":\"AI_APICallError\"}},\"providerMetadata\":{\"gateway\":{\"routing\":{\"originalModelId\":\"typesafe-ai/jev\",\"resolvedProvider\":\"digitalocean\",\"fallbacksAvailable\":[\"typesafe-ai\"],\"canonicalSlug\":\"typesafe-ai/jev\",\"modelAttemptCount\":1,\"modelAttempts\":[{\"canonicalSlug\":\"typesafe-ai/jev\",\"success\":false,\"providerAttemptCount\":2,\"providerAttempts\":[{\"provider\":\"digitalocean\",\"credentialType\":\"system\",\"success\":false,\"error\":\"Service temporarily unavailable\",\"startTime\":1790602569755,\"endTime\":1790602569842,\"providerRequestId\":\"f7a8431e-01b5-406c-bfbb-50c3f1d862f4\",\"statusCode\":503},{\"provider\":\"typesafe-ai\",\"credentialType\":\"system\",\"success\":false,\"error\":\"Service Unavailable\",\"startTime\":1790602569845,\"endTime\":1790602587978,\"statusCode\":503}]}],\"totalProviderAttemptCount\":2},\"generationId\":\"gen_01M3M3NT05G90W2FVZ65G6KMV3\"}}}"
+  }
+]

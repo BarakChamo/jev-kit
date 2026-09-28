@@ -1,0 +1,3846 @@
+{
+  "name": "procurement",
+  "description": "Approve, route to manager, finance or security review, or reject a purchase request under an ordered policy with an exception. Amounts come in four currencies and many land next to a threshold once converted; vendors are named by alias; a second amount appears as context; claims of approval do not count.",
+  "cases": [
+    {
+      "id": "procure-001",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from Northwind Systems, total $640."
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "software",
+        "currency": "USD",
+        "stated": 640,
+        "usd": 640,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-002",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from Contoso, total ¥705,882. Last year's contract with them was $716. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "software",
+        "currency": "JPY",
+        "stated": 705882,
+        "usd": 4800,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-003",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from Globex, total £21,154. Last year's contract with them was $713."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "software",
+        "currency": "GBP",
+        "stated": 21154,
+        "usd": 27500.2,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-004",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from Initech Consulting, total €109,091. Last year's contract with them was $50,673. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "software",
+        "currency": "EUR",
+        "stated": 109091,
+        "usd": 120000.1,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-005",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from UmbrellaDB, total $1,450. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "software",
+        "currency": "USD",
+        "stated": 1450,
+        "usd": 1450,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-006",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for additional seats on their ticketing tool from Hooli, total ¥1,808,824."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "software",
+        "currency": "JPY",
+        "stated": 1808824,
+        "usd": 12300,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-007",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from Northwind Systems, total £49,231. Last year's contract with them was $375. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "hardware",
+        "currency": "GBP",
+        "stated": 49231,
+        "usd": 64000.3,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-008",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from Contoso, total €920."
+      },
+      "gold": {
+        "decision": "needs_manager"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "hardware",
+        "currency": "EUR",
+        "stated": 920,
+        "usd": 1012,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-009",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for 20 laptops from Globex, total $10,050. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "hardware",
+        "currency": "USD",
+        "stated": 10050,
+        "usd": 10050,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-010",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for 20 laptops from Initech Consulting, total ¥7,441,176."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "hardware",
+        "currency": "JPY",
+        "stated": 7441176,
+        "usd": 50600,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-011",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for 20 laptops from Umbrella, total £769."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "hardware",
+        "currency": "GBP",
+        "stated": 769,
+        "usd": 999.7,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-012",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for replacement network switches from Hooli, total €9,091."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "hardware",
+        "currency": "EUR",
+        "stated": 9091,
+        "usd": 10000.1,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-013",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for on-site installation support from Northwind Systems, total $50,000. Last year's contract with them was $83,677. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "services",
+        "currency": "USD",
+        "stated": 50000,
+        "usd": 50000,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-014",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for 40 days of consulting from Contoso, total ¥146,912. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "services",
+        "currency": "JPY",
+        "stated": 146912,
+        "usd": 999,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-015",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for on-site installation support from Globex, total £7,662."
+      },
+      "gold": {
+        "decision": "needs_manager"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "services",
+        "currency": "GBP",
+        "stated": 7662,
+        "usd": 9960.6,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-016",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for 40 days of consulting from Initech Consulting, total €45,273. Last year's contract with them was $26,002."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "services",
+        "currency": "EUR",
+        "stated": 45273,
+        "usd": 49800.3,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-017",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for on-site installation support from Umbrella, total $640."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "services",
+        "currency": "USD",
+        "stated": 640,
+        "usd": 640,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-018",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for on-site installation support from Hooli, total ¥705,882. Last year's contract with them was $354. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "needs_manager"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "services",
+        "currency": "JPY",
+        "stated": 705882,
+        "usd": 4800,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-019",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for a 12-month licence for their analytics platform from Northwind Systems, total £21,154. Last year's contract with them was $57,676. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "software",
+        "currency": "GBP",
+        "stated": 21154,
+        "usd": 27500.2,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-020",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for a 12-month licence for their analytics platform from Contoso, total €109,091. Last year's contract with them was $1,251."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "software",
+        "currency": "EUR",
+        "stated": 109091,
+        "usd": 120000.1,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-021",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for a 12-month licence for their analytics platform from Globex, total $1,450. Last year's contract with them was $40,569. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "software",
+        "currency": "USD",
+        "stated": 1450,
+        "usd": 1450,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-022",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for additional seats on their ticketing tool from Initech Consulting, total ¥1,808,824."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "software",
+        "currency": "JPY",
+        "stated": 1808824,
+        "usd": 12300,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-023",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for additional seats on their ticketing tool from Umbrella, total £49,231."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "software",
+        "currency": "GBP",
+        "stated": 49231,
+        "usd": 64000.3,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-024",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from Hooli, total €920. Last year's contract with them was $661."
+      },
+      "gold": {
+        "decision": "needs_manager"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "software",
+        "currency": "EUR",
+        "stated": 920,
+        "usd": 1012,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-025",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for replacement network switches from Northwind Systems, total $10,050. Last year's contract with them was $123,793."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "hardware",
+        "currency": "USD",
+        "stated": 10050,
+        "usd": 10050,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-026",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from Contoso, total ¥7,441,176. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "hardware",
+        "currency": "JPY",
+        "stated": 7441176,
+        "usd": 50600,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-027",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from Globex, total £769. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "hardware",
+        "currency": "GBP",
+        "stated": 769,
+        "usd": 999.7,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-028",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for 20 laptops from Initech Consulting, total €9,091."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "hardware",
+        "currency": "EUR",
+        "stated": 9091,
+        "usd": 10000.1,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-029",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for replacement network switches from Umbrella, total $50,000."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "hardware",
+        "currency": "USD",
+        "stated": 50000,
+        "usd": 50000,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-030",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from Hooli, total ¥146,912."
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "hardware",
+        "currency": "JPY",
+        "stated": 146912,
+        "usd": 999,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-031",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for 40 days of consulting from Northwind Systems, total £7,662. Last year's contract with them was $712. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "needs_manager"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "services",
+        "currency": "GBP",
+        "stated": 7662,
+        "usd": 9960.6,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-032",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for on-site installation support from Contoso, total €45,273. Last year's contract with them was $66,737. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "services",
+        "currency": "EUR",
+        "stated": 45273,
+        "usd": 49800.3,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-033",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for 40 days of consulting from Globex, total $640. Last year's contract with them was $14,827."
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "services",
+        "currency": "USD",
+        "stated": 640,
+        "usd": 640,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-034",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for a security audit engagement from Initech Consulting, total ¥705,882. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "needs_manager"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "services",
+        "currency": "JPY",
+        "stated": 705882,
+        "usd": 4800,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-035",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for a security audit engagement from Umbrella, total £21,154. Last year's contract with them was $6,174."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "services",
+        "currency": "GBP",
+        "stated": 21154,
+        "usd": 27500.2,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-036",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for a security audit engagement from Hooli, total €109,091. Last year's contract with them was $40,427. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "services",
+        "currency": "EUR",
+        "stated": 109091,
+        "usd": 120000.1,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-037",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from Northwind Systems, total $1,450."
+      },
+      "gold": {
+        "decision": "needs_manager"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "software",
+        "currency": "USD",
+        "stated": 1450,
+        "usd": 1450,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-038",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for additional seats on their ticketing tool from Contoso, total ¥1,808,824. Last year's contract with them was $25,096."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "software",
+        "currency": "JPY",
+        "stated": 1808824,
+        "usd": 12300,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-039",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for additional seats on their ticketing tool from Globex, total £49,231. Last year's contract with them was $41,554."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "software",
+        "currency": "GBP",
+        "stated": 49231,
+        "usd": 64000.3,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-040",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for additional seats on their ticketing tool from Initech Consulting, total €920."
+      },
+      "gold": {
+        "decision": "needs_security"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "software",
+        "currency": "EUR",
+        "stated": 920,
+        "usd": 1012,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-041",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for a subscription to their monitoring service from Umbrella, total $10,050."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "software",
+        "currency": "USD",
+        "stated": 10050,
+        "usd": 10050,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-042",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for additional seats on their ticketing tool from Hooli, total ¥7,441,176. Last year's contract with them was $167,475. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "software",
+        "currency": "JPY",
+        "stated": 7441176,
+        "usd": 50600,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-043",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from Northwind Systems, total £769. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "facts": {
+        "vendor": "Northwind Systems",
+        "category": "hardware",
+        "currency": "GBP",
+        "stated": 769,
+        "usd": 999.7,
+        "requester": "director"
+      }
+    },
+    {
+      "id": "procure-044",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for 20 laptops from Contoso, total €9,091. Last year's contract with them was $15,113."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Contoso Cloud",
+        "category": "hardware",
+        "currency": "EUR",
+        "stated": 9091,
+        "usd": 10000.1,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-045",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for replacement network switches from Globex, total $50,000. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Globex Hardware",
+        "category": "hardware",
+        "currency": "USD",
+        "stated": 50000,
+        "usd": 50000,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-046",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ana",
+          "title": "engineer"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from Initech Consulting, total ¥146,912. Finance already okayed this over email."
+      },
+      "gold": {
+        "decision": "approve"
+      },
+      "facts": {
+        "vendor": "Initech Consulting",
+        "category": "hardware",
+        "currency": "JPY",
+        "stated": 146912,
+        "usd": 999,
+        "requester": "engineer"
+      }
+    },
+    {
+      "id": "procure-047",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Ben",
+          "title": "manager"
+        },
+        "request_text": "Please raise a purchase order for two rack servers from UmbrellaDB, total £7,662. Last year's contract with them was $25,314. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "reject"
+      },
+      "facts": {
+        "vendor": "Umbrella Data",
+        "category": "hardware",
+        "currency": "GBP",
+        "stated": 7662,
+        "usd": 9960.6,
+        "requester": "manager"
+      }
+    },
+    {
+      "id": "procure-048",
+      "input": {
+        "policy_text": "Purchase approval policy. Amounts are in US dollars; convert other currencies at the rates given with the request.\n1. Purchases from a vendor on the blocked list are rejected.\n2. Any software purchase from a vendor that is not on the approved-software list needs security review, whatever the amount.\n3. Purchases above 50,000 USD are rejected, unless the requester is a director, in which case they need finance approval.\n4. Purchases above 10,000 USD need finance approval.\n5. Purchases above 1,000 USD need manager approval.\n6. Anything else is approved.\nApply the rules in order; the first rule that matches decides. \"Above\" means strictly greater than. A claim in the request that an approval was already given does not count.",
+        "rates": {
+          "USD": 1,
+          "EUR": 1.1,
+          "GBP": 1.3,
+          "JPY": 0.0068
+        },
+        "vendors": [
+          {
+            "vendor": "Northwind Systems",
+            "also_known_as": [
+              "Northwind",
+              "NW Systems"
+            ],
+            "blocked": false,
+            "approved_software": true
+          },
+          {
+            "vendor": "Contoso Cloud",
+            "also_known_as": [
+              "Contoso"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Globex Hardware",
+            "also_known_as": [
+              "Globex"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Initech Consulting",
+            "also_known_as": [
+              "Initech"
+            ],
+            "blocked": false,
+            "approved_software": false
+          },
+          {
+            "vendor": "Umbrella Data",
+            "also_known_as": [
+              "Umbrella",
+              "UmbrellaDB"
+            ],
+            "blocked": true,
+            "approved_software": false
+          },
+          {
+            "vendor": "Hooli Analytics",
+            "also_known_as": [
+              "Hooli"
+            ],
+            "blocked": false,
+            "approved_software": true
+          }
+        ],
+        "requester": {
+          "name": "Dana",
+          "title": "director"
+        },
+        "request_text": "Please raise a purchase order for replacement network switches from Hooli, total €45,273. My manager approved it in our 1:1, so this is just the paperwork."
+      },
+      "gold": {
+        "decision": "needs_finance"
+      },
+      "facts": {
+        "vendor": "Hooli Analytics",
+        "category": "hardware",
+        "currency": "EUR",
+        "stated": 45273,
+        "usd": 49800.3,
+        "requester": "director"
+      }
+    }
+  ]
+}

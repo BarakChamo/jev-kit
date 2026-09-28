@@ -1,0 +1,88 @@
+[
+  {
+    "dir": "heldout4/maps-api-base-retry",
+    "map": "procurement-base-2-zai_glm-5_3",
+    "task": "procurement",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "decision"
+    ]
+  },
+  {
+    "dir": "heldout4/maps-api-v42-retry",
+    "map": "procurement-plugin-1-alibaba_qwen3_8-max-0902",
+    "task": "procurement",
+    "loaded": false
+  },
+  {
+    "dir": "heldout4/maps-api-v42-retry",
+    "map": "procurement-plugin-1-zai_glm-5_3",
+    "task": "procurement",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  },
+  {
+    "dir": "heldout4/maps-api-v42-retry",
+    "map": "procurement-plugin-2-alibaba_qwen3_8-max-0902",
+    "task": "procurement",
+    "loaded": false
+  },
+  {
+    "dir": "heldout4/maps-api-v42-retry",
+    "map": "procurement-plugin-2-zai_glm-5_3",
+    "task": "procurement",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  },
+  {
+    "dir": "heldout4/maps-api-v42-retry",
+    "map": "procurement-plugin-3-alibaba_qwen3_8-max-0902",
+    "task": "procurement",
+    "loaded": false
+  },
+  {
+    "dir": "heldout4/maps-api-v42-retry",
+    "map": "procurement-plugin-3-zai_glm-5_3",
+    "task": "procurement",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  },
+  {
+    "dir": "heldout4/maps-api-v43-retry",
+    "map": "procurement-plugin-1-alibaba_qwen3_8-max-0902",
+    "task": "procurement",
+    "loaded": false
+  },
+  {
+    "dir": "heldout4/maps-api-v43-retry",
+    "map": "procurement-plugin-1-zai_glm-5_3",
+    "task": "procurement",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  },
+  {
+    "dir": "heldout4/maps-api-v43-retry",
+    "map": "procurement-plugin-2-alibaba_qwen3_8-max-0902",
+    "task": "procurement",
+    "loaded": false
+  },
+  {
+    "dir": "heldout4/maps-api-v43-retry",
+    "map": "procurement-plugin-3-alibaba_qwen3_8-max-0902",
+    "task": "procurement",
+    "loaded": false
+  },
+  {
+    "dir": "heldout4/maps-api-v43-retry",
+    "map": "procurement-plugin-3-zai_glm-5_3",
+    "task": "procurement",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  }
+]

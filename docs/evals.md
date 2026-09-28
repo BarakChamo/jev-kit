@@ -13,6 +13,7 @@ skills themselves were measured, what the results were, and what changed because
 | [Held-out tasks](#held-out-tasks) | Does it transfer to new tasks and another model? | 53 maps | 84–94% → 97–100% where there was headroom |
 | [Rule probes](#rule-probes) | Do the rules hold in other domains? | 10 rules × 3 domains | 7 held, 2 held under their condition, 1 narrowed |
 | [Other vendors' models](#other-vendors-models) | Does it work for models other than Claude? | 266 maps, 10 models | wrong decisions fell for every model family |
+| [A hard task, and the latest models](#a-hard-task-and-the-latest-models) | Does the skill hold up where the task is hard? | 63 maps, 4 authors | wrong decisions 52 → 3; v4.3 accuracy 99.3% for Claude Code, 96.5% for DeepSeek |
 | [Policy outcomes](#policy-outcomes) | Does telling agents not to ask for a policy's outcome help? | 12 maps, 2 tasks | access requests 5 → 1 wrong in 90; the new task was at the ceiling |
 
 ## How a map is graded
@@ -47,8 +48,8 @@ Across the program:
 
 ## The study
 
-57 hand-labelled decision suites (1,836 cases) were run on Jev and a cheap LLM, and seven of them on a frontier
-model.
+57 hand-labelled decision suites (1,836 cases) were run on Jev and a cheap LLM (`zai/glm-5.3-flash`), and seven
+of them on a frontier model (`openai/gpt-5.5-fast`, about 83× the cheap model's input price).
 
 | measure | result |
 | --- | --- |
@@ -196,6 +197,34 @@ The new task was too easy to separate the two versions. Across both tasks, every
 (6 of 6) came from a map that asked Jev for this request's outcome. Maps that read the facts, or read the policy
 table once, made none in 270 cases. [Details](../evals/heldout3/README.md).
 
+## A hard task, and the latest models
+
+The round-3 task was too easy to compare skill versions, and several earlier held-out tasks sat near the ceiling.
+The fourth task, procurement, was built to be hard:
+- five outcomes and six ordered rules, one with an exception;
+- amounts in four currencies, 27 of 48 within 2% of a threshold after conversion;
+- vendor aliases, distractor amounts, and approval claims that don't count.
+
+Maps without the plugin averaged 76.9%. Authors were Claude Code agents and the latest GLM, Qwen and DeepSeek models,
+3 maps per arm.
+
+| author | no plugin | v4.2 | v4.3 |
+| --- | ---: | ---: | ---: |
+| Claude Code | 67.4% · 8 wrong | 84.0% · 0 wrong | **99.3% · 0 wrong** |
+| DeepSeek V4 Pro (0813) | 82.6% · 18 wrong | 90.3% · 1 wrong | **96.5% · 0 wrong** |
+| GLM 5.3 | 74.3% · 16 wrong | 59.7% · 0 wrong | 68.1% · 2 wrong |
+| Qwen 3.8 Max (0902) | 83.3% · 10 wrong | no code | no code |
+
+- **Wrong decisions** fell from 52 in 576 to 3 in 864 with the skill.
+- **v4.3 against v4.2:** v4.3 was more accurate for every author whose maps ran. The two versions made about the same
+  number of wrong decisions, near zero.
+- **GLM's plugin maps abstain rather than err.** They usually defer on "is this purchase software?", answered at 0.5–0.8.
+- **On earlier tasks**, v4.3 made no wrong decisions for GLM, Qwen or DeepSeek, the same as v4.2.
+
+**Most single-call failures were a gateway limit, not the models.** GLM's maps with no code had hit the gateway's cap
+on stream duration. The same request without streaming produced all 9 in 1–4 minutes. Qwen 3.8 Max, with the skill
+loaded, didn't finish within 30 minutes either way. [Details](../evals/heldout4/README.md).
+
 ## Reproduce
 
 Every evaluation folder has its suites, the maps or runs, the grading scripts, and recorded results.
@@ -216,5 +245,5 @@ node plugin/skills/jev-eval/scripts/jev-audit.mjs evals/support-triage/results/j
   maps moved accuracy by up to 2.2 points.
 - **Some tasks were used for tuning.** expense-review, refund-eligibility and access-request were used to
   change the skill, and are reported as no longer held out.
-- **Easy tasks can't discriminate.** alert-routing and clause-locator were near the ceiling with or without the
-  plugin.
+- **Some tasks were too easy.** alert-routing, clause-locator and data-export were near the ceiling in every arm. The
+  procurement task was built to fix that, and it separates the arms: 76.9% without the plugin.

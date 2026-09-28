@@ -69,8 +69,9 @@ measurement, and the limits: **[docs/how-it-was-built.md](docs/how-it-was-built.
 ## Using it with a one-shot author
 
 An agent that can run its map (Claude Code) catches its own broken code. A model asked for the whole map in
-one call cannot. With the skill, maps are about 40% longer. Some reasoning models then run out of output before
-writing any code: GLM 5.3 did on 5 of 15 maps, even at 64k tokens.
+one call cannot. With the skill, maps are about 40% longer, and slow reasoning models can take many minutes.
+- Through the AI Gateway, use a non-streaming request. The gateway caps how long a stream may run: GLM 5.3 hit
+  that cap on 9 of 18 maps, and the same requests without streaming finished all 9 in 1–4 minutes.
 - Give a one-shot author a large output budget (64k).
 - Load the map and run it on one case before trusting it. `jev-run --map` reports a map that fails to load.
 

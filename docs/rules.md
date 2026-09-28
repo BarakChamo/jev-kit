@@ -6,7 +6,7 @@ an example, and gives the evidence behind it and how well it held up when tested
 ## How the rules were derived
 
 1. **A study found the failures.** 57 hand-labelled decision suites (1,836 cases) were run on Jev, a cheap
-   LLM, and on seven suites a frontier model. Every case Jev got wrong with high confidence was read, and
+   LLM (`zai/glm-5.3-flash`), and on seven suites a frontier model (`openai/gpt-5.5-fast`). Every case Jev got wrong with high confidence was read, and
    each pattern of failure was measured with and without a fix.
 2. **A finding became a rule only after it held on a second task.** The study produced fourteen findings.
    Five held only under a condition and were rewritten to state it. Some were merged.

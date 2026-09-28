@@ -5,7 +5,7 @@
 [Installation](#installation) · [Quick start](#quick-start) · [Using the skills](#using-the-skills) · [Using the scripts](#using-the-scripts) · [Use cases](docs/use-cases.md) · [Rules](docs/rules.md) · [Evaluations](docs/evals.md)
 
 Jev, TypeSafe's System One model, answers typed questions about your data for a fraction of what an LLM costs.
-It is 20–100× cheaper, answers in ~600 ms, and returned no malformed output in ~1,900 calls. The catch is that
+It is 20–100× cheaper than a small LLM (`zai/glm-5.3-flash`), answers in ~600 ms, and returned no malformed output in ~1,900 calls. The catch is that
 it depends heavily on wording. In a study of 57 labelled decision suites, rewriting a single question moved
 accuracy by **30–40 points**, several times more than switching between Jev and an LLM.
 
@@ -349,6 +349,7 @@ written with or without the plugin.
 | Held-out tasks | 53 maps, 2 agent models | reply exposure 84–88% → 97–98%; a third task tied at 100%; a fourth was later used for tuning |
 | Rule probes | 10 rules × 3 domains | 7 held everywhere, 2 held under their stated condition, 1 narrowed |
 | Other models | 266 maps from Claude Code and 9 other models | wrong decisions fell for every model family; SLA breach 15.6% → 1.1% |
+| A hard task, latest models | 63 maps: Claude Code, GLM 5.3, Qwen 3.8 Max, DeepSeek V4 Pro | procurement wrong decisions 52 → 3; accuracy 67% → 99% (Claude Code), 83% → 97% (DeepSeek) |
 | Policy outcomes | 12 maps, 2 tasks | access requests 5 → 1 wrong decision in 90, after telling agents not to ask Jev for a policy's outcome |
 
 The first version of the plugin made one task worse, raising wrong decisions from 13% to 46%. Reading Jev's
@@ -359,8 +360,9 @@ wrong answers produced the rules that fixed it. [The evaluations in detail](docs
 - One person wrote the suites, labels, and rules. Independent LLM relabelling agreed on 83–100% of labels,
   but no second person has labelled them.
 - Most comparisons use 2–12 maps. Treat gaps under ~7 points as noise.
-- Models that write a map in a single call sometimes run out of output with the skill loaded. Give them a
-  large output budget, and run the map on one case before trusting it.
+- Models that write a map in a single call sometimes don't finish with the skill loaded. Through the AI Gateway,
+  use a non-streaming request: the gateway caps how long a stream may run, and this alone recovered every failed GLM
+  map. Give them a large output budget, and run the map on one case before trusting it.
 
 ## Repository layout
 

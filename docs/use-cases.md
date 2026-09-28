@@ -16,7 +16,8 @@ All four of these should hold:
 4. **A wrong answer is survivable.** There is a person, a larger model, or a safe default for the cases Jev
    is unsure about.
 
-The shape of the decision predicts how Jev compares with an LLM:
+The shape of the decision predicts how Jev compares with an LLM. Here the LLM is `zai/glm-5.3-flash`, the cheap
+model the study compared against:
 
 | decision shape | Jev vs a cheap LLM |
 | --- | ---: |

@@ -75,7 +75,7 @@ const pct = (x: number) => (Number.isFinite(x) ? `${(x * 100).toFixed(1)}%` : 'â
 
 // Whole-map runs: the gold is keyed by decision field, so the per-answer audits below have nothing to
 // grade. Audit the decisions instead, through the least certain answer behind each.
-if (rows.length && rows.every(isMapRow)) {
+if (rows.some(isMapRow)) {
   const ds = decisions(rows);
   const report = { decisions: ds.length, fields: decisionSummary(ds), weakLinks: weakLinks(ds), gate: fitDecisionGate(ds, target), wrong: ds.filter((d) => d.grade === 'wrong') };
   if (args.includes('--json')) {

@@ -30,6 +30,11 @@ export const TASKS = {
     out: '{ decision: "grant" | "needs_approval" | "deny" | "abstain" }',
     suite: '../heldout3/data-export.json',
   },
+  procurement: {
+    text: 'Employees raise purchase requests in free text. For each request, decide: approve, needs_manager, needs_finance, needs_security, or reject, under our written purchase approval policy, vendor list and currency rates. We handle tens of thousands of requests a month. Build this on Jev.',
+    out: '{ decision: "approve" | "needs_manager" | "needs_finance" | "needs_security" | "reject" | "abstain" }',
+    suite: '../heldout4/procurement.json',
+  },
   'expense-review': {
     text: 'Employees submit expense lines. For each line decide: approve, needs_approval (manager must approve), or reject, under our written travel and expense policy (limits in USD; convert foreign currency at the rates provided). We process hundreds of thousands of lines a month. Build this on Jev.',
     out: '{ decision: "approve" | "needs_approval" | "reject" | "abstain" }',

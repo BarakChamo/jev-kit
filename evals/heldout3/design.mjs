@@ -6,8 +6,8 @@
 import { readdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
-const SUITES = { 'data-export': './data-export.json', 'access-request': '../heldout2/access-request.json' };
-const OUTCOME_PAIRS = [['grant', 'deny'], ['allow', 'deny'], ['approved', 'denied'], ['approve', 'deny']];
+const SUITES = { 'data-export': './data-export.json', 'access-request': '../heldout2/access-request.json', procurement: '../heldout4/procurement.json' };
+const OUTCOME_PAIRS = [['grant', 'deny'], ['allow', 'deny'], ['approved', 'denied'], ['approve', 'deny'], ['approve', 'reject']];
 const OUTCOME_NOUL = /\b(should|can|may|must)\b[^?]*\b(be )?(granted|denied|allowed|approved|refused|rejected)\b|\b(grant|deny|allow|approve)\b (this|the) (request|export|access)|\bapply (it|the policy|`?policy_text`?) to (this|the)\b|\b(prohibit|forbid|allow|permit)\w*\b[^?]*\b(this|the) (exact |specific )?(request|export)\b/i;
 
 const asksOutcome = (q) => {

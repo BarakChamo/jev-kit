@@ -1,6 +1,6 @@
 {
   "name": "jev",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Measured guidance for writing Jev (System One) question maps and evaluating them: design rules backed by a 57-suite study, plus an offline audit that finds the defects static review misses.",
   "author": {
     "name": "Barak Chamo"

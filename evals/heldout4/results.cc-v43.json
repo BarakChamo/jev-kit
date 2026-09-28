@@ -1,0 +1,6293 @@
+[
+  {
+    "map": "procurement-plugin-1-claude",
+    "task": "procurement",
+    "arm": "plugin",
+    "rep": 1,
+    "author": "claude",
+    "n": 48,
+    "right": 47,
+    "wrong": 0,
+    "abstain": 1,
+    "errors": 0,
+    "accuracy": 0.9791666666666666,
+    "wrongRate": 0,
+    "coverage": 0.9791666666666666,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 1,
+              "unclear": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 720.0287089999999,
+        "inputTokens": 1107,
+        "listCostUsd": 0.000046494000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 1,
+              "unclear": 0,
+              "Hooli Analytics": 0,
+              "other_vendor": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 567.5197210000001,
+        "inputTokens": 1137,
+        "listCostUsd": 0.000047754000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "unclear": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 1,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.85
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 613.021284,
+        "inputTokens": 1119,
+        "listCostUsd": 0.000046998000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "Initech Consulting": 1,
+              "other_vendor": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.61
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 198.94430999999997,
+        "inputTokens": 1142,
+        "listCostUsd": 0.000047964000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-005",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "Initech Consulting": 0,
+              "unclear": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 268.71340799999996,
+        "inputTokens": 1124,
+        "listCostUsd": 0.000047208000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-006",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 252.92047200000002,
+        "inputTokens": 1113,
+        "listCostUsd": 0.00004674600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "Hooli Analytics": 0,
+              "other_vendor": 0,
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 330.8184799999999,
+        "inputTokens": 1125,
+        "listCostUsd": 0.00004725,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "unclear": 0,
+              "other_vendor": 0,
+              "Contoso Cloud": 1,
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 250.46151299999997,
+        "inputTokens": 1102,
+        "listCostUsd": 0.000046284000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-009",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "other_vendor": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 1,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 242.38844999999992,
+        "inputTokens": 1113,
+        "listCostUsd": 0.00004674600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-010",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 1,
+              "Globex Hardware": 0,
+              "other_vendor": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 222.8413579999999,
+        "inputTokens": 1111,
+        "listCostUsd": 0.00004666200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-011",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "other_vendor": 0,
+              "Initech Consulting": 0,
+              "unclear": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 257.7123140000001,
+        "inputTokens": 1101,
+        "listCostUsd": 0.00004624200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 260.85389599999985,
+        "inputTokens": 1102,
+        "listCostUsd": 0.000046284000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "other_vendor": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 253.5102199999999,
+        "inputTokens": 1129,
+        "listCostUsd": 0.000047418000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 1,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "unclear": 0,
+              "Hooli Analytics": 0,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 254.62771599999996,
+        "inputTokens": 1125,
+        "listCostUsd": 0.00004725,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 1,
+              "unclear": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 231.74367099999995,
+        "inputTokens": 1106,
+        "listCostUsd": 0.00004645200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-016",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "other_vendor": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "unclear": 0,
+              "Initech Consulting": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 219.4600509999998,
+        "inputTokens": 1123,
+        "listCostUsd": 0.00004716600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-017",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Initech Consulting": 0,
+              "other_vendor": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 232.5040439999998,
+        "inputTokens": 1103,
+        "listCostUsd": 0.000046326,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 1,
+              "other_vendor": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 198.57058599999982,
+        "inputTokens": 1125,
+        "listCostUsd": 0.00004725,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-019",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "other_vendor": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0,
+              "Northwind Systems": 1,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 296.0476470000001,
+        "inputTokens": 1147,
+        "listCostUsd": 0.000048174,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "unclear": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 1,
+              "Umbrella Data": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 225.41693799999985,
+        "inputTokens": 1125,
+        "listCostUsd": 0.00004725,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 1,
+              "Umbrella Data": 0,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "other_vendor": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 217.41389400000025,
+        "inputTokens": 1133,
+        "listCostUsd": 0.00004758600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 1,
+              "Contoso Cloud": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.84
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 237.90154100000018,
+        "inputTokens": 1113,
+        "listCostUsd": 0.00004674600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-023",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 289.41937499999995,
+        "inputTokens": 1108,
+        "listCostUsd": 0.000046536,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "unclear": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 1,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 280.6323229999998,
+        "inputTokens": 1117,
+        "listCostUsd": 0.000046914000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "other_vendor": 0,
+              "unclear": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.97
+          }
+        },
+        "latencyMs": 272.3761749999999,
+        "inputTokens": 1121,
+        "listCostUsd": 0.00004708200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-026",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "other_vendor": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 208.97697199999993,
+        "inputTokens": 1126,
+        "listCostUsd": 0.00004729200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-027",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 1,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 199.49019599999974,
+        "inputTokens": 1119,
+        "listCostUsd": 0.000046998000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-028",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Initech Consulting": 1,
+              "Northwind Systems": 0,
+              "other_vendor": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 217.0089250000001,
+        "inputTokens": 1107,
+        "listCostUsd": 0.000046494000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-029",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "Globex Hardware": 0,
+              "other_vendor": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 218.1689080000001,
+        "inputTokens": 1103,
+        "listCostUsd": 0.000046326,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "other_vendor": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 1,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "unclear": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 250.379598,
+        "inputTokens": 1104,
+        "listCostUsd": 0.00004636800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-031",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 1,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 209.6539969999999,
+        "inputTokens": 1127,
+        "listCostUsd": 0.000047334000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-032",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "other_vendor": 0,
+              "Contoso Cloud": 1,
+              "Northwind Systems": 0,
+              "unclear": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 259.31805699999995,
+        "inputTokens": 1137,
+        "listCostUsd": 0.000047754000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-033",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 1,
+              "Hooli Analytics": 0,
+              "other_vendor": 0,
+              "unclear": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 233.6269540000003,
+        "inputTokens": 1121,
+        "listCostUsd": 0.00004708200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-034",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "other_vendor": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "unclear": 0,
+              "Initech Consulting": 1,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 200.60493300000007,
+        "inputTokens": 1125,
+        "listCostUsd": 0.00004725,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-035",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Umbrella Data": 1,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "other_vendor": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 251.5110420000001,
+        "inputTokens": 1120,
+        "listCostUsd": 0.000047040000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-036",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "other_vendor": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "unclear": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 227.60913000000028,
+        "inputTokens": 1128,
+        "listCostUsd": 0.00004737600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-037",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "other_vendor": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 1,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 317.8679229999998,
+        "inputTokens": 1109,
+        "listCostUsd": 0.00004657800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-038",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "other_vendor": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 1,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 231.8657720000001,
+        "inputTokens": 1126,
+        "listCostUsd": 0.00004729200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-039",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 1,
+              "unclear": 0,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 199.210783,
+        "inputTokens": 1124,
+        "listCostUsd": 0.000047208000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-040",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.87
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 1,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "other_vendor": 0,
+              "unclear": 0
+            }
+          }
+        },
+        "latencyMs": 316.67859,
+        "inputTokens": 1107,
+        "listCostUsd": 0.000046494000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-041",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "other_vendor": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 221.49336799999992,
+        "inputTokens": 1106,
+        "listCostUsd": 0.00004645200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-042",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0,
+              "other_vendor": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "unclear": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 208.43622800000003,
+        "inputTokens": 1137,
+        "listCostUsd": 0.000047754000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-043",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "other_vendor": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "unclear": 0,
+              "Northwind Systems": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.02
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.97
+          }
+        },
+        "latencyMs": 267.2877719999997,
+        "inputTokens": 1110,
+        "listCostUsd": 0.000046620000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-044",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "other_vendor": 0,
+              "Northwind Systems": 0,
+              "unclear": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 237.2331710000003,
+        "inputTokens": 1120,
+        "listCostUsd": 0.000047040000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-045",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 1,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "other_vendor": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 220.0639470000001,
+        "inputTokens": 1112,
+        "listCostUsd": 0.000046704000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-046",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 1,
+              "Umbrella Data": 0,
+              "unclear": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "other_vendor": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.01
+          }
+        },
+        "latencyMs": 224.32255500000065,
+        "inputTokens": 1116,
+        "listCostUsd": 0.00004687200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-047",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Umbrella Data": 1,
+              "unclear": 0,
+              "Contoso Cloud": 0,
+              "other_vendor": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 252.9160270000002,
+        "inputTokens": 1136,
+        "listCostUsd": 0.00004771200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-048",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "other_vendor": 0,
+              "Hooli Analytics": 1,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "unclear": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.97
+          }
+        },
+        "latencyMs": 240.32344100000046,
+        "inputTokens": 1121,
+        "listCostUsd": 0.00004708200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "procurement-plugin-2-claude",
+    "task": "procurement",
+    "arm": "plugin",
+    "rep": 2,
+    "author": "claude",
+    "n": 48,
+    "right": 48,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 0.99,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "none": 0.01,
+              "Northwind Systems": 0.99,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 584.8845329999999,
+        "inputTokens": 1339,
+        "listCostUsd": 0.000056238000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 1,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 560.962204,
+        "inputTokens": 1369,
+        "listCostUsd": 0.00005749800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Globex Hardware": 1,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.88
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 463.730809,
+        "inputTokens": 1351,
+        "listCostUsd": 0.00005674200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 1,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 203.201194,
+        "inputTokens": 1374,
+        "listCostUsd": 0.00005770800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-005",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "Contoso Cloud": 0,
+              "none": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 249.589422,
+        "inputTokens": 1356,
+        "listCostUsd": 0.000056952000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-006",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 250.83110999999997,
+        "inputTokens": 1345,
+        "listCostUsd": 0.00005649000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 1,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 228.71002599999986,
+        "inputTokens": 1357,
+        "listCostUsd": 0.00005699400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 230.2538320000001,
+        "inputTokens": 1334,
+        "listCostUsd": 0.000056028000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-009",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 198.49546299999997,
+        "inputTokens": 1345,
+        "listCostUsd": 0.00005649000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-010",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 1,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 223.00038700000005,
+        "inputTokens": 1343,
+        "listCostUsd": 0.00005640600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-011",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Umbrella Data": 1,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 237.3469779999998,
+        "inputTokens": 1333,
+        "listCostUsd": 0.00005598600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 290.92662900000005,
+        "inputTokens": 1334,
+        "listCostUsd": 0.000056028000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 1,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.18
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 261.6941320000001,
+        "inputTokens": 1361,
+        "listCostUsd": 0.000057162000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 1,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.34
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 225.4574630000002,
+        "inputTokens": 1357,
+        "listCostUsd": 0.00005699400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 229.31788000000006,
+        "inputTokens": 1338,
+        "listCostUsd": 0.00005619600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-016",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 1,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 205.65528599999993,
+        "inputTokens": 1355,
+        "listCostUsd": 0.00005691000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-017",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.2
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 233.80735400000003,
+        "inputTokens": 1335,
+        "listCostUsd": 0.00005607000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 1,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.24
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 268.5023809999998,
+        "inputTokens": 1357,
+        "listCostUsd": 0.00005699400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-019",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 0.99,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Northwind Systems": 1,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 271.34019999999987,
+        "inputTokens": 1379,
+        "listCostUsd": 0.00005791800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Contoso Cloud": 1,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 226.74483299999974,
+        "inputTokens": 1357,
+        "listCostUsd": 0.00005699400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 1,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 221.22324700000013,
+        "inputTokens": 1365,
+        "listCostUsd": 0.00005733000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 1,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.9
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 282.657864,
+        "inputTokens": 1345,
+        "listCostUsd": 0.00005649000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-023",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Umbrella Data": 1,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 216.4194779999998,
+        "inputTokens": 1340,
+        "listCostUsd": 0.00005628000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "none": 0,
+              "Hooli Analytics": 1,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 226.73938299999963,
+        "inputTokens": 1349,
+        "listCostUsd": 0.000056658000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 1,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 310.24443599999995,
+        "inputTokens": 1353,
+        "listCostUsd": 0.00005682600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-026",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 1,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 243.91878799999995,
+        "inputTokens": 1358,
+        "listCostUsd": 0.00005703600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-027",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "none": 0,
+              "Globex Hardware": 1,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 256.950503,
+        "inputTokens": 1351,
+        "listCostUsd": 0.00005674200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-028",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 1,
+              "none": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 268.090068,
+        "inputTokens": 1339,
+        "listCostUsd": 0.000056238000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-029",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 1,
+              "none": 0
+            }
+          }
+        },
+        "latencyMs": 308.3377089999999,
+        "inputTokens": 1335,
+        "listCostUsd": 0.00005607000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "none": 0,
+              "Hooli Analytics": 1,
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 235.25946899999963,
+        "inputTokens": 1336,
+        "listCostUsd": 0.00005611200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-031",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 1,
+              "Hooli Analytics": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.23
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 219.378604,
+        "inputTokens": 1359,
+        "listCostUsd": 0.000057078000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-032",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 1,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.29
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 285.8290400000001,
+        "inputTokens": 1369,
+        "listCostUsd": 0.00005749800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-033",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "none": 0,
+              "Globex Hardware": 1,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 217.14174599999978,
+        "inputTokens": 1353,
+        "listCostUsd": 0.00005682600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-034",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Initech Consulting": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 226.83397400000013,
+        "inputTokens": 1357,
+        "listCostUsd": 0.00005699400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-035",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 1,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 219.550702,
+        "inputTokens": 1352,
+        "listCostUsd": 0.00005678400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-036",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 1,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "none": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.18
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 217.80904299999975,
+        "inputTokens": 1360,
+        "listCostUsd": 0.00005712000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-037",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Northwind Systems": 1,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 236.8277039999998,
+        "inputTokens": 1341,
+        "listCostUsd": 0.00005632200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-038",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 226.2466000000004,
+        "inputTokens": 1358,
+        "listCostUsd": 0.00005703600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-039",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 1,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.82
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 256.1048249999999,
+        "inputTokens": 1356,
+        "listCostUsd": 0.000056952000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-040",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 1,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.88
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 231.7217700000001,
+        "inputTokens": 1339,
+        "listCostUsd": 0.000056238000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-041",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "Initech Consulting": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 332.9339580000001,
+        "inputTokens": 1338,
+        "listCostUsd": 0.00005619600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-042",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 360.2651780000001,
+        "inputTokens": 1369,
+        "listCostUsd": 0.00005749800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-043",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 1,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 357.60958200000005,
+        "inputTokens": 1342,
+        "listCostUsd": 0.000056364000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-044",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Contoso Cloud": 1,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 209.97190099999943,
+        "inputTokens": 1352,
+        "listCostUsd": 0.00005678400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-045",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 1,
+              "Umbrella Data": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 274.4856139999997,
+        "inputTokens": 1344,
+        "listCostUsd": 0.000056448000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-046",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Initech Consulting": 1,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 291.9257809999999,
+        "inputTokens": 1348,
+        "listCostUsd": 0.00005661600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-047",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 227.48678399999972,
+        "inputTokens": 1368,
+        "listCostUsd": 0.00005745600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-048",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor_match": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 1,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "role_exception_match": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 293.90489100000013,
+        "inputTokens": 1353,
+        "listCostUsd": 0.00005682600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "procurement-plugin-3-claude",
+    "task": "procurement",
+    "arm": "plugin",
+    "rep": 3,
+    "author": "claude",
+    "n": 48,
+    "right": 48,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-001",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Northwind Systems": 1,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 616.896202,
+        "inputTokens": 1254,
+        "listCostUsd": 0.000052668000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 1,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 595.195024,
+        "inputTokens": 1284,
+        "listCostUsd": 0.00005392800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-003",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 1,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.88
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 686.6738600000001,
+        "inputTokens": 1266,
+        "listCostUsd": 0.000053172000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 1,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 226.04013999999995,
+        "inputTokens": 1289,
+        "listCostUsd": 0.00005413800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-005",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 1,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 206.93089399999997,
+        "inputTokens": 1271,
+        "listCostUsd": 0.000053382000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-006",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 218.52015800000004,
+        "inputTokens": 1260,
+        "listCostUsd": 0.00005292000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 1,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 338.45669,
+        "inputTokens": 1272,
+        "listCostUsd": 0.00005342400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 1,
+              "Initech Consulting": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 232.80003699999997,
+        "inputTokens": 1249,
+        "listCostUsd": 0.000052458000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-009",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Globex Hardware": 1,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 211.60882500000002,
+        "inputTokens": 1260,
+        "listCostUsd": 0.00005292000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-010",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Initech Consulting": 1,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.03
+          }
+        },
+        "latencyMs": 248.09772999999996,
+        "inputTokens": 1258,
+        "listCostUsd": 0.00005283600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-011",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 1,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 278.55811900000003,
+        "inputTokens": 1248,
+        "listCostUsd": 0.00005241600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 1,
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 228.04694799999993,
+        "inputTokens": 1249,
+        "listCostUsd": 0.000052458000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-013",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 1,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 227.61240799999996,
+        "inputTokens": 1276,
+        "listCostUsd": 0.000053592000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-014",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 1,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.19
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 244.70775000000003,
+        "inputTokens": 1272,
+        "listCostUsd": 0.00005342400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 1,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 261.0795370000001,
+        "inputTokens": 1253,
+        "listCostUsd": 0.00005262600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-016",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "none": 0,
+              "Initech Consulting": 1,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 216.66516100000013,
+        "inputTokens": 1270,
+        "listCostUsd": 0.00005334000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-017",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 1,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 231.269859,
+        "inputTokens": 1250,
+        "listCostUsd": 0.00005250000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-018",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 267.6842889999998,
+        "inputTokens": 1272,
+        "listCostUsd": 0.00005342400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-019",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Northwind Systems": 1,
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 362.7114589999999,
+        "inputTokens": 1294,
+        "listCostUsd": 0.00005434800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 1,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 232.74029699999983,
+        "inputTokens": 1272,
+        "listCostUsd": 0.00005342400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-021",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 1,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "none": 0
+            }
+          }
+        },
+        "latencyMs": 314.922423,
+        "inputTokens": 1280,
+        "listCostUsd": 0.00005376000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 1,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 297.7560349999999,
+        "inputTokens": 1260,
+        "listCostUsd": 0.00005292000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-023",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "none": 0,
+              "Initech Consulting": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 1,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 272.0600010000003,
+        "inputTokens": 1255,
+        "listCostUsd": 0.00005271000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-024",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 1,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 247.11542899999995,
+        "inputTokens": 1264,
+        "listCostUsd": 0.000053088000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 1,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 256.7955200000001,
+        "inputTokens": 1268,
+        "listCostUsd": 0.000053256000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-026",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 1,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 403.80694200000016,
+        "inputTokens": 1273,
+        "listCostUsd": 0.000053466000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-027",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 1,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 254.53404900000032,
+        "inputTokens": 1266,
+        "listCostUsd": 0.000053172000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-028",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Initech Consulting": 1,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 325.14726599999995,
+        "inputTokens": 1254,
+        "listCostUsd": 0.000052668000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-029",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 387.57998399999997,
+        "inputTokens": 1250,
+        "listCostUsd": 0.00005250000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-030",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 1,
+              "Northwind Systems": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 217.12280899999996,
+        "inputTokens": 1251,
+        "listCostUsd": 0.000052542000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-031",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 1,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.23
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 210.5204530000001,
+        "inputTokens": 1274,
+        "listCostUsd": 0.00005350800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-032",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 212.6992150000001,
+        "inputTokens": 1284,
+        "listCostUsd": 0.00005392800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-033",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 226.1607180000001,
+        "inputTokens": 1268,
+        "listCostUsd": 0.000053256000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-034",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 1,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 214.0703800000001,
+        "inputTokens": 1272,
+        "listCostUsd": 0.00005342400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-035",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 220.71694200000002,
+        "inputTokens": 1267,
+        "listCostUsd": 0.00005321400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-036",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "none": 0,
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "Northwind Systems": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 211.12097300000005,
+        "inputTokens": 1275,
+        "listCostUsd": 0.00005355000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-037",
+        "tags": [],
+        "gold": {
+          "decision": "needs_manager"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0,
+              "Umbrella Data": 0,
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Northwind Systems": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 218.23272600000018,
+        "inputTokens": 1256,
+        "listCostUsd": 0.000052752000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_manager"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-038",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 1
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 223.67860299999984,
+        "inputTokens": 1273,
+        "listCostUsd": 0.000053466000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-039",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 1,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.87
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 390.77742300000045,
+        "inputTokens": 1271,
+        "listCostUsd": 0.000053382000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-040",
+        "tags": [],
+        "gold": {
+          "decision": "needs_security"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 0,
+              "Globex Hardware": 0,
+              "none": 0,
+              "Initech Consulting": 1,
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 222.52160500000036,
+        "inputTokens": 1254,
+        "listCostUsd": 0.000052668000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_security"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-041",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 1,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Globex Hardware": 0,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 228.045521,
+        "inputTokens": 1253,
+        "listCostUsd": 0.00005262600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-042",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Globex Hardware": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Hooli Analytics": 1,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 235.74572200000011,
+        "inputTokens": 1284,
+        "listCostUsd": 0.00005392800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-043",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Northwind Systems",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 1,
+              "Initech Consulting": 0,
+              "Globex Hardware": 0,
+              "Umbrella Data": 0,
+              "none": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 285.45444499999985,
+        "inputTokens": 1257,
+        "listCostUsd": 0.00005279400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-044",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Contoso Cloud",
+            "confidence": 1,
+            "probabilities": {
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "Contoso Cloud": 1,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "none": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 215.20007199999964,
+        "inputTokens": 1267,
+        "listCostUsd": 0.00005321400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-045",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Globex Hardware",
+            "confidence": 1,
+            "probabilities": {
+              "Hooli Analytics": 0,
+              "Initech Consulting": 0,
+              "Umbrella Data": 0,
+              "none": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 1,
+              "Contoso Cloud": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 219.03980800000045,
+        "inputTokens": 1259,
+        "listCostUsd": 0.000052878000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-046",
+        "tags": [],
+        "gold": {
+          "decision": "approve"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Initech Consulting",
+            "confidence": 1,
+            "probabilities": {
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Hooli Analytics": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0,
+              "Initech Consulting": 1,
+              "Umbrella Data": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 248.8447159999996,
+        "inputTokens": 1263,
+        "listCostUsd": 0.00005304600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "approve"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-047",
+        "tags": [],
+        "gold": {
+          "decision": "reject"
+        },
+        "raw": {
+          "vendor": {
+            "type": "choice",
+            "choice": "Umbrella Data",
+            "confidence": 1,
+            "probabilities": {
+              "Umbrella Data": 1,
+              "Initech Consulting": 0,
+              "Hooli Analytics": 0,
+              "none": 0,
+              "Contoso Cloud": 0,
+              "Northwind Systems": 0,
+              "Globex Hardware": 0
+            }
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "is_director": {
+            "type": "noul",
+            "noul": 0.02
+          }
+        },
+        "latencyMs": 267.7369840000001,
+        "inputTokens": 1283,
+        "listCostUsd": 0.000053886000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "reject"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "procure-048",
+        "tags": [],
+        "gold": {
+          "decision": "needs_finance"
+        },
+        "raw": {
+          "is_director": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "is_software": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "vendor": {
+            "type": "choice",
+            "choice": "Hooli Analytics",
+            "confidence": 1,
+            "probabilities": {
+              "Contoso Cloud": 0,
+              "Globex Hardware": 0,
+              "Hooli Analytics": 1,
+              "Initech Consulting": 0,
+              "Northwind Systems": 0,
+              "Umbrella Data": 0,
+              "none": 0
+            }
+          }
+        },
+        "latencyMs": 338.49624399999993,
+        "inputTokens": 1268,
+        "listCostUsd": 0.000053256000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_finance"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  }
+]

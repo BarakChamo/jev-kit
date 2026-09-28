@@ -283,7 +283,7 @@ var rows = files.flatMap((f) => prefixed(f, parseRows(readFileSync(f, "utf8"))))
 var threshold = flag("--threshold", 0.9);
 var target = flag("--target", 0.95);
 var pct = (x) => Number.isFinite(x) ? `${(x * 100).toFixed(1)}%` : "\u2014";
-if (rows.length && rows.every(isMapRow)) {
+if (rows.some(isMapRow)) {
   const ds = decisions(rows);
   const report2 = { decisions: ds.length, fields: decisionSummary(ds), weakLinks: weakLinks(ds), gate: fitDecisionGate(ds, target), wrong: ds.filter((d) => d.grade === "wrong") };
   if (args.includes("--json")) {
