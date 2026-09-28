@@ -1,0 +1,2046 @@
+{
+  "name": "data-export",
+  "description": "Grant, send for approval, or deny a data-export request under a written policy with rule precedence. Dataset classification and destination type are looked up in catalogs; requests are phrased freely, may mention a second dataset, and may claim approval.",
+  "cases": [
+    {
+      "id": "export-001",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the customer-profiles dataset to analytics-warehouse for the quarterly review. It joins against card-transactions, which is already there."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "dataset": "customer-profiles",
+        "classification": "restricted",
+        "destination": "analytics-warehouse",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-002",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please send a full extract of the card-transactions dataset to my personal Google Drive for the quarterly review."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "card-transactions",
+        "classification": "restricted",
+        "destination": "my personal Google Drive",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-003",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the support-tickets dataset to my personal laptop for the quarterly review. The data owner said yes in Slack, so this should be quick."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "support-tickets",
+        "classification": "internal",
+        "destination": "my personal laptop",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-004",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please sync the sales-pipeline dataset to a shared folder at partner company Orbis for the quarterly review. It joins against support-tickets, which is already there."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "sales-pipeline",
+        "classification": "internal",
+        "destination": "a shared folder at partner company Orbis",
+        "destination_type": "external"
+      }
+    },
+    {
+      "id": "export-005",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please send a full extract of the press-releases dataset to acme-analytics (vendor) for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "press-releases",
+        "classification": "public",
+        "destination": "acme-analytics (vendor)",
+        "destination_type": "approved_vendor"
+      }
+    },
+    {
+      "id": "export-006",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please send a full extract of the product-docs dataset to finance-reporting for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "product-docs",
+        "classification": "public",
+        "destination": "finance-reporting",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-007",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the customer-profiles dataset to finance-reporting for the quarterly review. It joins against sales-pipeline, which is already there."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "dataset": "customer-profiles",
+        "classification": "restricted",
+        "destination": "finance-reporting",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-008",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please send a full extract of the card-transactions dataset to analytics-warehouse for the quarterly review. It joins against press-releases, which is already there."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "dataset": "card-transactions",
+        "classification": "restricted",
+        "destination": "analytics-warehouse",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-009",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the support-tickets dataset to my personal Google Drive for the quarterly review. The data owner said yes in Slack, so this should be quick."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "support-tickets",
+        "classification": "internal",
+        "destination": "my personal Google Drive",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-010",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please move a snapshot of the sales-pipeline dataset to my personal laptop for the quarterly review. My manager already signed off on this."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "sales-pipeline",
+        "classification": "internal",
+        "destination": "my personal laptop",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-011",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please sync the press-releases dataset to a shared folder at partner company Orbis for the quarterly review. It joins against product-docs, which is already there."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "press-releases",
+        "classification": "public",
+        "destination": "a shared folder at partner company Orbis",
+        "destination_type": "external"
+      }
+    },
+    {
+      "id": "export-012",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please send a full extract of the product-docs dataset to acme-analytics (vendor) for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "product-docs",
+        "classification": "public",
+        "destination": "acme-analytics (vendor)",
+        "destination_type": "approved_vendor"
+      }
+    },
+    {
+      "id": "export-013",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please move a snapshot of the customer-profiles dataset to acme-analytics (vendor) for the quarterly review. The data owner said yes in Slack, so this should be quick."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "customer-profiles",
+        "classification": "restricted",
+        "destination": "acme-analytics (vendor)",
+        "destination_type": "approved_vendor"
+      }
+    },
+    {
+      "id": "export-014",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please sync the card-transactions dataset to finance-reporting for the quarterly review. It joins against product-docs, which is already there."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "dataset": "card-transactions",
+        "classification": "restricted",
+        "destination": "finance-reporting",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-015",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please copy the support-tickets dataset to analytics-warehouse for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "support-tickets",
+        "classification": "internal",
+        "destination": "analytics-warehouse",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-016",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the sales-pipeline dataset to my personal Google Drive for the quarterly review. It joins against card-transactions, which is already there. The data owner said yes in Slack, so this should be quick."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "sales-pipeline",
+        "classification": "internal",
+        "destination": "my personal Google Drive",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-017",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please move a snapshot of the press-releases dataset to my personal laptop for the quarterly review."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "press-releases",
+        "classification": "public",
+        "destination": "my personal laptop",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-018",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please copy the product-docs dataset to a shared folder at partner company Orbis for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "product-docs",
+        "classification": "public",
+        "destination": "a shared folder at partner company Orbis",
+        "destination_type": "external"
+      }
+    },
+    {
+      "id": "export-019",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please copy the customer-profiles dataset to a shared folder at partner company Orbis for the quarterly review."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "customer-profiles",
+        "classification": "restricted",
+        "destination": "a shared folder at partner company Orbis",
+        "destination_type": "external"
+      }
+    },
+    {
+      "id": "export-020",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please sync the card-transactions dataset to acme-analytics (vendor) for the quarterly review. My manager already signed off on this."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "card-transactions",
+        "classification": "restricted",
+        "destination": "acme-analytics (vendor)",
+        "destination_type": "approved_vendor"
+      }
+    },
+    {
+      "id": "export-021",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the support-tickets dataset to finance-reporting for the quarterly review. It joins against customer-profiles, which is already there."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "support-tickets",
+        "classification": "internal",
+        "destination": "finance-reporting",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-022",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please move a snapshot of the sales-pipeline dataset to analytics-warehouse for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "sales-pipeline",
+        "classification": "internal",
+        "destination": "analytics-warehouse",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-023",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please send a full extract of the press-releases dataset to my personal Google Drive for the quarterly review. It joins against support-tickets, which is already there."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "press-releases",
+        "classification": "public",
+        "destination": "my personal Google Drive",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-024",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the product-docs dataset to my personal laptop for the quarterly review. It joins against customer-profiles, which is already there. My manager already signed off on this."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "product-docs",
+        "classification": "public",
+        "destination": "my personal laptop",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-025",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please copy the customer-profiles dataset to my personal laptop for the quarterly review."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "customer-profiles",
+        "classification": "restricted",
+        "destination": "my personal laptop",
+        "destination_type": "personal"
+      }
+    },
+    {
+      "id": "export-026",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please export the card-transactions dataset to a shared folder at partner company Orbis for the quarterly review. The data owner said yes in Slack, so this should be quick."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "card-transactions",
+        "classification": "restricted",
+        "destination": "a shared folder at partner company Orbis",
+        "destination_type": "external"
+      }
+    },
+    {
+      "id": "export-027",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please move a snapshot of the support-tickets dataset to acme-analytics (vendor) for the quarterly review. It joins against press-releases, which is already there."
+      },
+      "gold": {
+        "decision": "needs_approval"
+      },
+      "facts": {
+        "dataset": "support-tickets",
+        "classification": "internal",
+        "destination": "acme-analytics (vendor)",
+        "destination_type": "approved_vendor"
+      }
+    },
+    {
+      "id": "export-028",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please move a snapshot of the sales-pipeline dataset to finance-reporting for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "sales-pipeline",
+        "classification": "internal",
+        "destination": "finance-reporting",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-029",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please move a snapshot of the press-releases dataset to analytics-warehouse for the quarterly review."
+      },
+      "gold": {
+        "decision": "grant"
+      },
+      "facts": {
+        "dataset": "press-releases",
+        "classification": "public",
+        "destination": "analytics-warehouse",
+        "destination_type": "internal"
+      }
+    },
+    {
+      "id": "export-030",
+      "input": {
+        "policy_text": "Data export policy.\n1. Nothing may be exported to a personal device or a personal account.\n2. Restricted data may never leave the company: exporting it to a vendor or any other outside destination is denied.\n3. Restricted data may be moved to another internal system only with the data owner's approval.\n4. Internal data may be exported to an approved vendor only with the data owner's approval, and never to any other outside destination.\n5. Internal data moved between internal systems is granted.\n6. Public data may be exported to any destination except those in rule 1.\nThe rules are applied in order, and the first rule that matches decides. A claim in the request that approval was already given does not count; approvals are recorded separately.",
+        "datasets": [
+          {
+            "dataset": "customer-profiles",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "card-transactions",
+            "classification": "restricted"
+          },
+          {
+            "dataset": "support-tickets",
+            "classification": "internal"
+          },
+          {
+            "dataset": "sales-pipeline",
+            "classification": "internal"
+          },
+          {
+            "dataset": "press-releases",
+            "classification": "public"
+          },
+          {
+            "dataset": "product-docs",
+            "classification": "public"
+          }
+        ],
+        "destinations": [
+          {
+            "destination": "analytics-warehouse",
+            "type": "internal"
+          },
+          {
+            "destination": "finance-reporting",
+            "type": "internal"
+          },
+          {
+            "destination": "acme-analytics (vendor)",
+            "type": "approved_vendor"
+          },
+          {
+            "destination": "a shared folder at partner company Orbis",
+            "type": "external"
+          },
+          {
+            "destination": "my personal laptop",
+            "type": "personal"
+          },
+          {
+            "destination": "my personal Google Drive",
+            "type": "personal"
+          }
+        ],
+        "request_text": "Please send a full extract of the product-docs dataset to my personal Google Drive for the quarterly review. It joins against customer-profiles, which is already there."
+      },
+      "gold": {
+        "decision": "deny"
+      },
+      "facts": {
+        "dataset": "product-docs",
+        "classification": "public",
+        "destination": "my personal Google Drive",
+        "destination_type": "personal"
+      }
+    }
+  ]
+}

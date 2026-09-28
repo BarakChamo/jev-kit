@@ -1,14 +1,18 @@
 #!/usr/bin/env -S node --import tsx
 import { readFileSync } from 'node:fs';
 import { basename } from 'node:path';
-import { calibration, confidentlyWrong, diff, fitGate, items, parseRows, probabilityCalibration, topK, type Row } from './index.js';
+import {
+  calibration, confidentlyWrong, decisionSummary, decisions, diff, fitDecisionGate, fitGate, isMapRow, items, parseRows,
+  probabilityCalibration, topK, weakLinks, type Row,
+} from './index.js';
 
 /**
  * jev-audit <results.jsonl ...> [--threshold 0.9] [--target 0.95] [--json]
  * jev-audit diff <before.jsonl> <after.jsonl> [--json]
  *
  * Offline: reads recorded Jev results with gold labels and prints the audits that found real defects
- * in the study behind this package. No API key, no model calls.
+ * in the study behind this package. No API key, no model calls. Results from `jev-run --map` get the
+ * whole-map audit: wrong decisions, the weakest answer behind each, and a gate on that answer.
  */
 const args = process.argv.slice(2);
 
@@ -62,11 +66,55 @@ const prefixed = (file: string, rows: Row[]): Row[] => {
   const tag = basename(file).split('.')[0];
   const re = <T,>(m: Record<string, T> | undefined) =>
     m ? Object.fromEntries(Object.entries(m).map(([k, v]) => [`${tag}/${k}`, v])) : undefined;
-  return rows.map((r) => ({ ...r, gold: re(r.gold)!, raw: re(r.raw), predicted: re(r.predicted), confidence: re(r.confidence) }));
+  return rows.map((r) => ({ ...r, gold: re(r.gold)!, raw: re(r.raw), predicted: re(r.predicted), confidence: re(r.confidence), decision: re(r.decision), grades: re(r.grades) }));
 };
-const all = items(files.flatMap((f) => prefixed(f, parseRows(readFileSync(f, 'utf8')))));
+const rows = files.flatMap((f) => prefixed(f, parseRows(readFileSync(f, 'utf8'))));
 const threshold = flag('--threshold', 0.9);
 const target = flag('--target', 0.95);
+const pct = (x: number) => (Number.isFinite(x) ? `${(x * 100).toFixed(1)}%` : '—');
+
+// Whole-map runs: the gold is keyed by decision field, so the per-answer audits below have nothing to
+// grade. Audit the decisions instead, through the least certain answer behind each.
+if (rows.length && rows.every(isMapRow)) {
+  const ds = decisions(rows);
+  const report = { decisions: ds.length, fields: decisionSummary(ds), weakLinks: weakLinks(ds), gate: fitDecisionGate(ds, target), wrong: ds.filter((d) => d.grade === 'wrong') };
+  if (args.includes('--json')) {
+    console.log(JSON.stringify(report, null, 2));
+    process.exit(0);
+  }
+  const show = (v: unknown) => (typeof v === 'string' ? v : JSON.stringify(v));
+  const out: string[] = [`# jev-audit — map run, ${report.decisions} graded decisions`, ''];
+  out.push('| decision | n | right | wrong | abstain | accuracy | coverage |', '| --- | ---: | ---: | ---: | ---: | ---: | ---: |');
+  for (const f of report.fields) out.push(`| ${f.field} | ${f.n} | ${f.right} | ${f.wrong} | ${f.abstain} | ${pct(f.accuracy)} | ${pct(f.coverage)} |`);
+
+  out.push('', `## Wrong decisions — ${report.wrong.length}`, '');
+  out.push('Read these first. The weakest answer is the least certain read behind the decision: the likeliest');
+  out.push('culprit when it is low. A wrong decision whose weakest answer is still sure came from the code in');
+  out.push('`decide()` or from a question that is confidently wrong, and a gate cannot catch it.', '');
+  if (report.wrong.length) {
+    out.push('| case | decision | gold | map decided | weakest answer | certainty |', '| --- | --- | --- | --- | --- | ---: |');
+    for (const d of report.wrong.slice(0, 40)) {
+      out.push(`| ${d.caseId} | ${d.field} | ${show(d.gold)} | ${show(d.decision)} | ${d.weakest?.question ?? '—'} | ${d.weakest ? d.weakest.certainty.toFixed(2) : '—'} |`);
+    }
+  } else out.push('None.');
+
+  if (report.weakLinks.some((w) => w.wrong)) {
+    out.push('', '## Weak links', '', 'How often each question was the least certain answer behind a wrong or a right decision.', '');
+    out.push('| question | in wrong decisions | in right decisions |', '| --- | ---: | ---: |');
+    for (const w of report.weakLinks.filter((w) => w.wrong).slice(0, 15)) out.push(`| ${w.question} | ${w.wrong} | ${w.right} |`);
+  }
+
+  const g = report.gate;
+  out.push('', `## Gate for ${pct(target)} precision, on the weakest answer`, '');
+  out.push('| threshold | coverage | precision | wrong decisions removed | right decisions lost |', '| ---: | ---: | ---: | ---: | ---: |');
+  out.push(`| ${g.threshold === null ? 'unreachable' : g.threshold.toFixed(3)} | ${pct(g.coverage)} | ${pct(g.precision)} | ${g.wrongRemoved} | ${g.rightLost} |`);
+  out.push('', 'In `decide()`, return "abstain" when any answer the decision uses is less certain than the threshold.');
+  out.push('Fit it on held-out cases: a gate fitted on the cases it is judged on is an upper bound.');
+  console.log(out.join('\n'));
+  process.exit(0);
+}
+
+const all = items(rows);
 
 const report = {
   answers: all.length,
@@ -82,7 +130,6 @@ if (args.includes('--json')) {
   process.exit(0);
 }
 
-const pct = (x: number) => (Number.isFinite(x) ? `${(x * 100).toFixed(1)}%` : '—');
 const out: string[] = [`# jev-audit — ${report.answers} graded answers`, ''];
 
 out.push(`## Confidently wrong (confidence ≥ ${threshold}) — ${report.confidentlyWrong.errors.length} cases`, '');

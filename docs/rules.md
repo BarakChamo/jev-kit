@@ -223,6 +223,10 @@ elsewhere.
 | anything defined by a class: retry if the cause is flaky or infrastructure (+12.5 to +29) | a long AND: five facts at 100/95/90/87/67% multiply to 49.5% |
 | a short OR of reliable flags (+10) | a verdict the facts don't determine: "addresses a machine" is not "attacks it" (−27) |
 
+When a written policy maps facts to outcomes, ask for each fact the rules branch on and apply the rules in order in
+code. Don't ask for the outcome. On access requests, every wrong decision left after the round-2 fixes came from
+maps that asked "should this be denied?" and got "needs approval" back at 0.57–0.63.
+
 **Held.** Across twenty measured cases, deriving helped by up to 58 points and hurt by up to 34. The difference
 was whether the facts were reliable and jointly sufficient.
 

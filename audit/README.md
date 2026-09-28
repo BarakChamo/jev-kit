@@ -9,6 +9,7 @@ Offline audits for recorded [Jev](https://docs.typesafe.ai) results. No API key 
 | top-2 recall | what showing a person two labels is worth |
 | gate | the lowest threshold that hits a target precision, and how much it automates |
 | diff | before/after per field: fixed, broken, flipped, and a sign test |
+| map runs | wrong decisions with the weakest answer behind each, weak-link questions, and a gate on the weakest answer |
 
 Run it from this folder, with no install:
 
@@ -21,7 +22,7 @@ The package is ready for npm as `@barakchamo/jev-audit` but not yet published. T
 package on npm is an unrelated project, so don't `npx jev-audit`.
 
 ```js
-import { items, parseRows, confidentlyWrong, calibration, fitGate, diff } from '@barakchamo/jev-audit';
+import { items, parseRows, confidentlyWrong, calibration, fitGate, diff, decisions, fitDecisionGate } from '@barakchamo/jev-audit';
 ```
 
 Input is one JSON object per line: `{ caseId, gold: { field: label }, raw: { field: <Jev answer> } }`.

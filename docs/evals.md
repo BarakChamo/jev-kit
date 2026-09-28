@@ -13,6 +13,7 @@ skills themselves were measured, what the results were, and what changed because
 | [Held-out tasks](#held-out-tasks) | Does it transfer to new tasks and another model? | 53 maps | 84–94% → 97–100% where there was headroom |
 | [Rule probes](#rule-probes) | Do the rules hold in other domains? | 10 rules × 3 domains | 7 held, 2 held under their condition, 1 narrowed |
 | [Other vendors' models](#other-vendors-models) | Does it work for models other than Claude? | 266 maps, 10 models | wrong decisions fell for every model family |
+| [Policy outcomes](#policy-outcomes) | Does telling agents not to ask for a policy's outcome help? | 12 maps, 2 tasks | access requests 5 → 1 wrong in 90; the new task was at the ceiling |
 
 ## How a map is graded
 
@@ -173,10 +174,27 @@ and some models reasoned past their output or stream limit before writing code:
 - GLM 5.3 produced no code for 5 of 15 maps even with a 64k output budget.
 - Claude Code agents, which can run their maps, had none of these failures in 60 maps.
 
-**Access requests are still the weakest task.** Every remaining wrong decision there answers an admin request
-with "needs approval" instead of "deny". These errors are cautious, but the plugin isn't ahead on that task.
+**Access requests were the weakest task.** Every remaining wrong decision there answered an admin request with
+"needs approval" instead of "deny". The next round traced and fixed that (see [Policy outcomes](#policy-outcomes)).
 
 [Full results, models used, and skill versions](../evals/heldout2/README.md).
+
+## Policy outcomes
+
+The last weak spot after round 2 was access requests. Every remaining wrong decision there answered an admin request
+with "needs approval" instead of "deny". `jev-audit` traced each one to the same kind of question: maps asking Jev
+for the policy's outcome ("does the policy prohibit this request?") instead of reading the facts the rules depend
+on. The skill now says so explicitly. It was tested on a new pre-registered task, data-export, and re-checked on access
+requests.
+
+| task | no plugin | before the change | after |
+| --- | ---: | ---: | ---: |
+| data-export, wrong decisions (held out) | 1 / 90 | 0 / 90 | 0 / 90 |
+| access requests, wrong decisions (used for tuning) | 0 / 90 | 5 / 90 | **1 / 90** |
+
+The new task was too easy to separate the two versions. Across both tasks, every wrong decision by a plugin map
+(6 of 6) came from a map that asked Jev for this request's outcome. Maps that read the facts, or read the policy
+table once, made none in 270 cases. [Details](../evals/heldout3/README.md).
 
 ## Reproduce
 

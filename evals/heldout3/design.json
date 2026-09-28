@@ -1,0 +1,172 @@
+[
+  {
+    "dir": "heldout3/maps-base",
+    "map": "data-export-base-1-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "decide_customer_profiles",
+      "decide_card_transactions",
+      "decide_support_tickets",
+      "decide_sales_pipeline",
+      "decide_press_releases",
+      "decide_product_docs"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-base",
+    "map": "data-export-base-2-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "decision"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-base",
+    "map": "data-export-base-3-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "decision"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-v42",
+    "map": "data-export-plugin-1-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "combo_restricted__internal",
+      "combo_restricted__approved_vendor",
+      "combo_restricted__external",
+      "combo_restricted__personal",
+      "combo_internal__internal",
+      "combo_internal__approved_vendor",
+      "combo_internal__external",
+      "combo_internal__personal",
+      "combo_public__internal",
+      "combo_public__approved_vendor",
+      "combo_public__external",
+      "combo_public__personal"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-v42",
+    "map": "data-export-plugin-2-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "policy__restricted__internal",
+      "policy__restricted__approved_vendor",
+      "policy__restricted__external",
+      "policy__restricted__personal",
+      "policy__internal__internal",
+      "policy__internal__approved_vendor",
+      "policy__internal__external",
+      "policy__internal__personal",
+      "policy__public__internal",
+      "policy__public__approved_vendor",
+      "policy__public__external",
+      "policy__public__personal"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-v42",
+    "map": "data-export-plugin-3-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "outcome_0_0",
+      "outcome_0_1",
+      "outcome_0_2",
+      "outcome_0_3",
+      "outcome_0_4",
+      "outcome_0_5",
+      "outcome_1_0",
+      "outcome_1_1",
+      "outcome_1_2",
+      "outcome_1_3",
+      "outcome_1_4",
+      "outcome_1_5",
+      "outcome_2_0",
+      "outcome_2_1",
+      "outcome_2_2",
+      "outcome_2_3",
+      "outcome_2_4",
+      "outcome_2_5"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-v43",
+    "map": "data-export-plugin-1-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "rule_restricted_internal",
+      "rule_restricted_approved_vendor",
+      "rule_restricted_external",
+      "rule_restricted_personal",
+      "rule_internal_internal",
+      "rule_internal_approved_vendor",
+      "rule_internal_external",
+      "rule_internal_personal",
+      "rule_public_internal",
+      "rule_public_approved_vendor",
+      "rule_public_external",
+      "rule_public_personal"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-v43",
+    "map": "data-export-plugin-2-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  },
+  {
+    "dir": "heldout3/maps-v43",
+    "map": "data-export-plugin-3-claude",
+    "task": "data-export",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  },
+  {
+    "dir": "heldout3/maps-access-v43",
+    "map": "access-request-plugin-1-claude",
+    "task": "access-request",
+    "loaded": true,
+    "asksOutcome": false,
+    "outcomeQuestions": []
+  },
+  {
+    "dir": "heldout3/maps-access-v43",
+    "map": "access-request-plugin-2-claude",
+    "task": "access-request",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "policy_requires_approval"
+    ]
+  },
+  {
+    "dir": "heldout3/maps-access-v43",
+    "map": "access-request-plugin-3-claude",
+    "task": "access-request",
+    "loaded": true,
+    "asksOutcome": true,
+    "outcomeQuestions": [
+      "admin_forbidden",
+      "contractor_prod_forbidden"
+    ]
+  }
+]

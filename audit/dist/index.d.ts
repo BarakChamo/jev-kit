@@ -38,6 +38,10 @@ export type Row = {
     raw?: Record<string, Answer | undefined>;
     predicted?: Record<string, string | undefined>;
     confidence?: Record<string, number | undefined>;
+    /** A whole-map run (`jev-run --map`): the map's decision per gold field, and its grade. */
+    decision?: Record<string, unknown>;
+    grades?: Record<string, string>;
+    error?: string;
 };
 /** One graded answer, whatever primitive produced it. */
 export type Item = {
@@ -161,3 +165,62 @@ export type FieldDiff = {
  * when accuracy does not move. Re-run the comparator arm too: a clearer question helps every model.
  */
 export declare function diff(before: Item[], after: Item[]): FieldDiff[];
+/** How sure one answer is: a noul's distance from its nearer end, a choice's or score's top probability. */
+export declare function answerCertainty(answer: Answer): number;
+export type Decision = {
+    caseId: string;
+    field: string;
+    gold: unknown;
+    decision: unknown;
+    grade: 'right' | 'wrong' | 'abstain';
+    /** the least certain answer behind the decision; null when the map asked Jev nothing for this case */
+    weakest: {
+        question: string;
+        certainty: number;
+    } | null;
+};
+/** True for rows written by `jev-run --map`. */
+export declare const isMapRow: (row: Row) => boolean;
+/** One graded decision per (case, decision field) of a map run. Rows that errored are skipped. */
+export declare function decisions(rows: Row[]): Decision[];
+export type DecisionField = {
+    field: string;
+    n: number;
+    right: number;
+    wrong: number;
+    abstain: number;
+    accuracy: number;
+    wrongRate: number;
+    coverage: number;
+};
+/** Right / wrong / abstain per decision field. */
+export declare function decisionSummary(all: Decision[]): DecisionField[];
+export type WeakLink = {
+    question: string;
+    wrong: number;
+    right: number;
+};
+/**
+ * Which question was the least certain answer behind each decision, counted separately for wrong and
+ * right decisions. A question that is the weak link in many wrong decisions and few right ones is the
+ * first one to read.
+ */
+export declare function weakLinks(all: Decision[]): WeakLink[];
+export type DecisionGate = {
+    target: number;
+    /** send a case to a person when its weakest answer is below this; null if no threshold reaches the target */
+    threshold: number | null;
+    /** share of all cases the map still decides with the gate */
+    coverage: number;
+    precision: number;
+    /** wrong decisions the gate turns into abstentions */
+    wrongRemoved: number;
+    /** right decisions it turns into abstentions */
+    rightLost: number;
+};
+/**
+ * Fit a gate on the weakest answer behind each decision: the lowest threshold at which the decisions
+ * kept reach the target precision. Cases the map already abstained on stay abstained. Decisions made
+ * without asking Jev anything count as certain.
+ */
+export declare function fitDecisionGate(all: Decision[], target?: number): DecisionGate;

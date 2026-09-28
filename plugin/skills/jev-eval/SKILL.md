@@ -17,15 +17,15 @@ Both are plain Node 18+, with nothing to install. They live in `scripts/`, i.e.
 | tool | what it does | needs a key? |
 | --- | --- | --- |
 | `jev-run.mjs` | runs a suite through Jev and writes one JSONL row per case | yes, `AI_GATEWAY_API_KEY` (not for `--check`) |
-| `jev-audit.mjs` | confidently-wrong queue, calibration, top-2 recall, a fitted gate | no |
-| `jev-audit.mjs diff` | before/after per field, with a sign test | no |
+| `jev-audit.mjs` | confidently-wrong queue, calibration, top-2 recall, a fitted gate. On a `--map` run: wrong decisions with the weakest answer behind each, the questions that keep being the weak link, and a gate on the weakest answer | no |
+| `jev-audit.mjs diff` | before/after per field (or per decision, for two map runs), with a sign test | no |
 
 ```bash
 node jev-run.mjs suite.json --check                   # validate against API limits, no calls
 node jev-run.mjs suite.json --out base.jsonl          # field-level run
 node jev-run.mjs suite.json --map map.mjs             # whole-map run (standard interface)
 node jev-run.mjs suite.json --pad 4000 --out pad.jsonl  # pad test
-node jev-audit.mjs base.jsonl                         # audit
+node jev-audit.mjs base.jsonl                         # audit (a map run gets the decision audit)
 node jev-audit.mjs diff base.jsonl fixed.jsonl        # did the change do anything?
 ```
 

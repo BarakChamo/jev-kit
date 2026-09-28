@@ -7,6 +7,7 @@ true" and puts "what to do" in code.
 | pattern | rule | measured |
 | --- | --- | --- |
 | [Derive the action from a classification](#derive-the-action-from-a-classification) | 12 | 80.0% → 92.5% |
+| [Apply a written policy in code](#apply-a-written-policy-in-code) | 12 | wrong outcomes at 0.57–0.63 → facts read at 0.9+ |
 | [Read dates exactly, compute in code](#read-dates-exactly-compute-in-code) | 9 | 64–75% → 30/30 |
 | [Compare two estimated quantities in code](#compare-two-estimated-quantities-in-code) | 8 | 41.7% → 100% when a side is computed |
 | [Ask whether it includes the excluded thing](#ask-whether-it-includes-the-excluded-thing) | 7 | 10/12 → 12/12 |
@@ -39,6 +40,31 @@ const questions = {
 const { cause } = (await ask(state, questions)).answers;
 const retry = cause.choice === 'flaky_test' || cause.choice === 'infrastructure';
 ```
+
+## Apply a written policy in code
+
+```ts
+// not: "Under `policy`, should `request` go ahead, wait for the change board, or be refused?"
+//      the outcome question came back at 0.57–0.63 and picked the milder outcome where the policy refuses
+// but: read each fact the rules branch on, then apply the rules in order
+const questions = (input) => ({
+  service: { type: 'choice', instructions: 'Which service in `catalog` does `request` deploy?',
+             criteria: Object.fromEntries(input.catalog.map((c) => [c.service, null])) },
+  kind:    { type: 'choice', instructions: 'What kind of change does `request` describe?',
+             criteria: { feature: 'new or changed behaviour', hotfix: 'a fix for a live incident', config: 'settings only' } },
+});
+const decide = (a, input) => {
+  const tier = input.catalog.find((c) => c.service === a.service.choice)?.tier;        // lookups in code
+  const frozen = input.freeze_active;                                                  // known facts in code
+  if (frozen && tier === 'critical' && a.kind.choice !== 'hotfix') return 'refuse';     // rule 1
+  if (frozen || tier === 'critical') return 'change_board';                            // rule 2
+  return 'go_ahead';                                                                   // rule 3
+};
+```
+
+Jev reads the facts reliably, and code applies the rules reliably. Asking Jev to combine them is what goes wrong.
+Facts that are already structured in the input (a catalog entry, a flag, the requester's role) stay out of the
+questions entirely.
 
 ## Read dates exactly, compute in code
 
@@ -131,6 +157,9 @@ const next = p >= GATES.high.act ? 'allow' : p >= GATES.high.review ? 'ask_human
 ```
 
 ## Detector question beside a manipulable judgment
+
+For a judgment no written rule settles. When a written policy decides, apply it in code
+([above](#apply-a-written-policy-in-code)) and keep the detector as a veto.
 
 ```ts
 const questions = {

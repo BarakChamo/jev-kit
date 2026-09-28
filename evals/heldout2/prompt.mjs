@@ -25,6 +25,11 @@ export const TASKS = {
     text: 'When a CI job fails, we want to automatically point developers at the single log line that states the cause of the failure. We have thousands of failures a day. Build this on Jev.',
     out: '{ culprit_line: <0-based index into input.log_lines> | "abstain" }',
   },
+  'data-export': {
+    text: 'Teams request data exports in free text. For each request, decide: grant, needs_approval, or deny, under our written data export policy and the dataset and destination catalogs. We handle thousands of requests a week. Build this on Jev.',
+    out: '{ decision: "grant" | "needs_approval" | "deny" | "abstain" }',
+    suite: '../heldout3/data-export.json',
+  },
   'expense-review': {
     text: 'Employees submit expense lines. For each line decide: approve, needs_approval (manager must approve), or reject, under our written travel and expense policy (limits in USD; convert foreign currency at the rates provided). We process hundreds of thousands of lines a month. Build this on Jev.',
     out: '{ decision: "approve" | "needs_approval" | "reject" | "abstain" }',

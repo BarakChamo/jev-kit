@@ -1,0 +1,6773 @@
+[
+  {
+    "map": "access-request-plugin-1-claude",
+    "task": "access-request",
+    "arm": "plugin",
+    "rep": 1,
+    "author": "claude",
+    "n": 30,
+    "right": 30,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-001",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "unclear": 0,
+              "search-cluster": 0,
+              "billing-db": 1,
+              "hr-portal": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "admin": 0,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "automatic": 1,
+              "manager_approval": 0,
+              "unclear": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "automatic": 0,
+              "manager_approval": 1,
+              "unclear": 0,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 1,
+              "automatic": 0,
+              "manager_approval": 0,
+              "unclear": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 562.440719,
+        "inputTokens": 1621,
+        "listCostUsd": 0.000068082,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 0.98,
+            "probabilities": {
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "billing-db-replica": 0.01,
+              "unclear": 0,
+              "ml-feature-store": 0,
+              "search-sandbox": 0.99,
+              "hr-portal": 0,
+              "billing-db": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "security_approval": 0,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 1
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 481.527104,
+        "inputTokens": 1634,
+        "listCostUsd": 0.00006862800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-003",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "unclear": 0,
+              "ci-runners": 1,
+              "ml-feature-store": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "admin": 1,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "unclear": 0,
+              "automatic": 1,
+              "security_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "unclear": 0,
+              "automatic": 0,
+              "manager_approval": 1,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "unclear": 0,
+              "automatic": 0,
+              "security_approval": 1,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 544.625714,
+        "inputTokens": 1623,
+        "listCostUsd": 0.00006816600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "search-cluster": 1,
+              "ml-feature-store": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "billing-db": 0,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 1,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "security_approval": 0,
+              "manager_approval": 0,
+              "unclear": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "manager_approval": 1,
+              "unclear": 0,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "manager_approval": 0,
+              "unclear": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 214.59291500000006,
+        "inputTokens": 1620,
+        "listCostUsd": 0.00006804,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-005",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 1,
+              "billing-db": 0,
+              "unclear": 0,
+              "ci-runners": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "security_approval": 0,
+              "unclear": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "unclear": 0,
+              "manager_approval": 1,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "unclear": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 243.32918300000006,
+        "inputTokens": 1623,
+        "listCostUsd": 0.00006816600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-006",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "billing-db": 0,
+              "billing-db-replica": 1,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 1,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 1,
+              "manager_approval": 0,
+              "security_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "manager_approval": 1,
+              "security_approval": 0,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "manager_approval": 0,
+              "security_approval": 1,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 213.3591530000001,
+        "inputTokens": 1624,
+        "listCostUsd": 0.00006820800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-007",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "hr-portal": 1,
+              "search-sandbox": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 1,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "denied": 0,
+              "manager_approval": 1,
+              "security_approval": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 1
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 234.91674899999998,
+        "inputTokens": 1635,
+        "listCostUsd": 0.00006867,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-008",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "billing-db": 1,
+              "unclear": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "admin": 1,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "unclear": 0,
+              "automatic": 1,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "unclear": 0,
+              "automatic": 0,
+              "manager_approval": 1,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 1,
+              "unclear": 0,
+              "automatic": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 339.79338799999994,
+        "inputTokens": 1618,
+        "listCostUsd": 0.00006795600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-009",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "unclear": 0,
+              "search-sandbox": 1,
+              "billing-db": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "write": 0,
+              "read": 1
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "denied": 0,
+              "unclear": 0,
+              "automatic": 1,
+              "security_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 1,
+              "denied": 0,
+              "unclear": 0,
+              "automatic": 0,
+              "security_approval": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "denied": 0,
+              "unclear": 0,
+              "automatic": 0,
+              "security_approval": 1
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 252.40302300000008,
+        "inputTokens": 1624,
+        "listCostUsd": 0.00006820800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-010",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "search-sandbox": 0,
+              "search-cluster": 0,
+              "billing-db-replica": 0,
+              "ci-runners": 1,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "unclear": 0,
+              "automatic": 1,
+              "security_approval": 0,
+              "manager_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "automatic": 0,
+              "unclear": 0,
+              "manager_approval": 1,
+              "security_approval": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "automatic": 0,
+              "unclear": 0,
+              "manager_approval": 0,
+              "security_approval": 1
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 225.10172199999988,
+        "inputTokens": 1624,
+        "listCostUsd": 0.00006820800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-011",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "search-cluster": 1,
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "unclear": 0,
+              "hr-portal": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "write": 0,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "automatic": 1,
+              "unclear": 0,
+              "denied": 0,
+              "security_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 1,
+              "automatic": 0,
+              "unclear": 0,
+              "denied": 0,
+              "security_approval": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "automatic": 0,
+              "security_approval": 1,
+              "denied": 0,
+              "unclear": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 351.3944700000002,
+        "inputTokens": 1630,
+        "listCostUsd": 0.00006846,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "billing-db": 0,
+              "ci-runners": 0,
+              "billing-db-replica": 0,
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "read": 0,
+              "write": 1
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "manager_approval": 0,
+              "unclear": 0,
+              "denied": 0,
+              "security_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "manager_approval": 1,
+              "unclear": 0,
+              "security_approval": 0,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "manager_approval": 0,
+              "unclear": 0,
+              "denied": 0,
+              "security_approval": 1
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 257.5824849999999,
+        "inputTokens": 1620,
+        "listCostUsd": 0.00006804,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-013",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "search-cluster": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "billing-db": 0,
+              "ci-runners": 0,
+              "billing-db-replica": 1,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.97,
+            "probabilities": {
+              "read": 0,
+              "write": 0.02,
+              "admin": 0.98
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 0.99,
+            "probabilities": {
+              "unclear": 0,
+              "denied": 0.01,
+              "manager_approval": 0,
+              "security_approval": 0,
+              "automatic": 0.99
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 1,
+              "security_approval": 0,
+              "automatic": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 1,
+              "automatic": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 229.49051399999985,
+        "inputTokens": 1625,
+        "listCostUsd": 0.00006825,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-014",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 1,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db": 0,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "read": 1
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "automatic": 1,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "automatic": 0,
+              "unclear": 0,
+              "manager_approval": 1,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 1,
+              "automatic": 0,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 243.86777200000006,
+        "inputTokens": 1632,
+        "listCostUsd": 0.00006854400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "hr-portal": 0,
+              "billing-db": 1,
+              "search-cluster": 0,
+              "ml-feature-store": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "unclear": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "read": 0,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 0,
+              "unclear": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "manager_approval": 1,
+              "denied": 0,
+              "unclear": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "manager_approval": 0,
+              "denied": 0,
+              "unclear": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 228.725418,
+        "inputTokens": 1622,
+        "listCostUsd": 0.00006812400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-016",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 1,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "admin": 0,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "unclear": 0,
+              "automatic": 1,
+              "security_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 1,
+              "unclear": 0,
+              "automatic": 0,
+              "security_approval": 0,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "unclear": 0,
+              "automatic": 0,
+              "security_approval": 1,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 252.3681469999999,
+        "inputTokens": 1621,
+        "listCostUsd": 0.000068082,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-017",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "ci-runners": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "write": 1,
+              "read": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 1,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "denied": 0,
+              "manager_approval": 1,
+              "security_approval": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 1
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 227.28217599999994,
+        "inputTokens": 1627,
+        "listCostUsd": 0.00006833400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-018",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "billing-db": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "unclear": 0,
+              "hr-portal": 0,
+              "search-cluster": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.98,
+            "probabilities": {
+              "write": 0.01,
+              "admin": 0.99,
+              "read": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "unclear": 0,
+              "manager_approval": 0,
+              "automatic": 1,
+              "security_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "security_approval": 0,
+              "manager_approval": 1,
+              "unclear": 0,
+              "automatic": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "automatic": 0,
+              "manager_approval": 0,
+              "security_approval": 1,
+              "unclear": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 278.50623399999995,
+        "inputTokens": 1632,
+        "listCostUsd": 0.00006854400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-019",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 0.99,
+            "probabilities": {
+              "ml-feature-store": 1,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "unclear": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "admin": 0,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "security_approval": 0,
+              "unclear": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "unclear": 0,
+              "manager_approval": 1,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "unclear": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 275.6609649999998,
+        "inputTokens": 1636,
+        "listCostUsd": 0.00006871200000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "unclear": 0,
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "billing-db-replica": 1,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "automatic": 1,
+              "unclear": 0,
+              "denied": 0,
+              "security_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 1,
+              "automatic": 0,
+              "unclear": 0,
+              "denied": 0,
+              "security_approval": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "manager_approval": 0,
+              "automatic": 0,
+              "unclear": 0,
+              "denied": 0,
+              "security_approval": 1
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 209.59680700000013,
+        "inputTokens": 1628,
+        "listCostUsd": 0.00006837600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-021",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 0.99,
+            "probabilities": {
+              "search-sandbox": 0,
+              "hr-portal": 0.99,
+              "search-cluster": 0.01,
+              "billing-db": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "admin": 0,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "unclear": 0,
+              "automatic": 1,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "unclear": 0,
+              "automatic": 0,
+              "manager_approval": 1,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 1,
+              "unclear": 0,
+              "automatic": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.97
+          }
+        },
+        "latencyMs": 258.0776320000002,
+        "inputTokens": 1649,
+        "listCostUsd": 0.000069258,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "billing-db": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "security_approval": 0,
+              "manager_approval": 0,
+              "denied": 0,
+              "unclear": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 1
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "manager_approval": 0,
+              "denied": 0,
+              "unclear": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 250.48589999999967,
+        "inputTokens": 1620,
+        "listCostUsd": 0.00006804,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-023",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "search-sandbox": 1,
+              "billing-db": 0,
+              "unclear": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.97,
+            "probabilities": {
+              "read": 0,
+              "admin": 0.98,
+              "write": 0.02
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "security_approval": 0,
+              "denied": 0,
+              "manager_approval": 0,
+              "unclear": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "denied": 0,
+              "manager_approval": 1,
+              "unclear": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "unclear": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 284.7922050000002,
+        "inputTokens": 1628,
+        "listCostUsd": 0.00006837600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-024",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "read": 1,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 0,
+              "unclear": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "denied": 0,
+              "manager_approval": 1,
+              "security_approval": 0,
+              "unclear": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "denied": 0,
+              "manager_approval": 0,
+              "security_approval": 1,
+              "unclear": 0
+            }
+          },
+          "target_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "billing-db-replica": 0,
+              "ci-runners": 1,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "search-sandbox": 0,
+              "unclear": 0
+            }
+          }
+        },
+        "latencyMs": 334.33623599999964,
+        "inputTokens": 1642,
+        "listCostUsd": 0.00006896400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "search-sandbox": 0,
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "billing-db-replica": 0,
+              "unclear": 0,
+              "search-cluster": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "security_approval": 0,
+              "manager_approval": 0,
+              "automatic": 1,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "security_approval": 0,
+              "manager_approval": 1,
+              "denied": 0,
+              "automatic": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "security_approval": 1,
+              "manager_approval": 0,
+              "denied": 0,
+              "automatic": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 242.9783050000001,
+        "inputTokens": 1628,
+        "listCostUsd": 0.00006837600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-026",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 0.98,
+            "probabilities": {
+              "billing-db": 0,
+              "search-cluster": 0.01,
+              "hr-portal": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0.99
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "write": 0,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "manager_approval": 0,
+              "unclear": 0,
+              "security_approval": 0,
+              "automatic": 1
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "manager_approval": 1,
+              "unclear": 0,
+              "security_approval": 0,
+              "automatic": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "denied": 0,
+              "manager_approval": 0,
+              "unclear": 0,
+              "security_approval": 1,
+              "automatic": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 230.0144449999998,
+        "inputTokens": 1631,
+        "listCostUsd": 0.000068502,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-027",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 0.99,
+            "probabilities": {
+              "billing-db-replica": 1,
+              "search-sandbox": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db": 0,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "automatic": 1,
+              "unclear": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 0,
+              "automatic": 0,
+              "unclear": 0,
+              "manager_approval": 1,
+              "denied": 0
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "security_approval": 1,
+              "automatic": 0,
+              "unclear": 0,
+              "manager_approval": 0,
+              "denied": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 217.99451500000032,
+        "inputTokens": 1634,
+        "listCostUsd": 0.00006862800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-028",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "hr-portal": 1,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "search-sandbox": 0,
+              "billing-db": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 1,
+              "read": 0,
+              "write": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 1,
+              "security_approval": 0,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "security_approval": 0,
+              "denied": 0,
+              "manager_approval": 1
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "automatic": 0,
+              "security_approval": 1,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 206.08803400000033,
+        "inputTokens": 1629,
+        "listCostUsd": 0.00006841800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-029",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "billing-db": 1,
+              "search-sandbox": 0,
+              "search-cluster": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "read": 1
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "denied": 0,
+              "unclear": 0,
+              "security_approval": 0,
+              "manager_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "denied": 0,
+              "unclear": 0,
+              "security_approval": 0,
+              "manager_approval": 1
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "denied": 0,
+              "unclear": 0,
+              "security_approval": 1,
+              "manager_approval": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 231.45166800000015,
+        "inputTokens": 1634,
+        "listCostUsd": 0.00006862800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-030",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "target_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "billing-db-replica": 0,
+              "unclear": 0,
+              "ml-feature-store": 0,
+              "search-sandbox": 1,
+              "hr-portal": 0,
+              "billing-db": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "admin_never_allowed": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_barred_from_prod": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_requirement": {
+            "type": "choice",
+            "choice": "automatic",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 1,
+              "security_approval": 0,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "nonprod_write_requirement": {
+            "type": "choice",
+            "choice": "manager_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 0,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 1
+            }
+          },
+          "prod_requirement_general": {
+            "type": "choice",
+            "choice": "security_approval",
+            "confidence": 1,
+            "probabilities": {
+              "automatic": 0,
+              "security_approval": 1,
+              "unclear": 0,
+              "denied": 0,
+              "manager_approval": 0
+            }
+          },
+          "oncall_engineer_prod_read_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 212.37918600000012,
+        "inputTokens": 1633,
+        "listCostUsd": 0.00006858600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "access-request-plugin-2-claude",
+    "task": "access-request",
+    "arm": "plugin",
+    "rep": 2,
+    "author": "claude",
+    "n": 30,
+    "right": 28,
+    "wrong": 1,
+    "abstain": 1,
+    "errors": 0,
+    "accuracy": 0.9333333333333333,
+    "wrongRate": 0.03333333333333333,
+    "coverage": 0.9666666666666667,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-001",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "hr-portal": 0,
+              "unspecified_or_other": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "billing-db": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "unspecified": 0,
+              "read": 1
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 558.1420390000001,
+        "inputTokens": 1689,
+        "listCostUsd": 0.000070938,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "billing-db": 0,
+              "unspecified_or_other": 0,
+              "search-sandbox": 1,
+              "billing-db-replica": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "unspecified": 0,
+              "admin": 0,
+              "write": 1
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 567.121838,
+        "inputTokens": 1702,
+        "listCostUsd": 0.00007148400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-003",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "ci-runners": 1,
+              "search-cluster": 0,
+              "search-sandbox": 0,
+              "unspecified_or_other": 0,
+              "billing-db": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 0,
+              "admin": 1,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.81
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.23
+          }
+        },
+        "latencyMs": 529.8801980000001,
+        "inputTokens": 1691,
+        "listCostUsd": 0.00007102200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "unspecified_or_other": 0,
+              "billing-db": 0,
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "search-cluster": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "unspecified": 0,
+              "read": 1
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 242.35472800000002,
+        "inputTokens": 1688,
+        "listCostUsd": 0.00007089600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-005",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified_or_other": 0,
+              "billing-db": 0,
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 1,
+              "billing-db-replica": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "read": 0,
+              "unspecified": 0,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.54
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.36
+          }
+        },
+        "latencyMs": 200.92379800000003,
+        "inputTokens": 1691,
+        "listCostUsd": 0.00007102200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "abstain"
+        },
+        "grades": {
+          "decision": "abstain"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-006",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "unspecified_or_other": 0,
+              "search-cluster": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 1,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "write": 0,
+              "admin": 0,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.12
+          }
+        },
+        "latencyMs": 233.92915900000003,
+        "inputTokens": 1692,
+        "listCostUsd": 0.00007106400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-007",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "hr-portal": 1,
+              "ml-feature-store": 0,
+              "billing-db": 0,
+              "billing-db-replica": 0,
+              "search-cluster": 0,
+              "unspecified_or_other": 0,
+              "search-sandbox": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "write": 1,
+              "admin": 0,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.15
+          }
+        },
+        "latencyMs": 286.1309080000001,
+        "inputTokens": 1703,
+        "listCostUsd": 0.000071526,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-008",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "unspecified_or_other": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "unspecified": 0,
+              "read": 0,
+              "admin": 1
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.82
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.19
+          }
+        },
+        "latencyMs": 249.91869599999995,
+        "inputTokens": 1686,
+        "listCostUsd": 0.00007081200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-009",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "unspecified_or_other": 0,
+              "search-sandbox": 1,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "admin": 0,
+              "write": 0,
+              "read": 1
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.81
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.18
+          }
+        },
+        "latencyMs": 230.52615900000012,
+        "inputTokens": 1692,
+        "listCostUsd": 0.00007106400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-010",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "ci-runners": 1,
+              "ml-feature-store": 0,
+              "billing-db": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "unspecified": 0,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.94
+          }
+        },
+        "latencyMs": 217.79193099999998,
+        "inputTokens": 1692,
+        "listCostUsd": 0.00007106400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-011",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "unspecified_or_other": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "search-cluster": 1,
+              "ci-runners": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "admin": 0,
+              "write": 0,
+              "read": 1
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.8
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.35
+          }
+        },
+        "latencyMs": 204.77303499999994,
+        "inputTokens": 1698,
+        "listCostUsd": 0.000071316,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "hr-portal": 0,
+              "search-sandbox": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 1,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 304.5560529999998,
+        "inputTokens": 1688,
+        "listCostUsd": 0.00007089600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-013",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "billing-db": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 1,
+              "ci-runners": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.96,
+            "probabilities": {
+              "read": 0,
+              "unspecified": 0,
+              "admin": 0.98,
+              "write": 0.02
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.74
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.27
+          }
+        },
+        "latencyMs": 185.745944,
+        "inputTokens": 1693,
+        "listCostUsd": 0.000071106,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-014",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified_or_other": 0,
+              "hr-portal": 1,
+              "search-cluster": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "billing-db": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 1,
+              "admin": 0,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.96
+          }
+        },
+        "latencyMs": 256.63336000000004,
+        "inputTokens": 1700,
+        "listCostUsd": 0.00007140000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "billing-db": 1,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "write": 1,
+              "read": 0,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 210.17432099999996,
+        "inputTokens": 1690,
+        "listCostUsd": 0.00007098000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-016",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "unspecified_or_other": 0,
+              "hr-portal": 0,
+              "billing-db": 0,
+              "search-sandbox": 1,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "read": 1,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.12
+          }
+        },
+        "latencyMs": 294.27258499999994,
+        "inputTokens": 1689,
+        "listCostUsd": 0.000070938,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-017",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 1,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "search-sandbox": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "read": 0,
+              "unspecified": 0,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.54
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.73
+          }
+        },
+        "latencyMs": 236.09939499999996,
+        "inputTokens": 1695,
+        "listCostUsd": 0.00007119000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-018",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "search-cluster": 1,
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ci-runners": 0,
+              "unspecified_or_other": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.98,
+            "probabilities": {
+              "unspecified": 0,
+              "read": 0,
+              "write": 0.02,
+              "admin": 0.98
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.83
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.35
+          }
+        },
+        "latencyMs": 242.22299700000008,
+        "inputTokens": 1700,
+        "listCostUsd": 0.00007140000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-019",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified_or_other": 0,
+              "search-sandbox": 0,
+              "billing-db": 0,
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 1,
+              "billing-db-replica": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 1,
+              "unspecified": 0,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.11
+          }
+        },
+        "latencyMs": 200.22190199999977,
+        "inputTokens": 1704,
+        "listCostUsd": 0.000071568,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified_or_other": 0,
+              "billing-db": 0,
+              "search-sandbox": 0,
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "billing-db-replica": 1,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "read": 0,
+              "unspecified": 0,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.67
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.55
+          }
+        },
+        "latencyMs": 238.66083099999992,
+        "inputTokens": 1696,
+        "listCostUsd": 0.00007123200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-021",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "unspecified_or_other": 0,
+              "hr-portal": 1,
+              "ci-runners": 0,
+              "billing-db-replica": 0,
+              "search-cluster": 0,
+              "search-sandbox": 0,
+              "billing-db": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "read": 1,
+              "write": 0,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.69
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.36
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.24
+          }
+        },
+        "latencyMs": 243.27220199999988,
+        "inputTokens": 1717,
+        "listCostUsd": 0.00007211400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "billing-db-replica": 0,
+              "search-cluster": 0,
+              "unspecified_or_other": 0,
+              "search-sandbox": 0,
+              "billing-db": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.04
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 220.50235599999996,
+        "inputTokens": 1688,
+        "listCostUsd": 0.00007089600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-023",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "billing-db": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.93,
+            "probabilities": {
+              "write": 0.05,
+              "read": 0,
+              "admin": 0.95,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.62
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.58
+          }
+        },
+        "latencyMs": 263.17053799999985,
+        "inputTokens": 1696,
+        "listCostUsd": 0.00007123200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-024",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 1,
+              "ml-feature-store": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "hr-portal": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 0.98,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "unspecified": 0.01,
+              "read": 0.99
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.23
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.65
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.21
+          }
+        },
+        "latencyMs": 268.74774800000023,
+        "inputTokens": 1710,
+        "listCostUsd": 0.00007182000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "search-cluster": 1,
+              "billing-db": 0,
+              "search-sandbox": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "read": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.93
+          }
+        },
+        "latencyMs": 204.29483700000037,
+        "inputTokens": 1696,
+        "listCostUsd": 0.00007123200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-026",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "ci-runners": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "ml-feature-store": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 1,
+              "unspecified": 0,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.11
+          }
+        },
+        "latencyMs": 241.74519999999984,
+        "inputTokens": 1699,
+        "listCostUsd": 0.000071358,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-027",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "search-cluster": 0,
+              "billing-db-replica": 1,
+              "search-sandbox": 0,
+              "unspecified_or_other": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "read": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.08
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 382.5403489999999,
+        "inputTokens": 1702,
+        "listCostUsd": 0.00007148400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-028",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 1,
+              "billing-db": 0,
+              "unspecified_or_other": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 0,
+              "admin": 1,
+              "unspecified": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.03
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.09
+          }
+        },
+        "latencyMs": 287.98632399999997,
+        "inputTokens": 1697,
+        "listCostUsd": 0.00007127400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-029",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "unspecified_or_other": 0,
+              "billing-db": 1,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "read": 1,
+              "admin": 0,
+              "write": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.95
+          }
+        },
+        "latencyMs": 345.2631190000002,
+        "inputTokens": 1702,
+        "listCostUsd": 0.00007148400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-030",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "requested_system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "unspecified_or_other": 0,
+              "search-sandbox": 1,
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unspecified": 0,
+              "write": 1,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "policy_denies": {
+            "type": "noul",
+            "noul": 0.16
+          },
+          "policy_grants_without_approval": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "policy_requires_approval": {
+            "type": "noul",
+            "noul": 0.87
+          }
+        },
+        "latencyMs": 234.27487400000018,
+        "inputTokens": 1701,
+        "listCostUsd": 0.00007144200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "access-request-plugin-3-claude",
+    "task": "access-request",
+    "arm": "plugin",
+    "rep": 3,
+    "author": "claude",
+    "n": 30,
+    "right": 30,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-001",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 1,
+              "ml-feature-store": 0,
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "write": 0,
+              "admin": 0,
+              "read": 1
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 520.427739,
+        "inputTokens": 1619,
+        "listCostUsd": 0.00006799800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-002",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 0.99,
+            "probabilities": {
+              "search-cluster": 0,
+              "search-sandbox": 0.99,
+              "billing-db-replica": 0,
+              "billing-db": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "unclear": 0.01,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "unclear": 0,
+              "write": 1,
+              "read": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 562.858437,
+        "inputTokens": 1632,
+        "listCostUsd": 0.00006854400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-003",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "ci-runners": 1,
+              "search-cluster": 0,
+              "unclear": 0,
+              "search-sandbox": 0,
+              "billing-db": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "read": 0,
+              "admin": 1,
+              "unclear": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 567.746137,
+        "inputTokens": 1621,
+        "listCostUsd": 0.000068082,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-004",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 1,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "billing-db": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "unclear": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "unclear": 0,
+              "write": 0,
+              "read": 1
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 215.7771489999999,
+        "inputTokens": 1618,
+        "listCostUsd": 0.00006795600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-005",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 1,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db": 0,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "write": 1,
+              "unclear": 0,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 231.96985499999994,
+        "inputTokens": 1621,
+        "listCostUsd": 0.000068082,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-006",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "unclear": 0,
+              "billing-db-replica": 1,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "admin": 0,
+              "read": 1,
+              "write": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 221.177277,
+        "inputTokens": 1622,
+        "listCostUsd": 0.00006812400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-007",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 0.99,
+            "probabilities": {
+              "billing-db": 0,
+              "search-cluster": 0,
+              "hr-portal": 0.99,
+              "unclear": 0.01,
+              "billing-db-replica": 0,
+              "ci-runners": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "unclear": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 214.50519899999995,
+        "inputTokens": 1633,
+        "listCostUsd": 0.00006858600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-008",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "billing-db": 1,
+              "unclear": 0,
+              "ci-runners": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "read": 0,
+              "admin": 1,
+              "write": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 226.61071099999992,
+        "inputTokens": 1616,
+        "listCostUsd": 0.000067872,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-009",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "hr-portal": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "billing-db": 0,
+              "search-sandbox": 1,
+              "search-cluster": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "unclear": 0,
+              "read": 1,
+              "admin": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 319.3268579999999,
+        "inputTokens": 1622,
+        "listCostUsd": 0.00006812400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-010",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "ml-feature-store": 0,
+              "ci-runners": 1,
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "unclear": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "write": 1,
+              "admin": 0,
+              "unclear": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 219.47952600000008,
+        "inputTokens": 1622,
+        "listCostUsd": 0.00006812400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-011",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "unclear": 0,
+              "billing-db-replica": 0,
+              "search-cluster": 1,
+              "ci-runners": 0,
+              "billing-db": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "admin": 0,
+              "read": 1,
+              "write": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 258.58498099999997,
+        "inputTokens": 1628,
+        "listCostUsd": 0.00006837600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-012",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 1,
+              "billing-db": 0,
+              "unclear": 0,
+              "ci-runners": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "unclear": 0,
+              "admin": 0,
+              "write": 1
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 288.22607300000004,
+        "inputTokens": 1618,
+        "listCostUsd": 0.00006795600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-013",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "billing-db": 0,
+              "search-sandbox": 0,
+              "unclear": 0,
+              "ci-runners": 0,
+              "billing-db-replica": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.96,
+            "probabilities": {
+              "read": 0,
+              "admin": 0.97,
+              "unclear": 0.02,
+              "write": 0.01
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.91
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 222.90435000000002,
+        "inputTokens": 1623,
+        "listCostUsd": 0.00006816600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-014",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "unclear": 0,
+              "search-cluster": 0,
+              "billing-db": 0,
+              "hr-portal": 1,
+              "search-sandbox": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "read": 1,
+              "admin": 0,
+              "unclear": 0,
+              "write": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 263.95355199999995,
+        "inputTokens": 1630,
+        "listCostUsd": 0.00006846,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-015",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 1,
+              "search-sandbox": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "billing-db-replica": 0,
+              "unclear": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "read": 0,
+              "write": 1,
+              "admin": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 205.008016,
+        "inputTokens": 1620,
+        "listCostUsd": 0.00006804,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-016",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 1,
+              "billing-db-replica": 0,
+              "billing-db": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 0,
+              "unclear": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "unclear": 0,
+              "read": 1
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 216.67068299999983,
+        "inputTokens": 1619,
+        "listCostUsd": 0.00006799800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-017",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "hr-portal": 0,
+              "ml-feature-store": 0,
+              "billing-db": 0,
+              "unclear": 0,
+              "search-sandbox": 0,
+              "ci-runners": 1,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 0.99,
+            "probabilities": {
+              "write": 1,
+              "unclear": 0,
+              "admin": 0,
+              "read": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 265.64389400000005,
+        "inputTokens": 1625,
+        "listCostUsd": 0.00006825,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-018",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "search-cluster": 1,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "billing-db": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.95,
+            "probabilities": {
+              "read": 0,
+              "unclear": 0.02,
+              "admin": 0.97,
+              "write": 0.01
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 279.302514,
+        "inputTokens": 1630,
+        "listCostUsd": 0.00006846,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-019",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "ml-feature-store": 1,
+              "search-sandbox": 0,
+              "billing-db": 0,
+              "ci-runners": 0,
+              "unclear": 0,
+              "hr-portal": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "read": 1,
+              "unclear": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 236.4442200000001,
+        "inputTokens": 1634,
+        "listCostUsd": 0.00006862800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-020",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "unclear": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db-replica": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "unclear": 0,
+              "write": 1,
+              "read": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 222.225729,
+        "inputTokens": 1626,
+        "listCostUsd": 0.000068292,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-021",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 0.96,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 0,
+              "hr-portal": 0.97,
+              "search-cluster": 0,
+              "ci-runners": 0,
+              "billing-db": 0,
+              "unclear": 0.03
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "unclear": 0,
+              "admin": 0,
+              "read": 1
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 261.3494230000001,
+        "inputTokens": 1647,
+        "listCostUsd": 0.00006917400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-022",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 0,
+              "ml-feature-store": 0,
+              "unclear": 0,
+              "hr-portal": 0,
+              "billing-db": 1
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "write": 1,
+              "unclear": 0,
+              "admin": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 232.03171399999997,
+        "inputTokens": 1618,
+        "listCostUsd": 0.00006795600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-023",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db": 0,
+              "search-cluster": 0,
+              "unclear": 0,
+              "hr-portal": 0,
+              "billing-db-replica": 0,
+              "search-sandbox": 1,
+              "ci-runners": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 0.94,
+            "probabilities": {
+              "read": 0,
+              "unclear": 0.03,
+              "write": 0.02,
+              "admin": 0.95
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 228.05925800000023,
+        "inputTokens": 1626,
+        "listCostUsd": 0.000068292,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-024",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ci-runners",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "billing-db": 0,
+              "ci-runners": 1,
+              "unclear": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 0.99,
+            "probabilities": {
+              "admin": 0,
+              "unclear": 0.01,
+              "read": 0.99,
+              "write": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 225.01005299999997,
+        "inputTokens": 1640,
+        "listCostUsd": 0.00006888,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-025",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-cluster",
+            "confidence": 1,
+            "probabilities": {
+              "search-sandbox": 0,
+              "search-cluster": 1,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "unclear": 0,
+              "ml-feature-store": 0,
+              "billing-db": 0,
+              "billing-db-replica": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "write": 1,
+              "read": 0,
+              "admin": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 241.38230900000008,
+        "inputTokens": 1626,
+        "listCostUsd": 0.000068292,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-026",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "ml-feature-store",
+            "confidence": 0.99,
+            "probabilities": {
+              "search-sandbox": 0,
+              "billing-db": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "ml-feature-store": 1,
+              "billing-db-replica": 0,
+              "unclear": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "write": 0,
+              "read": 1,
+              "admin": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 237.7556800000002,
+        "inputTokens": 1629,
+        "listCostUsd": 0.00006841800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-027",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db-replica",
+            "confidence": 1,
+            "probabilities": {
+              "search-cluster": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 1,
+              "hr-portal": 0,
+              "billing-db": 0,
+              "ci-runners": 0,
+              "unclear": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 1,
+            "probabilities": {
+              "admin": 0,
+              "unclear": 0,
+              "write": 1,
+              "read": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 267.359817,
+        "inputTokens": 1632,
+        "listCostUsd": 0.00006854400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-028",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "hr-portal",
+            "confidence": 1,
+            "probabilities": {
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "unclear": 0,
+              "hr-portal": 1,
+              "ml-feature-store": 0,
+              "billing-db-replica": 0,
+              "billing-db": 0,
+              "search-sandbox": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "admin",
+            "confidence": 1,
+            "probabilities": {
+              "unclear": 0,
+              "write": 0,
+              "read": 0,
+              "admin": 1
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.95
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.99
+          }
+        },
+        "latencyMs": 233.86303699999962,
+        "inputTokens": 1627,
+        "listCostUsd": 0.00006833400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-029",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "billing-db",
+            "confidence": 1,
+            "probabilities": {
+              "ml-feature-store": 0,
+              "billing-db": 1,
+              "ci-runners": 0,
+              "unclear": 0,
+              "search-sandbox": 0,
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "search-cluster": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 1,
+            "probabilities": {
+              "write": 0,
+              "admin": 0,
+              "unclear": 0,
+              "read": 1
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.93
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.96
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 207.10686799999985,
+        "inputTokens": 1632,
+        "listCostUsd": 0.00006854400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "access-030",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "system": {
+            "type": "choice",
+            "choice": "search-sandbox",
+            "confidence": 1,
+            "probabilities": {
+              "billing-db-replica": 0,
+              "hr-portal": 0,
+              "ci-runners": 0,
+              "search-cluster": 0,
+              "unclear": 0,
+              "search-sandbox": 1,
+              "billing-db": 0,
+              "ml-feature-store": 0
+            }
+          },
+          "access_level": {
+            "type": "choice",
+            "choice": "write",
+            "confidence": 0.99,
+            "probabilities": {
+              "write": 1,
+              "read": 0,
+              "admin": 0,
+              "unclear": 0
+            }
+          },
+          "admin_forbidden": {
+            "type": "noul",
+            "noul": 0.92
+          },
+          "contractor_prod_forbidden": {
+            "type": "noul",
+            "noul": 0.97
+          },
+          "nonprod_read_auto_grant": {
+            "type": "noul",
+            "noul": 0.98
+          },
+          "nonprod_write_needs_manager_approval": {
+            "type": "noul",
+            "noul": 0.99
+          },
+          "prod_access_needs_security_approval": {
+            "type": "noul",
+            "noul": 0.94
+          },
+          "oncall_engineer_read_prod_exception": {
+            "type": "noul",
+            "noul": 0.98
+          }
+        },
+        "latencyMs": 218.6512889999999,
+        "inputTokens": 1631,
+        "listCostUsd": 0.000068502,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  }
+]

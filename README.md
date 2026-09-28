@@ -193,12 +193,26 @@ Each run writes one JSON line per case (`--out` sets the file) and prints a summ
 
 ### `jev-audit`: analyse results offline
 
-Audits need results graded per question: a suite's own questions, not a map's decisions. They make no API calls.
+Audits read the JSON lines `jev-run` writes, and make no API calls.
 
 ```bash
-jev-audit results.jsonl                           # confidently wrong cases, calibration, top-2 recall, a gate
+jev-audit results.jsonl                           # audit a run
 jev-audit results.jsonl --target 0.95             # fit the gate for 95% precision
 jev-audit diff before.jsonl after.jsonl           # which cases a change fixed or broke, and whether it's real
+```
+
+For a map run (`--map`), the audit lists every wrong decision with the least certain answer behind it, ranks
+the questions that keep being that weak link, and fits a gate on the weakest answer: below the threshold,
+`decide()` should abstain. For a run graded per question, it lists confidently wrong answers, checks
+calibration and top-2 recall, and fits a gate per question.
+
+On a real map from the evaluations, the audit points at the one question behind every wrong decision:
+
+```text
+| case       | gold | map decided    | weakest answer | certainty |
+| access-003 | deny | needs_approval | deny           |      0.59 |
+| access-013 | deny | needs_approval | deny           |      0.57 |
+| access-023 | deny | needs_approval | deny           |      0.63 |
 ```
 
 Run on the recorded support-triage results in `evals/`:
@@ -304,7 +318,7 @@ The full format, including suites that grade questions directly, is in
 | `jev-questions` | write, review, or fix a map: 16 rules, the map interface, a review checklist | [SKILL.md](plugin/skills/jev-questions/SKILL.md) · [patterns](plugin/skills/jev-questions/references/patterns.md) |
 | `jev-eval` | build a labelled suite, grade a map, fit a gate, compare two versions | [SKILL.md](plugin/skills/jev-eval/SKILL.md) |
 | `jev-run` | run a suite or a whole map through Jev; `--check` validates offline | `jev-run.mjs --help` |
-| `jev-audit` | find confidently wrong answers, check calibration, fit a gate, diff two runs | [`audit/`](audit) |
+| `jev-audit` | find wrong decisions and their weakest answers, check calibration, fit a gate, diff two runs | [`audit/`](audit) |
 
 ## The rules
 
@@ -335,6 +349,7 @@ written with or without the plugin.
 | Held-out tasks | 53 maps, 2 agent models | reply exposure 84–88% → 97–98%; a third task tied at 100%; a fourth was later used for tuning |
 | Rule probes | 10 rules × 3 domains | 7 held everywhere, 2 held under their stated condition, 1 narrowed |
 | Other models | 266 maps from Claude Code and 9 other models | wrong decisions fell for every model family; SLA breach 15.6% → 1.1% |
+| Policy outcomes | 12 maps, 2 tasks | access requests 5 → 1 wrong decision in 90, after telling agents not to ask Jev for a policy's outcome |
 
 The first version of the plugin made one task worse, raising wrong decisions from 13% to 46%. Reading Jev's
 wrong answers produced the rules that fixed it. [The evaluations in detail](docs/evals.md).

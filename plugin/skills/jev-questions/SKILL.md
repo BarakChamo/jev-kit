@@ -90,6 +90,7 @@ one that fails, even if you leave it unchanged.
 - [ ] Does it ask Jev to **compare** against something it must first compute: a deadline, "on time", a limit given as a rule, a period in other units? (rule 8)
 - [ ] Does it ask Jev to do **date or number arithmetic**? (rule 9)
 - [ ] Does it ask for an **action** or a **counterfactual** instead of a present fact? (rules 5, 12)
+- [ ] Does any question ask Jev for a **written policy's outcome** (grant or deny, eligible, breached, approve)? Ask for each fact the policy branches on (who, what, where, which level), and apply the rules in order in code. (rule 12)
 - [ ] Is it **compound**, or does it ask whether something *is* a kind rather than *includes* it? (rules 6, 7)
 - [ ] Does it name the **field** it reads, with every fact it needs in the state? (rules 1, 2)
 - [ ] Does it pick **one of many** with a `noul` per item, or pre-filter candidates in code? (rules 10, 16)
@@ -189,6 +190,13 @@ sufficient.**
 | a comparison of quantities (+58, +43) | a weighted holistic judgment (−3 to −9 if derived) |
 | anything defined by a class: "retry iff cause ∈ {flaky, infra}" (+12.5 to +29) | a long AND: five facts at 100/95/90/87/67% multiply to 49.5% |
 | a short OR of reliable flags (+10) | a verdict the facts do not determine: "addresses a machine" ≠ "attacks it" (−27) |
+
+- *A written policy is the common case.* When a policy maps facts to outcomes (grant, needs approval, deny),
+  ask Jev for each fact the rules branch on, and apply the rules in order in code. Don't ask for the outcome.
+  On access requests, every wrong decision left after v4.2 came from maps that asked it: an admin request
+  answered "needs approval" instead of "deny", with the outcome question at 0.57–0.63.
+  Reading the policy *table* is different and fine: "under these rules, ignoring any request, what is the outcome
+  for restricted data sent to an internal system?" is a constant. Read it once and pin it (rule 13).
 
 **13. Gate on the probability of the label you act on, fit the threshold per question, and never let
 doubt relax a decision.**

@@ -1,0 +1,218 @@
+{
+  "model": "zai/glm-5.3",
+  "agreement": 1,
+  "parsed": 30,
+  "disputed": [],
+  "rows": [
+    {
+      "id": "export-001",
+      "gold": "needs_approval",
+      "got": "needs_approval",
+      "agree": true,
+      "reasoning": "customer-profiles is classified restricted; analytics-warehouse is internal. Rule 2 doesn't apply (not outside company); rule 3 matches: restricted data may move to another internal system only with the data owner's approval, which isn't recorded in this request. So the export needs approval."
+    },
+    {
+      "id": "export-002",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the \"card-transactions\" dataset to \"my personal Google Drive\". Looking up the dataset in the catalog: card-transactions has classification \"restricted\". Looking up the destination: \"my personal Google Drive\" is of type \"personal\" (a personal account). Applying the policy rules in order: Rule 1 states that nothing may be exported to a personal device or a personal account"
+    },
+    {
+      "id": "export-003",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the dataset \"support-tickets\" to \"my personal laptop\". Looking up the dataset in the catalog: support-tickets has classification \"internal\". Looking up the destination: \"my personal laptop\" has type \"personal\". Applying the policy rules in order: Rule 1 states that nothing may be exported to a personal device or a personal account. The destination is a personal laptop (a"
+    },
+    {
+      "id": "export-004",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the \"sales-pipeline\" dataset to \"a shared folder at partner company Orbis\". Looking up the catalogs: sales-pipeline is classified \"internal\", and the Orbis shared folder is a destination of type \"external\" (not an approved vendor, not internal). Applying the policy in order: Rule 1 doesn't match (destination is not personal). Rule 2 doesn't match (data is internal, not r"
+    },
+    {
+      "id": "export-005",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "Step 1: Identify the dataset and destination from the request. The request asks to export the \"press-releases\" dataset to \"acme-analytics (vendor)\".\n\nStep 2: Look up classifications and types. In the datasets catalog, \"press-releases\" has classification \"public\". In the destinations catalog, \"acme-analytics (vendor)\" has type \"approved_vendor\".\n\nStep 3: Apply policy_text in order:\n- Rule 1 (no exp"
+    },
+    {
+      "id": "export-006",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "The request asks to export the product-docs dataset to finance-reporting. Looking up the catalogs: product-docs is classified \"public\", and finance-reporting is an \"internal\" destination. Applying the policy in order: Rule 1 doesn't match (destination is internal, not a personal device/account). Rules 2-4 don't match (data is public, not restricted or internal). Rule 5 doesn't match (data is publi"
+    },
+    {
+      "id": "export-007",
+      "gold": "needs_approval",
+      "got": "needs_approval",
+      "agree": true,
+      "reasoning": "Step 1 — Identify the export: The request asks to export the \"customer-profiles\" dataset to \"finance-reporting\". (The sales-pipeline mention is context about a join target already in place, not an export.) Step 2 — Look up classification: customer-profiles is classified \"restricted\". Step 3 — Look up destination type: finance-reporting is \"internal\". Step 4 — Apply policy rules in order: Rule 1 (p"
+    },
+    {
+      "id": "export-008",
+      "gold": "needs_approval",
+      "got": "needs_approval",
+      "agree": true,
+      "reasoning": "card-transactions is restricted; analytics-warehouse is internal. Rule 2 (restricted to outside) doesn't apply since destination is internal. Rule 3: restricted data may move to another internal system only with the data owner's approval, and no approval is recorded in the request."
+    },
+    {
+      "id": "export-009",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "Step 1: The request asks to export the \"support-tickets\" dataset to \"my personal Google Drive\".\n\nStep 2: Catalog lookups:\n- \"support-tickets\" has classification: internal\n- \"my personal Google Drive\" has type: personal\n\nStep 3: Apply policy rules in order:\n- Rule 1: \"Nothing may be exported to a personal device or a personal account.\" The destination is a personal Google Drive, which is a personal"
+    },
+    {
+      "id": "export-010",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "Sales-pipeline is internal-classified data, but the destination is a personal laptop (personal). Rule 1 states nothing may be exported to a personal device, and it matches first in order. The manager's claimed sign-off does not count per the policy. Deny."
+    },
+    {
+      "id": "export-011",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "The request asks to export the \"press-releases\" dataset to \"a shared folder at partner company Orbis\". Press-releases is classified \"public\"; the destination type is \"external\" (not personal, not restricted-relevant). Applying the policy rules in order: Rule 1 (personal device/account) doesn't match since the destination is external. Rules 2-3 concern restricted data — press-releases is public, so"
+    },
+    {
+      "id": "export-012",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "The request asks to export the product-docs dataset to acme-analytics (vendor). Looking up the catalogs: product-docs has classification \"public\", and acme-analytics (vendor) has type \"approved_vendor\". Applying the policy rules in order: Rule 1 (personal device/account) doesn't apply since the destination is an approved vendor, not personal. Rule 2 doesn't apply because the data is public, not re"
+    },
+    {
+      "id": "export-013",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request exports the \"customer-profiles\" dataset (classification: restricted) to \"acme-analytics (vendor)\" (type: approved_vendor). Applying the policy in order: Rule 1 doesn't match (destination is a vendor, not a personal device/account). Rule 2 matches: restricted data may never leave the company, and exporting it to a vendor or any other outside destination is denied. The vendor is an outsi"
+    },
+    {
+      "id": "export-014",
+      "gold": "needs_approval",
+      "got": "needs_approval",
+      "agree": true,
+      "reasoning": "The request asks to export the card-transactions dataset to the finance-reporting destination (product-docs is only mentioned as already being there for a join, not as an export target). Looking up card-transactions in the dataset catalog gives classification \"restricted\". Looking up finance-reporting in the destination catalog gives type \"internal\". Applying policy rules in order: Rule 1 (persona"
+    },
+    {
+      "id": "export-015",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "The request asks to export the \"support-tickets\" dataset to \"analytics-warehouse\". Looking up the dataset in the catalog: support-tickets has classification \"internal\". Looking up the destination in the catalog: analytics-warehouse has type \"internal\".\n\nApplying the policy rules in order:\n1. Personal device/account? No — destination is internal, not personal. No match.\n2. Restricted data leaving t"
+    },
+    {
+      "id": "export-016",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "Step 1 – Identify the export: the request asks to export the \"sales-pipeline\" dataset. The reference to card-transactions only notes it already joins against data at the destination; it is not the dataset being exported.\n\nStep 2 – Look up classification: sales-pipeline is classified \"internal\" in the datasets catalog.\n\nStep 3 – Look up destination: \"my personal Google Drive\" is type \"personal\" in "
+    },
+    {
+      "id": "export-017",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the \"press-releases\" dataset (classification: public) to \"my personal laptop\" (type: personal). Applying the policy rules in order: Rule 1 states nothing may be exported to a personal device or personal account. The destination \"my personal laptop\" is a personal device, so Rule 1 matches first and decides the outcome — deny. Although the data is public (which rule 6 woul"
+    },
+    {
+      "id": "export-018",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "The request asks to export the \"product-docs\" dataset to \"a shared folder at partner company Orbis\". Looking up the catalogs: product-docs is classified \"public\", and the Orbis shared folder is a destination of type \"external\". Applying the policy in order: Rule 1 does not match (destination is not a personal device/account). Rule 2 does not match (data is not restricted). Rule 3 does not match (n"
+    },
+    {
+      "id": "export-019",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the \"customer-profiles\" dataset to \"a shared folder at partner company Orbis\". Looking up the dataset: customer-profiles has classification \"restricted\". Looking up the destination: a shared folder at partner company Orbis has type \"external\" (outside the company).\n\nApplying the policy rules in order:\n- Rule 1 (personal device/account): The destination is external, not p"
+    },
+    {
+      "id": "export-020",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the dataset \"card-transactions\" to \"acme-analytics (vendor)\". Looking up the catalogs: card-transactions has classification \"restricted\", and acme-analytics (vendor) is of type \"approved_vendor\" (an outside destination).\n\nApplying the policy in order:\n- Rule 1 (personal device/account): the destination is a vendor, not personal, so no match.\n- Rule 2 (restricted data may"
+    },
+    {
+      "id": "export-021",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "The request asks to export the support-tickets dataset to finance-reporting. Looking up the catalogs: support-tickets is classified \"internal\", and finance-reporting is a destination of type \"internal\". The mention of customer-profiles is context only — it is already at the destination and is not being exported, so its \"restricted\" classification does not apply here.\n\nApplying the policy in order:"
+    },
+    {
+      "id": "export-022",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "Step 1: The request asks to move the dataset \"sales-pipeline\" to the destination \"analytics-warehouse\". Step 2: Catalog lookups — sales-pipeline has classification \"internal\"; analytics-warehouse has type \"internal\". Step 3: Apply policy_text rules in order. Rule 1 (personal device/account) does not match since the destination is internal. Rule 2 does not match since the data is not restricted. Ru"
+    },
+    {
+      "id": "export-023",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the press-releases dataset (classification: public) to \"my personal Google Drive\" (type: personal). Applying the policy in order: Rule 1 states nothing may be exported to a personal device or personal account. The destination is a personal account (personal Google Drive), so rule 1 matches first and the export is denied. Rules 2-6 (including rule 6 permitting public data"
+    },
+    {
+      "id": "export-024",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the dataset \"product-docs\" to the destination \"my personal laptop\". Looking up the catalogs: product-docs is classified \"public\", and \"my personal laptop\" is of type \"personal\". Applying the policy in order: Rule 1 states that nothing may be exported to a personal device or a personal account. The destination is a personal laptop (a personal device), so Rule 1 matches fi"
+    },
+    {
+      "id": "export-025",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the \"customer-profiles\" dataset to \"my personal laptop\". Looking up the dataset in the catalog: customer-profiles is classified \"restricted\". Looking up the destination in the catalog: \"my personal laptop\" is of type \"personal\" (a personal device). Applying the policy in order: Rule 1 states that nothing may be exported to a personal device or personal account. The desti"
+    },
+    {
+      "id": "export-026",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the card-transactions dataset (classification: restricted) to \"a shared folder at partner company Orbis\" (destination type: external, i.e., an outside destination). Applying the policy in order: Rule 1 does not apply (not a personal device/account). Rule 2 applies: restricted data may never leave the company — exporting it to a vendor or any other outside destination is "
+    },
+    {
+      "id": "export-027",
+      "gold": "needs_approval",
+      "got": "needs_approval",
+      "agree": true,
+      "reasoning": "The request asks to export the support-tickets dataset (classification: internal) to acme-analytics (vendor) (type: approved_vendor). Applying the policy in order: Rule 1 (personal device/account) doesn't match since the destination is a vendor. Rule 2 (restricted data) doesn't match since support-tickets is internal. Rule 3 doesn't apply (not restricted data, not an internal system move). Rule 4 "
+    },
+    {
+      "id": "export-028",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "sales-pipeline is classified internal; finance-reporting is an internal system. Rule 5: internal data moved between internal systems is granted."
+    },
+    {
+      "id": "export-029",
+      "gold": "grant",
+      "got": "grant",
+      "agree": true,
+      "reasoning": "The request asks to move the press-releases dataset to analytics-warehouse. Looking up the catalogs: press-releases has classification \"public\", and analytics-warehouse has type \"internal\". Applying the policy rules in order: Rule 1 (personal device/account) does not apply since analytics-warehouse is internal. Rules 2-3 concern restricted data, which doesn't apply. Rules 4-5 concern internal data"
+    },
+    {
+      "id": "export-030",
+      "gold": "deny",
+      "got": "deny",
+      "agree": true,
+      "reasoning": "The request asks to export the product-docs dataset (classification: public) to \"my personal Google Drive\" (destination type: personal). Applying the policy in order: Rule 1 states nothing may be exported to a personal device or personal account, regardless of the data's classification. This rule matches first (the destination is a personal account), so the request is denied. The fact that product"
+    }
+  ]
+}

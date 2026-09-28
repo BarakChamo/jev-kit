@@ -32,6 +32,10 @@ export type Row = {
   raw?: Record<string, Answer | undefined>;
   predicted?: Record<string, string | undefined>;
   confidence?: Record<string, number | undefined>;
+  /** A whole-map run (`jev-run --map`): the map's decision per gold field, and its grade. */
+  decision?: Record<string, unknown>;
+  grades?: Record<string, string>;
+  error?: string;
 };
 
 /** One graded answer, whatever primitive produced it. */
@@ -52,8 +56,11 @@ export function items(rows: Row[], opts: { requireConfidence?: boolean } = {}): 
   const requireConfidence = opts.requireConfidence ?? true;
   const out: Item[] = [];
   for (const row of rows) {
-    for (const [field, gold] of Object.entries(row.gold ?? {})) {
+    for (const [field, listed] of Object.entries(row.gold ?? {})) {
       const answer = row.raw?.[field];
+      // A gold may list several acceptable labels: grade against the one the answer gave, if listed.
+      const given = answer?.type === 'choice' ? answer.choice : row.predicted?.[field] ?? row.decision?.[field];
+      const gold = Array.isArray(listed) ? (listed.includes(given) ? String(given) : String(listed[0])) : listed;
       if (answer?.type === 'noul') {
         out.push({
           caseId: row.caseId,
@@ -88,7 +95,9 @@ export function items(rows: Row[], opts: { requireConfidence?: boolean } = {}): 
           primitive: 'score',
         });
       } else {
-        const label = row.predicted?.[field];
+        // A map run's decision reads like a derived field with no confidence: usable for `diff`.
+        const decided = row.decision?.[field];
+        const label = row.predicted?.[field] ?? (typeof decided === 'string' ? decided : undefined);
         const confidence = row.confidence?.[field];
         // A comparator arm (an LLM) reports labels with no confidence: usable for `diff`, not for
         // calibration or gates, so it is only admitted when the caller says confidence is not needed.
@@ -322,4 +331,124 @@ export function diff(before: Item[], after: Item[]): FieldDiff[] {
       return { field, n, before: beforeAcc, after: afterAcc, delta, fixed, broken, flipped, p, verdict };
     })
     .sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta));
+}
+
+// ---- whole-map runs ------------------------------------------------------------------------------
+//
+// A map run (`jev-run --map`) grades the map's decisions, not Jev's answers: its gold is keyed by
+// decision field ("outcome"), and the answers behind each decision sit in `raw`. There is no single
+// probability for a decision made in code, so these audits use the least certain answer behind it:
+// a decision is only as sure as its weakest read.
+
+/** How sure one answer is: a noul's distance from its nearer end, a choice's or score's top probability. */
+export function answerCertainty(answer: Answer): number {
+  if (answer.type === 'noul') return Math.max(answer.noul, 1 - answer.noul);
+  if (answer.type === 'choice') return answer.probabilities?.[answer.choice] ?? answer.confidence;
+  const ps = Object.values(answer.probabilities ?? {});
+  return ps.length ? Math.max(...ps) : answer.confidence;
+}
+
+export type Decision = {
+  caseId: string;
+  field: string;
+  gold: unknown;
+  decision: unknown;
+  grade: 'right' | 'wrong' | 'abstain';
+  /** the least certain answer behind the decision; null when the map asked Jev nothing for this case */
+  weakest: { question: string; certainty: number } | null;
+};
+
+/** True for rows written by `jev-run --map`. */
+export const isMapRow = (row: Row) => row.decision !== undefined || row.grades !== undefined;
+
+function gradeDecision(pred: unknown, gold: unknown): Decision['grade'] {
+  if (pred === undefined || pred === null || pred === 'abstain' || (Array.isArray(pred) && pred.length === 0)) return 'abstain';
+  const p = Array.isArray(pred) ? pred[0] : pred;
+  return (Array.isArray(gold) ? gold.includes(p) : p === gold) ? 'right' : 'wrong';
+}
+
+/** One graded decision per (case, decision field) of a map run. Rows that errored are skipped. */
+export function decisions(rows: Row[]): Decision[] {
+  const out: Decision[] = [];
+  for (const row of rows) {
+    if (row.error) continue;
+    let weakest: Decision['weakest'] = null;
+    for (const [question, answer] of Object.entries(row.raw ?? {})) {
+      if (!answer) continue;
+      const certainty = answerCertainty(answer);
+      if (!weakest || certainty < weakest.certainty) weakest = { question, certainty };
+    }
+    for (const [field, gold] of Object.entries(row.gold ?? {})) {
+      const decision = row.decision?.[field];
+      const grade = (row.grades?.[field] as Decision['grade'] | undefined) ?? gradeDecision(decision, gold);
+      out.push({ caseId: row.caseId, field, gold, decision, grade, weakest });
+    }
+  }
+  return out;
+}
+
+export type DecisionField = { field: string; n: number; right: number; wrong: number; abstain: number; accuracy: number; wrongRate: number; coverage: number };
+
+/** Right / wrong / abstain per decision field. */
+export function decisionSummary(all: Decision[]): DecisionField[] {
+  const by = new Map<string, Decision[]>();
+  for (const d of all) by.set(d.field, [...(by.get(d.field) ?? []), d]);
+  return [...by].map(([field, ds]) => {
+    const c = (g: Decision['grade']) => ds.filter((d) => d.grade === g).length;
+    const n = ds.length;
+    return { field, n, right: c('right'), wrong: c('wrong'), abstain: c('abstain'), accuracy: c('right') / n, wrongRate: c('wrong') / n, coverage: (c('right') + c('wrong')) / n };
+  });
+}
+
+export type WeakLink = { question: string; wrong: number; right: number };
+
+/**
+ * Which question was the least certain answer behind each decision, counted separately for wrong and
+ * right decisions. A question that is the weak link in many wrong decisions and few right ones is the
+ * first one to read.
+ */
+export function weakLinks(all: Decision[]): WeakLink[] {
+  const by = new Map<string, WeakLink>();
+  for (const d of all) {
+    if (!d.weakest || d.grade === 'abstain') continue;
+    const w = by.get(d.weakest.question) ?? { question: d.weakest.question, wrong: 0, right: 0 };
+    w[d.grade] += 1;
+    by.set(d.weakest.question, w);
+  }
+  return [...by.values()].sort((a, b) => b.wrong - a.wrong || a.right - b.right);
+}
+
+export type DecisionGate = {
+  target: number;
+  /** send a case to a person when its weakest answer is below this; null if no threshold reaches the target */
+  threshold: number | null;
+  /** share of all cases the map still decides with the gate */
+  coverage: number;
+  precision: number;
+  /** wrong decisions the gate turns into abstentions */
+  wrongRemoved: number;
+  /** right decisions it turns into abstentions */
+  rightLost: number;
+};
+
+/**
+ * Fit a gate on the weakest answer behind each decision: the lowest threshold at which the decisions
+ * kept reach the target precision. Cases the map already abstained on stay abstained. Decisions made
+ * without asking Jev anything count as certain.
+ */
+export function fitDecisionGate(all: Decision[], target = 0.95): DecisionGate {
+  const decided = all.filter((d) => d.grade !== 'abstain').map((d) => ({ s: d.weakest?.certainty ?? 1, hit: d.grade === 'right' })).sort((a, b) => b.s - a.s);
+  const wrongTotal = decided.filter((d) => !d.hit).length;
+  const rightTotal = decided.length - wrongTotal;
+  let best: DecisionGate = { target, threshold: null, coverage: 0, precision: Number.NaN, wrongRemoved: wrongTotal, rightLost: rightTotal };
+  let hits = 0;
+  for (let n = 1; n <= decided.length; n += 1) {
+    const current = decided[n - 1]!;
+    if (current.hit) hits += 1;
+    const next = decided[n];
+    if (next && next.s === current.s) continue;
+    const precision = hits / n;
+    if (precision >= target) best = { target, threshold: current.s, coverage: n / all.length, precision, wrongRemoved: wrongTotal - (n - hits), rightLost: rightTotal - hits };
+  }
+  return best;
 }

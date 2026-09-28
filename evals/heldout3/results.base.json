@@ -1,0 +1,4793 @@
+[
+  {
+    "map": "data-export-base-1-claude",
+    "task": "data-export",
+    "arm": "base",
+    "rep": 1,
+    "author": "claude",
+    "n": 30,
+    "right": 29,
+    "wrong": 1,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 0.9666666666666667,
+    "wrongRate": 0.03333333333333333,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-001",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.19
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.92,
+            "probabilities": {
+              "grant": 0.01,
+              "deny": 0.06,
+              "needs_approval": 0.9299999999999999,
+              "not_applicable": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          }
+        },
+        "latencyMs": 792.799896,
+        "inputTokens": 2172,
+        "listCostUsd": 0.000091224,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-002",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0.01,
+              "grant": 0,
+              "not_applicable": 0.99
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 1,
+              "grant": 0,
+              "not_applicable": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          }
+        },
+        "latencyMs": 781.426592,
+        "inputTokens": 2163,
+        "listCostUsd": 0.00009084600000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-003",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0,
+              "grant": 0,
+              "deny": 0.99,
+              "needs_approval": 0.01
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 676.043139,
+        "inputTokens": 2170,
+        "listCostUsd": 0.00009114000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-004",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0.99,
+              "grant": 0,
+              "deny": 0.01,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0.99,
+              "grant": 0,
+              "deny": 0.01,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.94,
+            "probabilities": {
+              "not_applicable": 0,
+              "grant": 0,
+              "deny": 0.96,
+              "needs_approval": 0.04
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 233.505672,
+        "inputTokens": 2174,
+        "listCostUsd": 0.00009130800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-005",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 0,
+              "grant": 1,
+              "deny": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.98,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 0.98,
+              "grant": 0.02,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 222.0590689999999,
+        "inputTokens": 2166,
+        "listCostUsd": 0.00009097200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-006",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.96,
+            "probabilities": {
+              "not_applicable": 0.97,
+              "grant": 0.03,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0,
+              "grant": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 238.21994900000004,
+        "inputTokens": 2161,
+        "listCostUsd": 0.00009076200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.75,
+            "probabilities": {
+              "not_applicable": 0,
+              "deny": 0.05,
+              "needs_approval": 0.81,
+              "grant": 0.13
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 225.056155,
+        "inputTokens": 2170,
+        "listCostUsd": 0.00009114000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.41,
+            "probabilities": {
+              "deny": 0.56,
+              "not_applicable": 0,
+              "grant": 0.16,
+              "needs_approval": 0.28
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 232.4288059999999,
+        "inputTokens": 2177,
+        "listCostUsd": 0.000091434,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "wrong"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-009",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 0,
+              "deny": 0.99,
+              "needs_approval": 0.01
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 270.6829690000002,
+        "inputTokens": 2171,
+        "listCostUsd": 0.00009118200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-010",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "not_applicable": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 249.492485,
+        "inputTokens": 2168,
+        "listCostUsd": 0.00009105600000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-011",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.18
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.76,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "deny": 0.17,
+              "not_applicable": 0.01,
+              "grant": 0.8099999999999999
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.98,
+            "probabilities": {
+              "not_applicable": 0.98,
+              "deny": 0.01,
+              "needs_approval": 0,
+              "grant": 0.01
+            }
+          }
+        },
+        "latencyMs": 221.24519599999985,
+        "inputTokens": 2174,
+        "listCostUsd": 0.00009130800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-012",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.07
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.97,
+            "probabilities": {
+              "not_applicable": 0.98,
+              "deny": 0,
+              "grant": 0.02,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.97,
+            "probabilities": {
+              "not_applicable": 0,
+              "deny": 0.02,
+              "grant": 0.97,
+              "needs_approval": 0.01
+            }
+          }
+        },
+        "latencyMs": 285.4497450000001,
+        "inputTokens": 2165,
+        "listCostUsd": 0.00009093000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-013",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "deny": 0.99,
+              "grant": 0,
+              "not_applicable": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0.01,
+              "grant": 0,
+              "not_applicable": 0.99
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 357.514369,
+        "inputTokens": 2178,
+        "listCostUsd": 0.00009147600000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-014",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.14
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.96,
+            "probabilities": {
+              "deny": 0.01,
+              "grant": 0.01,
+              "needs_approval": 0.97,
+              "not_applicable": 0.01
+            }
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0.01,
+              "not_applicable": 0.99
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          }
+        },
+        "latencyMs": 349.24284999999986,
+        "inputTokens": 2171,
+        "listCostUsd": 0.00009118200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-015",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.05
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0.99,
+              "not_applicable": 0,
+              "needs_approval": 0.01,
+              "deny": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 386.1035649999999,
+        "inputTokens": 2158,
+        "listCostUsd": 0.00009063600000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-016",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 0.99,
+              "deny": 0.01
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0.99,
+              "not_applicable": 0,
+              "needs_approval": 0.01
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 312.1799110000002,
+        "inputTokens": 2186,
+        "listCostUsd": 0.00009181200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-017",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 0,
+              "deny": 1,
+              "grant": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.98,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 0.98,
+              "deny": 0.02,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 203.54107399999975,
+        "inputTokens": 2160,
+        "listCostUsd": 0.00009072000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-018",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.97,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0.02,
+              "not_applicable": 0.98
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.82,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0.13,
+              "grant": 0.87,
+              "not_applicable": 0
+            }
+          }
+        },
+        "latencyMs": 290.4794429999997,
+        "inputTokens": 2161,
+        "listCostUsd": 0.00009076200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-019",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 0,
+              "needs_approval": 0,
+              "deny": 1
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0.99,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0.01
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 260.4957340000001,
+        "inputTokens": 2161,
+        "listCostUsd": 0.00009076200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-020",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 0.99,
+              "deny": 0.01,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 0,
+              "deny": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 342.4286109999998,
+        "inputTokens": 2171,
+        "listCostUsd": 0.00009118200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-021",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.97,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 0,
+              "grant": 0.98,
+              "needs_approval": 0.02
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 238.1801989999999,
+        "inputTokens": 2169,
+        "listCostUsd": 0.00009109800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-022",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "not_applicable": 0,
+              "deny": 0,
+              "grant": 0.99
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "not_applicable": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 195.2878599999999,
+        "inputTokens": 2162,
+        "listCostUsd": 0.00009080400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-023",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "deny": 1,
+              "grant": 0,
+              "not_applicable": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.95,
+            "probabilities": {
+              "deny": 0.04,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 0.96
+            }
+          }
+        },
+        "latencyMs": 217.86358699999982,
+        "inputTokens": 2174,
+        "listCostUsd": 0.00009130800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-024",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.12
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.97,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0.02,
+              "not_applicable": 0.98,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "not_applicable": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 215.42500100000007,
+        "inputTokens": 2176,
+        "listCostUsd": 0.00009139200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-025",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "deny": 0.01,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 0.99
+            }
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 1,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "not_applicable": 1
+            }
+          }
+        },
+        "latencyMs": 316.2798280000002,
+        "inputTokens": 2156,
+        "listCostUsd": 0.00009055200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-026",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.11
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0.01,
+              "not_applicable": 0.99,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "not_applicable": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 234.27846599999975,
+        "inputTokens": 2177,
+        "listCostUsd": 0.000091434,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-027",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.98,
+            "probabilities": {
+              "deny": 0.01,
+              "not_applicable": 0,
+              "grant": 0,
+              "needs_approval": 0.99
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 274.05674199999976,
+        "inputTokens": 2177,
+        "listCostUsd": 0.000091434,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-028",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0,
+              "deny": 0,
+              "needs_approval": 0.01,
+              "grant": 0.99
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 301.0485759999997,
+        "inputTokens": 2161,
+        "listCostUsd": 0.00009076200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-029",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.06
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "not_applicable": 1,
+              "grant": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "not_applicable": 0,
+              "grant": 1
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 0,
+              "grant": 0,
+              "not_applicable": 1
+            }
+          }
+        },
+        "latencyMs": 381.81548699999985,
+        "inputTokens": 2162,
+        "listCostUsd": 0.00009080400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-030",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "ambiguous": {
+            "type": "noul",
+            "noul": 0.13
+          },
+          "decide_customer_profiles": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0.99,
+              "grant": 0,
+              "deny": 0.01,
+              "needs_approval": 0
+            }
+          },
+          "decide_card_transactions": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_support_tickets": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_sales_pipeline": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 1,
+            "probabilities": {
+              "not_applicable": 1,
+              "grant": 0,
+              "deny": 0,
+              "needs_approval": 0
+            }
+          },
+          "decide_press_releases": {
+            "type": "choice",
+            "choice": "not_applicable",
+            "confidence": 0.96,
+            "probabilities": {
+              "not_applicable": 0.98,
+              "grant": 0,
+              "deny": 0.02,
+              "needs_approval": 0
+            }
+          },
+          "decide_product_docs": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_applicable": 0,
+              "grant": 0.01,
+              "deny": 0.99,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 257.2248040000004,
+        "inputTokens": 2173,
+        "listCostUsd": 0.00009126600000000002,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "data-export-base-2-claude",
+    "task": "data-export",
+    "arm": "base",
+    "rep": 2,
+    "author": "claude",
+    "n": 30,
+    "right": 30,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-001",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.99,
+            "probabilities": {
+              "deny": 0.01,
+              "needs_approval": 0.99,
+              "abstain": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 711.803661,
+        "inputTokens": 1607,
+        "listCostUsd": 0.00006749400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-002",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "grant": 0,
+              "deny": 1,
+              "abstain": 0
+            }
+          }
+        },
+        "latencyMs": 806.8683139999999,
+        "inputTokens": 1589,
+        "listCostUsd": 0.00006673800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-003",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "abstain": 0,
+              "grant": 0,
+              "deny": 1,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 1215.679459,
+        "inputTokens": 1603,
+        "listCostUsd": 0.00006732600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-004",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "abstain": 0,
+              "deny": 0.99,
+              "grant": 0,
+              "needs_approval": 0.01
+            }
+          }
+        },
+        "latencyMs": 495.93955400000004,
+        "inputTokens": 1611,
+        "listCostUsd": 0.000067662,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-005",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "abstain": 0,
+              "deny": 0,
+              "needs_approval": 0.01,
+              "grant": 0.99
+            }
+          }
+        },
+        "latencyMs": 219.20843999999988,
+        "inputTokens": 1595,
+        "listCostUsd": 0.00006699000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-006",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 1,
+            "probabilities": {
+              "abstain": 0,
+              "grant": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 205.34701099999984,
+        "inputTokens": 1585,
+        "listCostUsd": 0.00006657000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 1,
+              "abstain": 0,
+              "deny": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 345.5532539999999,
+        "inputTokens": 1603,
+        "listCostUsd": 0.00006732600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0.01,
+              "abstain": 0,
+              "needs_approval": 0.99
+            }
+          }
+        },
+        "latencyMs": 363.930918,
+        "inputTokens": 1617,
+        "listCostUsd": 0.00006791400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-009",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 1,
+              "abstain": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 230.51724799999988,
+        "inputTokens": 1605,
+        "listCostUsd": 0.00006741000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-010",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "abstain": 0,
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 1
+            }
+          }
+        },
+        "latencyMs": 216.575059,
+        "inputTokens": 1599,
+        "listCostUsd": 0.00006715800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-011",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "grant": 1,
+              "abstain": 0,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 353.249857,
+        "inputTokens": 1611,
+        "listCostUsd": 0.000067662,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-012",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "abstain": 0,
+              "grant": 0.99,
+              "deny": 0,
+              "needs_approval": 0.01
+            }
+          }
+        },
+        "latencyMs": 328.97363800000016,
+        "inputTokens": 1593,
+        "listCostUsd": 0.00006690600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-013",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "grant": 0,
+              "abstain": 0,
+              "deny": 1
+            }
+          }
+        },
+        "latencyMs": 350.3088970000001,
+        "inputTokens": 1619,
+        "listCostUsd": 0.00006799800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-014",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.98,
+            "probabilities": {
+              "grant": 0,
+              "abstain": 0,
+              "deny": 0.01,
+              "needs_approval": 0.99
+            }
+          }
+        },
+        "latencyMs": 326.62897899999984,
+        "inputTokens": 1605,
+        "listCostUsd": 0.00006741000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-015",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 1,
+              "deny": 0,
+              "needs_approval": 0,
+              "abstain": 0
+            }
+          }
+        },
+        "latencyMs": 225.51577999999995,
+        "inputTokens": 1579,
+        "listCostUsd": 0.00006631800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-016",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "abstain": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 337.8119200000001,
+        "inputTokens": 1635,
+        "listCostUsd": 0.00006867,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-017",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 1,
+              "abstain": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 221.7338810000001,
+        "inputTokens": 1583,
+        "listCostUsd": 0.00006648600000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-018",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "abstain": 0,
+              "deny": 0,
+              "grant": 1
+            }
+          }
+        },
+        "latencyMs": 347.10476100000005,
+        "inputTokens": 1585,
+        "listCostUsd": 0.00006657000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-019",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "abstain": 0,
+              "deny": 1,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 338.9588840000001,
+        "inputTokens": 1585,
+        "listCostUsd": 0.00006657000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-020",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 1,
+              "abstain": 0,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 346.494514,
+        "inputTokens": 1605,
+        "listCostUsd": 0.00006741000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-021",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "deny": 0,
+              "needs_approval": 0.01,
+              "abstain": 0,
+              "grant": 0.99
+            }
+          }
+        },
+        "latencyMs": 202.9936399999997,
+        "inputTokens": 1601,
+        "listCostUsd": 0.000067242,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-022",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "grant": 1,
+              "deny": 0,
+              "abstain": 0
+            }
+          }
+        },
+        "latencyMs": 238.3113940000003,
+        "inputTokens": 1587,
+        "listCostUsd": 0.000066654,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-023",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 1,
+              "abstain": 0,
+              "needs_approval": 0,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 405.4470000000001,
+        "inputTokens": 1611,
+        "listCostUsd": 0.000067662,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-024",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 1,
+              "needs_approval": 0,
+              "grant": 0,
+              "abstain": 0
+            }
+          }
+        },
+        "latencyMs": 381.1774620000001,
+        "inputTokens": 1615,
+        "listCostUsd": 0.00006783,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-025",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "abstain": 0,
+              "deny": 1,
+              "grant": 0
+            }
+          }
+        },
+        "latencyMs": 240.54288599999973,
+        "inputTokens": 1575,
+        "listCostUsd": 0.00006615000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-026",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "abstain": 0,
+              "grant": 0,
+              "deny": 1,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 262.444579,
+        "inputTokens": 1617,
+        "listCostUsd": 0.00006791400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-027",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0,
+              "abstain": 0,
+              "needs_approval": 1
+            }
+          }
+        },
+        "latencyMs": 230.773823,
+        "inputTokens": 1617,
+        "listCostUsd": 0.00006791400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-028",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 1,
+              "deny": 0,
+              "abstain": 0,
+              "needs_approval": 0
+            }
+          }
+        },
+        "latencyMs": 233.93918099999973,
+        "inputTokens": 1585,
+        "listCostUsd": 0.00006657000000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-029",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "abstain": 0,
+              "grant": 1,
+              "needs_approval": 0,
+              "deny": 0
+            }
+          }
+        },
+        "latencyMs": 248.48199599999998,
+        "inputTokens": 1587,
+        "listCostUsd": 0.000066654,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-030",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "needs_approval": 0,
+              "abstain": 0
+            }
+          }
+        },
+        "latencyMs": 357.530972,
+        "inputTokens": 1609,
+        "listCostUsd": 0.00006757800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  },
+  {
+    "map": "data-export-base-3-claude",
+    "task": "data-export",
+    "arm": "base",
+    "rep": 3,
+    "author": "claude",
+    "n": 30,
+    "right": 30,
+    "wrong": 0,
+    "abstain": 0,
+    "errors": 0,
+    "accuracy": 1,
+    "wrongRate": 0,
+    "coverage": 1,
+    "rows": [
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-001",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.93,
+            "probabilities": {
+              "grant": 0.02,
+              "needs_approval": 0.96,
+              "deny": 0.02
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.19
+          }
+        },
+        "latencyMs": 678.8600690000001,
+        "inputTokens": 1192,
+        "listCostUsd": 0.00005006400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-002",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 1
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 828.882139,
+        "inputTokens": 1183,
+        "listCostUsd": 0.000049686000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-003",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "needs_approval": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 705.23517,
+        "inputTokens": 1190,
+        "listCostUsd": 0.000049980000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-004",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.91,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0.94,
+              "needs_approval": 0.06
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.2
+          }
+        },
+        "latencyMs": 550.101763,
+        "inputTokens": 1194,
+        "listCostUsd": 0.00005014800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-005",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.94,
+            "probabilities": {
+              "needs_approval": 0.02,
+              "grant": 0.96,
+              "deny": 0.02
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 215.70272399999988,
+        "inputTokens": 1186,
+        "listCostUsd": 0.000049812000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-006",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.96,
+            "probabilities": {
+              "needs_approval": 0.01,
+              "deny": 0.01,
+              "grant": 0.98
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 224.40112599999998,
+        "inputTokens": 1181,
+        "listCostUsd": 0.000049602000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-007",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.84,
+            "probabilities": {
+              "needs_approval": 0.9,
+              "deny": 0.01,
+              "grant": 0.09
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.16
+          }
+        },
+        "latencyMs": 239.204792,
+        "inputTokens": 1190,
+        "listCostUsd": 0.000049980000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-008",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.64,
+            "probabilities": {
+              "needs_approval": 0.76,
+              "deny": 0.2,
+              "grant": 0.04
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 192.66437800000017,
+        "inputTokens": 1197,
+        "listCostUsd": 0.00005027400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-009",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "needs_approval": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 356.3559309999998,
+        "inputTokens": 1191,
+        "listCostUsd": 0.000050022,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-010",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "grant": 0,
+              "deny": 1
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 227.36214999999993,
+        "inputTokens": 1188,
+        "listCostUsd": 0.000049896000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-011",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.95,
+            "probabilities": {
+              "deny": 0.03,
+              "grant": 0.97,
+              "needs_approval": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.16
+          }
+        },
+        "latencyMs": 320.03266399999984,
+        "inputTokens": 1194,
+        "listCostUsd": 0.00005014800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-012",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.97,
+            "probabilities": {
+              "deny": 0.01,
+              "grant": 0.98,
+              "needs_approval": 0.01
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 378.79920100000004,
+        "inputTokens": 1185,
+        "listCostUsd": 0.000049770000000000006,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-013",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 0.99,
+              "needs_approval": 0.01
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.09
+          }
+        },
+        "latencyMs": 506.0216730000002,
+        "inputTokens": 1198,
+        "listCostUsd": 0.000050316000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-014",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.91,
+            "probabilities": {
+              "grant": 0.03,
+              "needs_approval": 0.94,
+              "deny": 0.03
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.17
+          }
+        },
+        "latencyMs": 322.10157000000004,
+        "inputTokens": 1191,
+        "listCostUsd": 0.000050022,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-015",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.97,
+            "probabilities": {
+              "grant": 0.98,
+              "deny": 0,
+              "needs_approval": 0.02
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 303.23994700000026,
+        "inputTokens": 1178,
+        "listCostUsd": 0.000049476000000000005,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-016",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 1
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.13
+          }
+        },
+        "latencyMs": 211.56155799999988,
+        "inputTokens": 1206,
+        "listCostUsd": 0.00005065200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-017",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "deny": 1,
+              "grant": 0,
+              "needs_approval": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.06
+          }
+        },
+        "latencyMs": 265.70759799999996,
+        "inputTokens": 1180,
+        "listCostUsd": 0.000049560000000000007,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-018",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.87,
+            "probabilities": {
+              "grant": 0.91,
+              "deny": 0.08,
+              "needs_approval": 0.01
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.08
+          }
+        },
+        "latencyMs": 331.2268049999998,
+        "inputTokens": 1181,
+        "listCostUsd": 0.000049602000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-019",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "needs_approval": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 310.769945,
+        "inputTokens": 1181,
+        "listCostUsd": 0.000049602000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-020",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 1
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.08
+          }
+        },
+        "latencyMs": 304.520677,
+        "inputTokens": 1191,
+        "listCostUsd": 0.000050022,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-021",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.96,
+            "probabilities": {
+              "deny": 0,
+              "grant": 0.98,
+              "needs_approval": 0.02
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.17
+          }
+        },
+        "latencyMs": 228.45676400000002,
+        "inputTokens": 1189,
+        "listCostUsd": 0.00004993800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-022",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0.99,
+              "needs_approval": 0.01,
+              "deny": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 204.13080500000024,
+        "inputTokens": 1182,
+        "listCostUsd": 0.00004964400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-023",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0.01,
+              "needs_approval": 0,
+              "deny": 0.99
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.14
+          }
+        },
+        "latencyMs": 316.90187799999967,
+        "inputTokens": 1194,
+        "listCostUsd": 0.00005014800000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-024",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 1,
+              "grant": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.16
+          }
+        },
+        "latencyMs": 196.39365100000032,
+        "inputTokens": 1196,
+        "listCostUsd": 0.00005023200000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-025",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "needs_approval": 0,
+              "deny": 1,
+              "grant": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.05
+          }
+        },
+        "latencyMs": 211.87435800000003,
+        "inputTokens": 1176,
+        "listCostUsd": 0.000049392000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-026",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 1,
+            "probabilities": {
+              "grant": 0,
+              "needs_approval": 0,
+              "deny": 1
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 238.12847199999987,
+        "inputTokens": 1197,
+        "listCostUsd": 0.00005027400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-027",
+        "tags": [],
+        "gold": {
+          "decision": "needs_approval"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "needs_approval",
+            "confidence": 0.99,
+            "probabilities": {
+              "needs_approval": 1,
+              "deny": 0,
+              "grant": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.22
+          }
+        },
+        "latencyMs": 234.43105800000012,
+        "inputTokens": 1197,
+        "listCostUsd": 0.00005027400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "needs_approval"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-028",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0.99,
+              "deny": 0,
+              "needs_approval": 0.01
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 205.64982999999984,
+        "inputTokens": 1181,
+        "listCostUsd": 0.000049602000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-029",
+        "tags": [],
+        "gold": {
+          "decision": "grant"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "grant",
+            "confidence": 0.98,
+            "probabilities": {
+              "deny": 0,
+              "needs_approval": 0.01,
+              "grant": 0.99
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.07
+          }
+        },
+        "latencyMs": 314.6709390000001,
+        "inputTokens": 1182,
+        "listCostUsd": 0.00004964400000000001,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "grant"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      },
+      {
+        "suite": "suite",
+        "arm": "jev-map",
+        "caseId": "export-030",
+        "tags": [],
+        "gold": {
+          "decision": "deny"
+        },
+        "raw": {
+          "decision": {
+            "type": "choice",
+            "choice": "deny",
+            "confidence": 0.99,
+            "probabilities": {
+              "grant": 0,
+              "deny": 1,
+              "needs_approval": 0
+            }
+          },
+          "unclear": {
+            "type": "noul",
+            "noul": 0.17
+          }
+        },
+        "latencyMs": 232.57304599999998,
+        "inputTokens": 1193,
+        "listCostUsd": 0.000050106000000000004,
+        "servedBy": "typesafe-ai/jev",
+        "decision": {
+          "decision": "deny"
+        },
+        "grades": {
+          "decision": "right"
+        }
+      }
+    ]
+  }
+]

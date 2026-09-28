@@ -6,12 +6,14 @@ import { readFileSync } from "node:fs";
 import { basename } from "node:path";
 
 // packages/audit/src/index.ts
-function items(rows, opts = {}) {
+function items(rows2, opts = {}) {
   const requireConfidence = opts.requireConfidence ?? true;
   const out2 = [];
-  for (const row of rows) {
-    for (const [field, gold] of Object.entries(row.gold ?? {})) {
+  for (const row of rows2) {
+    for (const [field, listed] of Object.entries(row.gold ?? {})) {
       const answer = row.raw?.[field];
+      const given = answer?.type === "choice" ? answer.choice : row.predicted?.[field] ?? row.decision?.[field];
+      const gold = Array.isArray(listed) ? listed.includes(given) ? String(given) : String(listed[0]) : listed;
       if (answer?.type === "noul") {
         out2.push({
           caseId: row.caseId,
@@ -43,7 +45,8 @@ function items(rows, opts = {}) {
           primitive: "score"
         });
       } else {
-        const label = row.predicted?.[field];
+        const decided = row.decision?.[field];
+        const label = row.predicted?.[field] ?? (typeof decided === "string" ? decided : void 0);
         const confidence = row.confidence?.[field];
         if (label !== void 0 && (confidence !== void 0 || !requireConfidence)) {
           out2.push({ caseId: row.caseId, field, gold, label, confidence: confidence ?? Number.NaN, primitive: "derived" });
@@ -164,6 +167,71 @@ function diff(before, after) {
     return { field, n, before: beforeAcc, after: afterAcc, delta, fixed, broken, flipped, p, verdict };
   }).sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta));
 }
+function answerCertainty(answer) {
+  if (answer.type === "noul") return Math.max(answer.noul, 1 - answer.noul);
+  if (answer.type === "choice") return answer.probabilities?.[answer.choice] ?? answer.confidence;
+  const ps = Object.values(answer.probabilities ?? {});
+  return ps.length ? Math.max(...ps) : answer.confidence;
+}
+var isMapRow = (row) => row.decision !== void 0 || row.grades !== void 0;
+function gradeDecision(pred, gold) {
+  if (pred === void 0 || pred === null || pred === "abstain" || Array.isArray(pred) && pred.length === 0) return "abstain";
+  const p = Array.isArray(pred) ? pred[0] : pred;
+  return (Array.isArray(gold) ? gold.includes(p) : p === gold) ? "right" : "wrong";
+}
+function decisions(rows2) {
+  const out2 = [];
+  for (const row of rows2) {
+    if (row.error) continue;
+    let weakest = null;
+    for (const [question, answer] of Object.entries(row.raw ?? {})) {
+      if (!answer) continue;
+      const certainty = answerCertainty(answer);
+      if (!weakest || certainty < weakest.certainty) weakest = { question, certainty };
+    }
+    for (const [field, gold] of Object.entries(row.gold ?? {})) {
+      const decision = row.decision?.[field];
+      const grade = row.grades?.[field] ?? gradeDecision(decision, gold);
+      out2.push({ caseId: row.caseId, field, gold, decision, grade, weakest });
+    }
+  }
+  return out2;
+}
+function decisionSummary(all2) {
+  const by = /* @__PURE__ */ new Map();
+  for (const d of all2) by.set(d.field, [...by.get(d.field) ?? [], d]);
+  return [...by].map(([field, ds]) => {
+    const c = (g) => ds.filter((d) => d.grade === g).length;
+    const n = ds.length;
+    return { field, n, right: c("right"), wrong: c("wrong"), abstain: c("abstain"), accuracy: c("right") / n, wrongRate: c("wrong") / n, coverage: (c("right") + c("wrong")) / n };
+  });
+}
+function weakLinks(all2) {
+  const by = /* @__PURE__ */ new Map();
+  for (const d of all2) {
+    if (!d.weakest || d.grade === "abstain") continue;
+    const w = by.get(d.weakest.question) ?? { question: d.weakest.question, wrong: 0, right: 0 };
+    w[d.grade] += 1;
+    by.set(d.weakest.question, w);
+  }
+  return [...by.values()].sort((a, b) => b.wrong - a.wrong || a.right - b.right);
+}
+function fitDecisionGate(all2, target2 = 0.95) {
+  const decided = all2.filter((d) => d.grade !== "abstain").map((d) => ({ s: d.weakest?.certainty ?? 1, hit: d.grade === "right" })).sort((a, b) => b.s - a.s);
+  const wrongTotal = decided.filter((d) => !d.hit).length;
+  const rightTotal = decided.length - wrongTotal;
+  let best = { target: target2, threshold: null, coverage: 0, precision: Number.NaN, wrongRemoved: wrongTotal, rightLost: rightTotal };
+  let hits = 0;
+  for (let n = 1; n <= decided.length; n += 1) {
+    const current = decided[n - 1];
+    if (current.hit) hits += 1;
+    const next = decided[n];
+    if (next && next.s === current.s) continue;
+    const precision = hits / n;
+    if (precision >= target2) best = { target: target2, threshold: current.s, coverage: n / all2.length, precision, wrongRemoved: wrongTotal - (n - hits), rightLost: rightTotal - hits };
+  }
+  return best;
+}
 
 // packages/audit/src/cli.ts
 var args = process.argv.slice(2);
@@ -205,15 +273,52 @@ if (files.length === 0) {
   console.error("usage: jev-audit <results.jsonl ...> [--threshold 0.9] [--target 0.95] [--json]");
   process.exit(2);
 }
-var prefixed = (file, rows) => {
-  if (files.length === 1) return rows;
+var prefixed = (file, rows2) => {
+  if (files.length === 1) return rows2;
   const tag = basename(file).split(".")[0];
   const re = (m) => m ? Object.fromEntries(Object.entries(m).map(([k, v]) => [`${tag}/${k}`, v])) : void 0;
-  return rows.map((r) => ({ ...r, gold: re(r.gold), raw: re(r.raw), predicted: re(r.predicted), confidence: re(r.confidence) }));
+  return rows2.map((r) => ({ ...r, gold: re(r.gold), raw: re(r.raw), predicted: re(r.predicted), confidence: re(r.confidence), decision: re(r.decision), grades: re(r.grades) }));
 };
-var all = items(files.flatMap((f) => prefixed(f, parseRows(readFileSync(f, "utf8")))));
+var rows = files.flatMap((f) => prefixed(f, parseRows(readFileSync(f, "utf8"))));
 var threshold = flag("--threshold", 0.9);
 var target = flag("--target", 0.95);
+var pct = (x) => Number.isFinite(x) ? `${(x * 100).toFixed(1)}%` : "\u2014";
+if (rows.length && rows.every(isMapRow)) {
+  const ds = decisions(rows);
+  const report2 = { decisions: ds.length, fields: decisionSummary(ds), weakLinks: weakLinks(ds), gate: fitDecisionGate(ds, target), wrong: ds.filter((d) => d.grade === "wrong") };
+  if (args.includes("--json")) {
+    console.log(JSON.stringify(report2, null, 2));
+    process.exit(0);
+  }
+  const show = (v) => typeof v === "string" ? v : JSON.stringify(v);
+  const out2 = [`# jev-audit \u2014 map run, ${report2.decisions} graded decisions`, ""];
+  out2.push("| decision | n | right | wrong | abstain | accuracy | coverage |", "| --- | ---: | ---: | ---: | ---: | ---: | ---: |");
+  for (const f of report2.fields) out2.push(`| ${f.field} | ${f.n} | ${f.right} | ${f.wrong} | ${f.abstain} | ${pct(f.accuracy)} | ${pct(f.coverage)} |`);
+  out2.push("", `## Wrong decisions \u2014 ${report2.wrong.length}`, "");
+  out2.push("Read these first. The weakest answer is the least certain read behind the decision: the likeliest");
+  out2.push("culprit when it is low. A wrong decision whose weakest answer is still sure came from the code in");
+  out2.push("`decide()` or from a question that is confidently wrong, and a gate cannot catch it.", "");
+  if (report2.wrong.length) {
+    out2.push("| case | decision | gold | map decided | weakest answer | certainty |", "| --- | --- | --- | --- | --- | ---: |");
+    for (const d of report2.wrong.slice(0, 40)) {
+      out2.push(`| ${d.caseId} | ${d.field} | ${show(d.gold)} | ${show(d.decision)} | ${d.weakest?.question ?? "\u2014"} | ${d.weakest ? d.weakest.certainty.toFixed(2) : "\u2014"} |`);
+    }
+  } else out2.push("None.");
+  if (report2.weakLinks.some((w) => w.wrong)) {
+    out2.push("", "## Weak links", "", "How often each question was the least certain answer behind a wrong or a right decision.", "");
+    out2.push("| question | in wrong decisions | in right decisions |", "| --- | ---: | ---: |");
+    for (const w of report2.weakLinks.filter((w2) => w2.wrong).slice(0, 15)) out2.push(`| ${w.question} | ${w.wrong} | ${w.right} |`);
+  }
+  const g = report2.gate;
+  out2.push("", `## Gate for ${pct(target)} precision, on the weakest answer`, "");
+  out2.push("| threshold | coverage | precision | wrong decisions removed | right decisions lost |", "| ---: | ---: | ---: | ---: | ---: |");
+  out2.push(`| ${g.threshold === null ? "unreachable" : g.threshold.toFixed(3)} | ${pct(g.coverage)} | ${pct(g.precision)} | ${g.wrongRemoved} | ${g.rightLost} |`);
+  out2.push("", 'In `decide()`, return "abstain" when any answer the decision uses is less certain than the threshold.');
+  out2.push("Fit it on held-out cases: a gate fitted on the cases it is judged on is an upper bound.");
+  console.log(out2.join("\n"));
+  process.exit(0);
+}
+var all = items(rows);
 var report = {
   answers: all.length,
   confidentlyWrong: confidentlyWrong(all, threshold),
@@ -226,7 +331,6 @@ if (args.includes("--json")) {
   console.log(JSON.stringify(report, null, 2));
   process.exit(0);
 }
-var pct = (x) => Number.isFinite(x) ? `${(x * 100).toFixed(1)}%` : "\u2014";
 var out = [`# jev-audit \u2014 ${report.answers} graded answers`, ""];
 out.push(`## Confidently wrong (confidence \u2265 ${threshold}) \u2014 ${report.confidentlyWrong.errors.length} cases`, "");
 out.push("Read these first. A confident error is either the model's real boundary or a label that does not");

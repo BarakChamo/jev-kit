@@ -2,8 +2,10 @@ function items(rows, opts = {}) {
   const requireConfidence = opts.requireConfidence ?? true;
   const out = [];
   for (const row of rows) {
-    for (const [field, gold] of Object.entries(row.gold ?? {})) {
+    for (const [field, listed] of Object.entries(row.gold ?? {})) {
       const answer = row.raw?.[field];
+      const given = answer?.type === "choice" ? answer.choice : row.predicted?.[field] ?? row.decision?.[field];
+      const gold = Array.isArray(listed) ? listed.includes(given) ? String(given) : String(listed[0]) : listed;
       if (answer?.type === "noul") {
         out.push({
           caseId: row.caseId,
@@ -35,7 +37,8 @@ function items(rows, opts = {}) {
           primitive: "score"
         });
       } else {
-        const label = row.predicted?.[field];
+        const decided = row.decision?.[field];
+        const label = row.predicted?.[field] ?? (typeof decided === "string" ? decided : void 0);
         const confidence = row.confidence?.[field];
         if (label !== void 0 && (confidence !== void 0 || !requireConfidence)) {
           out.push({ caseId: row.caseId, field, gold, label, confidence: confidence ?? Number.NaN, primitive: "derived" });
@@ -156,13 +159,84 @@ function diff(before, after) {
     return { field, n, before: beforeAcc, after: afterAcc, delta, fixed, broken, flipped, p, verdict };
   }).sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta));
 }
+function answerCertainty(answer) {
+  if (answer.type === "noul") return Math.max(answer.noul, 1 - answer.noul);
+  if (answer.type === "choice") return answer.probabilities?.[answer.choice] ?? answer.confidence;
+  const ps = Object.values(answer.probabilities ?? {});
+  return ps.length ? Math.max(...ps) : answer.confidence;
+}
+const isMapRow = (row) => row.decision !== void 0 || row.grades !== void 0;
+function gradeDecision(pred, gold) {
+  if (pred === void 0 || pred === null || pred === "abstain" || Array.isArray(pred) && pred.length === 0) return "abstain";
+  const p = Array.isArray(pred) ? pred[0] : pred;
+  return (Array.isArray(gold) ? gold.includes(p) : p === gold) ? "right" : "wrong";
+}
+function decisions(rows) {
+  const out = [];
+  for (const row of rows) {
+    if (row.error) continue;
+    let weakest = null;
+    for (const [question, answer] of Object.entries(row.raw ?? {})) {
+      if (!answer) continue;
+      const certainty = answerCertainty(answer);
+      if (!weakest || certainty < weakest.certainty) weakest = { question, certainty };
+    }
+    for (const [field, gold] of Object.entries(row.gold ?? {})) {
+      const decision = row.decision?.[field];
+      const grade = row.grades?.[field] ?? gradeDecision(decision, gold);
+      out.push({ caseId: row.caseId, field, gold, decision, grade, weakest });
+    }
+  }
+  return out;
+}
+function decisionSummary(all) {
+  const by = /* @__PURE__ */ new Map();
+  for (const d of all) by.set(d.field, [...by.get(d.field) ?? [], d]);
+  return [...by].map(([field, ds]) => {
+    const c = (g) => ds.filter((d) => d.grade === g).length;
+    const n = ds.length;
+    return { field, n, right: c("right"), wrong: c("wrong"), abstain: c("abstain"), accuracy: c("right") / n, wrongRate: c("wrong") / n, coverage: (c("right") + c("wrong")) / n };
+  });
+}
+function weakLinks(all) {
+  const by = /* @__PURE__ */ new Map();
+  for (const d of all) {
+    if (!d.weakest || d.grade === "abstain") continue;
+    const w = by.get(d.weakest.question) ?? { question: d.weakest.question, wrong: 0, right: 0 };
+    w[d.grade] += 1;
+    by.set(d.weakest.question, w);
+  }
+  return [...by.values()].sort((a, b) => b.wrong - a.wrong || a.right - b.right);
+}
+function fitDecisionGate(all, target = 0.95) {
+  const decided = all.filter((d) => d.grade !== "abstain").map((d) => ({ s: d.weakest?.certainty ?? 1, hit: d.grade === "right" })).sort((a, b) => b.s - a.s);
+  const wrongTotal = decided.filter((d) => !d.hit).length;
+  const rightTotal = decided.length - wrongTotal;
+  let best = { target, threshold: null, coverage: 0, precision: Number.NaN, wrongRemoved: wrongTotal, rightLost: rightTotal };
+  let hits = 0;
+  for (let n = 1; n <= decided.length; n += 1) {
+    const current = decided[n - 1];
+    if (current.hit) hits += 1;
+    const next = decided[n];
+    if (next && next.s === current.s) continue;
+    const precision = hits / n;
+    if (precision >= target) best = { target, threshold: current.s, coverage: n / all.length, precision, wrongRemoved: wrongTotal - (n - hits), rightLost: rightTotal - hits };
+  }
+  return best;
+}
 export {
+  answerCertainty,
   calibration,
   confidentlyWrong,
+  decisionSummary,
+  decisions,
   diff,
+  fitDecisionGate,
   fitGate,
+  isMapRow,
   items,
   parseRows,
   probabilityCalibration,
-  topK
+  topK,
+  weakLinks
 };

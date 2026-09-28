@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { calibration, confidentlyWrong, diff, fitGate, items, probabilityCalibration, topK, type Row } from './index.js';
+import {
+  answerCertainty, calibration, confidentlyWrong, decisionSummary, decisions, diff, fitDecisionGate, fitGate, isMapRow, items,
+  probabilityCalibration, topK, weakLinks, type Row,
+} from './index.js';
 
 const choice = (choice: string, probabilities: Record<string, number>, confidence = Math.max(...Object.values(probabilities))) => ({
   type: 'choice' as const,
@@ -92,5 +95,50 @@ describe('jev-audit', () => {
     expect(small!.verdict).toBe('unproven');
     const [same] = diff(run(20, 40), run(20, 40));
     expect(same!.verdict).toBe('no change');
+  });
+});
+
+describe('jev-audit on whole-map runs', () => {
+  // rows as `jev-run --map` writes them: gold and grades per decision field, answers in `raw`
+  const noul = (n: number) => ({ type: 'noul' as const, noul: n });
+  const mapRows: Row[] = [
+    { caseId: 'm1', gold: { outcome: 'yes' }, decision: { outcome: 'yes' }, grades: { outcome: 'right' }, raw: { a: noul(0.98), b: choice('x', { x: 0.97, y: 0.03 }) } },
+    { caseId: 'm2', gold: { outcome: 'no' }, decision: { outcome: 'no' }, grades: { outcome: 'right' }, raw: { a: noul(0.03), b: choice('y', { x: 0.1, y: 0.9 }) } },
+    // wrong, and its weakest answer is shaky: a gate can catch it
+    { caseId: 'm3', gold: { outcome: 'no' }, decision: { outcome: 'yes' }, grades: { outcome: 'wrong' }, raw: { a: noul(0.95), b: choice('x', { x: 0.55, y: 0.45 }) } },
+    // wrong while every answer is sure: the decide() code or a confidently wrong question
+    { caseId: 'm4', gold: { outcome: 'yes' }, decision: { outcome: 'no' }, grades: { outcome: 'wrong' }, raw: { a: noul(0.02), b: choice('y', { x: 0.01, y: 0.99 }) } },
+    { caseId: 'm5', gold: { outcome: 'yes' }, decision: { outcome: 'abstain' }, grades: { outcome: 'abstain' }, raw: { a: noul(0.5) } },
+    // gold may list several acceptable labels; grades are recomputed when absent
+    { caseId: 'm6', gold: { outcome: ['yes', 'maybe'] as unknown as string }, decision: { outcome: 'maybe' }, raw: { a: noul(0.9) } },
+  ];
+  const ds = decisions(mapRows);
+
+  it('recognises map rows and grades every decision', () => {
+    expect(mapRows.every(isMapRow)).toBe(true);
+    expect(isMapRow(rows[0]!)).toBe(false);
+    expect(ds.map((d) => d.grade)).toEqual(['right', 'right', 'wrong', 'wrong', 'abstain', 'right']);
+    expect(decisionSummary(ds)).toEqual([{ field: 'outcome', n: 6, right: 3, wrong: 2, abstain: 1, accuracy: 0.5, wrongRate: 2 / 6, coverage: 5 / 6 }]);
+  });
+
+  it('finds the least certain answer behind each decision', () => {
+    expect(answerCertainty(noul(0.03))).toBeCloseTo(0.97);
+    expect(ds.find((d) => d.caseId === 'm3')!.weakest).toEqual({ question: 'b', certainty: 0.55 });
+    // both are the weak link in one wrong decision; `a` ranks first because it is weak in fewer right ones
+    expect(weakLinks(ds)).toEqual([{ question: 'a', wrong: 1, right: 1 }, { question: 'b', wrong: 1, right: 2 }]);
+  });
+
+  it('diffs two map runs by their decisions', () => {
+    const after = mapRows.map((r) => (r.caseId === 'm3' ? { ...r, decision: { outcome: 'no' }, grades: { outcome: 'right' } } : r));
+    const [d] = diff(items(mapRows, { requireConfidence: false }), items(after, { requireConfidence: false }));
+    expect(d).toMatchObject({ field: 'outcome', fixed: 1, broken: 0 });
+  });
+
+  it('fits a gate on the weakest answer, and reports what it costs', () => {
+    const g = fitDecisionGate(ds, 0.75);
+    // at 0.9 the shaky wrong decision (0.55) is removed; the sure wrong one (0.98) cannot be
+    expect(g).toMatchObject({ threshold: 0.9, wrongRemoved: 1, rightLost: 0, precision: 0.75, coverage: 4 / 6 });
+    // a confidently wrong decision caps what any gate can reach
+    expect(fitDecisionGate(ds, 0.8).threshold).toBeNull();
   });
 });

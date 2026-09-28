@@ -211,4 +211,5 @@ can run their maps, had none.
 | held-out tasks, second model | `results/experiments/heldout/` | `evals/heldout/` |
 | rule probes | `results/experiments/rule-probes/` | `evals/rule-probes/` |
 | held-out round 2, ten authoring models | `results/experiments/heldout2/` | `evals/heldout2/` |
+| policy outcomes (round 3) | `results/experiments/heldout3/` | `evals/heldout3/` |
 | pre-registered bars, every round | `rubric.md`, `PREREGISTRATION.md` in the above | same |
