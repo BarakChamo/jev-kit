@@ -36,6 +36,7 @@ export type Row = {
   decision?: Record<string, unknown>;
   grades?: Record<string, string>;
   error?: string;
+  arm?: string;
 };
 
 /** One graded answer, whatever primitive produced it. */
@@ -182,18 +183,20 @@ function binned(points: { p: number; hit: boolean }[], binCount: number): Calibr
 }
 
 /**
- * Calibration of the **confidence scalar**. Across 5,227 answers this was systematically
- * under-confident at every bin — a 0.7–0.8 claim delivered 78%, a 0.2–0.3 claim 55% — which means a
- * default 0.9 gate discards answers that are mostly right. Compare with `probabilityCalibration`.
+ * Calibration of the **confidence scalar**. Across 5,227 answers in the study it was mostly
+ * under-confident — a 0.2–0.3 claim delivered 55% — so a default 0.9 gate on it discards answers that
+ * are mostly right. It is not the top label's probability (a right answer can carry 0.000), and single
+ * suites can differ: read your own bins. Gate on the probability instead (`topLabelCalibration`).
  */
 export function calibration(all: Item[], binCount = 10): Calibration {
   return binned(all.map((i) => ({ p: i.confidence, hit: i.label === i.gold })), binCount);
 }
 
 /**
- * Calibration of **every probability in every distribution**, not just the winning label. In the
- * study this tracked the diagonal within about four points where the scalar was off by up to 29 —
- * so if you gate, gate on the probability of the label you care about.
+ * Calibration of **every probability in every distribution**, not just the winning label. Pooled over
+ * 5,227 answers it tracked the diagonal within about four points where the scalar was off by up to 29.
+ * Caution: the many near-zero probabilities of labels nobody chose dominate this pool and flatter the
+ * ECE. For gating, read `topLabelCalibration` and `auroc`, which only look at the label acted on.
  */
 export function probabilityCalibration(all: Item[], binCount = 10): Calibration {
   const points: { p: number; hit: boolean }[] = [];
@@ -202,6 +205,29 @@ export function probabilityCalibration(all: Item[], binCount = 10): Calibration 
     for (const [label, p] of Object.entries(i.probabilities)) points.push({ p, hit: label === i.gold });
   }
   return binned(points, binCount);
+}
+
+/**
+ * Calibration of the probability of the label the answer gave: the number a gate reads. Middle bins
+ * are where single suites wander; with ~30 cases each bin holds a handful of answers.
+ */
+export function topLabelCalibration(all: Item[], binCount = 10): Calibration {
+  return binned(all.map((i) => ({ p: i.probabilities?.[i.label] ?? i.confidence, hit: i.label === i.gold })), binCount);
+}
+
+/**
+ * Area under the ROC curve of the top-label probability as a right/wrong detector: the chance a random
+ * right answer is more certain than a random wrong one. A gate fitted on labelled cases needs this
+ * (ranking), not calibration. NaN when there are no wrong answers or no right ones.
+ */
+export function auroc(all: Item[], on: Gate['on'] = 'probability'): number {
+  const s = (i: Item) => (on === 'probability' ? (i.probabilities?.[i.label] ?? i.confidence) : i.confidence);
+  const right = all.filter((i) => i.label === i.gold).map(s);
+  const wrong = all.filter((i) => i.label !== i.gold).map(s);
+  if (!right.length || !wrong.length) return Number.NaN;
+  let wins = 0;
+  for (const r of right) for (const w of wrong) wins += r > w ? 1 : r === w ? 0.5 : 0;
+  return wins / (right.length * wrong.length);
 }
 
 /**
@@ -230,12 +256,28 @@ export function topK(all: Item[], k = 2): { field: string; n: number; top1: numb
 
 export type Gate = {
   on: 'confidence' | 'probability';
+  /** the question the gate is for; undefined for a gate pooled over every question */
+  field?: string;
   target: number;
+  /** answers the gate was fitted on */
+  n: number;
   /** null when no threshold reaches the target precision on this data */
   threshold: number | null;
   coverage: number;
   precision: number;
+  /** 95% Wilson lower bound on that precision: at ~30 cases, "95% precise" can mean 80% */
+  lower: number;
+  /** true when the answers held no wrong ones, so any threshold "reaches" the target */
+  noErrors: boolean;
 };
+
+/** 95% Wilson score lower bound for k successes in n. */
+export function wilsonLower(k: number, n: number, z = 1.96): number {
+  if (n === 0) return Number.NaN;
+  const p = k / n;
+  const d = 1 + (z * z) / n;
+  return (p + (z * z) / (2 * n) - z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n))) / d;
+}
 
 /**
  * The lowest threshold at which everything at or above it is at least `target` precise, and how much
@@ -245,7 +287,8 @@ export type Gate = {
 export function fitGate(all: Item[], target = 0.95, on: Gate['on'] = 'probability'): Gate {
   const score = (i: Item) => (on === 'probability' && i.probabilities ? (i.probabilities[i.label] ?? i.confidence) : i.confidence);
   const scored = all.map((i) => ({ s: score(i), hit: i.label === i.gold })).sort((a, b) => b.s - a.s);
-  let best: Gate = { on, target, threshold: null, coverage: 0, precision: Number.NaN };
+  const noErrors = scored.every((x) => x.hit);
+  let best: Gate = { on, target, n: scored.length, threshold: null, coverage: 0, precision: Number.NaN, lower: Number.NaN, noErrors };
   let hits = 0;
   for (let n = 1; n <= scored.length; n += 1) {
     const current = scored[n - 1]!;
@@ -254,9 +297,65 @@ export function fitGate(all: Item[], target = 0.95, on: Gate['on'] = 'probabilit
     // only evaluate at the end of a run of equal scores, so a threshold never splits ties
     if (next && next.s === current.s) continue;
     const precision = hits / n;
-    if (precision >= target) best = { on, target, threshold: current.s, coverage: n / scored.length, precision };
+    if (precision >= target) best = { ...best, threshold: current.s, coverage: n / scored.length, precision, lower: wilsonLower(hits, n) };
   }
   return best;
+}
+
+/**
+ * One gate per question. Questions differ in how their certainty tracks correctness (a noul's never
+ * drops below 0.5; a 30-way choice's can sit at 0.3 and be right), so a pooled threshold is wrong for
+ * most of them.
+ */
+export function fitGates(all: Item[], target = 0.95, on: Gate['on'] = 'probability'): Gate[] {
+  const by = new Map<string, Item[]>();
+  for (const i of all) by.set(i.field, [...(by.get(i.field) ?? []), i]);
+  return [...by].map(([field, xs]) => ({ ...fitGate(xs, target, on), field }));
+}
+
+/** Apply fitted per-question gates to other answers: the precision and coverage they actually get. */
+export function applyGates(all: Item[], gates: Gate[]): { field: string; n: number; coverage: number; precision: number }[] {
+  return gates.map((g) => {
+    const xs = all.filter((i) => i.field === g.field);
+    const s = (i: Item) => (g.on === 'probability' && i.probabilities ? (i.probabilities[i.label] ?? i.confidence) : i.confidence);
+    // no wrong answers where it was fitted: no gate, so everything passes
+    const kept = g.noErrors ? xs : g.threshold === null ? [] : xs.filter((i) => s(i) >= g.threshold!);
+    return { field: g.field!, n: xs.length, coverage: xs.length ? kept.length / xs.length : Number.NaN, precision: kept.length ? kept.filter((i) => i.label === i.gold).length / kept.length : Number.NaN };
+  });
+}
+
+/**
+ * Deterministic split by case id: the same case always lands on the same side. FNV-1a, then a murmur3
+ * finaliser, because ids that differ only in their last characters (triage-001, triage-002) otherwise
+ * share their high bits and land on one side together.
+ */
+export function inFitHalf(caseId: string, fraction = 0.5): boolean {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < caseId.length; i += 1) h = Math.imul(h ^ caseId.charCodeAt(i), 0x01000193);
+  h ^= h >>> 16;
+  h = Math.imul(h, 0x85ebca6b);
+  h ^= h >>> 13;
+  h = Math.imul(h, 0xc2b2ae35);
+  h ^= h >>> 16;
+  return (h >>> 0) / 2 ** 32 < fraction;
+}
+
+/** Rows that recorded an error instead of answers: counted, never graded. */
+export const errored = (rows: Row[]) => rows.filter((r) => r.error);
+
+/**
+ * Cases whose gold differs between two runs. A diff across different labels is meaningless: the same
+ * answers can move from right to wrong because a label was corrected.
+ */
+export function goldMismatches(before: Row[], after: Row[]): string[] {
+  const prior = new Map(before.map((r) => [r.caseId, JSON.stringify(r.gold ?? {})]));
+  return after.filter((r) => prior.has(r.caseId) && prior.get(r.caseId) !== JSON.stringify(r.gold ?? {})).map((r) => r.caseId);
+}
+
+/** Replace each row's gold with the suite's current labels, so two runs are graded on the same truth. */
+export function regold(rows: Row[], cases: { id: string; gold?: Record<string, unknown> }[]): Row[] {
+  const gold = new Map(cases.map((c) => [c.id, c.gold ?? {}]));
+  return rows.filter((r) => gold.has(r.caseId)).map((r) => ({ ...r, gold: gold.get(r.caseId) as Row['gold'] }));
 }
 
 /** Parse JSONL text into rows, skipping blank lines. */
@@ -359,7 +458,7 @@ export type Decision = {
 };
 
 /** True for rows written by `jev-run --map`. */
-export const isMapRow = (row: Row) => row.decision !== undefined || row.grades !== undefined;
+export const isMapRow = (row: Row) => row.decision !== undefined || row.grades !== undefined || row.arm === 'jev-map';
 
 function gradeDecision(pred: unknown, gold: unknown): Decision['grade'] {
   if (pred === undefined || pred === null || pred === 'abstain' || (Array.isArray(pred) && pred.length === 0)) return 'abstain';
@@ -367,7 +466,7 @@ function gradeDecision(pred: unknown, gold: unknown): Decision['grade'] {
   return (Array.isArray(gold) ? gold.includes(p) : p === gold) ? 'right' : 'wrong';
 }
 
-/** One graded decision per (case, decision field) of a map run. Rows that errored are skipped. */
+/** One graded decision per (case, decision field) of a map run. Rows that errored are skipped: count them with `errored`. */
 export function decisions(rows: Row[]): Decision[] {
   const out: Decision[] = [];
   for (const row of rows) {
@@ -429,6 +528,10 @@ export type DecisionGate = {
   wrongRemoved: number;
   /** right decisions it turns into abstentions */
   rightLost: number;
+  /** 95% Wilson lower bound on the precision */
+  lower: number;
+  /** no wrong decisions at all: nothing for a gate to remove */
+  noErrors: boolean;
 };
 
 /**
@@ -440,7 +543,8 @@ export function fitDecisionGate(all: Decision[], target = 0.95): DecisionGate {
   const decided = all.filter((d) => d.grade !== 'abstain').map((d) => ({ s: d.weakest?.certainty ?? 1, hit: d.grade === 'right' })).sort((a, b) => b.s - a.s);
   const wrongTotal = decided.filter((d) => !d.hit).length;
   const rightTotal = decided.length - wrongTotal;
-  let best: DecisionGate = { target, threshold: null, coverage: 0, precision: Number.NaN, wrongRemoved: wrongTotal, rightLost: rightTotal };
+  let best: DecisionGate = { target, threshold: null, coverage: 0, precision: Number.NaN, wrongRemoved: wrongTotal, rightLost: rightTotal, lower: Number.NaN, noErrors: wrongTotal === 0 };
+  if (wrongTotal === 0) return { ...best, coverage: decided.length / all.length, precision: decided.length ? 1 : Number.NaN, wrongRemoved: 0, rightLost: 0, lower: wilsonLower(decided.length, decided.length) };
   let hits = 0;
   for (let n = 1; n <= decided.length; n += 1) {
     const current = decided[n - 1]!;
@@ -448,7 +552,7 @@ export function fitDecisionGate(all: Decision[], target = 0.95): DecisionGate {
     const next = decided[n];
     if (next && next.s === current.s) continue;
     const precision = hits / n;
-    if (precision >= target) best = { target, threshold: current.s, coverage: n / all.length, precision, wrongRemoved: wrongTotal - (n - hits), rightLost: rightTotal - hits };
+    if (precision >= target) best = { ...best, threshold: current.s, coverage: n / all.length, precision, wrongRemoved: wrongTotal - (n - hits), rightLost: rightTotal - hits, lower: wilsonLower(hits, n) };
   }
   return best;
 }

@@ -1,0 +1,21 @@
+# Offline checks on every push and pull request: the audit library's tests, the audit bundles against
+# their source, the example suites and maps, and the recorded results the README quotes. No API key.
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run check
+      - name: Checksums match
+        run: sha256sum -c SHA256SUMS

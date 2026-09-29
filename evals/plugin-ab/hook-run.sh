@@ -8,9 +8,9 @@ case $task in
     cp $FIXTURE/questions.json $FIXTURE/decide.ts .
     P='This directory holds our Jev (TypeSafe System One) integration that decides whether a customer cancellation gave enough notice to avoid a contract auto-renewal: questions.json (the request) and decide.ts (logic on the answers). Add one question that checks whether the cancellation email was sent from an address the contract lists as an authorised contact, and wire it into decide.ts. Keep the change minimal. Do not call the API.';;
   notice)
-    P="$(sed -n "/notice) T='/s/.*notice) T='\(.*\)';;/\1/p" $REPO/results/experiments/plugin-ab/run.sh)
+    P="$(sed -n "/notice) T='/s/.*notice) T='\(.*\)';;/\1/p" $REPO/evals/plugin-ab/run.sh)
 
-$(sed -n "s/^API='\(.*\)'$/\1/p" $REPO/results/experiments/plugin-ab/run.sh)
+$(sed -n "s/^API='\(.*\)'$/\1/p" $REPO/evals/plugin-ab/run.sh)
 
 Write the Jev request as questions.json (an example state plus the questions map) and any logic that runs on the answers as decide.ts. Keep it concise. Do not call the API.";;
 esac

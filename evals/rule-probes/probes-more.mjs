@@ -1,6 +1,6 @@
 // Rules 1 and 15 across three domains each. Facts are fictional, so priors cannot answer them.
 import { writeFileSync } from 'node:fs';
-import { evaluate } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { evaluate } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 const yes = (a) => a.noul > 0.5;
 const conf = (a) => (a.type === 'noul' ? Math.abs(a.noul - 0.5) * 2 : a.probabilities?.[a.choice] ?? a.confidence);
 

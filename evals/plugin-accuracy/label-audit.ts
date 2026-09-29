@@ -1,10 +1,10 @@
 // Independent relabelling of the three plugin-accuracy suites by an LLM (default zai/glm-5.3-flash,
 // reasoning on), given each suite's labelling rule and the case, never the gold. Same method as the
 // study's own label audits (apps/harness/src/workflows/label-audit.ts).
-//   NODE_USE_ENV_PROXY=1 node --env-file=../../../.env.local --import tsx label-audit.ts [--model zai/glm-5.3-flash]
+//   NODE_USE_ENV_PROXY=1 node --env-file=../../.env.local --import tsx label-audit.ts [--model zai/glm-5.3-flash]
 import { readFileSync, writeFileSync } from 'node:fs';
 import { z } from 'zod';
-import { generateStructured } from '../../../packages/gateway/src/glm.js';
+import { generateStructured } from '../lib/glm.js';
 
 const argv = process.argv.slice(2);
 const model = argv.includes('--model') ? argv[argv.indexOf('--model') + 1]! : 'zai/glm-5.3-flash';

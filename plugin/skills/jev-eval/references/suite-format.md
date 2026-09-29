@@ -9,7 +9,10 @@ Two shapes, one per way of running:
 
 ## Field-level
 
-One JSON file per suite. `jev-run` sends every case's `state` with the same `questions` map.
+One JSON file per suite. `jev-run` sends every case's `state` with the same `questions` map. A `state`
+can be a string, an object or an array; an object with named fields lets questions point at one
+field (rule 2). A `noul`'s `criteria` (`{ "true": …, "false": … }`) is optional: it describes what yes
+and no mean, and helps when they are not obvious from the instructions.
 
 ```json
 {
@@ -61,10 +64,12 @@ The map builds the state and questions itself, so a case carries only the raw `i
 ```
 
 - `decide()` returns `{ outcome: "avoided" }`. A bare `"avoided"` also works when there's one field.
-- `"abstain"` counts as not decided: it lowers coverage, not the wrong-decision count.
+- `"abstain"` counts as not decided: it lowers coverage, not the wrong-decision count. It is reserved:
+  never use it as a gold label.
 - An array gold (`"culprit_lines": [33, 34]`) means any of those is right. An array prediction is graded
   on its first item.
 - Full example: `examples/renewal-notice.json` with `examples/renewal-notice.map.mjs`.
+- For many cases, a `.jsonl` file with one case per line works in place of the JSON file (with `--map`).
 
 ## Gold labels (field-level)
 
@@ -84,8 +89,16 @@ derived value is ignored.
 { "suite": "support-triage", "arm": "jev", "caseId": "triage-001", "tags": [], "gold": { ... },
   "raw": { "department": { "type": "choice", "choice": "billing", "confidence": 0.97, "probabilities": { ... } } },
   "predicted": { "priority_queue": "yes" }, "confidence": { "priority_queue": 0.91 },
-  "latencyMs": 540, "inputTokens": 212, "listCostUsd": 0.0000089, "servedBy": "typesafe-ai/jev-..." }
+  "latencyMs": 540, "inputTokens": 212, "listCostUsd": 0.0000089, "costUsd": 0.0000089,
+  "provider": "typesafe", "servedBy": "jev-1.13.0" }
 ```
+
+- `servedBy` is the model the API reports: a versioned id through TypeSafe's API (`jev-1.13.0`),
+  `typesafe-ai/jev` through the gateway.
+- `costUsd` is what the gateway billed, when it reports it. The study's recorded runs show 0: the
+  gateway billed nothing for Jev at the time. `listCostUsd` is always input tokens × list price.
+- A row with `error` is a case that failed after retries. `jev-audit` counts these and never grades them.
+- Map runs add `decision` (what `decide()` returned) and `grades` (`right`, `wrong` or `abstain` per field).
 
 To audit a comparator (an LLM), write rows with the same `caseId` and `gold` and its labels in
 `predicted`. `jev-audit diff` compares any two files of such rows. Calibration and gates need

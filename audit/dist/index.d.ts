@@ -42,6 +42,7 @@ export type Row = {
     decision?: Record<string, unknown>;
     grades?: Record<string, string>;
     error?: string;
+    arm?: string;
 };
 /** One graded answer, whatever primitive produced it. */
 export type Item = {
@@ -100,17 +101,30 @@ export type Calibration = {
     bins: Bin[];
 };
 /**
- * Calibration of the **confidence scalar**. Across 5,227 answers this was systematically
- * under-confident at every bin — a 0.7–0.8 claim delivered 78%, a 0.2–0.3 claim 55% — which means a
- * default 0.9 gate discards answers that are mostly right. Compare with `probabilityCalibration`.
+ * Calibration of the **confidence scalar**. Across 5,227 answers in the study it was mostly
+ * under-confident — a 0.2–0.3 claim delivered 55% — so a default 0.9 gate on it discards answers that
+ * are mostly right. It is not the top label's probability (a right answer can carry 0.000), and single
+ * suites can differ: read your own bins. Gate on the probability instead (`topLabelCalibration`).
  */
 export declare function calibration(all: Item[], binCount?: number): Calibration;
 /**
- * Calibration of **every probability in every distribution**, not just the winning label. In the
- * study this tracked the diagonal within about four points where the scalar was off by up to 29 —
- * so if you gate, gate on the probability of the label you care about.
+ * Calibration of **every probability in every distribution**, not just the winning label. Pooled over
+ * 5,227 answers it tracked the diagonal within about four points where the scalar was off by up to 29.
+ * Caution: the many near-zero probabilities of labels nobody chose dominate this pool and flatter the
+ * ECE. For gating, read `topLabelCalibration` and `auroc`, which only look at the label acted on.
  */
 export declare function probabilityCalibration(all: Item[], binCount?: number): Calibration;
+/**
+ * Calibration of the probability of the label the answer gave: the number a gate reads. Middle bins
+ * are where single suites wander; with ~30 cases each bin holds a handful of answers.
+ */
+export declare function topLabelCalibration(all: Item[], binCount?: number): Calibration;
+/**
+ * Area under the ROC curve of the top-label probability as a right/wrong detector: the chance a random
+ * right answer is more certain than a random wrong one. A gate fitted on labelled cases needs this
+ * (ranking), not calibration. NaN when there are no wrong answers or no right ones.
+ */
+export declare function auroc(all: Item[], on?: Gate['on']): number;
 /**
  * Share of cases where the truth is among the top `k` labels. `argmax` discarded 12–25 points of
  * recall in the study: when the top label was wrong, the truth was the runner-up 67–100% of the time.
@@ -124,18 +138,59 @@ export declare function topK(all: Item[], k?: number): {
 }[];
 export type Gate = {
     on: 'confidence' | 'probability';
+    /** the question the gate is for; undefined for a gate pooled over every question */
+    field?: string;
     target: number;
+    /** answers the gate was fitted on */
+    n: number;
     /** null when no threshold reaches the target precision on this data */
     threshold: number | null;
     coverage: number;
     precision: number;
+    /** 95% Wilson lower bound on that precision: at ~30 cases, "95% precise" can mean 80% */
+    lower: number;
+    /** true when the answers held no wrong ones, so any threshold "reaches" the target */
+    noErrors: boolean;
 };
+/** 95% Wilson score lower bound for k successes in n. */
+export declare function wilsonLower(k: number, n: number, z?: number): number;
 /**
  * The lowest threshold at which everything at or above it is at least `target` precise, and how much
  * of the queue that automates. Fit this on held-out labelled cases, never guess it: on adversarial
  * cases the ordering survived while coverage collapsed to one case in eight.
  */
 export declare function fitGate(all: Item[], target?: number, on?: Gate['on']): Gate;
+/**
+ * One gate per question. Questions differ in how their certainty tracks correctness (a noul's never
+ * drops below 0.5; a 30-way choice's can sit at 0.3 and be right), so a pooled threshold is wrong for
+ * most of them.
+ */
+export declare function fitGates(all: Item[], target?: number, on?: Gate['on']): Gate[];
+/** Apply fitted per-question gates to other answers: the precision and coverage they actually get. */
+export declare function applyGates(all: Item[], gates: Gate[]): {
+    field: string;
+    n: number;
+    coverage: number;
+    precision: number;
+}[];
+/**
+ * Deterministic split by case id: the same case always lands on the same side. FNV-1a, then a murmur3
+ * finaliser, because ids that differ only in their last characters (triage-001, triage-002) otherwise
+ * share their high bits and land on one side together.
+ */
+export declare function inFitHalf(caseId: string, fraction?: number): boolean;
+/** Rows that recorded an error instead of answers: counted, never graded. */
+export declare const errored: (rows: Row[]) => Row[];
+/**
+ * Cases whose gold differs between two runs. A diff across different labels is meaningless: the same
+ * answers can move from right to wrong because a label was corrected.
+ */
+export declare function goldMismatches(before: Row[], after: Row[]): string[];
+/** Replace each row's gold with the suite's current labels, so two runs are graded on the same truth. */
+export declare function regold(rows: Row[], cases: {
+    id: string;
+    gold?: Record<string, unknown>;
+}[]): Row[];
 /** Parse JSONL text into rows, skipping blank lines. */
 export declare function parseRows(text: string): Row[];
 export type FieldDiff = {
@@ -181,7 +236,7 @@ export type Decision = {
 };
 /** True for rows written by `jev-run --map`. */
 export declare const isMapRow: (row: Row) => boolean;
-/** One graded decision per (case, decision field) of a map run. Rows that errored are skipped. */
+/** One graded decision per (case, decision field) of a map run. Rows that errored are skipped: count them with `errored`. */
 export declare function decisions(rows: Row[]): Decision[];
 export type DecisionField = {
     field: string;
@@ -217,6 +272,10 @@ export type DecisionGate = {
     wrongRemoved: number;
     /** right decisions it turns into abstentions */
     rightLost: number;
+    /** 95% Wilson lower bound on the precision */
+    lower: number;
+    /** no wrong decisions at all: nothing for a gate to remove */
+    noErrors: boolean;
 };
 /**
  * Fit a gate on the weakest answer behind each decision: the lowest threshold at which the decisions

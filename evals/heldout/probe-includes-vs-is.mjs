@@ -1,4 +1,4 @@
-import { evaluate } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { evaluate } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 const items = [
   ['Dinner and a bottle of wine', 1], ['Bar tab after the offsite', 1], ['Dinner, two beers and dessert', 1], ['Team drinks at the hotel bar', 1],
   ['Lunch at the Wine Barrel Grill (food only)', 0], ['Dinner with a candidate', 0], ['Coffee and pastries for the workshop', 0], ['Dinner at Brewhouse Kitchen, food only', 0],

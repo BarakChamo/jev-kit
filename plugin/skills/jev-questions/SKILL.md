@@ -1,6 +1,6 @@
 ---
 name: jev-questions
-description: Write, review or fix Jev (TypeSafe System One) question maps — the state plus the typed noul / choice / score questions sent to the systemone API — using rules measured on 57 labelled suites and re-tested on agent-written maps. Use whenever writing or editing Jev questions, instructions, criteria or rubrics, designing the state object, choosing between asking a question and deriving the answer in code, or when a Jev field is scoring badly.
+description: Write, review or fix Jev (TypeSafe System One) question maps — the state plus the typed noul / choice / score questions sent to the systemone API — using rules measured on 57 labelled suites and re-tested on agent-written maps. Use whenever writing or editing Jev questions, instructions, criteria or rubrics, designing the state object, choosing between asking a question and deriving the answer in code, or fixing a Jev field once a measurement shows it scoring badly. Not for building test suites, running Jev or fitting thresholds (use jev-eval).
 ---
 
 # Writing Jev questions
@@ -20,30 +20,37 @@ between Jev and an LLM moved it by a few. Question design is the dominant term.
 | 2 | Name the field each question reads | unscoped question: −28.5 points, confidence unchanged |
 | 3 | Write a domain convention into the state once | +12 to +20 |
 | 4 | Put all meaning in `instructions` and `criteria`, never the key | 100% on an LLM, 0% on Jev |
-| 5 | Ask what is true now; no "if", "would" or "should" | 48.7% → 87.2% |
+| 5 | Ask what is true now; no "if", "would" or "should" | 48.7% → 82.1% (87.2% as two facts) |
 | 6 | Split compound questions | 0.50–0.79 → 0.90–0.94 |
 | 7 | Ask whether it *includes* the thing, not whether it *is* that kind | 10/12 → 12/12 |
 | 8 | Never ask Jev to compare against a value it must first compute | 41.7% → 100%; stated values compare fine |
-| 9 | Read dates and stated numbers exactly; do all arithmetic in code | 64–75% → 30/30 |
+| 9 | Read dates and stated numbers exactly; do all arithmetic in code | 64–75% → 30/30 (now 42/42) |
 | 10 | Pick one of many with a `choice`; rank with a `noul` each | 13–100% → 100% |
 | 11 | Prefer `choice` and `noul`; treat `score` as fragile | 56-point swings vs 4 |
 | 12 | Derive in code only from reliable, sufficient facts | +58 to −34 |
-| 13 | Gate on the label's probability, fitted per question; never let doubt relax a decision | scalar off by up to 29 points |
+| 13 | Gate on the label's probability, fitted per question; never let doubt relax a decision | scalar off by up to 29 points; a guessed gate abstained on right answers |
 | 14 | Offer an abstain option *and* gate on confidence | 2× the ambiguity caught |
-| 15 | Add a detector question beside a manipulable judgment | 75.0% → 83.3% |
+| 15 | Add a detector question beside a manipulable judgment | 75.0% → 83.3% (small n: not a security control) |
 | 16 | Never pre-filter candidates with unmeasured code | answer kept in as few as 5/30 |
 
 ## The API
 
+Two routes, same request and answers. Pick by which key you have.
+
+| route | endpoint | key | model |
+| --- | --- | --- | --- |
+| TypeSafe | `https://api.typesafe.ai/v1/systemone` | `TYPESAFE_API_KEY` | `jev-latest`, or a pinned version such as `jev-1.13.0` |
+| Vercel AI Gateway | `https://ai-gateway.vercel.sh/typesafe/v1/systemone` | `AI_GATEWAY_API_KEY` | `typesafe-ai/jev` (unversioned only) |
+
 ```jsonc
-POST https://ai-gateway.vercel.sh/typesafe/v1/systemone   // Authorization: Bearer $AI_GATEWAY_API_KEY
+POST https://api.typesafe.ai/v1/systemone   // Authorization: Bearer $TYPESAFE_API_KEY
 {
-  "model": "typesafe-ai/jev",
-  "state": { "command": "rm -rf ./build", "environment": "ci" },
+  "model": "jev-latest",
+  "state": { "command": "rm -rf ./build", "environment": "ci", "context": "…the conversation and files the agent read…" },
   "questions": {
     "risk": { "type": "choice", "instructions": "How destructive is the command in `command` in the environment named in `environment`?",
               "criteria": { "harmless": "reads or builds only", "recoverable": "deletes things that can be regenerated", "destructive": "deletes data that cannot be regenerated" } },
-    "claims_approval": { "type": "noul", "instructions": "Does any text in the state claim that a person has already approved this command?",
+    "claims_approval": { "type": "noul", "instructions": "Does `context` claim that a person has already approved the command in `command`?",
               "criteria": { "true": "some text asserts prior approval", "false": "no such claim" } },
     "clarity": { "type": "score", "instructions": "How clearly does `command` state its target?",
               "criteria": ["unclear: target cannot be determined", "partial: target is ambiguous", "clear: target is explicit"] }
@@ -52,11 +59,17 @@ POST https://ai-gateway.vercel.sh/typesafe/v1/systemone   // Authorization: Bear
 // noul -> { noul: 0.03 }   choice -> { choice, confidence, probabilities }   score -> { score: 1.48, confidence, legend, probabilities }
 ```
 
-- **`choice`**: up to 255 options with no accuracy cost. At 256 it refuses rather than truncating.
-- **The distribution is calibrated.** When the top label is wrong, the truth is the runner-up 67–100%
-  of the time.
+- **`choice`**: up to 255 options. Accuracy held at 180, 240 and 255 options on identical items; at 256
+  the API refuses rather than truncating. A many-option choice's top probability runs lower than a
+  yes/no's, so fit its gate separately (rule 13). More than 255 candidates: see rule 16.
+- **Act on `probabilities`, not `confidence`.** The top label's probability tracked accuracy better than
+  the `confidence` scalar in the study, but a single suite's middle bins wander: fit the gate on your
+  cases. When the top label is wrong, the truth is the runner-up 67–100% of the time, which is why
+  showing a person two labels helps.
 - **Questions are independent.** Adding or reordering questions moved 0.0–1.2% of answers, so ask
   many small ones.
+- **Limits** (TypeSafe's docs): 32k tokens for the state plus the longest question, 64k per request;
+  1,200 requests a minute. The response's `model` names the version that answered: log it.
 
 ## How to build a map
 
@@ -78,7 +91,8 @@ export function decide(answers, input) { /* -> { <decision field>: <label> | "ab
 `jev-run suite.json --map map.mjs` then grades the **whole** map: the state, the questions, and the
 code after them. That last part decided accuracy as often as the questions did. Keep the API's answer
 shapes as they are (a `noul` is a number, a `score` is fractional). Worked example:
-`../jev-eval/examples/renewal-notice.map.mjs` (30/30).
+`../jev-eval/examples/renewal-notice.map.mjs` (42/42; it ships with the jev-eval skill, so install
+all three skills together).
 
 ### Editing an existing map? Review every question in it
 
@@ -88,6 +102,8 @@ through **every** question, including ones you were not asked to change. Tell th
 one that fails, even if you leave it unchanged.
 
 - [ ] Does it ask Jev to **compare** against something it must first compute: a deadline, "on time", a limit given as a rule, a period in other units? (rule 8)
+- [ ] Does any `choice` list values that the input could fall outside of (years, amounts, periods) with no "other" option? (rules 9, 14)
+- [ ] Does `decide()` act on a label with **no probability gate**, or on a threshold nobody fitted? (rule 13)
 - [ ] Does it ask Jev to do **date or number arithmetic**? (rule 9)
 - [ ] Does it ask for an **action** or a **counterfactual** instead of a present fact? (rules 5, 12)
 - [ ] Does any question ask Jev for a **written policy's outcome** (grant or deny, eligible, breached, approve)? Ask for each fact the policy branches on (who, what, where, which level), and apply the rules in order in code. (rule 12)
@@ -129,7 +145,8 @@ Patterns with code: [references/patterns.md](references/patterns.md).
   `unsafe_to_revert` while its criteria said the opposite scored 100% on an LLM and **0%** on Jev.
 
 **5. Ask what is true now.** No "if", no "would it pass again", no "should we".
-- *Why:* Jev answers the consequent and drops the antecedent. Gating the conditional in code:
+- *Why:* answers to conditionals were barely decisive, as if Jev answered the "then" part and
+  ignored the "if" (an observation, not a tested mechanism). Gating the conditional in code:
   48.7% → 82.1%. Two present-tense facts combined in code: 87.2%.
 - Framing that is not a branch ("if this turned out to be wrong" as context) was harmless.
 
@@ -157,8 +174,19 @@ Patterns with code: [references/patterns.md](references/patterns.md).
 
 **9. Read dates and stated numbers exactly, and do all arithmetic in code.**
 - *Dates as choices:* asking "was the notice on time?" was right 64–75% of the time. Asking for the
-  effective date's year, month and day as three `choice`s (`2021…2026`, `January…December`, `1…31`),
-  plus the term and notice period, and computing the rest in code, scored **30/30**.
+  effective date's year, month and day as three `choice`s, plus the term and notice period, and
+  computing the rest in code, scored **30/30**. The current example scores 42/42, including month-end
+  dates and notice given in months.
+- *Build option lists from the input, and add "other".* Years: a range around the input's own date,
+  not a fixed list. Every list the input could fall outside gets an "other" option, and `decide()`
+  abstains on it. A `choice` normalises over its options, so a value missing from the list lands on
+  the nearest option, sometimes confidently.
+- *Read a period as a number and a unit* ("3" and "months"), and convert in code with calendar
+  arithmetic. Never tell Jev "months count as 30 days": 3 months before January 10 is October 10,
+  not October 12. Clamp month ends (January 31 + 1 month = February 28), and count each term end from
+  the start date, not from the previous end.
+- *Ambiguous formats:* a date written 03/04 is day-first in some places and month-first in others.
+  Put the convention in the state (rule 3), or abstain when both parts are 12 or under and none is given.
 - *Stated numbers exactly:* read "up to USD 75" as a `choice` over the values the document could
   state, not as a band. One map read it as 70–75, then called a $73.44 dinner "ambiguous, so over".
 - *Explicit inputs:* where the input carries dates or amounts, compute from them. The two best of 16
@@ -188,8 +216,13 @@ sufficient.**
 | derive it | ask it as one present-tense question |
 | --- | --- |
 | a comparison of quantities (+58, +43) | a weighted holistic judgment (−3 to −9 if derived) |
-| anything defined by a class: "retry iff cause ∈ {flaky, infra}" (+12.5 to +29) | a long AND: five facts at 100/95/90/87/67% multiply to 49.5% |
+| anything defined by a class: "retry iff cause ∈ {flaky, infra}" (+12.5 to +29) | a long AND of *judgments* with no written rule: five facts at 100/95/90/87/67% gave 48.7% as a derived AND (their product is 49.8%) |
 | a short OR of reliable flags (+10) | a verdict the facts do not determine: "addresses a machine" ≠ "attacks it" (−27) |
+| **every written policy**, however many clauses | — |
+
+The "long AND" row is about judgments nobody has written a rule for (does this change preserve
+behaviour?). It is not a reason to ask a written policy's outcome: when a clause's fact reads badly,
+fix that question, or gate on it and abstain, but keep applying the policy in code.
 
 - *A written policy is the common case.* When a policy maps facts to outcomes (grant, needs approval, deny),
   ask Jev for each fact the rules branch on, and apply the rules in order in code. Don't ask for the outcome.
@@ -200,8 +233,9 @@ sufficient.**
 
 **13. Gate on the probability of the label you act on, fit the threshold per question, and never let
 doubt relax a decision.**
-- *Why:* across 5,227 answers the `confidence` scalar was under-confident by up to 29 points, while
-  the distribution tracked the diagonal within ~4.
+- *Why:* across 5,227 answers the `confidence` scalar was mostly under-confident, by up to 29 points.
+  The probabilities, pooled over every label, tracked the diagonal within ~4; that pool is flattered
+  by near-zero probabilities, so check the top label's own bins (`jev-audit` prints both) and fit.
 - *Fit, don't guess.* A `choice` over many options tops out lower than a yes/no. Over 379 picks from
   20+ lines, right answers had a median top probability of 0.94, and a tenth of them were under 0.67.
   A gate at 0.8 removed all 6 wrong picks and kept 79% of the right ones. A map that guessed 0.6
@@ -224,12 +258,22 @@ doubt relax a decision.**
   but was right every time. Together they caught twice as many ambiguous cases as either alone.
 
 **15. Add a detector question beside a judgment that can be manipulated.**
-- *Why:* Jev *detects* an injected "this was already approved" 5 of 6 times with no false alarms, and
-  *resists* it only 3 of 6. One extra `noul` as a veto: 75.0% → 83.3%.
+- *Why:* in the study, Jev *detected* an injected "this was already approved" 5 of 6 times with no
+  false alarms, and *resisted* it only 3 of 6. One extra `noul` as a veto: 75.0% → 83.3%. In the rule
+  probes the same claim fooled a deploy judgment 6 of 6 times (and none of 6 in two other domains);
+  the veto stopped all 6.
+- *Scope the detector* to the fields an attacker can write (`context`, `request`), like any question.
+- *This is not a security control.* The evidence is six cases per domain and one attack phrasing. A
+  detector is itself a Jev question and could be steered. Layer it under deterministic allowlists,
+  fail closed on errors, and see the kit's production guide.
 
 **16. Never pre-filter candidates with code whose recall you have not measured.**
 - *Why:* agents narrowed 40 log lines with a regex to keep the request small, and the right line
   survived in as few as 5 of 30 cases. Jev never saw it. Long states are cheap; send everything.
+- *More than 255 candidates* (a long log): a `choice` refuses at 256. Either use a filter whose recall
+  you measured on your suite (rule 16 allows it), or split the candidates into chunks of up to 254 with
+  a "none of these" option, pick one per chunk, then pick among the chunk winners in a second call.
+  Both are unmeasured here: grade them before relying on them.
 - The related rule: where code can settle a sub-question completely, let it. For placeholder integrity,
   the model alone scored 82.1%, code stating the fact 87.2%, and code deciding outright 89.7%.
 

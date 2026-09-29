@@ -1,7 +1,7 @@
 // GLM 5.3 Flash relabels the held-out suites from each suite's rule text and the case, never the gold.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { z } from 'zod';
-import { generateStructured } from '../../../packages/gateway/src/glm.js';
+import { generateStructured } from '../lib/glm.js';
 
 const SYSTEM = 'You are labelling evaluation data. Apply the rule exactly as written, working through any conversion or lookup step by step. Answer only with the submit tool.';
 const suites: Record<string, { rule: string; schema: z.ZodTypeAny }> = {

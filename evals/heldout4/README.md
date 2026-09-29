@@ -96,9 +96,9 @@ Round 2's DeepSeek maps used `deepseek-v4-pro`. This round's used the newer `-08
 ```bash
 node gen.mjs
 REPO=<repo> OUT=maps-cc-v43 ../heldout2/run.sh procurement plugin 1
-MAX_OUTPUT=64000 node --env-file=../../../.env.local ../heldout2/author.mjs procurement plugin zai/glm-5.3 1 maps-api-v43
-STREAM=0 MAX_OUTPUT=64000 node --env-file=../../../.env.local ../heldout2/author.mjs ...   # the retry
-node --env-file=../../../.env.local ../heldout2/grade.mjs maps-api-v43/* --out results.api-v43.json
+MAX_OUTPUT=64000 node --env-file=../../.env.local ../heldout2/author.mjs procurement plugin zai/glm-5.3 1 maps-api-v43
+STREAM=0 MAX_OUTPUT=64000 node --env-file=../../.env.local ../heldout2/author.mjs ...   # the retry
+node --env-file=../../.env.local ../heldout2/grade.mjs maps-api-v43/* --out results.api-v43.json
 python3 summarise.py
 node ../heldout3/design.mjs maps-cc-base maps-cc-v42 maps-cc-v43
 ```

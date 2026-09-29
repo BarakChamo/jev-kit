@@ -11,9 +11,9 @@ for m in zai/glm-5.3 alibaba/qwen3.8-max-0902; do for t in sla-breach refund-eli
 echo "$(wc -l < $OUT/jobs.txt) maps to write"
 # round 2 used the skill at the commit in SKILL_VERSION; the author reads it from git at that commit
 export SKILL_REF=$(cat SKILL_VERSION)
-xargs -P 10 -L 1 node --env-file=../../../.env.local author.mjs < $OUT/jobs.txt || echo "some maps failed to write; they count as load failures"
+xargs -P 10 -L 1 node --env-file=../../.env.local author.mjs < $OUT/jobs.txt || echo "some maps failed to write; they count as load failures"
 for d in $OUT/*/; do n=$(basename $d); [ -f $d/map.mjs ] && mkdir -p maps-api/$n && cp $d/map.mjs $d/response.md $d/usage.json maps-api/$n/; done
-CONCURRENCY=3 node --env-file=../../../.env.local grade.mjs $(ls -d maps-api/*) --out results.api.json
+CONCURRENCY=3 node --env-file=../../.env.local grade.mjs $(ls -d maps-api/*) --out results.api.json
 # Claude Code maps written with skill v4 while the gateway was out of credit (maps-v4/SKILL_VERSION)
-[ -d maps-v4 ] && CONCURRENCY=3 node --env-file=../../../.env.local grade.mjs $(ls -d maps-v4/*/ | sed 's#/$##') --out results.v4.json
+[ -d maps-v4 ] && CONCURRENCY=3 node --env-file=../../.env.local grade.mjs $(ls -d maps-v4/*/ | sed 's#/$##') --out results.v4.json
 python3 summarise.py

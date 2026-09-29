@@ -11,7 +11,7 @@ import { generateText, streamText } from 'ai';
 import { buildPrompt } from './prompt.mjs';
 
 const [task, arm, model, rep, outdir] = process.argv.slice(2);
-const repo = new URL('../../../', import.meta.url);
+const repo = new URL('../../', import.meta.url);
 // SKILL_REF pins the skill text to a git commit, so a resumed round sees the same skill it started with.
 const readSkillFile = (p) =>
   process.env.SKILL_REF

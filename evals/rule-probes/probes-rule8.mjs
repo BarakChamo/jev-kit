@@ -1,7 +1,7 @@
 // Rule 8, harder: when does asking Jev to compare break? Simple stated numbers compared perfectly
 // (probes.mjs). Here the comparison needs a conversion, a computed limit, distance, or mixed units.
 import { writeFileSync } from 'node:fs';
-import { evaluate } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { evaluate } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 
 const opts = (xs) => Object.fromEntries(xs.map((x) => [String(x), null]));
 const yes = (a) => a.noul > 0.5;

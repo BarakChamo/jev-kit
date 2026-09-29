@@ -1,9 +1,9 @@
 // Grade every held-out map with the plugin's own runner, through the standard interface: no adapters.
-//   NODE_USE_ENV_PROXY=1 node --env-file=../../../.env.local grade.mjs maps/<run>... [--out results.json] [--mock]
+//   NODE_USE_ENV_PROXY=1 node --env-file=../../.env.local grade.mjs maps/<run>... [--out results.json] [--mock]
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { runSuite } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { runSuite } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 
 const argv = process.argv.slice(2);
 const mock = argv.includes('--mock');

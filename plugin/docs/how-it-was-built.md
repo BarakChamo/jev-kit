@@ -34,8 +34,8 @@ It compared Jev with a cheap LLM on 57 suites, and with a frontier model on seve
 | --- | --- |
 | scale | 57 suites, 1,836 hand-labelled cases, ~3,200 LLM calls, ~1,900 Jev calls |
 | accuracy on the decisions Jev is built for | **+4.8 points** over a cheap LLM, **a tie** with a frontier model |
-| cost | 20–100× cheaper than the cheap LLM, 200–600× cheaper than the frontier model |
-| latency | ~600 ms p50 and ~1.05 s p95, against 2.9 s and 10 s |
+| cost | 3–10× cheaper than the cheap LLM per decision on short states (up to ~100× with long states or LLM reasoning), 200–600× cheaper than the frontier model |
+| latency | ~600 ms p50 and ~1.05 s p95 through the gateway, against 2.9 s and 10 s |
 | malformed output | 0 in ~1,900 calls |
 | largest effect of all | **rewriting one question: 30–40 points** |
 

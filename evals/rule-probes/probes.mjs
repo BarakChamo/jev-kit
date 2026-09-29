@@ -1,8 +1,8 @@
 // Rule probes: each rule's recommended wording against the one it warns against, on the same items,
 // across three domains, with truth set by construction. Subject: Jev only.
-//   NODE_USE_ENV_PROXY=1 node --env-file=../../../.env.local probes.mjs [rule...]
+//   NODE_USE_ENV_PROXY=1 node --env-file=../../.env.local probes.mjs [rule...]
 import { writeFileSync } from 'node:fs';
-import { evaluate } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { evaluate } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const opts = (xs) => Object.fromEntries(xs.map((x) => [String(x), null]));

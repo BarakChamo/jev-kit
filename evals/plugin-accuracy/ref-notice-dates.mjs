@@ -1,7 +1,7 @@
 // Reference design for `notice` that uses only what the task promised (contract text, email, received
 // date): Jev *reads* the effective date and terms as choices; code does every piece of arithmetic.
 import { readFileSync, writeFileSync } from 'node:fs';
-import { evaluate } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { evaluate } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 
 const cases = JSON.parse(readFileSync(new URL('./notice.cases.json', import.meta.url), 'utf8'));
 const opts = (xs) => Object.fromEntries(xs.map((x) => [String(x), null]));

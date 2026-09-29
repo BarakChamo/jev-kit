@@ -8,7 +8,7 @@ import { spawn } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { basename, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { runSuite } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { runSuite } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 import { TASKS } from './prompt.mjs';
 
 const argv = process.argv.slice(2);

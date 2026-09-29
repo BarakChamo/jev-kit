@@ -2,7 +2,7 @@
 // case, never the gold. Run before any map is written or graded.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { z } from 'zod';
-import { generateStructured } from '../../../packages/gateway/src/glm.js';
+import { generateStructured } from '../lib/glm.js';
 
 const MODELS = ['zai/glm-5.3', 'alibaba/qwen3.8-max-0902'];
 const SYSTEM = 'You are labelling evaluation data. Apply the rule exactly as written, working through any date, time or lookup step by step before answering. Answer only with the submit tool.';

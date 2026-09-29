@@ -11,10 +11,11 @@ It never emits text. Everything below comes from 57 hand-labelled suites (1,836 
 cheap LLM and, on seven suites, a frontier model.
 
 **The headline to calibrate expectations:** on the decisions this model class is built for it is
-**+4.8 points** over a good cheap LLM and **a tie** with a frontier model. It is also **20–100× cheaper
-than the cheap LLM, 200–600× cheaper than the frontier model, and 3–10× faster at p50**. Nobody buys
-four points of accuracy. Recommend Jev when the **economics or latency** make an LLM impossible, not
-because it will be more accurate.
+**+4.8 points** over a good cheap LLM and **a tie** with a frontier model. Per decision it is **3–10×
+cheaper than a cheap flash LLM on short states** (a few hundred tokens; up to ~100× where the LLM
+reasons or the state is long), **200–600× cheaper than a frontier model**, and **about 5× faster at
+p50** (0.25–0.6 s against 2.9 s). Nobody buys four points of accuracy. Recommend Jev when the
+**economics or latency** make an LLM impossible, not because it will be more accurate.
 
 ## Step 1 — the four gates (all must hold)
 
@@ -23,8 +24,9 @@ because it will be more accurate.
    Long is fine: 24 questions over a 25,500-token state scored 100% in one request.
 3. **Volume or latency pressure**: thousands of decisions, or a hot path (per tool call, per chunk,
    per turn, per commit).
-4. **A wrong answer is survivable or gateable**: there is a human queue, a bigger model, or a safe
-   default for the unsure slice.
+4. **A wrong answer is survivable**: there is a human queue, a bigger model, or a safe default for
+   the cases Jev is unsure about (the gate sends them there). Confidently wrong answers get past any
+   gate, so the decision must also tolerate a small rate of those.
 
 If any gate fails, say so and recommend an LLM or plain code.
 
@@ -54,9 +56,10 @@ Ask these in order. Any "yes" among the first three predicts a loss unless redes
    If it is a *fact about the world right now* (a price, a reputation), a primer does nothing. You need
    retrieval.
 4. **Does it pull many independent facts from one artefact?** Build it. This is the structural win:
-   extra questions in the same request are nearly free (13 questions cost 8.2× less than 13 requests,
-   with identical answers), and the answers are independent (adding 24 unrelated questions moved
-   0.0–1.2% of answers).
+   extra questions in the same request are nearly free (13 short questions in one request cost 8.2×
+   less than 13 requests; 24 questions over a 25,500-token contract, 11.7× less, because the long state
+   is paid for once instead of 24 times), with identical answers, and the answers are independent
+   (adding 24 unrelated questions moved 0.0–1.2% of answers).
 
 ## Step 3 — hard disqualifiers
 
@@ -65,21 +68,29 @@ Ask these in order. Any "yes" among the first three predicts a loss unless redes
   fixes failed.
 - **Generated text** of any kind. Jev does not write.
 - **Pointing at a cause among near-identical items** ("which of these similar log lines caused
-  this"): 65% at 0.88 confidence, the worst calibration measured. Distinctive items are different:
+  this"): 65% at 0.88 confidence, the most over-confident result in the study. Distinctive items are different:
   picking the error line from a real log with one `choice` scored 100%, and pointing at an affordance
   ("which element does what I want") 87–94%. Measure before ruling it in or out.
-- **Resisting manipulation** as the primary job. It *detects* manipulation well (5/6, zero false
-  alarms) but can be moved by it (3/6). Ask it "is this hostile?", not "what should I do given this
-  hostile input?"
+- **Resisting manipulation** as the primary job (fraud review, a security control). In the study it
+  *detected* an injected approval claim 5 of 6 times with zero false alarms but *resisted* it only 3 of
+  6; in the rule probes the claim fooled a deploy judgment 6 of 6. Ask it "is this hostile?" as one
+  signal in a layered design, not "what should I do given this hostile input?". The evidence is six
+  cases per domain.
 - **Counting, date ordering and arithmetic at a threshold**, unless reshaped so that Jev *reads* the
   values (a date as year/month/day choices, 30/30) and code does the arithmetic.
 
 ## Step 4 — the economics check
 
 Estimate decisions per month × input tokens per decision. Jev list price is **$0.042 per million
-input tokens; output is free**. Measured envelope: **~600 ms p50, ~1.05 s p95** (worst observed p95
-4.1 s), against 2.9 s p50 and 10 s p95 (worst 95 s) for the cheap LLM. Model the economics at 10× list
-price before committing a roadmap: prices move.
+input tokens; output is free**. Measured envelope through the gateway: **~600 ms p50, ~1.05 s p95**
+across the study's 54 suites (worst observed p95 4.1 s), and 250–325 ms p50 on the kit's example in
+September 2026, against 2.9 s p50 and 10 s p95 (worst 95 s) for the cheap LLM. Model the economics
+at 10× list price before committing a roadmap: prices move. TypeSafe documents 1,200 requests a
+minute and 32k tokens of state per request; ask them about higher limits before planning above that.
+
+Worked example: 40,000 tickets a day at ~1,300 input tokens each is 1.56 billion tokens a month:
+**~$66 a month** at list price ($655 at 10×). Throughput: 40,000 a day is 0.5 requests a second,
+far inside the documented limit.
 
 If a cheap LLM already costs little at your volume and is not in a hot path, recommend a **cascade**
 (Jev first, LLM on the unsure tail) rather than a replacement.

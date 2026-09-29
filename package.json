@@ -1,0 +1,21 @@
+{
+  "name": "jev-kit",
+  "private": true,
+  "type": "module",
+  "description": "Skills and tools for writing, testing and auditing Jev (TypeSafe System One) question maps. The plugin and scripts need nothing installed; this file is for contributors.",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node scripts/build-audit.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "vitest run audit"
+  },
+  "devDependencies": {
+    "ai": "^7.0.107",
+    "esbuild": "0.25.12",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^3.2.7",
+    "zod": "^4.6.5"
+  }
+}

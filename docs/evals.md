@@ -10,10 +10,10 @@ skills themselves were measured, what the results were, and what changed because
 | [The study](#the-study) | Where does Jev win and lose, and why? | 57 suites, 1,836 cases | question wording moved accuracy 30–40 points; Jev +4.8 over a cheap LLM |
 | [Design A/B](#design-ab) | Do agents with the skills avoid Jev's traps? | 76 agent runs | 8/8 traps avoided with the plugin, 1/8 without |
 | [Accuracy on Jev](#accuracy-on-jev) | Do those maps score better? | 37 maps | not at first; after four new rules, 69.2% → 91.7% |
-| [Held-out tasks](#held-out-tasks) | Does it transfer to new tasks and another model? | 53 maps | 84–94% → 97–100% where there was headroom |
+| [Held-out tasks](#held-out-tasks) | Does it transfer to new tasks and another model? | 53 maps | reply exposure 84–88% → 97–98%; a second task tied at 100%; a third was later used for tuning |
 | [Rule probes](#rule-probes) | Do the rules hold in other domains? | 10 rules × 3 domains | 7 held, 2 held under their condition, 1 narrowed |
-| [Other vendors' models](#other-vendors-models) | Does it work for models other than Claude? | 266 maps, 10 models | wrong decisions fell for every model family |
-| [A hard task, and the latest models](#a-hard-task-and-the-latest-models) | Does the skill hold up where the task is hard? | 63 maps, 4 authors | wrong decisions 52 → 3; v4.3 accuracy 99.3% for Claude Code, 96.5% for DeepSeek |
+| [Other vendors' models](#other-vendors-models) | Does it work for models other than Claude? | 266 maps, 10 authoring models | pooled over tasks, wrong decisions fell or stayed at zero for every author; one-call authors lost some maps to unfinished output |
+| [A hard task, and the latest models](#a-hard-task-and-the-latest-models) | Does the skill hold up where the task is hard? | 63 maps, 4 authors | wrong decisions 9.0% → 0.2–0.5%; v4.3 accuracy 99.3% for Claude Code, 96.5% for DeepSeek |
 | [Policy outcomes](#policy-outcomes) | Does telling agents not to ask for a policy's outcome help? | 12 maps, 2 tasks | access requests 5 → 1 wrong in 90; the new task was at the ceiling |
 
 ## How a map is graded
@@ -35,7 +35,13 @@ Each case ends in one of three outcomes:
 - **wrong:** it doesn't. A wrong decision is acted on, so this rate matters most.
 - **abstain:** the map sent the case to a person.
 
-Accuracy is the share of right answers. Coverage is the share of cases decided either way.
+Accuracy is the share of right answers, so an abstention counts against it. Coverage is the share of cases
+decided either way. The wrong-decision rate counts only decisions made and missed. Read the two together: a map
+can cut wrong decisions by abstaining more, which costs people's time.
+
+A map that produced no code or failed to load is a failure, not "0 wrong decisions". Tables below say which
+rates cover only the maps that ran, and give paired figures (authors whose maps ran in both arms) where
+failures differ between arms.
 
 Across the program:
 
@@ -45,6 +51,21 @@ Across the program:
   and the case, never the label.
 - **Held-out suites came first.** They were committed before any agent wrote a map for them. A task later used
   to change the skill is reported as no longer held out.
+- **Order is on record.** The research repository is private; the kit receives exported snapshots, so its own
+  history can't show the order. These are the private commits, in time order:
+
+| round | pre-registration committed | first results committed |
+| --- | --- | --- |
+| held-out, round 1 | `c92b716`, 25 Sep 16:50 UTC | `9d68b91`, 25 Sep 17:02 |
+| round 2 | `f92e70f`, 26 Sep 15:55 | `cc89e7e`, 26 Sep 16:13 |
+| round 2, skill v4 | `e94ed5e`, 26 Sep 16:39 | `6086077`, 27 Sep 04:45 |
+| round 3 (v4.3 at `2e0d4ae`, 05:09) | `32d605f`, 28 Sep 05:08 | `eac5dc7`, 28 Sep 05:22 |
+| round 4 | `6eb719c`, 28 Sep 07:54 | `6089418`, 28 Sep 13:04 |
+
+  From this release on, the kit is published on every change, so future rounds show the order in its public history.
+- **The grader changed once after results were seen.** In round 1 a map that returned a bare label instead of
+  `{ field: label }` scored 0/30; `jev-run` was changed to accept a bare label when the gold has one field, and
+  the map re-scored 30/30. This is recorded in that round's pre-registration.
 
 ## The study
 
@@ -54,8 +75,8 @@ of them on a frontier model (`openai/gpt-5.5-fast`, about 83× the cheap model's
 | measure | result |
 | --- | --- |
 | accuracy on decisions Jev is built for | +4.8 points over a cheap LLM; a tie with a frontier model |
-| cost | 20–100× cheaper than the cheap LLM; 200–600× cheaper than the frontier model |
-| latency | ~600 ms p50, ~1.05 s p95, against 2.9 s and 10 s |
+| cost | 3–10× cheaper than the cheap LLM per decision on short states, up to ~100× with long states or LLM reasoning; 200–600× cheaper than the frontier model |
+| latency | ~600 ms p50, ~1.05 s p95 through the gateway, against 2.9 s and 10 s |
 | malformed output | 0 in ~1,900 calls |
 | largest single effect | rewriting one question: 30–40 points |
 
@@ -81,11 +102,16 @@ adding new ones. [Raw runs and rubrics](../evals/plugin-ab).
 
 The same maps, run through Jev on labelled suites.
 
-| task | no plugin | first plugin | final plugin |
-| --- | ---: | ---: | ---: |
-| renewal notice: accuracy (wrong) | 69.2% (3.3%) | 56.9% (4.7%) | **91.7% (0%)** |
-| CI retry: accuracy (wrong) | 80.0% (20.0%) | 76.1% (1.7%) | **85.6% (3.3%)** |
-| culprit log line: accuracy (wrong) | 77.8% (13.3%) | 47.5% (**45.8%**) | **100% (0%)** |
+| task | no plugin | v1 (rounds 1–7) | v2 (round 10) | v3 (rounds 11–12) |
+| --- | ---: | ---: | ---: | ---: |
+| renewal notice: accuracy (wrong) | 69.2% (3.3%) | 56.9% (4.7%) | 58.3% (5.0%) | **91.7% (0%)** |
+| CI retry: accuracy (wrong) | 80.0% (20.0%) | 76.1% (1.7%) | — | **85.6% (3.3%)** |
+| culprit log line: accuracy (wrong) | 77.8% (13.3%) | 47.5% (**45.8%**) | **100% (0%)** | 86.7% (13.3%) |
+
+4 maps or fewer per cell. The culprit re-check under v3 went back to 13.3% wrong: two of three maps picked a
+failing test's name over its assertion, which their rubric allowed (an independent reviewer accepted it in 5 of
+6 cases). In round 2, under a later version, Claude Code culprit maps made 0 wrong decisions in 90 against 12
+without the plugin.
 
 The first plugin made the culprit task worse. Agents applied a ranking rule to a picking task, and filtered
 log lines with a regex that dropped the right one. Reading Jev's wrong answers produced four new rules:
@@ -112,9 +138,9 @@ adversarial cases. Two agent models: Claude Code's default model at the time, an
 
 Expense-review first went the wrong way: the plugin made 13.8% wrong decisions on hard cases, against 0%. Two
 additions came from it: read a stated number exactly (now part of rule 9), and ask whether an expense
-*includes* an excluded item (rule 7). After
-them, the default model's maps made 1 wrong decision in 200. Because of those fixes, expense-review no longer
-counts as held out. [Details](../evals/heldout/README.md).
+*includes* an excluded item (rule 7). After them, the default model's maps made 1 wrong decision in 200, and
+Sonnet's final maps 3.3% on normal cases against 0% without the plugin. Because of those fixes, expense-review no
+longer counts as held out. [Details](../evals/heldout/README.md).
 
 ## Rule probes
 
@@ -143,30 +169,43 @@ Five new tasks, pre-registered, with labels audited by GLM 5.3 (119/119). Two ki
 
 266 maps in total, every one graded on Jev.
 
-**Wrong decisions fell for every author family:**
+**Pooled over tasks, wrong decisions fell or stayed at zero for every author.** Where authors lost maps to
+unfinished output, the paired column counts only authors whose maps all ran in both arms:
 
-| author | task | no plugin | plugin |
-| --- | --- | ---: | ---: |
-| Claude Code agents | SLA breach | 15.6% | **1.1%** |
-| Claude Code agents | culprit line | 13.3% | **0%** |
-| seven-model panel | SLA breach | 11.4% | **0.6%** |
-| seven-model panel | culprit line | 4.3% | **0%** |
-| GLM 5.3 and Qwen 3.8 Max | five tasks | 1.8–1.9% | **0–0.2%** |
+| author | task | no plugin | plugin, maps that ran | paired |
+| --- | --- | ---: | ---: | ---: |
+| Claude Code agents | SLA breach | 14/90 (15.6%) | **1/90 (1.1%)** | same |
+| Claude Code agents | culprit line | 12/90 (13.3%) | **0/90** | same |
+| seven-model panel | SLA breach | 48/420 (11.4%) | 2/270 | 3/240 → 2/240 |
+| seven-model panel | culprit line | 18/420 (4.3%) | **0/390** | 14/360 → **0/360** |
+| seven-model panel | refund eligibility | 9/420 (2.1%) | 5/330 | 3/180 → **0/180** |
+| GLM 5.3 and Qwen 3.8 Max | five tasks | 1.8–1.9% | **0–0.2%** | — |
+
+Most of the panel's SLA improvement came from two authors (MiniMax M3 and Mistral Medium 3.5) whose plugin maps
+didn't run; paired, it is 1.3% → 0.8%. The culprit and refund results hold paired. Per task, three cells went the
+other way, from zero: Claude Code on access requests (0 → 2 of 90), GLM on access requests (0 → 1 of 90), and
+Mistral on refunds (0 of 30 → 4 of 60). The pre-registered hypothesis was per task and author, so as written it failed in
+those cells; the access-request cells led to the [policy-outcome](#policy-outcomes) fix.
 
 **The first skill version made other models' maps abstain too often.** GLM's and Qwen's maps gated on questions
 about the policy, on guessed thresholds, or on policy clauses re-read for every case. Four changes fixed this:
 fit gates per question, never gate on the policy, pin a fixed policy in code, and narrow rule 8. Accuracy on
 maps that ran then rose:
 
-| author | no plugin | first version | current version |
+| author | no plugin | first version (v3) | v4.2 |
 | --- | ---: | ---: | ---: |
 | GLM 5.3 | 83.6% | 76.2% | **90.7%** |
 | Qwen 3.8 Max | 95.3% | 79.7% | **90.8%** |
 | Gemini 3.8 Flash | 58.9% | 93.3% | 92.8% |
 | DeepSeek V4 Pro | 73.3% | 93.9% | 94.4% |
+| GPT-5.6 Terra | 35.6% | 43.3% | — |
+| Mistral Medium 3.5 | 61.1% | 50.0% | — |
+| MiniMax M3 | 67.2% | 42.2% | — |
 
-GLM and Qwen rows cover all five tasks. Gemini and DeepSeek rows cover SLA breach, refunds, and culprit line.
-Qwen's maps without the plugin were more accurate than with it, but made 1.9% wrong decisions against 0%.
+Accuracy on maps that ran. GLM and Qwen rows cover all five tasks. The others cover SLA breach, refunds and culprit
+line; GPT, Mistral and MiniMax were tested only on the first version, and their plugin maps mostly abstained
+(GPT's decided 44% of cases). Qwen's maps without the plugin were more accurate than with it, but made 1.9% wrong
+decisions against 0%.
 
 **Single-call authors lose some maps to unfinished output.** With the skill loaded, maps are about 40% longer,
 and some models reasoned past their output or stream limit before writing code:
@@ -215,9 +254,13 @@ Maps without the plugin averaged 76.9%. Authors were Claude Code agents and the 
 | GLM 5.3 | 74.3% · 16 wrong | 59.7% · 0 wrong | 68.1% · 2 wrong |
 | Qwen 3.8 Max (0902) | 83.3% · 10 wrong | no code | no code |
 
-- **Wrong decisions** fell from 52 in 576 to 3 in 864 with the skill.
-- **v4.3 against v4.2:** v4.3 was more accurate for every author whose maps ran. The two versions made about the same
-  number of wrong decisions, near zero.
+- **Wrong decisions** fell from 52 in 576 (9.0%) without the skill to 1 in 432 (0.2%) with v4.2 and 2 in 432 (0.5%)
+  with v4.3, on the maps that ran. Qwen's plugin maps produced no code, so those rates leave Qwen out; its no-plugin
+  maps made 10 of the 52, and without them the baseline is 42 in 432 (9.7%).
+- **v4.3 against v4.2:** v4.3 was more accurate for every author whose maps ran. The pre-registered hypothesis asked
+  for fewer wrong decisions too, and failed on that part: 2 against 1, both near zero.
+- **The task was held out for both versions.** v4.3 (`2e0d4ae`) was written for the round-3 policy finding and
+  committed before the procurement task existed (`6eb719c`).
 - **GLM's plugin maps abstain rather than err.** They usually defer on "is this purchase software?", answered at 0.5–0.8.
 - **On earlier tasks**, v4.3 made no wrong decisions for GLM, Qwen or DeepSeek, the same as v4.2.
 
@@ -230,19 +273,33 @@ loaded, didn't finish within 30 minutes either way. [Details](../evals/heldout4/
 Every evaluation folder has its suites, the maps or runs, the grading scripts, and recorded results.
 
 ```bash
-# grade any map against a suite
-node plugin/skills/jev-eval/scripts/jev-run.mjs evals/heldout2/sla-breach.json --map path/to/map.mjs
+# re-grade any published map against its suite (needs a key)
+node plugin/skills/jev-eval/scripts/jev-run.mjs evals/heldout2/sla-breach.json --map evals/heldout2/maps-v42/<map>/map.mjs
+
+# check a map offline: builds every case and runs decide() on synthetic answers
+node plugin/skills/jev-eval/scripts/jev-run.mjs evals/heldout2/sla-breach.json --map evals/heldout2/maps-v42/<map>/map.mjs --check
 
 # audit recorded results offline, without a key
 node plugin/skills/jev-eval/scripts/jev-audit.mjs evals/support-triage/results/jev.jsonl
+node plugin/skills/jev-eval/scripts/jev-audit.mjs evals/heldout2/access-request-plugin-2.map.jsonl
 ```
+
+Every agent-written map from rounds 2–4 ships as code in `evals/heldout*/maps*/`, except one whose comments name
+unpublished material (listed in `maps-withheld.md`). The agents' transcripts stay private. [`evals/README.md`](../evals/README.md)
+says which scripts run as-is and which need a key.
 
 ## Limitations
 
 - **One author.** One person wrote the study's suites, labels and rules. Independent LLM relabelling agreed on
-  83–89% of the study's labels and 97.8–100% of the plugin suites' labels. No second person has labelled them.
-- **Small cells.** Most comparisons use 2–12 maps. Gaps under ~7 points are noise, and re-grading the same
+  83–89% of the study's labels and 97.8–100% of the plugin suites' labels (GLM 5.3). In round 2 a second
+  relabeller, Qwen 3.8 Max, agreed on only 19, 26 and 23 of 30 on three suites; every disagreement was read and
+  judged Qwen's error, by the same author. No second person has labelled them.
+- **Small cells, and maps are the unit.** Most comparisons use 2–12 maps. Rates here pool cases, but cases within
+  a map aren't independent: with 3 maps per arm, no difference can reach p < 0.05 on a test over maps. Treat these
+  results as consistent directions across rounds and authors, not as measured effect sizes. Re-grading the same
   maps moved accuracy by up to 2.2 points.
+- **Abstentions aren't free.** The wrong-decision rate rewards abstaining; the extra human review isn't counted
+  in it. Read coverage beside it.
 - **Some tasks were used for tuning.** expense-review, refund-eligibility and access-request were used to
   change the skill, and are reported as no longer held out.
 - **Some tasks were too easy.** alert-routing, clause-locator and data-export were near the ceiling in every arm. The

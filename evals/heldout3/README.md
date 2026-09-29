@@ -66,6 +66,6 @@ question. The split below separates questions about **this request** from questi
 ```bash
 node gen.mjs
 REPO=<repo> OUT=maps-v43 ../heldout2/run.sh data-export plugin 1       # a Claude Code author
-node --env-file=../../../.env.local ../heldout2/grade.mjs maps-v43/* --out results.v43.json
+node --env-file=../../.env.local ../heldout2/grade.mjs maps-v43/* --out results.v43.json
 node design.mjs maps-base maps-v42 maps-v43 maps-access-v43
 ```

@@ -1,12 +1,12 @@
 // Grade agent-written question maps by accuracy on a labelled suite.
-//   node --env-file-if-exists=../../../.env.local --import tsx run-maps.ts <task> <map-dir>... [--mock] [--out results.json]
+//   node --env-file-if-exists=../../.env.local --import tsx run-maps.ts <task> <map-dir>... [--mock] [--out results.json]
 // --mock answers every question with a deterministic fake, to prove each adapter runs end to end
 // before any gateway call is spent.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 // @ts-expect-error plain ESM
-import { evaluate } from '../../../plugin/skills/jev-eval/scripts/jev-run.mjs';
+import { evaluate } from '../../plugin/skills/jev-eval/scripts/jev-run.mjs';
 
 const argv = process.argv.slice(2);
 const task = argv[0]!;

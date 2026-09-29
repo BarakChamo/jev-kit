@@ -1,135 +1,144 @@
 # jev-kit
 
-**Get your coding agent to write [Jev](https://docs.typesafe.ai) questions that work the first time.**
+**Skills and tools that get your coding agent to write [Jev](https://docs.typesafe.ai) questions that work, and
+prove it on labelled cases.**
 
-[Where the rules come from](#where-the-rules-come-from) · [Installation](#installation) · [Quick start](#quick-start) · [Using the skills](#using-the-skills) · [Using the scripts](#using-the-scripts) · [Use cases](docs/use-cases.md) · [Rules](docs/rules.md) · [Evaluations](docs/evals.md)
+[Install](#installation) · [Get a key](#get-a-key) · [Try it without a key](#try-it-without-a-key) · [Quick start](#quick-start) · [Concepts](#how-jev-works) · [Use cases](docs/use-cases.md) · [Rules](docs/rules.md) · [Evaluations](docs/evals.md) · [Production](docs/production.md) · [Glossary](docs/glossary.md)
 
-Jev, TypeSafe's System One model, answers typed questions about your data for a fraction of what an LLM costs.
-It is 20–100× cheaper than a small LLM (`zai/glm-5.3-flash`), answers in ~600 ms, and returned no malformed output in ~1,900 calls. The catch is that
-it depends heavily on wording. In a study of 57 labelled decision suites, rewriting a single question moved
-accuracy by **30–40 points**, several times more than switching between Jev and an LLM.
+**Jev** is a model from TypeSafe that answers typed questions about data you send it: yes/no, one of a set of
+options, or a step on a rubric. It returns probabilities, never text, so it costs a fraction of an LLM
+($0.042 per million input tokens, output free) and answers in 0.25–0.6 s. It suits decisions made thousands of
+times: routing, screening, checking documents against a policy.
 
-jev-kit is a Claude Code plugin that teaches your agent the wording that works on Jev, then makes it measure
-the result. Maps that Claude Code agents wrote with and without it, graded on Jev:
+**The catch is wording.** In a study of 57 labelled decision tasks, rewriting a single question moved accuracy
+by 30–40 points, several times more than switching between Jev and an LLM. The wording an agent reaches for by
+habit is often the wording Jev gets wrong. jev-kit teaches the agent the wording that works, then makes it
+measure the result.
 
-| task | without the plugin | with it |
-| --- | ---: | ---: |
-| Did this ticket breach its SLA? (wrong decisions) | 15.6% | **1.1%** |
-| Which log line caused the CI failure? (wrong decisions) | 13.3% | **0%** |
-| Was the renewal notice on time? (accuracy) | 69.2% | **91.7%** |
-| Does this reply expose someone's personal data? (accuracy, held-out task) | 84–88% | **97–98%** |
+Maps (decision code) that Claude Code agents wrote with and without the kit, graded on Jev:
 
-The effect isn't limited to Claude. Nine other models wrote maps too, including GPT, Gemini, DeepSeek, GLM and
-Qwen. With the skill, wrong decisions fell for eight of them. The ninth made none either way.
+| decision | measure | without the kit | with it |
+| --- | --- | ---: | ---: |
+| Did this ticket breach its SLA? (held out) | wrong decisions | 15.6% | **1.1%** |
+| Approve, escalate or reject a purchase? (held out, hard) | wrong decisions | 5.6% | **0%** |
+| Which log line caused the CI failure? | wrong decisions | 13.3% | **0%** |
+| Does this reply expose personal data? (held out) | accuracy | 84–88% | **97–98%** |
+
+Nine other models wrote maps too, including GPT, Gemini, DeepSeek, GLM and Qwen. Pooled over tasks, their wrong
+decisions fell or stayed at zero with the skill, partly because their maps sent more cases to a person; some
+one-call authors failed to finish a map. [The evaluations](docs/evals.md), with every caveat.
+
+**New here?** Read [what Jev is and isn't good for](docs/use-cases.md#when-to-use-jev) or the page
+[for decision-makers](docs/decision-makers.md). Using Codex, Cursor or the AI SDK? See [other agents](docs/other-agents.md).
+
+## What's in the kit
+
+- **Three skills** your agent loads by itself: `jev-fit` (should this decision run on Jev?), `jev-questions`
+  (how to ask), and `jev-eval` (how to measure).
+- **Two scripts**, single files with no dependencies: `jev-run` sends labelled cases through Jev, and `jev-audit`
+  analyses the results offline.
+- **The evidence:** labelled suites, recorded results, every agent-written map, and every evaluation of the skills.
 
 ## Where the rules come from
 
-The skills rest on 16 rules for writing Jev questions. None came from intuition:
+The skills rest on 16 rules for writing Jev questions:
 
-1. **Measured failures.** A study of 57 hand-labelled suites (1,836 cases) read every case Jev got wrong with high
-   confidence, and measured each fix.
-2. **Replicated before use.** A finding became a rule only after it held on a second task. Rules that hold only
-   under a condition state it.
-3. **Re-tested since.** Ten rules were probed in three new domains each. The skill as a whole was tested on four rounds
-   of held-out tasks, with maps from ten authoring models.
+1. **Measured failures.** A study of 57 hand-labelled suites (1,836 cases) read every case Jev got wrong with
+   high confidence, and measured each fix.
+2. **Replicated.** A finding became a rule after it held on a second task. Rules that hold only under a condition
+   say so, and two that rest on one measurement so far are marked "single".
+3. **Re-tested.** Ten rules were probed in three new domains each. The skills were tested in four pre-registered
+   rounds of held-out tasks, with maps from ten authoring models.
 
-Browse [the rules](docs/rules.md), each with an example, its evidence and its status. Follow them into
-[the evidence behind every rule](plugin/skills/jev-questions/references/rules.md) and
-[the evaluations](docs/evals.md).
-
-## Why this exists
-
-Jev fails differently from an LLM, and it fails silently. The wording an agent reaches for by habit is often
-the wording Jev gets wrong:
-
-- **Ask "was the SLA breached?"** and Jev has to compute a deadline and compare against it in one step, which
-  it can't do reliably. Agents' maps without the plugin asked exactly that, and made 14 wrong decisions in 90
-  cases. Maps that read the timestamps and compared in code made 1.
-- **Leave out one fact the decision needs**, and Jev answers anyway. One question gave zero recall on a whole
-  class, at 0.99 confidence.
-- **Give a question a key like `unsafe_to_revert`** while its criteria say the opposite, and an LLM follows the
-  key. Jev never reads keys, so it follows the criteria. The same question scored 100% on an LLM and 0% on Jev.
-
-A quick review doesn't catch any of this, but measuring does. Each of the 16 rules in this kit
-comes from reading cases Jev got wrong with high confidence. A rule was kept only if it held on a second task.
-The skills were then tested on agent-written maps, on held-out tasks and on ten authoring models. Every suite,
-result and evaluation is included, so you can check them yourself.
-
-The kit contains:
-
-- **Three skills:** `jev-fit` (should this run on Jev?), `jev-questions` (how to ask), and `jev-eval` (how
-  to measure).
-- **Two scripts** with no dependencies: `jev-run` sends a labelled suite or a whole map through Jev.
-  `jev-audit` analyses the recorded answers offline.
-- **The evidence:** labelled suites, recorded results, and every evaluation of the skills themselves.
+[The rules](docs/rules.md) · [their evidence](plugin/skills/jev-questions/references/rules.md) · [the evaluations](docs/evals.md)
 
 ## Installation
 
-Pick one of three ways. All of them install the same three skills.
+All three methods install the same three skills.
 
 | method | installs into | use it when |
 | --- | --- | --- |
-| [Claude Code marketplace](#claude-code-marketplace) | Claude Code, as the `jev` plugin | you use Claude Code |
-| [`npx plugins`](#npx-plugins) | Claude Code, Cursor, Codex, VS Code, GitHub Copilot CLI, and other plugin-aware tools | you want the plugin in several tools at once |
-| [`npx skills`](#npx-skills) | the skills folder of 70+ agents | your agent reads skills but not plugins |
+| Claude Code marketplace | Claude Code, as the `jev` plugin | you use Claude Code |
+| `npx plugins` | Claude Code, Codex, VS Code, GitHub Copilot CLI and other plugin-aware tools | you want it in several tools |
+| `npx skills` | the skills folder of 70+ agents, including Cursor and Codex | your agent reads skills, not plugins |
 
-### Claude Code marketplace
+**Claude Code marketplace**, inside Claude Code:
 
-```bash
+```text
 /plugin marketplace add barakchamo/jev-kit
 /plugin install jev@jev
 ```
 
-### `npx plugins`
-
-[`plugins`](https://www.npmjs.com/package/plugins) installs the plugin into every supported tool it detects on
-your machine:
+**[`npx plugins`](https://www.npmjs.com/package/plugins)** installs into every supported tool it detects:
 
 ```bash
 npx plugins add barakchamo/jev-kit                        # every detected tool
 npx plugins add barakchamo/jev-kit --target claude-code   # one tool
-npx plugins targets                                       # list supported tools
 ```
 
-Restart your agent afterwards. The skills load as `jev:jev-fit`, `jev:jev-questions`, and `jev:jev-eval`. To
-remove the plugin from Claude Code, run `claude plugin uninstall jev@jev` and `claude plugin marketplace remove jev`.
+It writes to your user folders (`~/.claude/`, `~/.codex/`), not the project. For Cursor, use `npx skills`. Restart
+your agent afterwards. To remove it from Claude Code: `claude plugin uninstall jev@jev`.
 
-### `npx skills`
-
-[`skills`](https://www.npmjs.com/package/skills) copies the skill folders into your agent's skills directory,
-for example `.claude/skills/` for Claude Code or `.agents/skills/` for Codex:
+**[`npx skills`](https://www.npmjs.com/package/skills)** copies the skill folders into the current project:
 
 ```bash
-npx skills add barakchamo/jev-kit                         # choose agents and skills interactively
-npx skills add barakchamo/jev-kit --agent claude-code -y  # one agent, no prompts
-npx skills add barakchamo/jev-kit --skill jev-questions   # one skill
+npx skills add barakchamo/jev-kit --agent claude-code -y  # → .claude/skills/jev-*
+npx skills add barakchamo/jev-kit --agent cursor -y       # → .agents/skills/jev-* (Codex uses the same)
 npx skills add barakchamo/jev-kit --list                  # list the skills without installing
 ```
 
-It installs into the current project. Add `-g` to install for your user. The scripts come with the skills: after
-this install they are in `<skills directory>/jev-eval/scripts/`.
+Add `-g` to install for your user. It also writes `skills-lock.json`, which records what was installed. Install
+all three skills: they refer to each other. The scripts land in `<skills folder>/jev-eval/scripts/`.
 
-### Requirements
+To pin a version and verify it, see [SECURITY.md](SECURITY.md#verifying-a-copy).
 
-The scripts need Node.js 18 or later. To call Jev, set a [Vercel AI Gateway](https://vercel.com/ai-gateway) key:
+## Get a key
+
+The scripts need Node.js 18 or later. Calling Jev needs one of two keys; the offline parts need neither.
+
+| route | key | notes |
+| --- | --- | --- |
+| [TypeSafe API](https://docs.typesafe.ai) | `TYPESAFE_API_KEY` | model `jev-latest`, or pin a version (`jev-1.13.0`) |
+| [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) | `AI_GATEWAY_API_KEY` | model `typesafe-ai/jev`, billed to your Vercel account; no version pinning |
 
 ```bash
-export AI_GATEWAY_API_KEY=...
+export TYPESAFE_API_KEY=...        # or: export AI_GATEWAY_API_KEY=...
+```
+
+`jev-run` uses whichever is set (TypeSafe first), or `--provider typesafe|gateway`. A run of the 42-case example
+costs about $0.003. Behind an HTTPS proxy on Node 22.21+, also set `NODE_USE_ENV_PROXY=1`.
+
+## Try it without a key
+
+Clone the repository and run these from its root. Nothing is sent anywhere.
+
+```bash
+git clone https://github.com/barakchamo/jev-kit && cd jev-kit
+S=plugin/skills/jev-eval
+
+# check the example map: builds all 42 cases and runs decide() on synthetic answers
+node $S/scripts/jev-run.mjs $S/examples/renewal-notice.json --map $S/examples/renewal-notice.map.mjs --check
+
+# audit a recorded run of that map (42/42), and a real map from the evaluations that got 3 wrong
+node $S/scripts/jev-audit.mjs $S/examples/renewal-notice.recorded.jsonl
+node $S/scripts/jev-audit.mjs evals/heldout2/access-request-plugin-2.map.jsonl
+
+# fit confidence gates on recorded answers, judged on held-out cases
+node $S/scripts/jev-audit.mjs evals/support-triage/results/jev.jsonl --target 0.95 --holdout 0.5
 ```
 
 ## Quick start
 
-From a clone of this repository, with `AI_GATEWAY_API_KEY` set, run the bundled example. It's a map that
-decides whether a contract renewal notice arrived in time:
+With a key set, from the repository root (with `S` set as above), grade the example map. It decides whether a contract's renewal was cancelled in time:
 
 ```bash
-cd plugin/skills/jev-eval
-node scripts/jev-run.mjs examples/renewal-notice.json --map examples/renewal-notice.map.mjs
+node $S/scripts/jev-run.mjs $S/examples/renewal-notice.json --map $S/examples/renewal-notice.map.mjs
 ```
 
 ```text
-wrote renewal-notice.map.jsonl: 30 answered, 0 failed · 39223 input tokens · $0.00165 at list price · p50 250 ms · p95 804 ms
-outcome: accuracy 100.0% · wrong 0/30 · abstain 0 · coverage 100.0%
+wrote renewal-notice.map.jsonl: 42 answered, 0 failed · gateway typesafe-ai/jev · 69507 input tokens · $0.00292 at list price ($0.00292 billed) · p50 285 ms · p95 406 ms
+outcome: accuracy 100.0% · wrong 0/42 · abstain 0 · coverage 100.0%
+next: jev-audit renewal-notice.map.jsonl
 ```
 
 Then ask your agent to build one for your own decision:
@@ -139,135 +148,23 @@ Write a Jev map that decides whether a support ticket breached its first-respons
 The policy and some example tickets are in fixtures/.
 ```
 
-## Using the skills
-
-The three skills follow the order you'd build a decision in. You don't call them by name. Describe the task,
-and the agent loads the skill that matches.
-
-| step | skill | ask for | you get |
-| --- | --- | --- | --- |
-| 1. Decide | `jev-fit` | whether a decision belongs on Jev | a verdict: Jev, Jev with a fallback, an LLM, or plain code, with the expected accuracy gap and cost |
-| 2. Write | `jev-questions` | a new map, or a review of an existing one | `map.mjs`, written to the 16 rules, or a list of rule violations |
-| 3. Measure | `jev-eval` | a test suite, a grade, or a threshold | a labelled suite, graded results, and a fitted confidence gate |
-
-### 1. Decide whether to use Jev
-
-```text
-We route 40k support tickets a day to one of 12 teams with GPT. Should this run on Jev instead?
-```
-
-The agent checks four conditions: a bounded answer, evidence that fits in the request, volume or latency
-pressure, and a safe fallback for unsure cases. It predicts the accuracy gap from the decision's shape, flags
-anything that rules Jev out, and estimates the cost at your volume. [When Jev fits](docs/use-cases.md#when-to-use-jev).
-
-### 2. Write or fix a map
-
-```text
-Write a Jev map that decides whether a refund request is eligible under policy.md.
-```
-
-```text
-Review src/triage/map.mjs against the Jev rules. It asks "should we retry this job?".
-```
-
-The agent writes one small, present-tense question per fact, and keeps arithmetic and policy in code. It gates
-each decision on a probability, and runs the skill's review checklist before it finishes. [Worked examples](docs/use-cases.md#examples).
-
-### 3. Measure it
-
-```text
-Build a 30-case labelled suite for the refund map, grade it on Jev, and fit a threshold for 95% precision.
-```
-
-```text
-Our culprit-line field is 71% accurate. Find out why and fix it.
-```
-
-The agent writes cases that include the hard ones, grades the whole map with `jev-run`, and reads every answer
-Jev got wrong while confident. It then fits a gate with `jev-audit` and compares versions with a diff. It
-doesn't call a change an improvement unless the diff shows one.
-
-## Using the scripts
-
-The scripts are in `plugin/skills/jev-eval/scripts/`. Both are single files with no dependencies. The
-examples below write `jev-run` for `node plugin/skills/jev-eval/scripts/jev-run.mjs`, and the same for
-`jev-audit`. After `npx skills`, the scripts are in `<skills directory>/jev-eval/scripts/` instead.
-
-### `jev-run`: run a suite through Jev
-
-```bash
-jev-run suite.json --map map.mjs --check          # validate the suite and the map; no API calls
-jev-run suite.json --map map.mjs                  # grade a whole map, decision by decision
-jev-run suite.json                                # grade a suite's own questions, field by field
-jev-run suite.json --derive derive.mjs            # also grade fields you compute in code from the answers
-jev-run suite.json --pad 4000                     # add 4,000 tokens of unrelated text, to find unscoped questions
-```
-
-Each run writes one JSON line per case (`--out` sets the file) and prints a summary per field. Set
-`--concurrency` to change how many requests run at once. The default is 2.
-
-### `jev-audit`: analyse results offline
-
-Audits read the JSON lines `jev-run` writes, and make no API calls.
-
-```bash
-jev-audit results.jsonl                           # audit a run
-jev-audit results.jsonl --target 0.95             # fit the gate for 95% precision
-jev-audit diff before.jsonl after.jsonl           # which cases a change fixed or broke, and whether it's real
-```
-
-For a map run (`--map`), the audit lists every wrong decision with the least certain answer behind it, ranks
-the questions that keep being that weak link, and fits a gate on the weakest answer: below the threshold,
-`decide()` should abstain. For a run graded per question, it lists confidently wrong answers, checks
-calibration and top-2 recall, and fits a gate per question.
-
-On a real map from the evaluations, the audit points at the one question behind every wrong decision:
-
-```text
-| case       | gold | map decided    | weakest answer | certainty |
-| access-003 | deny | needs_approval | deny           |      0.59 |
-| access-013 | deny | needs_approval | deny           |      0.57 |
-| access-023 | deny | needs_approval | deny           |      0.63 |
-```
-
-Run on the recorded support-triage results in `evals/`:
-
-```text
-## Gate for 95.0% precision
-
-| gating on   | threshold | coverage | precision |
-| probability |     0.770 |    83.3% |     96.8% |
-```
-
-```text
-| field  | n  | before | after | Δ    | fixed | broken | p     | verdict  |
-| refund | 50 | 90.0%  | 92.0% | +2.0 | 4     | 3      | 1.000 | unproven |
-```
-
-A diff calls a change `real` only if accuracy moved at least 7 points and the fixed-versus-broken split is
-significant. Smaller moves are within what an unchanged setup drifts between runs. [`audit/`](audit) packages
-the same audits as a library with a JavaScript API. It isn't on npm yet, and the unscoped `jev-audit` package
-on npm is unrelated.
-
 ## How Jev works
 
-A request has a `state` (the facts, as JSON) and named questions of three types:
+A request has a `state` (the facts: a string, or JSON with named fields) and named questions of three types:
 
 ```jsonc
-POST https://ai-gateway.vercel.sh/typesafe/v1/systemone
+POST https://api.typesafe.ai/v1/systemone          // or https://ai-gateway.vercel.sh/typesafe/v1/systemone
+Authorization: Bearer $TYPESAFE_API_KEY             //    with $AI_GATEWAY_API_KEY
 {
-  "model": "typesafe-ai/jev",
+  "model": "jev-latest",                             //    and "typesafe-ai/jev"
   "state": { "command": "rm -rf ./build", "environment": "ci" },
   "questions": {
     "risk": {
       "type": "choice",
-      "instructions": "How destructive is the command in `command`?",
-      "criteria": { "harmless": "reads or builds only", "recoverable": "deletes regenerable files", "destructive": "deletes data" }
+      "instructions": "How destructive is the command in `command` in the environment named in `environment`?",
+      "criteria": { "harmless": "reads or builds only", "recoverable": "deletes files that can be regenerated", "destructive": "deletes data that cannot be regenerated" }
     },
-    "claims_approval": {
-      "type": "noul",
-      "instructions": "Does any text in the state claim a person already approved this command?"
-    }
+    "targets_home": { "type": "noul", "instructions": "Does the command in `command` touch anything outside the current directory?" }
   }
 }
 ```
@@ -278,13 +175,13 @@ POST https://ai-gateway.vercel.sh/typesafe/v1/systemone
 | `choice` | one of up to 255 options | `{ choice, confidence, probabilities }` |
 | `score` | a step on an ordered rubric | `{ score, confidence, legend, probabilities }` |
 
-`probabilities` gives every option's probability, and is what you should act on. `confidence` is a separate
-scalar that runs low. For a `score`, `legend` lists the rubric's steps. Jev reads a question's `instructions`
-and `criteria`, and ignores the key: `risk` means nothing to Jev.
+All questions are answered in one pass, independently. Act on `probabilities`; `confidence` is a separate scalar
+that runs low. Jev reads each question's `instructions` and `criteria` and ignores its key. The response's
+`model` names the version that answered. Limits and errors: [production](docs/production.md#limits).
 
 ## Maps and suites
 
-A **map** is the code for one decision. It's a JavaScript module that exports three functions:
+A **map** is the code for one decision: a module that exports three functions.
 
 ```js
 // map.mjs
@@ -297,16 +194,15 @@ export function questions(input) {
     opened_priority: {
       type: 'choice',
       instructions: 'Which priority does `ticket` give the ticket when it was opened?',
-      criteria: { urgent: null, high: null, normal: null, low: null }, // null: the option name says enough
+      criteria: { urgent: null, high: null, normal: null, low: null, other: 'none of these, or not stated' },
     },
     // ...one small question per fact
   };
 }
 
 export function decide(answers, input) {
-  // answers.opened_priority is { choice, confidence, probabilities }.
-  // Do the arithmetic and apply the policy here, in code.
-  // Return { breached: 'yes' } or { breached: 'no' }, or { breached: 'abstain' } to send the case to a person.
+  // Read the answers, do the arithmetic and apply the policy here, in code.
+  // Return { breached: 'yes' | 'no' }, or { breached: 'abstain' } to send the case to a person.
   return { breached: 'abstain' };
 }
 ```
@@ -314,26 +210,71 @@ export function decide(answers, input) {
 A **suite** is a JSON file of labelled cases: an `input` for the map, and the `gold` (correct) decision.
 
 ```json
-{
-  "name": "sla-breach",
-  "cases": [
-    { "id": "sla-001", "input": { "policy_text": "...", "ticket_log": "..." }, "gold": { "breached": "yes" } }
-  ]
-}
+{ "name": "sla-breach", "cases": [
+  { "id": "sla-001", "input": { "policy_text": "...", "ticket_log": "..." }, "gold": { "breached": "yes" } }
+] }
 ```
 
-The full format, including suites that grade questions directly, is in
-[`suite-format.md`](plugin/skills/jev-eval/references/suite-format.md).
+Each graded case is **right**, **wrong** (a decision acted on, and incorrect), or **abstain** (sent to a person).
+The full format: [`suite-format.md`](plugin/skills/jev-eval/references/suite-format.md). Terms: [glossary](docs/glossary.md).
 
-## Reference
+## Using the skills
 
-| | use it to | details |
-| --- | --- | --- |
-| `jev-fit` | decide whether a decision belongs on Jev, an LLM, or plain code, and predict the accuracy gap | [SKILL.md](plugin/skills/jev-fit/SKILL.md) |
-| `jev-questions` | write, review, or fix a map: 16 rules, the map interface, a review checklist | [SKILL.md](plugin/skills/jev-questions/SKILL.md) · [patterns](plugin/skills/jev-questions/references/patterns.md) |
-| `jev-eval` | build a labelled suite, grade a map, fit a gate, compare two versions | [SKILL.md](plugin/skills/jev-eval/SKILL.md) |
-| `jev-run` | run a suite or a whole map through Jev; `--check` validates offline | `jev-run.mjs --help` |
-| `jev-audit` | find wrong decisions and their weakest answers, check calibration, fit a gate, diff two runs | [`audit/`](audit) |
+You don't call the skills by name. Describe the task, and the agent loads the one that matches.
+
+| step | skill | ask for | you get |
+| --- | --- | --- | --- |
+| 1. Decide | `jev-fit` | whether a decision belongs on Jev | Jev, Jev with a fallback, an LLM, or plain code, with the expected accuracy gap and the cost at your volume |
+| 2. Write | `jev-questions` | a new map, or a review of one | `map.mjs` written to the 16 rules, or the rule violations in an existing one |
+| 3. Measure | `jev-eval` | a test suite, a grade, a threshold, a before/after | a labelled suite, graded results, fitted gates, and whether a change was real |
+
+```text
+We route 40k support tickets a day to one of 12 teams with GPT. Should this run on Jev instead?
+Write a Jev map that decides whether a refund request is eligible under policy.md.
+Build a 30-case labelled suite for the refund map, grade it on Jev, and fit a threshold for 95% precision.
+Our culprit-line field is 71% accurate. Find out why and fix it.
+```
+
+## Using the scripts
+
+Both scripts are in `plugin/skills/jev-eval/scripts/` (after `npx skills`, in `<skills folder>/jev-eval/scripts/`),
+and both print `--help`. Below, `jev-run` means `node <that folder>/jev-run.mjs`.
+
+```bash
+jev-run suite.json --map map.mjs --check    # offline: build every case, validate, run decide() on synthetic answers
+jev-run suite.json --map map.mjs            # grade a whole map, decision by decision
+jev-run suite.json                          # grade a suite's own questions, field by field
+jev-run suite.json --pad 4000               # add unrelated text, to find questions that don't name their field
+jev-run cases.jsonl --map map.mjs --resume  # large case sets: streamed output, re-run only what failed
+
+jev-audit results.jsonl --holdout 0.5       # audit; gates fitted on half the cases, judged on the rest
+jev-audit diff before.jsonl after.jsonl     # which cases a change fixed or broke, and whether it's real
+```
+
+On a map run, the audit lists each wrong decision with the least certain answer behind it. On a real map from the
+evaluations, it points at one question behind all three wrong decisions:
+
+```text
+| case       | decision | gold | map decided    | weakest answer | certainty |
+| access-003 | decision | deny | needs_approval | deny           |      0.59 |
+| access-013 | decision | deny | needs_approval | deny           |      0.57 |
+| access-023 | decision | deny | needs_approval | deny           |      0.63 |
+```
+
+The `deny` question asked Jev for the policy's outcome; the fix was to read the facts and apply the policy in code.
+On a per-question run, it fits a gate per question, with a lower bound on the precision it can promise:
+
+```text
+| question   | n  | threshold | coverage | precision | 95% lower bound |
+| department | 50 | 0.740     | 98.0%    | 95.9%     | 86.3%           |
+| urgency    | 50 | 0.840     | 60.0%    | 96.7%     | 83.3%           |
+| refund     | 50 | 0.760     | 94.0%    | 97.9%     | 88.9%           |
+```
+
+A diff calls a change `real` only if accuracy moved at least 7 points and the fixed-versus-broken split is
+significant. It refuses to compare runs graded on different labels (`--gold suite.json` re-grades both). The
+[`audit/`](audit) folder packages the audits as a JavaScript library; it isn't on npm yet, and the unscoped
+`jev-audit` package on npm is unrelated.
 
 ## The rules
 
@@ -343,57 +284,55 @@ The full format, including suites that grade questions directly, is in
 | --- | --- |
 | Put every fact the decision needs in the state | a missing fact gave 0 recall at 0.99 confidence |
 | Name the field each question reads | an unscoped question lost 28.5 points, with no change in confidence |
-| Ask what is true now; no "if", "would", or "should" | 48.7% → 87.2% |
+| Ask what is true now; no "if", "would", or "should" | 48.7% → 82.1% |
 | Read dates and numbers exactly; do arithmetic and comparisons in code | 64–75% → 30/30 |
 | Pick one of many with a single `choice`, not a `noul` per item | 1–2 of 12 → 12 of 12 |
 
-Each rule came from a failure measured in the study. It became a rule only after it held on a second task,
-and ten rules were later tested again in three new domains each. Rules that hold only under a condition say
-so. [All 16 rules, with examples and evidence](docs/rules.md).
+[All 16 rules, with examples, evidence and status](docs/rules.md).
 
 ## Evaluations
 
-The skills were tested the way they tell you to test a map. Pass bars were written down before each run.
-Labels were computed by rule and checked by an independent model. Graders didn't know whether a map was
-written with or without the plugin.
+The skills were tested the way they tell you to test a map: pre-registered pass bars, labels computed by rule
+and checked by another model, blind grading, and held-out tasks.
 
 | evaluation | size | result |
 | --- | --- | --- |
 | Design A/B | 76 agent runs | tasks hiding a known Jev pitfall: avoided 8/8 times with the plugin, 1/8 without |
-| Accuracy on Jev | 37 maps | renewal notice 69.2% → 91.7%; culprit-line wrong decisions 13.3% → 0% |
-| Held-out tasks | 53 maps, 2 agent models | reply exposure 84–88% → 97–98%; a third task tied at 100%; a fourth was later used for tuning |
+| Accuracy on Jev | 37 maps | renewal notice 69.2% → 91.7%; the first plugin version made the culprit task worse (13.3% → 45.8% wrong), the fix took it to 0% |
+| Held-out tasks | 53 maps, 2 agent models | reply exposure 84–88% → 97–98%; a second task tied at 100%; a third was later used for tuning |
 | Rule probes | 10 rules × 3 domains | 7 held everywhere, 2 held under their stated condition, 1 narrowed |
-| Other models | 266 maps from Claude Code and 9 other models | wrong decisions fell for every model family; SLA breach 15.6% → 1.1% |
-| A hard task, latest models | 63 maps: Claude Code, GLM 5.3, Qwen 3.8 Max, DeepSeek V4 Pro | procurement wrong decisions 52 → 3; accuracy 67% → 99% (Claude Code), 83% → 97% (DeepSeek) |
-| Policy outcomes | 12 maps, 2 tasks | access requests 5 → 1 wrong decision in 90, after telling agents not to ask Jev for a policy's outcome |
+| Other models | 266 maps, 10 authoring models | wrong decisions fell or stayed at zero for every author, pooled over tasks; some one-call maps didn't finish |
+| Policy outcomes | 12 maps, 2 tasks | access requests 5 → 1 wrong decision in 90 after telling agents not to ask Jev for a policy's outcome |
+| A hard task, latest models | 63 maps, 4 authors | procurement wrong decisions 9.0% → 0.2–0.5%; accuracy 67% → 99% (Claude Code), 83% → 97% (DeepSeek) |
 
-The first version of the plugin made one task worse, raising wrong decisions from 13% to 46%. Reading Jev's
-wrong answers produced the rules that fixed it. [The evaluations in detail](docs/evals.md).
+[The evaluations in detail](docs/evals.md) · [the evidence](evals/README.md)
 
 ## Limitations
 
-- One person wrote the suites, labels, and rules. Independent LLM relabelling agreed on 83–100% of labels,
-  but no second person has labelled them.
-- Most comparisons use 2–12 maps. Treat gaps under ~7 points as noise.
-- Models that write a map in a single call sometimes don't finish with the skill loaded. Through the AI Gateway,
-  use a non-streaming request: the gateway caps how long a stream may run, and this alone recovered every failed GLM
-  map. Give them a large output budget, and run the map on one case before trusting it.
-
-## Repository layout
-
-| path | contents |
-| --- | --- |
-| [`plugin/`](plugin) | the Claude Code plugin: three skills and the two scripts |
-| [`audit/`](audit) | the audits as a JavaScript library, with types, ready for npm as `@barakchamo/jev-audit` |
-| [`evals/`](evals) | example suites with recorded results, and every evaluation of the plugin |
-| [`docs/`](docs) | the pages below |
+- **One author.** One person wrote the suites, labels and rules. LLM relabelling agreed on 83–89% of the study's
+  labels and 97.8–100% of the plugin suites' labels; no second person has labelled them.
+- **Small numbers.** Most comparisons use 2–12 maps per arm. Read the results as consistent directions, not
+  precise effect sizes, and treat gaps under ~7 points as noise.
+- **Abstaining isn't free.** Part of every drop in wrong decisions comes from maps sending more cases to a
+  person. The evaluations report coverage beside it.
+- **The study isn't public.** Its write-up and 55 of its 57 suites stay in a private research repository; the
+  rules cite its numbers, and the public evaluations re-test them.
+- **One-call authors.** Models writing a map in a single call sometimes don't finish with the skill loaded.
+  Through the gateway, use a non-streaming request and a 64k output budget ([details](docs/other-agents.md)).
 
 ## Documentation
 
-- [Use cases](docs/use-cases.md): when to use Jev, with worked examples
-- [Rules](docs/rules.md): all 16 rules, with examples and evidence
-- [Evaluations](docs/evals.md): how the skills were tested, and what changed as a result
-- [How it was built](plugin/docs/how-it-was-built.md): the full history, round by round
+| page | for |
+| --- | --- |
+| [Use cases](docs/use-cases.md) | when to use Jev, with six worked examples |
+| [Rules](docs/rules.md) | all 16 rules, with examples, evidence and status |
+| [Production](docs/production.md) | limits, safe calls, cascades, monitoring, data handling, security |
+| [For decision-makers](docs/decision-makers.md) | a one-page view without code |
+| [Other agents](docs/other-agents.md) | Codex, Cursor, the AI SDK, and results with non-Claude models |
+| [Evaluations](docs/evals.md) | how the skills were tested, and what changed as a result |
+| [Glossary](docs/glossary.md) | every term the kit uses |
+| [How it was built](plugin/docs/how-it-was-built.md) | the full history, round by round |
+| [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) | the project |
 
 ## License
 

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
-  answerCertainty, calibration, confidentlyWrong, decisionSummary, decisions, diff, fitDecisionGate, fitGate, isMapRow, items,
-  probabilityCalibration, topK, weakLinks, type Row,
+  answerCertainty, applyGates, auroc, calibration, confidentlyWrong, decisionSummary, decisions, diff, errored, fitDecisionGate, fitGate,
+  fitGates, goldMismatches, inFitHalf, isMapRow, items, probabilityCalibration, regold, topK, weakLinks, wilsonLower, type Row,
 } from './index.js';
 
 const choice = (choice: string, probabilities: Record<string, number>, confidence = Math.max(...Object.values(probabilities))) => ({
@@ -140,5 +140,50 @@ describe('jev-audit on whole-map runs', () => {
     expect(g).toMatchObject({ threshold: 0.9, wrongRemoved: 1, rightLost: 0, precision: 0.75, coverage: 4 / 6 });
     // a confidently wrong decision caps what any gate can reach
     expect(fitDecisionGate(ds, 0.8).threshold).toBeNull();
+  });
+});
+
+describe('guards against misleading comparisons', () => {
+  it('diff refuses runs graded on different labels, and regold puts both on one suite', () => {
+    const before: Row[] = [{ caseId: 'x', gold: { f: 'yes' }, predicted: { f: 'yes' } }, { caseId: 'y', gold: { f: 'no' }, predicted: { f: 'no' } }];
+    const after: Row[] = [{ caseId: 'x', gold: { f: 'no' }, predicted: { f: 'yes' } }, { caseId: 'y', gold: { f: 'no' }, predicted: { f: 'no' } }];
+    expect(goldMismatches(before, after)).toEqual(['x']);
+    const suite = [{ id: 'x', gold: { f: 'no' } }, { id: 'y', gold: { f: 'no' } }];
+    expect(goldMismatches(regold(before, suite), regold(after, suite))).toEqual([]);
+    const [d] = diff(items(regold(before, suite), { requireConfidence: false }), items(regold(after, suite), { requireConfidence: false }));
+    expect(d).toMatchObject({ before: 0.5, after: 0.5, fixed: 0, broken: 0 });
+  });
+
+  it('counts errored rows and still treats an all-error map run as a map run', () => {
+    const rs: Row[] = [{ caseId: 'a', gold: { outcome: 'x' }, arm: 'jev-map', error: 'HTTP 503' }, { caseId: 'b', gold: { outcome: 'x' }, decision: { outcome: 'x' } }];
+    expect(errored(rs)).toHaveLength(1);
+    expect(isMapRow(rs[0]!)).toBe(true);
+    expect(decisions(rs)).toHaveLength(1);
+  });
+
+  it('fits one gate per question, with a lower bound, and says when none is needed', () => {
+    const all = items(rows);
+    const gates = fitGates(all, 0.95);
+    expect(gates.map((g) => g.field).sort()).toEqual(['derived', 'live', 'v']);
+    expect(gates.find((g) => g.field === 'live')).toMatchObject({ noErrors: true });
+    expect(gates.find((g) => g.field === 'v')).toMatchObject({ threshold: 0.98, coverage: 1 / 6, noErrors: false });
+    expect(wilsonLower(29, 30)).toBeGreaterThan(0.8);
+    expect(wilsonLower(29, 30)).toBeLessThan(0.9);
+    expect(applyGates(all, gates).find((h) => h.field === 'v')).toMatchObject({ coverage: 1 / 6, precision: 1 });
+  });
+
+  it('ranks with AUROC and splits cases deterministically', () => {
+    const all = items(rows);
+    expect(auroc(all)).toBeGreaterThanOrEqual(0);
+    expect(auroc(all.filter((i) => i.label === i.gold))).toBeNaN();
+    const ids = Array.from({ length: 1000 }, (_, i) => `case-${i}`);
+    const fit = ids.filter((id) => inFitHalf(id, 0.5)).length;
+    expect(fit).toBeGreaterThan(420);
+    expect(fit).toBeLessThan(580);
+    expect(ids.map((id) => inFitHalf(id))).toEqual(ids.map((id) => inFitHalf(id)));
+    // short ids that differ only at the end must still spread over both sides
+    const short = Array.from({ length: 50 }, (_, i) => `triage-${String(i + 1).padStart(3, '0')}`).filter((id) => inFitHalf(id)).length;
+    expect(short).toBeGreaterThan(15);
+    expect(short).toBeLessThan(35);
   });
 });

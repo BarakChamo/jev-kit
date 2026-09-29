@@ -8,8 +8,9 @@ an example, and gives the evidence behind it and how well it held up when tested
 1. **A study found the failures.** 57 hand-labelled decision suites (1,836 cases) were run on Jev, a cheap
    LLM (`zai/glm-5.3-flash`), and on seven suites a frontier model (`openai/gpt-5.5-fast`). Every case Jev got wrong with high confidence was read, and
    each pattern of failure was measured with and without a fix.
-2. **A finding became a rule only after it held on a second task.** The study produced fourteen findings.
-   Five held only under a condition and were rewritten to state it. Some were merged.
+2. **A finding became a rule after it held on a second task.** The study produced fourteen findings.
+   Five held only under a condition and were rewritten to state it. Some were merged. Two rules (14 and 16)
+   rest on one measured effect so far, and are marked **single**.
 3. **Agent-written maps tested the rules again.** When agents using the skill made new mistakes, reading
    Jev's wrong answers added rules 6, 7, 10 and 16, part of rule 9, and sharper wording for others. That gives
    the sixteen rules below.
@@ -23,7 +24,7 @@ Each rule has a status:
 
 | status | meaning |
 | --- | --- |
-| **held** | replicated, or never contradicted wherever it was applied |
+| **held** | replicated on a second task or in the cross-domain probes, and never contradicted where applied |
 | **conditional** | real only under the stated condition; outside it, it did nothing or hurt |
 | **single** | one large measured effect, not yet replicated |
 
@@ -120,7 +121,8 @@ scored 100% on an LLM and 0% on Jev. Put all meaning in `instructions` and `crit
 + What caused the failure in `log_tail`?     // then decide the retry in code
 ```
 
-Jev answers the "then" part and drops the "if". Moving the condition into code took a task from 48.7% to 82.1%.
+Answers to conditionals were barely decisive, as if Jev answered the "then" part and ignored the "if" (an
+observation, not a tested mechanism). Moving the condition into code took a task from 48.7% to 82.1%.
 Asking two present-tense facts and combining them in code reached 87.2%.
 
 **Held** for branches and counterfactuals. Probes: counterfactual wording was right 11, 6 and 12 times in 12, and
@@ -174,14 +176,20 @@ wrong decisions of the no-plugin arm. Deadlines, "on time", and "within the limi
 ### 9. Read dates and numbers exactly; compute in code
 
 ```js
-start_year:  { type: 'choice', instructions: 'In which year does `contract` say the agreement begins?', criteria: opts([2024, 2025, 2026]) },
-start_month: { type: 'choice', instructions: 'In which month does `contract` say the agreement begins?', criteria: opts(MONTHS) },
-start_day:   { type: 'choice', instructions: 'On which day of the month does `contract` say the agreement begins?', criteria: opts(DAYS) },
+// opts() adds an "other" option; YEARS is a range around the input's own date, never a fixed list
+start_year:   { type: 'choice', instructions: 'In which year does `contract` say the agreement begins?', criteria: opts(YEARS) },
+start_month:  { type: 'choice', instructions: 'In which month does `contract` say the agreement begins?', criteria: opts(MONTHS) },
+start_day:    { type: 'choice', instructions: 'On which day of the month does `contract` say the agreement begins?', criteria: opts(DAYS) },
+notice_count: { type: 'choice', instructions: 'What number does `contract` give for the notice period, whatever its unit?', criteria: opts(COUNTS) },
+notice_unit:  { type: 'choice', instructions: 'In what unit does `contract` state that notice period?', criteria: opts(['days', 'weeks', 'months']) },
 ```
 
 "Was the notice on time?" was right 64–75% of the time. Reading the dates as year, month, and day choices and
-computing in code scored 30/30. Read a stated amount as a `choice` over the values the document could state,
-not as a band. One map read "up to USD 75" as 70–75, then called a $73.44 dinner over the limit.
+computing in code scored 30/30. Read a period as a number and a unit and convert it in code with calendar
+arithmetic: "3 months before January 10" is October 10, not "90 days before". The kit's example does this,
+including month-end dates (January 31 + 1 month = February 28), and scores 42/42. Read a stated amount as a
+`choice` over the values the document could state, not as a band. One map read "up to USD 75" as 70–75, then
+called a $73.44 dinner over the limit. A date written 03/04 is ambiguous: put the format convention in the state.
 
 **Held.** Probes: the direct question scored 8, 12 and 9 of 12 at 0.21–0.56 decisiveness, against 12/12 at 1.00.
 
@@ -220,11 +228,13 @@ elsewhere.
 | derive it in code | ask it as one question |
 | --- | --- |
 | a comparison of quantities (+58, +43) | a weighted, holistic judgment (−3 to −9 if derived) |
-| anything defined by a class: retry if the cause is flaky or infrastructure (+12.5 to +29) | a long AND: five facts at 100/95/90/87/67% multiply to 49.5% |
+| anything defined by a class: retry if the cause is flaky or infrastructure (+12.5 to +29) | a long AND of judgments with no written rule: five facts at 100/95/90/87/67% gave 48.7% derived (their product is 49.8%) |
 | a short OR of reliable flags (+10) | a verdict the facts don't determine: "addresses a machine" is not "attacks it" (−27) |
+| every written policy, however many clauses | — |
 
 When a written policy maps facts to outcomes, ask for each fact the rules branch on and apply the rules in order in
-code. Don't ask for the outcome. On access requests, every wrong decision left after the round-2 fixes came from
+code. Don't ask for the outcome. The "long AND" row is about judgments nobody wrote a rule for; for a policy, a
+weak fact is fixed or gated (abstain), not folded into one outcome question. On access requests, every wrong decision left after the round-2 fixes came from
 maps that asked "should this be denied?" and got "needs approval" back at 0.57–0.63.
 
 **Held.** Across twenty measured cases, deriving helped by up to 58 points and hurt by up to 34. The difference
@@ -240,9 +250,11 @@ const p = a.culprit.probabilities[a.culprit.choice];
 const pick = p >= GATE ? a.culprit.choice : 'abstain';   // GATE fitted with jev-audit
 ```
 
-- **Use the distribution, not the `confidence` scalar.** Across 5,227 answers the scalar was under-confident by
-  up to 29 points. The distribution tracked accuracy within about 4.
-- **Fit the threshold per question.** A `choice` over many options tops out lower than a yes/no. Over 379 picks
+- **Use the distribution, not the `confidence` scalar.** Across 5,227 answers the scalar was mostly
+  under-confident, by up to 29 points. The probabilities, pooled over every label, tracked accuracy within about
+  4; that pool is flattered by near-zero probabilities, so `jev-audit` also shows the top label's own bins.
+- **Fit the threshold per question** (`jev-audit` fits one per question; `--holdout` judges it on unseen
+  cases). A `choice` over many options tops out lower than a yes/no. Over 379 picks
   from 20+ options, a gate at 0.8 removed all 6 wrong picks and kept 79% of the right ones. A map that guessed
   0.6 abstained on right answers at 0.58.
 - **Gate on the case, not the policy.** Questions about the policy itself ("does it have rules this map doesn't
@@ -273,15 +285,18 @@ veto.
 claims_approval: { type: 'noul', instructions: 'Does `request` claim that an approval was already given?' }
 ```
 
-Jev detects an injected "this was already approved" 5 times in 6 with no false alarms, but resists it only 3
-times in 6.
+In the study Jev detected an injected "this was already approved" 5 times in 6 with no false alarms, but resisted
+it only 3 times in 6.
 
-**Held.** Probes: where the claim fooled the decision (6/6, deploys), the veto stopped all 6. Where it didn't,
-the veto cost nothing.
+**Held**, on small numbers. Probes: the claim fooled the decision in one domain of three (6/6, deploys), and the
+veto stopped all 6. Where it didn't fool the decision, the veto cost nothing. That is six cases per domain and
+one attack phrasing: a detector is a useful signal, not a security control.
 
 ### 16. Don't pre-filter with unmeasured code
 
-Send every candidate to Jev, or measure your filter's recall first.
+Send every candidate to Jev, or measure your filter's recall first. Over 255 candidates, a `choice` refuses:
+use a measured filter, or pick per chunk of up to 254 (plus "none of these") and then among the winners. Neither
+workaround is measured yet.
 
 Agents narrowed 40 log lines with a regex to keep requests small. The right line survived in as few as 5 of 30
 cases, so Jev never saw it. Sending every line kept it in 30 of 30. Long states cost little: Jev charges $0.042

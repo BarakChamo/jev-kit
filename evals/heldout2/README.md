@@ -194,8 +194,8 @@ with Jev's answers and each map's decision.
 ```bash
 node gen.mjs                                                  # suites
 ./run.sh <task> <plugin|base> <rep> [model]                   # a Claude Code author (REPO, OUT env)
-MAX_OUTPUT=32000 node --env-file=../../../.env.local author.mjs <task> <arm> <model> <rep> <outdir>
-node --env-file=../../../.env.local grade.mjs <map dirs...> --out results.<name>.json   # isolated, time-limited per map
+MAX_OUTPUT=32000 node --env-file=../../.env.local author.mjs <task> <arm> <model> <rep> <outdir>
+node --env-file=../../.env.local grade.mjs <map dirs...> --out results.<name>.json   # isolated, time-limited per map
 python3 summarise.py                                          # summary.md, every author × skill × arm
 node design.mjs maps-api && python3 design_vs_accuracy.py     # design checks
 ```
